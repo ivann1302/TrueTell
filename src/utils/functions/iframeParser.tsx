@@ -45,8 +45,8 @@ export function parseIframeToChartList(
           _no_controls: params['_no_controls'] || '1',
         },
         dimensions: {
-          width: widthMatch ? widthMatch[1] : '100%',
-          height: heightMatch ? heightMatch[1] : '400px',
+          width: widthMatch ? widthMatch[1] : '1171px',
+          height: heightMatch ? heightMatch[1] : '444px',
         },
         title: titles[index] || `Chart ${index + 1}`,
       };

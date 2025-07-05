@@ -12,6 +12,7 @@
 }
 
 body {
+  background-color: #FFFF;
   margin: 0;
   display: flex;
   place-items: center;
@@ -19,4 +20,12 @@ body {
   min-height: 100vh;
   justify-content: center;
   font-family: 'Monorope', sans-serif;
+}
+
+body h2 {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 60px;
+  padding: 0 0 56px 0;
+  margin: 0;
 }
