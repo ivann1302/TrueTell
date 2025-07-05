@@ -1,7 +1,7 @@
 import styles from './hero-container.module.scss';
 import Chart from '../chart/chart';
-import { parseIframeToChartList } from '../../../utils/iframeParser';
-import { iframes, titles } from '../../../utils/iframes';
+import { parseIframeToChartList } from '../../../utils/functions/iframeParser';
+import { iframes, titles } from '../../../utils/types/iframes';
 
 function HeroContainer() {
   const chartList = parseIframeToChartList(iframes, titles);

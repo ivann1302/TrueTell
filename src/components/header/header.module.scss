@@ -1,6 +1,68 @@
 .header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  width: 100vw; /* Занимает всю ширину viewport */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  .headerContent {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .logo {
+    height: 36px;
+    width: 180px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+  }
+
+  .navigation {
+    display: flex;
+  }
+
+  .navList {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navItem {
+    display: flex;
+    align-items: center;
+  }
+
+  .navLink {
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 25px;
+    color: #00205b;
+    font-weight: 400;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #0066ff;
+    }
+  }
 }
