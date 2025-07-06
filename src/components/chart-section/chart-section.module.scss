@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@use '../../styles/variables.scss' as *;
 
 .chart-section {
     width: 100vw;
