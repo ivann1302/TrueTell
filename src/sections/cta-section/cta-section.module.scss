@@ -1,0 +1,113 @@
+@use '../../styles/variables.scss' as *;
+
+.ctaSection {
+  width: 100%;
+  background: $primary-blue;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 1170px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.topBlock {
+  width: 1170px;
+  height: 270px;
+  background: $primary-blue-dark;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.leftContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 42px;
+  color: $white;
+  margin: 0;
+  text-align: left;
+}
+
+.rightContent {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0;
+  width: fit-content;
+}
+
+.subtitle {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 34px;
+  line-height: 35px;
+  margin-bottom: 16px;
+}
+
+.description {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 20px;
+  line-height: 25px;
+  margin: 8px 0 0 0;
+  color: $primary-blue-light;
+}
+
+.bottomBlock {
+  display: flex;
+  gap: 20px;
+}
+
+.contactBlock {
+  width: 780px;
+  height: 184px;
+  background: $primary-blue-dark;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.contactTitle {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 36px;
+  line-height: 42px;
+  letter-spacing: 0%;
+  color: $white;
+  margin: 0;
+  text-align: center;
+}
+
+.socialBlock {
+  width: 378px;
+  height: 184px;
+  background: $primary-blue-dark;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 

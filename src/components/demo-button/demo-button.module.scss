@@ -1,0 +1,35 @@
+@use '../../styles/variables.scss' as *;
+
+.demoButton {
+  width: 320px;
+  height: 57px;
+  background: $primary-blue-light;
+  color: $white;
+  border: none;
+  border-radius: 16px;
+  padding: 16px 60px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 20px;
+  line-height: 25px;
+  letter-spacing: 0%;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 1;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  
+  &:hover {
+    background: $secondary-blue;
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+} 

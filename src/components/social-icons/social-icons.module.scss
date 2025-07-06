@@ -1,0 +1,38 @@
+@use '../../styles/variables.scss' as *;
+
+.socialIcons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialIcon {
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.whatsappIcon,
+.telegramIcon {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: $light-gray;
+  }
+  
+  img {
+    width: 84px;
+    height: 84px;
+  }
+} 

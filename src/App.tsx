@@ -2,6 +2,7 @@ import './App.css';
 import AppHeader from './components/header/header';
 import AppFooter from './components/footer/footer';
 import ChartSection from './components/chart-section/chart-section';
+import CTASection from './sections/cta-section/cta-section';
 import { COLORS } from './styles/colors';
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
         titleColor={COLORS.WHITE}
         backgroundColor={COLORS.PRIMARY_BLUE}
       />
+      
+      <CTASection />
       
       <AppFooter />
     </>
