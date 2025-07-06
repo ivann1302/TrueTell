@@ -3,12 +3,15 @@ import AppHeader from './components/header/header';
 import AppFooter from './components/footer/footer';
 import ChartSection from './components/chart-section/chart-section';
 import CTASection from './sections/cta-section/cta-section';
+import HeroSection from './sections/hero-section/hero-section';
 import { COLORS } from './styles/colors';
 
 function App() {
   return (
     <>
       <AppHeader />
+      
+      <HeroSection />
       
       <ChartSection
         title="Сбросьте балласт"
