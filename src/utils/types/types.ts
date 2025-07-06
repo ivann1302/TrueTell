@@ -5,6 +5,7 @@ export type TParams = {
   retail_store_name_j4ew: string;
   _embedded: string;
   _no_controls: string;
+  [key: string]: string;
 };
 
 export type TChartItem = {
@@ -17,3 +18,17 @@ export type TChartItem = {
   };
   title: string;
 };
+
+export interface ChartProps {
+  chart: TChartItem;
+}
+
+export interface ChartSectionData {
+  title: string;
+  subtitle?: string;
+  chartIndex: number;
+  backgroundColor?: string;
+  titleColor?: string;
+  subtitleColor?: string;
+}
+

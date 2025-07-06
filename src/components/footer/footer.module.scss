@@ -1,6 +1,69 @@
+@import '../../styles/variables.scss';
+
 .footer {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  gap: 252px;
+  width: 100%;
+  background: $primary-blue;
+  padding: 40px 0 140px 0;
+}
+
+.footerBlock {
+  display: flex;
+  flex-direction: column;
+  color: $white;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.footerBlock1 {
+  width: 258px;
+  height: 138px;
+  opacity: 1;
+}
+
+.footerBlock2 {
+  width: 179px;
+  height: 105px;
+  opacity: 1;
+}
+
+.footerBlock3 {
+  width: 220px;
+  height: 138px;
+  opacity: 1;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.footerLogo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 8px;
+}
+
+.footerBlockTitle {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 28px;
+  line-height: 35px;
+  letter-spacing: 0%;
+  margin: 0 0 12px 0;
+}
+
+.footerBlockText {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: 0%;
+  margin: 0 0 8px 0;
+}
+
+.footerBlockText:last-child {
+  margin-bottom: 0;
 }

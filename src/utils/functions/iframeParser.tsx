@@ -14,19 +14,29 @@ export function parseIframeToChartList(
     return Math.abs(hash);
   }
 
-  return iframeHtmlArray
-    .map((iframeHtml, index) => {
+  function parseIframeHtml(iframeHtml: string, index: number): TChartItem | null {
+    try {
       const srcMatch = iframeHtml.match(/src="([^"]+)"/);
-      if (!srcMatch) return null;
+      if (!srcMatch) {
+        console.warn(`No src attribute found in iframe at index ${index}`);
+        return null;
+      }
 
       const fullSrc = srcMatch[1];
       const [baseUrl, queryString] = fullSrc.split('?');
+
+      if (!baseUrl) {
+        console.warn(`Invalid base URL in iframe at index ${index}`);
+        return null;
+      }
 
       const params: Record<string, string> = {};
       if (queryString) {
         queryString.split('&').forEach((pair) => {
           const [key, value = ''] = pair.split('=');
-          params[key] = decodeURIComponent(value);
+          if (key) {
+            params[key] = decodeURIComponent(value);
+          }
         });
       }
 
@@ -43,6 +53,7 @@ export function parseIframeToChartList(
           retail_store_name_j4ew: params['retail_store_name_j4ew'] || '',
           _embedded: params['_embedded'] || '1',
           _no_controls: params['_no_controls'] || '1',
+          ...params, // Include any additional parameters
         },
         dimensions: {
           width: widthMatch ? widthMatch[1] : '1171px',
@@ -50,6 +61,13 @@ export function parseIframeToChartList(
         },
         title: titles[index] || `Chart ${index + 1}`,
       };
-    })
+    } catch (error) {
+      console.error(`Error parsing iframe at index ${index}:`, error);
+      return null;
+    }
+  }
+
+  return iframeHtmlArray
+    .map((iframeHtml, index) => parseIframeHtml(iframeHtml, index))
     .filter((item): item is TChartItem => item !== null);
 }

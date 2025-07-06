@@ -1,16 +1,5 @@
 import styles from './chart.module.scss';
-
-interface ChartProps {
-  chart: {
-    src: string;
-    params: Record<string, string>;
-    title: string;
-    dimensions: {
-      width: string;
-      height: string;
-    };
-  };
-}
+import type { ChartProps } from '../../../utils/types/types';
 
 function Chart({ chart }: ChartProps) {
   const buildIframeUrl = (baseUrl: string, params: Record<string, string>) => {

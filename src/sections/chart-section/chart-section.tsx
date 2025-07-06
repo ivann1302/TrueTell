@@ -1,5 +1,6 @@
 import styles from './chart-section.module.scss';
 import type { ChartSectionProps } from '../../utils/types/chartTypes';
+import { COLORS } from '../../styles/colors';
 import React from 'react';
 
 export const ChartSection: React.FC<ChartSectionProps> = ({
@@ -7,9 +8,9 @@ export const ChartSection: React.FC<ChartSectionProps> = ({
   subtitle,
   chart,
   className = '',
-  backgroundColor = '#ffffff',
-  titleColor = '#333333',
-  subtitleColor = '#666666',
+  backgroundColor = COLORS.BACKGROUND_WHITE,
+  titleColor = COLORS.TEXT_PRIMARY,
+  subtitleColor = COLORS.TEXT_SECONDARY,
 }) => {
   return (
     <section 

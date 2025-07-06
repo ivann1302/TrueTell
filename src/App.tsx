@@ -1,30 +1,37 @@
 import './App.css';
 import AppHeader from './components/header/header';
-import Chart from './components/hero/chart/chart';
-import ChartSection from './sections/chart-section/chart-section';
-import { parseIframeToChartList } from './utils/functions/iframeParser';
-
-const iframes = [
-  `<iframe frameborder="0" src="https://datalens.yandex/q76ngy1mwhukc?clients=&date_group_param=__eq_%D0%94%D0%B5%D0%BD%D1%8C&date_param=__interval___relative_-15d___relative_-1d&retail_store_name_j4ew=&_embedded=1&_no_controls=1" width="1171px" height="444px"></iframe>`,
-  `<iframe frameborder="0" src="https://datalens.yandex/arq70ilgfms0w" width="500px" height="400px"></iframe>`,
-  `<iframe frameborder="0" src="https://datalens.yandex/4lk1ucfp9uooq" width="100%" height="400px"></iframe>`,
-  `<iframe frameborder="0" src="https://datalens.yandex/6nm3wem74fvgs" width="100%" height="400px"></iframe>`,
-  `<iframe frameborder="0" src="https://datalens.yandex/5ml2vdl63euer" width="100%" height="400px"></iframe>`,
-];
-
-const titles = ['Продажи за последние 15 дней', 'Chart 2', 'Chart 3', 'Chart 4', 'Chart 5'];
+import AppFooter from './components/footer/footer';
+import ChartSection from './components/chart-section/chart-section';
+import { COLORS } from './styles/colors';
 
 function App() {
-  const chartData = parseIframeToChartList(iframes, titles)[0]; // Берем первый чарт
-
   return (
     <>
       <AppHeader />
-      <ChartSection 
+      
+      <ChartSection
         title="Сбросьте балласт"
-        chart={<Chart chart={chartData} />}
-        titleColor='#093585'
+        chartIndex={0}
+        titleColor={COLORS.PRIMARY_BLUE}
       />
+      
+      <ChartSection
+        title="Как это выглядит?"
+        subtitle="Показатели по всем точкам на одном экране"
+        chartIndex={1}
+        backgroundColor={COLORS.PRIMARY_BLUE}
+        titleColor={COLORS.WHITE}
+        subtitleColor={COLORS.PRIMARY_BLUE_LIGHT}
+      />
+      
+      <ChartSection
+        title="Нацельтесь на прибыль"
+        chartIndex={2}
+        titleColor={COLORS.WHITE}
+        backgroundColor={COLORS.PRIMARY_BLUE}
+      />
+      
+      <AppFooter />
     </>
   );
 }
