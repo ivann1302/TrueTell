@@ -18,7 +18,8 @@
 
 .leftContent {
   flex: 1;
-  background: $primary-blue-dark;
+  background-image: url('./../../images/banner1.png');
+  background-size: cover;
   border-radius: 16px;
   padding: 90px 0 52px 100px;
   display: flex;
@@ -60,7 +61,8 @@
 
 .topBlock {
   height: 184px;
-  background: $primary-blue-dark;
+  background-image: url('./../../images/banner2.png');
+  background-size: cover;
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -71,7 +73,8 @@
 
 .bottomBlock {
   height: 432px;
-  background: $primary-blue-dark;
+  background-image: url('./../../images/banner3.png');
+  background-size: cover;
   border-radius: 16px;
   padding: 52px 40px 40px 40px;
   display: flex;

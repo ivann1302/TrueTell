@@ -1,0 +1,75 @@
+@use '../../styles/variables.scss' as *;
+
+.painPointsSection {
+  width: 100%;
+  background: $white;
+  padding: 140px 0 140px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 1170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 60px;
+  color: $primary-blue;
+  margin: 0 0 56px 0;
+  text-align: left;
+}
+
+.content {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.painBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+  flex: 1;
+  max-width: 380px;
+}
+
+.cross {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.blockTitle {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 28px;
+  line-height: 35px;
+  color: $primary-blue;
+  margin: 0 0 4px 0;
+}
+
+.blockText {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  color: $text-primary;
+  margin: 0;
+} 

@@ -4,6 +4,9 @@ import AppFooter from './components/footer/footer';
 import ChartSection from './components/chart-section/chart-section';
 import CTASection from './sections/cta-section/cta-section';
 import HeroSection from './sections/hero-section/hero-section';
+import WhoIsItForSection from './sections/whoIsItFor/whoIsItFor';
+import PainPointsSection from './sections/pain-points-section/pain-points-section';
+import ResultsSection from './sections/results-section/results-section';
 import { COLORS } from './styles/colors';
 
 function App() {
@@ -18,7 +21,11 @@ function App() {
         chartIndex={0}
         titleColor={COLORS.PRIMARY_BLUE}
       />
+
+              <WhoIsItForSection />
       
+      <PainPointsSection />
+        
       <ChartSection
         title="Как это выглядит?"
         subtitle="Показатели по всем точкам на одном экране"
@@ -34,6 +41,8 @@ function App() {
         titleColor={COLORS.WHITE}
         backgroundColor={COLORS.PRIMARY_BLUE}
       />
+      
+      <ResultsSection />
       
       <CTASection />
       

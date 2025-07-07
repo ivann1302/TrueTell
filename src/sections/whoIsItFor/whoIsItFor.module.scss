@@ -1,0 +1,99 @@
+@use '../../styles/variables.scss' as *;
+
+.WhoIsItFor {
+  width: 100%;
+  background: $white;
+  padding: 140px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 1170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 60px;
+  color: $primary-blue;
+  margin: 0 0 56px 0;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.leftColumn,
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.leftColumn {
+  align-items: flex-end;
+}
+
+.rightColumn {
+  align-items: flex-start;
+}
+
+.smallBlock {
+  width: 382px;
+  height: 83px;
+  border-radius: 20px;
+  padding: 24px 32px;
+  background: linear-gradient(90deg, $gradient-blue-start 0%, $gradient-blue-end 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  color: $primary-blue;
+  text-align: center;
+}
+
+.largeBlock {
+  width: 383px;
+  height: 153px;
+  border-radius: 20px;
+  padding: 24px 32px;
+  background: linear-gradient(90deg, $gradient-blue-start 0%, $gradient-blue-end 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  color: $primary-blue;
+  text-align: center;
+}
+
+.centerImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 358px;
+  height: 248px;
+  border-radius: 20px;
+  object-fit: cover;
+} 
