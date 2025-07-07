@@ -1,0 +1,95 @@
+@use '../../styles/variables.scss' as *;
+
+.solutionSection {
+  width: 100%;
+  background: $primary-blue;
+  padding: 140px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 1170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 60px;
+  color: $white;
+  margin: 0 0 16px 0;
+  text-align: center;
+}
+
+.subtitle {
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 34px;
+  line-height: 35px;
+  letter-spacing: 0%;
+  color: $primary-blue-light;
+  margin: 0 0 56px 0;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.card {
+  width: 380px;
+  height: 420px;
+  background: $white;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 23px 61px 23px;
+  box-sizing: border-box;
+}
+
+.cardIcon {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 32px;
+}
+
+.cardText {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 28px;
+  line-height: 35px;
+  text-align: center;
+  color:  $primary-blue;
+  margin: 0;
+}
+
+.vs {
+  font-family: 'Biryani', sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 36px;
+  line-height: 45px;
+  text-align: center;
+  color: $primary-blue;
+  margin: 16px 0;
+}
+
+.disclaimer {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: center;
+  color: $primary-blue-light;
+  margin-top: 20px;
+} 

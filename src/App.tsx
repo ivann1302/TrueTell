@@ -6,6 +6,7 @@ import CTASection from './sections/cta-section/cta-section';
 import HeroSection from './sections/hero-section/hero-section';
 import WhoIsItForSection from './sections/whoIsItFor/whoIsItFor';
 import PainPointsSection from './sections/pain-points-section/pain-points-section';
+import SolutionSection from './sections/solution-section/solution-section';
 import ResultsSection from './sections/results-section/results-section';
 import { COLORS } from './styles/colors';
 
@@ -25,6 +26,8 @@ function App() {
               <WhoIsItForSection />
       
       <PainPointsSection />
+      
+      <SolutionSection />
         
       <ChartSection
         title="Как это выглядит?"
