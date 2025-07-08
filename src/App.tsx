@@ -8,6 +8,7 @@ import WhoIsItForSection from './sections/whoIsItFor/whoIsItFor';
 import PainPointsSection from './sections/pain-points-section/pain-points-section';
 import SolutionSection from './sections/solution-section/solution-section';
 import ResultsSection from './sections/results-section/results-section';
+import StepsSection from './sections/steps-section/steps-section';
 import PricingSection from './sections/pricing-section/pricing-section';
 import { COLORS } from './styles/colors';
 
@@ -49,6 +50,8 @@ function App() {
       <PricingSection />
       
       <ResultsSection />
+      
+      <StepsSection />
       
       <CTASection />
       

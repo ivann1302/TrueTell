@@ -1,0 +1,88 @@
+@use '../../styles/variables.scss' as *;
+
+.stepsSection {
+  width: 100%;
+  background: $white;
+  padding: 140px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 140px;
+}
+
+.container {
+  width: 1170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// Заголовок секции в стиле "Кейс клиента"
+.title {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 60px;
+  color: $primary-blue;
+  text-align: center;
+  margin: 0 0 56px 0;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.stepBlock {
+  width: 382px;
+  height: 229px;
+  background: $primary-blue;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  margin: 0 6px;
+}
+
+.stepNumber {
+  font-weight: 400;
+  font-size: 200px;
+  line-height: 200px;
+  background: linear-gradient(180deg, #0084FF 0%, #093585 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: absolute;
+  z-index: 2;
+  left: 30px;
+}
+
+.stepTitle {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 35px;
+  color: $white;
+  text-align: center;
+  margin: 0;
+  padding: 0 20px;
+  position: relative;
+  z-index: 3; // наложение на цифры
+  max-width: 340px;
+}
+
+// Маленькие соединительные блоки между основными блоками
+.connector {
+  position: absolute;
+  width: 100%;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);  
+  height: 35px;
+  background: $primary-blue;
+  z-index: 1;
+} 
