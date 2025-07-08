@@ -5,7 +5,8 @@ export const StepsSection: React.FC = () => {
   const steps = [
     {
       number: '1',
-      title: 'Текущее положение дел и описываем целевое состояние отчетности'
+      title: 'Обсуждаем',
+      description: 'Текущее положение дел и описываем целевое состояние отчетности'
     },
     {
       number: '2',
@@ -27,6 +28,9 @@ export const StepsSection: React.FC = () => {
             <div key={index} className={styles.stepBlock}>
               <div className={styles.stepNumber}>{step.number}</div>
               <h3 className={styles.stepTitle}>{step.title}</h3>
+              {step.description && (
+                <p className={styles.stepDescription}>{step.description}</p>
+              )}
               {index < steps.length - 1 && (
                 <div className={styles.connector}></div>
               )}

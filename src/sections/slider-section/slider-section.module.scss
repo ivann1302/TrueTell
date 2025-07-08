@@ -1,0 +1,117 @@
+@use '../../styles/variables.scss' as *;
+
+.sliderSection {
+  width: 100%;
+  background: $white;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 1170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sliderWrapper {
+  position: relative;
+  width: 1171px;
+  height: 444px;
+  overflow: hidden;
+}
+
+.slideContainer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slidesTrack {
+  display: flex;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $primary-blue;
+  position: relative;
+}
+
+.slideContent {
+  color: $white;
+  font-weight: 600;
+  font-size: 48px;
+  text-align: center;
+}
+
+// Стрелки навигации
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  background: $white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $primary-blue;
+  transition: all 0.3s ease;
+  z-index: 10;
+
+  &:hover {
+    background: $white;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.navButtonPrev {
+  left: 20px;
+}
+
+.navButtonNext {
+  right: 20px;
+}
+
+// Точки навигации
+.dotsContainer {
+  display: flex;
+  gap: 12px; // расстояние между точками 12px
+  margin-top: 18px; // точки ниже блока слайда на 18px
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: $gray; // серые неактивные точки
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background: $primary-blue-light;
+  }
+}
+
+.dotActive {
+  background: $primary-blue-light; // светло-голубая активная точка
+} 
