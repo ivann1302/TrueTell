@@ -16,14 +16,94 @@
   align-items: center;
 }
 
-.title {
-  font-family: 'Manrope', sans-serif;
+// Общие стили для заголовков секций
+%section-title {
   font-weight: 600;
   font-size: 48px;
   line-height: 60px;
   color: $primary-blue;
-  margin: 0 0 56px 0;
   text-align: center;
+  margin: 0;
+}
+
+// Кейс клиента
+.caseSection {
+  width: 100%;
+  margin-bottom: 48px; // отступ до "Результаты через месяц"
+}
+
+.caseTitle {
+  @extend %section-title;
+  margin-bottom: 56px;
+}
+
+.clientCase {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+}
+
+.clientPhotoWrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: -110px;
+}
+
+.clientPhoto {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.clientInfo {
+  width: 1141px;
+  height: 83px;
+  background: linear-gradient(90deg, $gradient-blue-start 0%, $gradient-blue-end 100%);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 130px; // заходит под фотографию на 130px
+  margin-left: -130px; // смещение для наложения
+  z-index: 1;
+  position: relative;
+}
+
+%client-text {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 35px;
+  color: $primary-blue;
+  margin: 0;
+}
+
+.clientNameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.clientName {
+  @extend %client-text;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.clientDescription {
+  @extend %client-text;
+}
+
+// Результаты
+.title {
+  @extend %section-title;
+  margin-bottom: 56px;
 }
 
 .content {
@@ -37,7 +117,7 @@
 .resultBlock {
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
   text-align: center;
   flex: 1;
   max-width: 380px;
@@ -56,24 +136,18 @@
 }
 
 .blockTitle {
-  font-family: 'Manrope', sans-serif;
   font-weight: 600;
-  font-style: SemiBold;
   font-size: 28px;
   line-height: 35px;
-  letter-spacing: 0%;
   color: $primary-blue;
   margin: 0 0 4px 0;
   text-align: left;
 }
 
 .blockText {
-  font-family: 'Manrope', sans-serif;
   font-weight: 400;
-  font-style: Regular;
   font-size: 20px;
   line-height: 25px;
-  letter-spacing: 0%;
   color: $text-primary;
   margin: 0;
   text-align: left;
