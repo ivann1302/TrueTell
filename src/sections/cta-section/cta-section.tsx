@@ -10,7 +10,7 @@ export const CTASection: React.FC = () => {
   };
 
   return (
-    <section className={styles.ctaSection}>
+    <section id="demo" className={styles.ctaSection}>
       <div className={styles.container}>
         {/* Верхний блок */}
         <div className={styles.topBlock}>

@@ -6,7 +6,7 @@ import advantage3 from './../../images/advantage3.svg';
 
 export const SolutionSection: React.FC = () => {
   return (
-    <section className={styles.solutionSection}>
+    <section id="features" className={styles.solutionSection}>
       <div className={styles.container}>
         <h2 className={styles.title}>Решение</h2>
         <h3 className={styles.subtitle}>Дашборд, который показывает:</h3>

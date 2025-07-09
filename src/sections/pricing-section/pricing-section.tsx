@@ -72,7 +72,7 @@ export const PricingSection: React.FC = () => {
   };
 
   return (
-    <section className={styles.pricingSection}>
+    <section id="pricing" className={styles.pricingSection}>
       <div className={styles.container}>
         <h2 className={styles.title}>Начните прямо сейчас!</h2>
         <div className={styles.content}>

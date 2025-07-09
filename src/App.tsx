@@ -10,6 +10,7 @@ import SolutionSection from './sections/solution-section/solution-section';
 import ResultsSection from './sections/results-section/results-section';
 import SliderSection from './sections/slider-section/slider-section';
 import StepsSection from './sections/steps-section/steps-section';
+import FAQSection from './sections/faq-section/faq-section';
 import PricingSection from './sections/pricing-section/pricing-section';
 import { COLORS } from './styles/colors';
 
@@ -55,6 +56,8 @@ function App() {
       <SliderSection />
       
       <StepsSection />
+      
+      <FAQSection />
       
       <CTASection />
       

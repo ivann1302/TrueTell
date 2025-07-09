@@ -94,6 +94,14 @@
   margin: 0 0 79px 0;
 }
 
+.buttonWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
 .description {
   font-family: 'Manrope', sans-serif;
   font-weight: 400;

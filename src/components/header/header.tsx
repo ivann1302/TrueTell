@@ -4,7 +4,9 @@ function AppHeader() {
     <header className={styles.header}>
       <div className={styles.headerContent}>
         <div className={styles.logoContainer}>
-          <img src="/src/images/logo/logo.svg" alt="TrueTell Logo" className={styles.logo} />
+          <a href="#home" className={styles.logoLink}>
+            <img src="/src/images/logo/logo.svg" alt="TrueTell Logo" className={styles.logo} />
+          </a>
         </div>
         <nav className={styles.navigation}>
           <ul className={styles.navList}>

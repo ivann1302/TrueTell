@@ -20,7 +20,7 @@ export const ResultsSection: React.FC = () => {
   ];
 
   return (
-    <section className={styles.resultsSection}>
+    <section id="cases" className={styles.resultsSection}>
       <div className={styles.container}>
         {/* Кейс клиента */}
         <div className={styles.caseSection}>

@@ -31,6 +31,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--background-white);
   margin: 0;
@@ -40,6 +45,7 @@ body {
   min-height: 100vh;
   justify-content: center;
   font-family: 'Manrope', sans-serif;
+  overflow-x: hidden;
 }
 
 body h2 {

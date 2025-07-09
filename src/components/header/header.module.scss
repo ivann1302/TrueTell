@@ -26,6 +26,13 @@
     gap: 1rem;
   }
 
+  .logoLink {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
   .logo {
     height: 36px;
     width: 180px;
@@ -61,10 +68,12 @@
     line-height: 25px;
     color: $primary-blue-dark;
     font-weight: 400;
-    transition: color 0.3s ease;
+    padding: 4px 16px 4px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
 
     &:hover {
-      color: $secondary-blue;
+      background: $hover-gray;
     }
   }
 }
