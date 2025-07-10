@@ -58,7 +58,7 @@
   text-align: left;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: $white-transparent-light;
   }
 }
 
@@ -131,7 +131,7 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 25px;
-  color: #C3E2FF;
+  color: $gradient-blue-end;
   margin: 0 0 16px 0;
   text-align: left;
 

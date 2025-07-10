@@ -12,7 +12,6 @@ $white: #FFFFFF;
 $light-gray: #F0F0F0;
 $hover-gray: #EDEDED;
 $gray: #666666;
-$dark-gray: #333333;
 $black: #242424;
 
 // Background Colors
@@ -22,7 +21,6 @@ $background-dark: #242424;
 // Text Colors
 $text-primary: #333333;
 $text-secondary: #666666;
-$text-light: #888888;
 
 // Shadow Colors
 $shadow-blue: #646CFF;
@@ -31,7 +29,12 @@ $shadow-cyan: #61DAFB;
 // Transparent Colors
 $shadow-blue-transparent: #646CFFAA;
 $shadow-cyan-transparent: #61DAFBAA;
+$white-transparent-light: rgba(255, 255, 255, 0.05);
+$black-transparent-light: rgba(0, 0, 0, 0.1);
 
 // Gradient Colors
 $gradient-blue-start: #E1F1FF;
-$gradient-blue-end: #C3E2FF; 
+$gradient-blue-end: #C3E2FF;
+
+// Gradient Mixins
+$gradient-primary: linear-gradient(180deg, #{$primary-blue-light} 0%, #{$primary-blue} 100%); 

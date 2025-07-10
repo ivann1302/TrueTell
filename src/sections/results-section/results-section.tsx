@@ -39,14 +39,14 @@ export const ResultsSection: React.FC = () => {
           </div>
         </div>
 
-        <h2 className={styles.title}>Результаты через месяц:</h2>
+        <h3 className={styles.title}>Результаты через месяц:</h3>
         
         <div className={styles.content}>
           {results.map((result, index) => (
             <div key={index} className={styles.resultBlock}>
               <img src={checkmark} alt="checkmark" className={styles.checkmark}/>
               <div className={styles.textContent}>
-                <h3 className={styles.blockTitle}>{result.title}</h3>
+                <h4 className={styles.blockTitle}>{result.title}</h4>
                 <p className={styles.blockText}>
                   {result.text.includes('перераспределения') ? (
                     <>на 18% маржу за счет<br />перераспределения закупок</>
