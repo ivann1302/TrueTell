@@ -13,7 +13,7 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({
   return (
     <div className={`${styles.socialIcons} ${className}`}>
       <a 
-        href="https://wa.me/79932806441" 
+        href="https://wa.me/" 
         target="_blank" 
         rel="noopener noreferrer"
         className={styles.socialIcon}
@@ -23,7 +23,7 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({
         </div>
       </a>
       <a 
-        href="https://t.me/truetell" 
+        href="https://t.me/" 
         target="_blank" 
         rel="noopener noreferrer"
         className={styles.socialIcon}
