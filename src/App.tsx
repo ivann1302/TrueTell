@@ -27,7 +27,7 @@ function App() {
         titleColor={COLORS.PRIMARY_BLUE}
       />
 
-              <WhoIsItForSection />
+      <WhoIsItForSection />
       
       <PainPointsSection />
       
