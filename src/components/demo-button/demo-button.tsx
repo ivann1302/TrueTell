@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './demo-button.module.scss';
 
 interface DemoButtonProps {
@@ -10,10 +10,22 @@ export const DemoButton: React.FC<DemoButtonProps> = ({
   onClick, 
   className = '' 
 }) => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(true);
+    if (onClick) onClick();
+
+    // Сбросить состояние клика через небольшую задержку
+    setTimeout(() => {
+      setIsClicked(false);
+    }, 300);
+  };
+
   return (
     <button 
-      className={`${styles.demoButton} ${className}`}
-      onClick={onClick}
+      className={`${styles['demo-button']} ${isClicked ? styles.clicked : ''} ${className}`}
+      onClick={handleClick}
     >
       Протестировать демо
     </button>

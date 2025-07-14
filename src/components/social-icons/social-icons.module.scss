@@ -1,23 +1,30 @@
 @use '../../styles/variables.scss' as *;
+@use '../../styles/brackpoints.scss' as *;
 
-.socialIcons {
+.social-icons {
   display: flex;
   gap: 20px;
   justify-content: center;
   align-items: center;
+  height: 100%;
+
+  @include mobile-tablet {
+    flex-direction: column;
+    gap: 36px;
+  }
 }
 
-.socialIcon {
+.social-icon {
   text-decoration: none;
   transition: transform 0.3s ease;
-  
+
   &:hover {
     transform: scale(1.1);
   }
 }
 
-.whatsappIcon,
-.telegramIcon {
+.whatsapp-icon,
+.telegram-icon {
   width: 84px;
   height: 84px;
   border-radius: 50%;
@@ -26,13 +33,23 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  
+
+  @include mobile-tablet {
+    width: 48px;
+    height: 48px;
+  }
+
   &:hover {
     background: $light-gray;
   }
-  
+
   img {
     width: 84px;
     height: 84px;
+
+    @include mobile-tablet {
+      width: 48px;
+      height: 48px;
+    }
   }
-} 
+}

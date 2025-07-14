@@ -10,9 +10,9 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <section id="home" className={styles.heroSection}>
+    <section id="home" className={styles['hero-section']}>
       <div className={styles.container}>
-        <div className={styles.leftContent}>
+        <div className={styles.first}>
           <h1 className={styles.title}>Не закупайте неликвид</h1>
           <p className={styles.subtitle}>
             TrueTell - помогаем<br />
@@ -20,19 +20,19 @@ export const HeroSection: React.FC = () => {
             балласт вовремя
           </p>
         </div>
-        <div className={styles.rightContent}>
-          <div className={styles.topBlock}>
-            <SocialIcons />
-          </div>
-          <div className={styles.bottomBlock}>
-            <h2 className={styles.ctaTitle}>Попробуйте<br />сами</h2>
-            <div className={styles.buttonWrapper}>
+        <div className={styles.second}>
+          <div className={styles['button-block']}>
+            <h2 className={styles['cta-title']}>Попробуйте<br />сами</h2>
+            <div className={styles['button-wrapper']}>
               <DemoButton onClick={handleDemoClick} />
             </div>
             <p className={styles.description}>
               займет 1 минуту, мы не просим<br />
               ваши контакты
             </p>
+          </div>
+          <div className={styles['social-block']}>
+            <SocialIcons />
           </div>
         </div>
       </div>

@@ -1,6 +1,11 @@
-// chart.module.scss
+@use '../../../styles/brackpoints.scss' as *;
 .iframe {
   width: 1171px;
   height: 444px;
   border: none;
+
+  @include mobile-only {
+    width: 90%;
+    height: 300px;
+  }
 }
