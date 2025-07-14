@@ -1,4 +1,6 @@
 import styles from './header.module.scss';
+import MobileMenu from './mobile-menu/mobile-menu.tsx';
+
 function AppHeader() {
   return (
     <header className={styles.header}>
@@ -32,6 +34,7 @@ function AppHeader() {
             </li>
           </ul>
         </nav>
+        <MobileMenu />
       </div>
     </header>
   );

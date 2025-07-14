@@ -1,0 +1,47 @@
+// Breakpoints for different device sizes
+$mobile: 480px;
+$tablet: 768px;
+$desktop-small: 992px;
+$desktop: 1200px;
+
+// Mobile devices (phones)
+@mixin mobile-only {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+// Tablet devices
+@mixin tablet-only {
+  @media (min-width: #{$mobile + 1px}) and (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+// Mobile and tablet devices
+@mixin mobile-tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+// Small desktop devices
+@mixin desktop-small-only {
+  @media (min-width: #{$tablet + 1px}) and (max-width: #{$desktop-small}) {
+    @content;
+  }
+}
+
+// All desktop devices
+@mixin desktop {
+  @media (min-width: #{$tablet + 1px}) {
+    @content;
+  }
+}
+
+// Large desktop devices
+@mixin desktop-large {
+  @media (min-width: #{$desktop + 1px}) {
+    @content;
+  }
+}

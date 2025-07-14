@@ -1,0 +1,137 @@
+@use "./../../../styles/variables" as *;
+@use './../../../styles/brackpoints.scss' as *;
+
+.mobileMenu {
+  display: block;
+
+  @include desktop {
+    display: none;
+  }
+
+  .menuButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    outline: none;
+
+    .burgerIcon {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: $primary-blue-dark;
+      position: relative;
+      transition: all 0.3s ease;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        background-color: $primary-blue-dark;
+        transition: all 0.3s ease;
+        left: 0;
+      }
+
+      &::before {
+        top: -8px;
+      }
+
+      &::after {
+        bottom: -8px;
+      }
+
+      &.active {
+        background-color: transparent;
+
+        &::before {
+          transform: rotate(45deg);
+          top: 0;
+        }
+
+        &::after {
+          transform: rotate(-45deg);
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+  .mobileNav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: max-content;
+    background-color: $white;
+    z-index: 1000;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+
+    &.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .mobileNavList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobileNavItem {
+      padding: 0;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      transition-delay: 0.1s;
+
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+          transition-delay: 0.1s * $i;
+        }
+      }
+    }
+
+    &.open .mobileNavItem {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobileNavLink {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 10px 16px 10px 0;
+      text-decoration: none;
+      font-size: 20px;
+      color: $primary-blue-dark;
+      height: 52px;
+      line-height: 32px;
+      border-bottom: 1px solid $gradient-blue-end;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: rgba($gradient-blue-end, 0.3);
+      }
+
+      &.active {
+        background-color: $gradient-blue-end;
+      }
+    }
+  }
+}
