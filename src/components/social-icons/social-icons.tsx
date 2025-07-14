@@ -12,8 +12,8 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({
 }) => {
   return (
     <div className={`${styles['social-icons']} ${className}`}>
-      <a 
-        href="https://wa.me/" 
+      <a
+        href="https://api.whatsapp.com/send/?phone=79932806441&text&type=phone_number&app_absent=0"
         target="_blank" 
         rel="noopener noreferrer"
         className={styles['social-icon']}
@@ -22,8 +22,8 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({
           <img src={whatsappIcon} alt="WhatsApp" />
         </div>
       </a>
-      <a 
-        href="https://t.me/" 
+      <a
+        href="https://t.me/m/S5CgvcfdMjAy"
         target="_blank" 
         rel="noopener noreferrer"
         className={styles['social-icon']}
