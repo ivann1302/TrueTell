@@ -1,4 +1,5 @@
 @use '../../styles/variables.scss' as *;
+@use '../../styles/breackpoints.scss' as *;
 
 .painPointsSection {
   width: 100%;
@@ -7,6 +8,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include mobile-tablet {
+    padding: 60px 0 60px 0;
+  }
 }
 
 .container {
@@ -14,6 +19,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include mobile-tablet {
+    width: 90%;
+    max-width: 100%;
+    padding: 0 15px;
+  }
 }
 
 .title {
@@ -24,6 +35,13 @@
   color: $primary-blue;
   margin: 0 0 56px 0;
   text-align: left;
+
+  @include mobile-tablet {
+    text-align: center;
+    font-size: 25px;
+    line-height: 44px;
+    margin-bottom: 18px;
+  }
 }
 
 .content {
@@ -32,6 +50,12 @@
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+
+  @include mobile-tablet {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
 }
 
 .painBlock {
@@ -41,28 +65,48 @@
   text-align: left;
   flex: 1;
   max-width: 380px;
+
+  @include mobile-tablet {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
 }
 
 .cross {
   width: 40px;
   height: 40px;
   margin-bottom: 8px;
+
+  @include mobile-tablet {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+  }
 }
 
 .textContent {
   display: flex;
   flex-direction: column;
   text-align: left;
+
+  @include mobile-tablet {
+    text-align: center;
+    align-items: center;
+  }
 }
 
 .blockTitle {
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
-  font-style: SemiBold;
   font-size: 28px;
   line-height: 35px;
   color: $primary-blue;
   margin: 0 0 4px 0;
+
+  @include mobile-tablet {
+    font-size: 16px;
+  }
 }
 
 .blockText {
@@ -72,4 +116,13 @@
   line-height: 25px;
   color: $text-primary;
   margin: 0;
+
+  @include mobile-tablet {
+    font-size: 14px;
+    line-height: 16px;
+
+    br {
+      display: none;
+    }
+  }
 } 
