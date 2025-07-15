@@ -1,4 +1,5 @@
 @use '../../styles/variables.scss' as *;
+@use '../../styles/breackpoints.scss' as *;
 
 .footer {
   display: flex;
@@ -9,6 +10,18 @@
   width: 100%;
   background: $primary-blue;
   padding: 140px 0 140px 0;
+
+
+  @include mobile-tablet {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    display: grid;
+    grid-template-areas:
+      'footerBlock1 footerBlock2'
+      'footerBlock3 footerBlock3';
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 50px;
+  }
 }
 
 .footerBlock {
@@ -23,12 +36,27 @@
   width: 258px;
   height: 138px;
   opacity: 1;
+
+  @include mobile-tablet {
+    grid-area: footerBlock1;
+    height: auto;
+    width: auto;
+    padding-left: 24px;
+  }
 }
 
 .footerBlock2 {
   width: 179px;
   height: 105px;
   opacity: 1;
+
+  @include mobile-tablet {
+    grid-area: footerBlock2;
+    height: auto;
+    width: auto;
+    padding-right: 18px;
+    padding-left: 30px;
+  }
 }
 
 .footerBlock3 {
@@ -37,22 +65,40 @@
   opacity: 1;
   align-items: flex-start;
   text-align: left;
+
+  @include mobile-tablet {
+    grid-area: footerBlock3;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .footerLogo {
   width: 60px;
   height: 60px;
   margin-bottom: 8px;
+
+  @include mobile-tablet {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 .footerBlockTitle {
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
-  font-style: SemiBold;
   font-size: 28px;
   line-height: 35px;
-  letter-spacing: 0%;
   margin: 0 0 12px 0;
+
+  @include mobile-tablet {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
 .footerBlockText {
@@ -60,8 +106,12 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 26px;
-  letter-spacing: 0%;
   margin: 0 0 8px 0;
+
+  @include mobile-tablet {
+    font-size: 14px;
+    line-height: 17.5px;
+  }
 }
 
 .footerBlockText:last-child {

@@ -1,4 +1,5 @@
 @use '../../styles/variables.scss' as *;
+@use '../../styles/breackpoints' as *;
 
 .ctaSection {
   width: 100%;
@@ -7,6 +8,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include mobile-tablet {
+    padding-top: 60px;
+  }
 }
 
 .container {
@@ -14,6 +19,13 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  @include mobile-tablet {
+    width: 90%;
+    padding: 0;
+    box-sizing: border-box;
+    gap: 12px;
+  }
 }
 
 .topBlock {
@@ -25,12 +37,29 @@
   justify-content: space-between;
   padding: 40px;
   box-sizing: border-box;
+
+  @include mobile-tablet {
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    flex-direction: column;
+    padding: 30px 20px;
+    gap: 30px;
+  }
 }
 
 .leftContent {
   flex: 1;
   display: flex;
   align-items: center;
+
+  @include mobile-tablet {
+    width: 100%;
+
+    br {
+      display: none;
+    }
+  }
 }
 
 .title {
@@ -41,41 +70,71 @@
   color: $white;
   margin: 0;
   text-align: left;
+
+  @include mobile-tablet {
+    font-size: 22px;
+    line-height: 27px;
+  }
 }
 
 .rightContent {
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
   text-align: left;
   gap: 0;
   width: fit-content;
+
+  @include mobile-tablet {
+    width: 100%;
+    align-items: flex-start;
+  }
 }
 
 .subtitle {
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
-  font-style: SemiBold;
   font-size: 34px;
   line-height: 35px;
   margin-bottom: 16px;
+
+  @include mobile-tablet {
+    font-size: 25px;
+    line-height: 44px;
+    text-align: left;
+    margin-bottom: 12px;
+  }
 }
 
 .description {
   font-family: 'Manrope', sans-serif;
   font-weight: 400;
-  font-style: Regular;
   font-size: 20px;
   line-height: 25px;
   margin: 8px 0 0 0;
   color: $primary-blue-light;
+
+  @include mobile-tablet {
+    font-size: 16px;
+    line-height: 20px;
+    text-align: left;
+
+    br {
+      display: none;
+    }
+  }
 }
 
 .bottomBlock {
   display: flex;
   gap: 20px;
+
+  @include mobile-tablet {
+    flex-direction: row;
+    width: 100%;
+    gap: 12px;
+  }
 }
 
 .contactBlock {
@@ -88,18 +147,28 @@
   justify-content: center;
   padding: 40px;
   box-sizing: border-box;
+
+  @include mobile-tablet {
+    width: 80%;
+    height: auto;
+    min-height: 150px;
+    padding: 30px 20px;
+  }
 }
 
 .contactTitle {
   font-family: 'Manrope', sans-serif;
   font-weight: 400;
-  font-style: Regular;
   font-size: 36px;
   line-height: 42px;
-  letter-spacing: 0%;
   color: $white;
   margin: 0;
   text-align: center;
+
+  @include mobile-tablet {
+    font-size: 22px;
+    line-height: 27px;
+  }
 }
 
 .socialBlock {
@@ -110,4 +179,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-} 
+
+  @include mobile-tablet {
+    width: 20%;
+    height: auto;
+    min-height: 120px;
+    padding: 20px;
+  }
+}
