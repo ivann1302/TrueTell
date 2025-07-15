@@ -10,7 +10,7 @@
   align-items: center;
 
   @include mobile-tablet {
-    padding: 80px 0 80px 0;
+    padding: 60px 0 0;
   }
 }
 
@@ -34,17 +34,25 @@
   color: $white;
   margin: 0 0 16px 0;
   text-align: center;
+
+  @include mobile-tablet {
+    font-size: 24px;
+    line-height: 44px;
+  }
 }
 
 .subtitle {
   font-weight: 600;
-  font-style: SemiBold;
   font-size: 34px;
   line-height: 35px;
-  letter-spacing: 0%;
   color: $primary-blue-light;
   margin: 0 0 56px 0;
   text-align: center;
+
+  @include mobile-tablet {
+    font-size: 20px;
+    line-height: 25px;
+  }
 }
 
 .content {
@@ -53,6 +61,13 @@
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+
+  @include mobile-tablet {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    min-height: 698px;
+  }
 }
 
 .card {
@@ -65,34 +80,54 @@
   align-items: center;
   padding: 48px 23px 61px 23px;
   box-sizing: border-box;
+  box-shadow: 0 0 70px 0 rgba(0, 32, 91, 0.4);
+
+  @include mobile-tablet {
+    max-width: 284px;
+    height: auto;
+    padding: 28px 16.5px 27px;
+  }
 }
 
 .cardIcon {
   width: 100px;
   height: 100px;
   margin-bottom: 32px;
+
+  @include mobile-tablet {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 24px;
+  }
 }
 
 .cardText {
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
-  font-style: SemiBold;
   font-size: 28px;
   line-height: 35px;
   text-align: center;
   color:  $primary-blue;
   margin: 0;
+
+  @include mobile-tablet {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
 .vs {
   font-family: 'Biryani', sans-serif;
   font-weight: 700;
-  font-style: Bold;
   font-size: 36px;
   line-height: 45px;
   text-align: center;
   color: $primary-blue;
   margin: 16px 0;
+
+  @include mobile-tablet {
+    font-size: 32px;
+  }
 }
 
 .disclaimer {
@@ -103,4 +138,9 @@
   text-align: center;
   color: $primary-blue-light;
   margin-top: 20px;
+
+  @include mobile-tablet {
+    font-size: 14px;
+    line-height: 17.5px;
+  }
 } 
