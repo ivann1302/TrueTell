@@ -10,11 +10,11 @@ export const StepsSection: React.FC = () => {
     },
     {
       number: '2',
-      title: 'Второй шаг процесса'
+      title: 'Заключаем договор'
     },
     {
       number: '3',
-      title: 'Третий шаг процесса'
+      title: 'Запускаем интеграцию'
     }
   ];
 
