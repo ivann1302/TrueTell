@@ -1,9 +1,13 @@
 @use '../../styles/variables.scss' as *;
-@use '../../styles/brackpoints.scss' as *;
+@use '../../styles/breackpoints' as *;
 
 .chart-section {
     width: 100vw;
     padding: 140px 0 0 0;
+
+    @include mobile-tablet {
+        padding-top: 60px;
+    }
 
     .chart-section__header {
 
@@ -15,6 +19,8 @@
 
             @include mobile-only{
                 font-size: 25px;
+                line-height: 44px;
+                margin-bottom: 0;
             }
         }
 
@@ -32,5 +38,9 @@
 
     .chart-section__content {
         padding: 56px 0 0 0;
+
+        @include mobile-tablet {
+            padding-top: 18px;
+        }
     }
 } 
