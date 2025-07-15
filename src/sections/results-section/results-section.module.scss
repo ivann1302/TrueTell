@@ -1,4 +1,5 @@
 @use '../../styles/variables.scss' as *;
+@use '../../styles/breackpoints' as *;
 
 .resultsSection {
   width: 100%;
@@ -7,6 +8,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include mobile-tablet {
+    padding: 60px 0 0;
+  }
 }
 
 .container {
@@ -14,6 +19,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include mobile-tablet {
+    width: 90%;
+  }
 }
 
 // Общие стили для заголовков секций
@@ -24,17 +33,30 @@
   color: $primary-blue;
   text-align: center;
   margin: 0;
+
+  @include mobile-tablet {
+    font-size: 44px;
+    line-height: 44px;
+  }
 }
 
 // Кейс клиента
 .caseSection {
   width: 100%;
   margin-bottom: 48px; // отступ до "Результаты через месяц"
+
+  @include mobile-tablet {
+    margin-bottom: 28px;
+  }
 }
 
 .caseTitle {
   @extend %section-title;
   margin-bottom: 56px;
+
+  @include mobile-tablet {
+    margin-bottom: 18px;
+  }
 }
 
 .clientCase {
@@ -59,6 +81,12 @@
   height: 160px;
   border-radius: 50%;
   object-fit: cover;
+
+  @include mobile-tablet {
+    width: 57px;
+    height: 57px;
+    border: 2px solid $primary-blue-light;
+  }
 }
 
 .clientInfo {
@@ -81,6 +109,11 @@
   line-height: 35px;
   color: $primary-blue;
   margin: 0;
+
+  @include mobile-tablet {
+    font-size: 14px;
+    line-height: 17.5px;
+  }
 }
 
 .clientNameContainer {
@@ -94,6 +127,11 @@
   @extend %client-text;
   text-align: center;
   margin-top: 16px;
+
+  @include mobile-tablet {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
 .clientDescription {
@@ -105,6 +143,13 @@
   @extend %section-title;
   margin-top: 158px;
   margin-bottom: 56px;
+
+  @include mobile-tablet {
+    font-size: 20px;
+    line-height: 25px;
+    margin: 28px 0 18px;
+
+  }
 }
 
 .content {
@@ -114,6 +159,13 @@
   justify-content: center;
   width: 100%;
   margin-bottom: 48px;
+
+  @include mobile-tablet {
+    gap: 24px;
+    margin-bottom: 28px;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .resultBlock {
@@ -123,18 +175,32 @@
   text-align: left;
   flex: 1;
   max-width: 380px;
+
+  @include mobile-tablet {
+    text-align: center;
+    align-items: center;
+  }
 }
 
 .checkmark {
   width: 40px;
   height: 40px;
   margin-bottom: 8px;
+
+  @include mobile-tablet {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .textContent {
   display: flex;
   flex-direction: column;
   text-align: left;
+
+  @include mobile-tablet {
+  text-align: center;
+  }
 }
 
 .blockTitle {
@@ -144,6 +210,13 @@
   color: $primary-blue;
   margin: 0 0 4px 0;
   text-align: left;
+
+  @include mobile-tablet {
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0;
+    text-align: center;
+  }
 }
 
 .blockText {
@@ -153,4 +226,11 @@
   color: $text-primary;
   margin: 0;
   text-align: left;
+
+  @include mobile-tablet {
+    font-size: 14px;
+    line-height: 17.5px;
+    margin: 0;
+    text-align: center;
+  }
 } 

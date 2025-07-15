@@ -1,4 +1,5 @@
 @use '../../styles/variables.scss' as *;
+@use '../../styles/breackpoints' as *;
 
 .sliderSection {
   width: 100%;
@@ -14,6 +15,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include mobile-tablet {
+    width: 100%;
+  }
 }
 
 .sliderWrapper {
@@ -21,6 +26,11 @@
   width: 1171px;
   height: 444px;
   overflow: hidden;
+
+  @include mobile-tablet {
+    width: 90%;
+    height: 144px;
+  }
 }
 
 .slideContainer {
@@ -70,6 +80,11 @@
   transition: all 0.3s ease;
   z-index: 10;
 
+  @include mobile-tablet {
+    width: 25px;
+    height: 25px;
+  }
+
   &:hover {
     background: $white;
     transform: translateY(-50%) scale(1.1);
@@ -96,6 +111,10 @@
   margin-top: 18px; // точки ниже блока слайда на 18px
   align-items: center;
   justify-content: center;
+
+  @include mobile-tablet {
+    gap: 8px;
+  }
 }
 
 .dot {
@@ -107,11 +126,22 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 
+  @include mobile-tablet {
+    width: 4px;
+    height: 4px;
+    padding: 0;
+  }
+
   &:hover {
     background: $primary-blue-light;
   }
 }
 
 .dotActive {
-  background: $primary-blue-light; // светло-голубая активная точка
+  background: $primary-blue-light;
+
+  @include mobile-tablet {
+    width: 8px;
+    height: 8px;
+  }
 } 
