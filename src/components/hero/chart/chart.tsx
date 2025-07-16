@@ -2,8 +2,14 @@ import styles from './chart.module.scss';
 import type { ChartProps } from '../../../utils/types/types';
 
 function Chart({ chart }: ChartProps) {
-  const buildIframeUrl = (baseUrl: string, params: Record<string, string>) => {
-    const queryString = new URLSearchParams(params).toString();
+  const buildIframeUrl = (baseUrl: string, params: Record<string, string | undefined>) => {
+    const filteredParams: Record<string, string> = {};
+    for (const [key, value] of Object.entries(params)) {
+      if (value !== undefined) {
+        filteredParams[key] = value;
+      }
+    }
+    const queryString = new URLSearchParams(filteredParams).toString();
     return `${baseUrl}?${queryString}`;
   };
 
@@ -14,11 +20,11 @@ function Chart({ chart }: ChartProps) {
       title={chart.title}
       width={chart.dimensions.width}
       height={chart.dimensions.height}
-      frameBorder="0"
       allowFullScreen
       loading="lazy"
     />
   );
 }
+
 
 export default Chart;

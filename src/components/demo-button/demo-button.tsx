@@ -6,13 +6,13 @@ interface DemoButtonProps {
   className?: string;
 }
 
-export const DemoButton: React.FC<DemoButtonProps> = ({ 
+const DemoButton: React.FC<DemoButtonProps> = ({ 
   onClick, 
   className = '' 
 }) => {
   const [isClicked, setIsClicked] = useState(false);
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = () => {
     setIsClicked(true);
     if (onClick) {
       onClick();

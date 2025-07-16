@@ -112,16 +112,18 @@ export const SliderSection: React.FC = () => {
                       if (!chart) return <div>Chart not found</div>;
 
                       const url = new URL(chart.src);
-                      // Add params to URL
-                      Object.entries(chart.params).forEach(([key, value]) => {
-                        url.searchParams.set(key, value);
-                      });
+                      // Фильтруем и добавляем только определенные параметры
+                      Object.entries(chart.params)
+                        .filter(([_, value]) => value !== undefined)
+                        .forEach(([key, value]) => {
+                          url.searchParams.set(key, value as string);
+                        });
 
                       return (
-                        <iframe 
-                          frameBorder="0" 
-                          src={url.toString()} 
-                          width={chart.dimensions.width} 
+                        <iframe
+                          frameBorder="0"
+                          src={url.toString()}
+                          width={chart.dimensions.width}
                           height={chart.dimensions.height}
                           title={chart.title}
                         />
