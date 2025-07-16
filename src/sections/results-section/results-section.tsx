@@ -25,8 +25,7 @@ export const ResultsSection: React.FC = () => {
         {/* Кейс клиента */}
         <div className={styles.caseSection}>
           <h2 className={styles.caseTitle}>Кейс клиента</h2>
-          
-                    <div className={styles.clientCase}>
+          <div className={styles.clientCase}>
             <div className={styles.clientPhotoWrapper}>
               <img src={clientPhoto} alt="Client photo" className={styles.clientPhoto}/>
               <div className={styles.clientNameContainer}>
@@ -36,6 +35,16 @@ export const ResultsSection: React.FC = () => {
             <div className={styles.clientInfo}>
               <p className={styles.clientDescription}>Владелец сети из 6-ти табачных магазинов AllSmoke</p>
             </div>
+          </div>
+        </div>
+
+        <div className={styles.clientCaseMobile}>
+          <div className={styles.imageMobile}>
+            <img src={clientPhoto} alt="Client Photo" className={styles.clientPhotoMobile} />
+          </div>
+          <div className={styles.clientDescriptionMobile}>
+            <p className={styles.clientNameMobile}>Дмитрий Баржин</p>
+            <p className={styles.clientInfoMobile}>Владелец сети из 6-ти табачных магазинов AllSmoke</p>
           </div>
         </div>
 
