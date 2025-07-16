@@ -1,0 +1,62 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/breackpoints' as *;
+
+.how-it-look {
+    width: 100vw;
+    padding: 140px 0 0 0;
+    background-color: var(--primary-blue);
+
+    @include mobile-tablet {
+        padding-top: 60px;
+    }
+
+    .how-it-look__header {
+
+        .how-it-look__title {
+            font-weight: 600;
+            font-size: 48px;
+            line-height: 60px;
+            margin: 0 0 16px 0;
+            color: var(--white);
+
+            @include mobile-only{
+                font-size: 25px;
+                line-height: 44px;
+                margin-bottom: 0;
+            }
+        }
+
+        .how-it-look__subtitle {
+            font-weight: 600;
+            font-size: 34px;
+            line-height: 35px;
+            margin: 0;
+
+            @include mobile-only{
+                font-size: 20px;
+            }
+        }
+    }
+
+    .how-it-look__content {
+        padding: 56px 0 0 0;
+        display: flex;
+        justify-content: center;
+
+        img {
+            max-width: 100%;
+            width: 1171px;
+            height: 444px;
+            display: block;
+
+            @include mobile-tablet {
+                width: 90%;
+                height: 300px;
+            }
+        }
+
+        @include mobile-tablet {
+            padding-top: 18px;
+        }
+    }
+}

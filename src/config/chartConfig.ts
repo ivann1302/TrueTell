@@ -19,6 +19,53 @@ export const CHART_IFRAMES = [
     title: 'Продажи за последние 15 дней',
   },
   {
+    src: 'https://datalens.yandex/6nm3wem74fvgs',
+    params: {
+      clients: '',
+      date_group_param: '__eq_День',
+      date_param: '__interval___relative_-30d___relative_-15d',
+      retail_store_name_j4ew: '',
+      _embedded: '1',
+      _no_controls: '1',
+    },
+    dimensions: {
+      width: '100%',
+      height: '400px',
+    },
+    title: 'Chart New 1',
+  },
+  {
+    src: 'https://datalens.yandex/5ml2vdl63euer',
+    params: {
+      clients: '',
+      date_group_param: '__eq_День',
+      date_param: '__interval___relative_-30d___relative_-15d',
+      retail_store_name_j4ew: '',
+      _embedded: '1',
+      _no_controls: '1',
+    },
+    dimensions: {
+      width: '100%',
+      height: '400px',
+    },
+    title: 'Chart New 2',
+  },
+  {
+    src: 'https://datalens.yandex/q76ngy9tkipkc',
+    params: {
+      clients: '',
+      date_param: '__interval___relative_-30d___relative_-15d',
+      retail_store_name_j4ew: '',
+      _embedded: '1',
+      _no_controls: '1',
+    },
+    dimensions: {
+      width: '100%',
+      height: '400px',
+    },
+    title: 'Chart New 3',
+  },
+  {
     src: 'https://datalens.yandex/arq70ilgfms0w',
     params: {
       clients: '',
@@ -82,7 +129,56 @@ export const CHART_IFRAMES = [
     },
     title: 'Chart 5',
   },
+  {
+    src: 'https://datalens.yandex/6nm3wem74fvgs',
+    params: {
+      clients: '',
+      date_group_param: '__eq_День',
+      date_param: '__interval___relative_-30d___relative_-15d',
+      retail_store_name_j4ew: '',
+      _embedded: '1',
+      _no_controls: '1',
+    },
+    dimensions: {
+      width: '100%',
+      height: '400px',
+    },
+    title: 'Chart 6',
+  },
+  {
+    src: 'https://datalens.yandex/wdctm4evrabsi',
+    params: {
+      hour_group_param: '',
+      clients: '',
+      date_param: '__interval___relative_-30d___relative_-15d',
+      retail_store_name_j4ew: '',
+      _embedded: '1',
+      _no_controls: '1',
+    },
+    dimensions: {
+      width: '100%',
+      height: '400px',
+    },
+    title: 'Chart 7',
+  },
+  {
+    src: 'https://datalens.yandex/fwvc5nxy90mi1',
+    params: {
+      hour_group_param: '',
+      clients: '',
+      date_param: '__interval___relative_-30d___relative_-15d',
+      retail_store_name_j4ew: '',
+      _embedded: '1',
+    },
+    dimensions: {
+      width: '100%',
+      height: '400px',
+    },
+    title: 'Chart 8',
+  }
 ];
+
+
 
 export const CHART_SECTIONS: ChartSectionData[] = [
   {
@@ -104,4 +200,9 @@ export const CHART_SECTIONS: ChartSectionData[] = [
     titleColor: COLORS.WHITE,
     backgroundColor: COLORS.PRIMARY_BLUE,
   },
-]; 
+
+];
+
+// <iframe frameborder="0" src="https://datalens.yandex/6nm3wem74fvgs?clients=&date_group_param=__eq_%D0%94%D0%B5%D0%BD%D1%8C&date_param=__interval___relative_-30d___relative_-15d&retail_store_name_j4ew=&_embedded=1&_no_controls=1" width="100%" height="400px"></iframe>
+// <iframe frameborder="0" src="https://datalens.yandex/wdctm4evrabsi?hour_group_param=&clients=&date_param=__interval___relative_-30d___relative_-15d&retail_store_name_j4ew=&_embedded=1&_no_controls=1" width="100%" height="400px"></iframe>
+// <iframe frameborder="0" src="https://datalens.yandex/fwvc5nxy90mi1?hour_group_param=&clients=&date_param=__interval___relative_-30d___relative_-15d&retail_store_name_j4ew=&_embedded=1" width="100%" height="400px"></iframe>

@@ -12,55 +12,49 @@ import SliderSection from './sections/slider-section/slider-section';
 import StepsSection from './sections/steps-section/steps-section';
 import FAQSection from './sections/faq-section/faq-section';
 import PricingSection from './sections/pricing-section/pricing-section';
+import { HowItLook } from './sections/howItLook/how-it-look';
 import { COLORS } from './styles/colors';
 
 function App() {
   return (
     <>
       <AppHeader />
-      
+
       <HeroSection />
-      
+
       <ChartSection
         title="Сбросьте балласт"
-        chartIndex={0}
+        chartIndex={10}
         titleColor={COLORS.PRIMARY_BLUE}
       />
 
       <WhoIsItForSection />
-      
+
       <PainPointsSection />
-      
+
       <SolutionSection />
-        
-      <ChartSection
-        title="Как это выглядит?"
-        subtitle="Показатели по всем точкам на одном экране"
-        chartIndex={1}
-        backgroundColor={COLORS.PRIMARY_BLUE}
-        titleColor={COLORS.WHITE}
-        subtitleColor={COLORS.PRIMARY_BLUE_LIGHT}
-      />
-      
+
+      <HowItLook />
+
       <ChartSection
         title="Нацельтесь на прибыль"
-        chartIndex={2}
+        chartIndex={7}
         titleColor={COLORS.WHITE}
         backgroundColor={COLORS.PRIMARY_BLUE}
       />
-      
+
       <PricingSection />
-      
+
       <ResultsSection />
-      
+
       <SliderSection />
-      
+
       <StepsSection />
-      
+
       <FAQSection />
-      
+
       <CTASection />
-      
+
       <AppFooter />
     </>
   );

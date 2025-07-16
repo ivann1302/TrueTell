@@ -1,25 +1,28 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import styles from './slider-section.module.scss';
+import { useChartData } from '../../hooks/useChartData';
 
 export const SliderSection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  
+  const { getChartByIndex } = useChartData();
+
   const autoplayRef = useRef<number | null>(null);
   const AUTOPLAY_DELAY = 3000; // 3 секунды
 
+  // Using the new charts (indices 1, 2, 3 from CHART_IFRAMES)
   const slides = [
     {
       id: 1,
-      content: 'Слайд 1 - Заглушка'
+      chartIndex: 1 // Chart New 1
     },
     {
       id: 2,
-      content: 'Слайд 2 - Заглушка'
+      chartIndex: 2 // Chart New 2
     },
     {
       id: 3,
-      content: 'Слайд 3 - Заглушка'
+      chartIndex: 3 // Chart New 3
     }
   ];
 
@@ -41,7 +44,7 @@ export const SliderSection: React.FC = () => {
     if (autoplayRef.current) {
       clearInterval(autoplayRef.current);
     }
-    
+
     if (!isHovered) {
       autoplayRef.current = setInterval(() => {
         nextSlide();
@@ -104,7 +107,26 @@ export const SliderSection: React.FC = () => {
               {slides.map((slide) => (
                 <div key={slide.id} className={styles.slide}>
                   <div className={styles.slideContent}>
-                    {slide.content}
+                    {(() => {
+                      const chart = getChartByIndex(slide.chartIndex);
+                      if (!chart) return <div>Chart not found</div>;
+
+                      const url = new URL(chart.src);
+                      // Add params to URL
+                      Object.entries(chart.params).forEach(([key, value]) => {
+                        url.searchParams.set(key, value);
+                      });
+
+                      return (
+                        <iframe 
+                          frameBorder="0" 
+                          src={url.toString()} 
+                          width={chart.dimensions.width} 
+                          height={chart.dimensions.height}
+                          title={chart.title}
+                        />
+                      );
+                    })()}
                   </div>
                 </div>
               ))}

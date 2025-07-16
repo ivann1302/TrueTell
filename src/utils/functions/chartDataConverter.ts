@@ -16,19 +16,30 @@ export function convertConfigToChartItems(config: Array<{
     return Math.abs(hash);
   }
 
-  return config.map((item) => ({
-    id: generateIdFromSrc(item.src),
-    src: item.src,
-    params: {
-      clients: item.params.clients || '',
-      date_group_param: item.params.date_group_param || '__eq_День',
-      date_param: item.params.date_param || '__interval___relative_-15d___relative_-1d',
-      retail_store_name_j4ew: item.params.retail_store_name_j4ew || '',
-      _embedded: item.params._embedded || '1',
-      _no_controls: item.params._no_controls || '1',
-      ...item.params,
-    },
-    dimensions: item.dimensions,
-    title: item.title,
-  }));
+  return config.map((item) => {
+    // Filter out undefined values from params
+    const filteredParams: Record<string, string> = {};
+
+    for (const [key, value] of Object.entries(item.params)) {
+      if (value !== undefined) {
+        filteredParams[key] = value;
+      }
+    }
+
+    return {
+      id: generateIdFromSrc(item.src),
+      src: item.src,
+      params: {
+        ...filteredParams,
+        clients: filteredParams.clients || '',
+        date_group_param: filteredParams.date_group_param || '__eq_День',
+        date_param: filteredParams.date_param || '__interval___relative_-15d___relative_-1d',
+        retail_store_name_j4ew: filteredParams.retail_store_name_j4ew || '',
+        _embedded: filteredParams._embedded || '1',
+        _no_controls: filteredParams._no_controls || '1',
+      },
+      dimensions: item.dimensions,
+      title: item.title,
+    };
+  });
 } 
