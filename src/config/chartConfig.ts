@@ -1,5 +1,5 @@
-import type { ChartSectionData } from '../utils/types/types';
 import { COLORS } from '../styles/colors';
+import type { ChartSectionData } from './../utils/types/types.ts';
 
 export const CHART_IFRAMES = [
   {
@@ -11,6 +11,7 @@ export const CHART_IFRAMES = [
       retail_store_name_j4ew: '',
       _embedded: '1',
       _no_controls: '1',
+      hour_group_param: '',
     },
     dimensions: {
       width: '1171px',
@@ -27,6 +28,7 @@ export const CHART_IFRAMES = [
       retail_store_name_j4ew: '',
       _embedded: '1',
       _no_controls: '1',
+      hour_group_param: '',
     },
     dimensions: {
       width: '100%',
@@ -43,6 +45,7 @@ export const CHART_IFRAMES = [
       retail_store_name_j4ew: '',
       _embedded: '1',
       _no_controls: '1',
+      hour_group_param: '',
     },
     dimensions: {
       width: '100%',
@@ -58,6 +61,8 @@ export const CHART_IFRAMES = [
       retail_store_name_j4ew: '',
       _embedded: '1',
       _no_controls: '1',
+      hour_group_param: '',
+      date_group_param: '__eq_День',
     },
     dimensions: {
       width: '100%',
@@ -74,6 +79,7 @@ export const CHART_IFRAMES = [
       retail_store_name_j4ew: '',
       _embedded: '1',
       _no_controls: '1',
+      hour_group_param: '',
     },
     dimensions: {
       width: '500px',
@@ -90,6 +96,7 @@ export const CHART_IFRAMES = [
       retail_store_name_j4ew: '',
       _embedded: '1',
       _no_controls: '1',
+      hour_group_param: '',
     },
     dimensions: {
       width: '100%',
@@ -106,6 +113,7 @@ export const CHART_IFRAMES = [
       retail_store_name_j4ew: '',
       _embedded: '1',
       _no_controls: '1',
+      hour_group_param: '',
     },
     dimensions: {
       width: '100%',
@@ -122,6 +130,7 @@ export const CHART_IFRAMES = [
       retail_store_name_j4ew: '',
       _embedded: '1',
       _no_controls: '1',
+      hour_group_param: '',
     },
     dimensions: {
       width: '100%',
@@ -138,6 +147,7 @@ export const CHART_IFRAMES = [
       retail_store_name_j4ew: '',
       _embedded: '1',
       _no_controls: '1',
+      hour_group_param: '',
     },
     dimensions: {
       width: '100%',
@@ -154,6 +164,7 @@ export const CHART_IFRAMES = [
       retail_store_name_j4ew: '',
       _embedded: '1',
       _no_controls: '1',
+      date_group_param: '__eq_День',
     },
     dimensions: {
       width: '100%',
@@ -169,16 +180,16 @@ export const CHART_IFRAMES = [
       date_param: '__interval___relative_-30d___relative_-15d',
       retail_store_name_j4ew: '',
       _embedded: '1',
+      _no_controls: '1', // Добавлено недостающее поле
+      date_group_param: '__eq_День', // Добавлено недостающее поле
     },
     dimensions: {
       width: '100%',
       height: '400px',
     },
     title: 'Chart 8',
-  }
+  },
 ];
-
-
 
 export const CHART_SECTIONS: ChartSectionData[] = [
   {
@@ -200,9 +211,4 @@ export const CHART_SECTIONS: ChartSectionData[] = [
     titleColor: COLORS.WHITE,
     backgroundColor: COLORS.PRIMARY_BLUE,
   },
-
 ];
-
-// <iframe frameborder="0" src="https://datalens.yandex/6nm3wem74fvgs?clients=&date_group_param=__eq_%D0%94%D0%B5%D0%BD%D1%8C&date_param=__interval___relative_-30d___relative_-15d&retail_store_name_j4ew=&_embedded=1&_no_controls=1" width="100%" height="400px"></iframe>
-// <iframe frameborder="0" src="https://datalens.yandex/wdctm4evrabsi?hour_group_param=&clients=&date_param=__interval___relative_-30d___relative_-15d&retail_store_name_j4ew=&_embedded=1&_no_controls=1" width="100%" height="400px"></iframe>
-// <iframe frameborder="0" src="https://datalens.yandex/fwvc5nxy90mi1?hour_group_param=&clients=&date_param=__interval___relative_-30d___relative_-15d&retail_store_name_j4ew=&_embedded=1" width="100%" height="400px"></iframe>

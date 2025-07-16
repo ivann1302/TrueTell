@@ -5,7 +5,7 @@ export type TParams = {
   retail_store_name_j4ew: string;
   _embedded: string;
   _no_controls: string;
-  [key: string]: string;
+  [key: string]: string | undefined;
 };
 
 export type TChartItem = {

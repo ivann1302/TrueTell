@@ -12,9 +12,11 @@ export const DemoButton: React.FC<DemoButtonProps> = ({
 }) => {
   const [isClicked, setIsClicked] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
     setIsClicked(true);
-    if (onClick) onClick();
+    if (onClick) {
+      onClick();
+    }
 
     // Сбросить состояние клика через небольшую задержку
     setTimeout(() => {
@@ -23,12 +25,15 @@ export const DemoButton: React.FC<DemoButtonProps> = ({
   };
 
   return (
-    <button 
+    <a 
+      href="https://datalens.yandex.cloud/cts92knihou4y-truetell-analitika-v-odin-klik?_theme=light&utm_referrer=about%3Ablank"
+      target="_blank"
+      rel="noopener noreferrer"
       className={`${styles['demo-button']} ${isClicked ? styles.clicked : ''} ${className}`}
       onClick={handleClick}
     >
       Протестировать демо
-    </button>
+    </a>
   );
 };
 
