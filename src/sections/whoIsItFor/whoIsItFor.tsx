@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from './whoIsItFor.module.scss';
+import whoIsItForImage from './../../images/photos/whoIsItFor.png';
 
 export const WhoIsItForSection: React.FC = () => {
   return (
     <section className={styles.WhoIsItFor}>
       <div className={styles.container}>
         <h2 className={styles.title}>Кому мы подходим?</h2>
-        
+
         <div className={styles.content}>
           {/* Левая колонка */}
           <div className={styles.firstColumn}>
@@ -21,7 +22,7 @@ export const WhoIsItForSection: React.FC = () => {
           {/* Центральное фото */}
           <div className={styles.centerImage}>
             <img 
-              src="/src/images/photos/whoIsItFor.png" 
+              src={whoIsItForImage} 
               alt="Business analytics" 
               className={styles.image}
             />

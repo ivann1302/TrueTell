@@ -1,5 +1,6 @@
 import styles from './header.module.scss';
 import MobileMenu from './mobile-menu/mobile-menu.tsx';
+import logoImage from '../../images/logo/logo.svg';
 
 function AppHeader() {
   return (
@@ -7,7 +8,7 @@ function AppHeader() {
       <div className={styles.headerContent}>
         <div className={styles.logoContainer}>
           <a href="#home" className={styles.logoLink}>
-            <img src="/src/images/logo/logo.svg" alt="TrueTell Logo" className={styles.logo} />
+            <img src={logoImage} alt="TrueTell Logo" className={styles.logo} />
           </a>
         </div>
         <nav className={styles.navigation}>

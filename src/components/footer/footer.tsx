@@ -6,9 +6,9 @@ function AppFooter() {
     <footer className={styles.footer}>
       <div className={`${styles.footerBlock} ${styles.footerBlock1}`}>
         <div className={styles.footerBlockTitle}>Реквизиты</div>
-        <div className={styles.footerBlockText}>ИП Митряев А. А.</div>
-        <div className={styles.footerBlockText}>ИНН: 504511954505</div>
-        <div className={styles.footerBlockText}>ОГРНИП: 317502200030027</div>
+        <div className={styles.footerBlockText}>ИП Романов Р.М.</div>
+        <div className={styles.footerBlockText}>ИНН: 300103420414</div>
+        <div className={styles.footerBlockText}>ОГРНИП: 318302500015221</div>
       </div>
       <div className={`${styles.footerBlock} ${styles.footerBlock2}`}>
         <div className={styles.footerBlockTitle}>Контакты</div>
