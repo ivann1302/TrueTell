@@ -28,6 +28,9 @@
     width: 100%;
     padding: 14px 40px;
     font-size: 18px;
+    white-space: normal;
+    display: flex;
+    text-align: center;
   }
 
   @include desktop {

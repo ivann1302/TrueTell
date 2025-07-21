@@ -1,6 +1,12 @@
 @use '../../styles/variables.scss' as *;
 @use '../../styles/breackpoints.scss' as *;
 
+br {
+  @include mobile-tablet {
+    display: none;
+  }
+}
+
 .pricingSection {
   width: 100%;
   background: $primary-blue;
@@ -24,6 +30,10 @@
   color: $white; 
   margin: 0 0 56px 0;
   text-align: center;
+
+  @include mobile-tablet {
+    max-width: 85%;
+  }
 }
 
 .content {
@@ -48,6 +58,10 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+
+  @include mobile-tablet {
+    width: 85%;
+  }
 }
 
 .card {
@@ -58,6 +72,10 @@
 .cardBlue {
   @extend %card-base;
   background: $primary-blue-light;
+
+  @include mobile-tablet {
+    width: 85%;
+  }
 }
 
 %card-title-base {

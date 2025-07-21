@@ -110,8 +110,10 @@
   box-sizing: border-box;
 
   @include mobile-tablet {
+    background-color: $primary-blue-dark;
+    opacity: 0.95;
     height: auto;
-    width: 35%;
+    width: 31%;
   }
 }
 

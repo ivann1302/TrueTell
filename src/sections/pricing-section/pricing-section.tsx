@@ -61,7 +61,7 @@ export const PricingSection: React.FC = () => {
               {card.period && (
                 <>
                   <br />
-                  <span className={styles.cardPeriod}>{card.period}</span>
+                  <span className={styles.cardPeriod}> {card.period}</span>
                 </>
               )}
             </p>

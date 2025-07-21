@@ -67,6 +67,10 @@
 
 .secondColumn {
   align-items: flex-start;
+
+  @include mobile-tablet {
+    align-items: center;
+  }
 }
 
 .smallBlock {
@@ -87,6 +91,7 @@
   text-align: center;
 
   @include mobile-tablet {
+    max-width: 90%;
     font-size: 16px;
     line-height: 20px;
     padding: 16px 24px;
@@ -112,6 +117,7 @@
   text-align: center;
 
   @include mobile-tablet {
+    max-width: 90%;
     font-size: 16px;
     line-height: 20px;
     padding: 16px 24px;
@@ -133,6 +139,7 @@
   box-shadow: 0 0 50px 10px rgba(9, 53, 133, 0.25);
 
   @include mobile-tablet {
+    max-width: 90%;
     font-size: 380px;
     line-height: 160px;
   }
