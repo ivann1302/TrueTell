@@ -21,6 +21,9 @@ export const HeroSection: React.FC = () => {
           </p>
         </div>
         <div className={styles.second}>
+          <div className={styles['social-block']}>
+            <SocialIcons />
+          </div>
           <div className={styles['button-block']}>
             <h2 className={styles['cta-title']}>Попробуйте<br />сами</h2>
             <div className={styles['button-wrapper']}>
@@ -30,9 +33,6 @@ export const HeroSection: React.FC = () => {
               займет 1 минуту, мы не просим<br />
               ваши контакты
             </p>
-          </div>
-          <div className={styles['social-block']}>
-            <SocialIcons />
           </div>
         </div>
       </div>

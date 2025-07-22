@@ -28,8 +28,8 @@
 // Общие стили для заголовков секций
 %section-title {
   font-weight: 600;
-  font-size: 48px;
-  line-height: 60px;
+  font-size: 34px;
+  line-height: 35px;
   color: $primary-blue;
   text-align: center;
   margin: 0;
@@ -241,8 +241,9 @@
 }
 
 .checkmark {
-  width: 40px;
-  height: 40px;
+  height: auto;
+  position: relative;
+  left: -10px;
   margin-bottom: 8px;
 
   @include mobile-tablet {

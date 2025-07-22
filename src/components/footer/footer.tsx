@@ -16,11 +16,13 @@ function AppFooter() {
         <div className={styles.footerBlockText}>truetell@bk.ru</div>
       </div>
       <div className={`${styles.footerBlock} ${styles.footerBlock3}`}>
-        <img 
-          src={shortWhiteLogo} 
-          alt="TrueTell Logo" 
-          className={styles.footerLogo}
-        />
+        <a href="#home">
+          <img
+            src={shortWhiteLogo}
+            alt="TrueTell Logo"
+            className={styles.footerLogo}
+          />
+        </a>
         <div className={styles.footerBlockText}>© Все права защищены</div>
       </div>
     </footer>

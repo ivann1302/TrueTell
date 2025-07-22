@@ -38,8 +38,10 @@ function App() {
 
       <ChartSection
         title="Нацельтесь на прибыль"
+        subtitle="Показатели по всем точкам на одном экране"
         chartIndex={7}
         titleColor={COLORS.WHITE}
+        subtitleColor={COLORS.PRIMARY_BLUE_LIGHT}
         backgroundColor={COLORS.PRIMARY_BLUE}
       />
 
