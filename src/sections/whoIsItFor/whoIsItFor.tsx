@@ -11,10 +11,10 @@ export const WhoIsItForSection: React.FC = () => {
         <div className={styles.content}>
           {/* Левая колонка */}
           <div className={styles.firstColumn}>
-            <div className={styles.smallBlock}>
+            <div className={`${styles.smallBlock} ${styles.bwGradient}`}>
               Розница от 3 точек
             </div>
-            <div className={styles.largeBlock}>
+            <div className={`${styles.largeBlock} ${styles.bwGradient}`}>
               Вы используете систему управленческого учета Мой Склад
             </div>
           </div>
@@ -30,10 +30,10 @@ export const WhoIsItForSection: React.FC = () => {
 
           {/* Правая колонка */}
           <div className={styles.secondColumn}>
-            <div className={styles.largeBlock}>
+            <div className={`${styles.largeBlock} ${styles.wbGradient}`}>
               У вас несколько  разных отчетов, их делают люди
             </div>
-            <div className={styles.smallBlock}>
+            <div className={`${styles.smallBlock} ${styles.wbGradient}`}>
               Либо отчета нет вообще
             </div>
           </div>

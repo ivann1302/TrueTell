@@ -74,6 +74,7 @@ export const FAQSection: React.FC = () => {
                   {item.answer}
                 </div>
               )}
+              <div className={styles.divider}></div>
             </div>
           ))}
         </div>

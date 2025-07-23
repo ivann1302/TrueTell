@@ -1,7 +1,8 @@
 /* Manrope Regular */
+/* Manrope Regular */
 @font-face {
   font-family: 'Manrope';
-  src: url('./Manrope/Manrope-VariableFont_wght.ttf') format('ttf');
+  src: url('./Manrope/static/Manrope-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -10,16 +11,16 @@
 /* Manrope Bold */
 @font-face {
   font-family: 'Manrope';
-  src: url('./Manrope/Manrope-VariableFont_wght.ttf') format('ttf');
+  src: url('./Manrope/static/Manrope-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
-/* Monrope SemiBold */
+/* Manrope SemiBold */
 @font-face {
   font-family: 'Manrope';
-  src: url('./Manrope/Manrope-VariableFont_wght.ttf') format('ttf');
+  src: url('./Manrope/static/Manrope-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;

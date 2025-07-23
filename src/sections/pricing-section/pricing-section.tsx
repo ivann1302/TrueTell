@@ -24,13 +24,13 @@ export const PricingSection: React.FC = () => {
     {
       type: 'implementation',
       title: 'Внедрение',
-      subtitle: 'в зависимости от числа источников',
+      subtitle: <>в зависимости от<br /> числа источников</>,
       price: '40 000 ₽ - 60 000 ₽'
     },
     {
       type: 'support',
       title: 'Поддержка',
-      subtitle: 'обеспечение работоспособности, доработка запросов заказчика',
+      subtitle: <>обеспечение<br /> работоспособности, доработка запросов заказчика</>,
       price: '7 000 ₽ - 15 000 ₽',
       period: 'в месяц'
     }
@@ -44,17 +44,13 @@ export const PricingSection: React.FC = () => {
     return (
       <div key={index} className={cardClass}>
         <h3 className={titleClass}>{card.title}</h3>
-        
+
         {isIntroCard ? (
           card.content
         ) : (
           <>
             <p className={`${styles.cardSubtitle} ${card.type === 'implementation' ? styles.mb45 : ''}`}>
-              {card.subtitle?.split(' ').map((word, i, arr) => (
-                i === 2 && arr.length > 3 ? (
-                  <React.Fragment key={i}><br />{word}</React.Fragment>
-                ) : i === 0 ? word : ` ${word}`
-              ))}
+              {card.subtitle}
             </p>
             <p className={styles.cardPrice}>
               {card.price}

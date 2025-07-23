@@ -39,7 +39,7 @@
 
 .content {
   display: flex;
-  gap: 24px;
+  gap: 20px;
   align-items: flex-start;
   justify-content: center;
   width: 100%;
@@ -73,22 +73,28 @@
   }
 }
 
+.bwGradient {
+  background: linear-gradient(90deg, $gradient-blue-start 0%, $gradient-blue-end 100%);
+}
+
+.wbGradient {
+  background: linear-gradient(90deg, $gradient-blue-end 0%, $gradient-blue-start 100%);
+}
+
 .smallBlock {
-  width: 382px;
+  width: 400px;
   height: 83px;
   border-radius: 20px;
-  padding: 24px 32px;
-  background: linear-gradient(90deg, $gradient-blue-start 0%, $gradient-blue-end 100%);
+  padding: 24px 29px;
   display: flex;
-  align-items: center;
+  text-align: left;
   justify-content: center;
   box-sizing: border-box;
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 28px;
   line-height: 30px;
   color: $primary-blue;
-  text-align: center;
 
   @include mobile-tablet {
     max-width: 90%;
@@ -100,21 +106,19 @@
 }
 
 .largeBlock {
-  width: 383px;
+  width: 400px;
   height: 153px;
   border-radius: 20px;
-  padding: 24px 32px;
-  background: linear-gradient(90deg, $gradient-blue-start 0%, $gradient-blue-end 100%);
+  padding: 24px 30px;
   display: flex;
-  align-items: center;
+  text-align: left;
   justify-content: center;
   box-sizing: border-box;
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 28px;
   line-height: 30px;
   color: $primary-blue;
-  text-align: center;
 
   @include mobile-tablet {
     max-width: 90%;
@@ -132,7 +136,7 @@
 }
 
 .image {
-  width: 358px;
+  width: 331px;
   height: 248px;
   border-radius: 20px;
   object-fit: cover;
