@@ -25,7 +25,7 @@ export const HeroSection: React.FC = () => {
             <SocialIcons />
           </div>
           <div className={styles['button-block']}>
-            <h2 className={styles['cta-title']}>Попробуйте<br />сами</h2>
+            <h2 className={styles['cta-title']}>Попробуйте <br />сами</h2>
             <div className={styles['button-wrapper']}>
               <DemoButton onClick={handleDemoClick} />
             </div>

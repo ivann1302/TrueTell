@@ -11,6 +11,10 @@
 
   @include mobile-tablet {
     padding: 80px 0 0 0;
+
+    br {
+      display: none;
+    }
   }
 }
 
@@ -94,7 +98,7 @@
   @include mobile-tablet {
     width: 100%;
     margin-top: 12px;
-    flex-direction: row;
+    flex-direction: row-reverse;
   }
 }
 

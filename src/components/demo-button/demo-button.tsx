@@ -26,7 +26,7 @@ const DemoButton: React.FC<DemoButtonProps> = ({
 
   return (
     <a 
-      href="https://datalens.yandex.cloud/cts92knihou4y-truetell-analitika-v-odin-klik?_theme=light&utm_referrer=about%3Ablank"
+      href="https://datalens.yandex/cts92knihou4y"
       target="_blank"
       rel="noopener noreferrer"
       className={`${styles['demo-button']} ${isClicked ? styles.clicked : ''} ${className}`}

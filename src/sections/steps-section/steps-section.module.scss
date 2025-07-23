@@ -111,7 +111,14 @@
   }
 }
 
+.stepBlock:first-child .stepTitle {
+  top: 26px;
+  /* стили только для .stepTitle внутри первого .block */
+}
+
 .stepDescription {
+  position: relative;
+  top: 25px;
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
@@ -119,7 +126,6 @@
   text-align: left;
   margin: 12px 0 0 0;
   padding: 0 20px;
-  position: relative;
   z-index: 3;
   max-width: 340px;
 
