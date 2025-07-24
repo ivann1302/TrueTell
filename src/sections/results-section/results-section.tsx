@@ -22,6 +22,7 @@ export const ResultsSection: React.FC = () => {
   return (
     <section id="cases" className={styles.resultsSection}>
       <div className={styles.container}>
+        <h3 className={styles.title}>Кейс клиента</h3>
         {/* Кейс клиента */}
         <div className={styles.clientCase}>
           <div className={styles.image}>

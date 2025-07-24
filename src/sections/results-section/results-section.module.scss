@@ -23,6 +23,23 @@
   @include mobile-tablet {
     width: 90%;
   }
+
+  .title {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    color: $primary-blue;
+    font-size: 48px;
+    line-height: 60px;
+    letter-spacing: 0;
+    padding-bottom: 56px;
+
+    @include mobile-tablet {
+      font-size: 25px;
+      line-height: 44px;
+    }
+
+  }
 }
 
 // Общие стили для заголовков секций
@@ -200,7 +217,7 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 25px;
-  color: $text-primary;
+  color: $primary-blue;
   margin: 0;
   text-align: left;
 
