@@ -10,7 +10,7 @@ export const PricingSection: React.FC = () => {
   const cards = [
     {
       type: 'intro',
-      title: 'Знакомство',
+      title: 'Испытайте перед покупкой',
       content: (
         <div className={styles.cardContent}>
           <DemoButton onClick={handleDemoClick} />
