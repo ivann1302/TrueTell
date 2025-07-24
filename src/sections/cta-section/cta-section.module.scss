@@ -47,10 +47,10 @@
   }
 }
 
-.leftContent {
+.firstContent {
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: start;
 
   @include mobile-tablet {
     width: 100%;
@@ -76,11 +76,11 @@
   }
 }
 
-.rightContent {
+.secondContent {
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: start;
   text-align: left;
   gap: 0;
   width: fit-content;
@@ -96,7 +96,7 @@
   font-weight: 600;
   font-size: 34px;
   line-height: 35px;
-  margin-bottom: 16px;
+  margin: 0 0 30px 0;
 
   @include mobile-tablet {
     font-size: 25px;

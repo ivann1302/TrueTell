@@ -14,13 +14,13 @@ export const CTASection: React.FC = () => {
       <div className={styles.container}>
         {/* Верхний блок */}
         <div className={styles.topBlock}>
-          <div className={styles.leftContent}>
+          <div className={styles.firstContent}>
             <h2 className={styles.title}>
               Поднимите прибыльность на 5% <br />
               уже в этом месяце!
             </h2>
           </div>
-          <div className={styles.rightContent}>
+          <div className={styles.secondContent}>
             <h3 className={styles.subtitle}>Попробуйте сами</h3>
             <DemoButton onClick={handleDemoClick} />
             <p className={styles.description}>

@@ -41,109 +41,15 @@
 }
 
 // Кейс клиента
-.caseSection {
-  width: 100%;
-  margin-bottom: 48px; // отступ до "Результаты через месяц"
-
-  @include mobile-tablet {
-    margin-bottom: 28px;
-  }
-}
-
-.caseTitle {
-  @extend %section-title;
-  margin-bottom: 56px;
-
-  @include mobile-tablet {
-    margin-bottom: 18px;
-  }
-}
-
 .clientCase {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  width: 100%;
-
-  @include mobile-tablet {
-    display: none;
-  }
-}
-
-.clientPhotoWrapper {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: -110px;
-}
-
-.clientPhoto {
-  width: 160px;
+  width: 1171px;
   height: 160px;
-  border-radius: 50%;
-  object-fit: cover;
-
-  @include mobile-tablet {
-    width: 57px;
-    height: 57px;
-    border: 2px solid $primary-blue-light;
-  }
-}
-
-.clientInfo {
-  width: 1141px;
-  height: 83px;
   background: linear-gradient(90deg, $gradient-blue-start 0%, $gradient-blue-end 100%);
-  border-radius: 16px;
+  border-radius: 20px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 130px; // заходит под фотографию на 130px
-  margin-left: -130px; // смещение для наложения
-  z-index: 1;
-  position: relative;
-}
-
-%client-text {
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 35px;
-  color: $primary-blue;
-  margin: 0;
-
-  @include mobile-tablet {
-    font-size: 14px;
-    line-height: 17.5px;
-  }
-}
-
-.clientNameContainer {
-  display: flex;
-  flex-direction: column;
+  gap: 44px;
+  padding: 20px 32px;
   align-items: center;
-  justify-content: center;
-}
-
-.clientName {
-  @extend %client-text;
-  text-align: center;
-  margin-top: 16px;
-
-  @include mobile-tablet {
-    font-size: 16px;
-    line-height: 20px;
-  }
-}
-
-.clientDescription {
-  @extend %client-text;
-}
-
-.clientCaseMobile {
-  display: none;
 
   @include mobile-tablet {
     width: 90%;
@@ -156,42 +62,56 @@
     align-items: center;
   }
 
-  .imageMobile {
-    width: 57px;
-    height: 57px;
-    border: 2px solid $primary-blue-light;
+  .image {
+    width: 120px;
+    height: 120px;
+    border: 4px solid $primary-blue-light;
     border-radius: 50%;
     z-index: 1000;
 
-    .clientPhotoMobile {
+    @include mobile-tablet {
       width: 57px;
       height: 57px;
+      border: 2px solid $primary-blue-light;
+      border-radius: 50%;
+      z-index: 1000;
+    }
+
+    .clientPhoto {
+      width: 120px;
+      height: 120px;
+
+      @include mobile-tablet {
+        width: 57px;
+        height: 57px;
+      }
     }
   }
-  .clientDescriptionMobile {
+  .clientDescription {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-    gap: 5px;
+    gap: 8px;
 
-    .clientNameMobile {
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 20px;
-      letter-spacing: 0;
-      color: $primary-blue;
-      margin: 0;
+    @include mobile-tablet {
+      gap: 5px;
     }
 
-    .clientInfoMobile {
-      font-weight: 400;
-      font-size: 14px;
-      letter-spacing: 0;
-      line-height: 17.5px;
+    .clientInfo {
+      text-align: left;
+      font-size: 28px;
+      line-height: 35px;
+      font-weight: 600;
       color: $primary-blue;
       margin: 0;
+      letter-spacing: 0;
 
+      @include mobile-tablet {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17.5px;
+      }
     }
   }
 }
@@ -199,14 +119,12 @@
 // Результаты
 .title {
   @extend %section-title;
-  margin-top: 158px;
-  margin-bottom: 56px;
+  margin: 48px 0;
 
   @include mobile-tablet {
     font-size: 20px;
     line-height: 25px;
     margin: 28px 0 18px;
-
   }
 }
 

@@ -21,7 +21,7 @@ export const StepsSection: React.FC = () => {
   return (
     <section className={styles.stepsSection}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Как это работает?</h2>
+        <h2 className={styles.title}>Этапы внедрения</h2>
         
         <div className={styles.content}>
           {steps.map((step, index) => (

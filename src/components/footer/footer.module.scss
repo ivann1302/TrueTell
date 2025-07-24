@@ -107,6 +107,12 @@
   font-size: 18px;
   line-height: 26px;
   margin: 0 0 8px 0;
+  width: max-content;
+
+  a {
+    color: inherit;
+    text-decoration: none
+  }
 
   @include mobile-tablet {
     font-size: 14px;

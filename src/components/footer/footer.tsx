@@ -12,7 +12,7 @@ function AppFooter() {
       </div>
       <div className={`${styles.footerBlock} ${styles.footerBlock2}`}>
         <div className={styles.footerBlockTitle}>Контакты</div>
-        <div className={styles.footerBlockText}>+7 (993) 280-64-41</div>
+        <div className={styles.footerBlockText}><a href="tel:+79932806441">+7 (993) 280-64-41</a></div>
         <div className={styles.footerBlockText}>truetell@bk.ru</div>
       </div>
       <div className={`${styles.footerBlock} ${styles.footerBlock3}`}>
