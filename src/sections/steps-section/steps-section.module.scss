@@ -1,5 +1,6 @@
 @use '../../styles/variables.scss' as *;
-@use '../../styles/breackpoints' as *;
+@use '../../styles/breakpoints' as *;
+@use '../../styles/mixins' as *;
 
 .stepsSection {
   width: 100%;

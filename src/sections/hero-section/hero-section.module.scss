@@ -1,13 +1,10 @@
 @use '../../styles/variables.scss' as *;
-@use '../../styles/breackpoints' as *;
+@use '../../styles/breakpoints' as *;
+@use '../../styles/mixins' as *;
 
 .hero-section {
-  width: 100%;
-  background: $white;
+  @include section;
   padding: 100px 0 0 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   @include mobile-tablet {
     padding: 80px 0 0 0;
@@ -19,7 +16,7 @@
 }
 
 .container {
-  width: 1170px;
+  width: $container-width;
   height: 628px;
   display: flex;
   gap: 12px;
@@ -37,11 +34,10 @@
   flex: 1;
   background-image: url('./../../images/banner1.png');
   background-size: cover;
-  border-radius: 16px;
+  border-radius: $border-radius;
   padding: 90px 0 52px 100px;
-  display: flex;
+  @include flex-column;
   gap: 115px;
-  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   text-align: left;
@@ -59,7 +55,7 @@
 .title {
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
-  font-size: 68px;
+  font-size: $font-size-h1;
   line-height: 80px;
   color: $white;
   margin: 0 72px 0 0;
@@ -67,7 +63,7 @@
   height: 157px;
 
   @include mobile-tablet {
-    font-size: 36px;
+    font-size: $font-size-h1-mobile;
     line-height: 42px;
     width: 100%;
     height: auto;
@@ -78,21 +74,20 @@
 .subtitle {
   font-family: 'Manrope', sans-serif;
   font-weight: 400;
-  font-size: 36px;
+  font-size: $font-size-h3;
   line-height: 42px;
   color: $white;
   margin: 0;
 
   @include mobile-tablet {
-    font-size: 24px;
+    font-size: $font-size-h3-mobile;
     line-height: 30px;
   }
 }
 
 .second {
   width: 378px;
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: 12px;
 
   @include mobile-tablet {
@@ -106,10 +101,8 @@
   height: 184px;
   background-image: url('./../../images/banner2.png');
   background-size: cover;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: $border-radius;
+  @include flex-center;
   padding: 0 40px;
   box-sizing: border-box;
 
@@ -125,10 +118,9 @@
   height: 432px;
   background-image: url('./../../images/banner3.png');
   background-size: cover;
-  border-radius: 16px;
+  border-radius: $border-radius;
   padding: 52px 40px 40px 40px;
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   align-items: flex-start;
   text-align: left;
   box-sizing: border-box;
@@ -144,14 +136,13 @@
 .cta-title {
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
-  font-style: SemiBold;
-  font-size: 48px;
+  font-size: $font-size-h2;
   line-height: 60px;
   color: $white;
   margin: 0 0 79px 0;
 
   @include mobile-tablet {
-    font-size: 32px;
+    font-size: $font-size-h2-mobile;
     line-height: 40px;
     margin: 0 0 40px 0;
   }
@@ -159,8 +150,7 @@
 
 .button-wrapper {
   width: 100%;
-  display: flex;
-  justify-content: center;
+  @include flex-center;
   padding: 0 32px;
   box-sizing: border-box;
 
@@ -171,14 +161,7 @@
 
 .description {
   font-family: 'Manrope', sans-serif;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 25px;
+  @include body-text;
   color: $primary-blue-light;
   margin: 13px 0 0 0;
-
-  @include mobile-tablet {
-    font-size: 16px;
-    line-height: 20px;
-  }
 }

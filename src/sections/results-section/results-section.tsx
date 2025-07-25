@@ -20,29 +20,29 @@ export const ResultsSection: React.FC = () => {
   ];
 
   return (
-    <section id="cases" className={styles.resultsSection}>
+    <section id="cases" className={styles['results-section']}>
       <div className={styles.container}>
-        <h3 className={styles.title}>Кейс клиента</h3>
+        <h3 className={styles['section-title']}>Кейс клиента</h3>
         {/* Кейс клиента */}
-        <div className={styles.clientCase}>
+        <div className={styles['client-case']}>
           <div className={styles.image}>
-            <img src={clientPhoto} alt="Client Photo" className={styles.clientPhoto} />
+            <img src={clientPhoto} alt="Client Photo" className={styles['client-photo']} />
           </div>
-          <div className={styles.clientDescription}>
-            <p className={styles.clientInfo}>Дмитрий Баржин</p>
-            <p className={styles.clientInfo}>Владелец сети из 6-ти табачных магазинов AllSmoke</p>
+          <div className={styles['client-description']}>
+            <p className={styles['client-info']}>Дмитрий Баржин</p>
+            <p className={styles['client-info']}>Владелец сети из 6-ти табачных магазинов AllSmoke</p>
           </div>
         </div>
 
-        <h3 className={styles.title}>Результаты через месяц:</h3>
-        
+        <h4 className={styles.title}>Результаты через месяц:</h4>
+
         <div className={styles.content}>
           {results.map((result, index) => (
-            <div key={index} className={styles.resultBlock}>
+            <div key={index} className={styles['result-block']}>
               <img src={checkmark} alt="checkmark" className={styles.checkmark}/>
-              <div className={styles.textContent}>
-                <h4 className={styles.blockTitle}>{result.title}</h4>
-                <p className={styles.blockText}>
+              <div className={styles['text-content']}>
+                <h4 className={styles['block-title']}>{result.title}</h4>
+                <p className={styles['block-text']}>
                   {result.text.includes('перераспределения') ? (
                     <>на 18% маржу за счет<br />перераспределения закупок</>
                   ) : result.text.includes('дашборду') ? (

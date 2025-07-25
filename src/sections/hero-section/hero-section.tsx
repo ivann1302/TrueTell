@@ -6,7 +6,6 @@ import SocialIcons from '../../components/social-icons/social-icons';
 export const HeroSection: React.FC = () => {
   const handleDemoClick = () => {
     // Логика для демо
-    console.log('Demo button clicked');
   };
 
   return (

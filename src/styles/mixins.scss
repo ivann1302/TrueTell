@@ -1,0 +1,111 @@
+@use 'variables' as *;
+@use 'breakpoints' as *;
+
+// Миксин для стандартного контейнера
+@mixin container {
+  width: $container-width;
+  margin: 0 auto;
+
+  @include mobile-tablet {
+    width: $container-width-mobile;
+  }
+}
+
+// Миксин для секций
+@mixin section {
+  width: 100%;
+  background: $white;
+  padding: $section-padding-top 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include mobile-tablet {
+    padding: $section-padding-top-mobile 0 0 0;
+  }
+}
+
+// Миксин для заголовков h2
+@mixin heading-h2 {
+  font-weight: 600;
+  font-size: $font-size-h2;
+  line-height: 60px;
+  margin: 0 0 16px 0;
+
+  @include mobile-tablet {
+    font-size: $font-size-h2-mobile;
+    line-height: 44px;
+  }
+}
+
+// Миксин для заголовков h3
+@mixin heading-h3 {
+  font-weight: 600;
+  font-size: $font-size-h3;
+  line-height: 35px;
+  margin: 0;
+
+  @include mobile-tablet {
+    font-size: $font-size-h3-mobile;
+    line-height: 25px;
+  }
+}
+
+// Миксин для заголовков h4
+@mixin heading-h4 {
+  font-weight: 600;
+  font-size: $font-size-h4;
+  line-height: 35px;
+  margin: 0 0 4px 0;
+
+  @include mobile-tablet {
+    font-size: $font-size-h4-mobile;
+    line-height: 20px;
+    margin: 0;
+  }
+}
+
+// Миксин для обычного текста
+@mixin body-text {
+  font-weight: 400;
+  font-size: $font-size-body;
+  line-height: 25px;
+  margin: 0;
+
+  @include mobile-tablet {
+    font-size: $font-size-body-mobile;
+    line-height: 20px;
+  }
+}
+
+// Миксин для карточек с тенью
+@mixin card {
+  border-radius: $border-radius;
+  box-shadow: 0 4px 12px $black-transparent-light;
+  overflow: hidden;
+}
+
+// Миксин для кнопок
+@mixin button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: $border-radius-small;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+// Миксин для флекс-центрирования
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Миксин для флекс-колонки
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}

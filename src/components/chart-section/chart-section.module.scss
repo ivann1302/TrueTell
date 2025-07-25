@@ -1,47 +1,43 @@
 @use '../../styles/variables.scss' as *;
-@use '../../styles/breackpoints' as *;
-@use '../../styles/variables' as *;
+@use '../../styles/breakpoints' as *;
+@use '../../styles/mixins' as *;
 
 .chart-section {
     width: 100vw;
-    padding: 140px 0 0 0;
+    padding: $section-padding-top 0 0 0;
 
     @include mobile-tablet {
-        padding-top: 60px;
+        padding-top: $section-padding-top-mobile;
     }
+}
 
-    .chart-section__header {
+.chart-section__header {
+    @include flex-column;
+    align-items: center;
+}
 
-        .chart-section__title {
-            font-weight: 600;
-            font-size: 48px;
-            line-height: 60px;
-            margin: 0 0 16px 0;
+.chart-section__title {
+    @include heading-h2;
 
-            @include mobile-only{
-                font-size: 25px;
-                line-height: 44px;
-                margin-bottom: 0;
-            }
-        }
-
-        .chart-section__subtitle {
-            font-weight: 600;
-            font-size: 34px;
-            line-height: 35px;
-            margin: 0;
-
-            @include mobile-only{
-                font-size: 20px;
-            }
-        }
+    @include mobile-only {
+        font-size: $font-size-h2-mobile;
+        line-height: 44px;
+        margin-bottom: 0;
     }
+}
 
-    .chart-section__content {
-        padding: 56px 0 0 0;
+.chart-section__subtitle {
+    @include heading-h3;
 
-        @include mobile-tablet {
-            padding-top: 18px;
-        }
+    @include mobile-only {
+        font-size: $font-size-h3-mobile;
     }
-} 
+}
+
+.chart-section__content {
+    padding: $content-padding 0 0 0;
+
+    @include mobile-tablet {
+        padding-top: $content-padding-mobile;
+    }
+}

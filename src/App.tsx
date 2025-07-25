@@ -24,7 +24,7 @@ function App() {
 
       <ChartSection
         title="Сбросьте балласт"
-        chartIndex={10}
+        chartIndex={4}
         titleColor={COLORS.PRIMARY_BLUE}
       />
 
@@ -39,7 +39,7 @@ function App() {
       <ChartSection
         title="Нацельтесь на прибыль"
         subtitle="Показатели по всем точкам на одном экране"
-        chartIndex={7}
+        chartIndex={3}
         titleColor={COLORS.WHITE}
         subtitleColor={COLORS.PRIMARY_BLUE_LIGHT}
         backgroundColor={COLORS.PRIMARY_BLUE}

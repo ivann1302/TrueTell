@@ -13,16 +13,16 @@ export const SliderSection: React.FC = () => {
   // Using the new charts (indices 1, 2, 3 from CHART_IFRAMES)
   const slides = [
     {
+      id: 0,
+      chartIndex: 0 // Chart New 1
+    },
+    {
       id: 1,
-      chartIndex: 1 // Chart New 1
+      chartIndex: 1 // Chart New 2
     },
     {
       id: 2,
-      chartIndex: 2 // Chart New 2
-    },
-    {
-      id: 3,
-      chartIndex: 3 // Chart New 3
+      chartIndex: 2 // Chart New 3
     }
   ];
 

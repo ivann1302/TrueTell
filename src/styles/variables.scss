@@ -37,4 +37,36 @@ $gradient-blue-start: #E1F1FF;
 $gradient-blue-end: #C3E2FF; 
 
 // Gradient Mixins
-$gradient-primary: linear-gradient(180deg, #{$primary-blue-light} 0%, #{$primary-blue} 100%); 
+$gradient-primary: linear-gradient(180deg, #{$primary-blue-light} 0%, #{$primary-blue} 100%);
+
+// Размеры контейнеров
+$container-width: 1170px;
+$container-width-mobile: 90%;
+
+// Отступы
+$section-padding-top: 140px;
+$section-padding-top-mobile: 60px;
+$content-padding: 56px;
+$content-padding-mobile: 18px;
+
+// Размеры шрифтов
+$font-size-h1: 68px;
+$font-size-h2: 48px;
+$font-size-h3: 34px;
+$font-size-h4: 28px;
+$font-size-body: 20px;
+
+// Мобильные размеры шрифтов
+$font-size-h1-mobile: 36px;
+$font-size-h2-mobile: 25px;
+$font-size-h3-mobile: 20px;
+$font-size-h4-mobile: 16px;
+$font-size-body-mobile: 16px;
+
+// Высоты элементов
+$chart-height: 444px;
+$chart-height-mobile: 300px;
+
+// Радиусы скругления
+$border-radius: 16px;
+$border-radius-small: 8px;

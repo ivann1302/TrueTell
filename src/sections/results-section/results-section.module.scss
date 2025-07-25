@@ -1,44 +1,37 @@
 @use '../../styles/variables.scss' as *;
-@use '../../styles/breackpoints' as *;
+@use '../../styles/breakpoints' as *;
+@use '../../styles/mixins' as *;
 
-.resultsSection {
-  width: 100%;
-  background: $white;
-  padding: 140px 0 0 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.results-section {
+  @include section;
 
   @include mobile-tablet {
-    padding: 60px 0 0;
+    padding: $section-padding-top-mobile 0 0;
   }
 }
 
 .container {
-  width: 1170px;
-  display: flex;
-  flex-direction: column;
+  width: $container-width;
+  @include flex-column;
   align-items: center;
 
   @include mobile-tablet {
-    width: 90%;
+    width: $container-width-mobile;
   }
+}
 
-  .title {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    color: $primary-blue;
-    font-size: 48px;
-    line-height: 60px;
-    letter-spacing: 0;
-    padding-bottom: 56px;
+.section-title {
+  @include flex-center;
+  text-align: center;
+  color: $primary-blue;
+  font-size: $font-size-h2;
+  line-height: 60px;
+  letter-spacing: 0;
+  padding-bottom: $content-padding;
 
-    @include mobile-tablet {
-      font-size: 25px;
-      line-height: 44px;
-    }
-
+  @include mobile-tablet {
+    font-size: $font-size-h2-mobile;
+    line-height: 44px;
   }
 }
 
@@ -58,78 +51,75 @@
 }
 
 // Кейс клиента
-.clientCase {
-  width: 1171px;
+.client-case {
+  width: 100%;
+  max-width: $container-width;
   height: 160px;
   background: linear-gradient(90deg, $gradient-blue-start 0%, $gradient-blue-end 100%);
-  border-radius: 20px;
+  border-radius: $border-radius;
   display: flex;
   gap: 44px;
   padding: 20px 32px;
   align-items: center;
+  box-sizing: border-box;
 
   @include mobile-tablet {
-    width: 90%;
+    width: 100%;
     height: 83px;
-    background: linear-gradient(90deg, $gradient-blue-start 0%, $gradient-blue-end 100%);
-    border-radius: 20px;
-    display: flex;
     gap: 16px;
     padding: 12px 18px;
-    align-items: center;
   }
+}
 
-  .image {
-    width: 120px;
-    height: 120px;
-    border: 4px solid $primary-blue-light;
-    border-radius: 50%;
-    z-index: 1000;
+.image {
+  width: 120px;
+  height: 120px;
+  border: 4px solid $primary-blue-light;
+  border-radius: 50%;
+  z-index: 1000;
 
-    @include mobile-tablet {
-      width: 57px;
-      height: 57px;
-      border: 2px solid $primary-blue-light;
-      border-radius: 50%;
-      z-index: 1000;
-    }
-
-    .clientPhoto {
-      width: 120px;
-      height: 120px;
-
-      @include mobile-tablet {
-        width: 57px;
-        height: 57px;
-      }
-    }
+  @include mobile-tablet {
+    width: 57px;
+    height: 57px;
+    border: 2px solid $primary-blue-light;
   }
-  .clientDescription {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    gap: 8px;
+}
 
-    @include mobile-tablet {
-      gap: 5px;
-    }
+.client-photo {
+  width: 120px;
+  height: 120px;
 
-    .clientInfo {
-      text-align: left;
-      font-size: 28px;
-      line-height: 35px;
-      font-weight: 600;
-      color: $primary-blue;
-      margin: 0;
-      letter-spacing: 0;
+  @include mobile-tablet {
+    width: 57px;
+    height: 57px;
+  }
+}
 
-      @include mobile-tablet {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 17.5px;
-      }
-    }
+.client-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 8px;
+
+  @include mobile-tablet {
+    gap: 5px;
+  }
+}
+
+.client-info {
+  text-align: left;
+  font-size: $font-size-h4;
+  line-height: 35px;
+  font-weight: 600;
+  color: $primary-blue;
+  margin: 0;
+  letter-spacing: 0;
+
+  @include mobile-tablet {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17.5px;
   }
 }
 
@@ -139,7 +129,7 @@
   margin: 48px 0;
 
   @include mobile-tablet {
-    font-size: 20px;
+    font-size: $font-size-h3-mobile;
     line-height: 25px;
     margin: 28px 0 18px;
   }
@@ -152,79 +142,78 @@
   justify-content: center;
   width: 100%;
   margin-bottom: 48px;
+  box-sizing: border-box;
 
   @include mobile-tablet {
     gap: 24px;
     margin-bottom: 28px;
     flex-direction: column;
     align-items: center;
+    padding: 0 16px;
   }
 }
 
-.resultBlock {
+.result-block {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
   flex: 1;
   max-width: 380px;
+  box-sizing: border-box;
 
   @include mobile-tablet {
     text-align: center;
     align-items: center;
+    max-width: 100%;
+    padding: 0 8px;
   }
 }
 
 .checkmark {
   height: auto;
   position: relative;
-  left: -10px;
+  left: 0;
   margin-bottom: 8px;
 
   @include mobile-tablet {
     width: 30px;
     height: 30px;
+    left: 0;
   }
 }
 
-.textContent {
+.text-content {
   display: flex;
   flex-direction: column;
   text-align: left;
 
   @include mobile-tablet {
-  text-align: center;
+    text-align: center;
   }
 }
 
-.blockTitle {
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 35px;
+.block-title {
+  @include heading-h4;
   color: $primary-blue;
-  margin: 0 0 4px 0;
   text-align: left;
 
   @include mobile-tablet {
-    font-size: 16px;
+    font-size: $font-size-h4-mobile;
     line-height: 20px;
     margin: 0;
     text-align: center;
   }
 }
 
-.blockText {
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 25px;
+.block-text {
+  @include body-text;
   color: $primary-blue;
-  margin: 0;
   text-align: left;
 
   @include mobile-tablet {
     font-size: 14px;
     line-height: 17.5px;
-    margin: 0;
     text-align: center;
   }
-} 
+}
