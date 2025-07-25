@@ -195,8 +195,10 @@
 
 .block-title {
   @include heading-h4;
-  color: $primary-blue;
-  text-align: left;
+  & {
+    color: $primary-blue;
+    text-align: left;
+  }
 
   @include mobile-tablet {
     font-size: $font-size-h4-mobile;
@@ -208,8 +210,10 @@
 
 .block-text {
   @include body-text;
-  color: $primary-blue;
-  text-align: left;
+  & {
+    color: $primary-blue;
+    text-align: left;
+  }
 
   @include mobile-tablet {
     font-size: 14px;

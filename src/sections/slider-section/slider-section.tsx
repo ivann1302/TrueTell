@@ -92,21 +92,21 @@ export const SliderSection: React.FC = () => {
   }, [isHovered, startAutoplay, stopAutoplay]);
 
   return (
-    <section className={styles.sliderSection}>
+    <section className={styles['slider-section']}>
       <div className={styles.container}>
         <div 
-          className={styles.sliderWrapper}
+          className={styles['slider-wrapper']}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <div className={styles.slideContainer}>
+          <div className={styles['slide-container']}>
             <div 
-              className={styles.slidesTrack}
+              className={styles['slides-track']}
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
               {slides.map((slide) => (
                 <div key={slide.id} className={styles.slide}>
-                  <div className={styles.slideContent}>
+                  <div className={styles['slide-content']}>
                     {(() => {
                       const chart = getChartByIndex(slide.chartIndex);
                       if (!chart) return <div>Chart not found</div>;
@@ -139,7 +139,7 @@ export const SliderSection: React.FC = () => {
           {isHovered && (
             <>
               <button 
-                className={`${styles.navButton} ${styles.navButtonPrev}`}
+                className={`${styles['nav-button']} ${styles['nav-button-prev']}`}
                 onClick={prevSlide}
                 aria-label="Previous slide"
               >
@@ -148,7 +148,7 @@ export const SliderSection: React.FC = () => {
                 </svg>
               </button>
               <button 
-                className={`${styles.navButton} ${styles.navButtonNext}`}
+                className={`${styles['nav-button']} ${styles['nav-button-next']}`}
                 onClick={nextSlide}
                 aria-label="Next slide"
               >
@@ -161,11 +161,11 @@ export const SliderSection: React.FC = () => {
         </div>
 
         {/* Точки навигации */}
-        <div className={styles.dotsContainer}>
+        <div className={styles['dots-container']}>
           {slides.map((_, index) => (
             <button
               key={index}
-              className={`${styles.dot} ${index === currentSlide ? styles.dotActive : ''}`}
+              className={`${styles.dot} ${index === currentSlide ? styles['dot-active'] : ''}`}
               onClick={() => goToSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
             />

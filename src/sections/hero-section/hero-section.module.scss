@@ -4,7 +4,9 @@
 
 .hero-section {
   @include section;
-  padding: 100px 0 0 0;
+  & {
+    padding: 100px 0 0 0;
+  }
 
   @include mobile-tablet {
     padding: 80px 0 0 0;
@@ -162,6 +164,8 @@
 .description {
   font-family: 'Manrope', sans-serif;
   @include body-text;
-  color: $primary-blue-light;
-  margin: 13px 0 0 0;
+  & {
+    color: $primary-blue-light;
+    margin: 13px 0 0 0;
+  }
 }
