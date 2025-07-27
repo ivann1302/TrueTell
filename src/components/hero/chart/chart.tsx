@@ -1,8 +1,9 @@
 import styles from './chart.module.scss';
 import type { ChartProps } from '../../../utils/types/types';
+import { useCallback, memo } from 'react';
 
 function Chart({ chart }: ChartProps) {
-  const buildIframeUrl = (baseUrl: string, params: Record<string, string | undefined>) => {
+  const buildIframeUrl = useCallback((baseUrl: string, params: Record<string, string | undefined>) => {
     const filteredParams: Record<string, string> = {};
     for (const [key, value] of Object.entries(params)) {
       if (value !== undefined) {
@@ -11,7 +12,7 @@ function Chart({ chart }: ChartProps) {
     }
     const queryString = new URLSearchParams(filteredParams).toString();
     return `${baseUrl}?${queryString}`;
-  };
+  }, []);
 
   return (
     <iframe
@@ -26,5 +27,5 @@ function Chart({ chart }: ChartProps) {
   );
 }
 
-
-export default Chart;
+// Мемоизируем компонент для предотвращения ненужных перерендеров
+export default memo(Chart);

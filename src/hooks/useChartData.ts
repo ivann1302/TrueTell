@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
 import { CHART_IFRAMES } from '../config/chartConfig';
 import { convertConfigToChartItems } from '../utils/functions/chartDataConverter';
 import type { TChartItem } from '../utils/types/types';
@@ -17,17 +17,17 @@ export function useChartData(): {
     }
   }, []);
 
-  const getChartByIndex = (index: number): TChartItem | null => {
+  const getChartByIndex = useCallback((index: number): TChartItem | null => {
     if (index < 0 || index >= chartData.length) {
       console.warn(`Chart index ${index} is out of bounds. Available charts: ${chartData.length}`);
       return null;
     }
     return chartData[index];
-  };
+  }, [chartData]);
 
   return {
     chartData,
     getChartByIndex,
     totalCharts: chartData.length,
   };
-} 
+}

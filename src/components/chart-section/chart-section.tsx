@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { memo, useRef, useState, useEffect } from 'react';
+import { useMemo } from 'react';
 import styles from './chart-section.module.scss';
 import Chart from '../hero/chart/chart';
 import { useChartData } from '../../hooks/useChartData';
@@ -31,7 +32,42 @@ export const ChartSection: React.FC<ChartSectionProps> = ({
   subtitleColor = COLORS.TEXT_SECONDARY,
 }) => {
   const { getChartByIndex } = useChartData();
-  const chartItem = getChartByIndex(chartIndex);
+  const chartItem = useMemo(() => getChartByIndex(chartIndex), [getChartByIndex, chartIndex]);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // Skip if chart item doesn't exist
+    if (!chartItem) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // When section becomes visible
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          // Once visible, no need to observe anymore
+          if (sectionRef.current) {
+            observer.unobserve(sectionRef.current);
+          }
+        }
+      },
+      {
+        // Start loading when chart is 300px away from viewport
+        rootMargin: '300px',
+        threshold: 0.1
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [chartItem]);
 
   if (!chartItem) {
     console.warn(`Chart index ${chartIndex} not found`);
@@ -40,6 +76,7 @@ export const ChartSection: React.FC<ChartSectionProps> = ({
 
   return (
     <section 
+      ref={sectionRef}
       className={`${styles['chart-section']} ${className}`}
       style={{ backgroundColor }}
     >
@@ -60,10 +97,11 @@ export const ChartSection: React.FC<ChartSectionProps> = ({
         )}
       </div>
       <div className={styles['chart-section__content']}>
-        <Chart chart={chartItem} />
+        {isVisible && <Chart chart={chartItem} />}
       </div>
     </section>
   );
 };
 
-export default ChartSection; 
+// Мемоизируем компонент для предотвращения ненужных перерендеров
+export default memo(ChartSection); 

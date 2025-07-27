@@ -1,61 +1,65 @@
 import './App.css';
+import { Suspense, lazy } from 'react';
 import AppHeader from './components/header/header';
 import AppFooter from './components/footer/footer';
-import ChartSection from './components/chart-section/chart-section';
-import CTASection from './sections/cta-section/cta-section';
 import HeroSection from './sections/hero-section/hero-section';
-import WhoIsItForSection from './sections/whoIsItFor/whoIsItFor';
-import PainPointsSection from './sections/pain-points-section/pain-points-section';
-import SolutionSection from './sections/solution-section/solution-section';
-import ResultsSection from './sections/results-section/results-section';
-import SliderSection from './sections/slider-section/slider-section';
-import StepsSection from './sections/steps-section/steps-section';
-import FAQSection from './sections/faq-section/faq-section';
-import PricingSection from './sections/pricing-section/pricing-section';
-import { HowItLook } from './sections/howItLook/how-it-look';
 import { COLORS } from './styles/colors';
+
+// Lazy load non-critical components
+const ChartSection = lazy(() => import('./components/chart-section/chart-section'));
+const WhoIsItForSection = lazy(() => import('./sections/whoIsItFor/whoIsItFor'));
+const PainPointsSection = lazy(() => import('./sections/pain-points-section/pain-points-section'));
+const SolutionSection = lazy(() => import('./sections/solution-section/solution-section'));
+const ResultsSection = lazy(() => import('./sections/results-section/results-section'));
+const SliderSection = lazy(() => import('./sections/slider-section/slider-section'));
+const StepsSection = lazy(() => import('./sections/steps-section/steps-section'));
+const FAQSection = lazy(() => import('./sections/faq-section/faq-section'));
+const PricingSection = lazy(() => import('./sections/pricing-section/pricing-section'));
+const HowItLook = lazy(() => import('./sections/howItLook/how-it-look').then(module => ({ default: module.HowItLook })));
+const CTASection = lazy(() => import('./sections/cta-section/cta-section'));
 
 function App() {
   return (
     <>
       <AppHeader />
-
       <HeroSection />
 
-      <ChartSection
-        title="Сбросьте балласт"
-        chartIndex={4}
-        titleColor={COLORS.PRIMARY_BLUE}
-      />
+      <Suspense fallback={<div>Загрузка...</div>}>
+        <ChartSection
+          title="Сбросьте балласт"
+          chartIndex={4}
+          titleColor={COLORS.PRIMARY_BLUE}
+        />
 
-      <WhoIsItForSection />
+        <WhoIsItForSection />
 
-      <PainPointsSection />
+        <PainPointsSection />
 
-      <SolutionSection />
+        <SolutionSection />
 
-      <HowItLook />
+        <HowItLook />
 
-      <ChartSection
-        title="Нацельтесь на прибыль"
-        subtitle="Показатели по всем точкам на одном экране"
-        chartIndex={3}
-        titleColor={COLORS.WHITE}
-        subtitleColor={COLORS.PRIMARY_BLUE_LIGHT}
-        backgroundColor={COLORS.PRIMARY_BLUE}
-      />
+        <ChartSection
+          title="Нацельтесь на прибыль"
+          subtitle="Показатели по всем точкам на одном экране"
+          chartIndex={3}
+          titleColor={COLORS.WHITE}
+          subtitleColor={COLORS.PRIMARY_BLUE_LIGHT}
+          backgroundColor={COLORS.PRIMARY_BLUE}
+        />
 
-      <PricingSection />
+        <PricingSection />
 
-      <ResultsSection />
+        <ResultsSection />
 
-      <SliderSection />
+        <SliderSection />
 
-      <StepsSection />
+        <StepsSection />
 
-      <FAQSection />
+        <FAQSection />
 
-      <CTASection />
+        <CTASection />
+      </Suspense>
 
       <AppFooter />
     </>

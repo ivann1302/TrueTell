@@ -1,23 +1,25 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { useMemo } from 'react';
 import styles from './results-section.module.scss';
 import checkmark from './../../images/icons/checkmark.svg';
 import clientPhoto from './../../images/photos/clientPhoto.png';
 
 export const ResultsSection: React.FC = () => {
-  const results = [
-    {
-      title: 'Сократил',
-      text: 'на 35% "мертвый" ассортимент'
-    },
-    {
-      title: 'Увеличил',
-      text: 'на 18% маржу за счет перераспределения закупок'
-    },
-    {
-      title: 'Назначил KPI',
-      text: 'понятные для менеджеров, дал доступ к дашборду и теперь сам меньше следит за магазинами'
-    }
-  ];
+  const results = useMemo(() =>
+    [
+      {
+        title: 'Сократил',
+        text: 'на 35% "мертвый" ассортимент'
+      },
+      {
+        title: 'Увеличил',
+        text: 'на 18% маржу за счет перераспределения закупок'
+      },
+      {
+        title: 'Назначил KPI',
+        text: 'понятные для менеджеров, дал доступ к дашборду и теперь сам меньше следит за магазинами'
+      }
+    ], []);
 
   return (
     <section id="cases" className={styles['results-section']}>
@@ -60,4 +62,5 @@ export const ResultsSection: React.FC = () => {
   );
 };
 
-export default ResultsSection; 
+// Мемоизируем компонент для предотвращения ненужных перерендеров
+export default memo(ResultsSection); 
