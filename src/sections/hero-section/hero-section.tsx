@@ -14,7 +14,7 @@ export const HeroSection: React.FC = () => {
         <div className={styles.first}>
           <h1 className={styles.title}>Не закупайте неликвид</h1>
           <p className={styles.subtitle}>
-            TrueTell - помогаем<br />
+            TrueTell - помогаем <br />
             оффлайн-бизнесу выявлять <br />
             балласт вовремя
           </p>
