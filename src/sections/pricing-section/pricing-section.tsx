@@ -15,7 +15,7 @@ export const PricingSection: React.FC = () => {
         <div className={styles.cardContent}>
           <DemoButton onClick={handleDemoClick} />
           <p className={styles.cardDescription}>
-            Займет 1 минуту, мы не просим<br />
+            Займет 1 минуту, мы не просим <br />
             ваши контакты
           </p>
         </div>
@@ -24,13 +24,13 @@ export const PricingSection: React.FC = () => {
     {
       type: 'implementation',
       title: 'Внедрение',
-      subtitle: <>в зависимости от<br /> числа источников</>,
-      price: '40 000 ₽ - 60 000 ₽'
+      subtitle: <>в зависимости от <br /> числа источников</>,
+      price: <>40 000 ₽ - <br className={styles.none}/>60 000 ₽</>,
     },
     {
       type: 'support',
       title: 'Поддержка',
-      subtitle: <>обеспечение<br /> работоспособности, доработка запросов заказчика</>,
+      subtitle: <>обеспечение <br /> работоспособности, доработка запросов заказчика</>,
       price: '7 000 ₽ - 15 000 ₽',
       period: 'в месяц'
     }

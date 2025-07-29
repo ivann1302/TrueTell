@@ -8,6 +8,16 @@ br {
   }
 }
 
+.none {
+  display: none;
+
+  @include mobile-tablet {
+    display: block;
+  }
+}
+
+
+
 .pricingSection {
   width: 100%;
   background: $primary-blue;

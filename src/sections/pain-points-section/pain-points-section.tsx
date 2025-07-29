@@ -15,8 +15,8 @@ export const PainPointsSection: React.FC = () => {
             <div className={styles.textContent}>
               <h3 className={styles.blockTitle}>Товары-«мертвецы»</h3>
               <p className={styles.blockText}>
-                20-30% ассортимента не продается,<br />
-                но менеджеры продолжают их<br />
+                20-30% ассортимента не продается, <br />
+                но менеджеры продолжают их <br />
                 заказывать.
               </p>
             </div>
@@ -28,7 +28,7 @@ export const PainPointsSection: React.FC = () => {
             <div className={styles.textContent}>
               <h3 className={styles.blockTitle}>Поставщики впаривают неликвид</h3>
               <p className={styles.blockText}>
-                Менеджеры по продажам поставщиков<br />
+                Менеджеры по продажам поставщиков <br />
                 работают на свои KPI
               </p>
             </div>
@@ -40,7 +40,7 @@ export const PainPointsSection: React.FC = () => {
             <div className={styles.textContent}>
               <h3 className={styles.blockTitle}>Погрешности в заказах:</h3>
               <p className={styles.blockText}>
-                Как вы сейчас принимаете решения?<br />
+                Как вы сейчас принимаете решения? <br />
                 На глазок или по данным?
               </p>
             </div>
