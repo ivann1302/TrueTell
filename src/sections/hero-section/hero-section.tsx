@@ -29,7 +29,7 @@ export const HeroSection: React.FC = () => {
               <DemoButton onClick={handleDemoClick} />
             </div>
             <p className={styles.description}>
-              займет 1 минуту, мы не просим<br />
+              займет 1 минуту, мы не просим <br />
               ваши контакты
             </p>
           </div>
