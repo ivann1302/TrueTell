@@ -28,6 +28,7 @@
     width: 100%;
     height: auto;
     padding: 0 16px;
+    gap: 8px;
     box-sizing: border-box;
   }
 }
@@ -93,8 +94,8 @@
   gap: 12px;
 
   @include mobile-tablet {
+    gap: 8px;
     width: 100%;
-    margin-top: 12px;
     flex-direction: row-reverse;
   }
 }
@@ -112,7 +113,7 @@
     background-color: $primary-blue-dark;
     opacity: 0.95;
     height: auto;
-    width: 31%;
+    width: 33%;
   }
 }
 
@@ -131,7 +132,7 @@
     height: auto;
     min-height: 300px;
     padding: 30px 20px;
-    width: 65%;
+    width: 64%;
   }
 }
 
@@ -145,7 +146,8 @@
 
   @include mobile-tablet {
     font-size: $font-size-h2-mobile;
-    line-height: 40px;
+    font-size: 25px;
+    line-height: 44px;
     margin: 0 0 40px 0;
   }
 }

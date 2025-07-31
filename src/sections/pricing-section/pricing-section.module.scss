@@ -2,7 +2,7 @@
 @use '../../styles/breakpoints' as *;
 @use '../../styles/mixins' as *;
 
-br {
+.br {
   @include mobile-tablet {
     display: none;
   }
@@ -25,6 +25,10 @@ br {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include mobile-tablet {
+    padding-top: 60px;
+  }
 }
 
 .container {
@@ -44,6 +48,9 @@ br {
 
   @include mobile-tablet {
     max-width: 85%;
+    font-size: 25px;
+    line-height: 44px;
+    margin-bottom: 18px;
   }
 }
 
@@ -72,6 +79,7 @@ br {
 
   @include mobile-tablet {
     width: 85%;
+    height: 240px;
   }
 }
 
@@ -86,6 +94,7 @@ br {
 
   @include mobile-tablet {
     width: 85%;
+    height: 240px;
   }
 }
 
@@ -94,12 +103,21 @@ br {
   font-size: 28px;
   line-height: 35px;
   text-align: left;
+
+  @include mobile-tablet {
+    font-size: 20px;
+    line-height: 25px;
+  }
 }
 
 .cardTitle {
   @extend %card-title-base;
   color: $primary-blue;
   margin: 0 0 70px 0;
+
+  @include mobile-tablet {
+    margin-bottom: 42px;
+  }
 }
 
 .cardTitleWhite {
@@ -123,6 +141,11 @@ br {
   margin: 0;
   text-align: left;
 
+  @include mobile-tablet {
+    font-size: 14px;
+    line-height: 17.5px;
+  }
+
   &:first-of-type {
     color: $primary-blue-light;
   }
@@ -135,6 +158,12 @@ br {
   color: $white;
   margin: 0 0 10px 0;
   text-align: left;
+
+  @include mobile-tablet {
+    font-size: 14px;
+    line-height: 17.5px;
+    margin-bottom: 17px;
+  }
 }
 
 .mb45 {
@@ -148,10 +177,22 @@ br {
   color: $white;
   margin: 0;
   text-align: left;
+
+  @include mobile-tablet {
+    font-size: 20px;
+    line-height: 25px;
+  }
 }
 
 .cardPeriod {
   font-size: 20px;
   line-height: 25px;
   font-weight: 400;
+
+  @include mobile-tablet {
+    font-size: 14px;
+    line-height: 17.5px;
+    position: relative;
+    top: -7px;
+  }
 } 

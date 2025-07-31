@@ -15,7 +15,7 @@
   align-items: center;
 
   @include mobile-tablet {
-    padding: 60px 0 60px;
+    padding: 60px 0 0;
   }
 }
 
@@ -55,6 +55,11 @@
 .accordionItem {
   width: 100%;
   margin-bottom: 0;
+
+  // Скрываем верхний divider для всех элементов, кроме первого
+  & + .accordionItem .divider:first-of-type {
+    display: none;
+  }
 }
 
 // Белая линия над каждым элементом
@@ -77,6 +82,7 @@
   text-align: left;
 
   @include mobile-tablet {
+    height: 70px;
     font-size: 16px;
     line-height: 20px;
     padding-bottom: 0;
@@ -95,10 +101,9 @@
   margin-right: 20px;
 
   @include mobile-tablet {
-    font-size: 25px;
-    line-height: 44px;
     position: relative;
-    top: -14px;
+    font-size: 16px;
+    line-height: 20px;
 
   }
 }

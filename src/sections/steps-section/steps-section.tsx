@@ -14,7 +14,7 @@ export const StepsSection: React.FC = () => {
     },
     {
       number: '3',
-      title: 'Запускаем интеграцию'
+      title: <>Запускаем <br className={styles.br} />интеграцию</>
     }
   ];
 

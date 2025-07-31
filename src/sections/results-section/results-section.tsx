@@ -31,7 +31,7 @@ export const ResultsSection: React.FC = () => {
             <img src={clientPhoto} alt="Client Photo" className={styles['client-photo']} />
           </div>
           <div className={styles['client-description']}>
-            <p className={styles['client-info']}>Дмитрий Баржин</p>
+            <p className={styles['client-name']}>Дмитрий Баржин</p>
             <p className={styles['client-info']}>Владелец сети из 6-ти табачных магазинов AllSmoke</p>
           </div>
         </div>
