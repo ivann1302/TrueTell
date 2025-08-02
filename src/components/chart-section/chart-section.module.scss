@@ -36,8 +36,25 @@
 
 .chart-section__content {
     padding: $content-padding 0 0 0;
+    display: flex;
+    justify-content: center;
 
     @include mobile-tablet {
         padding-top: $content-padding-mobile;
+    }
+}
+
+.chart-section__mobile-image {
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+
+    &--aimForProfit {
+        height: 180px;
+    }
+
+    &--throwOffBallast {
+        height: 233px;
     }
 }

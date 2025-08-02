@@ -4,6 +4,10 @@ import styles from './chart-section.module.scss';
 import Chart from '../hero/chart/chart';
 import { useChartData } from '../../hooks/useChartData';
 import { COLORS } from '../../styles/colors';
+import { useMobileTablet } from '../../hooks/useMediaQuery';
+import howItLookMobile from '../../images/mobile-charts/howItLook.jpg';
+import throwOffBallastMobile from '../../images/mobile-charts/throwOffBallast.jpg';
+import aimForProfitMobile from '../../images/mobile-charts/aimForProfit.jpg';
 
 export interface ChartSectionProps {
   /** Основной заголовок раздела */
@@ -35,6 +39,27 @@ export const ChartSection: React.FC<ChartSectionProps> = ({
   const chartItem = useMemo(() => getChartByIndex(chartIndex), [getChartByIndex, chartIndex]);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const isMobileOrTablet = useMobileTablet();
+
+  // Function to get the appropriate mobile image based on the title or chartIndex
+  const getMobileImage = () => {
+    if (title === "Сбросьте балласт") {
+      return throwOffBallastMobile;
+    } else if (title === "Нацельтесь на прибыль") {
+      return aimForProfitMobile;
+    } else if (title === "Как это выглядит") {
+      return howItLookMobile;
+    }
+    // Default fallback based on chartIndex
+    switch (chartIndex) {
+      case 3:
+        return aimForProfitMobile;
+      case 4:
+        return throwOffBallastMobile;
+      default:
+        return howItLookMobile;
+    }
+  };
 
   useEffect(() => {
     // Skip if chart item doesn't exist
@@ -97,7 +122,20 @@ export const ChartSection: React.FC<ChartSectionProps> = ({
         )}
       </div>
       <div className={styles['chart-section__content']}>
-        {isVisible && <Chart chart={chartItem} />}
+        {isVisible && (
+          isMobileOrTablet ? (
+            <img 
+              src={getMobileImage()} 
+              alt={title} 
+              className={`${styles['chart-section__mobile-image']} ${
+                title === "Сбросьте балласт" ? styles['chart-section__mobile-image--throwOffBallast'] :
+                title === "Нацельтесь на прибыль" ? styles['chart-section__mobile-image--aimForProfit'] : ''
+              }`} 
+            />
+          ) : (
+            <Chart chart={chartItem} />
+          )
+        )}
       </div>
     </section>
   );

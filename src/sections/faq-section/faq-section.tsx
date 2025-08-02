@@ -54,7 +54,7 @@ export const FAQSection: React.FC = () => {
     <section className={styles.faqSection}>
       <div className={styles.container}>
         <h2 className={styles.title}>FAQ</h2>
-        
+
         <div className={styles.accordionContainer}>
           {faqItems.map((item, index) => (
             <div key={index} className={styles.accordionItem}>
@@ -69,11 +69,9 @@ export const FAQSection: React.FC = () => {
                   className={`${styles.plusIcon} ${openIndex === index ? styles.rotated : ''}`}
                 ></span>
               </button>
-              {openIndex === index && (
-                <div className={styles.accordionContent}>
-                  {item.answer}
-                </div>
-              )}
+              <div className={`${styles.accordionContent} ${openIndex === index ? styles.open : ''}`}>
+                {item.answer}
+              </div>
               <div className={styles.divider}></div>
             </div>
           ))}

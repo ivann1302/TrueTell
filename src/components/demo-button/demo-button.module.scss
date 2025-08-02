@@ -48,5 +48,6 @@
 
   &.clicked {
     background: $secondary-blue;
+    transform: translateY(-2px);
   }
 }

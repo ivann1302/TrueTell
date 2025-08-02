@@ -1,7 +1,11 @@
 import styles from './how-it-look.module.scss';
 import howItLookImage from '../../images/howItLook.jpeg';
+import howItLookMobileImage from '../../images/mobile-charts/howItLook.jpg';
+import { useMobileTablet } from '../../hooks/useMediaQuery';
 
 export const HowItLook: React.FC = () => {
+  const isMobileOrTablet = useMobileTablet();
+
   return (
     <section className={styles['how-it-look']}>
       <div className={styles['how-it-look__header']}>
@@ -10,7 +14,10 @@ export const HowItLook: React.FC = () => {
         </h2>
       </div>
       <div className={styles['how-it-look__content']}>
-        <img src={howItLookImage} alt="Как это выглядит" />
+        <img 
+          src={isMobileOrTablet ? howItLookMobileImage : howItLookImage} 
+          alt="Как это выглядит" 
+        />
       </div>
     </section>
   )

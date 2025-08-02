@@ -1,11 +1,41 @@
 import React, { useState, useEffect, useCallback, useRef, useMemo, memo } from 'react';
 import styles from './slider-section.module.scss';
 import { useChartData } from '../../hooks/useChartData';
+import { useMobileTablet } from '../../hooks/useMediaQuery';
+import client1Image from '../../images/mobile-charts/client1.jpg';
+import client2Image from '../../images/mobile-charts/client2.jpg';
+import client3Image from '../../images/mobile-charts/client3.jpg';
 
 // Separate component for each slide to properly use hooks
 const SlideItem = memo(({ slide, getChartByIndex }: { slide: { id: number, chartIndex: number }, getChartByIndex: (index: number) => any }) => {
+  const isMobileOrTablet = useMobileTablet();
+
+  // Get the appropriate mobile image based on slide id
+  const getMobileImage = () => {
+    switch (slide.id) {
+      case 0:
+        return client1Image;
+      case 1:
+        return client2Image;
+      case 2:
+        return client3Image;
+      default:
+        return client1Image;
+    }
+  };
+
   // Now useMemo is at the top level of this component
   const slideContent = useMemo(() => {
+    if (isMobileOrTablet) {
+      return (
+        <img 
+          src={getMobileImage()} 
+          alt={`Client chart ${slide.id + 1}`} 
+          className={styles['slide-mobile-image']} 
+        />
+      );
+    }
+
     const chart = getChartByIndex(slide.chartIndex);
     if (!chart) return <div>Chart not found</div>;
 
@@ -26,7 +56,7 @@ const SlideItem = memo(({ slide, getChartByIndex }: { slide: { id: number, chart
         title={chart.title}
       />
     );
-  }, [slide.chartIndex, getChartByIndex]);
+  }, [slide.chartIndex, slide.id, getChartByIndex, isMobileOrTablet]);
 
   return (
     <div className={styles.slide}>
