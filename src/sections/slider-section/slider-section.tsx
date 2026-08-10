@@ -5,6 +5,7 @@ import { useMobileTablet } from '../../hooks/useMediaQuery';
 import client1Image from '../../images/mobile-charts/client1.jpg';
 import client2Image from '../../images/mobile-charts/client2.jpg';
 import client3Image from '../../images/mobile-charts/client3.jpg';
+import { assetPath } from '../../utils/functions/assetPath';
 
 // Separate component for each slide to properly use hooks
 const SlideItem = memo(({ slide, getChartByIndex }: { slide: { id: number, chartIndex: number }, getChartByIndex: (index: number) => any }) => {
@@ -29,7 +30,7 @@ const SlideItem = memo(({ slide, getChartByIndex }: { slide: { id: number, chart
     if (isMobileOrTablet) {
       return (
         <img 
-          src={getMobileImage()} 
+          src={assetPath(getMobileImage())}
           alt={`Client chart ${slide.id + 1}`} 
           className={styles['slide-mobile-image']} 
         />

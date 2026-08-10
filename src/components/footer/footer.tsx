@@ -1,5 +1,6 @@
 import styles from './footer.module.scss';
 import shortWhiteLogo from '../../images/logo/short-white-logo.svg';
+import { assetPath } from '../../utils/functions/assetPath';
 
 function AppFooter() {
   return (
@@ -18,7 +19,7 @@ function AppFooter() {
       <div className={`${styles.footerBlock} ${styles.footerBlock3}`}>
         <a href="#home">
           <img
-            src={shortWhiteLogo}
+            src={assetPath(shortWhiteLogo)}
             alt="TrueTell Logo"
             className={styles.footerLogo}
           />

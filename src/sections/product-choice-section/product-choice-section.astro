@@ -1,0 +1,56 @@
+---
+import { products } from './product-choice-data';
+import ProductChoiceDesktop from './product-choice-section.tsx';
+import styles from './product-choice-section.module.scss';
+---
+
+<section id="products" class={styles.section} aria-labelledby="products-title">
+  <div class={styles.container}>
+    <div class={styles.frame}>
+      <header class={styles.header}>
+        <h2 id="products-title" class={styles.title}>
+          Выберите задачу, которую нужно решить
+        </h2>
+      </header>
+
+      <ProductChoiceDesktop client:idle />
+
+      <div class={styles.mobileAccordion} aria-label="Выбор направления">
+        {products.map((product) => (
+          <details class={styles.accordionItem} name="product-solutions">
+            <summary class={styles.accordionSummary}>
+              <span class={styles.optionText}>
+                <strong>{product.problem}</strong>
+                <span>{product.shortName}</span>
+              </span>
+              <span class={styles.accordionToggle} aria-hidden="true"></span>
+            </summary>
+
+            <div class={styles.accordionPanel}>
+              <article class={styles.panel}>
+                <h3 class={styles.panelTitle}>{product.title}</h3>
+                <p class={styles.panelDescription}>{product.description}</p>
+
+                <div class={styles.details}>
+                  <h4 class={styles.detailsTitle}>{product.detailLabel}</h4>
+                  <ul class={styles.detailsList}>
+                    {product.details.map((detail) => <li>{detail}</li>)}
+                  </ul>
+                </div>
+
+                <a
+                  class={styles.panelLink}
+                  href={product.href}
+                  target={product.href.startsWith('http') ? '_blank' : undefined}
+                  rel={product.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                >
+                  {product.action}<span aria-hidden="true">↗</span>
+                </a>
+              </article>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

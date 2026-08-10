@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import styles from './results-section.module.scss';
 import checkmark from './../../images/icons/checkmark.svg';
 import clientPhoto from './../../images/photos/clientPhoto.png';
+import { assetPath } from '../../utils/functions/assetPath';
 
 export const ResultsSection: React.FC = () => {
   const results = useMemo(() =>
@@ -28,7 +29,7 @@ export const ResultsSection: React.FC = () => {
         {/* Кейс клиента */}
         <div className={styles['client-case']}>
           <div className={styles.image}>
-            <img src={clientPhoto} alt="Client Photo" className={styles['client-photo']} />
+            <img src={assetPath(clientPhoto)} alt="Client Photo" className={styles['client-photo']} />
           </div>
           <div className={styles['client-description']}>
             <p className={styles['client-name']}>Дмитрий Баржин</p>
@@ -41,7 +42,7 @@ export const ResultsSection: React.FC = () => {
         <div className={styles.content}>
           {results.map((result, index) => (
             <div key={index} className={styles['result-block']}>
-              <img src={checkmark} alt="checkmark" className={styles.checkmark}/>
+              <img src={assetPath(checkmark)} alt="checkmark" className={styles.checkmark}/>
               <div className={styles['text-content']}>
                 <h4 className={styles['block-title']}>{result.title}</h4>
                 <p className={styles['block-text']}>

@@ -1,0 +1,66 @@
+---
+import '../index.css';
+import '../App.css';
+import favicon from '../images/logo/short-white-logo.svg';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  structuredData?: Record<string, unknown>;
+}
+
+const {
+  title,
+  description,
+  canonicalPath = '/',
+  structuredData,
+} = Astro.props;
+const site = Astro.site ?? new URL('https://truetell.ru');
+const canonicalUrl = new URL(canonicalPath, site);
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' data: *.yandex.cloud *.yandex.ru *.yandex-team.ru *.yandex.net *.yandex.com yastat.net yastatic.net https://api-maps.yandex.ru https://*.maps.yandex.net https://yandex.ru/clck/click https://mc.yandex.com https://mc.yandex.ru; style-src 'self' 'unsafe-inline'; img-src 'self' *.yandex.cloud *.yandex.ru *.yandex-team.ru *.yandex.net *.yandex.com yastat.net yastatic.net data: https://mc.yandex.com https://mc.yandex.ru; connect-src 'self' 'unsafe-inline' 'unsafe-eval' data: ws: wss: localhost:* *.yandex.cloud *.yandex.ru *.yandex-team.ru *.yandex.net *.yandex.com yastat.net yastatic.net https://api-maps.yandex.ru https://*.maps.yandex.net https://yandex.ru/clck/click https://mc.yandex.com https://mc.yandex.ru https://datalens.yandex.ru https://datalens.yandex.com https://datalens.yandex; frame-src 'self' https://forms.yandex.ru https://forms.yandex.cloud https://api-maps.yandex.ru blob: https://mc.yandex.ru https://mc.yandex.com https://*.truetell.ru https://datalens.yandex.ru https://datalens.yandex.com https://datalens.yandex https://yandex.ru"
+    />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TrueTell" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="preconnect" href="https://mc.yandex.ru" />
+    <link rel="icon" type="image/svg+xml" href={favicon.src} />
+    <title>{title}</title>
+    {structuredData && (
+      <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    )}
+  </head>
+  <body>
+    <slot />
+    <script is:inline>
+      (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) return; }
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
+      })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=103366745', 'ym');
+      ym(103366745, 'init', { ssr:true, webvisor:true, clickmap:true, accurateTrackBounce:true, trackLinks:true });
+    </script>
+    <noscript>
+      <div><img src="https://mc.yandex.ru/watch/103366745" style="position:absolute;left:-9999px" alt="" /></div>
+    </noscript>
+  </body>
+</html>

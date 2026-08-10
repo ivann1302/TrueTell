@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Страница не найдена — TrueTell" description="Запрошенная страница не найдена.">
+  <main class="not-found">
+    <h1>Страница не найдена</h1>
+    <p>Возможно, ссылка устарела или адрес введён с ошибкой.</p>
+    <a href="/">Вернуться на главную</a>
+  </main>
+</BaseLayout>
+
+<style>
+  .not-found {
+    box-sizing: border-box;
+    max-width: 1170px;
+    min-height: 70vh;
+    margin: 0 auto;
+    padding: 160px 16px 64px;
+    text-align: center;
+  }
+
+  h1 { color: #093585; }
+  a { color: #093585; font-weight: 700; }
+</style>

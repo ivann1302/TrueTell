@@ -8,6 +8,7 @@ import { useMobileTablet } from '../../hooks/useMediaQuery';
 import howItLookMobile from '../../images/mobile-charts/howItLook.jpg';
 import throwOffBallastMobile from '../../images/mobile-charts/throwOffBallast.jpg';
 import aimForProfitMobile from '../../images/mobile-charts/aimForProfit.jpg';
+import { assetPath } from '../../utils/functions/assetPath';
 
 export interface ChartSectionProps {
   /** Основной заголовок раздела */
@@ -125,7 +126,7 @@ export const ChartSection: React.FC<ChartSectionProps> = ({
         {isVisible && (
           isMobileOrTablet ? (
             <img 
-              src={getMobileImage()} 
+              src={assetPath(getMobileImage())}
               alt={title} 
               className={`${styles['chart-section__mobile-image']} ${
                 title === "Сбросьте балласт" ? styles['chart-section__mobile-image--throwOffBallast'] :

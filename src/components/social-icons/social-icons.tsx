@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './social-icons.module.scss';
 import whatsappIcon from '../../images/icons/whatsapp.svg';
 import telegramIcon from '../../images/icons/telegram.svg';
+import { assetPath } from '../../utils/functions/assetPath';
 
 interface SocialIconsProps {
   className?: string;
@@ -19,7 +20,7 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({
         className={styles['social-icon']}
       >
         <div className={styles['whatsapp-icon']}>
-          <img src={whatsappIcon} alt="WhatsApp" />
+          <img src={assetPath(whatsappIcon)} alt="WhatsApp" />
         </div>
       </a>
       <a
@@ -29,7 +30,7 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({
         className={styles['social-icon']}
       >
         <div className={styles['telegram-icon']}>
-          <img src={telegramIcon} alt="Telegram" />
+          <img src={assetPath(telegramIcon)} alt="Telegram" />
         </div>
       </a>
     </div>

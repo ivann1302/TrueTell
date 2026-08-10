@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './whoIsItFor.module.scss';
 import whoIsItForImage from './../../images/photos/whoIsItFor.png';
+import { assetPath } from '../../utils/functions/assetPath';
 
 export const WhoIsItForSection: React.FC = () => {
   return (
@@ -22,7 +23,7 @@ export const WhoIsItForSection: React.FC = () => {
           {/* Центральное фото */}
           <div className={styles.centerImage}>
             <img 
-              src={whoIsItForImage} 
+              src={assetPath(whoIsItForImage)}
               alt="Business analytics" 
               className={styles.image}
             />

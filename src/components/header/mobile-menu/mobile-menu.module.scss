@@ -1,138 +1,218 @@
-@use "./../../../styles/variables" as *;
 @use '../../../styles/breakpoints' as *;
-@use '../../../styles/mixins' as *;
+@use '../../ui/liquid-glass/liquid-glass' as liquid-glass;
 
 .mobileMenu {
   display: block;
+  flex: 0 0 44px;
+  height: 44px;
+  position: relative;
+  width: 44px;
+  z-index: 2;
 
   @include desktop {
     display: none;
   }
+}
 
-  .menuButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    position: relative;
-    z-index: 1001;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    outline: none;
+.menuButton,
+.closeButton {
+  @include liquid-glass.control(50%, 18px, rgba(8, 11, 18, 0.2));
 
-    .burgerIcon {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background-color: $primary-blue-dark;
-      position: relative;
-      transition: all 0.3s ease;
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  padding: 0;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease;
+  width: 44px;
 
-      &::before,
-      &::after {
-        content: '';
-        position: absolute;
-        width: 24px;
-        height: 2px;
-        background-color: $primary-blue-dark;
-        transition: all 0.3s ease;
-        left: 0;
-      }
-
-      &::before {
-        top: -8px;
-      }
-
-      &::after {
-        bottom: -8px;
-      }
-
-      &.active {
-        background-color: transparent;
-
-        &::before {
-          transform: rotate(45deg);
-          top: 0;
-        }
-
-        &::after {
-          transform: rotate(-45deg);
-          bottom: 0;
-        }
-      }
-    }
+  &:hover,
+  &:focus-visible {
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(75, 156, 255, 0.045)),
+      rgba(8, 11, 18, 0.24);
+    border-color: rgba(247, 248, 250, 0.28);
   }
 
-  .mobileNav {
+  &:focus-visible {
+    outline: 2px solid rgba(75, 156, 255, 0.72);
+    outline-offset: 3px;
+  }
+}
+
+.menuButton {
+  color: rgba(247, 248, 250, 0.96);
+  flex: 0 0 44px;
+  position: relative;
+  z-index: 1;
+}
+
+.menuIcon {
+  display: block;
+  fill: none;
+  height: 24px;
+  overflow: visible;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 2;
+  width: 24px;
+}
+
+.mobileOverlay {
+  @include liquid-glass.veil;
+
+  align-content: stretch;
+  box-sizing: border-box;
+  color: #f7f8fa;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  inset: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  opacity: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding:
+    max(20px, env(safe-area-inset-top))
+    max(20px, env(safe-area-inset-right))
+    max(24px, env(safe-area-inset-bottom))
+    max(20px, env(safe-area-inset-left));
+  pointer-events: none;
+  position: fixed;
+  transform: translateX(100%);
+  transition:
+    transform 320ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 240ms ease,
+    visibility 0s linear 320ms;
+  visibility: hidden;
+  width: 100%;
+  z-index: 3000;
+
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+    transition-delay: 0s;
+    visibility: visible;
+  }
+
+  @include desktop {
+    display: none;
+  }
+}
+
+.menuTop {
+  align-items: center;
+  border-bottom: 1px solid rgba(247, 248, 250, 0.14);
+  display: flex;
+  justify-content: space-between;
+  min-height: 64px;
+  padding-bottom: 16px;
+}
+
+.menuBrand {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.closeButton {
+  flex: 0 0 auto;
+
+  span,
+  span::after {
+    background: #f7f8fa;
+    content: '';
+    display: block;
+    height: 2px;
     position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: max-content;
-    background-color: $white;
-    z-index: 1000;
-    overflow-y: auto;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-20px);
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    width: 24px;
+  }
 
-    &.open {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
+  span {
+    position: relative;
+    transform: rotate(45deg);
+  }
 
-    .mobileNavList {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-    }
+  span::after {
+    transform: rotate(90deg);
+  }
+}
 
-    .mobileNavItem {
-      padding: 0;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      transition-delay: 0.1s;
+.mobileNav {
+  align-self: center;
+  padding-block: 40px;
+  width: 100%;
+}
 
-      @for $i from 1 through 4 {
-        &:nth-child(#{$i}) {
-          transition-delay: 0.1s * $i;
-        }
-      }
-    }
+.mobileNavList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-    &.open .mobileNavItem {
-      opacity: 1;
-      transform: translateY(0);
-    }
+.mobileNavItem {
+  border-bottom: 1px solid rgba(247, 248, 250, 0.14);
 
-    .mobileNavLink {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding: 10px 16px 10px 0;
-      text-decoration: none;
-      font-size: 20px;
-      color: $primary-blue-dark;
-      height: 52px;
-      line-height: 32px;
-      border-bottom: 1px solid $gradient-blue-end;
-      transition: background-color 0.3s ease;
+  &:first-child {
+    border-top: 1px solid rgba(247, 248, 250, 0.14);
+  }
+}
 
-      &:hover {
-        background-color: rgba($gradient-blue-end, 0.3);
-      }
+.mobileNavLink {
+  align-items: center;
+  color: rgba(247, 248, 250, 0.94);
+  display: grid;
+  font-size: clamp(2rem, 9vw, 3rem);
+  font-weight: 500;
+  gap: 16px;
+  grid-template-columns: 36px 1fr;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  min-height: 84px;
+  padding-block: 16px;
+  text-decoration: none;
+  transition:
+    color 180ms ease,
+    padding-left 180ms ease;
 
-      &.active {
-        background-color: $gradient-blue-end;
-      }
-    }
+  &:hover,
+  &:focus-visible,
+  &.active {
+    color: #4b9cff;
+    padding-left: 8px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(75, 156, 255, 0.72);
+    outline-offset: 4px;
+  }
+}
+
+.linkIndex {
+  color: rgba(247, 248, 250, 0.44);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.menuNote {
+  border-top: 1px solid rgba(247, 248, 250, 0.14);
+  color: rgba(247, 248, 250, 0.58);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+  padding-top: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobileOverlay,
+  .menuButton,
+  .closeButton,
+  .mobileNavLink {
+    transition-duration: 0.01ms;
   }
 }

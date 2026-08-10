@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Quality Gate"
+  short_description: "Verify responsive UI, performance, and accessibility"
+  default_prompt: "Use $frontend-quality-gate to validate this frontend change before completion."

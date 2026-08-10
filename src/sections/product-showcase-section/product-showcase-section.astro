@@ -1,0 +1,128 @@
+---
+import LineWave from '../../components/ui/line-wave.astro';
+import bitrix24Icon from '../../images/logo/bitrix24-app-icon.svg';
+import moyskladIcon from '../../images/logo/moysklad-app-icon.svg';
+import styles from './product-showcase-section.module.scss';
+
+const consultationUrl = 'https://t.me/m/S5CgvcfdMjAy';
+---
+
+<section class={styles.section} aria-labelledby="product-showcase-title">
+  <div class={styles.container}>
+    <header class={styles.header}>
+      <h2 id="product-showcase-title" class={styles.title}>
+        Продукты TrueTell
+      </h2>
+    </header>
+
+    <div class={styles.productLayout}>
+      <article class={styles.biProduct}>
+        <h3 class={styles.productTitle}>BI-аналитика для торговли</h3>
+        <p class={styles.productDescription}>
+          Продажи, остатки и маржинальность в одном управленческом контуре.
+        </p>
+        <p class={styles.scope}>Дашборды · показатели · реальные сценарии</p>
+
+        <div class={styles.biWave} aria-hidden="true">
+          <LineWave variant="bi" />
+        </div>
+
+        <a class={styles.productButton} href="/bi-analitika/">
+          Посмотреть BI-решение<span aria-hidden="true">↗</span>
+        </a>
+      </article>
+
+      <div class={styles.mcpProducts} aria-label="MCP-продукты TrueTell">
+        <article class={styles.mcpProduct}>
+          <div class={styles.mcpHeading}>
+            <h3 class={styles.mcpTitle}>MCP-сервер для МойСклад</h3>
+            <img
+              class={styles.mcpIcon}
+              src={moyskladIcon.src}
+              alt=""
+              width="120"
+              height="120"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <p class={styles.mcpDescription}>
+            Доступ ИИ-инструментов к товарам, остаткам и заказам.
+          </p>
+          <a class={styles.productButton} href={consultationUrl} target="_blank" rel="noopener noreferrer">
+            Обсудить решение<span aria-hidden="true">↗</span>
+          </a>
+        </article>
+
+        <article class={styles.mcpProduct}>
+          <div class={styles.mcpHeading}>
+            <h3 class={styles.mcpTitle}>MCP-сервер для Битрикс24</h3>
+            <img
+              class={styles.mcpIcon}
+              src={bitrix24Icon.src}
+              alt=""
+              width="512"
+              height="512"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <p class={styles.mcpDescription}>
+            Работа ИИ с CRM-контекстом, сделками и рабочими сценариями.
+          </p>
+          <a class={styles.productButton} href={consultationUrl} target="_blank" rel="noopener noreferrer">
+            Узнать о запуске<span aria-hidden="true">↗</span>
+          </a>
+        </article>
+      </div>
+    </div>
+
+    <article class={styles.ideaProject}>
+      <div class={styles.ideaIntro}>
+        <h3 class={styles.ideaTitle}>Проверка бизнес-идей</h3>
+        <p class={styles.ideaDescription}>
+          Оценка идеи до вложений по динамике реального интереса.
+        </p>
+        <a class={styles.ideaLink} href={consultationUrl} target="_blank" rel="noopener noreferrer">
+          Узнать о проекте<span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <dl class={styles.signals}>
+        <div>
+          <dt>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M4 19V5"></path>
+              <path d="M4 19h16"></path>
+              <path d="M8 16v-4"></path>
+              <path d="M13 16V9"></path>
+              <path d="M18 16V6"></path>
+            </svg>
+            <span>Спрос</span>
+          </dt>
+          <dd>Устойчивость интереса</dd>
+        </div>
+        <div>
+          <dt>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M3 15c3 0 3-7 6-7s3 8 6 8 3-6 6-6"></path>
+              <path d="M3 19h18"></path>
+            </svg>
+            <span>Сезонность</span>
+          </dt>
+          <dd>Пики и спады</dd>
+        </div>
+        <div>
+          <dt>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="m4 17 5-5 4 3 7-8"></path>
+              <path d="M15 7h5v5"></path>
+            </svg>
+            <span>Тренд</span>
+          </dt>
+          <dd>Рост или снижение</dd>
+        </div>
+      </dl>
+    </article>
+  </div>
+</section>

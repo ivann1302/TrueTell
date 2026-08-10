@@ -1,0 +1,297 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AppHeader from '../components/header/header';
+import LineWave from '../components/ui/line-wave.astro';
+import PricingSection from '../sections/pricing-section/pricing-section';
+import SliderSection from '../sections/slider-section/slider-section';
+import { CHART_IFRAMES } from '../config/chartConfig';
+
+import heroStyles from '../sections/hero-section/hero-section.module.scss';
+import socialStyles from '../components/social-icons/social-icons.module.scss';
+import demoStyles from '../components/demo-button/demo-button.module.scss';
+import chartStyles from '../components/chart-section/chart-section.module.scss';
+import whoStyles from '../sections/whoIsItFor/whoIsItFor.module.scss';
+import painStyles from '../sections/pain-points-section/pain-points-section.module.scss';
+import solutionStyles from '../sections/solution-section/solution-section.module.scss';
+import howStyles from '../sections/howItLook/how-it-look.module.scss';
+import resultsStyles from '../sections/results-section/results-section.module.scss';
+import stepsStyles from '../sections/steps-section/steps-section.module.scss';
+import faqStyles from '../sections/faq-section/faq-section.module.scss';
+import ctaStyles from '../sections/cta-section/cta-section.module.scss';
+import footerStyles from '../components/footer/footer.module.scss';
+
+import whatsappIcon from '../images/icons/whatsapp.svg';
+import telegramIcon from '../images/icons/telegram.svg';
+import whoIsItForImage from '../images/photos/whoIsItFor.png';
+import cross from '../images/icons/cross.svg';
+import advantage1 from '../images/advantage1.svg';
+import advantage2 from '../images/advantage2.svg';
+import advantage3 from '../images/advantage3.svg';
+import howItLookImage from '../images/howItLook.jpeg';
+import howItLookMobileImage from '../images/mobile-charts/howItLook.jpg';
+import throwOffBallastMobile from '../images/mobile-charts/throwOffBallast.jpg';
+import aimForProfitMobile from '../images/mobile-charts/aimForProfit.jpg';
+import checkmark from '../images/icons/checkmark.svg';
+import clientPhoto from '../images/photos/clientPhoto.png';
+import shortWhiteLogo from '../images/logo/short-white-logo.svg';
+
+const title = 'BI-аналитика и дашборды для торговли — TrueTell';
+const description = 'BI-аналитика TrueTell объединяет продажи, остатки и маржинальность в управленческих дашбордах для розничных сетей и пользователей МойСклад.';
+const demoUrl = 'https://datalens.yandex/cts92knihou4y';
+
+const chartUrl = (chartIndex: number) => {
+  const chart = CHART_IFRAMES[chartIndex];
+  const url = new URL(chart.src);
+  Object.entries(chart.params).forEach(([key, value]) => {
+    if (value !== undefined) url.searchParams.set(key, value);
+  });
+  return url.toString();
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      name: 'BI-аналитика и управленческие дашборды для торговли',
+      serviceType: 'Разработка и внедрение BI-аналитики',
+      url: 'https://truetell.ru/bi-analitika/',
+      areaServed: 'RU',
+      provider: {
+        '@type': 'Organization',
+        name: 'TrueTell',
+        url: 'https://truetell.ru/',
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'TrueTell',
+          item: 'https://truetell.ru/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'BI-аналитика для торговли',
+          item: 'https://truetell.ru/bi-analitika/',
+        },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'У нас маленький бизнес — зачем это?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Именно небольшие сети теряют больше всего из-за ошибок в заказах. Проверьте, сколько товаров у вас лежит более трёх месяцев.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Можно ли добавить свои метрики?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Да. Можно настроить уникальные KPI, например маржинальность по категориям с учётом логистики и LTV клиента с данными из CRM.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Почему мы должны доверять этой аналитике?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Данные обрабатываются алгоритмами. Ошибки заметны по показателям, которые уйдут в ноль или в красную зону.',
+          },
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout {title} {description} canonicalPath="/bi-analitika/" {structuredData}>
+  <AppHeader client:load />
+  <main class="site-content">
+    <section id="home" class={heroStyles['hero-section']}>
+      <LineWave />
+      <div class={heroStyles.container}>
+        <h1 class={heroStyles.title}>BI-аналитика и дашборды для торговли</h1>
+        <p class={heroStyles.subtitle}>Объединяем данные о продажах, остатках и маржинальности, чтобы управленческие решения принимались по фактам.</p>
+        <div class={heroStyles.actions}>
+          <a class={heroStyles.primaryAction} href="#demo">Посмотреть демо</a>
+          <a class={heroStyles.secondaryAction} href="/#products">Все решения</a>
+        </div>
+      </div>
+    </section>
+
+    <section class={chartStyles['chart-section']}>
+      <div class={chartStyles['chart-section__header']}>
+        <h2 class={chartStyles['chart-section__title']} style="color: #093585">Сбросьте балласт</h2>
+      </div>
+      <div class={chartStyles['chart-section__content']}>
+        <picture>
+          <source media="(max-width: 768px)" srcset={throwOffBallastMobile.src} />
+          <iframe class="desktop-chart" src={chartUrl(4)} title="Дашборд для выявления неликвида" width="100%" height="400" loading="lazy" allowfullscreen></iframe>
+          <img class={`mobile-chart ${chartStyles['chart-section__mobile-image']} ${chartStyles['chart-section__mobile-image--throwOffBallast']}`} src={throwOffBallastMobile.src} alt="Дашборд для выявления неликвида" />
+        </picture>
+      </div>
+    </section>
+
+    <section class={whoStyles.WhoIsItFor}>
+      <div class={whoStyles.container}>
+        <h2 class={whoStyles.title}>Кому мы подходим?</h2>
+        <div class={whoStyles.content}>
+          <div class={whoStyles.firstColumn}>
+            <div class={`${whoStyles.smallBlock} ${whoStyles.bwGradient}`}>Розница от 3 точек</div>
+            <div class={`${whoStyles.largeBlock} ${whoStyles.bwGradient}`}>Вы используете систему управленческого учёта «МойСклад»</div>
+          </div>
+          <div class={whoStyles.centerImage}>
+            <img src={whoIsItForImage.src} alt="Аналитика для офлайн-бизнеса" class={whoStyles.image} loading="lazy" />
+          </div>
+          <div class={whoStyles.secondColumn}>
+            <div class={`${whoStyles.largeBlock} ${whoStyles.wbGradient}`}>У вас несколько разных отчётов, их делают люди</div>
+            <div class={`${whoStyles.smallBlock} ${whoStyles.wbGradient}`}>Либо отчёта нет вообще</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class={painStyles.painPointsSection}>
+      <div class={painStyles.container}>
+        <h2 class={painStyles.title}>Какие боли мы закрываем?</h2>
+        <div class={painStyles.content}>
+          <div class={painStyles.painBlock}><img src={cross.src} alt="" class={painStyles.cross} /><div class={painStyles.textContent}><h3 class={painStyles.blockTitle}>Товары-«мертвецы»</h3><p class={painStyles.blockText}>20–30% ассортимента не продаётся, <br />но менеджеры продолжают их <br />заказывать.</p></div></div>
+          <div class={painStyles.painBlock}><img src={cross.src} alt="" class={painStyles.cross} /><div class={painStyles.textContent}><h3 class={painStyles.blockTitle}>Поставщики впаривают неликвид</h3><p class={painStyles.blockText}>Менеджеры по продажам поставщиков <br />работают на свои KPI.</p></div></div>
+          <div class={painStyles.painBlock}><img src={cross.src} alt="" class={painStyles.cross} /><div class={painStyles.textContent}><h3 class={painStyles.blockTitle}>Погрешности в заказах</h3><p class={painStyles.blockText}>Как вы сейчас принимаете решения? <br />На глазок или по данным?</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class={solutionStyles.solutionSection}>
+      <div class={solutionStyles.container}>
+        <h2 class={solutionStyles.title}>Решение</h2>
+        <h3 class={solutionStyles.subtitle}>Дашборд, который показывает:</h3>
+        <div class={solutionStyles.content}>
+          <div class={solutionStyles.card}><img src={advantage1.src} alt="" class={solutionStyles.cardIcon} /><p class={solutionStyles.cardText}>Что заказывают менеджеры</p><p class={solutionStyles.vs}>VS</p><p class={solutionStyles.cardText}>что продаётся</p></div>
+          <div class={solutionStyles.card}><img src={advantage2.src} alt="" class={solutionStyles.cardIcon} /><p class={solutionStyles.cardText}>Какие товары реально прибыльны</p><br /><br /><p class={solutionStyles.cardText}>(а какие — нет)</p></div>
+          <div class={solutionStyles.card}><img src={advantage3.src} alt="" class={solutionStyles.cardIcon} /><p class={solutionStyles.cardText}>Информация по всем точкам в одном окне</p><p class={solutionStyles.cardText}>+ остатки онлайн*</p><p class={solutionStyles.disclaimer}>*при использовании системы управленческого учёта «МойСклад»</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class={howStyles['how-it-look']}>
+      <div class={howStyles['how-it-look__header']}>
+        <h2 class={howStyles['how-it-look__title']}>Как это выглядит</h2>
+      </div>
+      <div class={howStyles['how-it-look__content']}>
+        <picture>
+          <source media="(max-width: 768px)" srcset={howItLookMobileImage.src} />
+          <img src={howItLookImage.src} alt="Пример управленческого дашборда TrueTell" loading="lazy" />
+        </picture>
+      </div>
+    </section>
+
+    <section class={chartStyles['chart-section']} style="background-color: #093585">
+      <div class={chartStyles['chart-section__header']}>
+        <h2 class={chartStyles['chart-section__title']} style="color: #fff">Нацельтесь на прибыль</h2>
+        <h3 class={chartStyles['chart-section__subtitle']} style="color: #0084ff">Показатели по всем точкам на одном экране</h3>
+      </div>
+      <div class={chartStyles['chart-section__content']}>
+        <picture>
+          <source media="(max-width: 768px)" srcset={aimForProfitMobile.src} />
+          <iframe class="desktop-chart" src={chartUrl(3)} title="Показатели прибыли по всем торговым точкам" width="100%" height="400" loading="lazy" allowfullscreen></iframe>
+          <img class={`mobile-chart ${chartStyles['chart-section__mobile-image']} ${chartStyles['chart-section__mobile-image--aimForProfit']}`} src={aimForProfitMobile.src} alt="Дашборд показателей прибыли по торговым точкам" loading="lazy" />
+        </picture>
+      </div>
+    </section>
+
+    <PricingSection client:visible />
+
+    <section id="cases" class={resultsStyles['results-section']}>
+      <div class={resultsStyles.container}>
+        <h2 class={resultsStyles['section-title']}>Кейс клиента</h2>
+        <div class={resultsStyles['client-case']}>
+          <div class={resultsStyles.image}><img src={clientPhoto.src} alt="Дмитрий Баржин" class={resultsStyles['client-photo']} loading="lazy" /></div>
+          <div class={resultsStyles['client-description']}><p class={resultsStyles['client-name']}>Дмитрий Баржин</p><p class={resultsStyles['client-info']}>Владелец сети из 6 табачных магазинов AllSmoke</p></div>
+        </div>
+        <h3 class={resultsStyles.title}>Результаты через месяц:</h3>
+        <div class={resultsStyles.content}>
+          <div class={resultsStyles['result-block']}><img src={checkmark.src} alt="" class={resultsStyles.checkmark} /><div class={resultsStyles['text-content']}><h3 class={resultsStyles['block-title']}>Сократил</h3><p class={resultsStyles['block-text']}>на 35% «мёртвый» ассортимент</p></div></div>
+          <div class={resultsStyles['result-block']}><img src={checkmark.src} alt="" class={resultsStyles.checkmark} /><div class={resultsStyles['text-content']}><h3 class={resultsStyles['block-title']}>Увеличил</h3><p class={resultsStyles['block-text']}>на 18% маржу за счёт <br />перераспределения закупок</p></div></div>
+          <div class={resultsStyles['result-block']}><img src={checkmark.src} alt="" class={resultsStyles.checkmark} /><div class={resultsStyles['text-content']}><h3 class={resultsStyles['block-title']}>Назначил KPI</h3><p class={resultsStyles['block-text']}>понятные для менеджеров, дал доступ <br />к дашборду и теперь сам меньше следит <br />за магазинами</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <SliderSection client:visible />
+
+    <section class={stepsStyles.stepsSection}>
+      <div class={stepsStyles.container}>
+        <h2 class={stepsStyles.title}>Этапы внедрения</h2>
+        <div class={stepsStyles.content}>
+          <div class={stepsStyles.stepBlock}><div class={stepsStyles.stepNumber}>1</div><h3 class={stepsStyles.stepTitle}>Обсуждаем</h3><p class={stepsStyles.stepDescription}>Текущее положение дел и описываем целевое состояние отчётности</p><div class={stepsStyles.connector}></div></div>
+          <div class={stepsStyles.stepBlock}><div class={stepsStyles.stepNumber}>2</div><h3 class={stepsStyles.stepTitle}>Заключаем договор</h3><div class={stepsStyles.connector}></div></div>
+          <div class={stepsStyles.stepBlock}><div class={stepsStyles.stepNumber}>3</div><h3 class={stepsStyles.stepTitle}>Запускаем <br class={stepsStyles.br} />интеграцию</h3></div>
+        </div>
+      </div>
+    </section>
+
+    <section class={faqStyles.faqSection} data-faq>
+      <div class={faqStyles.container}>
+        <h2 class={faqStyles.title}>FAQ</h2>
+        <div class={faqStyles.accordionContainer}>
+          <div class={faqStyles.accordionItem} data-faq-item><div class={faqStyles.divider}></div><button class={faqStyles.accordionHeader} data-faq-button type="button" aria-expanded="false"><span class={faqStyles.questionText}>У нас маленький бизнес — зачем это?</span><span class={faqStyles.plusIcon} data-faq-icon></span></button><div class={faqStyles.accordionContent} data-faq-content><p class={faqStyles.answerText}>Именно небольшие сети теряют больше всего из-за ошибок в заказах. <br />Проверьте: сколько у вас товаров лежит более 3 месяцев?</p></div><div class={faqStyles.divider}></div></div>
+          <div class={faqStyles.accordionItem} data-faq-item><div class={faqStyles.divider}></div><button class={faqStyles.accordionHeader} data-faq-button type="button" aria-expanded="false"><span class={faqStyles.questionText}>Можно ли добавить свои метрики?</span><span class={faqStyles.plusIcon} data-faq-icon></span></button><div class={faqStyles.accordionContent} data-faq-content><p class={faqStyles.answerText}>Да! Например: <br />1. «Маржинальность по категориям» с учётом логистики. <br />2. LTV клиента с данными из CRM. Настроим под ваш уникальный KPI.</p></div><div class={faqStyles.divider}></div></div>
+          <div class={faqStyles.accordionItem} data-faq-item><div class={faqStyles.divider}></div><button class={faqStyles.accordionHeader} data-faq-button type="button" aria-expanded="false"><span class={faqStyles.questionText}>Почему мы должны доверять этой аналитике?</span><span class={faqStyles.plusIcon} data-faq-icon></span></button><div class={faqStyles.accordionContent} data-faq-content><p class={faqStyles.answerText}>Данные обрабатываются алгоритмами. Если произойдёт ошибка, она будет заметна: показатели уйдут в ноль или в красную зону.</p><p class={faqStyles.answerText}>Ручная аналитика → много звеньев погрешностей → сложно заметить → неверные решения.</p></div><div class={faqStyles.divider}></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="demo" class={ctaStyles.ctaSection}>
+      <div class={ctaStyles.container}>
+        <div class={ctaStyles.topBlock}><div class={ctaStyles.firstContent}><h2 class={ctaStyles.title}>Поднимите прибыльность на 5% <br />уже в этом месяце!</h2></div><div class={ctaStyles.secondContent}><h3 class={ctaStyles.subtitle}>Попробуйте сами</h3><a href={demoUrl} target="_blank" rel="noopener noreferrer" class={demoStyles['demo-button']}>Протестировать демо</a><p class={ctaStyles.description}>займёт 1 минуту, мы не просим <br />ваши контакты</p></div></div>
+        <div class={ctaStyles.bottomBlock}><div class={ctaStyles.contactBlock}><h3 class={ctaStyles.contactTitle}>Или напишите нам, мы же люди!</h3></div><div class={ctaStyles.socialBlock}><div class={socialStyles['social-icons']}><a href="https://api.whatsapp.com/send/?phone=79932806441&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class={socialStyles['social-icon']} aria-label="Написать в WhatsApp"><div class={socialStyles['whatsapp-icon']}><img src={whatsappIcon.src} alt="WhatsApp" /></div></a><a href="https://t.me/m/S5CgvcfdMjAy" target="_blank" rel="noopener noreferrer" class={socialStyles['social-icon']} aria-label="Написать в Telegram"><div class={socialStyles['telegram-icon']}><img src={telegramIcon.src} alt="Telegram" /></div></a></div></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class={footerStyles.footer}>
+    <div class={`${footerStyles.footerBlock} ${footerStyles.footerBlock1}`}><div class={footerStyles.footerBlockTitle}>Реквизиты</div><div class={footerStyles.footerBlockText}>ИП Романов Р.М.</div><div class={footerStyles.footerBlockText}>ИНН: 300103420414</div><div class={footerStyles.footerBlockText}>ОГРНИП: 318302500015221</div></div>
+    <div class={`${footerStyles.footerBlock} ${footerStyles.footerBlock2}`}><div class={footerStyles.footerBlockTitle}>Контакты</div><div class={footerStyles.footerBlockText}><a href="tel:+79932806441">+7 (993) 280-64-41</a></div><div class={footerStyles.footerBlockText}>truetell@bk.ru</div></div>
+    <div class={`${footerStyles.footerBlock} ${footerStyles.footerBlock3}`}><a href="/"><img src={shortWhiteLogo.src} alt="TrueTell" class={footerStyles.footerLogo} /></a><div class={footerStyles.footerBlockText}>© Все права защищены</div></div>
+  </footer>
+</BaseLayout>
+
+<script>
+  document.querySelectorAll('[data-faq-button]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('[data-faq-button]').forEach((otherButton) => {
+        otherButton.setAttribute('aria-expanded', 'false');
+        otherButton.closest('[data-faq-item]')?.querySelector('[data-faq-content]')?.removeAttribute('data-open');
+        otherButton.querySelector('[data-faq-icon]')?.removeAttribute('data-open');
+      });
+      if (!isOpen) {
+        button.setAttribute('aria-expanded', 'true');
+        button.closest('[data-faq-item]')?.querySelector('[data-faq-content]')?.setAttribute('data-open', '');
+        button.querySelector('[data-faq-icon]')?.setAttribute('data-open', '');
+      }
+    });
+  });
+</script>
+
+<style>
+  .desktop-chart { border: 0; display: block; }
+  .mobile-chart { display: none; }
+  [data-faq-content][data-open] { padding: 0 0 24px; max-height: 500px; opacity: 1; }
+  [data-faq-icon][data-open] { transform: rotate(90deg); }
+
+  @media (max-width: 768px) {
+    .desktop-chart { display: none; }
+    .mobile-chart { display: block; }
+  }
+</style>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Technical SEO"
+  short_description: "Validate public-page metadata and crawlability"
+  default_prompt: "Use $technical-seo to check this public page before completion."

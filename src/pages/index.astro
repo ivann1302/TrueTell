@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AppHeader from '../components/header/header';
+import LineWave from '../components/ui/line-wave.astro';
+import ProductChoiceSection from '../sections/product-choice-section/product-choice-section.astro';
+import ProductShowcaseSection from '../sections/product-showcase-section/product-showcase-section.astro';
+
+import heroStyles from '../sections/hero-section/hero-section.module.scss';
+
+const title = 'TrueTell — B2B-продукты, MCP и BI-аналитика';
+const description = 'TrueTell разрабатывает MCP-серверы для МойСклад и Битрикс24, BI-аналитику и интеграции для автоматизации торговли и продаж.';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      name: 'TrueTell',
+      url: 'https://truetell.ru/',
+      email: 'truetell@bk.ru',
+      telephone: '+7-993-280-64-41',
+      sameAs: ['https://t.me/m/S5CgvcfdMjAy'],
+    },
+    { '@type': 'WebSite', name: 'TrueTell', url: 'https://truetell.ru/', inLanguage: 'ru-RU' },
+  ],
+};
+---
+
+<BaseLayout {title} {description} {structuredData}>
+  <AppHeader client:load />
+  <main class="site-content">
+    <section id="home" class={heroStyles['hero-section']}>
+      <LineWave />
+      <div class={heroStyles.container}>
+        <h1 class={heroStyles.title}>B2B-продукты для данных, продаж и автоматизации</h1>
+        <p class={heroStyles.subtitle}>Разрабатываем MCP-серверы для МойСклад и Битрикс24, BI-аналитику и интеграции с маркетплейсами.</p>
+        <div class={heroStyles.actions}>
+          <a class={heroStyles.primaryAction} href="#products">Посмотреть решения</a>
+          <a class={heroStyles.secondaryAction} href="https://t.me/m/S5CgvcfdMjAy" target="_blank" rel="noopener noreferrer">Обсудить задачу</a>
+        </div>
+      </div>
+    </section>
+
+    <ProductChoiceSection />
+    <ProductShowcaseSection />
+  </main>
+</BaseLayout>

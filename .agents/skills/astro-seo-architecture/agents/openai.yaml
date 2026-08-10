@@ -1,0 +1,4 @@
+interface:
+  display_name: "Astro SEO Architecture"
+  short_description: "Keep the site static, semantic, and lean"
+  default_prompt: "Use $astro-seo-architecture to implement this page with Astro-first architecture."

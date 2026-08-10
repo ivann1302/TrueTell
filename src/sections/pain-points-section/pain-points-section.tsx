@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './pain-points-section.module.scss';
 import cross from './../../images/icons/cross.svg';
+import { assetPath } from '../../utils/functions/assetPath';
 
 export const PainPointsSection: React.FC = () => {
   return (
@@ -11,7 +12,7 @@ export const PainPointsSection: React.FC = () => {
         <div className={styles.content}>
           {/* Первый блок */}
           <div className={styles.painBlock}>
-            <img src={cross} alt="cross" className={styles.cross}/>
+            <img src={assetPath(cross)} alt="cross" className={styles.cross}/>
             <div className={styles.textContent}>
               <h3 className={styles.blockTitle}>Товары-«мертвецы»</h3>
               <p className={styles.blockText}>
@@ -24,7 +25,7 @@ export const PainPointsSection: React.FC = () => {
 
           {/* Второй блок */}
           <div className={styles.painBlock}>
-            <img src={cross} alt="cross" className={styles.cross}/>
+            <img src={assetPath(cross)} alt="cross" className={styles.cross}/>
             <div className={styles.textContent}>
               <h3 className={styles.blockTitle}>Поставщики впаривают неликвид</h3>
               <p className={styles.blockText}>
@@ -36,7 +37,7 @@ export const PainPointsSection: React.FC = () => {
 
           {/* Третий блок */}
           <div className={styles.painBlock}>
-            <img src={cross} alt="cross" className={styles.cross}/>
+            <img src={assetPath(cross)} alt="cross" className={styles.cross}/>
             <div className={styles.textContent}>
               <h3 className={styles.blockTitle}>Погрешности в заказах:</h3>
               <p className={styles.blockText}>
@@ -51,4 +52,4 @@ export const PainPointsSection: React.FC = () => {
   );
 };
 
-export default PainPointsSection; 
+export default PainPointsSection;

@@ -2,6 +2,7 @@ import styles from './how-it-look.module.scss';
 import howItLookImage from '../../images/howItLook.jpeg';
 import howItLookMobileImage from '../../images/mobile-charts/howItLook.jpg';
 import { useMobileTablet } from '../../hooks/useMediaQuery';
+import { assetPath } from '../../utils/functions/assetPath';
 
 export const HowItLook: React.FC = () => {
   const isMobileOrTablet = useMobileTablet();
@@ -15,7 +16,7 @@ export const HowItLook: React.FC = () => {
       </div>
       <div className={styles['how-it-look__content']}>
         <img 
-          src={isMobileOrTablet ? howItLookMobileImage : howItLookImage} 
+          src={assetPath(isMobileOrTablet ? howItLookMobileImage : howItLookImage)}
           alt="Как это выглядит" 
         />
       </div>

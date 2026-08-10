@@ -1,0 +1,4 @@
+interface:
+  display_name: "TrueTell Design System"
+  short_description: "Apply the TrueTell visual system"
+  default_prompt: "Use $truetell-design-system to design this TrueTell interface."
