@@ -1,0 +1,61 @@
+---
+import styles from './faq-section.module.scss';
+
+const faqItems = [
+  {
+    question: 'С чего начать работу?',
+    answer: 'Здесь будет краткое описание первого шага и формата знакомства с задачей.',
+  },
+  {
+    question: 'Как выбрать подходящее решение?',
+    answer: 'Здесь будет ответ о том, как мы подбираем решение под процессы и ограничения бизнеса.',
+  },
+  {
+    question: 'С какими системами вы интегрируетесь?',
+    answer: 'Здесь будет перечень доступных интеграций и требований к подключению.',
+  },
+  {
+    question: 'Сколько времени занимает запуск?',
+    answer: 'Здесь будет ориентир по этапам и срокам запуска проекта.',
+  },
+  {
+    question: 'Как устроены поддержка и развитие проекта?',
+    answer: 'Здесь будет информация о поддержке, обновлениях и развитии решения.',
+  },
+];
+---
+
+<section class={styles.section} aria-labelledby="faq-title">
+  <div class={styles.container}>
+    <div class={styles.content}>
+      <h2 id="faq-title" class={styles.title}>Частые вопросы</h2>
+
+      <div class={styles.accordion}>
+        {faqItems.map((item) => (
+          <details class={styles.item} name="faq-items">
+            <summary class={styles.question}>
+              <span>{item.question}</span>
+              <svg
+                class={styles.chevron}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </summary>
+
+            <div class={styles.answer}>
+              <p>{item.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

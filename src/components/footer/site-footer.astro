@@ -1,0 +1,44 @@
+---
+import logo from '../../images/logo/logo.svg';
+import styles from './site-footer.module.scss';
+
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const internalHref = (path: string) => `${base}${path.replace(/^\//, '')}`;
+
+const navigation = [
+  { label: 'Кейсы', href: '/#cases' },
+  { label: 'Продукты', href: '/products/' },
+  { label: 'Блог', href: '/blog/' },
+  { label: 'О нас', href: '/#home' },
+];
+---
+
+<footer class={styles.footer}>
+  <div class={styles.container}>
+    <a class={styles.logoLink} href={`${base}#home`} aria-label="TrueTell — на главную">
+      <img
+        class={styles.logo}
+        src={logo.src}
+        alt="TrueTell"
+        width="180"
+        height="36"
+        loading="lazy"
+        decoding="async"
+      />
+    </a>
+
+    <nav class={styles.navigation} aria-label="Навигация в подвале">
+      <ul class={styles.navigationList}>
+        {navigation.map((item) => (
+          <li><a href={internalHref(item.href)}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class={styles.details} aria-label="Реквизиты">
+      <p>ИП Романов Р.М.</p>
+      <p>ИНН 300103420414</p>
+      <p>ОГРНИП 318302500015221</p>
+    </div>
+  </div>
+</footer>

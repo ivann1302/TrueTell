@@ -1,0 +1,328 @@
+@use '../../styles/breakpoints' as *;
+@use '../../components/ui/liquid-glass/liquid-glass' as liquid-glass;
+
+.section {
+  background: #101621;
+  box-sizing: border-box;
+  color: #f7f8fa;
+  isolation: isolate;
+  overflow: clip;
+  padding: 128px 0 136px;
+  position: relative;
+
+  &::before {
+    background-image: radial-gradient(circle, rgba(247, 248, 250, 0.2) 0.75px, transparent 1px);
+    background-position: center top;
+    background-size: 19px 19px;
+    content: '';
+    inset: 0;
+    mask-image: linear-gradient(to bottom, transparent 2%, #000 18%, #000 84%, transparent 100%);
+    opacity: 0.48;
+    pointer-events: none;
+    position: absolute;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 2%,
+      #000 18%,
+      #000 84%,
+      transparent 100%
+    );
+    z-index: -1;
+  }
+
+  &::after {
+    background: radial-gradient(
+      ellipse 54% 34% at 50% 4%,
+      rgba(41, 111, 214, 0.13),
+      transparent 72%
+    );
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+  }
+}
+
+.container {
+  margin-inline: auto;
+  width: min(calc(100% - 64px), 1488px);
+}
+
+.header {
+  margin: 0 auto 84px;
+  max-width: 960px;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(2.7rem, 4.3vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.description {
+  color: rgba(247, 248, 250, 0.66);
+  font-size: 19px;
+  line-height: 1.6;
+  margin: 28px auto 0;
+  max-width: 760px;
+  text-wrap: balance;
+}
+
+.groups {
+  display: grid;
+  gap: 64px;
+}
+
+.groupTitle {
+  @include liquid-glass.control(999px, 18px, rgba(16, 22, 33, 0.28));
+
+  align-items: center;
+  box-sizing: border-box;
+  color: #f7f8fa;
+  display: flex;
+  font-size: 16px;
+  font-weight: 500;
+  justify-content: center;
+  letter-spacing: 0.025em;
+  line-height: 1.3;
+  margin: 0 auto 32px;
+  min-height: 42px;
+  padding: 0 18px;
+  text-align: center;
+  width: fit-content;
+}
+
+.visuallyHidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.marquee {
+  margin-inline: calc(50% - 50vw);
+  mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  overflow: hidden;
+  padding: 4px 0 12px;
+  width: 100vw;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+
+  &:hover .track {
+    animation-play-state: paused;
+  }
+}
+
+.track {
+  display: flex;
+  transform: translate3d(0, 0, 0);
+  width: max-content;
+  will-change: transform;
+}
+
+.crmTrack {
+  animation: marquee-left 50s linear infinite;
+
+  .logoSet {
+    min-width: 133.333vw;
+  }
+}
+
+.serviceTrack {
+  animation: marquee-right 48s linear infinite;
+}
+
+.logoSet {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+  min-width: 100vw;
+  padding: 0;
+}
+
+.integration {
+  align-items: center;
+  display: flex;
+  flex: 0 0 80px;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.logoDisc {
+  align-items: center;
+  aspect-ratio: 1;
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 50%;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.2) inset,
+    0 8px 24px rgba(2, 8, 20, 0.18);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  width: 72px;
+}
+
+.logo {
+  display: block;
+  height: 32px;
+  object-fit: contain;
+  width: 36px;
+}
+
+.logo[data-fit='square'] {
+  border-radius: 12px;
+  height: 38px;
+  width: 38px;
+}
+
+.logo[data-fit='wide'] {
+  height: 28px;
+  width: 44px;
+}
+
+.integrationName {
+  color: rgba(247, 248, 250, 0.76);
+  font-size: 14px;
+  line-height: 1.35;
+  text-align: center;
+  text-wrap: balance;
+}
+
+@keyframes marquee-left {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@include mobile-tablet {
+  .section {
+    padding: 88px 0 92px;
+  }
+
+  .container {
+    width: min(calc(100% - 32px), 1488px);
+  }
+
+  .header {
+    margin-bottom: 60px;
+    max-width: 640px;
+  }
+
+  .title {
+    font-size: clamp(2.05rem, 9vw, 2.75rem);
+    line-height: 1.06;
+  }
+
+  .description {
+    font-size: 16px;
+    margin-top: 22px;
+  }
+
+  .groups {
+    gap: 56px;
+  }
+
+  .groupTitle {
+    margin-bottom: 28px;
+  }
+
+  .marquee {
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  .integration {
+    flex-basis: 66px;
+    gap: 10px;
+  }
+
+  .crmTrack .integration {
+    flex-basis: 104px;
+  }
+
+  .serviceTrack .integration {
+    flex-basis: 104px;
+  }
+
+  .logoDisc {
+    width: 60px;
+  }
+
+  .logo {
+    height: 26px;
+    width: 30px;
+  }
+
+  .logo[data-fit='square'] {
+    border-radius: 9px;
+    height: 32px;
+    width: 32px;
+  }
+
+  .logo[data-fit='wide'] {
+    height: 24px;
+    width: 38px;
+  }
+
+  .integrationName {
+    font-size: 13px;
+  }
+
+  .crmTrack {
+    animation-duration: 36s;
+  }
+
+  .serviceTrack {
+    animation-duration: 42s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    mask-image: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-mask-image: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .track {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  .logoSet {
+    min-width: max-content;
+  }
+
+  .logoSet + .logoSet {
+    display: none;
+  }
+}

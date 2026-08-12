@@ -48,7 +48,7 @@ function AppHeader() {
         <nav className={styles.navigation}>
           <ul className={styles.navList}>
             <li className={styles.navItem}>
-              <a href="/#products" className={styles.navLink}>
+              <a href="/products/" className={styles.navLink}>
                 Решения
               </a>
             </li>
@@ -63,8 +63,13 @@ function AppHeader() {
               </a>
             </li>
             <li className={styles.navItem}>
-              <a href="/bi-analitika/#demo" className={styles.navLink}>
-                Бесплатное демо
+              <a href="/blog/" className={styles.navLink}>
+                Блог
+              </a>
+            </li>
+            <li className={styles.navItem}>
+              <a href="/bi-analitika/" className={styles.navLink}>
+                BI-аналитика
               </a>
             </li>
           </ul>

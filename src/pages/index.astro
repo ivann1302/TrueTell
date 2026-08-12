@@ -1,7 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import AppHeader from '../components/header/header';
+import AppHeader from '../components/header/header.astro';
+import SiteFooter from '../components/footer/site-footer.astro';
 import LineWave from '../components/ui/line-wave.astro';
+import BlogSection from '../sections/blog-section/blog-section.astro';
+import CasesSection from '../sections/cases-section/cases-section.astro';
+import ConsultationCtaSection from '../sections/consultation-cta-section/consultation-cta-section.astro';
+import DecisionStatementSection from '../sections/decision-statement-section/decision-statement-section.astro';
+import FaqSection from '../sections/faq-section/faq-section.astro';
+import IntegrationsSection from '../sections/integrations-section/integrations-section.astro';
 import ProductChoiceSection from '../sections/product-choice-section/product-choice-section.astro';
 import ProductShowcaseSection from '../sections/product-showcase-section/product-showcase-section.astro';
 
@@ -9,6 +16,8 @@ import heroStyles from '../sections/hero-section/hero-section.module.scss';
 
 const title = 'TrueTell — B2B-продукты, MCP и BI-аналитика';
 const description = 'TrueTell разрабатывает MCP-серверы для МойСклад и Битрикс24, BI-аналитику и интеграции для автоматизации торговли и продаж.';
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteUrl = new URL(base, import.meta.env.SITE).toString();
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -16,18 +25,18 @@ const structuredData = {
     {
       '@type': 'Organization',
       name: 'TrueTell',
-      url: 'https://truetell.ru/',
+      url: siteUrl,
       email: 'truetell@bk.ru',
       telephone: '+7-993-280-64-41',
       sameAs: ['https://t.me/m/S5CgvcfdMjAy'],
     },
-    { '@type': 'WebSite', name: 'TrueTell', url: 'https://truetell.ru/', inLanguage: 'ru-RU' },
+    { '@type': 'WebSite', name: 'TrueTell', url: siteUrl, inLanguage: 'ru-RU' },
   ],
 };
 ---
 
 <BaseLayout {title} {description} {structuredData}>
-  <AppHeader client:load />
+  <AppHeader showPricing={false} />
   <main class="site-content">
     <section id="home" class={heroStyles['hero-section']}>
       <LineWave />
@@ -43,5 +52,12 @@ const structuredData = {
 
     <ProductChoiceSection />
     <ProductShowcaseSection />
+    <CasesSection />
+    <IntegrationsSection />
+    <BlogSection />
+    <FaqSection />
+    <DecisionStatementSection />
+    <ConsultationCtaSection />
   </main>
+  <SiteFooter />
 </BaseLayout>

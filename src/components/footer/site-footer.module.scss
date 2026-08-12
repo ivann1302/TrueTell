@@ -1,0 +1,210 @@
+.footer {
+  background:
+    radial-gradient(
+      ellipse 38% 152% at 94% 100%,
+      rgba(75, 156, 255, 0.11) 0%,
+      rgba(23, 101, 218, 0.035) 48%,
+      rgba(16, 22, 33, 0) 76%
+    ),
+    #101621;
+  box-sizing: border-box;
+  color: #f7f8fa;
+  isolation: isolate;
+  overflow: clip;
+  padding: 64px 0;
+  position: relative;
+
+  &::before {
+    background-image: radial-gradient(
+      circle,
+      rgba(247, 248, 250, 0.2) 0.75px,
+      rgba(247, 248, 250, 0) 0.95px
+    );
+    background-size: 18px 18px;
+    content: '';
+    inset: 0;
+    mask-image: radial-gradient(
+      ellipse 112% 118% at 42% 40%,
+      #000 0%,
+      rgba(0, 0, 0, 0.8) 58%,
+      rgba(0, 0, 0, 0.22) 86%,
+      transparent 100%
+    );
+    opacity: 0.5;
+    pointer-events: none;
+    position: absolute;
+    -webkit-mask-image: radial-gradient(
+      ellipse 112% 118% at 42% 40%,
+      #000 0%,
+      rgba(0, 0, 0, 0.8) 58%,
+      rgba(0, 0, 0, 0.22) 86%,
+      transparent 100%
+    );
+    z-index: 0;
+  }
+}
+
+.container {
+  align-items: start;
+  display: grid;
+  gap: 64px;
+  grid-template-columns: minmax(280px, 5fr) minmax(180px, 2fr) minmax(280px, 3fr);
+  margin-inline: auto;
+  position: relative;
+  width: min(calc(100% - 64px), 1320px);
+  z-index: 1;
+}
+
+.logoLink {
+  align-items: center;
+  display: inline-flex;
+  justify-self: start;
+
+  &:focus-visible {
+    border-radius: 6px;
+    outline: 2px solid rgba(75, 156, 255, 0.72);
+    outline-offset: 6px;
+  }
+}
+
+.logo {
+  display: block;
+  filter: brightness(0) invert(1);
+  height: 36px;
+  opacity: 0.94;
+  width: 180px;
+}
+
+.navigationList {
+  display: grid;
+  gap: 4px 24px;
+  grid-template-columns: repeat(2, minmax(76px, 1fr));
+  list-style: none;
+  margin: -10px 0 0;
+  padding: 0;
+
+  a {
+    align-items: center;
+    color: rgba(247, 248, 250, 0.82);
+    display: inline-flex;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    min-height: 44px;
+    text-decoration: none;
+    transition:
+      color 180ms ease,
+      transform 180ms ease;
+
+    &:hover {
+      color: #4b9cff;
+      transform: translateX(2px);
+    }
+
+    &:focus-visible {
+      border-radius: 6px;
+      outline: 2px solid rgba(75, 156, 255, 0.72);
+      outline-offset: 3px;
+    }
+  }
+}
+
+.details {
+  color: rgba(247, 248, 250, 0.62);
+  font-size: 0.875rem;
+  line-height: 1.55;
+
+  p {
+    margin: 0;
+
+    & + p {
+      margin-top: 6px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .footer {
+    background:
+      radial-gradient(
+        ellipse 38% 142% at 94% 100%,
+        rgba(75, 156, 255, 0.11) 0%,
+        rgba(23, 101, 218, 0.035) 48%,
+        rgba(16, 22, 33, 0) 76%
+      ),
+      #101621;
+  }
+
+  .container {
+    gap: 48px;
+    grid-template-columns: minmax(220px, 1fr) minmax(180px, 1fr);
+  }
+
+  .details {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    background:
+      radial-gradient(
+        ellipse 72% 150% at 100% 100%,
+        rgba(75, 156, 255, 0.1) 0%,
+        rgba(23, 101, 218, 0.03) 48%,
+        rgba(16, 22, 33, 0) 76%
+      ),
+      #101621;
+    padding: 48px 0;
+
+    &::before {
+      background-size: 16px 16px;
+      mask-image: radial-gradient(
+        ellipse 138% 104% at 32% 38%,
+        #000 0%,
+        rgba(0, 0, 0, 0.76) 62%,
+        transparent 100%
+      );
+      opacity: 0.46;
+      -webkit-mask-image: radial-gradient(
+        ellipse 138% 104% at 32% 38%,
+        #000 0%,
+        rgba(0, 0, 0, 0.76) 62%,
+        transparent 100%
+      );
+    }
+  }
+
+  .container {
+    gap: 32px;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+    width: min(calc(100% - 32px), 1320px);
+  }
+
+  .logoLink {
+    justify-self: center;
+  }
+
+  .navigation {
+    width: 100%;
+  }
+
+  .navigationList {
+    justify-items: center;
+    margin-inline: auto;
+    margin-top: 0;
+    max-width: 280px;
+  }
+
+  .details {
+    grid-column: 1;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navigationList a {
+    transition-duration: 0.01ms;
+  }
+}

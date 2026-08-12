@@ -1,0 +1,62 @@
+---
+import styles from './cases-section.module.scss';
+
+const cases = [
+  {
+    client: 'Розничная сеть',
+    title: 'Аналитика продаж и остатков',
+    summary: 'Продажи и остатки — в едином аналитическом контуре.',
+  },
+  {
+    client: 'Оптовый дистрибьютор',
+    title: 'Автоматизация обработки заказов',
+    summary: 'Заказы проходят между отделами и системами без ручной передачи.',
+  },
+];
+---
+
+<section id="cases" class={styles.section} aria-labelledby="cases-title">
+  <div class={styles.container}>
+    <header class={styles.sectionHeader}>
+      <h2 id="cases-title" class={styles.title}>Кейсы клиентов</h2>
+    </header>
+
+    <div class={styles.caseList}>
+      {cases.map((caseItem, index) => (
+        <article class:list={[styles.caseCard, index === 0 ? styles.featured : styles.secondary]}>
+          <div class={styles.caseIdentity}>
+            <p class={styles.client}>{caseItem.client}</p>
+            <h3 class={styles.caseTitle}>{caseItem.title}</h3>
+          </div>
+
+          <div class={styles.caseSummary}>
+            <p class={styles.summary}>{caseItem.summary}</p>
+            <span class={styles.icon} aria-hidden="true">
+              {index === 0 ? (
+                <svg viewBox="0 0 120 120" fill="none" focusable="false">
+                  <path d="M18 98.5H103" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <rect x="24" y="68" width="14" height="24" rx="3" fill="currentColor" fill-opacity="0.18" stroke="currentColor" stroke-width="2" />
+                  <rect x="53" y="54" width="14" height="38" rx="3" fill="currentColor" fill-opacity="0.18" stroke="currentColor" stroke-width="2" />
+                  <rect x="82" y="39" width="14" height="53" rx="3" fill="currentColor" fill-opacity="0.18" stroke="currentColor" stroke-width="2" />
+                  <path d="M24 55C37 53 44 39 56 43C69 47 76 26 96 23" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M88 20.5L96.5 22.5L93.5 31" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 120 120" fill="none" focusable="false">
+                  <rect x="13" y="27" width="36" height="48" rx="7" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-width="2" />
+                  <path d="M23 41H39M23 50H36M23 59H33" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <rect x="75" y="48" width="32" height="42" rx="7" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-width="2" />
+                  <path d="M85 62H97M85 71H97M85 80H93" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <path d="M49 46H62C69.18 46 75 51.82 75 59V62" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+                  <path d="M68.5 56L75 62.5L81.5 56" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M75 82H61C53.82 82 48 76.18 48 69V66" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+                  <path d="M54.5 72L48 65.5L41.5 72" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              )}
+            </span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

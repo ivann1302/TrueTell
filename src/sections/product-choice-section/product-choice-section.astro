@@ -1,56 +1,111 @@
 ---
 import { products } from './product-choice-data';
-import ProductChoiceDesktop from './product-choice-section.tsx';
 import styles from './product-choice-section.module.scss';
+
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const resolveHref = (href: string) => href.startsWith('/')
+  ? `${base}${href.replace(/^\//, '')}`
+  : href;
 ---
 
 <section id="products" class={styles.section} aria-labelledby="products-title">
   <div class={styles.container}>
-    <div class={styles.frame}>
-      <header class={styles.header}>
-        <h2 id="products-title" class={styles.title}>
-          Выберите задачу, которую нужно решить
-        </h2>
-      </header>
+    <header class={styles.header}>
+      <h2 id="products-title" class={styles.title}>
+        Выберите задачу — решение возьмём на себя
+      </h2>
+    </header>
 
-      <ProductChoiceDesktop client:idle />
+    <div class={styles.navigator} data-product-choice>
+      <div class={styles.options} aria-label="Выбор направления">
+        {products.map((product, index) => (
+          <button
+            class={styles.option}
+            type="button"
+            aria-pressed={index === 0 ? 'true' : 'false'}
+            data-product-option={product.id}
+          >
+            <span class={styles.optionText}>
+              <strong>{product.problem}</strong>
+            </span>
+            <span class={styles.optionArrow} aria-hidden="true">›</span>
+          </button>
+        ))}
+      </div>
 
-      <div class={styles.mobileAccordion} aria-label="Выбор направления">
-        {products.map((product) => (
-          <details class={styles.accordionItem} name="product-solutions">
-            <summary class={styles.accordionSummary}>
-              <span class={styles.optionText}>
-                <strong>{product.problem}</strong>
-                <span>{product.shortName}</span>
-              </span>
-              <span class={styles.accordionToggle} aria-hidden="true"></span>
-            </summary>
+      <div class={styles.desktopPanel} aria-live="polite">
+        {products.map((product, index) => (
+          <div
+            class={styles.desktopPanelItem}
+            data-product-panel={product.id}
+            hidden={index !== 0}
+          >
+            <article class={styles.panel}>
+              <h3 class={styles.panelTitle}>{product.title}</h3>
+              <p class={styles.panelDescription}>{product.description}</p>
 
-            <div class={styles.accordionPanel}>
-              <article class={styles.panel}>
-                <h3 class={styles.panelTitle}>{product.title}</h3>
-                <p class={styles.panelDescription}>{product.description}</p>
-
-                <div class={styles.details}>
-                  <h4 class={styles.detailsTitle}>{product.detailLabel}</h4>
-                  <ul class={styles.detailsList}>
-                    {product.details.map((detail) => <li>{detail}</li>)}
-                  </ul>
-                </div>
-
-                <a
-                  class={styles.panelLink}
-                  href={product.href}
-                  target={product.href.startsWith('http') ? '_blank' : undefined}
-                  rel={product.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                >
-                  {product.action}<span aria-hidden="true">↗</span>
-                </a>
-              </article>
-            </div>
-          </details>
+              <a
+                class={styles.panelLink}
+                href={resolveHref(product.href)}
+                target={product.href.startsWith('http') ? '_blank' : undefined}
+                rel={product.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              >
+                {product.action}<span aria-hidden="true">›</span>
+              </a>
+            </article>
+          </div>
         ))}
       </div>
     </div>
+
+    <div class={styles.mobileAccordion} aria-label="Выбор направления">
+      {products.map((product) => (
+        <details class={styles.accordionItem} name="product-solutions">
+          <summary class={styles.accordionSummary}>
+            <span class={styles.optionText}>
+              <strong>{product.problem}</strong>
+            </span>
+            <span class={styles.accordionToggle} aria-hidden="true"></span>
+          </summary>
+
+          <div class={styles.accordionPanel}>
+            <article class={styles.panel}>
+              <h3 class={styles.panelTitle}>{product.title}</h3>
+              <p class={styles.panelDescription}>{product.description}</p>
+
+              <a
+                class={styles.panelLink}
+                href={resolveHref(product.href)}
+                target={product.href.startsWith('http') ? '_blank' : undefined}
+                rel={product.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              >
+                {product.action}<span aria-hidden="true">›</span>
+              </a>
+            </article>
+          </div>
+        </details>
+      ))}
+    </div>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-product-choice]').forEach((navigator) => {
+    const options = navigator.querySelectorAll<HTMLButtonElement>('[data-product-option]');
+    const panels = navigator.querySelectorAll<HTMLElement>('[data-product-panel]');
+
+    options.forEach((option) => {
+      option.addEventListener('click', () => {
+        const activeId = option.dataset.productOption;
+        if (!activeId) return;
+
+        options.forEach((candidate) => {
+          candidate.setAttribute('aria-pressed', String(candidate === option));
+        });
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.productPanel !== activeId;
+        });
+      });
+    });
+  });
+</script>

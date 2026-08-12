@@ -1,0 +1,18 @@
+---
+import AppHeader from '../../components/header/header.astro';
+import SiteFooter from '../../components/footer/site-footer.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogSection from '../../sections/blog-section/blog-section.astro';
+
+const title = 'Блог TrueTell — данные, интеграции и автоматизация';
+const description =
+  'Практические статьи TrueTell о BI-аналитике, CRM, интеграциях и автоматизации бизнес-процессов.';
+---
+
+<BaseLayout {title} {description} canonicalPath="/blog/">
+  <AppHeader />
+  <main class="site-content">
+    <BlogSection page />
+  </main>
+  <SiteFooter />
+</BaseLayout>

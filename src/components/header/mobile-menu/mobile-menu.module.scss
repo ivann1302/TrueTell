@@ -16,7 +16,7 @@
 
 .menuButton,
 .closeButton {
-  @include liquid-glass.control(50%, 18px, rgba(8, 11, 18, 0.2));
+  @include liquid-glass.control(50%, 18px, rgba(16, 22, 33, 0.2));
 
   align-items: center;
   cursor: pointer;
@@ -33,7 +33,7 @@
   &:focus-visible {
     background:
       linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(75, 156, 255, 0.045)),
-      rgba(8, 11, 18, 0.24);
+      rgba(16, 22, 33, 0.24);
     border-color: rgba(247, 248, 250, 0.28);
   }
 
@@ -75,11 +75,8 @@
   opacity: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding:
-    max(20px, env(safe-area-inset-top))
-    max(20px, env(safe-area-inset-right))
-    max(24px, env(safe-area-inset-bottom))
-    max(20px, env(safe-area-inset-left));
+  padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right))
+    max(24px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
   pointer-events: none;
   position: fixed;
   transform: translateX(100%);
@@ -91,7 +88,7 @@
   width: 100%;
   z-index: 3000;
 
-  &.open {
+  &[data-open='true'] {
     opacity: 1;
     pointer-events: auto;
     transform: translateX(0);
@@ -168,8 +165,7 @@
   display: grid;
   font-size: clamp(2rem, 9vw, 3rem);
   font-weight: 500;
-  gap: 16px;
-  grid-template-columns: 36px 1fr;
+  grid-template-columns: minmax(0, 1fr);
   letter-spacing: -0.035em;
   line-height: 1.05;
   min-height: 84px;
@@ -190,13 +186,6 @@
     outline: 2px solid rgba(75, 156, 255, 0.72);
     outline-offset: 4px;
   }
-}
-
-.linkIndex {
-  color: rgba(247, 248, 250, 0.44);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0;
 }
 
 .menuNote {

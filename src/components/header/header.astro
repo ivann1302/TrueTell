@@ -1,0 +1,193 @@
+---
+import logoImage from '../../images/logo/logo.svg';
+import styles from './header.module.scss';
+import mobileStyles from './mobile-menu/mobile-menu.module.scss';
+
+interface Props {
+  showPricing?: boolean;
+}
+
+const { showPricing = true } = Astro.props;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const internalHref = (path: string) => `${base}${path.replace(/^\//, '')}`;
+
+const navigationItems = [
+  { href: '/products/', label: 'Решения' },
+  { href: '/bi-analitika/#pricing', label: 'Цены' },
+  { href: '/bi-analitika/#cases', label: 'Кейсы' },
+  { href: '/blog/', label: 'Блог' },
+  { href: '/bi-analitika/', label: 'BI-аналитика' },
+].filter((item) => showPricing || item.href !== '/bi-analitika/#pricing');
+---
+
+<header class={styles.header} data-site-header>
+  <div class={styles.headerContent}>
+    <div class={styles.logoContainer}>
+      <a href={base} class={styles.logoLink}>
+        <img src={logoImage.src} alt="TrueTell" class={styles.logo} />
+      </a>
+    </div>
+
+    <nav class={styles.navigation} aria-label="Основная навигация">
+      <ul class={styles.navList}>
+        {navigationItems.map((item) => (
+          <li class={styles.navItem}>
+            <a href={internalHref(item.href)} class={styles.navLink}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class={mobileStyles.mobileMenu}>
+      <button
+        class={mobileStyles.menuButton}
+        data-mobile-menu-button
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        aria-controls="mobile-navigation"
+        type="button"
+      >
+        <svg
+          class={mobileStyles.menuIcon}
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M3 5h18M3 12h18M3 19h18"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div
+  class={mobileStyles.mobileOverlay}
+  data-mobile-menu-overlay
+  data-open="false"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Мобильная навигация"
+  aria-hidden="true"
+  inert
+>
+  <div class={mobileStyles.menuTop}>
+    <span class={mobileStyles.menuBrand}>TrueTell</span>
+    <button
+      class={mobileStyles.closeButton}
+      data-mobile-menu-close
+      aria-label="Закрыть меню"
+      type="button"
+    >
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <nav id="mobile-navigation" class={mobileStyles.mobileNav} aria-label="Основная навигация">
+    <ul class={mobileStyles.mobileNavList}>
+      {navigationItems.map((item) => (
+        <li class={mobileStyles.mobileNavItem}>
+          <a href={internalHref(item.href)} class={mobileStyles.mobileNavLink}>
+            <span>{item.label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <p class={mobileStyles.menuNote}>MCP-серверы · BI-аналитика · интеграции</p>
+</div>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  const menuButton = document.querySelector<HTMLButtonElement>('[data-mobile-menu-button]');
+  const menuOverlay = document.querySelector<HTMLElement>('[data-mobile-menu-overlay]');
+  const closeButton = document.querySelector<HTMLButtonElement>('[data-mobile-menu-close]');
+  const desktopMedia = window.matchMedia('(min-width: 769px)');
+  let revealTimeout: number | undefined;
+  let previousBodyOverflow = '';
+  let previousHtmlOverflow = '';
+
+  const menuIsOpen = () => menuOverlay?.dataset.open === 'true';
+
+  const setHeaderHidden = (hidden: boolean) => {
+    if (!header) return;
+    header.dataset.hidden = String(hidden);
+    header.setAttribute('aria-hidden', String(hidden));
+    header.inert = hidden;
+  };
+
+  const closeMenu = (restoreFocus = true) => {
+    if (!menuOverlay || !menuButton || !menuIsOpen()) return;
+
+    menuOverlay.dataset.open = 'false';
+    menuOverlay.setAttribute('aria-hidden', 'true');
+    menuOverlay.inert = true;
+    menuButton.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = previousBodyOverflow;
+    document.documentElement.style.overflow = previousHtmlOverflow;
+
+    if (restoreFocus) window.requestAnimationFrame(() => menuButton.focus());
+  };
+
+  const openMenu = () => {
+    if (!menuOverlay || !menuButton || !closeButton || menuIsOpen()) return;
+
+    previousBodyOverflow = document.body.style.overflow;
+    previousHtmlOverflow = document.documentElement.style.overflow;
+    menuOverlay.dataset.open = 'true';
+    menuOverlay.setAttribute('aria-hidden', 'false');
+    menuOverlay.inert = false;
+    menuButton.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    window.requestAnimationFrame(() => closeButton.focus());
+  };
+
+  window.addEventListener('scroll', () => {
+    if (menuIsOpen()) return;
+
+    setHeaderHidden(true);
+    if (revealTimeout !== undefined) window.clearTimeout(revealTimeout);
+    revealTimeout = window.setTimeout(() => {
+      setHeaderHidden(false);
+      revealTimeout = undefined;
+    }, 1500);
+  }, { passive: true });
+
+  menuButton?.addEventListener('click', openMenu);
+  closeButton?.addEventListener('click', () => closeMenu());
+  menuOverlay?.addEventListener('pointerdown', (event) => {
+    if (event.target === menuOverlay) closeMenu();
+  });
+  menuOverlay?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => closeMenu(false));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!menuOverlay || !menuIsOpen()) return;
+
+    if (event.key === 'Escape') {
+      closeMenu();
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+    const focusableElements = menuOverlay.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
+    if (!focusableElements.length) return;
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  });
+
+  desktopMedia.addEventListener('change', (event) => {
+    if (event.matches) closeMenu(false);
+  });
+</script>

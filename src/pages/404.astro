@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 ---
 
 <BaseLayout title="Страница не найдена — TrueTell" description="Запрошенная страница не найдена.">
   <main class="not-found">
     <h1>Страница не найдена</h1>
     <p>Возможно, ссылка устарела или адрес введён с ошибкой.</p>
-    <a href="/">Вернуться на главную</a>
+    <a href={base}>Вернуться на главную</a>
   </main>
 </BaseLayout>
 

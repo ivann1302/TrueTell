@@ -1,0 +1,31 @@
+---
+import LineWave from '../../components/ui/line-wave.astro';
+import styles from './consultation-cta-section.module.scss';
+---
+
+<section class={styles.section} aria-labelledby="consultation-cta-title">
+  <LineWave />
+
+  <div class={styles.container}>
+    <div class={styles.content}>
+      <h2 id="consultation-cta-title" class={styles.title}>Запишитесь на консультацию</h2>
+
+      <div class={styles.actionBlock}>
+        <p class={styles.description}>
+          На первой встрече разберём задачу, ограничения и возможный формат решения.
+        </p>
+        <a
+          class={styles.action}
+          href="https://t.me/m/S5CgvcfdMjAy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>Записаться на консультацию</span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="m9 6 6 6-6 6"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

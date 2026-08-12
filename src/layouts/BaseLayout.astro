@@ -17,7 +17,9 @@ const {
   structuredData,
 } = Astro.props;
 const site = Astro.site ?? new URL('https://truetell.ru');
-const canonicalUrl = new URL(canonicalPath, site);
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const canonicalUrl = new URL(`${base}${canonicalPath.replace(/^\//, '')}`, site);
+const metrikaEnabled = import.meta.env.BASE_URL === '/';
 ---
 
 <!doctype html>
@@ -41,7 +43,6 @@ const canonicalUrl = new URL(canonicalPath, site);
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <link rel="preconnect" href="https://mc.yandex.ru" />
     <link rel="icon" type="image/svg+xml" href={favicon.src} />
     <title>{title}</title>
     {structuredData && (
@@ -50,17 +51,38 @@ const canonicalUrl = new URL(canonicalPath, site);
   </head>
   <body>
     <slot />
-    <script is:inline>
-      (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) return; }
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
-      })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=103366745', 'ym');
-      ym(103366745, 'init', { ssr:true, webvisor:true, clickmap:true, accurateTrackBounce:true, trackLinks:true });
+    <script is:inline define:vars={{ metrikaEnabled }}>
+      (() => {
+        if (!metrikaEnabled) return;
+        const localHosts = new Set(['localhost', '127.0.0.1', '::1']);
+        if (localHosts.has(window.location.hostname)) return;
+
+        const initializeMetrika = () => {
+          (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) return; }
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
+          })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=103366745', 'ym');
+          ym(103366745, 'init', { ssr:true, webvisor:true, clickmap:true, accurateTrackBounce:true, trackLinks:true });
+        };
+
+        const scheduleMetrika = () => {
+          if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(initializeMetrika, { timeout: 4000 });
+          } else {
+            window.setTimeout(initializeMetrika, 2000);
+          }
+        };
+
+        if (document.readyState === 'complete') scheduleMetrika();
+        else window.addEventListener('load', scheduleMetrika, { once: true });
+      })();
     </script>
-    <noscript>
-      <div><img src="https://mc.yandex.ru/watch/103366745" style="position:absolute;left:-9999px" alt="" /></div>
-    </noscript>
+    {metrikaEnabled && (
+      <noscript>
+        <div><img src="https://mc.yandex.ru/watch/103366745" style="position:absolute;left:-9999px" alt="" /></div>
+      </noscript>
+    )}
   </body>
 </html>

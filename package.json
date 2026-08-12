@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "perf": "astro build && astro preview --force --host localhost --port 4322",
     "lint": "eslint .",
     "preview": "astro preview",
     "prepare": "husky install",
