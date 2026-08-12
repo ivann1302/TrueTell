@@ -1,0 +1,63 @@
+---
+import styles from './blog-section.module.scss';
+
+interface Props {
+  page?: boolean;
+}
+
+const { page = false } = Astro.props;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const blogHref = `${base}blog/`;
+
+const articles = [
+  {
+    title: 'Как связать данные, CRM и ИИ в одном процессе',
+    description:
+      'Разбираем, как объединить источники данных, бизнес-логику и автоматизацию без перестройки всей инфраструктуры.',
+  },
+  {
+    title: 'Когда бизнесу действительно нужна BI-аналитика',
+    description:
+      'Признаки, что таблиц уже недостаточно и решения пора принимать на едином наборе данных.',
+  },
+  {
+    title: 'Что автоматизировать в первую очередь',
+    description:
+      'Как выбрать процесс с понятным эффектом и не тратить ресурсы на автоматизацию ради автоматизации.',
+  },
+];
+---
+
+<section
+  id="blog"
+  class:list={[styles.section, page && styles.pageSection]}
+  aria-labelledby="blog-title"
+>
+  <div class={styles.container}>
+    <header class={styles.header}>
+      {page ? (
+        <h1 id="blog-title" class={styles.title}>Блог</h1>
+      ) : (
+        <h2 id="blog-title" class={styles.title}>Блог</h2>
+      )}
+
+      {!page && (
+        <a class={styles.blogLink} href={blogHref}>
+          <span>Все статьи</span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="m9 6 6 6-6 6"></path>
+          </svg>
+        </a>
+      )}
+    </header>
+
+    <div class:list={[styles.grid, !page && styles.mobileCarousel]}>
+      {articles.map((article) => (
+        <article class={styles.card}>
+          <h3 class={styles.articleTitle}>{article.title}</h3>
+          <p class={styles.description}>{article.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

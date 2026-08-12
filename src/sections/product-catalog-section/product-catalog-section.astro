@@ -1,0 +1,71 @@
+---
+import styles from './product-catalog-section.module.scss';
+
+const consultationUrl = 'https://t.me/m/S5CgvcfdMjAy';
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const resolveHref = (href: string) => href.startsWith('/')
+  ? `${base}${href.replace(/^\//, '')}`
+  : href;
+
+const products = [
+  {
+    title: 'BI-аналитика для торговли',
+    description: 'Продажи, остатки и маржинальность в одном управленческом контуре.',
+    action: 'Посмотреть BI-решение',
+    href: '/bi-analitika/',
+  },
+  {
+    title: 'MCP-сервер для МойСклад',
+    description: 'Доступ ИИ-инструментов к товарам, остаткам и заказам.',
+    action: 'Обсудить решение',
+    href: consultationUrl,
+  },
+  {
+    title: 'MCP-сервер для Битрикс24',
+    description: 'Работа ИИ с CRM-контекстом, сделками и рабочими сценариями.',
+    action: 'Узнать о запуске',
+    href: consultationUrl,
+  },
+  {
+    title: 'Проверка бизнес-идей',
+    description: 'Оценка идеи до вложений по динамике реального интереса.',
+    action: 'Узнать о проекте',
+    href: consultationUrl,
+  },
+];
+---
+
+<section class={styles.section} aria-labelledby="products-page-title">
+  <div class={styles.container}>
+    <header class={styles.header}>
+      <h1 id="products-page-title" class={styles.title}>Продукты TrueTell</h1>
+    </header>
+
+    <ul class={styles.grid}>
+      {products.map((product) => {
+        const external = product.href.startsWith('http');
+
+        return (
+          <li>
+            <a
+              class={styles.card}
+              href={resolveHref(product.href)}
+              target={external ? '_blank' : undefined}
+              rel={external ? 'noopener noreferrer' : undefined}
+              aria-label={`${product.action}: ${product.title}${external ? ' — откроется в новой вкладке' : ''}`}
+            >
+              <h2 class={styles.productTitle}>{product.title}</h2>
+              <p class={styles.description}>{product.description}</p>
+              <span class={styles.action}>
+                {product.action}
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                  <path d="m9 6 6 6-6 6"></path>
+                </svg>
+              </span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>

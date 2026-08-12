@@ -3,10 +3,11 @@ import { createPortal } from 'react-dom';
 import styles from './mobile-menu.module.scss';
 
 const navigationItems = [
-  { id: 'products', href: '/#products', label: 'Решения' },
+  { id: 'products', href: '/products/', label: 'Решения' },
   { id: 'pricing', href: '/bi-analitika/#pricing', label: 'Цены' },
   { id: 'cases', href: '/bi-analitika/#cases', label: 'Кейсы' },
-  { id: 'demo', href: '/bi-analitika/#demo', label: 'Бесплатное демо' },
+  { id: 'blog', href: '/blog/', label: 'Блог' },
+  { id: 'bi-analytics', href: '/bi-analitika/', label: 'BI-аналитика' },
 ];
 
 const MobileMenu = () => {
@@ -139,16 +140,13 @@ const MobileMenu = () => {
 
             <nav id="mobile-navigation" className={styles.mobileNav} aria-label="Основная навигация">
               <ul className={styles.mobileNavList}>
-                {navigationItems.map((item, index) => (
+                {navigationItems.map((item) => (
                   <li className={styles.mobileNavItem} key={item.id}>
                     <a
                       href={item.href}
                       className={`${styles.mobileNavLink} ${activeLink === item.id ? styles.active : ''}`}
                       onClick={() => handleLinkClick(item.id)}
                     >
-                      <span className={styles.linkIndex} aria-hidden="true">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
                       <span>{item.label}</span>
                     </a>
                   </li>

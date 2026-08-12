@@ -7,22 +7,14 @@ const ProductPanel = ({ product }: { product: Product }) => (
     <h3 className={styles.panelTitle}>{product.title}</h3>
     <p className={styles.panelDescription}>{product.description}</p>
 
-    <div className={styles.details}>
-      <h4 className={styles.detailsTitle}>{product.detailLabel}</h4>
-      <ul className={styles.detailsList}>
-        {product.details.map((detail) => (
-          <li key={detail}>{detail}</li>
-        ))}
-      </ul>
-    </div>
-
     <a
       className={styles.panelLink}
       href={product.href}
       target={product.href.startsWith('http') ? '_blank' : undefined}
       rel={product.href.startsWith('http') ? 'noopener noreferrer' : undefined}
     >
-      {product.action}<span aria-hidden="true">↗</span>
+      {product.action}
+      <span aria-hidden="true">›</span>
     </a>
   </article>
 );
@@ -37,23 +29,22 @@ const ProductChoiceDesktop = () => {
           const isActive = product.id === activeId;
 
           return (
-            <div className={styles.optionGroup} key={product.id}>
-              <button
-                className={`${styles.option} ${isActive ? styles.active : ''}`}
-                type="button"
-                aria-pressed={isActive}
-                onClick={() => setActiveId(product.id)}
-              >
-                <span className={styles.optionText}>
-                  <strong>{product.problem}</strong>
-                  <span>{product.shortName}</span>
-                </span>
-                <span className={styles.optionArrow} aria-hidden="true">→</span>
-              </button>
-            </div>
+            <button
+              className={`${styles.option} ${isActive ? styles.active : ''}`}
+              type="button"
+              aria-pressed={isActive}
+              onClick={() => setActiveId(product.id)}
+              key={product.id}
+            >
+              <span className={styles.optionText}>
+                <strong>{product.problem}</strong>
+              </span>
+              <span className={styles.optionArrow} aria-hidden="true">
+                ›
+              </span>
+            </button>
           );
         })}
-
       </div>
 
       <div className={styles.desktopPanel} aria-live="polite">

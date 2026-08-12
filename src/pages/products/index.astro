@@ -1,0 +1,18 @@
+---
+import AppHeader from '../../components/header/header.astro';
+import SiteFooter from '../../components/footer/site-footer.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCatalogSection from '../../sections/product-catalog-section/product-catalog-section.astro';
+
+const title = 'Продукты TrueTell — BI-аналитика, MCP и интеграции';
+const description =
+  'Продукты TrueTell для торговли и продаж: BI-аналитика, MCP-серверы для МойСклад и Битрикс24, проверка бизнес-идей.';
+---
+
+<BaseLayout {title} {description} canonicalPath="/products/">
+  <AppHeader />
+  <main class="site-content">
+    <ProductCatalogSection />
+  </main>
+  <SiteFooter />
+</BaseLayout>

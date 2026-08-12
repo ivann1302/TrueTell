@@ -1,0 +1,105 @@
+---
+import bitrix24Icon from '../../images/logo/bitrix24-app-icon.svg';
+import moyskladIcon from '../../images/logo/moysklad-app-icon.svg';
+import amocrmIcon from '../../images/integrations/amocrm.png';
+import cloudpaymentsIcon from '../../images/integrations/cloudpayments.svg';
+import datalensIcon from '../../images/integrations/datalens.svg';
+import ozonIcon from '../../images/integrations/ozon.svg';
+import retailcrmIcon from '../../images/integrations/retailcrm.svg';
+import telegramIcon from '../../images/integrations/telegram.svg';
+import wildberriesIcon from '../../images/integrations/wildberries.png';
+import yandexCloudIcon from '../../images/integrations/yandex-cloud.svg';
+import yandexMarketIcon from '../../images/integrations/yandex-market.png';
+import yandexWordstatIcon from '../../images/integrations/yandex-wordstat.png';
+import yookassaIcon from '../../images/integrations/yookassa.svg';
+import styles from './integrations-section.module.scss';
+
+const crmIntegrations = [
+  { name: 'Битрикс24', icon: bitrix24Icon, fit: 'square' },
+  { name: 'МойСклад', icon: moyskladIcon, fit: 'square' },
+  { name: 'amoCRM', icon: amocrmIcon },
+  { name: 'RetailCRM', icon: retailcrmIcon, fit: 'square' },
+];
+
+const serviceIntegrations = [
+  { name: 'Yandex Cloud', icon: yandexCloudIcon },
+  { name: 'Яндекс Вордстат', icon: yandexWordstatIcon, fit: 'square' },
+  { name: 'ЮKassa', icon: yookassaIcon, fit: 'wide' },
+  { name: 'CloudPayments', icon: cloudpaymentsIcon, fit: 'square' },
+  { name: 'DataLens', icon: datalensIcon, fit: 'square' },
+  { name: 'Telegram', icon: telegramIcon, fit: 'square' },
+  { name: 'Ozon', icon: ozonIcon, fit: 'wide' },
+  { name: 'Wildberries', icon: wildberriesIcon, fit: 'square' },
+  { name: 'Яндекс Маркет', icon: yandexMarketIcon, fit: 'square' },
+];
+
+const integrationGroups = [
+  {
+    id: 'crm-integrations-title',
+    title: 'CRM',
+    integrations: crmIntegrations,
+    repetitions: 3,
+    trackClass: styles.crmTrack,
+  },
+  {
+    id: 'service-integrations-title',
+    title: 'Сервисы и площадки',
+    integrations: serviceIntegrations,
+    repetitions: 1,
+    trackClass: styles.serviceTrack,
+  },
+];
+---
+
+<section id="integrations" class={styles.section} aria-labelledby="integrations-title">
+  <div class={styles.container}>
+    <header class={styles.header}>
+      <h2 id="integrations-title" class={styles.title}>
+        Интеграции с инструментами вашего бизнеса
+      </h2>
+      <p class={styles.description}>
+        Связываем CRM, облачные сервисы, аналитику, платежи и маркетплейсы в единый рабочий контур.
+      </p>
+    </header>
+
+    <div class={styles.groups}>
+      {integrationGroups.map((group) => (
+        <section class={styles.group} aria-labelledby={group.id}>
+          <h3 id={group.id} class={styles.groupTitle}>{group.title}</h3>
+
+          <ul class={styles.visuallyHidden}>
+            {group.integrations.map((integration) => <li>{integration.name}</li>)}
+          </ul>
+
+          <div class={styles.marquee} aria-hidden="true">
+            <div class:list={[styles.track, group.trackClass]}>
+              {[0, 1].map(() => (
+                <ul class={styles.logoSet}>
+                  {Array.from({ length: group.repetitions }).map(() =>
+                    group.integrations.map((integration) => (
+                      <li class={styles.integration}>
+                        <span class={styles.logoDisc}>
+                          <img
+                            class={styles.logo}
+                            src={integration.icon.src}
+                            alt=""
+                            width={integration.icon.width}
+                            height={integration.icon.height}
+                            data-fit={integration.fit}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </span>
+                        <span class={styles.integrationName}>{integration.name}</span>
+                      </li>
+                    )),
+                  )}
+                </ul>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</section>

@@ -4,7 +4,7 @@
 @use '../ui/liquid-glass/liquid-glass' as liquid-glass;
 
 .header {
-  @include liquid-glass.surface(22px, 20px, rgba(8, 11, 18, 0.38));
+  @include liquid-glass.surface(22px, 20px, rgba(16, 22, 33, 0.38));
 
   box-sizing: border-box;
   left: 50%;
@@ -20,7 +20,7 @@
   width: min(calc(100% - 32px), 1240px);
   z-index: 1000;
 
-  &.isHidden {
+  &[data-hidden='true'] {
     opacity: 0;
     pointer-events: none;
     transform: translate(-50%, calc(-100% - 24px));
@@ -178,7 +178,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .header,
-  .header.isHidden {
+  .header[data-hidden='true'] {
     transition-delay: 0s;
     transition-duration: 0.01ms;
   }

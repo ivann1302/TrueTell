@@ -22,7 +22,7 @@ const { variant = 'hero' } = Astro.props;
 
     const biWaves = [
       { offset: 0, amplitude: 24, frequency: 0.0056, speed: 0.0007, color: 'rgba(23, 101, 218, 0.92)', opacity: 0.68 },
-      { offset: Math.PI * 0.82, amplitude: 30, frequency: 0.0048, speed: 0.00058, color: 'rgba(16, 22, 33, 0.62)', opacity: 0.35 },
+      { offset: Math.PI * 0.82, amplitude: 30, frequency: 0.0048, speed: 0.00058, color: 'rgba(24, 33, 49, 0.62)', opacity: 0.35 },
     ];
 
     const initializeWave = (canvas) => {
@@ -37,17 +37,18 @@ const { variant = 'hero' } = Astro.props;
       const waves = isBi ? biWaves : heroWaves;
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
       const hoverCapable = window.matchMedia('(hover: hover) and (pointer: fine)');
+      const mobileViewport = window.matchMedia('(max-width: 599px)');
       const pointer = { x: 0, y: 0 };
       const targetPointer = { x: 0, y: 0 };
       const interactionTarget = isBi ? canvas.closest('article') : window;
-      const maxFrameRate = 30;
       let frameId = 0;
       let lastFrame = 0;
       let pointerActivity = isBi ? 0 : 1;
       let targetPointerActivity = isBi ? 0 : 1;
       let width = 1;
       let height = 1;
-      let visible = true;
+      const initialBounds = canvas.getBoundingClientRect();
+      let visible = initialBounds.bottom > 0 && initialBounds.top < window.innerHeight;
 
       const centerPointer = () => {
         pointer.x = width * 0.5;
@@ -77,6 +78,7 @@ const { variant = 'hero' } = Astro.props;
 
       const drawWave = (wave, time) => {
         const mobile = width < 600;
+        const pointStep = mobile ? 6 : 4;
         const amplitude = wave.amplitude * (mobile ? (isBi ? 0.76 : 0.58) : 1);
         const centerY = height * (isBi ? 0.54 : mobile ? 0.58 : 0.6);
         const influenceRadius = isBi ? Math.min(width * 0.42, mobile ? 180 : 260) : mobile ? 170 : 300;
@@ -86,7 +88,7 @@ const { variant = 'hero' } = Astro.props;
         context.beginPath();
         const points = [];
 
-        for (let x = 0; x <= width + 4; x += 4) {
+        for (let x = 0; x <= width + pointStep; x += pointStep) {
           const distanceX = x - pointer.x;
           const distanceY = centerY - pointer.y;
           const distance = Math.hypot(distanceX, distanceY);
@@ -154,12 +156,13 @@ const { variant = 'hero' } = Astro.props;
         canvas.height = Math.round(height * pixelRatio);
         context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
         centerPointer();
-        draw(reducedMotion.matches ? 0 : performance.now());
+        if (visible) draw(reducedMotion.matches ? 0 : performance.now());
       };
 
       const animate = (time) => {
-        if (!visible || reducedMotion.matches) return;
+        if (!visible || document.hidden || reducedMotion.matches) return;
 
+        const maxFrameRate = width < 600 ? 24 : 30;
         if (time - lastFrame >= 1000 / maxFrameRate) {
           draw(time);
           lastFrame = time;
@@ -170,8 +173,20 @@ const { variant = 'hero' } = Astro.props;
 
       const start = () => {
         window.cancelAnimationFrame(frameId);
-        if (!reducedMotion.matches && visible) frameId = window.requestAnimationFrame(animate);
-        else draw(0);
+        if (!reducedMotion.matches && visible && !document.hidden) {
+          frameId = window.requestAnimationFrame(animate);
+        } else if (visible) {
+          draw(reducedMotion.matches ? 0 : performance.now());
+        }
+      };
+
+      const startWhenReady = () => {
+        if (!mobileViewport.matches || document.readyState === 'complete') {
+          start();
+          return;
+        }
+
+        window.addEventListener('load', start, { once: true });
       };
 
       const resizeObserver = new ResizeObserver(resize);
@@ -193,8 +208,9 @@ const { variant = 'hero' } = Astro.props;
       }
 
       reducedMotion.addEventListener('change', start);
+      document.addEventListener('visibilitychange', start);
       resize();
-      start();
+      startWhenReady();
     };
 
     document.querySelectorAll('[data-line-wave]').forEach(initializeWave);

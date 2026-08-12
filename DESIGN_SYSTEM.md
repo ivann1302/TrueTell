@@ -61,8 +61,8 @@
   --bg: #F6F7F9;
   --surface: #FFFFFF;
   --surface-subtle: #F0F2F5;
-  --surface-dark: #080B12;
-  --surface-dark-soft: #101621;
+  --surface-dark: #101621;
+  --surface-dark-soft: #182131;
 
   /* Text */
   --text: #10131A;
@@ -821,13 +821,13 @@ Glass разрешён только как локальный акцент.
 ```css
 .glass-surface {
   background:
-    linear-gradient(145deg, rgba(255,255,255,.16), rgba(255,255,255,.055) 34%, rgba(75,156,255,.03) 68%, rgba(8,11,18,.08)),
-    rgba(8,11,18,.38);
+    linear-gradient(145deg, rgba(255,255,255,.16), rgba(255,255,255,.055) 34%, rgba(75,156,255,.03) 68%, rgba(16,22,33,.08)),
+    rgba(16,22,33,.38);
   backdrop-filter: blur(20px) saturate(1.38);
   -webkit-backdrop-filter: blur(20px) saturate(1.38);
   border: 1px solid rgba(247,248,250,.18);
   box-shadow:
-    0 14px 36px rgba(8,11,18,.20),
+    0 14px 36px rgba(16,22,33,.20),
     inset 0 1px 0 rgba(255,255,255,.28),
     inset 0 -1px 0 rgba(255,255,255,.055);
 }
@@ -1344,8 +1344,8 @@ styles/
   --bg: #F6F7F9;
   --surface: #FFFFFF;
   --surface-subtle: #F0F2F5;
-  --surface-dark: #080B12;
-  --surface-dark-soft: #101621;
+  --surface-dark: #101621;
+  --surface-dark-soft: #182131;
 
   --text: #10131A;
   --text-secondary: #616875;

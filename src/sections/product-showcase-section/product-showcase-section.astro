@@ -5,6 +5,8 @@ import moyskladIcon from '../../images/logo/moysklad-app-icon.svg';
 import styles from './product-showcase-section.module.scss';
 
 const consultationUrl = 'https://t.me/m/S5CgvcfdMjAy';
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const internalHref = (path: string) => `${base}${path.replace(/^\//, '')}`;
 ---
 
 <section class={styles.section} aria-labelledby="product-showcase-title">
@@ -13,6 +15,12 @@ const consultationUrl = 'https://t.me/m/S5CgvcfdMjAy';
       <h2 id="product-showcase-title" class={styles.title}>
         Продукты TrueTell
       </h2>
+      <a class:list={[styles.allProductsLink, styles.desktopAllProductsLink]} href={internalHref('/products/')}>
+        <span>Посмотреть все продукты</span>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <path d="m9 6 6 6-6 6"></path>
+        </svg>
+      </a>
     </header>
 
     <div class={styles.productLayout}>
@@ -27,8 +35,8 @@ const consultationUrl = 'https://t.me/m/S5CgvcfdMjAy';
           <LineWave variant="bi" />
         </div>
 
-        <a class={styles.productButton} href="/bi-analitika/">
-          Посмотреть BI-решение<span aria-hidden="true">↗</span>
+        <a class={styles.productButton} href={internalHref('/bi-analitika/')}>
+          Посмотреть BI-решение<span aria-hidden="true">›</span>
         </a>
       </article>
 
@@ -50,7 +58,7 @@ const consultationUrl = 'https://t.me/m/S5CgvcfdMjAy';
             Доступ ИИ-инструментов к товарам, остаткам и заказам.
           </p>
           <a class={styles.productButton} href={consultationUrl} target="_blank" rel="noopener noreferrer">
-            Обсудить решение<span aria-hidden="true">↗</span>
+            Обсудить решение<span aria-hidden="true">›</span>
           </a>
         </article>
 
@@ -71,7 +79,7 @@ const consultationUrl = 'https://t.me/m/S5CgvcfdMjAy';
             Работа ИИ с CRM-контекстом, сделками и рабочими сценариями.
           </p>
           <a class={styles.productButton} href={consultationUrl} target="_blank" rel="noopener noreferrer">
-            Узнать о запуске<span aria-hidden="true">↗</span>
+            Узнать о запуске<span aria-hidden="true">›</span>
           </a>
         </article>
       </div>
@@ -84,7 +92,7 @@ const consultationUrl = 'https://t.me/m/S5CgvcfdMjAy';
           Оценка идеи до вложений по динамике реального интереса.
         </p>
         <a class={styles.ideaLink} href={consultationUrl} target="_blank" rel="noopener noreferrer">
-          Узнать о проекте<span aria-hidden="true">↗</span>
+          Узнать о проекте<span aria-hidden="true">›</span>
         </a>
       </div>
 
@@ -124,5 +132,12 @@ const consultationUrl = 'https://t.me/m/S5CgvcfdMjAy';
         </div>
       </dl>
     </article>
+
+    <a class:list={[styles.allProductsLink, styles.mobileAllProductsLink]} href={internalHref('/products/')}>
+      <span>Посмотреть все продукты</span>
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+        <path d="m9 6 6 6-6 6"></path>
+      </svg>
+    </a>
   </div>
 </section>

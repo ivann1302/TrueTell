@@ -138,10 +138,21 @@
   }
 }
 
+.contactBlock,
+.socialBlock {
+  background:
+    radial-gradient(
+      ellipse 72% 86% at 4% 0%,
+      rgba(75, 156, 255, 0.14) 0%,
+      rgba(23, 101, 218, 0.05) 48%,
+      rgba(0, 32, 91, 0) 78%
+    ),
+    $primary-blue-dark;
+}
+
 .contactBlock {
   width: 780px;
   height: 184px;
-  background: $primary-blue-dark;
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -176,7 +187,6 @@
 .socialBlock {
   width: 378px;
   height: 184px;
-  background: $primary-blue-dark;
   border-radius: 16px;
   display: flex;
   align-items: center;

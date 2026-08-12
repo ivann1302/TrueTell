@@ -1,0 +1,40 @@
+@use '../../styles/breakpoints' as *;
+
+.section {
+  background: #f6f7f9;
+  box-sizing: border-box;
+  color: #10131a;
+  padding: 0 0 128px;
+}
+
+.container {
+  margin-inline: auto;
+  width: min(calc(100% - 64px), 1488px);
+}
+
+.title {
+  font-size: clamp(2.7rem, 4.3vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  margin: 0 auto;
+  max-width: 920px;
+  text-align: center;
+  text-wrap: balance;
+}
+
+@include mobile-tablet {
+  .section {
+    padding-bottom: 72px;
+  }
+
+  .container {
+    width: min(calc(100% - 32px), 1488px);
+  }
+
+  .title {
+    font-size: clamp(2.25rem, 10vw, 3rem);
+    line-height: 1.04;
+    max-width: 18ch;
+  }
+}
