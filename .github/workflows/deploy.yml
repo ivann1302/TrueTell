@@ -1,0 +1,100 @@
+name: CI and SprintHost deploy
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+        env:
+          HUSKY: '0'
+      - run: npm run lint
+      - run: node --test scripts/indexnow.test.mjs
+      - run: npm run build
+        env:
+          GITHUB_PAGES: 'false'
+      - run: node scripts/indexnow.mjs --check
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: production
+      url: https://truetell-retail.ru
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist/
+      - name: Check FTP configuration
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_REMOTE_PATH: ${{ secrets.FTP_REMOTE_PATH }}
+        run: |
+          for name in FTP_HOST FTP_USER FTP_PASSWORD FTP_REMOTE_PATH; do
+            if [ -z "${!name}" ]; then
+              echo "::error::Missing secret $name"
+              exit 1
+            fi
+          done
+          if [[ "$FTP_REMOTE_PATH" == / || "$FTP_REMOTE_PATH" != */ ]]; then
+            echo "::error::FTP_REMOTE_PATH must point to the site directory and end with /"
+            exit 1
+          fi
+      - name: Upload to SprintHost
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: dist/
+          server-dir: ${{ secrets.FTP_REMOTE_PATH }}
+          dangerous-clean-slate: false
+
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+        env:
+          HUSKY: '0'
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist/
+      - name: Verify published files and notify all IndexNow participants
+        run: node scripts/indexnow.mjs

@@ -137,6 +137,46 @@
   }
 }
 
+.homeSection .card {
+  min-height: 380px;
+}
+
+.cardLink {
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
+  margin: -32px;
+  padding: 32px;
+  text-decoration: none;
+
+  &:focus-visible {
+    border-radius: 12px;
+    outline: 2px solid #4b9cff;
+    outline-offset: -6px;
+  }
+}
+
+.articleMeta {
+  color: rgba(247, 248, 250, 0.58);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-bottom: auto;
+}
+
+.articleMeta + .articleTitle {
+  margin-top: 16px;
+}
+
+.readMore {
+  color: #4b9cff;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  margin-top: 24px;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
     &::before {
@@ -255,6 +295,15 @@
     &::after {
       opacity: 1;
     }
+  }
+
+  .homeSection .card {
+    min-height: 300px;
+  }
+
+  .cardLink {
+    margin: -24px;
+    padding: 24px;
   }
 
   .articleTitle {

@@ -1,0 +1,31 @@
+---
+import styles from './data-table.module.scss';
+
+interface Props {
+  label: string;
+  columns: string[];
+  rows: Array<Array<string | number>>;
+  rowHeaders?: boolean;
+}
+
+const { label, columns, rows, rowHeaders = false } = Astro.props;
+---
+
+<div class={styles.scrollRegion} tabindex="0" role="region" aria-label={label}>
+  <table>
+    <thead>
+      <tr>
+        {columns.map((column) => <th scope="col">{column}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          {row.map((cell, index) =>
+            rowHeaders && index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>,
+          )}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

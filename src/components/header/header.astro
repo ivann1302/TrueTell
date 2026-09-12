@@ -104,6 +104,8 @@ const navigationItems = [
   const closeButton = document.querySelector<HTMLButtonElement>('[data-mobile-menu-close]');
   const desktopMedia = window.matchMedia('(min-width: 769px)');
   let revealTimeout: number | undefined;
+  let behaviorStartTimeout: number | undefined;
+  let hideOnScrollEnabled = false;
   let previousBodyOverflow = '';
   let previousHtmlOverflow = '';
 
@@ -114,6 +116,19 @@ const navigationItems = [
     header.dataset.hidden = String(hidden);
     header.setAttribute('aria-hidden', String(hidden));
     header.inert = hidden;
+  };
+
+  const showHeaderOnPageOpen = () => {
+    hideOnScrollEnabled = false;
+    if (behaviorStartTimeout !== undefined) window.clearTimeout(behaviorStartTimeout);
+    if (revealTimeout !== undefined) window.clearTimeout(revealTimeout);
+    revealTimeout = undefined;
+    setHeaderHidden(false);
+
+    behaviorStartTimeout = window.setTimeout(() => {
+      hideOnScrollEnabled = true;
+      behaviorStartTimeout = undefined;
+    }, 1000);
   };
 
   const closeMenu = (restoreFocus = true) => {
@@ -144,7 +159,7 @@ const navigationItems = [
   };
 
   window.addEventListener('scroll', () => {
-    if (menuIsOpen()) return;
+    if (!hideOnScrollEnabled || menuIsOpen()) return;
 
     setHeaderHidden(true);
     if (revealTimeout !== undefined) window.clearTimeout(revealTimeout);
@@ -153,6 +168,9 @@ const navigationItems = [
       revealTimeout = undefined;
     }, 1500);
   }, { passive: true });
+
+  showHeaderOnPageOpen();
+  window.addEventListener('pageshow', showHeaderOnPageOpen);
 
   menuButton?.addEventListener('click', openMenu);
   closeButton?.addEventListener('click', () => closeMenu());

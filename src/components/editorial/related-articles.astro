@@ -1,0 +1,75 @@
+---
+import styles from './related-articles.module.scss';
+
+interface RelatedArticle {
+  title: string;
+  description: string;
+  href: string;
+  category?: string;
+}
+
+interface Props {
+  items: RelatedArticle[];
+  title?: string;
+}
+
+const { items, title = 'Материалы по теме' } = Astro.props;
+---
+
+<section class={styles.section} aria-labelledby="related-articles-title" data-related-carousel>
+  <div class={styles.container}>
+    <header class={styles.header}>
+      <h2 id="related-articles-title">{title}</h2>
+      <div class={styles.controls} aria-label="Управление каруселью">
+        <button type="button" data-carousel-previous aria-label="Предыдущие материалы">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m15 6-6 6 6 6"></path></svg>
+        </button>
+        <button type="button" data-carousel-next aria-label="Следующие материалы">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"></path></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class={styles.track} data-carousel-track tabindex="0" aria-label="Связанные материалы">
+      {items.map((item) => (
+        <article class={styles.slide}>
+          <a href={item.href}>
+            <span class={styles.category}>{item.category ?? 'Статья'}</span>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+            <span class={styles.more}>Читать <span aria-hidden="true">→</span></span>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-related-carousel]').forEach((carousel) => {
+    const track = carousel.querySelector<HTMLElement>('[data-carousel-track]');
+    const previous = carousel.querySelector<HTMLButtonElement>('[data-carousel-previous]');
+    const next = carousel.querySelector<HTMLButtonElement>('[data-carousel-next]');
+    if (!track || !previous || !next) return;
+
+    const updateControls = () => {
+      const remaining = track.scrollWidth - track.clientWidth;
+      previous.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= remaining - 2;
+    };
+
+    const move = (direction: -1 | 1) => {
+      const slide = track.querySelector<HTMLElement>('article');
+      const gap = Number.parseFloat(getComputedStyle(track).columnGap || '0');
+      const distance = (slide?.getBoundingClientRect().width ?? track.clientWidth) + gap;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      track.scrollBy({ left: distance * direction, behavior: reduceMotion ? 'auto' : 'smooth' });
+    };
+
+    previous.addEventListener('click', () => move(-1));
+    next.addEventListener('click', () => move(1));
+    track.addEventListener('scroll', updateControls, { passive: true });
+    window.addEventListener('resize', updateControls, { passive: true });
+    updateControls();
+  });
+</script>

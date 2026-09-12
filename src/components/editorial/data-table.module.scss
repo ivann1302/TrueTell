@@ -1,0 +1,74 @@
+.scrollRegion {
+  background: #fff;
+  border: 2px solid #dceaff;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin: 32px 0;
+  max-width: 100%;
+  overflow-x: auto;
+
+  &:focus-visible {
+    outline: 2px solid rgba(23, 101, 218, 0.55);
+    outline-offset: 3px;
+  }
+
+  table {
+    border-collapse: collapse;
+    min-width: 640px;
+    width: 100%;
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid #dceaff;
+    color: #10131a;
+    font-size: 1rem;
+    line-height: 1.55;
+    padding: 18px 20px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  thead th {
+    background: #eef5ff;
+    color: #27364d;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  tbody tr {
+    transition: background-color 180ms ease;
+
+    &:hover {
+      background: #f8fbff;
+    }
+  }
+
+  tbody th {
+    font-weight: 500;
+  }
+
+  tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .scrollRegion {
+    th,
+    td {
+      font-size: 0.9375rem;
+      padding: 16px 18px;
+    }
+
+    thead th {
+      font-size: 0.8125rem;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollRegion tbody tr {
+    transition-duration: 0.01ms;
+  }
+}

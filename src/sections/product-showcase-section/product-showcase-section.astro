@@ -2,9 +2,10 @@
 import LineWave from '../../components/ui/line-wave.astro';
 import bitrix24Icon from '../../images/logo/bitrix24-app-icon.svg';
 import moyskladIcon from '../../images/logo/moysklad-app-icon.svg';
+import { companyInfo } from '../../config/company';
 import styles from './product-showcase-section.module.scss';
 
-const consultationUrl = 'https://t.me/m/S5CgvcfdMjAy';
+const consultationUrl = companyInfo.contacts.consultationUrl;
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const internalHref = (path: string) => `${base}${path.replace(/^\//, '')}`;
 ---

@@ -1,0 +1,29 @@
+---
+import styles from './checklist.module.scss';
+
+interface ChecklistItem {
+  title: string;
+  description?: string;
+}
+
+interface Props {
+  items: ChecklistItem[];
+  label?: string;
+}
+
+const { items, label = 'Чек-лист' } = Astro.props;
+---
+
+<section class={styles.checklist} aria-label={label}>
+  <ol>
+    {items.map((item, index) => (
+      <li>
+        <span class={styles.index} aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+        <div>
+          <p class={styles.title}>{item.title}</p>
+          {item.description && <p class={styles.description}>{item.description}</p>}
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>

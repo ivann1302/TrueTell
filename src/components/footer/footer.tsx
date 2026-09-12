@@ -1,5 +1,6 @@
 import styles from './footer.module.scss';
 import shortWhiteLogo from '../../images/logo/short-white-logo.svg';
+import { companyInfo } from '../../config/company';
 import { assetPath } from '../../utils/functions/assetPath';
 
 function AppFooter() {
@@ -7,14 +8,14 @@ function AppFooter() {
     <footer className={styles.footer}>
       <div className={`${styles.footerBlock} ${styles.footerBlock1}`}>
         <div className={styles.footerBlockTitle}>Реквизиты</div>
-        <div className={styles.footerBlockText}>ИП Романов Р.М.</div>
-        <div className={styles.footerBlockText}>ИНН: 300103420414</div>
-        <div className={styles.footerBlockText}>ОГРНИП: 318302500015221</div>
+        <div className={styles.footerBlockText}>{companyInfo.legal.name}</div>
+        <div className={styles.footerBlockText}>ИНН: {companyInfo.legal.inn}</div>
+        <div className={styles.footerBlockText}>{companyInfo.legal.registrationType}: {companyInfo.legal.registrationNumber}</div>
       </div>
       <div className={`${styles.footerBlock} ${styles.footerBlock2}`}>
         <div className={styles.footerBlockTitle}>Контакты</div>
-        <div className={styles.footerBlockText}><a href="tel:+79932806441">+7 (993) 280-64-41</a></div>
-        <div className={styles.footerBlockText}>truetell@bk.ru</div>
+        <div className={styles.footerBlockText}><a href={companyInfo.contacts.phone.href}>{companyInfo.contacts.phone.display}</a></div>
+        <div className={styles.footerBlockText}>{companyInfo.contacts.email}</div>
       </div>
       <div className={`${styles.footerBlock} ${styles.footerBlock3}`}>
         <a href="#home">

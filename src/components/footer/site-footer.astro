@@ -1,5 +1,6 @@
 ---
 import logo from '../../images/logo/logo.svg';
+import { companyInfo } from '../../config/company';
 import styles from './site-footer.module.scss';
 
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
@@ -36,9 +37,9 @@ const navigation = [
     </nav>
 
     <div class={styles.details} aria-label="Реквизиты">
-      <p>ИП Романов Р.М.</p>
-      <p>ИНН 300103420414</p>
-      <p>ОГРНИП 318302500015221</p>
+      <p>{companyInfo.legal.name}</p>
+      <p>ИНН {companyInfo.legal.inn}</p>
+      <p>{companyInfo.legal.registrationType} {companyInfo.legal.registrationNumber}</p>
     </div>
   </div>
 </footer>

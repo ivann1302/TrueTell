@@ -1,0 +1,33 @@
+---
+import { companyInfo } from '../../config/company';
+import styles from './inline-consultation.module.scss';
+
+interface Props {
+  title: string;
+  description: string;
+  href?: string;
+  actionLabel?: string;
+}
+
+const {
+  title,
+  description,
+  href = companyInfo.contacts.consultationUrl,
+  actionLabel = 'Задать вопрос',
+} = Astro.props;
+const external = href.startsWith('http');
+---
+
+<aside class={styles.consultation} aria-label="Консультация">
+  <div>
+    <strong>{title}</strong>
+    <p>{description}</p>
+  </div>
+  <a
+    href={href}
+    target={external ? '_blank' : undefined}
+    rel={external ? 'noopener noreferrer' : undefined}
+  >
+    {actionLabel} <span aria-hidden="true">→</span>
+  </a>
+</aside>

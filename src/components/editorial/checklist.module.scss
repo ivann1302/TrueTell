@@ -1,0 +1,52 @@
+.checklist {
+  margin: 32px 0;
+
+  ol {
+    border-top: 1px solid #d3d7de;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    align-items: baseline;
+    border-bottom: 1px solid #d3d7de;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 40px minmax(0, 1fr);
+    padding: 20px 0;
+  }
+}
+
+.index {
+  color: #1765da;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.title,
+.description {
+  margin: 0;
+}
+
+.title {
+  color: #10131a;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.description {
+  color: #616875;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin-top: 6px;
+}
+
+@media (max-width: 768px) {
+  .checklist li {
+    gap: 16px;
+    grid-template-columns: 32px minmax(0, 1fr);
+    padding: 18px 0;
+  }
+}

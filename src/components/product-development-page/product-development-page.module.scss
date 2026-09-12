@@ -1,0 +1,250 @@
+.page {
+  background: #f6f7f9;
+  box-sizing: border-box;
+  color: #10131a;
+  min-height: 760px;
+  padding: 136px 0 96px;
+  text-align: left;
+}
+
+.container {
+  margin-inline: auto;
+  width: min(calc(100% - 64px), 1240px);
+}
+
+.breadcrumbs {
+  margin-bottom: 48px;
+
+  ol {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    color: #9298a3;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+
+    &:not(:last-child)::after {
+      color: #c2c7cf;
+      content: '/';
+      margin-left: 8px;
+    }
+  }
+
+  a {
+    color: #616875;
+    text-decoration: none;
+
+    &:hover {
+      color: #1765da;
+    }
+
+    &:focus-visible {
+      border-radius: 4px;
+      outline: 2px solid rgba(23, 101, 218, 0.55);
+      outline-offset: 3px;
+    }
+  }
+}
+
+.panel {
+  background:
+    radial-gradient(
+      ellipse 46% 72% at 4% 2%,
+      rgba(75, 156, 255, 0.12) 0%,
+      rgba(23, 101, 218, 0.035) 48%,
+      rgba(16, 22, 33, 0) 76%
+    ),
+    #101621;
+  border-radius: 20px;
+  box-sizing: border-box;
+  color: #f7f8fa;
+  display: grid;
+  gap: 96px;
+  grid-template-columns: minmax(0, 7fr) minmax(320px, 5fr);
+  isolation: isolate;
+  min-height: 480px;
+  overflow: clip;
+  padding: 64px;
+  position: relative;
+
+  &::before {
+    background-image: radial-gradient(
+      circle,
+      rgba(247, 248, 250, 0.18) 0.75px,
+      rgba(247, 248, 250, 0) 0.95px
+    );
+    background-size: 18px 18px;
+    content: '';
+    inset: 0;
+    mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.68) 58%, transparent 100%);
+    opacity: 0.42;
+    pointer-events: none;
+    position: absolute;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      rgba(0, 0, 0, 0.68) 58%,
+      transparent 100%
+    );
+    z-index: -1;
+  }
+}
+
+.heading,
+.details {
+  align-self: end;
+}
+
+.status {
+  color: #4b9cff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0 0 24px;
+}
+
+.heading h1 {
+  font-size: clamp(2.75rem, 4.4vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  margin: 0;
+  max-width: 720px;
+  text-wrap: balance;
+}
+
+.headingAccent {
+  color: #4b9cff;
+}
+
+.details {
+  p {
+    color: rgba(247, 248, 250, 0.68);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    margin: 0;
+
+    & + p {
+      margin-top: 16px;
+    }
+  }
+}
+
+.actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.primaryAction,
+.textAction {
+  align-items: center;
+  box-sizing: border-box;
+  display: inline-flex;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  min-height: 48px;
+  text-decoration: none;
+}
+
+.primaryAction {
+  background: #1765da;
+  border: 1px solid #1765da;
+  border-radius: 10px;
+  color: #fff;
+  gap: 8px;
+  padding: 0 20px;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+
+  &:hover {
+    background: #1455c0;
+    border-color: #1455c0;
+    transform: translateY(-1px);
+  }
+}
+
+.textAction {
+  color: rgba(247, 248, 250, 0.72);
+
+  &:hover {
+    color: #f7f8fa;
+  }
+}
+
+.primaryAction,
+.textAction {
+  &:focus-visible {
+    outline: 2px solid rgba(75, 156, 255, 0.78);
+    outline-offset: 4px;
+  }
+}
+
+@media (max-width: 900px) {
+  .panel {
+    gap: 48px;
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .heading,
+  .details {
+    align-self: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    min-height: 0;
+    padding: 112px 0 72px;
+  }
+
+  .container {
+    width: min(calc(100% - 32px), 1240px);
+  }
+
+  .breadcrumbs {
+    margin-bottom: 32px;
+  }
+
+  .panel {
+    border-radius: 14px;
+    gap: 40px;
+    padding: 40px 24px;
+  }
+
+  .heading h1 {
+    font-size: clamp(2.35rem, 11vw, 3.25rem);
+  }
+
+  .actions {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .primaryAction {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .textAction {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryAction {
+    transition-duration: 0.01ms;
+  }
+}

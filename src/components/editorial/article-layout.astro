@@ -1,0 +1,91 @@
+---
+import AppHeader from '../header/header.astro';
+import SiteFooter from '../footer/site-footer.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleContent from './article-content.astro';
+import ArticleHero from './article-hero.astro';
+import styles from './article-layout.module.scss';
+
+interface Breadcrumb {
+  label: string;
+  href?: string;
+}
+
+interface TitlePart {
+  text: string;
+  accent?: boolean;
+}
+
+interface Props {
+  title: string;
+  titleParts: TitlePart[];
+  description: string;
+  canonicalPath: string;
+  category: string;
+  intro: string;
+  breadcrumbs: Breadcrumb[];
+  structuredData?: Record<string, unknown>;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  author?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  quickAnswerLabel?: string;
+}
+
+const {
+  title,
+  titleParts,
+  description,
+  canonicalPath,
+  category,
+  intro,
+  breadcrumbs,
+  structuredData,
+  ogTitle,
+  ogDescription,
+  ogImage,
+  ogImageAlt,
+  author,
+  publishedTime,
+  modifiedTime,
+  quickAnswerLabel = 'Быстрый ответ',
+} = Astro.props;
+---
+
+<BaseLayout
+  {title}
+  {description}
+  {canonicalPath}
+  {structuredData}
+  ogType="article"
+  {ogTitle}
+  {ogDescription}
+  {ogImage}
+  {ogImageAlt}
+  {author}
+  {publishedTime}
+  {modifiedTime}
+>
+  <AppHeader />
+
+  <main class="site-content">
+    <article class={styles.page}>
+      <ArticleHero {titleParts} {category} {intro} {breadcrumbs} {quickAnswerLabel}>
+        <slot name="quick-answer" />
+      </ArticleHero>
+
+      <ArticleContent>
+        <slot />
+      </ArticleContent>
+
+      <slot name="article-end" />
+    </article>
+
+    <slot name="after-article" />
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

@@ -1,7 +1,8 @@
 ---
+import { companyInfo } from '../../config/company';
 import styles from './product-catalog-section.module.scss';
 
-const consultationUrl = 'https://t.me/m/S5CgvcfdMjAy';
+const consultationUrl = companyInfo.contacts.consultationUrl;
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const resolveHref = (href: string) => href.startsWith('/')
   ? `${base}${href.replace(/^\//, '')}`

@@ -8,7 +8,7 @@ import client3Image from '../../images/mobile-charts/client3.jpg';
 import { assetPath } from '../../utils/functions/assetPath';
 
 // Separate component for each slide to properly use hooks
-const SlideItem = memo(({ slide, getChartByIndex }: { slide: { id: number, chartIndex: number }, getChartByIndex: (index: number) => any }) => {
+const SlideItem = memo(({ slide, getChartByIndex }: { slide: { id: number, chartIndex: number }, getChartByIndex: ReturnType<typeof useChartData>['getChartByIndex'] }) => {
   const isMobileOrTablet = useMobileTablet();
 
   // Get the appropriate mobile image based on slide id
@@ -43,7 +43,7 @@ const SlideItem = memo(({ slide, getChartByIndex }: { slide: { id: number, chart
     const url = new URL(chart.src);
     // Фильтруем и добавляем только определенные параметры
     Object.entries(chart.params)
-      .filter(([_, value]) => value !== undefined)
+      .filter(([, value]) => value !== undefined)
       .forEach(([key, value]) => {
         url.searchParams.set(key, value as string);
       });

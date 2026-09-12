@@ -136,7 +136,7 @@
 }
 
 .serviceTrack {
-  animation: marquee-right 48s linear infinite;
+  animation: marquee-right 37.5s linear infinite;
 }
 
 .logoSet {
@@ -254,6 +254,18 @@
     -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
   }
 
+  .logoSet {
+    gap: 20px;
+    justify-content: flex-start;
+    min-width: max-content;
+    padding-inline: 16px;
+  }
+
+  .crmTrack .logoSet,
+  .serviceTrack .logoSet {
+    min-width: max-content;
+  }
+
   .integration {
     flex-basis: 66px;
     gap: 10px;
@@ -289,6 +301,7 @@
 
   .integrationName {
     font-size: 13px;
+    max-width: 104px;
   }
 
   .crmTrack {
@@ -296,7 +309,7 @@
   }
 
   .serviceTrack {
-    animation-duration: 42s;
+    animation-duration: 27.1s;
   }
 }
 

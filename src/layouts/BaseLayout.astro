@@ -8,6 +8,15 @@ interface Props {
   description: string;
   canonicalPath?: string;
   structuredData?: Record<string, unknown>;
+  ogType?: 'website' | 'article';
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  author?: string;
+  robots?: 'index, follow' | 'noindex, follow' | 'noindex, nofollow';
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
 const {
@@ -15,8 +24,17 @@ const {
   description,
   canonicalPath = '/',
   structuredData,
+  ogType = 'website',
+  ogTitle = title,
+  ogDescription = description,
+  ogImage,
+  ogImageAlt,
+  author,
+  robots = 'index, follow',
+  publishedTime,
+  modifiedTime,
 } = Astro.props;
-const site = Astro.site ?? new URL('https://truetell.ru');
+const site = Astro.site ?? new URL('https://truetell-retail.ru');
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const canonicalUrl = new URL(`${base}${canonicalPath.replace(/^\//, '')}`, site);
 const metrikaEnabled = import.meta.env.BASE_URL === '/';
@@ -28,21 +46,28 @@ const metrikaEnabled = import.meta.env.BASE_URL === '/';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    {author && <meta name="author" content={author} />}
+    <meta name="robots" content={robots} />
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' data: *.yandex.cloud *.yandex.ru *.yandex-team.ru *.yandex.net *.yandex.com yastat.net yastatic.net https://api-maps.yandex.ru https://*.maps.yandex.net https://yandex.ru/clck/click https://mc.yandex.com https://mc.yandex.ru; style-src 'self' 'unsafe-inline'; img-src 'self' *.yandex.cloud *.yandex.ru *.yandex-team.ru *.yandex.net *.yandex.com yastat.net yastatic.net data: https://mc.yandex.com https://mc.yandex.ru; connect-src 'self' 'unsafe-inline' 'unsafe-eval' data: ws: wss: localhost:* *.yandex.cloud *.yandex.ru *.yandex-team.ru *.yandex.net *.yandex.com yastat.net yastatic.net https://api-maps.yandex.ru https://*.maps.yandex.net https://yandex.ru/clck/click https://mc.yandex.com https://mc.yandex.ru https://datalens.yandex.ru https://datalens.yandex.com https://datalens.yandex; frame-src 'self' https://forms.yandex.ru https://forms.yandex.cloud https://api-maps.yandex.ru blob: https://mc.yandex.ru https://mc.yandex.com https://*.truetell.ru https://datalens.yandex.ru https://datalens.yandex.com https://datalens.yandex https://yandex.ru"
     />
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:locale" content="ru_RU" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="TrueTell" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+    {ogImage && ogImageAlt && <meta name="twitter:image:alt" content={ogImageAlt} />}
     <link rel="icon" type="image/svg+xml" href={favicon.src} />
     <title>{title}</title>
     {structuredData && (

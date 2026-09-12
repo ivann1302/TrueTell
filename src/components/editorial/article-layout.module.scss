@@ -1,0 +1,14 @@
+.page {
+  --article-bg: #f6f7f9;
+  --article-surface: #fff;
+  --article-text: #10131a;
+  --article-secondary: #616875;
+  --article-muted: #9298a3;
+  --article-border: #e3e6eb;
+  --article-brand: #1765da;
+
+  background: var(--article-bg);
+  box-sizing: border-box;
+  color: var(--article-text);
+  text-align: left;
+}

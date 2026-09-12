@@ -5,6 +5,7 @@ import AppHeader from '../components/header/header.astro';
 import SiteFooter from '../components/footer/site-footer.astro';
 import LineWave from '../components/ui/line-wave.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { companyInfo } from '../config/company';
 
 import heroStyles from '../sections/hero-section/hero-section.module.scss';
 import styles from './bi-analitika.module.scss';
@@ -130,7 +131,7 @@ const structuredData = {
       areaServed: 'RU',
       provider: {
         '@type': 'Organization',
-        name: 'TrueTell',
+        name: companyInfo.brandName,
         url: homeUrl,
       },
     },
@@ -140,7 +141,7 @@ const structuredData = {
         {
           '@type': 'ListItem',
           position: 1,
-          name: 'TrueTell',
+          name: companyInfo.brandName,
           item: homeUrl,
         },
         {
@@ -435,7 +436,7 @@ const structuredData = {
           </div>
           <div class={styles.ctaActions}>
             <a class={styles.primaryAction} href={demoUrl} target="_blank" rel="noopener noreferrer">Протестировать демо</a>
-            <a class={styles.secondaryAction} href="https://t.me/m/S5CgvcfdMjAy" target="_blank" rel="noopener noreferrer">Или напишите нам, мы же люди</a>
+            <a class={styles.secondaryAction} href={companyInfo.contacts.consultationUrl} target="_blank" rel="noopener noreferrer">Или напишите нам, мы же люди</a>
           </div>
         </div>
       </div>

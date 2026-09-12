@@ -2,8 +2,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import viteImagemin from 'vite-plugin-imagemin';
 import { JSDOM } from 'jsdom';
-import fs from 'fs';
-import path from 'path';
 
 // Custom plugin for critical CSS extraction and inlining
 const criticalCssPlugin = () => {

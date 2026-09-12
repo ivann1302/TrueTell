@@ -1,5 +1,6 @@
 ---
 import LineWave from '../../components/ui/line-wave.astro';
+import { companyInfo } from '../../config/company';
 import styles from './consultation-cta-section.module.scss';
 ---
 
@@ -16,7 +17,7 @@ import styles from './consultation-cta-section.module.scss';
         </p>
         <a
           class={styles.action}
-          href="https://t.me/m/S5CgvcfdMjAy"
+          href={companyInfo.contacts.consultationUrl}
           target="_blank"
           rel="noopener noreferrer"
         >

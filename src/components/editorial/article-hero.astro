@@ -1,0 +1,63 @@
+---
+import styles from './article-hero.module.scss';
+
+interface Breadcrumb {
+  label: string;
+  href?: string;
+}
+
+interface TitlePart {
+  text: string;
+  accent?: boolean;
+}
+
+interface Props {
+  titleParts: TitlePart[];
+  category: string;
+  intro: string;
+  breadcrumbs: Breadcrumb[];
+  quickAnswerLabel?: string;
+}
+
+const {
+  titleParts,
+  category,
+  intro,
+  breadcrumbs,
+  quickAnswerLabel = 'Быстрый ответ',
+} = Astro.props;
+---
+
+<header class={styles.hero}>
+  <div class={styles.container}>
+    <nav class={styles.breadcrumbs} aria-label="Хлебные крошки">
+      <ol>
+        {breadcrumbs.map((item, index) => (
+          <li aria-current={index === breadcrumbs.length - 1 ? 'page' : undefined}>
+            {item.href ? <a href={item.href}>{item.label}</a> : item.label}
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <div class={styles.heroGrid}>
+      <div class={styles.heroMain}>
+        <p class={styles.meta}>{category}</p>
+        <h1>
+          {titleParts.map((part) =>
+            part.accent ? <span class={styles.headingAccent}>{part.text}</span> : part.text,
+          )}
+        </h1>
+      </div>
+
+      <p class={styles.intro}>{intro}</p>
+    </div>
+
+    <aside class={styles.quickAnswer} aria-label={quickAnswerLabel}>
+      <span class={styles.quickAnswerLabel}>{quickAnswerLabel}</span>
+      <div class={styles.quickAnswerContent}>
+        <slot />
+      </div>
+    </aside>
+  </div>
+</header>

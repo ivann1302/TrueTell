@@ -1,0 +1,104 @@
+---
+import AppHeader from '../header/header.astro';
+import SiteFooter from '../footer/site-footer.astro';
+import { companyInfo } from '../../config/company';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import styles from './product-development-page.module.scss';
+
+interface HeadingSegment {
+  text: string;
+  accent?: boolean;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  breadcrumbLabel: string;
+  heading: HeadingSegment[];
+  articleHref?: string;
+  articleLabel?: string;
+  statusLabel?: string;
+  releaseText?: string;
+  contactText?: string;
+  actionLabel?: string;
+}
+
+const {
+  title,
+  description,
+  canonicalPath,
+  breadcrumbLabel,
+  heading,
+  articleHref,
+  articleLabel = 'Вернуться к статье',
+  statusLabel = 'Продукт в разработке',
+  releaseText = 'Продукт находится в разработке и в ближайшее время выйдет в свет.',
+  contactText =
+    'Если продукт вас заинтересовал, оставьте заявку — мы свяжемся с вами и проконсультируем в удобном формате.',
+  actionLabel = 'Оставить заявку',
+} = Astro.props;
+
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const toSitePath = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
+---
+
+<BaseLayout {title} {description} {canonicalPath} robots="noindex, follow">
+  <AppHeader />
+
+  <main class="site-content">
+    <section class={styles.page} aria-labelledby="product-development-title">
+      <div class={styles.container}>
+        <nav class={styles.breadcrumbs} aria-label="Хлебные крошки">
+          <ol>
+            <li><a href={base}>Главная</a></li>
+            <li><a href={toSitePath('/products/')}>Продукты</a></li>
+            <li aria-current="page">{breadcrumbLabel}</li>
+          </ol>
+        </nav>
+
+        <div class={styles.panel}>
+          <div class={styles.heading}>
+            <p class={styles.status}>{statusLabel}</p>
+            <h1 id="product-development-title">
+              {
+                heading.map((segment) =>
+                  segment.accent ? (
+                    <span class={styles.headingAccent}>{segment.text}</span>
+                  ) : (
+                    segment.text
+                  )
+                )
+              }
+            </h1>
+          </div>
+
+          <div class={styles.details}>
+            <p>{releaseText}</p>
+            <p>{contactText}</p>
+
+            <div class={styles.actions}>
+              <a
+                class={styles.primaryAction}
+                href={companyInfo.contacts.consultationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {actionLabel} <span aria-hidden="true">→</span>
+              </a>
+              {
+                articleHref && (
+                  <a class={styles.textAction} href={toSitePath(articleHref)}>
+                    {articleLabel}
+                  </a>
+                )
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

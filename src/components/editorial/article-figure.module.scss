@@ -1,0 +1,19 @@
+.figure {
+  margin: 40px 0;
+
+  img {
+    border: 1px solid rgba(23, 101, 218, 0.18);
+    border-radius: 14px;
+    box-sizing: border-box;
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+
+  figcaption {
+    color: #616875;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-top: 12px;
+  }
+}

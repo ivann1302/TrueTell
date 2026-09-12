@@ -1319,6 +1319,36 @@ Footer
 
 Не создавать отдельный визуальный компонент для каждой секции, если она может быть собрана из этих primitives.
 
+### Единые компоненты редакционного контента
+
+Статьи должны собираться из общего каркаса и редакционных компонентов проекта:
+
+```text
+src/components/editorial/article-layout.astro
+src/components/editorial/article-hero.astro
+src/components/editorial/article-content.astro
+src/components/editorial/article-figure.astro
+src/components/editorial/data-table.astro
+src/components/editorial/checklist.astro
+src/components/editorial/inline-consultation.astro
+src/components/editorial/article-sources.astro
+src/components/editorial/article-product-cta.astro
+src/components/editorial/related-articles.astro
+src/sections/faq-section/faq-section.astro
+src/utils/functions/createArticleStructuredData.ts
+```
+
+- Не копировать разметку, типографику или стили этих паттернов внутрь отдельной страницы.
+- Передавать содержимое через props, сохраняя единую семантику, focus-состояния и mobile-поведение.
+- Каждая опубликованная статья обязательно содержит уникальное смысловое изображение через `article-figure.astro`; декоративные абстракции без связи с текстом не подходят.
+- Основная иллюстрация хранится в `src/images/articles/`, использует Astro Image и получает содержательный `alt`.
+- Маршрут статьи располагается на втором уровне после главной (`/slug/`), но в хлебных крошках сохраняется пункт «Блог».
+- Автор статьи передаётся в метаданные и structured data, но не выводится в теле; дата публикации размещается внизу статьи, время чтения не используется.
+- Использовать таблицу для сопоставления данных, чек-лист — только для реальной последовательности или проверки, FAQ — для самостоятельных вопросов и ответов.
+- FAQ на разных страницах сохраняет одну механику `details/summary`; допустимы только документированные варианты отступов и масштаба.
+- Для связанных материалов использовать общий `related-articles.astro`: три слайда на desktop, два на tablet и один на mobile.
+- Состав, порядок блоков, требования к тексту и чек публикации описаны в `.agents/skills/truetell-article-authoring/references/article-model.md`.
+
 ---
 
 ## 44. Рекомендуемая структура CSS tokens

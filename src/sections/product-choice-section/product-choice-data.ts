@@ -1,3 +1,5 @@
+import { companyInfo } from '../../config/company';
+
 export type Product = {
   id: string;
   problem: string;
@@ -22,7 +24,7 @@ export const products: Product[] = [
     title: 'Решения для CRM и бизнес-систем',
     description: 'MCP-серверы, приложения и интеграции для рабочих систем компании.',
     action: 'Обсудить CRM-задачу',
-    href: 'https://t.me/m/S5CgvcfdMjAy',
+    href: companyInfo.contacts.consultationUrl,
   },
   {
     id: 'marketplaces',
@@ -30,7 +32,7 @@ export const products: Product[] = [
     title: 'Интеграция МойСклад с маркетплейсами',
     description: 'Единый обмен заказами, остатками и ценами между учётной системой и каналами продаж.',
     action: 'Обсудить интеграцию',
-    href: 'https://t.me/m/S5CgvcfdMjAy',
+    href: companyInfo.contacts.consultationUrl,
   },
   {
     id: 'ideas',
@@ -38,6 +40,6 @@ export const products: Product[] = [
     title: 'Сервис проверки бизнес-идей',
     description: 'Структурированная проверка идеи до инвестиций в разработку и продвижение.',
     action: 'Узнать о запуске',
-    href: 'https://t.me/m/S5CgvcfdMjAy',
+    href: companyInfo.contacts.consultationUrl,
   },
 ];

@@ -11,6 +11,7 @@ import FaqSection from '../sections/faq-section/faq-section.astro';
 import IntegrationsSection from '../sections/integrations-section/integrations-section.astro';
 import ProductChoiceSection from '../sections/product-choice-section/product-choice-section.astro';
 import ProductShowcaseSection from '../sections/product-showcase-section/product-showcase-section.astro';
+import { companyInfo } from '../config/company';
 
 import heroStyles from '../sections/hero-section/hero-section.module.scss';
 
@@ -24,13 +25,13 @@ const structuredData = {
   '@graph': [
     {
       '@type': 'Organization',
-      name: 'TrueTell',
+      name: companyInfo.brandName,
       url: siteUrl,
-      email: 'truetell@bk.ru',
-      telephone: '+7-993-280-64-41',
-      sameAs: ['https://t.me/m/S5CgvcfdMjAy'],
+      email: companyInfo.contacts.email,
+      telephone: companyInfo.contacts.phone.e164,
+      sameAs: [companyInfo.contacts.telegram.url],
     },
-    { '@type': 'WebSite', name: 'TrueTell', url: siteUrl, inLanguage: 'ru-RU' },
+    { '@type': 'WebSite', name: companyInfo.brandName, url: siteUrl, inLanguage: 'ru-RU' },
   ],
 };
 ---
@@ -45,7 +46,7 @@ const structuredData = {
         <p class={heroStyles.subtitle}>Разрабатываем MCP-серверы для МойСклад и Битрикс24, BI-аналитику и интеграции с маркетплейсами.</p>
         <div class={heroStyles.actions}>
           <a class={heroStyles.primaryAction} href="#products">Посмотреть решения</a>
-          <a class={heroStyles.secondaryAction} href="https://t.me/m/S5CgvcfdMjAy" target="_blank" rel="noopener noreferrer">Обсудить задачу</a>
+          <a class={heroStyles.secondaryAction} href={companyInfo.contacts.consultationUrl} target="_blank" rel="noopener noreferrer">Обсудить задачу</a>
         </div>
       </div>
     </section>

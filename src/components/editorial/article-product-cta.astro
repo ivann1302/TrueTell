@@ -1,0 +1,38 @@
+---
+import styles from './article-product-cta.module.scss';
+
+interface TitlePart {
+  text: string;
+  accent?: boolean;
+}
+
+interface Props {
+  titleParts: TitlePart[];
+  description: string;
+  href: string;
+  actionLabel?: string;
+}
+
+const { titleParts, description, href, actionLabel = 'Посмотреть продукт' } = Astro.props;
+const external = href.startsWith('http');
+---
+
+<aside class={styles.cta} aria-labelledby="article-product-cta-title">
+  <div class={styles.container}>
+    <div>
+      <h2 id="article-product-cta-title">
+        {titleParts.map((part) =>
+          part.accent ? <span class={styles.accent}>{part.text}</span> : part.text,
+        )}
+      </h2>
+      <p>{description}</p>
+    </div>
+    <a
+      href={href}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
+    >
+      {actionLabel} <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</aside>

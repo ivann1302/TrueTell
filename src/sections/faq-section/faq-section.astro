@@ -1,7 +1,19 @@
 ---
 import styles from './faq-section.module.scss';
 
-const faqItems = [
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items?: FaqItem[];
+  title?: string;
+  id?: string;
+  variant?: 'page' | 'article';
+}
+
+const defaultItems = [
   {
     question: 'С чего начать работу?',
     answer: 'Здесь будет краткое описание первого шага и формата знакомства с задачей.',
@@ -23,16 +35,29 @@ const faqItems = [
     answer: 'Здесь будет информация о поддержке, обновлениях и развитии решения.',
   },
 ];
+
+const {
+  items = defaultItems,
+  title = 'Частые вопросы',
+  id = 'faq',
+  variant = 'page',
+} = Astro.props;
+const titleId = `${id}-title`;
+const groupName = `${id}-items`;
 ---
 
-<section class={styles.section} aria-labelledby="faq-title">
+<section
+  id={id}
+  class:list={[styles.section, variant === 'article' && styles.articleSection]}
+  aria-labelledby={titleId}
+>
   <div class={styles.container}>
     <div class={styles.content}>
-      <h2 id="faq-title" class={styles.title}>Частые вопросы</h2>
+      <h2 id={titleId} class={styles.title}>{title}</h2>
 
-      <div class={styles.accordion}>
-        {faqItems.map((item) => (
-          <details class={styles.item} name="faq-items">
+      <div class={styles.accordion} data-faq-accordion>
+        {items.map((item) => (
+          <details class={styles.item} name={groupName}>
             <summary class={styles.question}>
               <span>{item.question}</span>
               <svg
@@ -50,7 +75,7 @@ const faqItems = [
               </svg>
             </summary>
 
-            <div class={styles.answer}>
+            <div class={styles.answer} data-faq-answer>
               <p>{item.answer}</p>
             </div>
           </details>
@@ -59,3 +84,79 @@ const faqItems = [
     </div>
   </div>
 </section>
+
+<script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  document.querySelectorAll<HTMLElement>('[data-faq-accordion]').forEach((accordion) => {
+    if (accordion.dataset.enhanced === 'true') return;
+    accordion.dataset.enhanced = 'true';
+
+    const items = Array.from(accordion.querySelectorAll<HTMLDetailsElement>('details'));
+    const animations = new WeakMap<HTMLDetailsElement, Animation>();
+
+    const finish = (item: HTMLDetailsElement, answer: HTMLElement, open: boolean) => {
+      animations.delete(item);
+      item.open = open;
+      delete item.dataset.state;
+      answer.style.removeProperty('height');
+      answer.style.removeProperty('overflow');
+    };
+
+    const animateTo = (item: HTMLDetailsElement, open: boolean) => {
+      const summary = item.querySelector<HTMLElement>('summary');
+      const answer = item.querySelector<HTMLElement>('[data-faq-answer]');
+      if (!summary || !answer) return;
+
+      if (reducedMotion.matches) {
+        animations.get(item)?.cancel();
+        finish(item, answer, open);
+        return;
+      }
+
+      const currentHeight = item.open ? answer.getBoundingClientRect().height : 0;
+      const activeAnimation = animations.get(item);
+      activeAnimation?.cancel();
+      animations.delete(item);
+
+      if (open) item.open = true;
+      item.dataset.state = open ? 'opening' : 'closing';
+      answer.style.height = `${currentHeight}px`;
+      answer.style.overflow = 'hidden';
+
+      const targetHeight = open ? answer.scrollHeight : 0;
+      const animation = answer.animate(
+        { height: [`${currentHeight}px`, `${targetHeight}px`] },
+        { duration: open ? 420 : 340, easing: 'cubic-bezier(0.22, 0.61, 0.36, 1)' },
+      );
+
+      animations.set(item, animation);
+      animation.onfinish = () => {
+        if (animations.get(item) !== animation) return;
+        finish(item, answer, open);
+      };
+      animation.oncancel = () => {
+        if (animations.get(item) === animation) animations.delete(item);
+      };
+    };
+
+    items.forEach((item) => {
+      item.removeAttribute('name');
+      const summary = item.querySelector<HTMLElement>('summary');
+      if (!summary) return;
+
+      summary.addEventListener('click', (event) => {
+        event.preventDefault();
+        const opening = !item.open || item.dataset.state === 'closing';
+
+        if (opening) {
+          items.forEach((otherItem) => {
+            if (otherItem !== item && otherItem.open) animateTo(otherItem, false);
+          });
+        }
+
+        animateTo(item, opening);
+      });
+    });
+  });
+</script>

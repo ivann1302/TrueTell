@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './social-icons.module.scss';
 import whatsappIcon from '../../images/icons/whatsapp.svg';
 import telegramIcon from '../../images/icons/telegram.svg';
+import { companyInfo } from '../../config/company';
 import { assetPath } from '../../utils/functions/assetPath';
 
 interface SocialIconsProps {
@@ -14,7 +15,7 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({
   return (
     <div className={`${styles['social-icons']} ${className}`}>
       <a
-        href="https://api.whatsapp.com/send/?phone=79932806441&text&type=phone_number&app_absent=0"
+        href={companyInfo.contacts.whatsapp.url}
         target="_blank" 
         rel="noopener noreferrer"
         className={styles['social-icon']}
@@ -24,7 +25,7 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({
         </div>
       </a>
       <a
-        href="https://t.me/m/S5CgvcfdMjAy"
+        href={companyInfo.contacts.telegram.url}
         target="_blank" 
         rel="noopener noreferrer"
         className={styles['social-icon']}
