@@ -26,6 +26,17 @@ export function validateNotFoundHtml(html) {
   if (document.querySelector('link[rel="canonical"]')) throw new Error('404 page must not have a canonical URL');
 }
 
+export function validatePublicHtml(html, url) {
+  const document = new JSDOM(html).window.document;
+  const publicText = [
+    document.title,
+    document.body?.textContent ?? '',
+    ...[...document.querySelectorAll('meta[content], [aria-label], [title], [alt]')]
+      .flatMap((element) => ['content', 'aria-label', 'title', 'alt'].map((attribute) => element.getAttribute(attribute) ?? '')),
+  ].join(' ');
+  if (/\bMCP\b/i.test(publicText)) throw new Error(`Retired MCP positioning found on ${url}`);
+}
+
 export function validateRobots(robots, site) {
   const lines = robots.split(/\r?\n/).map((line) => line.trim());
   const allowPath = new URL(site).pathname;
@@ -83,11 +94,13 @@ async function main() {
   const urls = validateSitemapXml(xml, site);
   validateRobots(robots, site);
   validateNotFoundHtml(notFoundHtml);
+  validatePublicHtml(notFoundHtml, `${site}/404.html`);
   validateHtaccess(htaccess, site);
   for (const url of urls) {
     const path = decodeURIComponent(new URL(url).pathname);
     const html = await readFile(resolve('dist', `.${path}`, 'index.html'), 'utf8');
     const document = new JSDOM(html).window.document;
+    validatePublicHtml(html, url);
     if (document.querySelector('link[rel="canonical"]')?.href !== url) throw new Error(`Canonical mismatch: ${url}`);
     if (/noindex/i.test(document.querySelector('meta[name="robots"]')?.content ?? '')) throw new Error(`Noindex URL: ${url}`);
   }

@@ -154,7 +154,7 @@ const MobileMenu = () => {
               </ul>
             </nav>
 
-            <p className={styles.menuNote}>MCP-серверы · BI-аналитика · интеграции</p>
+            <p className={styles.menuNote}>Приложения для CRM · BI-аналитика</p>
           </div>,
           document.body,
         )}

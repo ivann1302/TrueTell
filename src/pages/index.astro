@@ -15,8 +15,8 @@ import { companyInfo } from '../config/company';
 
 import heroStyles from '../sections/hero-section/hero-section.module.scss';
 
-const title = 'TrueTell — B2B-продукты, MCP и BI-аналитика';
-const description = 'TrueTell разрабатывает MCP-серверы для МойСклад и Битрикс24, BI-аналитику и интеграции для автоматизации торговли и продаж.';
+const title = 'TrueTell — приложения для CRM и BI-аналитика';
+const description = 'TrueTell разрабатывает приложения для CRM и бизнес-систем, BI-аналитику и решения для автоматизации торговли и продаж.';
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const siteUrl = new URL(base, import.meta.env.SITE).toString();
 
@@ -42,8 +42,8 @@ const structuredData = {
     <section id="home" class={heroStyles['hero-section']}>
       <LineWave />
       <div class={heroStyles.container}>
-        <h1 class={heroStyles.title}>B2B-продукты для данных, продаж и автоматизации</h1>
-        <p class={heroStyles.subtitle}>Разрабатываем MCP-серверы для МойСклад и Битрикс24, BI-аналитику и интеграции с маркетплейсами.</p>
+        <h1 class={heroStyles.title}>Приложения для CRM и автоматизации бизнеса</h1>
+        <p class={heroStyles.subtitle}>Разрабатываем приложения для CRM и бизнес-систем, BI-аналитику и решения для автоматизации торговли и продаж.</p>
         <div class={heroStyles.actions}>
           <a class={heroStyles.primaryAction} href="#products">Посмотреть решения</a>
           <a class={heroStyles.secondaryAction} href={companyInfo.contacts.consultationUrl} target="_blank" rel="noopener noreferrer">Обсудить задачу</a>

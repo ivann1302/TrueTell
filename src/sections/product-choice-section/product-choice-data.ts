@@ -22,7 +22,7 @@ export const products: Product[] = [
     id: 'crm',
     problem: 'Связать CRM, данные и ИИ',
     title: 'Решения для CRM и бизнес-систем',
-    description: 'MCP-серверы, приложения и интеграции для рабочих систем компании.',
+    description: 'Приложения для CRM и других рабочих систем компании.',
     action: 'Обсудить CRM-задачу',
     href: companyInfo.contacts.consultationUrl,
   },

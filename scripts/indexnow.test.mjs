@@ -82,3 +82,14 @@ ErrorDocument 404 /404.html`;
   assert.throws(() => deployment.validateHtaccess(valid.replace('ErrorDocument 404 /404.html', ''), 'https://truetell-retail.ru'), /404/);
   assert.throws(() => deployment.validateHtaccess(valid.replace('!^truetell-retail\\.ru$', '^truetell-retail\\.ru$'), 'https://truetell-retail.ru'), /host/i);
 });
+
+test('rejects retired MCP positioning in public page output', () => {
+  assert.equal(typeof deployment.validatePublicHtml, 'function');
+  const valid = '<title>Приложения для CRM</title><main><h1>Приложения для CRM и автоматизации бизнеса</h1></main>';
+
+  assert.doesNotThrow(() => deployment.validatePublicHtml(valid, 'https://truetell-retail.ru/'));
+  assert.throws(
+    () => deployment.validatePublicHtml('<meta name="description" content="MCP-серверы для CRM"><main>Приложения</main>', 'https://truetell-retail.ru/'),
+    /MCP.*https:\/\/truetell-retail\.ru\//i,
+  );
+});

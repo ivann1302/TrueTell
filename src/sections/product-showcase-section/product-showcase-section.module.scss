@@ -77,7 +77,7 @@
 }
 
 .biProduct,
-.mcpProducts,
+.appProducts,
 .ideaProject {
   border: 1px solid #182131;
   box-shadow:
@@ -87,7 +87,7 @@
 }
 
 .biProduct,
-.mcpProducts {
+.appProducts {
   background: #fff;
   border-radius: 24px;
   isolation: isolate;
@@ -132,7 +132,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .biProduct:hover,
-  .mcpProducts:hover {
+  .appProducts:hover {
     border-color: #4b9cff;
     box-shadow:
       0 1px 2px rgba(10, 20, 40, 0.03),
@@ -233,31 +233,31 @@
   margin-top: 24px;
 }
 
-.mcpProducts {
+.appProducts {
   display: grid;
   grid-template-rows: 1fr 1fr;
   padding: 8px 58px;
 }
 
-.mcpProduct {
+.appProduct {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 48px 0;
 }
 
-.mcpProduct:first-child {
+.appProduct:first-child {
   border-bottom: 1px solid #e3e6eb;
 }
 
-.mcpHeading {
+.appHeading {
   align-items: center;
   display: grid;
   gap: 20px;
   grid-template-columns: minmax(0, 1fr) auto;
 }
 
-.mcpTitle {
+.appTitle {
   font-size: clamp(1.675rem, 2.16vw, 1.95rem);
   font-weight: 500;
   letter-spacing: -0.025em;
@@ -265,7 +265,7 @@
   margin: 0;
 }
 
-.mcpIcon {
+.appIcon {
   aspect-ratio: 1;
   border-radius: 14px;
   display: block;
@@ -275,7 +275,7 @@
   width: 64px;
 }
 
-.mcpDescription {
+.appDescription {
   color: rgba(16, 19, 26, 0.58);
   font-size: 18px;
   line-height: 1.6;
@@ -283,7 +283,7 @@
   max-width: 468px;
 }
 
-.mcpProduct .productButton {
+.appProduct .productButton {
   margin-top: 24px;
 }
 
@@ -448,19 +448,19 @@
     min-height: 528px;
   }
 
-  .mcpProducts {
+  .appProducts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: none;
     padding: 16px 58px;
   }
 
-  .mcpProduct:first-child {
+  .appProduct:first-child {
     border-bottom: 0;
     border-right: 1px solid #e3e6eb;
     padding-right: 48px;
   }
 
-  .mcpProduct:last-child {
+  .appProduct:last-child {
     padding-left: 48px;
   }
 
@@ -509,7 +509,7 @@
   }
 
   .biProduct,
-  .mcpProducts,
+  .appProducts,
   .ideaProject {
     border-radius: 20px;
   }
@@ -557,48 +557,48 @@
     margin-top: 16px;
   }
 
-  .mcpProducts {
+  .appProducts {
     display: block;
     padding: 8px 24px;
   }
 
-  .mcpProduct,
-  .mcpProduct:first-child,
-  .mcpProduct:last-child {
+  .appProduct,
+  .appProduct:first-child,
+  .appProduct:last-child {
     align-items: center;
     border-right: 0;
     padding: 32px 0;
     text-align: center;
   }
 
-  .mcpProduct:first-child {
+  .appProduct:first-child {
     border-bottom: 1px solid #e3e6eb;
   }
 
-  .mcpTitle {
+  .appTitle {
     font-size: 1.5rem;
     order: 1;
   }
 
-  .mcpHeading {
+  .appHeading {
     display: contents;
   }
 
-  .mcpIcon {
+  .appIcon {
     border-radius: 12px;
     margin-top: 20px;
     order: 3;
     width: 58px;
   }
 
-  .mcpDescription {
+  .appDescription {
     font-size: 15px;
     margin-inline: auto;
     margin-top: 16px;
     order: 2;
   }
 
-  .mcpProduct .productButton {
+  .appProduct .productButton {
     margin-top: 14px;
     order: 4;
   }
@@ -670,9 +670,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .biProduct,
-  .mcpProducts,
+  .appProducts,
   .biProduct::before,
-  .mcpProducts::before,
+  .appProducts::before,
   .ideaProject::before,
   .ideaProject::after,
   .productButton,
