@@ -12,6 +12,7 @@ dist
 dist-ssr
 .astro
 *.local
+docs/seo-ai-roadmap.local.md
 
 # Editor directories and files
 .vscode/*
