@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{HTTP_HOST} !^truetell-retail\.ru$ [NC]
+  RewriteRule ^ https://truetell-retail.ru%{REQUEST_URI} [R=301,L,NE]
+
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !^https$ [NC]
+  RewriteRule ^ https://truetell-retail.ru%{REQUEST_URI} [R=301,L,NE]
+</IfModule>
+
+ErrorDocument 404 /404.html

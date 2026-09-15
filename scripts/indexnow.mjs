@@ -19,6 +19,44 @@ export function sitemapUrls(xml, site) {
   return urls;
 }
 
+export function validateNotFoundHtml(html) {
+  const document = new JSDOM(html).window.document;
+  const robots = document.querySelector('meta[name="robots"]')?.content ?? '';
+  if (!/(^|,)\s*noindex\s*(,|$)/i.test(robots)) throw new Error('404 page must be noindex');
+  if (document.querySelector('link[rel="canonical"]')) throw new Error('404 page must not have a canonical URL');
+}
+
+export function validateRobots(robots, site) {
+  const lines = robots.split(/\r?\n/).map((line) => line.trim());
+  const allowPath = new URL(site).pathname;
+  const aiCrawlers = ['GPTBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot', 'anthropic-ai', 'Google-Extended', 'Bingbot'];
+
+  for (const crawler of aiCrawlers) {
+    const agentIndex = lines.findIndex((line) => line.toLowerCase() === `user-agent: ${crawler}`.toLowerCase());
+    const nextDirective = lines.slice(agentIndex + 1).find(Boolean);
+    if (agentIndex < 0 || nextDirective?.toLowerCase() !== `allow: ${allowPath}`.toLowerCase()) {
+      throw new Error(`Missing explicit allow policy for ${crawler}`);
+    }
+  }
+  if (!robots.includes(`Sitemap: ${site}/sitemap.xml`)) throw new Error('Missing robots sitemap');
+}
+
+export function validateSitemapXml(xml, site) {
+  const document = new JSDOM(xml, { contentType: 'text/xml' }).window.document;
+  if (document.querySelector('lastmod')) throw new Error('Sitemap lastmod must be omitted until content dates are tracked');
+  return sitemapUrls(xml, site);
+}
+
+export function validateHtaccess(config, site) {
+  const { hostname, origin } = new URL(site);
+  const escapedHost = hostname.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const hostCondition = `RewriteCond %{HTTP_HOST} !^${escapedHost}$ [NC]`;
+  if (!config.includes(hostCondition)) throw new Error('Missing canonical host redirect condition');
+  if (!config.includes('RewriteCond %{HTTPS} !=on')) throw new Error('Missing HTTPS redirect condition');
+  if (config.split(`${origin}%{REQUEST_URI}`).length - 1 < 2) throw new Error('Missing canonical redirect targets');
+  if (!/^\s*ErrorDocument\s+404\s+\/404\.html\s*$/m.test(config)) throw new Error('Missing custom 404 error document');
+}
+
 export async function request(url, options = {}, fetcher = fetch, sleep = delay) {
   for (let attempt = 0; attempt < 4; attempt++) {
     try {
@@ -36,8 +74,16 @@ export async function request(url, options = {}, fetcher = fetch, sleep = delay)
 async function main() {
   const { site, indexNowKey: key } = JSON.parse(await readFile(new URL('./deployment.json', import.meta.url), 'utf8'));
   if (!/^[a-zA-Z0-9-]{8,128}$/.test(key)) throw new Error('Invalid IndexNow key');
-  const xml = await readFile('dist/sitemap.xml', 'utf8');
-  const urls = sitemapUrls(xml, site);
+  const [xml, robots, notFoundHtml, htaccess] = await Promise.all([
+    readFile('dist/sitemap.xml', 'utf8'),
+    readFile('dist/robots.txt', 'utf8'),
+    readFile('dist/404.html', 'utf8'),
+    readFile('dist/.htaccess', 'utf8'),
+  ]);
+  const urls = validateSitemapXml(xml, site);
+  validateRobots(robots, site);
+  validateNotFoundHtml(notFoundHtml);
+  validateHtaccess(htaccess, site);
   for (const url of urls) {
     const path = decodeURIComponent(new URL(url).pathname);
     const html = await readFile(resolve('dist', `.${path}`, 'index.html'), 'utf8');
@@ -46,8 +92,7 @@ async function main() {
     if (/noindex/i.test(document.querySelector('meta[name="robots"]')?.content ?? '')) throw new Error(`Noindex URL: ${url}`);
   }
   if ((await readFile(`dist/${key}.txt`, 'utf8')).trim() !== key) throw new Error('Key file mismatch');
-  if (!(await readFile('dist/robots.txt', 'utf8')).includes(`Sitemap: ${site}/sitemap.xml`)) throw new Error('Missing robots sitemap');
-  console.log(`Validated ${urls.length} production URLs and IndexNow key`);
+  console.log(`Validated ${urls.length} production URLs, deployment SEO files and IndexNow key`);
   if (process.argv.includes('--check')) return;
 
   // Check public files before submitting URLs; allow time for hosting propagation.

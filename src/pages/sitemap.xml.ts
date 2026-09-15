@@ -3,7 +3,6 @@ import { blogArticles } from '../config/articles';
 export const prerender = true;
 
 export function GET() {
-  const lastmod = new Date().toISOString().slice(0, 10);
   const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
   const siteRoot = new URL(base, import.meta.env.SITE);
   const pageUrl = (path = '') => new URL(path, siteRoot).toString();
@@ -26,7 +25,6 @@ export function GET() {
     .map(
       (entry) => `  <url>
     <loc>${pageUrl(entry.path)}</loc>
-    <lastmod>${lastmod}</lastmod>
     <changefreq>${entry.changefreq}</changefreq>
     <priority>${entry.priority}</priority>
   </url>`,

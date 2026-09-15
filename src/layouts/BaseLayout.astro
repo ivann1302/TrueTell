@@ -6,7 +6,7 @@ import favicon from '../images/logo/short-white-logo.svg';
 interface Props {
   title: string;
   description: string;
-  canonicalPath?: string;
+  canonicalPath?: string | false;
   structuredData?: Record<string, unknown>;
   ogType?: 'website' | 'article';
   ogTitle?: string;
@@ -36,7 +36,9 @@ const {
 } = Astro.props;
 const site = Astro.site ?? new URL('https://truetell-retail.ru');
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
-const canonicalUrl = new URL(`${base}${canonicalPath.replace(/^\//, '')}`, site);
+const canonicalUrl = canonicalPath === false
+  ? undefined
+  : new URL(`${base}${canonicalPath.replace(/^\//, '')}`, site);
 const metrikaEnabled = import.meta.env.BASE_URL === '/';
 ---
 
@@ -52,13 +54,13 @@ const metrikaEnabled = import.meta.env.BASE_URL === '/';
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' data: *.yandex.cloud *.yandex.ru *.yandex-team.ru *.yandex.net *.yandex.com yastat.net yastatic.net https://api-maps.yandex.ru https://*.maps.yandex.net https://yandex.ru/clck/click https://mc.yandex.com https://mc.yandex.ru; style-src 'self' 'unsafe-inline'; img-src 'self' *.yandex.cloud *.yandex.ru *.yandex-team.ru *.yandex.net *.yandex.com yastat.net yastatic.net data: https://mc.yandex.com https://mc.yandex.ru; connect-src 'self' 'unsafe-inline' 'unsafe-eval' data: ws: wss: localhost:* *.yandex.cloud *.yandex.ru *.yandex-team.ru *.yandex.net *.yandex.com yastat.net yastatic.net https://api-maps.yandex.ru https://*.maps.yandex.net https://yandex.ru/clck/click https://mc.yandex.com https://mc.yandex.ru https://datalens.yandex.ru https://datalens.yandex.com https://datalens.yandex; frame-src 'self' https://forms.yandex.ru https://forms.yandex.cloud https://api-maps.yandex.ru blob: https://mc.yandex.ru https://mc.yandex.com https://*.truetell.ru https://datalens.yandex.ru https://datalens.yandex.com https://datalens.yandex https://yandex.ru"
     />
-    <link rel="canonical" href={canonicalUrl} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="TrueTell" />
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
-    <meta property="og:url" content={canonicalUrl} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
     {ogImage && <meta property="og:image" content={ogImage} />}
     {ogImage && ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
     {publishedTime && <meta property="article:published_time" content={publishedTime} />}
