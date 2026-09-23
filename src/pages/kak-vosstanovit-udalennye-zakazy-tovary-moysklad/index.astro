@@ -9,6 +9,7 @@ import InlineConsultation from '../../components/editorial/inline-consultation.a
 import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { backupRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
+import { cleanerProductPath } from '../../config/products';
 import backupRecoveryImage from '../../images/articles/moysklad-backup-recovery.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
@@ -22,8 +23,10 @@ const ogDescription =
   'Чем архив отличается от удаления, как вернуть заказ из Корзины и почему Excel-выгрузка не заменяет полноценный backup.';
 const canonicalPath = '/kak-vosstanovit-udalennye-zakazy-tovary-moysklad/';
 const publishedDate = '2026-09-08T00:00:00+03:00';
+const modifiedDate = '2026-09-22T00:00:00+03:00';
 const authorName = companyInfo.editorial.defaultAuthor;
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const cleanerHref = `${base}${cleanerProductPath.slice(1)}`;
 const siteRoot = new URL(base, import.meta.env.SITE);
 const homeUrl = siteRoot.toString();
 const blogUrl = new URL('blog/', siteRoot).toString();
@@ -168,6 +171,7 @@ const structuredData = createArticleStructuredData({
   description,
   articleUrl,
   publishedDate,
+  modifiedDate,
   publisherUrl: homeUrl,
   author: authorName,
   breadcrumbs: [
@@ -194,7 +198,7 @@ const structuredData = createArticleStructuredData({
   {breadcrumbs}
   author={authorName}
   publishedTime={publishedDate}
-  modifiedTime={publishedDate}
+  modifiedTime={modifiedDate}
 >
   <Fragment slot="quick-answer">
     <p>
@@ -246,9 +250,26 @@ const structuredData = createArticleStructuredData({
       rowHeaders
     />
     <p>
-      Самое важное слово в таблице — «штатно». Если объект нельзя вернуть встроенной функцией,
-      его данные иногда удается найти и использовать. Но это уже реконструкция, при которой
-      нужно заново собрать связи и проверить последствия для учета.
+      <strong>Условная ситуация:</strong> после чистки каталога менеджер не находит товар
+      и собирается импортировать его из старого Excel. Если карточка лишь в архиве, импорт
+      может создать дубль. Сначала проверьте архив: вернуть прежнюю карточку и создать
+      похожую новую — разные результаты для учёта и интеграций.
+    </p>
+  </section>
+
+  <section aria-labelledby="first-actions">
+    <h2 id="first-actions">
+      Что делать <span data-heading-accent>сразу после обнаружения удаления</span>
+    </h2>
+    <p>
+      Хаотичное создание новых карточек затрудняет сверку и может добавить дубли. Сначала
+      сохраните текущее состояние и пройдите короткую последовательность диагностики.
+    </p>
+    <Checklist items={firstActions} label="Первые действия после удаления данных в МоемСкладе" />
+    <p>
+      Только после этого стоит запускать импорт или массовое создание через API. Чем яснее
+      известны точка потери и зависимые системы, тем меньше риск, что восстановление породит
+      вторую ошибку.
     </p>
   </section>
 
@@ -337,9 +358,11 @@ const structuredData = createArticleStructuredData({
     </p>
 
     <InlineConsultation
-      title="Удаление затронуло несколько систем?"
-      description="Поможем определить источник истины, остановить повторные изменения и собрать безопасный сценарий восстановления."
-      actionLabel="Разобрать ситуацию"
+      variant="product"
+      title="После восстановления — порядок в CRM"
+      description="Если вы также работаете в Битрикс24, после восстановления данных и проверки обмена можно отдельно заняться ненужными лидами и сделками. Для их удаления по фильтрам воспользуйтесь нашим клинером. Это приложение для очистки CRM, а не средство восстановления МоегоСклада; подробная страница готовится."
+      href={cleanerHref}
+      actionLabel="Посмотреть клинер"
     />
   </section>
 
@@ -399,22 +422,6 @@ const structuredData = createArticleStructuredData({
       произошло», а бэкап — «какие данные были до события». Для надежной защиты нужны обе
       возможности: без истории сложно устранить причину, а без копии нечем восстанавливать
       результат.
-    </p>
-  </section>
-
-  <section aria-labelledby="first-actions">
-    <h2 id="first-actions">
-      Что делать <span data-heading-accent>сразу после обнаружения удаления</span>
-    </h2>
-    <p>
-      Хаотичное создание новых карточек затрудняет сверку и может добавить дубли. Сначала
-      сохраните текущее состояние и пройдите короткую последовательность диагностики.
-    </p>
-    <Checklist items={firstActions} label="Первые действия после удаления данных в МоемСкладе" />
-    <p>
-      Только после этого стоит запускать импорт или массовое создание через API. Чем яснее
-      известны точка потери и зависимые системы, тем меньше риск, что восстановление породит
-      вторую ошибку.
     </p>
   </section>
 
@@ -484,19 +491,18 @@ const structuredData = createArticleStructuredData({
 
   <section aria-labelledby="summary">
     <h2 id="summary">
-      Восстановление в МоемСкладе: <span data-heading-accent>главное</span>
+      Когда восстановление <span data-heading-accent>можно считать завершённым</span>
     </h2>
     <p>
-      Архивный товар можно извлечь и продолжить работу с прежней карточкой. Удаленный заказ
-      возвращается из Корзины, если она была включена и семь дней еще не прошли. Для полностью
-      удаленного товара или старого заказа встроенного пути уже нет — данные приходится искать
-      во внешних источниках и аккуратно реконструировать.
+      Проверьте один восстановленный заказ от начала до конца: покупателя, позиции, суммы,
+      связанные документы и резерв. Затем сравните его с данными сайта или CRM, если они
+      участвуют в процессе. Появление заказа в списке — только первая проверка.
     </p>
     <p>
-      Поэтому лучшая стратегия начинается до инцидента: архив вместо удаления, ограниченные
-      права, включенная Корзина и регулярные копии. Если данные критичны для продаж и
-      интеграций, к этому добавляют автоматический бэкап с историей версий и заранее проверенным
-      сценарием восстановления.
+      Зафиксируйте, какие данные удалось вернуть, какие пришлось создать заново и какие связи
+      проверить вручную. После этого устраните причину удаления и проверьте восстановление
+      из резервной копии на тестовых данных. Так следующий инцидент начнётся с известной
+      процедуры, а не с поиска случайно сохранившегося файла.
     </p>
   </section>
 
@@ -505,6 +511,8 @@ const structuredData = createArticleStructuredData({
   <ArticleSources
     publishedIso="2026-09-08"
     publishedLabel="8 сентября 2026"
+    modifiedIso="2026-09-22"
+    modifiedLabel="22 сентября 2026"
     sources={sourceLinks}
   />
 
@@ -514,9 +522,9 @@ const structuredData = createArticleStructuredData({
         { text: 'Резервные копии МоегоСклада ' },
         { text: 'с историей версий', accent: true },
       ]}
-      description="Настроим внешний контур, который сохраняет критичные сущности, замечает аномальные удаления и помогает подготовить контролируемое восстановление."
+      description="Продукт резервного копирования находится в разработке. Обсудим, какие данные вам нужно сохранять и как проверять их восстановление."
       href={productUrl}
-      actionLabel="Посмотреть решение"
+      actionLabel="Узнать о разработке"
     />
     <RelatedArticles items={relatedArticles} />
   </Fragment>

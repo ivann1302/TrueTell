@@ -1,0 +1,54 @@
+---
+import styles from './carousel-controls.module.scss';
+
+interface Props {
+  trackId: string;
+}
+
+const { trackId } = Astro.props;
+---
+
+<div class={styles.controls} data-carousel-controls hidden>
+  <button type="button" data-carousel-previous aria-controls={trackId} aria-label="Предыдущие статьи">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m15 6-6 6 6 6"></path></svg>
+  </button>
+  <button type="button" data-carousel-next aria-controls={trackId} aria-label="Следующие статьи">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"></path></svg>
+  </button>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-article-carousel]').forEach((carousel) => {
+    const track = carousel.querySelector<HTMLElement>('[data-carousel-track]');
+    const controls = carousel.querySelector<HTMLElement>('[data-carousel-controls]');
+    const previous = carousel.querySelector<HTMLButtonElement>('[data-carousel-previous]');
+    const next = carousel.querySelector<HTMLButtonElement>('[data-carousel-next]');
+    if (!track || !controls || !previous || !next) return;
+
+    const updateControls = () => {
+      const remaining = track.scrollWidth - track.clientWidth;
+      controls.hidden = remaining <= 2;
+      previous.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= remaining - 2;
+    };
+
+    const move = (direction: -1 | 1) => {
+      const slide = track.querySelector<HTMLElement>('article');
+      const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
+      const distance = (slide?.getBoundingClientRect().width ?? track.clientWidth) + gap;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      track.scrollBy({ left: distance * direction, behavior: reduceMotion ? 'instant' : 'smooth' });
+    };
+
+    previous.addEventListener('click', () => move(-1));
+    next.addEventListener('click', () => move(1));
+    track.addEventListener('scroll', updateControls, { passive: true });
+    track.addEventListener('keydown', (event) => {
+      if (event.target !== track || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+      event.preventDefault();
+      move(event.key === 'ArrowLeft' ? -1 : 1);
+    });
+    new ResizeObserver(updateControls).observe(track);
+    updateControls();
+  });
+</script>

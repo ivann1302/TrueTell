@@ -10,14 +10,19 @@ interface Props {
   publishedIso: string;
   publishedLabel: string;
   sources: SourceLink[];
+  modifiedIso?: string;
+  modifiedLabel?: string;
 }
 
-const { publishedIso, publishedLabel, sources } = Astro.props;
+const { publishedIso, publishedLabel, sources, modifiedIso, modifiedLabel } = Astro.props;
 ---
 
 <footer class={styles.sources}>
   <p class={styles.publishedDate}>
     Опубликовано <time datetime={publishedIso}>{publishedLabel}</time>
+    {modifiedIso && modifiedLabel && (
+      <Fragment> · Обновлено <time datetime={modifiedIso}>{modifiedLabel}</time></Fragment>
+    )}
   </p>
   <p>Официальные материалы</p>
   <ul>

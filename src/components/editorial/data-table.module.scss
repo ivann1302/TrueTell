@@ -3,7 +3,7 @@
   border: 2px solid #dceaff;
   border-radius: 10px;
   box-sizing: border-box;
-  margin: 32px 0;
+  margin: var(--article-space-block) 0;
   max-width: 100%;
   overflow-x: auto;
 
@@ -63,6 +63,23 @@
 
     thead th {
       font-size: 0.8125rem;
+    }
+  }
+
+  .compact {
+    table {
+      min-width: 0;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      overflow-wrap: anywhere;
+      padding: 12px 8px;
+    }
+
+    th:first-child {
+      width: 42%;
     }
   }
 }

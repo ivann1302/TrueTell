@@ -6,9 +6,22 @@
   --article-muted: #9298a3;
   --article-border: #e3e6eb;
   --article-brand: #1765da;
+  --article-space-text: 16px;
+  --article-space-block: 24px;
+  --article-space-heading: 32px;
+  --article-space-section: 32px;
+  --article-space-shell: 48px;
 
   background: var(--article-bg);
   box-sizing: border-box;
   color: var(--article-text);
   text-align: left;
+}
+
+@media (max-width: 768px) {
+  .page {
+    --article-space-heading: 24px;
+    --article-space-section: 24px;
+    --article-space-shell: 32px;
+  }
 }

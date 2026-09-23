@@ -61,6 +61,16 @@ The article page should contain its content and data, not a private copy of the 
 - Do not display reading time. Display the date only in the sources/footer area.
 - Keep the author out of the visible article body. Read the default metadata/schema author from `companyInfo.editorial.defaultAuthor` in `src/config/company.ts`.
 
+## Compact article spacing
+
+Use the “Компактный ритм статьи” contract in `DESIGN_SYSTEM.md`. Its implementation lives in `article-layout.module.scss` (`--article-space-*`) and the shared component styles, so new articles inherit the same spacing automatically.
+
+- Compose the lead, optional note, and main `section[aria-labelledby]` elements as direct children of `ArticleLayout`'s default slot. Each main section starts with its H2; put subsections and shared components inside it.
+- Keep chapter spacing on top-level sections only. Nested checklists and FAQ internals retain their own component spacing.
+- Use normal paragraphs, headings and shared figures/tables directly in the section flow. Avoid spacer elements, extra margin-bearing wrappers, inline styles and per-page spacing exceptions.
+- A section's last child has no bottom margin; the next section supplies the separation. Check the rendered distance rather than adding margin and padding independently.
+- Before publication, inspect at 390, 768 and 1440 px: lead → first H2 with and without a note; paragraph → H3 → paragraph; table/figure → next paragraph or heading; checklist title → description; inline consultation → next heading; last section → FAQ → sources → CTA → related articles. Confirm readable compact gaps, no touching text, no doubled section gaps and no horizontal overflow.
+
 ## Image requirement
 
 Every published article requires at least one meaningful raster image.
@@ -98,5 +108,6 @@ Use authoritative source links where the topic depends on external product behav
 - Product and consultation CTAs are contextual and working.
 - Published card appears in the blog registry; related cards have stable root-level links.
 - Sitemap includes only real public pages.
+- Spacing follows the shared compact rhythm; adjacent-element checks from the spacing section pass at mobile, tablet and desktop widths.
 - Production build succeeds.
 - Desktop and mobile visual review covers the hero, image, table, FAQ, CTAs, related carousel, and overflow/focus behavior.

@@ -7,6 +7,7 @@ interface Props {
   description: string;
   href?: string;
   actionLabel?: string;
+  variant?: 'consultation' | 'product';
 }
 
 const {
@@ -14,11 +15,16 @@ const {
   description,
   href = companyInfo.contacts.consultationUrl,
   actionLabel = 'Задать вопрос',
+  variant = 'consultation',
 } = Astro.props;
 const external = href.startsWith('http');
 ---
 
-<aside class={styles.consultation} aria-label="Консультация">
+<aside
+  class:list={[styles.consultation, variant === 'product' && styles.product]}
+  aria-label={variant === 'product' ? 'Приложение для вашей задачи' : 'Консультация'}
+  data-inline-product={variant === 'product' || undefined}
+>
   <div>
     <strong>{title}</strong>
     <p>{description}</p>

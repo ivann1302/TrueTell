@@ -1,6 +1,7 @@
 ---
 import { blogArticles } from '../../config/articles';
 import styles from './blog-section.module.scss';
+import CarouselControls from '../../components/article-carousel/carousel-controls.astro';
 
 interface Props {
   page?: boolean;
@@ -20,6 +21,7 @@ const articles = blogArticles.map((article) => ({
   id="blog"
   class:list={[styles.section, page ? styles.pageSection : styles.homeSection]}
   aria-labelledby="blog-title"
+  data-article-carousel={!page || undefined}
 >
   <div class={styles.container}>
     <header class={styles.header}>
@@ -30,16 +32,28 @@ const articles = blogArticles.map((article) => ({
       )}
 
       {!page && (
-        <a class={styles.blogLink} href={blogHref}>
-          <span>Все статьи</span>
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-            <path d="m9 6 6 6-6 6"></path>
-          </svg>
-        </a>
+        <div class={styles.actions}>
+          <a class={styles.blogLink} href={blogHref}>
+            <span>Все статьи</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+              <path d="m9 6 6 6-6 6"></path>
+            </svg>
+          </a>
+          <div class={styles.desktopControls}>
+            <CarouselControls trackId="home-blog-track" />
+          </div>
+        </div>
       )}
     </header>
 
-    <div class:list={[styles.grid, !page && styles.mobileCarousel]}>
+    <div
+      id={!page ? 'home-blog-track' : undefined}
+      class:list={[styles.grid, !page && styles.carousel]}
+      data-carousel-track={!page || undefined}
+      role={!page ? 'region' : undefined}
+      aria-label={!page ? 'Статьи блога' : undefined}
+      tabindex={!page ? 0 : undefined}
+    >
       {articles.map((article) => (
         <article class={styles.card}>
           {article.href ? (

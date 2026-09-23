@@ -1,6 +1,6 @@
 .container {
   margin-inline: auto;
-  padding: 96px 0 128px;
+  padding: var(--article-space-shell) 0;
   width: min(calc(100% - 64px), 1240px);
 }
 
@@ -13,10 +13,19 @@
     scroll-margin-top: 112px;
   }
 
-  :global(section + section) {
+  // Only article-level sections own chapter spacing; nested components keep theirs.
+  :global(> section[aria-labelledby]) {
+    display: flow-root;
+    margin-top: var(--article-space-section);
+  }
+
+  :global(> section[aria-labelledby] ~ section[aria-labelledby]) {
     border-top: 1px solid var(--article-border);
-    margin-top: 96px;
-    padding-top: 96px;
+    padding-top: var(--article-space-section);
+  }
+
+  :global(> section[aria-labelledby] > :last-child) {
+    margin-bottom: 0;
   }
 
   :global(h2) {
@@ -24,7 +33,7 @@
     font-weight: 500;
     letter-spacing: -0.035em;
     line-height: 1.1;
-    margin: 0 0 28px;
+    margin: 0 0 20px;
     text-wrap: balance;
   }
 
@@ -33,22 +42,22 @@
     font-weight: 500;
     letter-spacing: -0.02em;
     line-height: 1.25;
-    margin: 40px 0 16px;
+    margin: var(--article-space-heading) 0 12px;
     text-wrap: balance;
   }
 
-  :global(p),
-  :global(li) {
+  :global(:where(p)),
+  :global(:where(li)) {
     font-size: 1.1875rem;
     line-height: 1.62;
   }
 
-  :global(p) {
+  :global(:where(p)) {
     margin: 0;
   }
 
-  :global(p + p) {
-    margin-top: 18px;
+  :global(:where(p + p)) {
+    margin-top: var(--article-space-text);
   }
 
   :global(> ul),
@@ -78,7 +87,7 @@
 
   :global(blockquote) {
     border-left: 3px solid var(--article-brand);
-    margin: 32px 0;
+    margin: var(--article-space-block) 0;
     padding: 4px 0 4px 24px;
   }
 
@@ -100,8 +109,8 @@
   :global([data-article-note]) {
     background: #eef5ff;
     border-left: 3px solid var(--article-brand);
-    margin: 40px 0 72px;
-    padding: 24px 28px;
+    margin: var(--article-space-block) 0;
+    padding: 24px;
   }
 
   :global([data-article-note] > strong) {
@@ -118,29 +127,16 @@
   }
 }
 
-@media (min-width: 769px) {
-  .body :global([data-compact-section]) {
-    margin-top: 48px;
-    padding-top: 48px;
-  }
-}
-
 @media (max-width: 768px) {
   .container {
-    padding: 64px 0 80px;
     width: min(calc(100% - 32px), 1240px);
   }
 
   .body {
     max-width: none;
 
-    :global(section + section) {
-      margin-top: 64px;
-      padding-top: 64px;
-    }
-
-    :global(p),
-    :global(li) {
+    :global(:where(p)),
+    :global(:where(li)) {
       font-size: 1.0625rem;
       line-height: 1.62;
     }
@@ -150,7 +146,6 @@
     }
 
     :global([data-article-note]) {
-      margin-bottom: 64px;
       padding: 20px;
     }
 

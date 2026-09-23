@@ -1,0 +1,23 @@
+---
+import ProductDevelopmentPage from '../../../components/product-development-page/product-development-page.astro';
+import { cleanerProductPath } from '../../../config/products';
+
+const heading = [
+  { text: 'Клинер ' },
+  { text: 'для Битрикс24', accent: true },
+];
+---
+
+<ProductDevelopmentPage
+  title="Клинер для Битрикс24 — TrueTell"
+  description="Клинер TrueTell для удаления ненужных лидов и сделок по фильтрам в Битрикс24. Подробная страница продукта готовится."
+  canonicalPath={cleanerProductPath}
+  breadcrumbLabel="Клинер для Битрикс24"
+  {heading}
+  statusLabel="Страница готовится"
+  releaseText="Клинер — продукт TrueTell для удаления ненужных лидов и сделок по фильтрам в Битрикс24. Здесь появятся подробное описание и инструкция по работе."
+  contactText="Пока страница готовится, можно обсудить вашу задачу: какие записи нужно удалить и какие данные важно сохранить."
+  actionLabel="Обсудить клинер"
+  articleHref="/blog/"
+  articleLabel="Статьи об очистке CRM"
+/>

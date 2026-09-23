@@ -2,6 +2,21 @@
 import LineWave from '../../components/ui/line-wave.astro';
 import { companyInfo } from '../../config/company';
 import styles from './consultation-cta-section.module.scss';
+
+interface Props {
+  title?: string;
+  description?: string;
+  href?: string;
+  actionLabel?: string;
+}
+
+const {
+  title = 'Запишитесь на консультацию',
+  description = 'На первой встрече разберём задачу, ограничения и возможный формат решения.',
+  href = companyInfo.contacts.consultationUrl,
+  actionLabel = 'Записаться на консультацию',
+} = Astro.props;
+const external = href.startsWith('http');
 ---
 
 <section class={styles.section} aria-labelledby="consultation-cta-title">
@@ -9,19 +24,19 @@ import styles from './consultation-cta-section.module.scss';
 
   <div class={styles.container}>
     <div class={styles.content}>
-      <h2 id="consultation-cta-title" class={styles.title}>Запишитесь на консультацию</h2>
+      <h2 id="consultation-cta-title" class={styles.title}>{title}</h2>
 
       <div class={styles.actionBlock}>
         <p class={styles.description}>
-          На первой встрече разберём задачу, ограничения и возможный формат решения.
+          {description}
         </p>
         <a
           class={styles.action}
-          href={companyInfo.contacts.consultationUrl}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={href}
+          target={external ? '_blank' : undefined}
+          rel={external ? 'noopener noreferrer' : undefined}
         >
-          <span>Записаться на консультацию</span>
+          <span>{actionLabel}</span>
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
             <path d="m9 6 6 6-6 6"></path>
           </svg>

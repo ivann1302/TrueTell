@@ -1,5 +1,5 @@
 .checklist {
-  margin: 32px 0;
+  margin: var(--article-space-block) 0;
 
   ol {
     border-top: 1px solid #d3d7de;
@@ -40,7 +40,7 @@
   color: #616875;
   font-size: 0.9375rem;
   line-height: 1.6;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 @media (max-width: 768px) {

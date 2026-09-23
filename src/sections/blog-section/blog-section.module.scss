@@ -30,6 +30,12 @@
   text-align: left;
 }
 
+.actions {
+  align-items: center;
+  display: flex;
+  gap: 24px;
+}
+
 .blogLink {
   align-items: center;
   color: #182131;
@@ -68,6 +74,28 @@
   display: grid;
   gap: 24px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #1765da;
+    outline-offset: 4px;
+  }
+
+  .card {
+    flex: 0 0 calc((100% - 48px) / 3);
+    scroll-snap-align: start;
+  }
 }
 
 .card {
@@ -233,6 +261,10 @@
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .carousel .card {
+    flex-basis: calc((100% - 24px) / 2);
+  }
 }
 
 @media (max-width: 768px) {
@@ -260,7 +292,11 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .mobileCarousel {
+  .desktopControls {
+    display: none;
+  }
+
+  .carousel {
     display: flex;
     gap: 16px;
     margin-inline-end: -16px;
@@ -277,7 +313,7 @@
     }
   }
 
-  .mobileCarousel .card {
+  .carousel .card {
     flex: 0 0 calc(100% - 32px);
     scroll-snap-align: start;
     scroll-snap-stop: always;
@@ -329,7 +365,7 @@
     transition-duration: 0.01ms;
   }
 
-  .mobileCarousel {
+  .carousel {
     scroll-behavior: auto;
   }
 }

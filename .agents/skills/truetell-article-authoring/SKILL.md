@@ -11,11 +11,12 @@ Before changing an article, read `references/article-model.md` completely and us
 
 1. Read the supplied article or source document completely. Preserve its useful meaning and factual qualifications while reshaping it into coherent editorial prose.
 2. Inspect an existing article and the shared components before implementation. Build with `article-layout.astro` and the components named in the model; do not duplicate their markup or styles in the page.
-3. Keep the public article URL at the site root as `/slug/`. Keep «Блог» in breadcrumbs and connect the published article to `src/config/articles.ts`.
-4. Give every article one meaningful, unique image. Prefer a user-supplied asset when appropriate; otherwise use the `imagegen` skill and store the result in `src/images/articles/`. Render it with `article-figure.astro`, Astro Image, and a useful Russian `alt`.
-5. Add complete metadata and structured data. Read the default author and company identity from `src/config/company.ts` unless the user supplies another author. Keep the author in metadata/schema rather than the visible body. Show the publication date only near the article sources; do not show reading-time estimates.
-6. Update the article registry and related links. Do not add placeholder article URLs to the sitemap until those pages exist.
-7. Apply the project-required design, Astro architecture, technical SEO, and quality-gate skills. Run a production build and visually review desktop and mobile before finishing.
+3. Follow the compact spacing contract in the model and `DESIGN_SYSTEM.md`. Reuse shared spacing tokens; review actual gaps between adjacent elements on desktop and mobile.
+4. Keep the public article URL at the site root as `/slug/`. Keep «Блог» in breadcrumbs and connect the published article to `src/config/articles.ts`.
+5. Give every article one meaningful, unique image. Prefer a user-supplied asset when appropriate; otherwise use the `imagegen` skill and store the result in `src/images/articles/`. Render it with `article-figure.astro`, Astro Image, and a useful Russian `alt`.
+6. Add complete metadata and structured data. Read the default author and company identity from `src/config/company.ts` unless the user supplies another author. Keep the author in metadata/schema rather than the visible body. Show the publication date only near the article sources; do not show reading-time estimates.
+7. Update the article registry and related links. Do not add placeholder article URLs to the sitemap until those pages exist.
+8. Apply the project-required design, Astro architecture, technical SEO, and quality-gate skills. Run a production build and visually review desktop and mobile before finishing.
 
 ## Editorial guardrails
 

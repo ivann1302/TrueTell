@@ -22,6 +22,8 @@ interface ArticleStructuredDataOptions {
   breadcrumbs: ArticleBreadcrumbItem[];
   faqItems?: ArticleFaqItem[];
   author?: string;
+  image?: string;
+  articleSection?: string;
 }
 
 export function createArticleStructuredData({
@@ -34,6 +36,8 @@ export function createArticleStructuredData({
   breadcrumbs,
   faqItems = [],
   author = DEFAULT_ARTICLE_AUTHOR,
+  image,
+  articleSection,
 }: ArticleStructuredDataOptions): Record<string, unknown> {
   const graph: Record<string, unknown>[] = [
     {
@@ -45,6 +49,8 @@ export function createArticleStructuredData({
       datePublished: publishedDate,
       dateModified: modifiedDate,
       inLanguage: 'ru-RU',
+      ...(image ? { image } : {}),
+      ...(articleSection ? { articleSection } : {}),
       author: {
         '@type': 'Person',
         name: author,

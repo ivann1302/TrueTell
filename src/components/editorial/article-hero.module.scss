@@ -1,6 +1,6 @@
 .hero {
   border-bottom: 1px solid var(--article-border);
-  padding: 136px 0 64px;
+  padding: 136px 0 var(--article-space-shell);
 }
 
 .container {
@@ -9,7 +9,7 @@
 }
 
 .breadcrumbs {
-  margin-bottom: 64px;
+  margin-bottom: 40px;
 
   ol {
     align-items: center;
@@ -102,7 +102,7 @@
   gap: 48px;
   grid-template-columns: minmax(100px, 2fr) minmax(0, 8fr);
   isolation: isolate;
-  margin-top: 64px;
+  margin-top: var(--article-space-shell);
   overflow: clip;
   padding: 32px;
   position: relative;
@@ -191,7 +191,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: 112px 0 48px;
+    padding: 112px 0 var(--article-space-shell);
   }
 
   .container {
@@ -199,7 +199,7 @@
   }
 
   .breadcrumbs {
-    margin-bottom: 48px;
+    margin-bottom: 32px;
 
     li {
       font-size: 0.75rem;
@@ -223,7 +223,7 @@
   .quickAnswer {
     gap: 16px;
     grid-template-columns: 1fr;
-    margin-top: 40px;
+    margin-top: var(--article-space-shell);
     padding: 24px;
   }
 

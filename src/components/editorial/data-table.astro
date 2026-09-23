@@ -6,12 +6,13 @@ interface Props {
   columns: string[];
   rows: Array<Array<string | number>>;
   rowHeaders?: boolean;
+  compact?: boolean;
 }
 
-const { label, columns, rows, rowHeaders = false } = Astro.props;
+const { label, columns, rows, rowHeaders = false, compact = false } = Astro.props;
 ---
 
-<div class={styles.scrollRegion} tabindex="0" role="region" aria-label={label}>
+<div class:list={[styles.scrollRegion, { [styles.compact]: compact }]} tabindex="0" role="region" aria-label={label}>
   <table>
     <thead>
       <tr>

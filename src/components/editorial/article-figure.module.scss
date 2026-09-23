@@ -1,9 +1,7 @@
 .figure {
-  margin: 40px 0;
+  margin: var(--article-space-block) 0;
 
   img {
-    border: 1px solid rgba(23, 101, 218, 0.18);
-    border-radius: 14px;
     box-sizing: border-box;
     display: block;
     height: auto;
