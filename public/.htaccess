@@ -1,7 +1,15 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  RewriteRule ^products/bitrix24-cleaner(?:/index\.html)?/?$ https://truetell-retail.ru/bitrix24-cleaner/ [R=301,L,NE]
+  RewriteRule ^products/(bitrix24-cleaner|backup-moysklad|upravlenie-rezervami-moysklad)(?:/index\.html)?/?$ https://truetell-retail.ru/$1/ [R=301,L,NE]
+
+  # Redirect only explicit index.html requests, never an internal DirectoryIndex lookup.
+  RewriteCond %{THE_REQUEST} \s/+[^?\ ]*index\.html(?:[?\ ]|$) [NC]
+  RewriteRule ^(.*)index\.html$ https://truetell-retail.ru/$1 [R=301,L,NE]
+
+  # Add the trailing slash over HTTPS before DirectorySlash can use the proxy HTTP scheme.
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^(.+[^/])$ https://truetell-retail.ru/$1/ [R=301,L,NE]
 
   RewriteCond %{HTTP_HOST} !^truetell-retail\.ru$ [NC]
   RewriteRule ^ https://truetell-retail.ru%{REQUEST_URI} [R=301,L,NE]

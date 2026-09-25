@@ -31,7 +31,7 @@ const siteRoot = new URL(base, import.meta.env.SITE);
 const homeUrl = siteRoot.toString();
 const blogUrl = new URL('blog/', siteRoot).toString();
 const articleUrl = new URL('kak-vosstanovit-udalennye-zakazy-tovary-moysklad/', siteRoot).toString();
-const productUrl = `${base}products/backup-moysklad/`;
+const productUrl = `${base}backup-moysklad/`;
 const imageAlt =
   'Схема резервного копирования заказов и товаров МоегоСклада с историей версий и двумя сценариями восстановления';
 const ogImage = new URL(backupRecoveryImage.src, siteRoot).toString();

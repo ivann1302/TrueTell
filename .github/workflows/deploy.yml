@@ -26,7 +26,7 @@ jobs:
         env:
           HUSKY: '0'
       - run: npm run lint
-      - run: node --test scripts/indexnow.test.mjs
+      - run: node --test scripts/*.test.mjs
       - run: npm run build
         env:
           GITHUB_PAGES: 'false'
