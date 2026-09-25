@@ -10,6 +10,7 @@ export function GET() {
   const entries = [
     { path: '', changefreq: 'weekly', priority: '1.0' },
     { path: 'products/', changefreq: 'monthly', priority: '0.8' },
+    { path: 'bitrix24-cleaner/', changefreq: 'monthly', priority: '0.8' },
     { path: 'bi-analitika/', changefreq: 'monthly', priority: '0.8' },
     { path: 'blog/', changefreq: 'weekly', priority: '0.7' },
     ...blogArticles

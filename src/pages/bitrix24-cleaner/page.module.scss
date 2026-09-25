@@ -1,0 +1,264 @@
+.page {
+  background: #f6f7f9;
+  color: #10131a;
+  padding: 136px 0 96px;
+  text-align: left;
+  a:focus-visible {
+    outline: 2px solid #1765da;
+    outline-offset: 5px;
+  }
+  h2 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+  }
+  p {
+    margin: 0;
+    line-height: 1.65;
+  }
+}
+.container {
+  width: min(calc(100% - 64px), 1240px);
+  margin-inline: auto;
+}
+.breadcrumbs {
+  margin-bottom: 48px;
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8125rem;
+    color: #616875;
+  }
+  li:not(:last-child)::after {
+    content: '/';
+    margin-left: 8px;
+    color: #616875;
+  }
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: inherit;
+    text-decoration: none;
+  }
+}
+.intro {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 64px;
+  align-items: start;
+  margin-bottom: 64px;
+}
+.intro h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 4.2vw, 3.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+}
+.intro h1 span {
+  display: block;
+  font-size: clamp(1.75rem, 2.7vw, 2.5rem);
+  line-height: 1.2;
+  margin-top: 20px;
+  letter-spacing: -0.03em;
+}
+.summary > p:first-child {
+  font-size: 1.125rem;
+  max-width: 45ch;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  background: #1765da;
+  color: #fff;
+  border-radius: 10px;
+  min-height: 48px;
+  padding: 0 24px;
+  margin: 24px 0 16px;
+  text-decoration: none;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+.button:hover {
+  background: #1455c0;
+}
+.summary .status {
+  font-size: 0.875rem;
+  color: #616875;
+  max-width: 48ch;
+}
+.status strong {
+  color: #10131a;
+  font-weight: 500;
+}
+.product {
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  gap: 48px;
+  align-items: start;
+}
+.figure {
+  margin: 0;
+  min-width: 0;
+}
+.figure > a {
+  display: block;
+  border: 1px solid #d3d7de;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.figure figcaption {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: #616875;
+  margin-top: 12px;
+}
+.figure figcaption a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #1765da;
+  text-underline-offset: 4px;
+}
+.benefits dl {
+  margin: 24px 0 0;
+}
+.benefits dl > div {
+  padding: 20px 0;
+  border-top: 1px solid #d3d7de;
+}
+.benefits dt {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.benefits dd {
+  margin: 8px 0 0;
+  color: #616875;
+  line-height: 1.6;
+  font-size: 0.9375rem;
+}
+.workflow {
+  margin-top: 80px;
+}
+.workflow ol {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0;
+  counter-reset: step;
+}
+.workflow li {
+  display: grid;
+  grid-template-columns: 40px 4fr 7fr;
+  gap: 24px;
+  padding: 24px 0;
+  border-top: 1px solid #d3d7de;
+  counter-increment: step;
+}
+.workflow li::before {
+  content: '0' counter(step);
+  color: #616875;
+  line-height: 1.65;
+}
+.workflow h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.workflow li p {
+  color: #616875;
+}
+.note {
+  padding: 24px 32px;
+  border-left: 2px solid #1765da;
+  background: #eef5ff;
+}
+.note p + p {
+  margin-top: 12px;
+  color: #616875;
+  font-size: 0.875rem;
+}
+.availability {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 64px;
+  border-top: 1px solid #d3d7de;
+  margin-top: 80px;
+  padding-top: 40px;
+}
+.availability p + p {
+  margin-top: 16px;
+}
+.availability .storage {
+  color: #616875;
+  font-size: 0.875rem;
+}
+@media (max-width: 1000px) {
+  .intro {
+    gap: 32px;
+  }
+  .product {
+    gap: 32px;
+    grid-template-columns: 3fr 2fr;
+  }
+}
+@media (max-width: 900px) {
+  .intro,
+  .product,
+  .availability {
+    grid-template-columns: 1fr;
+  }
+  .benefits h2 br {
+    display: none;
+  }
+  .availability {
+    gap: 24px;
+  }
+}
+@media (max-width: 600px) {
+  .page {
+    padding: 112px 0 72px;
+  }
+  .container {
+    width: calc(100% - 32px);
+  }
+  .breadcrumbs {
+    margin-bottom: 32px;
+  }
+  .intro {
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .button {
+    width: 100%;
+    justify-content: center;
+  }
+  .workflow,
+  .availability {
+    margin-top: 72px;
+  }
+  .workflow li {
+    grid-template-columns: 28px 1fr;
+    gap: 8px 16px;
+  }
+  .workflow li p {
+    grid-column: 2;
+  }
+  .note {
+    padding: 20px;
+  }
+}

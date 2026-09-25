@@ -1,1 +1,1 @@
-export const cleanerProductPath = '/products/bitrix24-cleaner/';
+export const cleanerProductPath = '/bitrix24-cleaner/';

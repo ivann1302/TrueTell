@@ -1,6 +1,8 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  RewriteRule ^products/bitrix24-cleaner(?:/index\.html)?/?$ https://truetell-retail.ru/bitrix24-cleaner/ [R=301,L,NE]
+
   RewriteCond %{HTTP_HOST} !^truetell-retail\.ru$ [NC]
   RewriteRule ^ https://truetell-retail.ru%{REQUEST_URI} [R=301,L,NE]
 

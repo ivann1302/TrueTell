@@ -1,4 +1,5 @@
 ---
+import { cleanerProductPath } from '../../config/products';
 import { companyInfo } from '../../config/company';
 import styles from './product-catalog-section.module.scss';
 
@@ -22,10 +23,10 @@ const products = [
     href: consultationUrl,
   },
   {
-    title: 'Приложение для Битрикс24',
-    description: 'Работа со сделками, данными и повседневными CRM-сценариями.',
-    action: 'Узнать о запуске',
-    href: consultationUrl,
+    title: 'CRM Cleaner для Битрикс24',
+    description: 'Отбор и проверка лидов и сделок перед очисткой CRM. Доступно демо.',
+    action: 'Посмотреть приложение',
+    href: cleanerProductPath,
   },
   {
     title: 'Проверка бизнес-идей',
