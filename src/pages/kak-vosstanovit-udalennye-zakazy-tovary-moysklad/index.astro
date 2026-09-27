@@ -9,7 +9,7 @@ import InlineConsultation from '../../components/editorial/inline-consultation.a
 import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { backupRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
-import { cleanerProductPath } from '../../config/products';
+import { cleanerProduct, cleanerProductPath } from '../../config/products';
 import backupRecoveryImage from '../../images/articles/moysklad-backup-recovery.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
@@ -360,9 +360,9 @@ const structuredData = createArticleStructuredData({
     <InlineConsultation
       variant="product"
       title="После восстановления — порядок в CRM"
-      description="После восстановления данных и проверки обмена можно спланировать очистку ненужных лидов и сделок в Битрикс24. Посмотрите возможности и демо CRM Cleaner. Приложение не восстанавливает данные МоегоСклада; удаление пока доступно только на демонстрационных данных."
+      description={`После восстановления данных и проверки обмена можно спланировать очистку ненужных лидов и сделок в Битрикс24. Посмотрите приложение «${cleanerProduct.name}». Оно не восстанавливает данные МоегоСклада.`}
       href={cleanerHref}
-      actionLabel="Посмотреть CRM Cleaner"
+      actionLabel={cleanerProduct.articleActionLabel}
     />
   </section>
 

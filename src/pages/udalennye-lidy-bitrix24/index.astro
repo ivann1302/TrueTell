@@ -8,7 +8,7 @@ import InlineConsultation from '../../components/editorial/inline-consultation.a
 import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { blogArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
-import { cleanerProductPath } from '../../config/products';
+import { cleanerProduct, cleanerProductPath } from '../../config/products';
 import leadRecoveryImage from '../../images/articles/bitrix24-lead-recovery.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
@@ -156,8 +156,8 @@ const structuredData = createArticleStructuredData({
     <InlineConsultation
       variant="product"
       title="Лид восстановлен — пересмотрите следующую очистку"
-      description="Для планирования следующей очистки посмотрите CRM Cleaner: фильтры, проверку списка и исключение важных карточек. Приложение не восстанавливает удалённые лиды. Удаление пока доступно только на демонстрационных данных."
-      href={cleanerHref} actionLabel="Посмотреть CRM Cleaner"
+      description={`Для следующей очистки посмотрите приложение «${cleanerProduct.name}»: фильтры, проверку списка и исключение важных карточек. Приложение не восстанавливает удалённые лиды. На странице продукта — порядок работы и информация о подключении.`}
+      href={cleanerHref} actionLabel={cleanerProduct.articleActionLabel}
     />
 
   </section>
@@ -200,7 +200,7 @@ const structuredData = createArticleStructuredData({
 
     <p>Полезно сверять и объём выборки. Если вы ожидали несколько десятков записей, а получили несколько тысяч, остановитесь и проверьте фильтр. Такое расхождение — повод разобраться до запуска операции.</p>
 
-    <p>Для контролируемой очистки предназначено приложение <a href={cleanerHref}>CRM Cleaner для Битрикс24</a>. На странице приложения можно изучить возможности и перейти к демо. Удаление пока доступно только на демонстрационных данных. Восстановление уже удалённых карточек зависит от механизмов самого Битрикс24.</p>
+    <p>Для контролируемой очистки предназначено приложение <a href={cleanerHref}>{cleanerProduct.name}</a>. На странице приложения можно изучить возможности, порядок работы и узнать о подключении. Восстановление уже удалённых карточек зависит от механизмов самого Битрикс24.</p>
 
     <p>Порядок отбора разобран в инструкции <a href={`${base}bitrix24-udalenie-lidov-za-period/`}>как удалить старые лиды в Битрикс24 за выбранный период</a>. Если сама операция завершается ошибкой, начните с диагностики: <a href={`${base}ne-udalyaetsya-lid-bitrix24/`}>почему не удаляется лид в Битрикс24</a>.</p>
 
@@ -211,16 +211,16 @@ const structuredData = createArticleStructuredData({
   <Fragment slot="article-end">
     <ArticleProductCta
       titleParts={[{ text: 'Следующая очистка — ' }, { text: 'по понятным правилам', accent: true }]}
-      description="CRM Cleaner: фильтры, проверка списка и исключение важных карточек перед очисткой. На странице приложения — возможности и демо. Удаление пока доступно только на демонстрационных данных."
-      href={cleanerHref} actionLabel="Посмотреть CRM Cleaner"
+      description={cleanerProduct.articleDescription}
+      href={cleanerHref} actionLabel={cleanerProduct.articleActionLabel}
     />
     <RelatedArticles items={relatedArticles} />
   </Fragment>
   <Fragment slot="after-article">
     <ConsultationCtaSection
-      title="CRM Cleaner для Битрикс24"
-      description="CRM Cleaner: фильтры, проверка списка и исключение важных карточек перед очисткой. На странице приложения — возможности и демо. Удаление пока доступно только на демонстрационных данных."
-      href={cleanerHref} actionLabel="Посмотреть CRM Cleaner"
+      title={cleanerProduct.name}
+      description={cleanerProduct.articleDescription}
+      href={cleanerHref} actionLabel={cleanerProduct.articleActionLabel}
     />
   </Fragment>
 </ArticleLayout>

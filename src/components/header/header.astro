@@ -159,6 +159,13 @@ const navigationItems = [
   };
 
   window.addEventListener('scroll', () => {
+    if (window.scrollY <= 0) {
+      if (revealTimeout !== undefined) window.clearTimeout(revealTimeout);
+      revealTimeout = undefined;
+      setHeaderHidden(false);
+      return;
+    }
+
     if (!hideOnScrollEnabled || menuIsOpen()) return;
 
     setHeaderHidden(true);

@@ -2,70 +2,109 @@
 import { Image } from 'astro:assets';
 import AppHeader from '../../components/header/header.astro';
 import SiteFooter from '../../components/footer/site-footer.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { companyInfo } from '../../config/company';
-import { cleanerProductPath } from '../../config/products';
-import screenshot from '../../images/products/crm-cleaner-demo.png';
+import { cleanerProduct, cleanerProductPath } from '../../config/products';
+import selection from '../../images/products/cleaner-selection.png';
+import confirmation from '../../images/products/cleaner-confirmation.png';
+import result from '../../images/products/cleaner-result.png';
 import styles from './page.module.scss';
 
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
-const title = 'Массовое удаление лидов и сделок Битрикс24 по фильтрам — CRM Cleaner';
-const description = 'CRM Cleaner — массовое удаление лидов и сделок Битрикс24 по фильтрам с проверкой списка, исключениями и подтверждением. До 3 000 записей. Удаление только в демо.';
+const title = `${cleanerProduct.name} в Битрикс24 — ${companyInfo.brandName}`;
+const description = cleanerProduct.description;
+const ogTitle = `${cleanerProduct.name} — ${companyInfo.brandName}`;
+const ogDescription = 'Найдите ненужные записи по фильтрам, проверьте список и удалите выбранное. Приложение для Битрикс24 с отчётом по каждому ID.';
 const siteRoot = new URL(base, Astro.site ?? 'https://truetell-retail.ru');
 const pageUrl = new URL(cleanerProductPath.slice(1), siteRoot).href;
-const imageUrl = new URL(screenshot.src, siteRoot).href;
-const imageAlt = 'CRM Cleaner: подтверждение выбранного списка сделок на демонстрационных данных.';
+const screenshots = [
+  {
+    src: selection,
+    title: 'Поиск и выбор записей',
+    caption: 'Исключите из списка карточки, которые нужно сохранить',
+    alt: `Список выбранных сделок в приложении «${cleanerProduct.name}»`,
+  },
+  {
+    src: confirmation,
+    title: 'Подтверждение',
+    caption: 'Перед удалением проверьте портал и количество выбранных записей',
+    alt: 'Подтверждение удаления выбранного списка с указанием портала и количества записей',
+  },
+  {
+    src: result,
+    title: 'Результат',
+    caption: 'Посмотрите результат по каждому ID и скачайте отчёт в CSV',
+    alt: 'Итог обработки лидов или сделок со статусами записей и кнопкой скачивания CSV',
+  },
+];
+const useCases = [
+  ['Старые обращения', 'Отберите лиды за нужный период и с выбранными статусами. Проверьте список и оставьте обращения, с которыми ещё планируете работать.'],
+  ['Тестовые карточки', 'Найдите записи по части названия, ответственному или диапазону ID. Удалите данные, созданные для проверки настроек и обучения сотрудников.'],
+  ['Ненужные сделки', 'Выберите воронку, стадии и период. Удалите только те сделки, которые больше не нужны для работы и отчётности.'],
+];
+const features = [
+  ['Сочетайте фильтры', 'Ищите по дате создания или изменения, статусу лида или стадии сделки, ответственному, источнику, части названия и диапазону ID. Для сделок доступен выбор воронки.'],
+  ['Проверяйте выборку', 'Просматривайте и сортируйте найденные карточки в таблице. Снимайте выделение с записей, которые нужно сохранить. При необходимости скачивайте выбранный список в CSV до удаления.'],
+  ['Подтверждайте конкретный список', 'Перед запуском проверьте портал и количество записей. После подтверждения начнётся отсчёт 5 секунд — в это время действие ещё можно отменить.'],
+  ['Управляйте выполнением', 'Следите за прогрессом, ставьте обработку на паузу или останавливайте отправку новых запросов. Перед удалением приложение повторно сверяет контрольные поля и пропускает записи, в которых обнаружены изменения.'],
+  ['Получайте понятный отчёт', 'Скачайте итоговый CSV с результатом по каждому ID. Удалённые записи, пропуски, ошибки и неизвестные результаты показаны отдельно.'],
+];
+const steps = [
+  ['Выберите лиды или сделки', 'Откройте приложение под администратором и задайте условия поиска.'],
+  ['Проверьте найденные записи', 'Уточните фильтры и исключите карточки, которые нужно оставить.'],
+  ['Сохраните список', 'При необходимости скачайте CSV выбранных записей.'],
+  ['Подтвердите удаление', 'Проверьте количество и дождитесь окончания отсчёта.'],
+  ['Изучите результат', 'Скачайте итоговый отчёт и проверьте записи, требующие внимания.'],
+];
+const faqItems = [
+  { question: 'Кто может запускать удаление?', answer: 'Администратор портала с необходимыми правами Битрикс24.' },
+  { question: 'Сколько записей можно удалить за один раз?', answer: 'До 3 000 лидов или сделок за одну операцию. Если найдено больше, приложение предложит сузить фильтры.' },
+  { question: 'Можно оставить отдельные карточки из найденного списка?', answer: 'Да. Снимите с них выделение перед подтверждением. Они не войдут в выбранный список удаления.' },
+  { question: 'Можно остановить обработку?', answer: 'Да. Пауза и остановка прекращают отправку новых запросов. Уже отправленные запросы могут завершиться; автоматического отката нет.' },
+  { question: 'Будет ли приложение работать после закрытия вкладки?', answer: 'Автоматического продолжения после закрытия нет. Оставляйте вкладку открытой до завершения обработки.' },
+  { question: 'Можно восстановить карточки из CSV?', answer: 'Нет. CSV содержит отдельные поля или результаты обработки и не является полной резервной копией CRM. Восстановление карточек из CSV не предусмотрено.' },
+  { question: 'Почему запись пропущена или результат неизвестен?', answer: 'Запись может быть пропущена, если при повторной проверке обнаружены изменения контрольных полей. Неизвестный результат означает, что приложение не получило достоверного ответа. Проверьте такую карточку в CRM перед новой операцией.' },
+  { question: 'Удаляет ли приложение контакты, компании или дубли?', answer: 'Нет. Приложение работает с выбранными лидами и сделками. Отдельного поиска дублей нет.' },
+];
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'WebPage',
-      '@id': `${pageUrl}#webpage`,
-      url: pageUrl,
-      name: title,
-      description,
-      inLanguage: 'ru-RU',
+      '@type': 'WebPage', '@id': `${pageUrl}#webpage`, url: pageUrl,
+      name: title, description, inLanguage: 'ru-RU',
       mainEntity: { '@id': `${pageUrl}#application` },
       breadcrumb: { '@id': `${pageUrl}#breadcrumbs` },
     },
     {
-      '@type': 'SoftwareApplication',
-      '@id': `${pageUrl}#application`,
-      name: 'CRM Cleaner',
-      url: pageUrl,
-      description,
-      applicationCategory: 'BusinessApplication',
-      operatingSystem: 'Web browser',
-      inLanguage: 'ru-RU',
-      screenshot: imageUrl,
+      '@type': 'SoftwareApplication', '@id': `${pageUrl}#application`,
+      name: cleanerProduct.name, url: pageUrl, description,
+      applicationCategory: 'BusinessApplication', operatingSystem: 'Web browser', inLanguage: 'ru-RU',
+      screenshot: screenshots.map(({ src }) => new URL(src.src, siteRoot).href),
       publisher: { '@type': 'Organization', name: companyInfo.brandName, url: siteRoot.href },
-      featureList: [
-        'Отбор лидов и сделок по статусу или стадии, ответственному и диапазону дат создания или изменения',
-        'Выбор воронки для сделок',
-        'Проверка списка и исключение важных карточек; до 3 000 записей за операцию',
-        'Подтверждение, пауза, остановка и итоговый CSV; удаление доступно только на демонстрационных данных',
-        'CSV не является полной резервной копией CRM; восстановление карточек целиком не обещается',
-      ],
+      featureList: features.map(([heading, text]) => `${heading}. ${text}`),
     },
     {
-      '@type': 'BreadcrumbList',
-      '@id': `${pageUrl}#breadcrumbs`,
+      '@type': 'BreadcrumbList', '@id': `${pageUrl}#breadcrumbs`,
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Главная', item: siteRoot.href },
         { '@type': 'ListItem', position: 2, name: 'Продукты', item: new URL('products/', siteRoot).href },
-        { '@type': 'ListItem', position: 3, name: 'CRM Cleaner', item: pageUrl },
+        { '@type': 'ListItem', position: 3, name: cleanerProduct.name, item: pageUrl },
       ],
+    },
+    {
+      '@type': 'FAQPage', '@id': `${pageUrl}#faq`,
+      mainEntity: faqItems.map(({ question, answer }) => ({
+        '@type': 'Question', name: question,
+        acceptedAnswer: { '@type': 'Answer', text: answer },
+      })),
     },
   ],
 };
-const steps = [
-  ['Найдите записи', 'Выберите статус или стадию, ответственного и диапазон дат создания или изменения. Для сделок доступен выбор воронки.'],
-  ['Проверьте список', 'Просмотрите найденные карточки, исключите те, которые нужно сохранить, и скачайте список в CSV. Одна операция — максимум 3 000 записей.'],
-  ['Подтвердите обработку', 'Сценарий очистки предусматривает подтверждение выбранного списка, паузу, остановку и итоговый CSV с результатом по каждому ID. Сейчас удаление доступно только в демо.'],
-];
 ---
 
-<BaseLayout {title} {description} {structuredData} canonicalPath={cleanerProductPath} ogImage={imageUrl} ogImageAlt={imageAlt}>
+<BaseLayout {title} {description} {structuredData} canonicalPath={cleanerProductPath}
+  {ogTitle} {ogDescription} ogImage={new URL(confirmation.src, siteRoot).href} ogImageAlt={screenshots[1].alt}>
   <AppHeader />
   <main class:list={['site-content', styles.page]}>
     <div class={styles.container}>
@@ -73,52 +112,81 @@ const steps = [
         <ol>
           <li><a href={base}>Главная</a></li>
           <li><a href={`${base}products/`}>Продукты</a></li>
-          <li aria-current="page">CRM Cleaner</li>
+          <li aria-current="page">{cleanerProduct.name}</li>
         </ol>
       </nav>
 
       <header class={styles.intro}>
         <div>
-          <h1>CRM Cleaner<span>Порядок в лидах<br />и сделках Битрикс24</span></h1>
+          <h1>{cleanerProduct.name}</h1>
+          <p class={styles.subtitle}>Очистка CRM в Битрикс24 по вашим условиям.</p>
         </div>
         <div class={styles.summary}>
-          <p>CRM Cleaner — приложение для контролируемого массового удаления лидов и сделок в Битрикс24 по фильтрам. Проверьте список, исключите важные карточки и подтвердите выбранные записи.</p>
-          <a class={styles.button} href="https://bitrix-cleaner.ru/app/app/index.php">Посмотреть демо <span aria-hidden="true">↗</span></a>
-          <p class={styles.status}><strong>Демо приложения.</strong> Удаление доступно только на демонстрационных данных.</p>
+          <p>Найдите ненужные лиды и сделки по фильтрам, проверьте список и удалите выбранные записи за одну операцию. Важные карточки можно исключить, а результат — скачать в CSV.</p>
+          <div class={styles.actions}>
+            <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{cleanerProduct.connectionActionLabel} <span aria-hidden="true">↗</span></a>
+            <a class={styles.textLink} href="#how-it-works">Как работает <span aria-hidden="true">↓</span></a>
+          </div>
         </div>
       </header>
+      <ul class={styles.facts} aria-label="Коротко о приложении">
+        <li>До <strong>3 000</strong> записей за операцию</li>
+        <li>Проверка списка</li>
+        <li>Отчёт по каждому ID</li>
+      </ul>
 
-      <section class={styles.product} aria-labelledby="interface-title">
-        <figure class={styles.figure}>
-          <a href={screenshot.src} target="_blank" rel="noopener noreferrer" aria-label="Открыть скриншот CRM Cleaner в полном размере — новая вкладка">
-            <Image src={screenshot} alt="Подтверждение демо-удаления: условия отбора, количество выбранных сделок и предупреждение перед обработкой." widths={[600, 900, 1200]} sizes="(max-width: 900px) calc(100vw - 32px), 62vw" format="webp" loading="eager" />
-          </a>
-          <figcaption>Демонстрационные данные. Подтверждение выбранного списка. <a href={screenshot.src} target="_blank" rel="noopener noreferrer">Открыть в полном размере ↗</a></figcaption>
-        </figure>
-        <div class={styles.benefits}>
-          <h2 id="interface-title">Всё начинается<br />с проверки списка</h2>
-          <dl>
-            <div><dt>Понятные шаги</dt><dd>От условий поиска до подтверждения — выбранные записи остаются перед глазами.</dd></div>
-            <div><dt>Без передачи карточек на наш сервер</dt><dd>Содержимое лидов и сделок обрабатывается в вашем браузере через Битрикс24. CSV создаётся на вашем устройстве.</dd></div>
-            <div><dt>Гибкие фильтры</dt><dd>Комбинируйте условия. Доступны активные и завершённые статусы, а также неактивные ответственные.</dd></div>
-          </dl>
+      <section class={styles.useCases} aria-labelledby="use-cases-title">
+        <h2 id="use-cases-title">Уберите записи,<br />которые больше не нужны</h2>
+        <dl class={styles.descriptionList}>
+          {useCases.map(([heading, text]) => <div><dt>{heading}</dt><dd>{text}</dd></div>)}
+        </dl>
+      </section>
+
+      <section class={styles.features} aria-labelledby="features-title">
+        <h2 id="features-title">От точного отбора<br />до результата по каждой записи</h2>
+        <dl class={styles.featureList}>
+          {features.map(([heading, text]) => <div><dt>{heading}</dt><dd>{text}</dd></div>)}
+        </dl>
+      </section>
+
+      <section class={styles.interface} aria-labelledby="interface-title">
+        <div class={styles.sectionHeading}>
+          <h2 id="interface-title">Приложение в работе</h2>
+          <p>На скриншотах — искусственные данные. Каждый кадр можно открыть целиком.</p>
+        </div>
+        <div class={styles.screenshots}>
+          {screenshots.map((shot) => (
+            <figure class={styles.figure}>
+              <a class={styles.screenshot} href={shot.src.src} target="_blank" rel="noopener noreferrer" aria-label={`${shot.title}: открыть скриншот в полном размере — новая вкладка`}>
+                <Image src={shot.src} alt={shot.alt} widths={[600, 900, 1200]} sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1304px) calc((100vw - 112px) / 3), 397px" format="webp" loading="lazy" />
+              </a>
+              <figcaption><strong>{shot.title}</strong><span>{shot.caption}</span></figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 
-      <section class={styles.workflow} aria-labelledby="workflow-title">
-        <h2 id="workflow-title">Как устроено массовое удаление по фильтрам</h2>
+      <section id="how-it-works" class={styles.workflow} aria-labelledby="workflow-title">
+        <h2 id="workflow-title">Пять шагов к порядку в CRM</h2>
         <ol>{steps.map(([heading, text]) => <li><h3>{heading}</h3><p>{text}</p></li>)}</ol>
-        <aside class={styles.note} aria-label="Ограничения CSV">
-          <p>CSV не является полной резервной копией CRM. Приложение не обещает восстановления удалённых карточек целиком.</p>
-          <p>Пауза и остановка прекращают новые отправки. Уже отправленные запросы могут завершиться; автоматического отката нет.</p>
-        </aside>
+        <p class={styles.workflowNote}>Установка и открытие приложения сами по себе не запускают удаление.</p>
+        <p class={styles.dataNote}>Приложение открывается внутри Битрикс24. Содержимое карточек обрабатывается в вашем браузере через API Битрикс24 и не отправляется на серверы разработчика. Скачанные CSV остаются на вашем устройстве.</p>
       </section>
 
-      <section class={styles.availability} aria-labelledby="availability-title">
-        <h2 id="availability-title">Познакомьтесь с приложением</h2>
+      <div class={styles.faq}>
+        <FaqSection items={faqItems} title="Что нужно знать перед началом" id="cleaner-faq" variant="article" />
+      </div>
+
+      <aside class={styles.terms} aria-label="Условия использования">
+        <p>Перед удалением проверьте, нужны ли выбранные записи для отчётности, связанных данных и автоматизаций. Проверка карточки и удаление выполняются отдельными запросами: изменение записи между ними не исключено. Отчёт хранится локально в браузере и может быть потерян при очистке его данных — скачайте нужные результаты в CSV.</p>
+      </aside>
+
+      <section class={styles.connection} aria-labelledby="connection-title">
+        <h2 id="connection-title">Наведите порядок<br />в лидах и сделках</h2>
         <div>
-          <p>В демо можно пройти весь сценарий: задать фильтры, проверить список, исключить нужные карточки и получить результат обработки. Удаление доступно только на демонстрационных данных.</p>
-          <p class={styles.storage}>Отчёт об операции сохраняется локально в браузере. CSV пользователь скачивает на своё устройство.</p>
+          <p>Отберите ненужные записи, сохраните важные и получите отчёт о выполненной очистке.</p>
+          <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{cleanerProduct.connectionActionLabel} <span aria-hidden="true">↗</span></a>
+          <p class={styles.support}>Есть вопрос по приложению? <a href={`mailto:${companyInfo.contacts.email}`}>Напишите команде {companyInfo.brandName}</a>.</p>
         </div>
       </section>
     </div>

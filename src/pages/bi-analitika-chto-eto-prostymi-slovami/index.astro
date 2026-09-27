@@ -9,7 +9,7 @@ import InlineConsultation from '../../components/editorial/inline-consultation.a
 import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { biRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
-import { cleanerProductPath } from '../../config/products';
+import { cleanerProduct, cleanerProductPath } from '../../config/products';
 import biFlowImage from '../../images/articles/bi-data-to-dashboard.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
@@ -391,9 +391,9 @@ const structuredData = createArticleStructuredData({
     <InlineConsultation
       variant="product"
       title="Битрикс24 — один из источников вашей аналитики?"
-      description="После согласования данных для отчётности можно спланировать очистку ненужных лидов и сделок. На странице CRM Cleaner — фильтры, проверка списка и демо. Сначала сохраните нужную для анализа историю; удаление в приложении пока доступно только на демонстрационных данных."
+      description={`После согласования данных для отчётности можно спланировать очистку ненужных лидов и сделок. Приложение «${cleanerProduct.name}» позволяет отобрать и проверить записи перед удалением. Сначала сохраните нужную для анализа историю.`}
       href={cleanerHref}
-      actionLabel="Посмотреть CRM Cleaner"
+      actionLabel={cleanerProduct.articleActionLabel}
     />
   </section>
 

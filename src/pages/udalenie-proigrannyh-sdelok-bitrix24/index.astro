@@ -9,7 +9,7 @@ import InlineConsultation from '../../components/editorial/inline-consultation.a
 import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { blogArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
-import { cleanerProductPath } from '../../config/products';
+import { cleanerProduct, cleanerProductPath } from '../../config/products';
 import dealCleanupImage from '../../images/articles/bitrix24-lost-deals.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
@@ -214,9 +214,9 @@ const structuredData = createArticleStructuredData({
     <InlineConsultation
       variant="product"
       title="Отбор согласован — переходите к очистке"
-      description="В CRM Cleaner можно познакомиться со сценарием отбора сделок по воронке, стадии, ответственному и датам. Перед очисткой важно согласовать исключения и сохранить нужную историю. На странице приложения доступно демо; удаление настоящих записей пока не включено."
+      description={`Приложение «${cleanerProduct.name}» помогает отобрать сделки по воронке, стадии, ответственному и датам. Перед очисткой согласуйте исключения и сохраните нужную историю. На странице продукта — порядок работы и информация о подключении.`}
       href={cleanerHref}
-      actionLabel="Посмотреть CRM Cleaner"
+      actionLabel={cleanerProduct.articleActionLabel}
     />
 
 
@@ -275,15 +275,15 @@ const structuredData = createArticleStructuredData({
   <Fragment slot="article-end">
     <ArticleProductCta
       titleParts={[{ text: 'Удалить лишнее. ' }, { text: 'Сохранить нужное.', accent: true }]}
-      description="CRM Cleaner: фильтры, проверка списка и исключение важных карточек перед очисткой. На странице приложения — возможности и демо. Удаление пока доступно только на демонстрационных данных."
-      href={cleanerHref} actionLabel="Посмотреть CRM Cleaner"
+      description={cleanerProduct.articleDescription}
+      href={cleanerHref} actionLabel={cleanerProduct.articleActionLabel}
     />
     <RelatedArticles items={relatedArticles} />
   </Fragment>
   <Fragment slot="after-article"><ConsultationCtaSection
-      title="CRM Cleaner для Битрикс24"
-      description="CRM Cleaner: фильтры, проверка списка и исключение важных карточек перед очисткой. На странице приложения — возможности и демо. Удаление пока доступно только на демонстрационных данных."
+      title={cleanerProduct.name}
+      description={cleanerProduct.articleDescription}
       href={cleanerHref}
-      actionLabel="Посмотреть CRM Cleaner"
+      actionLabel={cleanerProduct.articleActionLabel}
     /></Fragment>
 </ArticleLayout>

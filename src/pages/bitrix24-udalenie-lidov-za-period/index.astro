@@ -8,7 +8,7 @@ import InlineConsultation from '../../components/editorial/inline-consultation.a
 import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { blogArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
-import { cleanerProductPath } from '../../config/products';
+import { cleanerProduct, cleanerProductPath } from '../../config/products';
 import leadCleanupImage from '../../images/articles/bitrix24-lead-cleanup.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
@@ -192,9 +192,9 @@ const structuredData = createArticleStructuredData({
     <InlineConsultation
       variant="product"
       title="Чистите старые лиды регулярно?"
-      description="Посмотрите, как в CRM Cleaner выбрать период, проверить найденные лиды и исключить нужные карточки. На странице приложения — возможности, ограничения и демонстрация. Удаление пока доступно только на демонстрационных данных."
+      description={`Выберите период, проверьте найденные лиды и исключите нужные карточки в приложении «${cleanerProduct.name}». На странице продукта — возможности, порядок работы и информация о подключении.`}
       href={cleanerHref}
-      actionLabel="Посмотреть CRM Cleaner"
+      actionLabel={cleanerProduct.articleActionLabel}
     />
     <h3>4. Выберите записи и выполните удаление</h3>
     <p>Отметьте проверенные лиды и выберите «Удалить» в групповых действиях. Если требуется обработать всю отфильтрованную выборку, включите <strong>«Для всех»</strong>: эта опция распространяет действие на другие страницы списка. Перед подтверждением ещё раз проверьте условия отбора. <a href={sourceLinks[0].href} target="_blank" rel="noopener noreferrer">Инструкция по групповым действиям</a>.</p>
@@ -231,18 +231,18 @@ const structuredData = createArticleStructuredData({
   <Fragment slot="article-end">
     <ArticleProductCta
       titleParts={[{ text: 'Очистка CRM ' }, { text: 'по понятным правилам', accent: true }]}
-      description="CRM Cleaner: фильтры, проверка списка и исключение важных карточек перед очисткой. На странице приложения — возможности и демо. Удаление пока доступно только на демонстрационных данных."
+      description={cleanerProduct.articleDescription}
       href={cleanerHref}
-      actionLabel="Посмотреть CRM Cleaner"
+      actionLabel={cleanerProduct.articleActionLabel}
     />
     <RelatedArticles items={relatedArticles} />
   </Fragment>
   <Fragment slot="after-article">
     <ConsultationCtaSection
-      title="CRM Cleaner для Битрикс24"
-      description="CRM Cleaner: фильтры, проверка списка и исключение важных карточек перед очисткой. На странице приложения — возможности и демо. Удаление пока доступно только на демонстрационных данных."
+      title={cleanerProduct.name}
+      description={cleanerProduct.articleDescription}
       href={cleanerHref}
-      actionLabel="Посмотреть CRM Cleaner"
+      actionLabel={cleanerProduct.articleActionLabel}
     />
   </Fragment>
 </ArticleLayout>
