@@ -369,3 +369,10 @@
     scroll-behavior: auto;
   }
 }
+
+@media (max-width: 768px) {
+  h1.title {
+    text-align: center;
+    margin-inline: auto;
+  }
+}

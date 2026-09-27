@@ -1,0 +1,33 @@
+---
+import ActionIcon from './action-icon.astro';
+import styles from './product-scenario.module.scss';
+
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  steps: {
+    icon: 'filter' | 'price' | 'review' | 'report' | 'remove';
+    title: string;
+    text: string;
+  }[];
+}
+
+const { id, title, description, steps } = Astro.props;
+---
+
+<section class={styles.scenario} aria-labelledby={id} data-product-scenario>
+  <div class={styles.copy}>
+    <h2 id={id}>{title}</h2>
+    <p class={styles.description}>{description}</p>
+    <ul class={styles.steps}>
+      {steps.map((step) => (
+        <li>
+          <ActionIcon name={step.icon} />
+          <div><h3>{step.title}</h3><p>{step.text}</p></div>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class={styles.visual}><slot /></div>
+</section>

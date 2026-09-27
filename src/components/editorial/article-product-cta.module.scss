@@ -1,3 +1,5 @@
+@use '../../styles/full-bleed-surface';
+
 .cta {
   background:
     radial-gradient(
@@ -135,4 +137,8 @@
   .container a {
     transition-duration: 0.01ms;
   }
+}
+
+.cta {
+  @include full-bleed-surface.background();
 }

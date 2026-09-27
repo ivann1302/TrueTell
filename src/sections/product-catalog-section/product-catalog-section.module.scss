@@ -290,3 +290,10 @@
     transition-duration: 0.01ms;
   }
 }
+
+@media (max-width: 768px) {
+  .title {
+    text-align: center;
+    margin-inline: auto;
+  }
+}

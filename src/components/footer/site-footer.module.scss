@@ -225,3 +225,12 @@
   }
   @media (max-width: 600px) { width: calc(100% - 32px); justify-content: center; gap: 0 16px; }
 }
+
+.footer.transparent {
+  background: transparent;
+  &::before { display: none; }
+}
+
+.noDivider .privacy {
+  border-top: 0;
+}

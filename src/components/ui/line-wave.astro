@@ -1,13 +1,14 @@
 ---
 interface Props {
   variant?: 'hero' | 'bi';
+  centerOnMobile?: boolean;
 }
 
-const { variant = 'hero' } = Astro.props;
+const { variant = 'hero', centerOnMobile = false } = Astro.props;
 ---
 
 <div class="line-wave" data-wave-variant={variant} aria-hidden="true">
-  <canvas data-line-wave data-wave-variant={variant}></canvas>
+  <canvas data-line-wave data-wave-variant={variant} data-center-on-mobile={centerOnMobile ? 'true' : undefined}></canvas>
 </div>
 
 <script>
@@ -80,7 +81,9 @@ const { variant = 'hero' } = Astro.props;
         const mobile = width < 600;
         const pointStep = mobile ? 6 : 4;
         const amplitude = wave.amplitude * (mobile ? (isBi ? 0.76 : 0.58) : 1);
-        const centerY = height * (isBi ? 0.54 : mobile ? 0.58 : 0.6);
+        const centerY = canvas.dataset.centerOnMobile === 'true' && width <= 768
+          ? Math.min(height, window.innerHeight) * 0.5
+          : height * (isBi ? 0.54 : mobile ? 0.58 : 0.6);
         const influenceRadius = isBi ? Math.min(width * 0.42, mobile ? 180 : 260) : mobile ? 170 : 300;
         const pointerStrength = reducedMotion.matches ? 0 : isBi ? (mobile ? 18 : 30) : mobile ? 28 : 56;
 

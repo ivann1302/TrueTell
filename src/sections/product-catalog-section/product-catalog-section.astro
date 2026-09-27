@@ -1,5 +1,5 @@
 ---
-import { cleanerProduct, cleanerProductPath } from '../../config/products';
+import { cleanerProduct, cleanerProductPath, moyskladOperationsProduct, moyskladOperationsProductPath } from '../../config/products';
 import { companyInfo } from '../../config/company';
 import styles from './product-catalog-section.module.scss';
 
@@ -17,10 +17,10 @@ const products = [
     href: '/bi-analitika/',
   },
   {
-    title: 'Приложение для МойСклад',
-    description: 'Работа с товарами, остатками и заказами в едином рабочем сценарии.',
-    action: 'Обсудить решение',
-    href: consultationUrl,
+    title: moyskladOperationsProduct.name,
+    description: moyskladOperationsProduct.catalogDescription,
+    action: 'Посмотреть приложение',
+    href: moyskladOperationsProductPath,
   },
   {
     title: cleanerProduct.name,

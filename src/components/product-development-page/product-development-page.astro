@@ -14,7 +14,6 @@ interface Props {
   title: string;
   description: string;
   canonicalPath: string;
-  breadcrumbLabel: string;
   heading: HeadingSegment[];
   articleHref?: string;
   articleLabel?: string;
@@ -28,7 +27,6 @@ const {
   title,
   description,
   canonicalPath,
-  breadcrumbLabel,
   heading,
   articleHref,
   articleLabel = 'Вернуться к статье',
@@ -49,14 +47,6 @@ const toSitePath = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
   <main class="site-content">
     <section class={styles.page} aria-labelledby="product-development-title">
       <div class={styles.container}>
-        <nav class={styles.breadcrumbs} aria-label="Хлебные крошки">
-          <ol>
-            <li><a href={base}>Главная</a></li>
-            <li><a href={toSitePath('/products/')}>Продукты</a></li>
-            <li aria-current="page">{breadcrumbLabel}</li>
-          </ol>
-        </nav>
-
         <div class={styles.panel}>
           <div class={styles.heading}>
             <p class={styles.status}>{statusLabel}</p>
@@ -100,5 +90,5 @@ const toSitePath = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
     </section>
   </main>
 
-  <SiteFooter />
+  <SiteFooter hideDivider />
 </BaseLayout>

@@ -3,16 +3,18 @@ import styles from './carousel-controls.module.scss';
 
 interface Props {
   trackId: string;
+  previousLabel?: string;
+  nextLabel?: string;
 }
 
-const { trackId } = Astro.props;
+const { trackId, previousLabel = 'Предыдущие статьи', nextLabel = 'Следующие статьи' } = Astro.props;
 ---
 
 <div class={styles.controls} data-carousel-controls hidden>
-  <button type="button" data-carousel-previous aria-controls={trackId} aria-label="Предыдущие статьи">
+  <button type="button" data-carousel-previous aria-controls={trackId} aria-label={previousLabel}>
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m15 6-6 6 6 6"></path></svg>
   </button>
-  <button type="button" data-carousel-next aria-controls={trackId} aria-label="Следующие статьи">
+  <button type="button" data-carousel-next aria-controls={trackId} aria-label={nextLabel}>
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"></path></svg>
   </button>
 </div>
@@ -33,7 +35,7 @@ const { trackId } = Astro.props;
     };
 
     const move = (direction: -1 | 1) => {
-      const slide = track.querySelector<HTMLElement>('article');
+      const slide = track.firstElementChild;
       const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
       const distance = (slide?.getBoundingClientRect().width ?? track.clientWidth) + gap;
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -15,3 +15,29 @@
     margin-top: 12px;
   }
 }
+
+.expandable {
+  margin: 0;
+  min-width: 0;
+}
+
+.preview {
+  display: block;
+  border: 1px solid #d3d7de;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f6f7f9;
+
+  &:focus-visible {
+    outline: 2px solid #1765da;
+    outline-offset: 4px;
+  }
+}
+
+.dark figcaption {
+  color: #c8cdd5;
+}
+
+.dark .preview:focus-visible {
+  outline-color: #4b9cff;
+}

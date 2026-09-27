@@ -3,6 +3,9 @@ import logo from '../../images/logo/logo.svg';
 import { companyInfo } from '../../config/company';
 import styles from './site-footer.module.scss';
 
+interface Props { transparent?: boolean; hideDivider?: boolean; }
+const { transparent = false, hideDivider = false } = Astro.props;
+
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const internalHref = (path: string) => `${base}${path.replace(/^\//, '')}`;
 
@@ -14,7 +17,7 @@ const navigation = [
 ];
 ---
 
-<footer class={styles.footer}>
+<footer class:list={[styles.footer, { [styles.transparent]: transparent, [styles.noDivider]: hideDivider }]}>
   <div class={styles.container}>
     <a class={styles.logoLink} href={`${base}#home`} aria-label="TrueTell — на главную">
       <img

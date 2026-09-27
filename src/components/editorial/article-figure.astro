@@ -8,12 +8,18 @@ interface Props {
   alt: string;
   caption?: string;
   eager?: boolean;
+  fullSize?: boolean;
+  dark?: boolean;
 }
 
-const { src, alt, caption, eager = false } = Astro.props;
+const { src, alt, caption, eager = false, fullSize = false, dark = false } = Astro.props;
 ---
 
-<figure class={styles.figure}>
-  <Image src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} />
+<figure class:list={[styles.figure, { [styles.dark]: dark, [styles.expandable]: fullSize }]}>
+  {fullSize ? (
+    <a class={styles.preview} href={src.src} target="_blank" rel="noopener noreferrer" aria-label={`${alt}: открыть в полном размере — новая вкладка`}>
+      <Image src={src} alt={alt} widths={[480, 800, 1280]} sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1304px) 55vw, 700px" format="webp" loading={eager ? 'eager' : 'lazy'} />
+    </a>
+  ) : <Image src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} />}
   {caption && <figcaption>{caption}</figcaption>}
 </figure>

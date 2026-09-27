@@ -1,0 +1,64 @@
+.scenario {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: start;
+  gap: 64px;
+  margin-top: 96px;
+}
+
+.copy .description {
+  margin-top: 24px;
+  color: #616875;
+  max-width: 620px;
+}
+
+.steps {
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+
+  li {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    align-items: start;
+    gap: 16px;
+  }
+
+  li + li {
+    margin-top: 32px;
+  }
+
+  svg {
+    color: #1765da;
+    margin-top: 2px;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  p {
+    margin-top: 8px;
+    color: #616875;
+  }
+}
+
+.visual {
+  min-width: 0;
+}
+
+@media (max-width: 1000px) {
+  .scenario {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .scenario {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 72px;
+  }
+}

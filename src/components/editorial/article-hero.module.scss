@@ -1,3 +1,5 @@
+@use '../../styles/full-bleed-surface';
+
 .hero {
   border-bottom: 1px solid var(--article-border);
   padding: 136px 0 var(--article-space-shell);
@@ -230,4 +232,15 @@
   .quickAnswerContent :global(p) {
     font-size: 1rem;
   }
+}
+
+@media (max-width: 768px) {
+  .heroMain h1 {
+    text-align: center;
+    margin-inline: auto;
+  }
+}
+
+.quickAnswer {
+  @include full-bleed-surface.background();
 }

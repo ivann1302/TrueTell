@@ -12,6 +12,9 @@
 
 - Treat SEO, performance, and accessibility as first-class requirements.
 - Follow `DESIGN_SYSTEM.md` as the visual source of truth.
+- Center hero H1 headings on mobile screens (up to 768px) across all current and future pages. Preserve body-text and desktop alignment.
+- Large dark-blue sections with dot patterns use edge-to-edge backgrounds on mobile and desktop, with content kept in a readable container. Keep product/article/case cards in grids separate.
+- Do not render visible breadcrumbs on product pages, including products in development. Apply this to future product pages too; articles keep their editorial breadcrumbs. Valid breadcrumb structured data may remain.
 - Never introduce a new visual language without updating `DESIGN_SYSTEM.md` in the same task.
 - Read all company identity, legal details, editorial author data, and contact links from `src/config/company.ts`. Never hardcode duplicate values in pages or components.
 - Reuse the shared editorial components and article shell. Do not create page-local versions of article heroes, content typography, figures, tables, checklists, FAQ, sources, article CTAs, or related-article carousels.
@@ -33,3 +36,5 @@
 - New React island, routing, or hydration: `astro-seo-architecture`.
 - Article or blog-entry work: `truetell-article-authoring`; read its article model before creating, adapting, or substantially editing an article.
 - Final UI review: `frontend-quality-gate` + `anti-ai-slop-design` + `truetell-design-system`.
+
+- Product-page footers, including products in development, use `SiteFooter hideDivider`: no horizontal divider above privacy, cookie settings, and email links. Preserve the links and spacing.

@@ -1,0 +1,27 @@
+@use './full-bleed-surface';
+
+@mixin dark-surface {
+  position: relative;
+  isolation: isolate;
+  padding: 48px;
+  border-radius: 14px;
+  background:
+    radial-gradient(ellipse 74% 64% at 6% 4%, rgba(75, 156, 255, 0.14), rgba(23, 101, 218, 0.045) 46%, transparent 76%),
+    #101621;
+  color: #f7f8fa;
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background-image: radial-gradient(circle, rgba(247, 248, 250, 0.2) 0.75px, transparent 0.95px);
+    background-size: 18px 18px;
+    mask-image: linear-gradient(to bottom, #000, rgba(0, 0, 0, 0.74) 58%, transparent);
+    opacity: 0.5;
+    pointer-events: none;
+    content: '';
+  }
+
+  @include full-bleed-surface.background();
+}

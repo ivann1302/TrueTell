@@ -1,5 +1,7 @@
 ---
-import { Image } from 'astro:assets';
+import ProductScenario from '../../components/product-scenario/product-scenario.astro';
+import ActionIcon from '../../components/product-scenario/action-icon.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
 import AppHeader from '../../components/header/header.astro';
 import SiteFooter from '../../components/footer/site-footer.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
@@ -9,6 +11,7 @@ import { cleanerProduct, cleanerProductPath } from '../../config/products';
 import selection from '../../images/products/cleaner-selection.png';
 import confirmation from '../../images/products/cleaner-confirmation.png';
 import result from '../../images/products/cleaner-result.png';
+import heroStyles from '../../styles/product-hero.module.scss';
 import styles from './page.module.scss';
 
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
@@ -39,16 +42,16 @@ const screenshots = [
   },
 ];
 const useCases = [
-  ['Старые обращения', 'Отберите лиды за нужный период и с выбранными статусами. Проверьте список и оставьте обращения, с которыми ещё планируете работать.'],
-  ['Тестовые карточки', 'Найдите записи по части названия, ответственному или диапазону ID. Удалите данные, созданные для проверки настроек и обучения сотрудников.'],
-  ['Ненужные сделки', 'Выберите воронку, стадии и период. Удалите только те сделки, которые больше не нужны для работы и отчётности.'],
+  ['Старые обращения', 'Лиды за выбранный период, с которыми вы больше не работаете.'],
+  ['Тестовые карточки', 'Записи, созданные для проверки настроек и обучения.'],
+  ['Ненужные сделки', 'Сделки, которые не нужны для работы и отчётности.'],
 ];
 const features = [
-  ['Сочетайте фильтры', 'Ищите по дате создания или изменения, статусу лида или стадии сделки, ответственному, источнику, части названия и диапазону ID. Для сделок доступен выбор воронки.'],
-  ['Проверяйте выборку', 'Просматривайте и сортируйте найденные карточки в таблице. Снимайте выделение с записей, которые нужно сохранить. При необходимости скачивайте выбранный список в CSV до удаления.'],
-  ['Подтверждайте конкретный список', 'Перед запуском проверьте портал и количество записей. После подтверждения начнётся отсчёт 5 секунд — в это время действие ещё можно отменить.'],
-  ['Управляйте выполнением', 'Следите за прогрессом, ставьте обработку на паузу или останавливайте отправку новых запросов. Перед удалением приложение повторно сверяет контрольные поля и пропускает записи, в которых обнаружены изменения.'],
-  ['Получайте понятный отчёт', 'Скачайте итоговый CSV с результатом по каждому ID. Удалённые записи, пропуски, ошибки и неизвестные результаты показаны отдельно.'],
+  ['Сочетайте фильтры', 'Отбирайте по датам, статусам, ответственному, источнику, названию и ID. Для сделок — также по воронке.'],
+  ['Проверяйте выборку', 'Сортируйте таблицу, исключайте нужные карточки и скачивайте выбранный список в CSV.'],
+  ['Подтверждайте конкретный список', 'Сверьте портал и количество записей. После подтверждения есть 5 секунд на отмену.'],
+  ['Управляйте выполнением', 'Следите за прогрессом, ставьте на паузу или останавливайте новые запросы. Записи с изменёнными контрольными полями пропускаются.'],
+  ['Получайте понятный отчёт', 'Скачайте CSV: удалённые записи, пропуски, ошибки и неизвестные результаты — отдельно.'],
 ];
 const steps = [
   ['Выберите лиды или сделки', 'Откройте приложение под администратором и задайте условия поиска.'],
@@ -58,6 +61,8 @@ const steps = [
   ['Изучите результат', 'Скачайте итоговый отчёт и проверьте записи, требующие внимания.'],
 ];
 const faqItems = [
+  { question: 'Где обрабатываются данные и хранятся отчёты?', answer: 'Карточки обрабатываются в вашем браузере через API Битрикс24 и не отправляются на серверы разработчика. Отчёт хранится локально и может потеряться при очистке данных браузера — скачайте нужные результаты в CSV.' },
+  { question: 'Что проверить перед удалением?', answer: 'Убедитесь, что записи не нужны для отчётности, связанных данных и автоматизаций. Проверка карточки и удаление — отдельные запросы: изменение записи между ними не исключено.' },
   { question: 'Кто может запускать удаление?', answer: 'Администратор портала с необходимыми правами Битрикс24.' },
   { question: 'Сколько записей можно удалить за один раз?', answer: 'До 3 000 лидов или сделок за одну операцию. Если найдено больше, приложение предложит сузить фильтры.' },
   { question: 'Можно оставить отдельные карточки из найденного списка?', answer: 'Да. Снимите с них выделение перед подтверждением. Они не войдут в выбранный список удаления.' },
@@ -106,44 +111,43 @@ const structuredData = {
 <BaseLayout {title} {description} {structuredData} canonicalPath={cleanerProductPath}
   {ogTitle} {ogDescription} ogImage={new URL(confirmation.src, siteRoot).href} ogImageAlt={screenshots[1].alt}>
   <AppHeader />
-  <main class:list={['site-content', styles.page]}>
+  <main class:list={['site-content', styles.page, heroStyles.productPage]}>
     <div class={styles.container}>
-      <nav class={styles.breadcrumbs} aria-label="Хлебные крошки">
-        <ol>
-          <li><a href={base}>Главная</a></li>
-          <li><a href={`${base}products/`}>Продукты</a></li>
-          <li aria-current="page">{cleanerProduct.name}</li>
-        </ol>
-      </nav>
-
-      <header class={styles.intro}>
+      <header class:list={[styles.intro, heroStyles.hero]}>
         <div>
           <h1>{cleanerProduct.name}</h1>
-          <p class={styles.subtitle}>Очистка CRM в Битрикс24 по вашим условиям.</p>
-        </div>
-        <div class={styles.summary}>
-          <p>Найдите ненужные лиды и сделки по фильтрам, проверьте список и удалите выбранные записи за одну операцию. Важные карточки можно исключить, а результат — скачать в CSV.</p>
+          <p class={heroStyles.heroDescription}>Удаляйте ненужные лиды и сделки в Битрикс24 одной операцией. Отберите записи по фильтрам и сохраните карточки, с которыми ещё работаете.</p>
           <div class={styles.actions}>
-            <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{cleanerProduct.connectionActionLabel} <span aria-hidden="true">↗</span></a>
-            <a class={styles.textLink} href="#how-it-works">Как работает <span aria-hidden="true">↓</span></a>
+            <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{cleanerProduct.connectionActionLabel}</a>
           </div>
         </div>
+        <dl class={heroStyles.benefits} aria-label="Польза приложения">
+          <div><dt><ActionIcon name="filter" /><span>До 3 000 записей за операцию</span></dt><dd>Лиды или сделки по заданным фильтрам.</dd></div>
+          <div><dt><ActionIcon name="review" /><span>Важные карточки остаются</span></dt><dd>Исключите нужные записи из списка удаления.</dd></div>
+          <div><dt><ActionIcon name="report" /><span>Отчёт по каждому ID</span></dt><dd>Удалённые записи, пропуски и ошибки — в CSV.</dd></div>
+        </dl>
       </header>
-      <ul class={styles.facts} aria-label="Коротко о приложении">
-        <li>До <strong>3 000</strong> записей за операцию</li>
-        <li>Проверка списка</li>
-        <li>Отчёт по каждому ID</li>
-      </ul>
+
+      <ProductScenario id="selection-scenario-title"
+        title="Удалить ненужные сделки, сохранив важные"
+        description="Уберите закрытые сделки за период, оставив нужные для отчётности."
+        steps={[
+          { icon: 'filter', title: 'Отберите сделки', text: 'Выберите воронку, стадии и период.' },
+          { icon: 'review', title: 'Оставьте нужные карточки', text: 'Снимите выделение с записей, которые нужно сохранить.' },
+          { icon: 'remove', title: 'Подтвердите выбор', text: 'Сверьте портал и количество записей.' },
+        ]}>
+        <ArticleFigure src={selection} fullSize alt={screenshots[0].alt} />
+      </ProductScenario>
 
       <section class={styles.useCases} aria-labelledby="use-cases-title">
-        <h2 id="use-cases-title">Уберите записи,<br />которые больше не нужны</h2>
+        <h2 id="use-cases-title">Когда нужна очистка CRM</h2>
         <dl class={styles.descriptionList}>
           {useCases.map(([heading, text]) => <div><dt>{heading}</dt><dd>{text}</dd></div>)}
         </dl>
       </section>
 
       <section class={styles.features} aria-labelledby="features-title">
-        <h2 id="features-title">От точного отбора<br />до результата по каждой записи</h2>
+        <h2 id="features-title">Возможности приложения</h2>
         <dl class={styles.featureList}>
           {features.map(([heading, text]) => <div><dt>{heading}</dt><dd>{text}</dd></div>)}
         </dl>
@@ -152,44 +156,35 @@ const structuredData = {
       <section class={styles.interface} aria-labelledby="interface-title">
         <div class={styles.sectionHeading}>
           <h2 id="interface-title">Приложение в работе</h2>
-          <p>На скриншотах — искусственные данные. Каждый кадр можно открыть целиком.</p>
         </div>
         <div class={styles.screenshots}>
-          {screenshots.map((shot) => (
-            <figure class={styles.figure}>
-              <a class={styles.screenshot} href={shot.src.src} target="_blank" rel="noopener noreferrer" aria-label={`${shot.title}: открыть скриншот в полном размере — новая вкладка`}>
-                <Image src={shot.src} alt={shot.alt} widths={[600, 900, 1200]} sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1304px) calc((100vw - 112px) / 3), 397px" format="webp" loading="lazy" />
-              </a>
-              <figcaption><strong>{shot.title}</strong><span>{shot.caption}</span></figcaption>
-            </figure>
+          {screenshots.slice(1).map((shot) => (
+            <ArticleFigure src={shot.src} fullSize alt={shot.alt} />
           ))}
         </div>
       </section>
 
-      <section id="how-it-works" class={styles.workflow} aria-labelledby="workflow-title">
-        <h2 id="workflow-title">Пять шагов к порядку в CRM</h2>
+      <section id="how-it-works" class={styles.darkWorkflow} aria-labelledby="workflow-title">
+        <div>
+          <h2 id="workflow-title">Как проходит удаление</h2>
+          <p class={styles.workflowIntro}>Сначала вы проверяете список. Удаление начинается <strong>после подтверждения и отсчёта 5 секунд</strong> — в это время его ещё можно отменить.</p>
+          <p class={styles.workflowIntro}>Оставляйте вкладку открытой до завершения. Пауза и остановка прекращают отправку новых запросов; <strong>общего отката нет</strong>.</p>
+        </div>
         <ol>{steps.map(([heading, text]) => <li><h3>{heading}</h3><p>{text}</p></li>)}</ol>
-        <p class={styles.workflowNote}>Установка и открытие приложения сами по себе не запускают удаление.</p>
-        <p class={styles.dataNote}>Приложение открывается внутри Битрикс24. Содержимое карточек обрабатывается в вашем браузере через API Битрикс24 и не отправляется на серверы разработчика. Скачанные CSV остаются на вашем устройстве.</p>
       </section>
 
       <div class={styles.faq}>
         <FaqSection items={faqItems} title="Что нужно знать перед началом" id="cleaner-faq" variant="article" />
       </div>
 
-      <aside class={styles.terms} aria-label="Условия использования">
-        <p>Перед удалением проверьте, нужны ли выбранные записи для отчётности, связанных данных и автоматизаций. Проверка карточки и удаление выполняются отдельными запросами: изменение записи между ними не исключено. Отчёт хранится локально в браузере и может быть потерян при очистке его данных — скачайте нужные результаты в CSV.</p>
-      </aside>
-
       <section class={styles.connection} aria-labelledby="connection-title">
-        <h2 id="connection-title">Наведите порядок<br />в лидах и сделках</h2>
+        <h2 id="connection-title">Подключение приложения</h2>
         <div>
           <p>Отберите ненужные записи, сохраните важные и получите отчёт о выполненной очистке.</p>
-          <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{cleanerProduct.connectionActionLabel} <span aria-hidden="true">↗</span></a>
-          <p class={styles.support}>Есть вопрос по приложению? <a href={`mailto:${companyInfo.contacts.email}`}>Напишите команде {companyInfo.brandName}</a>.</p>
+          <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{cleanerProduct.connectionActionLabel}</a>
         </div>
       </section>
     </div>
   </main>
-  <SiteFooter />
+  <SiteFooter hideDivider />
 </BaseLayout>

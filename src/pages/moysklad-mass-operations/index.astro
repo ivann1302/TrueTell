@@ -1,0 +1,230 @@
+---
+import ProductScenario from '../../components/product-scenario/product-scenario.astro';
+import ActionIcon from '../../components/product-scenario/action-icon.astro';
+import LineWave from '../../components/ui/line-wave.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import CarouselControls from '../../components/article-carousel/carousel-controls.astro';
+import prices from '../../images/products/moysklad/prices.jpeg';
+import pricePlan from '../../images/products/moysklad/price-plan.jpeg';
+import fileImport from '../../images/products/moysklad/file-import.jpeg';
+import deletePlan from '../../images/products/moysklad/delete-plan.jpeg';
+import history from '../../images/products/moysklad/history.jpeg';
+import AppHeader from '../../components/header/header.astro';
+import SiteFooter from '../../components/footer/site-footer.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { companyInfo } from '../../config/company';
+import { moyskladOperationsProduct as product, moyskladOperationsProductPath as productPath } from '../../config/products';
+import styles from '../bitrix24-cleaner/page.module.scss';
+import heroStyles from '../../styles/product-hero.module.scss';
+import pageStyles from './page.module.scss';
+
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const title = `Массовое изменение и удаление в МойСклад — ${companyInfo.brandName}`;
+const description = 'Приложение для МойСклад: массовое изменение товаров, цен и документов, импорт XLSX/CSV и удаление данных. Проверка плана до запуска и отчёт по результатам.';
+const ogTitle = `Массовые операции в МойСклад — ${companyInfo.brandName}`;
+const ogDescription = 'Обновляйте цены и товары, загружайте файлы и удаляйте ненужные данные. Сначала проверьте план, затем подтвердите изменения и скачайте отчёт.';
+const siteRoot = new URL(base, Astro.site ?? 'https://truetell-retail.ru');
+const pageUrl = new URL(productPath.slice(1), siteRoot).href;
+const features = [
+  ['Изменение данных', 'Изменение полей товаров, архивирование товаров и контрагентов, пересчёт цен, статусы и проведение документов.'],
+  ['Загрузка из файлов', 'XLSX и CSV для товаров и контрагентов, XLSX для документов и прайс-листов. Проверка данных по шаблону перед запуском.'],
+  ['Удаление и очистка', 'Удаление выбранных объектов, очистка файлов, изображений, позиций и сумм. Доступные режимы зависят от типа объекта.'],
+  ['Тестовые данные', 'Генерация каталога, продаж, закупок и складских документов в тестовом аккаунте.'],
+  ['План и отчёт', 'Проверка плана перед подтверждением, результат по каждому объекту и скачивание отчёта.'],
+];
+const steps = [
+  { icon: 'filter' as const, title: 'Выберите', text: 'Объекты и действие.' },
+  { icon: 'review' as const, title: 'Проверьте', text: 'Состав выборки и изменения в плане.' },
+  { icon: 'run' as const, title: 'Запустите', text: 'Подтвердите применение изменений.' },
+];
+const faqItems = [
+  { question: 'Как открыть приложение и нужен ли API-токен?', answer: 'Установите доступную вашему аккаунту версию средствами МойСклад и откройте приложение внутри сервиса под администратором. Отдельный пользовательский API-токен вводить не нужно. Условия подключения можно уточнить у команды.' },
+  { question: 'Можно обработать больше 1000 объектов?', answer: 'Да. В формах массового изменения при отборе по условиям по умолчанию выбираются первые 1000 подходящих объектов. Включите «Выбрать все найденные объекты, даже если их больше 1000». Без условий отбора в выборку попадут все объекты выбранного типа.' },
+  { question: 'Для каких объектов работает пересчёт цен?', answer: 'Для товаров. Модификации, услуги и комплекты не поддерживаются. Конвертации валют нет: исходная, минимальная и итоговая цены должны соответствовать выбранной валюте. Нулевые значения и цены ниже минимальной требуют усиленного подтверждения.' },
+  { question: 'Можно удалить товары и сохранить документы?', answer: 'Для товаров предусмотрен соответствующий режим. Документы сохраняются, но выбранные товарные позиции могут быть удалены из них, а суммы изменены. Перед запуском изучите план и предупреждения.' },
+  { question: 'Показывает ли план все последствия удаления с зависимостями?', answer: 'Нет. Новые связи могут обнаружиться во время выполнения, и окончательный охват расширится после подтверждения. Не выбирайте этот режим, если связанные документы нужно оставить без изменений.' },
+  { question: 'Можно остановить операцию или вернуть изменения?', answer: 'Операция может выполниться частично. Для остановки используйте кнопку в карточке операции. Закрытие окна не останавливает выполнение. Уже применённые изменения сохранятся, а начатый запрос может завершиться после остановки. Общего отката и восстановления удалённых объектов в приложении нет.' },
+  { question: 'Полная очистка делает аккаунт пустым?', answer: 'Нет. Сохраняются обязательные системные данные, административный доступ и данные, недоступные для удаления через API. Перед запуском приложение показывает план и неподдерживаемый остаток. После выполнения обязательно проверьте, что осталось.' },
+  { question: 'Сколько хранятся история и загруженные файлы?', answer: 'История завершённых подтверждённых операций и подробные результаты хранятся 90 дней. Исходные загрузки удаляются не позднее семи дней, иногда раньше после обработки. Заброшенные неподтверждённые планы удаляются после семи дней без активности. Нужные отчёты скачивайте заранее.' },
+];
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage', '@id': `${pageUrl}#webpage`, url: pageUrl,
+      name: title, description, inLanguage: 'ru-RU',
+      mainEntity: { '@id': `${pageUrl}#application` },
+      breadcrumb: { '@id': `${pageUrl}#breadcrumbs` },
+    },
+    {
+      '@type': 'SoftwareApplication', '@id': `${pageUrl}#application`,
+      name: product.name, url: pageUrl, description,
+      applicationCategory: 'BusinessApplication', operatingSystem: 'Web browser', inLanguage: 'ru-RU',
+      publisher: { '@type': 'Organization', name: companyInfo.brandName, url: siteRoot.href },
+      screenshot: [prices, pricePlan, fileImport, deletePlan, history].map((src) => new URL(src.src, siteRoot).href),
+      featureList: features.map(([heading, text]) => `${heading}. ${text}`),
+    },
+    {
+      '@type': 'BreadcrumbList', '@id': `${pageUrl}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Главная', item: siteRoot.href },
+        { '@type': 'ListItem', position: 2, name: 'Продукты', item: new URL('products/', siteRoot).href },
+        { '@type': 'ListItem', position: 3, name: product.name, item: pageUrl },
+      ],
+    },
+    {
+      '@type': 'FAQPage', '@id': `${pageUrl}#faq`,
+      mainEntity: faqItems.map(({ question, answer }) => ({
+        '@type': 'Question', name: question,
+        acceptedAnswer: { '@type': 'Answer', text: answer },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout {title} {description} {ogTitle} {ogDescription} {structuredData} canonicalPath={productPath} ogImage={new URL(pricePlan.src, siteRoot).href} ogImageAlt="План изменения цен в МойСклад: исходные и рассчитанные значения">
+  <AppHeader />
+  <main class:list={['site-content', styles.page, heroStyles.productPage, pageStyles.flushFooter]}>
+    <div class={styles.container}>
+      <header class:list={[styles.intro, heroStyles.hero, pageStyles.heroWave]}>
+        <LineWave centerOnMobile />
+        <div>
+          <h1>{product.name}</h1>
+          <p class={heroStyles.heroDescription}>Обновляйте товары, цены и документы сразу для всей выборки — без ручного редактирования каждой карточки.</p>
+          <div class={styles.actions}>
+            <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{product.connectionActionLabel}</a>
+          </div>
+        </div>
+        <dl class={heroStyles.benefits} aria-label="Польза приложения">
+          <div><dt><ActionIcon name="filter" /><span>Меньше ручной работы</span></dt><dd>Одно действие для всей выбранной группы.</dd></div>
+          <div><dt><ActionIcon name="review" /><span>План до изменений</span></dt><dd>Выборка и новые значения видны до запуска.</dd></div>
+          <div><dt><ActionIcon name="report" /><span>Понятный результат</span></dt><dd>Статус каждого объекта и скачиваемый отчёт.</dd></div>
+        </dl>
+      </header>
+
+      <ProductScenario id="price-scenario-title"
+        title="Повысить цены на 10% для выбранных товаров"
+        description="Задайте одну формулу для всей выборки и посмотрите новые цены до запуска операции."
+        steps={[
+          { icon: 'filter', title: 'Выберите товары', text: 'Отберите товары, для которых нужно обновить цены.' },
+          { icon: 'price', title: 'Настройте формулу', text: 'Розничная цена +10%, округление до рубля.' },
+          { icon: 'review', title: 'Сверьте старую и новую цену', text: 'Проверьте значения в плане и подтвердите запуск.' },
+        ]}>
+        <div class={pageStyles.gallery} data-article-carousel>
+          <div class={pageStyles.galleryHeading}>
+            <CarouselControls trackId="price-screens" previousLabel="Предыдущий скриншот" nextLabel="Следующий скриншот" />
+          </div>
+          <div class={pageStyles.galleryTrack} id="price-screens" data-carousel-track tabindex="0" role="region" aria-label="Скриншоты пересчёта цен">
+            <div class={pageStyles.slide}>
+              <ArticleFigure src={pricePlan} fullSize alt="Сохранённый план пересчёта цен трёх товаров с исходными и рассчитанными значениями" />
+            </div>
+            <div class={pageStyles.slide}>
+              <ArticleFigure src={prices} fullSize alt="Отбор демонстрационных товаров и настройка повышения розничной цены на 10 процентов" />
+            </div>
+          </div>
+        </div>
+      </ProductScenario>
+
+      <section class={pageStyles.changes} aria-labelledby="changes-title">
+        <h2 id="changes-title">Изменение данных</h2>
+        <div class={pageStyles.changeColumns}>
+          <div class={pageStyles.changeGroup}>
+            <h3><ActionIcon name="filter" /><span>Товары и контрагенты</span></h3>
+            <dl>
+              <div><dt>Поля товаров</dt><dd>Несколько полей за одну операцию.</dd></div>
+              <div><dt>Цены</dt><dd>Формула и округление для всей выборки.</dd></div>
+              <div><dt>Архив</dt><dd>Товары и контрагенты — одной операцией.</dd></div>
+            </dl>
+          </div>
+          <div class={pageStyles.changeGroup}>
+            <h3><ActionIcon name="review" /><span>Документы</span></h3>
+            <p>Измените статус, проведите документы или снимите проведение.</p>
+            <ul>
+              <li>Заказы покупателей</li>
+              <li>Отгрузки</li>
+              <li>Возвраты</li>
+              <li>Розничные документы</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class={pageStyles.darkPanel} aria-labelledby="import-title">
+        <div class={pageStyles.copy}>
+          <h2 id="import-title">Загрузка из файлов</h2>
+          <p>Заполните шаблон и проверьте план. Создавайте объекты и обновляйте прайс-листы из файла.</p>
+          <dl class={pageStyles.formats}>
+            <div><dt>Товары и контрагенты</dt><dd>XLSX, CSV</dd></div>
+            <div><dt>Документы и прайс-листы</dt><dd>XLSX</dd></div>
+          </dl>
+          <p class={pageStyles.note}>Связи с существующими объектами задаются <strong class={pageStyles.accent}>их ID</strong>.</p>
+          <div class={pageStyles.testData}>
+            <h3>Данные для проверки и обучения</h3>
+            <p>Создавайте каталог и документы для проверки в <strong class={pageStyles.accent}>отдельном тестовом аккаунте</strong>: данные влияют на учёт.</p>
+          </div>
+        </div>
+        <ArticleFigure src={fileImport} fullSize dark alt="Загрузка CSV с тремя товарами и сопоставление колонок файла с полями МойСклад" />
+      </section>
+
+      <section class={pageStyles.cleanup} aria-labelledby="cleanup-title">
+        <div class={pageStyles.copy}>
+          <h2 id="cleanup-title">Удаление и очистка</h2>
+          <p>Выберите ненужные объекты по условиям или загрузите XLSX с ID. Доступные режимы зависят от типа объекта.</p>
+          <p>Удаляйте записи либо очищайте файлы, изображения, позиции и суммы. При удалении с зависимостями могут затрагиваться связанные документы, а охват — расширяться во время выполнения.</p>
+          <p class={pageStyles.caution}>Общего отката нет. Приложение не восстанавливает удалённые объекты; план и отчёт не заменяют резервную копию.</p>
+        </div>
+        <ArticleFigure src={deletePlan} fullSize alt="План удаления трёх демонстрационных контрагентов с полем подтверждения количества операций" />
+      </section>
+
+      <section class={pageStyles.outcome} aria-labelledby="outcome-title">
+        <h2 id="outcome-title">Что останется после операции</h2>
+        <ArticleFigure src={history} fullSize
+          alt="История операций: завершённый пересчёт цен, три успешных изменения и кнопки скачивания отчётов" />
+        <dl class={pageStyles.outcomeDetails}>
+          <div>
+            <dt><ActionIcon name="review" /><span>Выполнено</span></dt>
+            <dd>Какие объекты обработаны.</dd>
+          </div>
+          <div>
+            <dt><ActionIcon name="filter" /><span>Требует внимания</span></dt>
+            <dd>Ошибки и пропуски для проверки.</dd>
+          </div>
+          <div>
+            <dt><ActionIcon name="report" /><span>Отчёт под рукой</span></dt>
+            <dd>Скачайте CSV или XLSX. Доступность XLSX зависит от объёма отчёта.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section id="how-it-works" class:list={[pageStyles.darkPanel, pageStyles.workflow]} aria-labelledby="workflow-title">
+        <h2 id="workflow-title">Как проходит операция</h2>
+        <ol>{steps.map(({ icon, title, text }) => (
+          <li>
+            <div class={pageStyles.stepVisual}><ActionIcon name={icon} /></div>
+            <div><h3>{title}</h3><p>{text}</p></div>
+          </li>
+        ))}</ol>
+      </section>
+
+      <div class={styles.faq}>
+        <FaqSection items={faqItems} title="Что нужно знать перед началом" id="moysklad-operations-faq" variant="article" />
+      </div>
+
+    </div>
+  </main>
+  <div class={pageStyles.closingSurface}>
+    <LineWave />
+    <div class={styles.container}>
+      <section class:list={[styles.connection, pageStyles.connectionDark]} aria-labelledby="connection-title">
+        <h2 id="connection-title">Подключение приложения</h2>
+        <div>
+          <p>Расскажите о вашей задаче в МойСклад — поможем с подключением.</p>
+          <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{product.connectionActionLabel}</a>
+        </div>
+      </section>
+    </div>
+    <SiteFooter transparent hideDivider />
+  </div>
+</BaseLayout>

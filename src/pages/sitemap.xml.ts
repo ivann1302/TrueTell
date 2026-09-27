@@ -11,6 +11,7 @@ export function GET() {
     { path: '', changefreq: 'weekly', priority: '1.0' },
     { path: 'products/', changefreq: 'monthly', priority: '0.8' },
     { path: 'bitrix24-cleaner/', changefreq: 'monthly', priority: '0.8' },
+    { path: 'moysklad-mass-operations/', changefreq: 'monthly', priority: '0.8' },
     { path: 'bi-analitika/', changefreq: 'monthly', priority: '0.8' },
     { path: 'blog/', changefreq: 'weekly', priority: '0.7' },
     ...['privacy/', 'cookies/', 'analytics-consent/'].map((path) => ({ path, changefreq: 'yearly', priority: '0.3' })),

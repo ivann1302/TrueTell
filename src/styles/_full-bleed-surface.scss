@@ -1,0 +1,22 @@
+// For centered section containers only. Keep the content grid in place while
+// extending its background and existing dot layer to both viewport edges.
+@mixin background {
+  border-radius: 0;
+  border: 0;
+  overflow: visible;
+
+  &::before {
+    inset-inline: calc(50% - 50vw);
+    border-radius: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline: calc(50% - 50vw);
+    z-index: -2;
+    background: inherit;
+    pointer-events: none;
+  }
+}
