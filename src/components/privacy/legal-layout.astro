@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../header/header.astro';
+import Footer from '../footer/site-footer.astro';
+import styles from './legal-document.module.scss';
+interface Props { title: string; description: string; path: string; }
+const { title, description, path } = Astro.props;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+---
+<BaseLayout title={`${title} — TrueTell`} {description} canonicalPath={path}>
+  <div class={styles.header}><Header showPricing={false} /></div>
+  <main class={styles.document}>
+    <a href={base}>Главная</a>
+    <h1>{title}</h1>
+    <slot />
+  </main>
+  <Footer />
+</BaseLayout>

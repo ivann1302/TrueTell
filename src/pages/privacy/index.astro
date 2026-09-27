@@ -1,0 +1,18 @@
+---
+import LegalLayout from '../../components/privacy/legal-layout.astro';
+import { companyInfo } from '../../config/company';
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+---
+<LegalLayout title="Персональные данные" description="Информация об обработке данных на сайте TrueTell и контакты для обращений." path="/privacy/">
+  <h2>К кому обратиться</h2>
+  <p>Владелец сайта — {companyInfo.legal.fullName}. ИНН {companyInfo.legal.inn}, {companyInfo.legal.registrationType} {companyInfo.legal.registrationNumber}.</p>
+  <p>Адрес для письменных обращений: {companyInfo.legal.postalAddress}.</p>
+  <p>Вопросы об обработке данных, запросы на их уточнение или удаление можно направить на <a href={`mailto:${companyInfo.contacts.email}`}>{companyInfo.contacts.email}</a>.</p>
+  <h2>Данные при посещении сайта</h2>
+  <p>Выбор cookie сохраняется в вашем браузере до 180 дней. Статистика посещений собирается только после согласия. Подробнее о сервисе, данных и изменении выбора — на странице <a href={`${base}cookies/`}>«Cookie на сайте»</a>.</p>
+  <h2>Обращения</h2>
+  <p>Кнопки связи ведут в мессенджер. Если вы пишете нам, вы передаёте сведения из своего сообщения и профиля. Не отправляйте пароли, платёжные данные и другую информацию, которая не нужна для вашего вопроса.</p>
+  <p>Переход на внешний сервис подчиняется его правилам обработки данных. Отказ от cookie на нашем сайте не меняет настройки мессенджера.</p>
+  <h2>Как отозвать согласие</h2>
+  <p>Для статистики откройте <a href={`${base}cookies/`} data-cookie-open>настройки cookie</a> и отключите её. По другим вопросам напишите на указанный выше email.</p>
+</LegalLayout>

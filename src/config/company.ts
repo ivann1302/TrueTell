@@ -5,6 +5,8 @@ export const companyInfo = {
   brandName: 'TrueTell',
   legal: {
     name: 'ИП Романов Р.М.',
+    fullName: 'Индивидуальный предприниматель Романов Роман Михайлович',
+    postalAddress: '416501, Россия, Астраханская область, Ахтубинский район, г. Ахтубинск, ул. Черно-Иванова, д. 1, кв. 3',
     inn: '300103420414',
     registrationType: 'ОГРНИП',
     registrationNumber: '318302500015221',

@@ -42,4 +42,9 @@ const navigation = [
       <p>{companyInfo.legal.registrationType} {companyInfo.legal.registrationNumber}</p>
     </div>
   </div>
+  <div class={styles.privacy}>
+    <a href={internalHref('/privacy/')}>Персональные данные</a>
+    <a href={internalHref('/cookies/')} data-cookie-open>Настройки cookie</a>
+    <a href={`mailto:${companyInfo.contacts.email}`}>{companyInfo.contacts.email}</a>
+  </div>
 </footer>

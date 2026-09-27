@@ -13,6 +13,7 @@ export function GET() {
     { path: 'bitrix24-cleaner/', changefreq: 'monthly', priority: '0.8' },
     { path: 'bi-analitika/', changefreq: 'monthly', priority: '0.8' },
     { path: 'blog/', changefreq: 'weekly', priority: '0.7' },
+    ...['privacy/', 'cookies/', 'analytics-consent/'].map((path) => ({ path, changefreq: 'yearly', priority: '0.3' })),
     ...blogArticles
       .filter((article) => article.hrefPath)
       .map((article) => ({
