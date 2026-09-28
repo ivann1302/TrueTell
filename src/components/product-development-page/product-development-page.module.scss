@@ -215,3 +215,6 @@
 .panel {
   @include full-bleed-surface.background();
 }
+
+.afterHero { margin-top: 72px; max-width: 720px; line-height: 1.65; }
+.articleLink { display: inline-block; margin-top: 24px; color: #1765da; }

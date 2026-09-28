@@ -106,12 +106,13 @@
   border-bottom: 1px solid rgba(247, 248, 250, 0.14);
   display: flex;
   justify-content: space-between;
-  min-height: 64px;
-  padding-bottom: 16px;
+  box-sizing: border-box;
+  min-height: 56px;
+  padding-bottom: 12px;
 }
 
 .menuBrand {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 600;
   letter-spacing: -0.035em;
 }
@@ -141,7 +142,7 @@
 
 .mobileNav {
   align-self: center;
-  padding-block: 40px;
+  padding-block: 24px;
   width: 100%;
 }
 
@@ -163,13 +164,14 @@
   align-items: center;
   color: rgba(247, 248, 250, 0.94);
   display: grid;
-  font-size: clamp(2rem, 9vw, 3rem);
+  font-size: clamp(1.375rem, 5vw, 1.75rem);
   font-weight: 500;
   grid-template-columns: minmax(0, 1fr);
   letter-spacing: -0.035em;
-  line-height: 1.05;
-  min-height: 84px;
-  padding-block: 16px;
+  line-height: 1.2;
+  box-sizing: border-box;
+  min-height: 56px;
+  padding-block: 12px;
   text-decoration: none;
   transition:
     color 180ms ease,
@@ -194,7 +196,7 @@
   font-size: 13px;
   line-height: 1.5;
   margin: 0;
-  padding-top: 20px;
+  padding-top: 12px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -204,4 +206,13 @@
   .mobileNavLink {
     transition-duration: 0.01ms;
   }
+}
+
+@media (max-height: 600px) {
+  .mobileOverlay {
+    padding-block: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-bottom));
+  }
+  .menuTop { min-height: 48px; padding-bottom: 4px; }
+  .mobileNav { padding-block: 8px; }
+  .mobileNavLink { min-height: 48px; padding-block: 8px; font-size: 22px; }
 }

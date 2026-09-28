@@ -68,7 +68,7 @@
   scroll-snap-align: start;
 
   img {
-    aspect-ratio: 1280 / 1240;
+    aspect-ratio: auto;
     object-fit: contain;
   }
 }
@@ -244,7 +244,7 @@
 
 // A single framed section groups related operations, like the homepage panels.
 .changes {
-  margin-top: 96px;
+  margin-top: 64px;
   padding: 48px;
   border: 1px solid #d3d7de;
   border-radius: 14px;
@@ -293,7 +293,7 @@
 }
 
 @media (max-width: 768px) {
-  .changes { margin-top: 72px; padding: 24px; }
+  .changes { margin-top: 48px; padding: 24px; }
   .changes > h2 { padding-bottom: 24px; }
   .changeColumns { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-top: 24px; }
   .changeGroup + .changeGroup {
@@ -356,57 +356,9 @@
 }
 
 
-.closingSurface {
-  @include product-surface.dark-surface();
-  padding: 0;
-  text-align: left;
-
-  > :global(.line-wave) { opacity: 0.65; }
-}
-
-.connectionDark.connectionDark {
-  position: relative;
-  z-index: 1;
-  margin-top: 0;
-  padding-block: 64px;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  color: #f7f8fa;
-
-  p { color: #c8cdd5; }
-  h2 {
-    margin: 0;
-    font-size: clamp(1.75rem, 2.8vw, 2.5rem);
-    font-weight: 500;
-    line-height: 1.15;
-    letter-spacing: -0.03em;
+@media (min-width: 769px) {
+  .slide:first-child figure {
+    width: 92%;
+    margin-inline: auto;
   }
-  a:focus-visible { outline: 2px solid #4b9cff; outline-offset: 5px; }
-}
-
-@media (max-width: 768px) {
-  .connectionDark.connectionDark { padding-block: 40px; }
-}
-
-
-.heroWave {
-  > :global(.line-wave) {
-    inset-inline: calc(50% - 50vw);
-    opacity: 0.65;
-  }
-
-  > div:not(:global(.line-wave)),
-  > dl {
-    position: relative;
-    z-index: 1;
-  }
-}
-
-.flushFooter.flushFooter.flushFooter {
-  padding-bottom: 64px;
-}
-
-@media (max-width: 768px) {
-  .flushFooter.flushFooter.flushFooter { padding-bottom: 48px; }
 }

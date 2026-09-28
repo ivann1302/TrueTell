@@ -1527,3 +1527,9 @@ styles/
 - Подключение МойСклад и футер объединяются в общую тёмную поверхность: один слой точек и один LineWave на всю группу. Футер использует прозрачный вариант без собственного паттерна.
 
 - На всех продуктовых страницах футер отображается без горизонтального разделителя над ссылками на персональные данные, настройки cookie и email. Использовать общий компонент `SiteFooter` с `hideDivider`; сохранять отступы и сами ссылки. Это правило действует и для страниц продуктов в разработке.
+
+- Product hero: the first 100svh contains only a centered H1 with description and one CTA near the bottom edge (40px desktop / 32px mobile). No benefit lists, kickers, status labels or secondary links in the first screen; move supporting content below it. Applies to all product pages including development placeholders.
+
+- Product-page formula: hero -> shared ProductSummary -> real screenshot scenario -> capabilities/results -> FAQ -> connection. Immediately after hero, explain the purpose and workflow in plain language: a benefit heading and two short sentences, with no kicker or extra CTA. Use two columns on desktop, one on mobile. For unreleased products, describe planned behavior without implying availability.
+
+- ProductSummary uses a white rounded frame: 1px #D3D7DE border, 14px radius, 48px desktop / 24px mobile padding. Highlight the meaningful phrase in the heading with #1765DA, without increasing its weight. Do not add a separate horizontal divider below this section.

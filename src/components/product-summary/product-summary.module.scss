@@ -1,0 +1,30 @@
+.summary {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: start;
+  gap: 64px;
+  margin-top: 96px;
+  padding: 48px;
+  border: 1px solid #d3d7de;
+  border-radius: 14px;
+  background: #fff;
+
+  h2 :global(strong) {
+    color: #1765da;
+    font-weight: inherit;
+  }
+  p {
+    max-width: 54ch;
+    color: #616875;
+    font-size: 1.125rem;
+    line-height: 1.65;
+  }
+}
+@media (max-width: 768px) {
+  .summary {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+    padding: 24px;
+  }
+}

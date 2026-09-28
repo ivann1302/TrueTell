@@ -1,5 +1,6 @@
 ---
 import AppHeader from '../header/header.astro';
+import heroStyles from '../../styles/product-hero.module.scss';
 import SiteFooter from '../footer/site-footer.astro';
 import { companyInfo } from '../../config/company';
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -47,44 +48,21 @@ const toSitePath = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
   <main class="site-content">
     <section class={styles.page} aria-labelledby="product-development-title">
       <div class={styles.container}>
-        <div class={styles.panel}>
-          <div class={styles.heading}>
-            <p class={styles.status}>{statusLabel}</p>
+        <header class={heroStyles.hero}>
+          <div class={heroStyles.heroCopy}>
             <h1 id="product-development-title">
-              {
-                heading.map((segment) =>
-                  segment.accent ? (
-                    <span class={styles.headingAccent}>{segment.text}</span>
-                  ) : (
-                    segment.text
-                  )
-                )
-              }
+              {heading.map((segment) => segment.accent ? <span class={styles.headingAccent}>{segment.text}</span> : segment.text)}
             </h1>
+            <p class={heroStyles.heroDescription}>{releaseText}</p>
           </div>
-
-          <div class={styles.details}>
-            <p>{releaseText}</p>
-            <p>{contactText}</p>
-
-            <div class={styles.actions}>
-              <a
-                class={styles.primaryAction}
-                href={companyInfo.contacts.consultationUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {actionLabel} <span aria-hidden="true">→</span>
-              </a>
-              {
-                articleHref && (
-                  <a class={styles.textAction} href={toSitePath(articleHref)}>
-                    {articleLabel}
-                  </a>
-                )
-              }
-            </div>
+          <div class={heroStyles.heroActions}>
+            <a class={styles.primaryAction} href={companyInfo.contacts.consultationUrl} target="_blank" rel="noopener noreferrer">{actionLabel}</a>
           </div>
+        </header>
+        <div class={styles.afterHero}>
+          <p class={styles.status}>{statusLabel}</p>
+          <p>{contactText}</p>
+          {articleHref && <a class={styles.articleLink} href={toSitePath(articleHref)}>{articleLabel}</a>}
         </div>
       </div>
     </section>

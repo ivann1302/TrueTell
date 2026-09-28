@@ -12,7 +12,7 @@ export const moyskladOperationsProduct = {
 } as const;
 
 export const cleanerProduct = {
-  name: 'Массовое удаление лидов и сделок',
+  name: 'Массовое удаление лидов и сделок в Битрикс24',
   description:
     'Удаляйте ненужные лиды и сделки в Битрикс24 по фильтрам. Проверка списка, исключения, пауза и CSV-отчёт. До 3 000 записей за операцию.',
   catalogDescription:

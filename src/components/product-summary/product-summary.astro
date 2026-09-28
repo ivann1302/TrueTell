@@ -1,0 +1,9 @@
+---
+import styles from './product-summary.module.scss';
+interface Props { description: string; }
+const { description } = Astro.props;
+---
+<section class={styles.summary} aria-labelledby="product-summary-title" data-product-summary>
+  <h2 id="product-summary-title"><slot name="title" /></h2>
+  <p>{description}</p>
+</section>

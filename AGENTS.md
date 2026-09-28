@@ -38,3 +38,7 @@
 - Final UI review: `frontend-quality-gate` + `anti-ai-slop-design` + `truetell-design-system`.
 
 - Product-page footers, including products in development, use `SiteFooter hideDivider`: no horizontal divider above privacy, cookie settings, and email links. Preserve the links and spacing.
+
+- Product hero: the first 100svh contains only a centered H1 with description and one CTA near the bottom edge (40px desktop / 32px mobile). No benefit lists, kickers, status labels or secondary links in the first screen; move supporting content below it. Applies to all product pages including development placeholders.
+
+- Product-page formula: hero -> shared ProductSummary -> real screenshot scenario -> capabilities/results -> FAQ -> connection. Immediately after hero, explain the purpose and workflow in plain language: a benefit heading and two short sentences, with no kicker or extra CTA. Use two columns on desktop, one on mobile. For unreleased products, describe planned behavior without implying availability.

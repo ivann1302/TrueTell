@@ -1,5 +1,7 @@
 ---
+import closingStyles from '../../styles/product-closing.module.scss';
 import ProductScenario from '../../components/product-scenario/product-scenario.astro';
+import ProductSummary from '../../components/product-summary/product-summary.astro';
 import ActionIcon from '../../components/product-scenario/action-icon.astro';
 import LineWave from '../../components/ui/line-wave.astro';
 import ArticleFigure from '../../components/editorial/article-figure.astro';
@@ -86,23 +88,24 @@ const structuredData = {
 
 <BaseLayout {title} {description} {ogTitle} {ogDescription} {structuredData} canonicalPath={productPath} ogImage={new URL(pricePlan.src, siteRoot).href} ogImageAlt="План изменения цен в МойСклад: исходные и рассчитанные значения">
   <AppHeader />
-  <main class:list={['site-content', styles.page, heroStyles.productPage, pageStyles.flushFooter]}>
+  <main class:list={['site-content', styles.page, heroStyles.productPage, closingStyles.flushFooter]}>
     <div class={styles.container}>
-      <header class:list={[styles.intro, heroStyles.hero, pageStyles.heroWave]}>
+      <header class:list={[styles.intro, heroStyles.hero, heroStyles.heroWave]}>
         <LineWave centerOnMobile />
-        <div>
+        <div class={heroStyles.heroCopy}>
           <h1>{product.name}</h1>
           <p class={heroStyles.heroDescription}>Обновляйте товары, цены и документы сразу для всей выборки — без ручного редактирования каждой карточки.</p>
-          <div class={styles.actions}>
+
+        </div>
+          <div class={heroStyles.heroActions}>
             <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{product.connectionActionLabel}</a>
           </div>
-        </div>
-        <dl class={heroStyles.benefits} aria-label="Польза приложения">
-          <div><dt><ActionIcon name="filter" /><span>Меньше ручной работы</span></dt><dd>Одно действие для всей выбранной группы.</dd></div>
-          <div><dt><ActionIcon name="review" /><span>План до изменений</span></dt><dd>Выборка и новые значения видны до запуска.</dd></div>
-          <div><dt><ActionIcon name="report" /><span>Понятный результат</span></dt><dd>Статус каждого объекта и скачиваемый отчёт.</dd></div>
-        </dl>
       </header>
+
+      <ProductSummary
+        description="Приложение помогает изменить или удалить сразу много товаров, цен и документов в МойСклад. Вы выбираете нужные записи, проверяете будущие изменения и подтверждаете запуск.">
+        <span slot="title">Чтобы не менять <strong>каждую карточку вручную</strong></span>
+      </ProductSummary>
 
       <ProductScenario id="price-scenario-title"
         title="Повысить цены на 10% для выбранных товаров"
@@ -214,10 +217,10 @@ const structuredData = {
 
     </div>
   </main>
-  <div class={pageStyles.closingSurface}>
+  <div class={closingStyles.closingSurface}>
     <LineWave />
     <div class={styles.container}>
-      <section class:list={[styles.connection, pageStyles.connectionDark]} aria-labelledby="connection-title">
+      <section class:list={[styles.connection, closingStyles.connectionDark]} aria-labelledby="connection-title">
         <h2 id="connection-title">Подключение приложения</h2>
         <div>
           <p>Расскажите о вашей задаче в МойСклад — поможем с подключением.</p>

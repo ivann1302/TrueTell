@@ -132,6 +132,11 @@ const relatedArticles = blogArticles
   .slice(0, 3)
   .map((article) => ({ ...article, href: `${base}${article.hrefPath}` }));
 const structuredData = createArticleStructuredData({
+  howTos: [{
+    id: 'howto-delete-deals',
+    name: 'Как удалить проигранные сделки через список Битрикс24',
+    steps: deletionSteps.map(({ title, description }) => ({ name: title, text: description, anchor: 'delete-from-list' })),
+  }],
   title,
   description,
   articleUrl,

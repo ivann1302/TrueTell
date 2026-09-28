@@ -113,7 +113,27 @@ const faqItems = [
   },
 ];
 
+const howTos = [
+  {
+    "id": "howto-remove-reserve",
+    "name": "Как снять резерв вручную с одного заказа в МойСклад",
+    "steps": [
+      {
+        "name": "Откройте заказ",
+        "text": "Откройте Продажи → Заказы покупателей, найдите нужный документ",
+        "anchor": "remove-reserve"
+      },
+      {
+        "name": "Снимите резерв и сохраните изменения",
+        "text": "снимите флажок Резерв и сохраните изменения. Если компания резервирует не заказ целиком, а отдельные позиции, нужно открыть товарные строки и проверить количество в резерве у каждой из них.",
+        "anchor": "remove-reserve"
+      }
+    ]
+  }
+];
+
 const structuredData = createArticleStructuredData({
+  howTos,
   title,
   description,
   articleUrl,

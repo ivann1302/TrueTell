@@ -1,0 +1,64 @@
+.textPanel {
+  padding: 48px;
+  border: 1px solid #d3d7de;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.features.features {
+  margin-top: 112px;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px 80px;
+  margin: 48px 0 0;
+
+  dt {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  svg { flex-shrink: 0; color: #1765da; }
+  dd { margin: 12px 0 0 40px; max-width: 38ch; color: #616875; line-height: 1.65; }
+}
+
+.screenshots.screenshots {
+  align-items: start;
+
+  img { width: 100%; height: auto; aspect-ratio: 6 / 5; object-fit: contain; }
+}
+
+.workflow.workflow {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 48px;
+  padding-block: 64px;
+
+  ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; }
+  li + li { margin-top: 0; }
+  li > svg { width: 40px; height: 40px; margin-bottom: 24px; color: #4b9cff; }
+  li p { max-width: 26ch; }
+}
+
+.workflowNote { max-width: 65ch; color: #c8cdd5; }
+
+@media (max-width: 768px) {
+  .textPanel { padding: 24px; }
+  .features.features { margin-top: 80px; }
+  .featureGrid { grid-template-columns: minmax(0, 1fr); margin-top: 32px; gap: 32px; }
+  .screenshots.screenshots img { aspect-ratio: auto; }
+  .workflow.workflow {
+    padding-block: 48px;
+    gap: 32px;
+
+    ol { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    li { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 20px; }
+    li > svg { grid-row: span 2; margin-bottom: 0; }
+    li p { grid-column: 2; max-width: none; }
+  }
+}

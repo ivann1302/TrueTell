@@ -1,6 +1,10 @@
 ---
-import ProductScenario from '../../components/product-scenario/product-scenario.astro';
+import LineWave from '../../components/ui/line-wave.astro';
+import closingStyles from '../../styles/product-closing.module.scss';
 import ActionIcon from '../../components/product-scenario/action-icon.astro';
+import layout from './cleaner-layout.module.scss';
+import ProductScenario from '../../components/product-scenario/product-scenario.astro';
+import ProductSummary from '../../components/product-summary/product-summary.astro';
 import ArticleFigure from '../../components/editorial/article-figure.astro';
 import AppHeader from '../../components/header/header.astro';
 import SiteFooter from '../../components/footer/site-footer.astro';
@@ -15,7 +19,7 @@ import heroStyles from '../../styles/product-hero.module.scss';
 import styles from './page.module.scss';
 
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
-const title = `${cleanerProduct.name} в Битрикс24 — ${companyInfo.brandName}`;
+const title = `${cleanerProduct.name} — ${companyInfo.brandName}`;
 const description = cleanerProduct.description;
 const ogTitle = `${cleanerProduct.name} — ${companyInfo.brandName}`;
 const ogDescription = 'Найдите ненужные записи по фильтрам, проверьте список и удалите выбранное. Приложение для Битрикс24 с отчётом по каждому ID.';
@@ -26,40 +30,37 @@ const screenshots = [
     src: selection,
     title: 'Поиск и выбор записей',
     caption: 'Исключите из списка карточки, которые нужно сохранить',
-    alt: `Список выбранных сделок в приложении «${cleanerProduct.name}»`,
+    alt: 'Демонстрационная выборка в Битрикс24: 120 сделок найдено, одна исключена, 119 выбраны',
   },
   {
     src: confirmation,
     title: 'Подтверждение',
     caption: 'Перед удалением проверьте портал и количество выбранных записей',
-    alt: 'Подтверждение удаления выбранного списка с указанием портала и количества записей',
+    alt: 'Подтверждение удаления трёх демонстрационных сделок с указанием портала и предупреждением об отсчёте',
   },
   {
     src: result,
     title: 'Результат',
     caption: 'Посмотрите результат по каждому ID и скачайте отчёт в CSV',
-    alt: 'Итог обработки лидов или сделок со статусами записей и кнопкой скачивания CSV',
+    alt: 'Результат тестовой операции: две сделки удалены без ошибок, доступен итоговый CSV',
   },
 ];
 const useCases = [
-  ['Старые обращения', 'Лиды за выбранный период, с которыми вы больше не работаете.'],
-  ['Тестовые карточки', 'Записи, созданные для проверки настроек и обучения.'],
-  ['Ненужные сделки', 'Сделки, которые не нужны для работы и отчётности.'],
+  ['Старые обращения', 'Лиды, с которыми больше не работаете.'],
+  ['Тестовые карточки', 'Записи после настройки CRM и обучения.'],
+  ['Ненужные сделки', 'Сделки, не нужные для работы и отчётности.'],
 ];
 const features = [
-  ['Сочетайте фильтры', 'Отбирайте по датам, статусам, ответственному, источнику, названию и ID. Для сделок — также по воронке.'],
-  ['Проверяйте выборку', 'Сортируйте таблицу, исключайте нужные карточки и скачивайте выбранный список в CSV.'],
-  ['Подтверждайте конкретный список', 'Сверьте портал и количество записей. После подтверждения есть 5 секунд на отмену.'],
-  ['Управляйте выполнением', 'Следите за прогрессом, ставьте на паузу или останавливайте новые запросы. Записи с изменёнными контрольными полями пропускаются.'],
-  ['Получайте понятный отчёт', 'Скачайте CSV: удалённые записи, пропуски, ошибки и неизвестные результаты — отдельно.'],
-];
+  ['Точный отбор', 'Даты, стадии, ответственный и другие фильтры.', 'filter'],
+  ['Контроль списка', 'Исключайте нужные карточки и сохраняйте выборку в CSV.', 'review'],
+  ['Пауза и остановка', 'Приостанавливайте отправку новых запросов.', 'run'],
+  ['Отчёт по каждой записи', 'Удалённые, пропущенные и ошибки — в итоговом CSV.', 'report'],
+] as const;
 const steps = [
-  ['Выберите лиды или сделки', 'Откройте приложение под администратором и задайте условия поиска.'],
-  ['Проверьте найденные записи', 'Уточните фильтры и исключите карточки, которые нужно оставить.'],
-  ['Сохраните список', 'При необходимости скачайте CSV выбранных записей.'],
-  ['Подтвердите удаление', 'Проверьте количество и дождитесь окончания отсчёта.'],
-  ['Изучите результат', 'Скачайте итоговый отчёт и проверьте записи, требующие внимания.'],
-];
+  { icon: 'filter', title: 'Отберите', text: 'Найдите записи и оставьте нужные.' },
+  { icon: 'remove', title: 'Подтвердите', text: 'Сверьте портал и количество записей.' },
+  { icon: 'report', title: 'Проверьте итог', text: 'Скачайте отчёт по каждому ID.' },
+] as const;
 const faqItems = [
   { question: 'Где обрабатываются данные и хранятся отчёты?', answer: 'Карточки обрабатываются в вашем браузере через API Битрикс24 и не отправляются на серверы разработчика. Отчёт хранится локально и может потеряться при очистке данных браузера — скачайте нужные результаты в CSV.' },
   { question: 'Что проверить перед удалением?', answer: 'Убедитесь, что записи не нужны для отчётности, связанных данных и автоматизаций. Проверка карточки и удаление — отдельные запросы: изменение записи между ними не исключено.' },
@@ -111,26 +112,28 @@ const structuredData = {
 <BaseLayout {title} {description} {structuredData} canonicalPath={cleanerProductPath}
   {ogTitle} {ogDescription} ogImage={new URL(confirmation.src, siteRoot).href} ogImageAlt={screenshots[1].alt}>
   <AppHeader />
-  <main class:list={['site-content', styles.page, heroStyles.productPage]}>
+  <main class:list={['site-content', styles.page, heroStyles.productPage, closingStyles.flushFooter]}>
     <div class={styles.container}>
-      <header class:list={[styles.intro, heroStyles.hero]}>
-        <div>
+      <header class:list={[styles.intro, heroStyles.hero, heroStyles.heroWave]}>
+        <LineWave centerOnMobile />
+        <div class={heroStyles.heroCopy}>
           <h1>{cleanerProduct.name}</h1>
-          <p class={heroStyles.heroDescription}>Удаляйте ненужные лиды и сделки в Битрикс24 одной операцией. Отберите записи по фильтрам и сохраните карточки, с которыми ещё работаете.</p>
-          <div class={styles.actions}>
+          <p class={heroStyles.heroDescription}>Удаляйте ненужные записи одной операцией. Отбирайте по фильтрам и сохраняйте важные.</p>
+
+        </div>
+          <div class={heroStyles.heroActions}>
             <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{cleanerProduct.connectionActionLabel}</a>
           </div>
-        </div>
-        <dl class={heroStyles.benefits} aria-label="Польза приложения">
-          <div><dt><ActionIcon name="filter" /><span>До 3 000 записей за операцию</span></dt><dd>Лиды или сделки по заданным фильтрам.</dd></div>
-          <div><dt><ActionIcon name="review" /><span>Важные карточки остаются</span></dt><dd>Исключите нужные записи из списка удаления.</dd></div>
-          <div><dt><ActionIcon name="report" /><span>Отчёт по каждому ID</span></dt><dd>Удалённые записи, пропуски и ошибки — в CSV.</dd></div>
-        </dl>
       </header>
+
+      <ProductSummary
+        description="Приложение удаляет старые и тестовые записи из Битрикс24. Вы находите их по фильтрам, снимаете галочки с нужных карточек и подтверждаете удаление остальных.">
+        <span slot="title">Чтобы убрать <strong>ненужные лиды и сделки</strong></span>
+      </ProductSummary>
 
       <ProductScenario id="selection-scenario-title"
         title="Удалить ненужные сделки, сохранив важные"
-        description="Уберите закрытые сделки за период, оставив нужные для отчётности."
+        description="Уберите тестовые сделки после настройки CRM, исключив из списка те, которые нужно оставить."
         steps={[
           { icon: 'filter', title: 'Отберите сделки', text: 'Выберите воронку, стадии и период.' },
           { icon: 'review', title: 'Оставьте нужные карточки', text: 'Снимите выделение с записей, которые нужно сохранить.' },
@@ -139,17 +142,17 @@ const structuredData = {
         <ArticleFigure src={selection} fullSize alt={screenshots[0].alt} />
       </ProductScenario>
 
-      <section class={styles.useCases} aria-labelledby="use-cases-title">
+      <section class:list={[styles.useCases, layout.textPanel]} aria-labelledby="use-cases-title">
         <h2 id="use-cases-title">Когда нужна очистка CRM</h2>
         <dl class={styles.descriptionList}>
           {useCases.map(([heading, text]) => <div><dt>{heading}</dt><dd>{text}</dd></div>)}
         </dl>
       </section>
 
-      <section class={styles.features} aria-labelledby="features-title">
+      <section class:list={[styles.features, layout.features, layout.textPanel]} aria-labelledby="features-title">
         <h2 id="features-title">Возможности приложения</h2>
-        <dl class={styles.featureList}>
-          {features.map(([heading, text]) => <div><dt>{heading}</dt><dd>{text}</dd></div>)}
+        <dl class={layout.featureGrid}>
+          {features.map(([heading, text, icon]) => <div><dt><ActionIcon name={icon} />{heading}</dt><dd>{text}</dd></div>)}
         </dl>
       </section>
 
@@ -157,34 +160,36 @@ const structuredData = {
         <div class={styles.sectionHeading}>
           <h2 id="interface-title">Приложение в работе</h2>
         </div>
-        <div class={styles.screenshots}>
+        <div class:list={[styles.screenshots, layout.screenshots]}>
           {screenshots.slice(1).map((shot) => (
             <ArticleFigure src={shot.src} fullSize alt={shot.alt} />
           ))}
         </div>
       </section>
 
-      <section id="how-it-works" class={styles.darkWorkflow} aria-labelledby="workflow-title">
-        <div>
-          <h2 id="workflow-title">Как проходит удаление</h2>
-          <p class={styles.workflowIntro}>Сначала вы проверяете список. Удаление начинается <strong>после подтверждения и отсчёта 5 секунд</strong> — в это время его ещё можно отменить.</p>
-          <p class={styles.workflowIntro}>Оставляйте вкладку открытой до завершения. Пауза и остановка прекращают отправку новых запросов; <strong>общего отката нет</strong>.</p>
-        </div>
-        <ol>{steps.map(([heading, text]) => <li><h3>{heading}</h3><p>{text}</p></li>)}</ol>
+      <section id="how-it-works" class:list={[styles.darkWorkflow, layout.workflow]} aria-labelledby="workflow-title">
+        <h2 id="workflow-title">Как проходит удаление</h2>
+        <ol>{steps.map(({ icon, title, text }) => <li><ActionIcon name={icon} /><h3>{title}</h3><p>{text}</p></li>)}</ol>
+        <p class={layout.workflowNote}>После подтверждения — <strong>5 секунд на отмену</strong>. Затем держите вкладку открытой до завершения. <strong>Общего отката нет.</strong></p>
       </section>
 
       <div class={styles.faq}>
         <FaqSection items={faqItems} title="Что нужно знать перед началом" id="cleaner-faq" variant="article" />
       </div>
 
-      <section class={styles.connection} aria-labelledby="connection-title">
+    </div>
+  </main>
+  <div class={closingStyles.closingSurface}>
+    <LineWave />
+    <div class={styles.container}>
+      <section class:list={[styles.connection, closingStyles.connectionDark]} aria-labelledby="connection-title">
         <h2 id="connection-title">Подключение приложения</h2>
         <div>
-          <p>Отберите ненужные записи, сохраните важные и получите отчёт о выполненной очистке.</p>
+          <p>Поможем подключить приложение к вашему Битрикс24.</p>
           <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{cleanerProduct.connectionActionLabel}</a>
         </div>
       </section>
     </div>
-  </main>
-  <SiteFooter hideDivider />
+    <SiteFooter transparent hideDivider />
+  </div>
 </BaseLayout>

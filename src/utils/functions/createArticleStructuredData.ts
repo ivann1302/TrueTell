@@ -12,6 +12,13 @@ interface ArticleFaqItem {
   answer: string;
 }
 
+interface ArticleHowTo {
+  id: string;
+  name: string;
+  description?: string;
+  steps: { name: string; text: string; anchor: string }[];
+}
+
 interface ArticleStructuredDataOptions {
   title: string;
   description: string;
@@ -24,6 +31,7 @@ interface ArticleStructuredDataOptions {
   author?: string;
   image?: string;
   articleSection?: string;
+  howTos?: ArticleHowTo[];
 }
 
 export function createArticleStructuredData({
@@ -38,6 +46,7 @@ export function createArticleStructuredData({
   author = DEFAULT_ARTICLE_AUTHOR,
   image,
   articleSection,
+  howTos = [],
 }: ArticleStructuredDataOptions): Record<string, unknown> {
   const graph: Record<string, unknown>[] = [
     {
@@ -81,6 +90,24 @@ export function createArticleStructuredData({
           '@type': 'Answer',
           text: item.answer,
         },
+      })),
+    });
+  }
+
+  for (const instruction of howTos) {
+    graph.push({
+      '@type': 'HowTo',
+      '@id': `${articleUrl}#${instruction.id}`,
+      name: instruction.name,
+      ...(instruction.description ? { description: instruction.description } : {}),
+      inLanguage: 'ru-RU',
+      isPartOf: { '@id': articleUrl },
+      step: instruction.steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        name: step.name,
+        text: step.text,
+        url: `${articleUrl}#${step.anchor}`,
       })),
     });
   }
