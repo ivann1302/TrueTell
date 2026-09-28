@@ -26,10 +26,11 @@ jobs:
         env:
           HUSKY: '0'
       - run: npm run lint
-      - run: node --test scripts/*.test.mjs
       - run: npm run build
         env:
           GITHUB_PAGES: 'false'
+      # HTML/schema tests read the generated dist files.
+      - run: node --test scripts/*.test.mjs
       - run: node scripts/indexnow.mjs --check
       - uses: actions/upload-artifact@v4
         with:
