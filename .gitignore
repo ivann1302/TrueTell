@@ -24,3 +24,17 @@ docs/seo-ai-roadmap.local.md
 *.njsproj
 *.sln
 *.sw?
+
+# CRM private runtime and generated assets
+backend/vendor/
+backend/.env
+backend/.env.*
+!backend/.env.example
+backend/database/*.sqlite*
+backend/public/workspace.css
+backend/config/company.json
+backend/storage/framework/phpstan/
+
+.deploy-artifact/
+
+.deploy-secrets.local/

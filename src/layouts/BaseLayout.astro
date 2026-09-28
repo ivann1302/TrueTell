@@ -2,6 +2,7 @@
 import '../index.css';
 import '../App.css';
 import favicon from '../images/logo/short-white-logo.svg';
+import ContactRequest from '../components/contact-request/contact-request.astro';
 import PrivacyControls from '../components/privacy/privacy-controls.astro';
 
 interface Props {
@@ -79,5 +80,6 @@ const canonicalUrl = canonicalPath === false
   <body>
     <slot />
     <PrivacyControls />
+    <ContactRequest />
   </body>
 </html>

@@ -25,6 +25,10 @@ jobs:
       - run: npm ci
         env:
           HUSKY: '0'
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
       - run: npm run lint
       - run: npm run build
         env:
@@ -41,7 +45,7 @@ jobs:
           retention-days: 7
 
   deploy:
-    needs: build
+    needs: [build, backend-checks, package]
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -49,37 +53,22 @@ jobs:
       name: production
       url: https://truetell-retail.ru
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
-          name: site
-          path: dist/
-      - name: Check FTP configuration
+          name: release
+          path: .deploy-artifact/
+      - name: Deploy site and PHP application together
         env:
-          FTP_HOST: ${{ secrets.FTP_HOST }}
-          FTP_USER: ${{ secrets.FTP_USER }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          FTP_REMOTE_PATH: ${{ secrets.FTP_REMOTE_PATH }}
-        run: |
-          for name in FTP_HOST FTP_USER FTP_PASSWORD FTP_REMOTE_PATH; do
-            if [ -z "${!name}" ]; then
-              echo "::error::Missing secret $name"
-              exit 1
-            fi
-          done
-          if [[ "$FTP_REMOTE_PATH" == / || "$FTP_REMOTE_PATH" != */ ]]; then
-            echo "::error::FTP_REMOTE_PATH must point to the site directory and end with /"
-            exit 1
-          fi
-      - name: Upload to SprintHost
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          local-dir: dist/
-          server-dir: ${{ secrets.FTP_REMOTE_PATH }}
-          dangerous-clean-slate: false
+          SSH_HOST: ${{ vars.SSH_HOST }}
+          SSH_USER: ${{ vars.SSH_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+          DEPLOY_ROOT: ${{ vars.DEPLOY_ROOT }}
+          PUBLIC_ROOT: ${{ vars.PUBLIC_ROOT }}
+          PHP_BIN: ${{ vars.PHP_BIN }}
+          RELEASE_ID: ${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+        run: bash scripts/deploy/upload.sh
 
   indexnow:
     needs: deploy
@@ -100,3 +89,87 @@ jobs:
           path: dist/
       - name: Verify published files and notify all IndexNow participants
         run: node scripts/indexnow.mjs
+
+  backend-checks:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: crm_test
+          MYSQL_ROOT_PASSWORD: test-only-password
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -ptest-only-password"
+          --health-interval=10s --health-timeout=5s --health-retries=10
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+        env:
+          HUSKY: '0'
+      - run: node scripts/build-crm-assets.mjs
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: pdo_sqlite, pdo_mysql, mbstring, sodium
+          coverage: none
+      - run: composer install --no-interaction --prefer-dist
+        working-directory: backend
+      - run: php artisan test
+        working-directory: backend
+      - name: Test against MySQL
+        run: php artisan test
+        working-directory: backend
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: 127.0.0.1
+          DB_DATABASE: crm_test
+          DB_USERNAME: root
+          DB_PASSWORD: test-only-password
+      - run: vendor/bin/pint --test
+        working-directory: backend
+      - run: vendor/bin/phpstan analyse --memory-limit=512M
+        working-directory: backend
+
+  package:
+    needs: [build, backend-checks]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+        env:
+          HUSKY: '0'
+      - run: node scripts/build-crm-assets.mjs
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist/
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: pdo_mysql, mbstring, sodium
+          coverage: none
+      - run: composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+        working-directory: backend
+      - name: Package production release without credentials or runtime data
+        env:
+          RELEASE_ID: ${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+        run: node scripts/deploy/package-release.mjs "$RELEASE_ID"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release
+          path: .deploy-artifact/release.tar.gz
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7

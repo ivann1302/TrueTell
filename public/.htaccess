@@ -17,6 +17,8 @@
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !^https$ [NC]
   RewriteRule ^ https://truetell-retail.ru%{REQUEST_URI} [R=301,L,NE]
+  # CRM: only the public entrypoint is exposed; backend lives outside public_html.
+  RewriteRule ^(?:workspace(?:/.*)?|api/(?:leads|lead-session)/?)$ crm/index.php [L]
 </IfModule>
 
 ErrorDocument 404 /404.html

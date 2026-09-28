@@ -1,0 +1,46 @@
+---
+import { companyInfo } from '../../config/company';
+import styles from './contact-request.module.scss';
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+---
+<dialog class={styles.dialog} data-contact-dialog aria-labelledby="contact-request-title" aria-describedby="contact-request-description">
+  <button class={styles.close} type="button" data-contact-close aria-label="Закрыть форму">×</button>
+  <h2 id="contact-request-title">Обсудить задачу</h2>
+  <p id="contact-request-description">Оставьте контакт — мы свяжемся с вами и обсудим детали.</p>
+  <form data-contact-form>
+    <div class={styles.field}>
+      <label for="request-name">Имя <span>необязательно</span></label>
+      <input id="request-name" name="name" autocomplete="name" maxlength="120" autofocus />
+      <span class={styles.error} id="request-name-error" data-field-error="name"></span>
+    </div>
+    <div class={styles.field}>
+      <label for="request-method">Как с вами связаться</label>
+      <select id="request-method" name="contact_method"><option value="phone">Телефон</option><option value="email">Email</option><option value="telegram">Telegram</option></select>
+      <span class={styles.error} id="request-contact_method-error" data-field-error="contact_method"></span>
+    </div>
+    <div class={styles.field}>
+      <label for="request-contact" data-contact-label>Телефон</label>
+      <input id="request-contact" name="contact" type="tel" autocomplete="tel" maxlength="255" required aria-describedby="request-contact-hint request-contact-error" />
+      <span class={styles.hint} id="request-contact-hint" data-contact-hint>Укажите номер с кодом страны.</span>
+      <span class={styles.error} id="request-contact-error" data-field-error="contact"></span>
+    </div>
+    <div class={styles.field}>
+      <label for="request-message">Задача <span>необязательно</span></label>
+      <textarea id="request-message" name="message" rows="3" maxlength="5000"></textarea>
+      <span class={styles.error} id="request-message-error" data-field-error="message"></span>
+    </div>
+    <div class={styles.trap} aria-hidden="true"><label>Ваш сайт<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+    <div>
+      <label class={styles.consent}><input name="consent" type="checkbox" required aria-describedby="request-consent-error" /><span>Я согласен на <a href={`${base}request-consent/`} target="_blank" rel="noopener noreferrer">обработку персональных данных</a> для ответа на обращение.</span></label>
+      <span class={styles.error} id="request-consent-error" data-field-error="consent"></span>
+    </div>
+    <p class={styles.error} data-contact-status role="alert" hidden></p>
+    <button class={styles.submit} type="submit">Отправить заявку</button>
+  </form>
+  <div data-contact-success hidden tabindex="-1" role="status"><h3>Заявка отправлена</h3><p>Спасибо! Мы свяжемся с вами по указанному контакту.</p><button class={styles.submit} type="button" data-contact-close>Закрыть</button></div>
+</dialog>
+<noscript><section id="contact-request" class={styles.fallback}><h2>Связаться с нами</h2><p>Напишите на <a href={`mailto:${companyInfo.contacts.email}`}>{companyInfo.contacts.email}</a> или <a href={companyInfo.contacts.telegram.url}>в Telegram</a>.</p></section></noscript>
+<script>
+  import { initContactRequest } from './contact-request-controller';
+  initContactRequest(document);
+</script>

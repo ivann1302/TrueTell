@@ -27,6 +27,6 @@ export const companyInfo = {
     whatsapp: {
       url: `https://api.whatsapp.com/send/?phone=${phoneDigits}&text&type=phone_number&app_absent=0`,
     },
-    consultationUrl: telegramUrl,
+    consultationUrl: '#contact-request',
   },
 } as const;

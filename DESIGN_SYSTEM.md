@@ -1533,3 +1533,11 @@ styles/
 - Product-page formula: hero -> shared ProductSummary -> real screenshot scenario -> capabilities/results -> FAQ -> connection. Immediately after hero, explain the purpose and workflow in plain language: a benefit heading and two short sentences, with no kicker or extra CTA. Use two columns on desktop, one on mobile. For unreleased products, describe planned behavior without implying availability.
 
 - ProductSummary uses a white rounded frame: 1px #D3D7DE border, 14px radius, 48px desktop / 24px mobile padding. Highlight the meaningful phrase in the heading with #1765DA, without increasing its weight. Do not add a separate horizontal divider below this section.
+
+
+## Кабинет заявок и форма связи
+
+- Общая форма: нативный dialog, белая поверхность, существующие text/border/brand токены, подписи над полями, одна основная кнопка. Без графики. На мобильном прокрутка внутри окна, кнопка закрытия доступна, фокус возвращается к вызвавшей кнопке.
+- Кабинет: компактная верхняя навигация, таблица и подробности справа; до 768 px выбранная заявка открывается отдельным представлением с возвратом к списку. Цветом выделяется статус, а не вся строка.
+- Светлая тема кабинета использует общую палитру. Тёмная: фон #101621, поверхности #182131, текст #F7F8FA, вторичный текст #BDC5D1, границы #354154; ссылки светло-синие для контраста. Основная синяя кнопка сохраняет белый текст.
+- Переключатель темы доступен на всех экранах кабинета, включая вход. По умолчанию учитывается системная тема; ручной выбор сохраняется локально. Тема публичного сайта не меняется.

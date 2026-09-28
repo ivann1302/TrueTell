@@ -14,7 +14,7 @@ export function GET() {
     { path: 'moysklad-mass-operations/', changefreq: 'monthly', priority: '0.8' },
     { path: 'bi-analitika/', changefreq: 'monthly', priority: '0.8' },
     { path: 'blog/', changefreq: 'weekly', priority: '0.7' },
-    ...['privacy/', 'cookies/', 'analytics-consent/', 'bitrix24-cleaner-license/', 'bitrix24-cleaner-privacy/'].map((path) => ({ path, changefreq: 'yearly', priority: '0.3' })),
+    ...['privacy/', 'cookies/', 'analytics-consent/', 'request-consent/', 'bitrix24-cleaner-license/', 'bitrix24-cleaner-privacy/'].map((path) => ({ path, changefreq: 'yearly', priority: '0.3' })),
     ...blogArticles
       .filter((article) => article.hrefPath)
       .map((article) => ({

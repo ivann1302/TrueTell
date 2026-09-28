@@ -56,7 +56,7 @@ const toSitePath = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
             <p class={heroStyles.heroDescription}>{releaseText}</p>
           </div>
           <div class={heroStyles.heroActions}>
-            <a class={styles.primaryAction} href={companyInfo.contacts.consultationUrl} target="_blank" rel="noopener noreferrer">{actionLabel}</a>
+            <a class={styles.primaryAction} href={companyInfo.contacts.consultationUrl}>{actionLabel}</a>
           </div>
         </header>
         <div class={styles.afterHero}>

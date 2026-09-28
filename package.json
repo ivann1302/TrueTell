@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/build-crm-assets.mjs",
     "perf": "astro build && astro preview --force --host localhost --port 4322",
     "lint": "eslint .",
     "preview": "astro preview",
