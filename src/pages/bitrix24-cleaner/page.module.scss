@@ -281,3 +281,11 @@
 @media (max-width: 768px) {
   .connection { padding: 24px; }
 }
+
+.licenseLink {
+  display: inline-block;
+  padding-block: 12px;
+  color: #f7f8fa;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
