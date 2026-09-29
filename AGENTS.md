@@ -37,7 +37,7 @@
 - Article or blog-entry work: `truetell-article-authoring`; read its article model before creating, adapting, or substantially editing an article.
 - Final UI review: `frontend-quality-gate` + `anti-ai-slop-design` + `truetell-design-system`.
 
-- Product-page footers, including products in development, use `SiteFooter hideDivider`: no horizontal divider above privacy, cookie settings, and email links. Preserve the links and spacing.
+- Product-page footers, including products in development, use `SiteFooter hideDivider`: no horizontal divider above privacy and cookie settings. Preserve both links and spacing; do not show email in the shared footer.
 
 - Product hero: the first 100svh contains only a centered H1 with description and one CTA near the bottom edge (40px desktop / 32px mobile). No benefit lists, kickers, status labels or secondary links in the first screen; move supporting content below it. Applies to all product pages including development placeholders.
 

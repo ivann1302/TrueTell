@@ -42,8 +42,12 @@ try {
     assert.equal(await visibleBanner(page),true);
     assert.equal(page.analyticsRequests.length,0);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+    assert.equal(await page.$$eval('[data-cookie-banner] button', els=>els.length),2);
+    assert.equal(await page.$$eval('[data-cookie-banner] [data-cookie-open]', els=>els.length),0);
+    const bannerSize=await page.$eval('[data-cookie-banner]',el=>({height:el.getBoundingClientRect().height,width:el.getBoundingClientRect().width}));
+    assert(bannerSize.width<=380,`banner too wide: ${JSON.stringify(bannerSize)}`);
     if ([390,1440].includes(width)) await page.screenshot({path:`${output}/banner-${width}.png`});
-    await page.click('[data-cookie-banner] [data-cookie-open]');
+    await page.$eval('footer [data-cookie-open]',el=>el.click());
     assert.equal(await page.$eval('dialog',el=>el.open),true);
     assert.equal(await page.$eval('[data-cookie-toggle]',el=>el.checked),false);
     const size=await page.$eval('dialog',el=>({height:el.getBoundingClientRect().height,width:el.getBoundingClientRect().width}));
@@ -125,7 +129,7 @@ try {
   const accessible=await browser.createBrowserContext();
   const ap=await pageIn(accessible,844,390);
   await ap.goto(origin+'/',{waitUntil:'networkidle0'});
-  await ap.click('[data-cookie-banner] [data-cookie-open]');
+  await ap.$eval('footer [data-cookie-open]',el=>el.click());
   for(let i=0;i<8;i++) {
     await ap.keyboard.press('Tab');
     const focused = await ap.evaluate(()=>({inside:document.querySelector('dialog').contains(document.activeElement),tag:document.activeElement?.tagName,html:document.activeElement?.outerHTML.slice(0,200)}));
@@ -153,6 +157,7 @@ try {
       await dp.screenshot({path:`${output}/${route}-${width}.png`});
     }
     await dp.$eval('footer',el=>el.scrollIntoView({behavior:'instant',block:'end'}));
+    assert.equal(await dp.$$eval('footer a[href^="mailto:"]',els=>els.length),0);
     await dp.screenshot({path:`${output}/footer-${width}.png`});
     assert.deepEqual(dp.errors,[]);
     await documents.close();

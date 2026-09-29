@@ -1,11 +1,9 @@
 ---
-import LineWave from '../../components/ui/line-wave.astro';
 import bitrix24Icon from '../../images/logo/bitrix24-app-icon.svg';
 import moyskladIcon from '../../images/logo/moysklad-app-icon.svg';
-import { companyInfo } from '../../config/company';
+import { cleanerProductPath, moyskladOperationsProductPath } from '../../config/products';
 import styles from './product-showcase-section.module.scss';
 
-const consultationUrl = companyInfo.contacts.consultationUrl;
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const internalHref = (path: string) => `${base}${path.replace(/^\//, '')}`;
 ---
@@ -24,115 +22,37 @@ const internalHref = (path: string) => `${base}${path.replace(/^\//, '')}`;
       </a>
     </header>
 
-    <div class={styles.productLayout}>
-      <article class={styles.biProduct}>
-        <h3 class={styles.productTitle}>BI-аналитика для торговли</h3>
-        <p class={styles.productDescription}>
-          Продажи, остатки и маржинальность в одном управленческом контуре.
-        </p>
-        <p class={styles.scope}>Дашборды · показатели · реальные сценарии</p>
-
-        <div class={styles.biWave} aria-hidden="true">
-          <LineWave variant="bi" />
+    <div class={styles.appProducts} aria-label="Приложения TrueTell для бизнес-систем">
+      <article class={styles.appProduct}>
+        <div class={styles.appHeading}>
+          <h3 class={styles.appTitle}>Очистка Битрикс24</h3>
+          <img class={styles.appIcon} src={bitrix24Icon.src} alt="" width="512" height="512" loading="lazy" decoding="async" />
         </div>
+        <p class={styles.appDescription}>Лиды и сделки — по фильтрам, с проверкой и отчётом.</p>
+        <a class={styles.productButton} href={internalHref(cleanerProductPath)}>
+          Посмотреть приложение<span aria-hidden="true">›</span>
+        </a>
+      </article>
 
+      <article class={styles.appProduct}>
+        <div class={styles.appHeading}>
+          <h3 class={styles.appTitle}>Массовые операции в МойСклад</h3>
+          <img class={styles.appIcon} src={moyskladIcon.src} alt="" width="120" height="120" loading="lazy" decoding="async" />
+        </div>
+        <p class={styles.appDescription}>Товары, цены и документы — массовые операции с проверкой.</p>
+        <a class={styles.productButton} href={internalHref(moyskladOperationsProductPath)}>
+          Посмотреть приложение<span aria-hidden="true">›</span>
+        </a>
+      </article>
+
+      <article class:list={[styles.appProduct, styles.biProduct]}>
+        <h3 class={styles.appTitle}>BI-аналитика для торговли</h3>
+        <p class={styles.appDescription}>Продажи, остатки и маржинальность в одном управленческом контуре.</p>
         <a class={styles.productButton} href={internalHref('/bi-analitika/')}>
           Посмотреть BI-решение<span aria-hidden="true">›</span>
         </a>
       </article>
-
-      <div class={styles.appProducts} aria-label="Приложения TrueTell для бизнес-систем">
-        <article class={styles.appProduct}>
-          <div class={styles.appHeading}>
-            <h3 class={styles.appTitle}>Приложение для МойСклад</h3>
-            <img
-              class={styles.appIcon}
-              src={moyskladIcon.src}
-              alt=""
-              width="120"
-              height="120"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <p class={styles.appDescription}>
-            Работа с товарами, остатками и заказами в едином рабочем сценарии.
-          </p>
-          <a class={styles.productButton} href={consultationUrl}>
-            Обсудить решение<span aria-hidden="true">›</span>
-          </a>
-        </article>
-
-        <article class={styles.appProduct}>
-          <div class={styles.appHeading}>
-            <h3 class={styles.appTitle}>Приложение для Битрикс24</h3>
-            <img
-              class={styles.appIcon}
-              src={bitrix24Icon.src}
-              alt=""
-              width="512"
-              height="512"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <p class={styles.appDescription}>
-            Работа со сделками, данными и повседневными CRM-сценариями.
-          </p>
-          <a class={styles.productButton} href={consultationUrl}>
-            Узнать о запуске<span aria-hidden="true">›</span>
-          </a>
-        </article>
-      </div>
     </div>
-
-    <article class={styles.ideaProject}>
-      <div class={styles.ideaIntro}>
-        <h3 class={styles.ideaTitle}>Проверка бизнес-идей</h3>
-        <p class={styles.ideaDescription}>
-          Оценка идеи до вложений по динамике реального интереса.
-        </p>
-        <a class={styles.ideaLink} href={consultationUrl}>
-          Узнать о проекте<span aria-hidden="true">›</span>
-        </a>
-      </div>
-
-      <dl class={styles.signals}>
-        <div>
-          <dt>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <path d="M4 19V5"></path>
-              <path d="M4 19h16"></path>
-              <path d="M8 16v-4"></path>
-              <path d="M13 16V9"></path>
-              <path d="M18 16V6"></path>
-            </svg>
-            <span>Спрос</span>
-          </dt>
-          <dd>Устойчивость интереса</dd>
-        </div>
-        <div>
-          <dt>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <path d="M3 15c3 0 3-7 6-7s3 8 6 8 3-6 6-6"></path>
-              <path d="M3 19h18"></path>
-            </svg>
-            <span>Сезонность</span>
-          </dt>
-          <dd>Пики и спады</dd>
-        </div>
-        <div>
-          <dt>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <path d="m4 17 5-5 4 3 7-8"></path>
-              <path d="M15 7h5v5"></path>
-            </svg>
-            <span>Тренд</span>
-          </dt>
-          <dd>Рост или снижение</dd>
-        </div>
-      </dl>
-    </article>
 
     <a class:list={[styles.allProductsLink, styles.mobileAllProductsLink]} href={internalHref('/products/')}>
       <span>Посмотреть все продукты</span>

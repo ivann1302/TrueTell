@@ -10,7 +10,7 @@ const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const internalHref = (path: string) => `${base}${path.replace(/^\//, '')}`;
 
 const navigation = [
-  { label: 'Кейсы', href: '/#cases' },
+  { label: 'База знаний', href: '/knowledge-base/' },
   { label: 'Продукты', href: '/products/' },
   { label: 'Блог', href: '/blog/' },
   { label: 'О нас', href: '/#home' },
@@ -48,6 +48,5 @@ const navigation = [
   <div class={styles.privacy}>
     <a href={internalHref('/privacy/')}>Персональные данные</a>
     <a href={internalHref('/cookies/')} data-cookie-open>Настройки cookie</a>
-    <a href={`mailto:${companyInfo.contacts.email}`}>{companyInfo.contacts.email}</a>
   </div>
 </footer>

@@ -7,7 +7,7 @@ import Checklist from '../../components/editorial/checklist.astro';
 import DataTable from '../../components/editorial/data-table.astro';
 import InlineConsultation from '../../components/editorial/inline-consultation.astro';
 import RelatedArticles from '../../components/editorial/related-articles.astro';
-import { blogArticles } from '../../config/articles';
+import { allArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
 import { cleanerProduct, cleanerProductPath } from '../../config/products';
 import dealCleanupImage from '../../images/articles/bitrix24-lost-deals.png';
@@ -24,7 +24,7 @@ const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const cleanerHref = `${base}${cleanerProductPath.slice(1)}`;
 const siteRoot = new URL(base, import.meta.env.SITE);
 const homeUrl = siteRoot.toString();
-const blogUrl = new URL('blog/', siteRoot).toString();
+const knowledgeBaseUrl = new URL('knowledge-base/', siteRoot).toString();
 const articleUrl = new URL('udalenie-proigrannyh-sdelok-bitrix24/', siteRoot).toString();
 const imageAlt = 'Схема отбора проигранных сделок: сохранение истории для повторного контакта и удаление ненужных записей';
 const ogImage = new URL(dealCleanupImage.src, siteRoot).toString();
@@ -36,7 +36,7 @@ const titleParts = [
 ];
 const breadcrumbs = [
   { label: 'Главная', href: base },
-  { label: 'Блог', href: `${base}blog/` },
+  { label: 'База знаний', href: `${base}knowledge-base/` },
   { label: title },
 ];
 const sourceLinks = [
@@ -127,11 +127,12 @@ const deletionSteps = [
     "description": "Выполните удаление и проверьте результат по тем же условиям поиска."
   }
 ];
-const relatedArticles = blogArticles
+const relatedArticles = allArticles
   .filter((article) => article.hrefPath && article.hrefPath !== canonicalPath.slice(1))
   .slice(0, 3)
   .map((article) => ({ ...article, href: `${base}${article.hrefPath}` }));
 const structuredData = createArticleStructuredData({
+  articleType: 'Article',
   howTos: [{
     id: 'howto-delete-deals',
     name: 'Как удалить проигранные сделки через список Битрикс24',
@@ -147,7 +148,7 @@ const structuredData = createArticleStructuredData({
   articleSection: 'Работа с CRM',
   breadcrumbs: [
     { name: 'Главная', item: homeUrl },
-    { name: 'Блог', item: blogUrl },
+    { name: 'База знаний', item: knowledgeBaseUrl },
     { name: title, item: articleUrl },
   ],
   faqItems,

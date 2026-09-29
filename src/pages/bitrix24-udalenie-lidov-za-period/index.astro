@@ -6,7 +6,7 @@ import ArticleSources from '../../components/editorial/article-sources.astro';
 import DataTable from '../../components/editorial/data-table.astro';
 import InlineConsultation from '../../components/editorial/inline-consultation.astro';
 import RelatedArticles from '../../components/editorial/related-articles.astro';
-import { blogArticles } from '../../config/articles';
+import { allArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
 import { cleanerProduct, cleanerProductPath } from '../../config/products';
 import leadCleanupImage from '../../images/articles/bitrix24-lead-cleanup.png';
@@ -23,7 +23,7 @@ const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const cleanerHref = `${base}${cleanerProductPath.slice(1)}`;
 const siteRoot = new URL(base, import.meta.env.SITE);
 const homeUrl = siteRoot.toString();
-const blogUrl = new URL('blog/', siteRoot).toString();
+const knowledgeBaseUrl = new URL('knowledge-base/', siteRoot).toString();
 const articleUrl = new URL('bitrix24-udalenie-lidov-za-period/', siteRoot).toString();
 const imageAlt = 'Схема отбора лидов по периоду, проверки карточек и разделения действующих обращений и записей для удаления';
 const ogImage = new URL(leadCleanupImage.src, siteRoot).toString();
@@ -35,7 +35,7 @@ const titleParts = [
 ];
 const breadcrumbs = [
   { label: 'Главная', href: base },
-  { label: 'Блог', href: `${base}blog/` },
+  { label: 'База знаний', href: `${base}knowledge-base/` },
   { label: title },
 ];
 const sourceLinks = [
@@ -112,7 +112,7 @@ const faqItems = [
     "answer": "Отбор по дате отвечает на вопрос, когда создали записи. Он не устанавливает, относятся ли две карточки к одному обращению. Если проблема в дублях, сначала выясните, какая информация хранится в каждой карточке: удаление более старой записи может убрать полезные сведения."
   }
 ];
-const relatedArticles = blogArticles
+const relatedArticles = allArticles
   .filter((article) => article.hrefPath && article.hrefPath !== canonicalPath.slice(1))
   .slice(0, 3)
   .map((article) => ({ ...article, href: `${base}${article.hrefPath}` }));
@@ -151,6 +151,7 @@ const howTos = [
 ];
 
 const structuredData = createArticleStructuredData({
+  articleType: 'Article',
   howTos,
   title,
   description,
@@ -162,7 +163,7 @@ const structuredData = createArticleStructuredData({
   articleSection: 'Работа с лидами в Битрикс24',
   breadcrumbs: [
     { name: 'Главная', item: homeUrl },
-    { name: 'Блог', item: blogUrl },
+    { name: 'База знаний', item: knowledgeBaseUrl },
     { name: title, item: articleUrl },
   ],
   faqItems,

@@ -47,7 +47,11 @@ const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
     <p class={styles.error} data-contact-status role="alert" hidden></p>
     <button class={styles.submit} type="submit">Отправить заявку</button>
   </form>
-  <div data-contact-success hidden tabindex="-1" role="status"><h3>Заявка отправлена</h3><p>Скоро свяжемся с вами.</p><button class={styles.submit} type="button" data-contact-close>Закрыть</button></div>
+  <div class={styles.success} data-contact-success hidden tabindex="-1" role="status">
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="2" /><path d="m17 28 7 7 15-15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    <h2 id="contact-success-title">Заявка отправлена</h2>
+    <button class={styles.submit} type="button" data-contact-close>Закрыть</button>
+  </div>
 </dialog>
 <noscript><section id="contact-request" class={styles.fallback}><h2>Связаться с нами</h2><p>Напишите на <a href={`mailto:${companyInfo.contacts.email}`}>{companyInfo.contacts.email}</a> или <a href={companyInfo.contacts.telegram.url}>в Telegram</a>.</p></section></noscript>
 <script>

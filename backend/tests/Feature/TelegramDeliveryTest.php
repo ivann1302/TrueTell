@@ -39,7 +39,7 @@ final class TelegramDeliveryTest extends TestCase
         $this->artisan('crm:deliver')->assertSuccessful();
         $this->artisan('crm:deliver')->assertSuccessful();
         Http::assertSentCount(1);
-        Http::assertSent(fn ($r) => ! str_contains($r['text'], 'secret@example.com') && ! str_contains($r['text'], 'Private text') && str_contains($r['text'], '/workspace?lead='));
+        Http::assertSent(fn ($r) => ! str_contains($r['text'], 'secret@example.com') && ! str_contains($r['text'], 'Private text') && ! str_contains($r['text'], 'Secret name') && $r['parse_mode'] === 'HTML' && str_contains($r['text'], '<b>') && $r['reply_markup']['inline_keyboard'][0][0]['url'] === rtrim(config('app.url'), '/').'/workspace?lead='.$d->lead_id);
         $this->assertNotNull($d->fresh()->sent_at);
     }
 

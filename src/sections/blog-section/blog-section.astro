@@ -15,13 +15,14 @@ const articles = blogArticles.map((article) => ({
   ...article,
   href: article.hrefPath ? `${base}${article.hrefPath}` : undefined,
 }));
+const hasCarousel = !page && articles.length > 2;
 ---
 
 <section
   id="blog"
   class:list={[styles.section, page ? styles.pageSection : styles.homeSection]}
   aria-labelledby="blog-title"
-  data-article-carousel={!page || undefined}
+  data-article-carousel={hasCarousel || undefined}
 >
   <div class={styles.container}>
     <header class={styles.header}>
@@ -39,20 +40,18 @@ const articles = blogArticles.map((article) => ({
               <path d="m9 6 6 6-6 6"></path>
             </svg>
           </a>
-          <div class={styles.desktopControls}>
-            <CarouselControls trackId="home-blog-track" />
-          </div>
+          {hasCarousel && <div class={styles.desktopControls}><CarouselControls trackId="home-blog-track" /></div>}
         </div>
       )}
     </header>
 
     <div
-      id={!page ? 'home-blog-track' : undefined}
-      class:list={[styles.grid, !page && styles.carousel]}
-      data-carousel-track={!page || undefined}
-      role={!page ? 'region' : undefined}
-      aria-label={!page ? 'Статьи блога' : undefined}
-      tabindex={!page ? 0 : undefined}
+      id={hasCarousel ? 'home-blog-track' : undefined}
+      class:list={[styles.grid, articles.length === 2 && styles.twoArticleGrid, hasCarousel && styles.carousel]}
+      data-carousel-track={hasCarousel || undefined}
+      role={hasCarousel ? 'region' : undefined}
+      aria-label={hasCarousel ? 'Статьи блога' : undefined}
+      tabindex={hasCarousel ? 0 : undefined}
     >
       {articles.map((article) => (
         <article class={styles.card}>

@@ -8,7 +8,6 @@ const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
     <div class={styles.actions}>
       <button type="button" data-cookie-reject>Отклонить</button>
       <button type="button" class={styles.primary} data-cookie-accept>Принять</button>
-      <button type="button" class={styles.settings} data-cookie-open aria-label="Настройки cookie">Настроить</button>
     </div>
   </aside>
   <dialog class={styles.dialog} data-cookie-dialog aria-labelledby="cookie-title">

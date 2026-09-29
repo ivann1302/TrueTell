@@ -59,5 +59,11 @@
 .submit { min-height: 48px; padding: 12px 24px; border: 0; border-radius: 10px; background: #1765da; color: #fff; cursor: pointer; font-weight: 500; &:hover { background: #1455c0; } &:disabled { opacity: .65; cursor: wait; } }
 .trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .fallback { padding: 32px; background: #fff; }
+.dialog[data-success] > h2 { display: none; }
+.success { display: grid; justify-items: center; gap: 24px; padding-top: 16px; text-align: center;
+  svg { color: #1765da; }
+  h2 { margin: 0; font-size: 24px; }
+  button { width: 100%; }
+}
 @media (max-width: 768px) { .dialog { padding: 24px; h2 { font-size: 24px; } } }
 @media (prefers-reduced-motion: reduce) { .methodButton svg { transition: none; } }

@@ -1,4 +1,4 @@
-import { blogArticles } from '../config/articles';
+import { allArticles } from '../config/articles';
 
 export const prerender = true;
 
@@ -15,8 +15,9 @@ export function GET() {
     { path: 'moysklad-izmenenie-cen/', changefreq: 'monthly', priority: '0.8' },
     { path: 'bi-analitika/', changefreq: 'monthly', priority: '0.8' },
     { path: 'blog/', changefreq: 'weekly', priority: '0.7' },
+    { path: 'knowledge-base/', changefreq: 'monthly', priority: '0.8' },
     ...['privacy/', 'cookies/', 'analytics-consent/', 'request-consent/', 'bitrix24-cleaner-license/', 'bitrix24-cleaner-privacy/'].map((path) => ({ path, changefreq: 'yearly', priority: '0.3' })),
-    ...blogArticles
+    ...allArticles
       .filter((article) => article.hrefPath)
       .map((article) => ({
         path: article.hrefPath!,

@@ -49,7 +49,14 @@ final class DeliverTelegram extends Command
                 try {
                     $response = Http::connectTimeout(3)->timeout(8)->post('https://api.telegram.org/bot'.$token.'/sendMessage', [
                         'chat_id' => $d->chat_id,
-                        'text' => 'Новая заявка №'.$lead->reference."\n".rtrim(config()->string('app.url'), '/').'/workspace?lead='.$lead->id,
+                        'text' => "🔔 <b>Новая заявка</b>\n\n"
+                            .'📋 Номер: <code>'.e($lead->reference)."</code>\n"
+                            .'🌐 Источник: сайт '.e(config()->string('crm.brand')),
+                        'parse_mode' => 'HTML',
+                        'reply_markup' => ['inline_keyboard' => [[[
+                            'text' => '📂 Открыть заявку',
+                            'url' => rtrim(config()->string('app.url'), '/').'/workspace?lead='.$lead->id,
+                        ]]]],
                         'link_preview_options' => ['is_disabled' => true],
                     ]);
                     if ($response->successful() && $response->json('ok') === true) {

@@ -54,6 +54,9 @@ h3 { font-size: 16px; font-weight: 500; }
 .button-primary { color: #fff; background: var(--brand); &:hover { background: var(--brand-hover); } }
 .button-secondary { color: var(--text); background: var(--surface); border-color: var(--border); &:hover { background: var(--subtle); } }
 .button-quiet { color: var(--muted); background: transparent; &:hover { color: var(--text); background: var(--subtle); } }
+.theme-toggle, .icon-button { width: 44px; height: 44px; padding: 10px; flex-shrink: 0; }
+.theme-sun { display: none; }
+:root[data-theme='dark'] { .theme-sun { display: block; } .theme-moon { display: none; } }
 .workspace { max-width: 1504px; margin: 0 auto; padding: 40px 32px 64px; }
 .page-heading { margin-bottom: 32px; p { margin-top: 8px; } }
 .notice { border: 1px solid var(--border); border-left: 3px solid var(--success); background: var(--surface); padding: 16px 24px; margin-bottom: 24px; }

@@ -8,9 +8,8 @@
     const button = document.querySelector('[data-theme-toggle]');
     if (button) {
       const dark = theme === 'dark';
-      button.textContent = dark ? 'Светлая тема' : 'Тёмная тема';
       button.setAttribute('aria-label', dark ? 'Включить светлую тему' : 'Включить тёмную тему');
-      button.setAttribute('aria-pressed', String(dark));
+      button.setAttribute('title', button.getAttribute('aria-label'));
       button.hidden = false;
     }
   };

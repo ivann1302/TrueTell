@@ -81,6 +81,20 @@ $brand-hover: #1455c0;
   width: 100%;
 }
 
+.dashboardImageMobile {
+  display: none;
+}
+
+.fullSizeLink {
+  display: block;
+  line-height: 0;
+
+  &:focus-visible {
+    outline: 3px solid $brand;
+    outline-offset: -3px;
+  }
+}
+
 .audienceSection,
 .painSection,
 .productViewSection,
@@ -386,13 +400,11 @@ $brand-hover: #1455c0;
 
 .reportGallery {
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 20px;
+  gap: 24px;
+  margin-top: 24px;
 }
 
 .reportGallery figure {
-  aspect-ratio: 4 / 3;
   background: $surface;
   border: 1px solid #e3e6eb;
   border-radius: 14px;
@@ -401,9 +413,24 @@ $brand-hover: #1455c0;
 
   img {
     display: block;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     width: 100%;
+  }
+
+  figcaption {
+    align-items: center;
+    border-top: 1px solid #e3e6eb;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 500;
+    justify-content: space-between;
+    padding: 18px 24px;
+
+    span {
+      color: $secondary;
+      font-size: 0.875rem;
+      font-weight: 400;
+    }
   }
 }
 
@@ -952,6 +979,14 @@ $brand-hover: #1455c0;
     padding-inline: 14px;
   }
 
+  .dashboardImageDesktop {
+    display: none;
+  }
+
+  .dashboardImageMobile {
+    display: block;
+  }
+
   .audienceList li {
     gap: 16px;
     grid-template-columns: 40px minmax(0, 1fr);
@@ -1052,22 +1087,13 @@ $brand-hover: #1455c0;
   }
 
   .reportGallery {
-    display: flex;
-    gap: 12px;
-    margin-inline: -16px;
-    overflow-x: auto;
-    padding: 0 16px 10px;
-    scroll-padding-inline: 16px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+    gap: 16px;
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-    figure {
-      flex: 0 0 82vw;
-      scroll-snap-align: start;
+    figcaption {
+      align-items: start;
+      flex-direction: column;
+      gap: 4px;
+      padding: 14px 16px;
     }
   }
 

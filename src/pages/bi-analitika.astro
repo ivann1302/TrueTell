@@ -10,13 +10,15 @@ import { companyInfo } from '../config/company';
 import heroStyles from '../sections/hero-section/hero-section.module.scss';
 import styles from './bi-analitika.module.scss';
 
-import aimForProfitImage from '../images/mobile-charts/aimForProfit.jpg';
-import client1Image from '../images/mobile-charts/client1.jpg';
-import client2Image from '../images/mobile-charts/client2.jpg';
-import client3Image from '../images/mobile-charts/client3.jpg';
-import howItLookImage from '../images/howItLook.jpeg';
-import howItLookMobileImage from '../images/mobile-charts/howItLook.jpg';
-import throwOffBallastImage from '../images/mobile-charts/throwOffBallast.jpg';
+import clientsDashboardImage from '../images/bi-dashboard/clients.png';
+import categoriesDashboardImage from '../images/bi-dashboard/categories.png';
+import overviewDashboardImage from '../images/bi-dashboard/overview.png';
+import overviewMobileDashboardImage from '../images/bi-dashboard/overview-mobile.png';
+import profitDashboardImage from '../images/bi-dashboard/profit.png';
+import stockDashboardImage from '../images/bi-dashboard/stock.png';
+import stockMobileDashboardImage from '../images/bi-dashboard/stock-mobile.png';
+import storesDashboardImage from '../images/bi-dashboard/stores.png';
+import storesMobileDashboardImage from '../images/bi-dashboard/stores-mobile.png';
 import clientPhoto from '../images/photos/clientPhoto.png';
 
 const title = 'BI-аналитика и дашборды для торговли — TrueTell';
@@ -65,9 +67,21 @@ const capabilities = [
 ];
 
 const reportPreviews = [
-  { image: client1Image, alt: 'Отчёт TrueTell по ассортименту и продажам' },
-  { image: client2Image, alt: 'Отчёт TrueTell по показателям торговых точек' },
-  { image: client3Image, alt: 'Отчёт TrueTell по динамике бизнеса' },
+  {
+    image: clientsDashboardImage,
+    title: 'Клиенты',
+    alt: 'Демо-отчёт TrueTell: число уникальных клиентов, повторные покупки и LTV',
+  },
+  {
+    image: categoriesDashboardImage,
+    title: 'Категории',
+    alt: 'Демо-отчёт TrueTell: продажи, прибыль и маржинальность товарных категорий',
+  },
+  {
+    image: profitDashboardImage,
+    title: 'ABC-анализ прибыли',
+    alt: 'Демо-отчёт TrueTell: ABC-анализ категорий по валовой прибыли',
+  },
 ];
 
 const pricing = [
@@ -193,18 +207,30 @@ const structuredData = {
         <div class={styles.dashboardFrame}>
           <div class={styles.dashboardBar} aria-hidden="true">
             <span>Неликвид и оборачиваемость</span>
-            <span>Данные обновлены</span>
+            <span>Публичное демо · DataLens</span>
           </div>
-          <Image
-            class={styles.dashboardImage}
-            src={throwOffBallastImage}
-            alt="Дашборд для выявления неликвида"
-            widths={[480, 720, 960, 1320, 1450]}
-            sizes="(max-width: 768px) calc(100vw - 32px), min(calc(100vw - 64px), 1320px)"
-            format="webp"
-            quality={95}
-            loading="lazy"
-          />
+          <a class={styles.fullSizeLink} href={stockDashboardImage.src} target="_blank" rel="noopener noreferrer" aria-label="Открыть отчёт по товарным остаткам в полном размере — новая вкладка">
+            <Image
+              class:list={[styles.dashboardImage, styles.dashboardImageDesktop]}
+              src={stockDashboardImage}
+              alt="Демо-дашборд TrueTell: товарные остатки по категориям и товары без движения"
+              widths={[480, 720, 960, 1320, 1920, 2640]}
+              sizes="(max-width: 768px) calc(100vw - 32px), min(calc(100vw - 64px), 1320px)"
+              format="webp"
+              quality={95}
+              loading="lazy"
+            />
+            <Image
+              class:list={[styles.dashboardImage, styles.dashboardImageMobile]}
+              src={stockMobileDashboardImage}
+              alt="Крупный план демо-отчёта TrueTell: категории и товарные запасы за последние 30 дней"
+              widths={[480, 720, 960, 1320]}
+              sizes="calc(100vw - 32px)"
+              format="webp"
+              quality={95}
+              loading="lazy"
+            />
+          </a>
         </div>
       </div>
     </section>
@@ -274,16 +300,28 @@ const structuredData = {
             <p>Показатели по всем точкам на одном экране.</p>
           </div>
           <div class={styles.profitDashboard}>
-            <Image
-              class={styles.dashboardImage}
-              src={aimForProfitImage}
-              alt="Дашборд показателей прибыли по торговым точкам"
-              widths={[480, 720, 960, 1200, 1760]}
-              sizes="(max-width: 768px) calc(100vw - 32px), min(66vw, 880px)"
-              format="webp"
-              quality={95}
-              loading="lazy"
-            />
+            <a class={styles.fullSizeLink} href={storesDashboardImage.src} target="_blank" rel="noopener noreferrer" aria-label="Открыть сравнение магазинов в полном размере — новая вкладка">
+              <Image
+                class:list={[styles.dashboardImage, styles.dashboardImageDesktop]}
+                src={storesDashboardImage}
+                alt="Демо-дашборд TrueTell: сравнение магазинов по прибыли, выручке и числу чеков"
+                widths={[480, 720, 960, 1200, 1760]}
+                sizes="(max-width: 768px) calc(100vw - 32px), min(66vw, 880px)"
+                format="webp"
+                quality={95}
+                loading="lazy"
+              />
+              <Image
+                class:list={[styles.dashboardImage, styles.dashboardImageMobile]}
+                src={storesMobileDashboardImage}
+                alt="Крупный план демо-отчёта TrueTell: валовая прибыль по магазинам"
+                widths={[480, 720, 960, 1320]}
+                sizes="calc(100vw - 32px)"
+                format="webp"
+                quality={95}
+                loading="lazy"
+              />
+            </a>
           </div>
         </div>
       </div>
@@ -293,44 +331,49 @@ const structuredData = {
       <div class={styles.container}>
         <header class={styles.editorialHeader}>
           <h2 id="product-view-title">Как это выглядит</h2>
-          <p>Не набор отдельных таблиц, а рабочее пространство, где показатели можно сравнивать и проверять.</p>
+          <p>Продажи, клиенты и прибыль в одном рабочем пространстве. На скриншотах — демонстрационные данные; откройте отчёт, чтобы рассмотреть детали.</p>
         </header>
 
         <div class={styles.productImageFrame}>
-          <Image
-            class={styles.productImageDesktop}
-            src={howItLookImage}
-            alt="Пример управленческого дашборда TrueTell"
-            widths={[768, 1100, 1440, 2160, 2640]}
-            sizes="(max-width: 768px) calc(100vw - 32px), min(calc(100vw - 64px), 1320px)"
-            format="webp"
-            quality={95}
-            loading="lazy"
-          />
-          <Image
-            class={styles.productImageMobile}
-            src={howItLookMobileImage}
-            alt="Пример управленческого дашборда TrueTell на мобильном экране"
-            widths={[480, 720, 960, 1200]}
-            sizes="calc(100vw - 32px)"
-            format="webp"
-            quality={95}
-            loading="lazy"
-          />
+          <a class={styles.fullSizeLink} href={overviewDashboardImage.src} target="_blank" rel="noopener noreferrer" aria-label="Открыть общий дашборд в полном размере — новая вкладка">
+            <Image
+              class={styles.productImageDesktop}
+              src={overviewDashboardImage}
+              alt="Демо-дашборд TrueTell: выручка, валовая прибыль и количество чеков по магазинам"
+              widths={[768, 1100, 1440, 2160, 2640]}
+              sizes="(max-width: 768px) calc(100vw - 32px), min(calc(100vw - 64px), 1320px)"
+              format="webp"
+              quality={95}
+              loading="lazy"
+            />
+            <Image
+              class={styles.productImageMobile}
+              src={overviewMobileDashboardImage}
+              alt="Крупный план графика выручки по магазинам в демо-дашборде TrueTell"
+              widths={[480, 720, 960, 1100]}
+              sizes="calc(100vw - 32px)"
+              format="webp"
+              quality={95}
+              loading="lazy"
+            />
+          </a>
         </div>
 
         <div class={styles.reportGallery} aria-label="Примеры отчётов">
           {reportPreviews.map((report) => (
             <figure>
-              <Image
-                src={report.image}
-                alt={report.alt}
-                widths={[420, 640, 960]}
-                sizes="(max-width: 768px) 82vw, 31vw"
-                format="webp"
-                quality={95}
-                loading="lazy"
-              />
+              <a class={styles.fullSizeLink} href={report.image.src} target="_blank" rel="noopener noreferrer" aria-label={`${report.title}: открыть отчёт в полном размере — новая вкладка`}>
+                <Image
+                  src={report.image}
+                  alt={report.alt}
+                  widths={[480, 720, 960, 1320, 1920, 2640]}
+                  sizes="(max-width: 768px) calc(100vw - 32px), min(calc(100vw - 64px), 1320px)"
+                  format="webp"
+                  quality={95}
+                  loading="lazy"
+                />
+              </a>
+              <figcaption>{report.title}<span>Открыть в полном размере ↗</span></figcaption>
             </figure>
           ))}
         </div>

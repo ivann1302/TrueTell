@@ -113,6 +113,8 @@ export function initContactRequest(doc: Document) {
     if (form.hidden) {
       form.hidden = false;
       success.hidden = true;
+      delete dialog!.dataset.success;
+      dialog!.setAttribute('aria-labelledby', 'contact-request-title');
     }
   });
   if (win.location.hash === '#contact-request') open(null);
@@ -179,6 +181,8 @@ export function initContactRequest(doc: Document) {
       key = win.crypto.randomUUID();
       form.hidden = true;
       success.hidden = false;
+      dialog!.dataset.success = 'true';
+      dialog!.setAttribute('aria-labelledby', 'contact-success-title');
       success.focus();
     } catch (error) {
       status.textContent = error instanceof Error && error.name === 'Error' ? error.message : 'Нет ответа от сервера. Проверьте соединение и попробуйте ещё раз.';

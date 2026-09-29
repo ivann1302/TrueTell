@@ -49,7 +49,8 @@ for (const [slug, count] of expected) {
       assert(!('totalTime' in instruction), 'Do not invent completion times');
       assert(!('estimatedCost' in instruction), 'Do not invent costs');
     }
-    assert(nodes.some(node => node['@type'] === 'BlogPosting'));
+    const articleType = slug === 'kak-snyat-rezervy-moysklad' ? 'BlogPosting' : 'Article';
+    assert(nodes.some(node => node['@type'] === articleType));
     assert(nodes.some(node => node['@type'] === 'BreadcrumbList'));
   });
 }

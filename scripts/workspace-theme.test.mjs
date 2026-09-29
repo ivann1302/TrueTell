@@ -18,7 +18,8 @@ test('workspace follows system theme until a user chooses, then persists choice'
   assert.equal(ui.root.dataset.theme, 'dark');
   ui.changeSystem(false);assert.equal(ui.root.dataset.theme, 'light');
   ui.button.click();assert.equal(ui.root.dataset.theme, 'dark');
-  assert.equal(ui.button.getAttribute('aria-pressed'), 'true');
+  assert.equal(ui.button.getAttribute('aria-label'), 'Включить светлую тему');
+  assert.equal(ui.button.title, 'Включить светлую тему');
   assert.equal(ui.dom.window.localStorage.getItem('workspace-theme'), 'dark');
   ui.changeSystem(false);assert.equal(ui.root.dataset.theme, 'dark');ui.dom.window.close();
 });

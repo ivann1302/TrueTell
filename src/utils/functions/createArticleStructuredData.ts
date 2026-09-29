@@ -20,6 +20,7 @@ interface ArticleHowTo {
 }
 
 interface ArticleStructuredDataOptions {
+  articleType?: 'Article' | 'BlogPosting';
   title: string;
   description: string;
   articleUrl: string;
@@ -35,6 +36,7 @@ interface ArticleStructuredDataOptions {
 }
 
 export function createArticleStructuredData({
+  articleType = 'BlogPosting',
   title,
   description,
   articleUrl,
@@ -50,7 +52,7 @@ export function createArticleStructuredData({
 }: ArticleStructuredDataOptions): Record<string, unknown> {
   const graph: Record<string, unknown>[] = [
     {
-      '@type': 'BlogPosting',
+      '@type': articleType,
       headline: title,
       description,
       url: articleUrl,
