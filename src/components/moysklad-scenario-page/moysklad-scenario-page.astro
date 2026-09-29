@@ -1,0 +1,109 @@
+---
+import type { ImageMetadata } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AppHeader from '../header/header.astro';
+import SiteFooter from '../footer/site-footer.astro';
+import ProductSummary from '../product-summary/product-summary.astro';
+import ArticleContent from '../editorial/article-content.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import LineWave from '../ui/line-wave.astro';
+import { companyInfo } from '../../config/company';
+import { moyskladOperationsProduct as product, moyskladOperationsProductPath as productPath } from '../../config/products';
+import styles from '../../pages/bitrix24-cleaner/page.module.scss';
+import heroStyles from '../../styles/product-hero.module.scss';
+import closingStyles from '../../styles/product-closing.module.scss';
+import editorialStyles from '../editorial/article-layout.module.scss';
+
+interface Props {
+  slug: string;
+  label: string;
+  title: string;
+  description: string;
+  heroTitle: string;
+  heroDescription: string;
+  summaryDescription: string;
+  mentions: string[];
+  faqItems: { question: string; answer: string }[];
+  connectionTitle: string;
+  connectionDescription: string;
+  draft?: boolean;
+  ogImage?: ImageMetadata;
+  ogImageAlt?: string;
+}
+
+const { slug, label, title, description, heroTitle, heroDescription, summaryDescription,
+  mentions, faqItems, connectionTitle, connectionDescription, draft = false, ogImage, ogImageAlt } = Astro.props;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, Astro.site);
+const canonicalPath = `/moysklad-${slug}/`;
+const pageUrl = new URL(canonicalPath.slice(1), siteRoot).href;
+const productUrl = new URL(productPath.slice(1), siteRoot).href;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage', '@id': `${pageUrl}#webpage`, url: pageUrl,
+      name: title, description, inLanguage: 'ru-RU',
+      about: { '@id': `${productUrl}#application` },
+      breadcrumb: { '@id': `${pageUrl}#breadcrumbs` },
+      mentions: ['МойСклад', ...mentions].map((name) => ({ '@type': 'Thing', name })),
+    },
+    {
+      '@type': 'BreadcrumbList', '@id': `${pageUrl}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Главная', item: siteRoot.href },
+        { '@type': 'ListItem', position: 2, name: 'Продукты', item: new URL('products/', siteRoot).href },
+        { '@type': 'ListItem', position: 3, name: product.name, item: productUrl },
+        { '@type': 'ListItem', position: 4, name: label, item: pageUrl },
+      ],
+    },
+    {
+      '@type': 'FAQPage', '@id': `${pageUrl}#faq`,
+      mainEntity: faqItems.map(({ question, answer }) => ({
+        '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout {title} {description} {canonicalPath} {structuredData}
+  robots={draft ? 'noindex, follow' : 'index, follow'}
+  ogImage={ogImage && new URL(ogImage.src, siteRoot).href} {ogImageAlt}>
+  <AppHeader />
+  <main class:list={['site-content', editorialStyles.page, styles.page, heroStyles.productPage, closingStyles.flushFooter]}>
+    <div class={styles.container}>
+      <header class:list={[styles.intro, heroStyles.hero, heroStyles.heroWave]}>
+        <LineWave centerOnMobile />
+        <div class={heroStyles.heroCopy}>
+          <h1>{heroTitle}</h1>
+          <p class={heroStyles.heroDescription}>{heroDescription}</p>
+        </div>
+        <div class={heroStyles.heroActions}>
+          <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{product.connectionActionLabel}</a>
+        </div>
+      </header>
+      <ProductSummary description={summaryDescription}>
+        <span slot="title"><slot name="summary-title" /></span>
+      </ProductSummary>
+      <slot />
+    </div>
+    <ArticleContent>
+      <slot name="editorial" />
+      <FaqSection items={faqItems} title="Частые вопросы" id={`${slug}-faq`} variant="article" />
+    </ArticleContent>
+  </main>
+  <div class={closingStyles.closingSurface}>
+    <LineWave />
+    <div class={styles.container}>
+      <section class:list={[styles.connection, closingStyles.connectionDark]} aria-labelledby="connection-title">
+        <h2 id="connection-title">{connectionTitle}</h2>
+        <div>
+          <p>{connectionDescription}</p>
+          <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{product.connectionActionLabel}</a>
+        </div>
+      </section>
+    </div>
+    <SiteFooter transparent hideDivider />
+  </div>
+</BaseLayout>

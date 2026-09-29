@@ -1,0 +1,76 @@
+---
+import ScenarioPage from '../../components/moysklad-scenario-page/moysklad-scenario-page.astro';
+import ProductScenario from '../../components/product-scenario/product-scenario.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import Checklist from '../../components/editorial/checklist.astro';
+import { companyInfo } from '../../config/company';
+import { moyskladOperationsProductPath as productPath } from '../../config/products';
+import prices from '../../images/products/moysklad/prices.jpeg';
+import pricePlan from '../../images/products/moysklad/price-plan.jpeg';
+import styles from '../bitrix24-cleaner/page.module.scss';
+import productStyles from '../moysklad-mass-operations/page.module.scss';
+
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const title = `Массовое изменение цен в МойСклад по формуле — ${companyInfo.brandName}`;
+const description = 'Меняйте цены товаров в МойСклад по формуле с округлением. Проверяйте старые и новые значения перед запуском и скачивайте отчёт по результатам обработки.';
+const faqItems = [
+  { question: 'Можно ли пересчитать цены модификаций, услуг и комплектов?', answer: 'Пересчёт цен в приложении предназначен для товаров. Модификации, услуги и комплекты этим режимом не поддерживаются.' },
+  { question: 'Можно ли автоматически перевести цены в другую валюту?', answer: 'Конвертации валют в этом режиме нет. Исходная, минимальная и итоговая цены должны соответствовать выбранной валюте.' },
+  { question: 'Можно ли изменить больше 1000 товаров?', answer: 'В формах массового изменения при отборе по условиям по умолчанию выбираются первые 1000 подходящих объектов. Для большего количества нужно включить выбор всех найденных объектов и проверить итоговый состав.' },
+  { question: 'Как проверить, что переоценка завершилась?', answer: 'Изучите итоговый отчёт: выполненные действия, ошибки и пропуски указаны отдельно. Проверьте новые цены у нужных товаров в МойСклад, прежде чем повторять операцию для оставшихся записей.' },
+];
+const steps = [
+  { title: 'Выберите товары для переоценки', description: 'Настройте условия отбора и проверьте, какие товары попали в выборку.' },
+  { title: 'Задайте формулу и округление', description: 'Укажите правило пересчёта для выбранных товаров.' },
+  { title: 'Сверьте старые и новые цены', description: 'Изучите план и состав выборки до применения изменений.' },
+  { title: 'Подтвердите запуск и проверьте отчёт', description: 'Сверьте выполненные действия, ошибки и пропуски с ценами товаров в МойСклад.' },
+];
+---
+
+<ScenarioPage slug="izmenenie-cen" label="Изменение цен" {title} {description} {faqItems}
+  heroTitle="Массовое изменение цен в МойСклад"
+  heroDescription="Пересчитывайте цены выбранных товаров по одной формуле. Настройте округление, проверьте старые и новые значения в плане и подтвердите изменения."
+  summaryDescription={`Приложение ${companyInfo.brandName} помогает провести переоценку без редактирования каждой карточки вручную. Вы задаёте правило для всей выборки и проверяете будущие цены до запуска.`}
+  mentions={['Пересчёт цен товаров', 'Округление цен']}
+  connectionTitle="Подключите пересчёт цен к вашей работе"
+  connectionDescription="Расскажите, какие цены и по какому правилу нужно изменить. Поможем уточнить условия подключения и применимость приложения к вашей задаче."
+  ogImage={pricePlan} ogImageAlt="План массового изменения цен в МойСклад">
+  <Fragment slot="summary-title">Обновляйте цены сразу <strong>для выбранных товаров</strong></Fragment>
+
+  <ProductScenario id="price-example-title" title="Повысить розничные цены на 10%"
+    description="Например, нужно повысить цены выбранных товаров и округлить результат до рубля. Это пример настройки: формулу вы выбираете под свою задачу."
+    steps={[
+      { icon: 'filter', title: 'Только нужные товары', text: 'Проверьте, что в выборку не попали лишние позиции.' },
+      { icon: 'price', title: 'Одно правило пересчёта', text: 'В этом примере: розничная цена +10%, округление до рубля.' },
+      { icon: 'review', title: 'Сравнение до запуска', text: 'Старые и новые значения видны рядом в плане операции.' },
+    ]}>
+    <ArticleFigure src={pricePlan} fullSize alt="План массового изменения цен в МойСклад: старые и новые цены трёх товаров"
+      caption="Демонстрационный пример: 1 000 ₽ → 1 100 ₽, 1 500 ₽ → 1 650 ₽, 2 000 ₽ → 2 200 ₽. Изменения ещё не применены." />
+  </ProductScenario>
+
+  <section class={productStyles.darkPanel} aria-labelledby="price-check-title">
+    <div class={productStyles.copy}>
+      <h2 id="price-check-title">Проверка цены до применения</h2>
+      <p>План помогает заметить неверную формулу или лишний товар до изменения цен в МойСклад.</p>
+      <h3>Одна формула для выборки</h3>
+      <p>Используйте общее правило пересчёта для выбранных товаров.</p>
+      <h3>Округление результата</h3>
+      <p>Задайте округление и проверьте итоговые значения в плане.</p>
+      <h3>Контроль нестандартных значений</h3>
+      <p>Нулевая цена и цена ниже минимальной требуют усиленного подтверждения. Это дополнительный повод проверить исходные данные.</p>
+    </div>
+    <ArticleFigure src={prices} fullSize dark alt={`Настройка формулы пересчёта цен в ${companyInfo.brandName}: повышение на 10% и округление до рубля`}
+      caption="Реальная форма на демонстрационных товарах. Нажмите на скриншот, чтобы открыть его в полном размере." />
+  </section>
+
+  <Fragment slot="editorial">
+    <section aria-labelledby="price-workflow-title">
+      <h2 id="price-workflow-title">Как проходит массовое изменение цен</h2>
+      <Checklist items={steps} label="Порядок массового изменения цен" />
+      <aside data-article-note>
+        <p>Сохраните исходные значения до переоценки, если они могут понадобиться. У приложения нет общего отката: остановка операции не отменяет уже применённые изменения.</p>
+      </aside>
+      <p class={styles.support}><a href={`${base}${productPath.slice(1)}`}>Все возможности приложения для МойСклад →</a></p>
+    </section>
+  </Fragment>
+</ScenarioPage>

@@ -1,0 +1,38 @@
+.placeholder {
+  margin: 0;
+  min-width: 0;
+
+  figcaption {
+    margin-top: 12px;
+    color: #616875;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}
+
+.surface {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: 240px;
+  padding: 32px;
+  box-sizing: border-box;
+  border: 1px solid #d3d7de;
+  border-radius: 10px;
+  background: #f0f2f5;
+  text-align: center;
+
+  p { color: #10131a; font-size: 1.125rem; font-weight: 500; }
+  span { color: #616875; font-size: 0.875rem; line-height: 1.5; }
+}
+
+.dark {
+  .surface { border-color: rgba(255, 255, 255, 0.16); background: #182131; }
+  .surface p { color: #f7f8fa; }
+  .surface span,
+  figcaption { color: #c8cdd5; }
+}

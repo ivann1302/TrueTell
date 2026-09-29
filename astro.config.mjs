@@ -9,6 +9,12 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'always',
   redirects: {
+    '/moysklad-mass-operations/izmenenie-cen/': '/moysklad-izmenenie-cen/',
+    '/moysklad-mass-operations/udalenie/': '/moysklad-udalenie/',
+    '/moysklad-mass-operations/izmenenie-tovarov/': '/moysklad-izmenenie-tovarov/',
+    '/moysklad-mass-operations/arhivirovanie/': '/moysklad-arhivirovanie/',
+    '/moysklad-mass-operations/import/': '/moysklad-import/',
+    '/moysklad-mass-operations/izmenenie-dokumentov/': '/moysklad-izmenenie-dokumentov/',
     '/products/bitrix24-cleaner/': '/bitrix24-cleaner/',
     '/products/backup-moysklad/': '/backup-moysklad/',
     '/products/upravlenie-rezervami-moysklad/': '/upravlenie-rezervami-moysklad/',

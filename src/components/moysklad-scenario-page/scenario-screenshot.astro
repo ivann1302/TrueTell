@@ -1,0 +1,28 @@
+---
+import type { ImageMetadata } from 'astro';
+import ArticleFigure from '../editorial/article-figure.astro';
+import styles from './scenario-screenshot.module.scss';
+
+interface Props {
+  filename: string;
+  title: string;
+  alt: string;
+  caption?: string;
+  dark?: boolean;
+}
+
+const { filename, title, alt, caption, dark = false } = Astro.props;
+// Adding the named real screenshot replaces its placeholder on the next build.
+const images = import.meta.glob<ImageMetadata>('../../images/products/moysklad/*.{png,jpg,jpeg,webp}', { eager: true, import: 'default' });
+const src = images[`../../images/products/moysklad/${filename}`];
+---
+
+{src ? <ArticleFigure {src} {alt} {caption} {dark} fullSize /> : (
+  <figure class:list={[styles.placeholder, { [styles.dark]: dark }]} data-screenshot-pending={filename}>
+    <div class={styles.surface}>
+      <p>{title}</p>
+      <span>Скриншот будет добавлен</span>
+    </div>
+    <figcaption>{alt}</figcaption>
+  </figure>
+)}

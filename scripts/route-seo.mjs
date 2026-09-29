@@ -10,7 +10,8 @@ export function validateRouteHtml(html, url, sitemapUrls) {
   const refresh = document.querySelector('meta[http-equiv="refresh" i]');
   if (canonical.length !== 1) throw new Error(`Expected one canonical: ${url}`);
   const target = new URL(canonical[0].href);
-  if (target.origin !== new URL(url).origin || target.search || target.hash || !/^\/(?:[^/]+\/)?$/.test(target.pathname)) {
+  const contentPath = /^\/(?:[^/]+\/)?$/.test(target.pathname);
+  if (target.origin !== new URL(url).origin || target.search || target.hash || !contentPath) {
     throw new Error(`Invalid canonical or nested URL: ${url}`);
   }
   if (refresh) {

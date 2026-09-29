@@ -14,6 +14,16 @@ test('keeps noindex placeholders out of sitemap and indexable pages in it', () =
   assert.throws(() => validateRouteHtml(page('/draft/', 'noindex'), `${origin}/draft/`, [`${origin}/draft/`]));
   assert.throws(() => validateRouteHtml(page('/cleaner/'), `${origin}/cleaner/`, []));
 });
+test('requires root-level product scenarios with their own canonical and sitemap entry', () => {
+  const path = '/moysklad-izmenenie-cen/';
+  const url = `${origin}${path}`;
+  assert.doesNotThrow(() => validateRouteHtml(page(path), url, [url]));
+  assert.throws(() => validateRouteHtml(page('/moysklad-mass-operations/'), url, [url]));
+  assert.throws(() => validateRouteHtml(page(path), url, []));
+  for (const invalid of ['/blog/article/', '/products/cleaner/', '/moysklad-mass-operations/izmenenie-cen/', `${path}extra/`]) {
+    assert.throws(() => validateRouteHtml(page(invalid), `${origin}${invalid}`, [`${origin}${invalid}`]));
+  }
+});
 test('allows legacy redirect files only with matching target and noindex outside sitemap', () => {
   const html = page('/cleaner/', 'noindex', '<meta http-equiv="refresh" content="0;url=/cleaner/">');
   assert.deepEqual(validateRouteHtml(html, `${origin}/products/cleaner/`, []), { redirect: `${origin}/cleaner/` });

@@ -1,0 +1,83 @@
+---
+import ScenarioPage from '../../components/moysklad-scenario-page/moysklad-scenario-page.astro';
+import Screenshot from '../../components/moysklad-scenario-page/scenario-screenshot.astro';
+import ProductScenario from '../../components/product-scenario/product-scenario.astro';
+import Checklist from '../../components/editorial/checklist.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import { companyInfo } from '../../config/company';
+import fileImport from '../../images/products/moysklad/file-import.jpeg';
+import styles from '../bitrix24-cleaner/page.module.scss';
+import productStyles from '../moysklad-mass-operations/page.module.scss';
+
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const title = `Импорт Excel и CSV в МойСклад с проверкой плана — ${companyInfo.brandName}`;
+const description = 'Создавайте товары, контрагентов и документы в МойСклад из файлов, обновляйте прайс-листы. Используйте шаблоны и проверяйте план перед подтверждением загрузки.';
+const faqItems = [
+  { question: 'Подойдёт любой Excel-файл?', answer: 'Загрузка рассчитана на подготовку данных по шаблону выбранного сценария. Произвольный файл может потребовать изменения структуры и заполнения необходимых полей.' },
+  { question: 'Можно ли загрузить документы из CSV?', answer: 'Для документов заявлен формат XLSX. Поддержка CSV указана для товаров и контрагентов.' },
+  { question: 'Приложение само найдёт существующие объекты по названию?', answer: 'Подтверждённый способ задания связей — ID существующих объектов. Автоматическое сопоставление по названию или артикулу в этом описании не заявляется.' },
+  { question: 'Сколько хранится исходный файл?', answer: 'Исходные загрузки удаляются не позднее семи дней, иногда раньше после обработки. Сохраните рабочую копию файла у себя; отчёт операции не заменяет исходные данные.' },
+];
+const steps = [
+  { title: 'Выберите сценарий и подготовьте файл', description: 'Используйте шаблон для нужного типа объектов или обновления прайс-листа.' },
+  { title: 'Проверьте данные и связи', description: 'Укажите ID существующих объектов в соответствии с шаблоном.' },
+  { title: 'Загрузите файл и изучите план', description: 'Сверьте будущую операцию до подтверждения обработки.' },
+  { title: 'Подтвердите обработку и проверьте результат', description: 'Сверьте созданные объекты или обновлённый прайс-лист с данными исходного файла.' },
+];
+---
+
+<ScenarioPage slug="import" label="Импорт из файлов" draft {title} {description} {faqItems}
+  heroTitle="Импорт данных из Excel и CSV в МойСклад"
+  heroDescription="Создавайте товары, контрагентов и документы из подготовленных файлов, обновляйте прайс-листы. Загружайте данные по шаблону и проверяйте план перед запуском."
+  summaryDescription="Приложение помогает перенести данные из таблицы в МойСклад или обновить прайс-лист. Вы готовите файл по шаблону, проверяете будущую операцию и подтверждаете обработку."
+  mentions={['XLSX', 'CSV', 'Шаблон импорта', 'Прайс-лист', 'ID объекта']}
+  connectionTitle="Уточните сценарий загрузки"
+  connectionDescription="Расскажите, что содержится в файле и какие объекты нужно получить в МойСклад. Поможем уточнить подходящий сценарий и условия подключения."
+  ogImage={fileImport} ogImageAlt="Форма загрузки CSV с демонстрационными товарами в МойСклад">
+  <Fragment slot="summary-title">Подготовьте данные <strong>один раз в файле</strong></Fragment>
+
+  <ProductScenario id="import-example-title" title="Создать товары из подготовленной таблицы"
+    description="Когда данные уже собраны в файле, перенесите их в шаблон нужного сценария. Произвольная таблица поставщика может потребовать изменения структуры и заполнения полей."
+    steps={[
+      { icon: 'filter', title: 'Выберите сценарий', text: 'Создание объектов и обновление прайс-листов — разные задачи.' },
+      { icon: 'review', title: 'Подготовьте структуру файла', text: 'Проверьте поля и связи, которые нужны для корректной загрузки.' },
+      { icon: 'report', title: 'Сверьте план и результат', text: 'Подтвердите обработку после проверки, затем изучите отчёт.' },
+    ]}>
+    <Screenshot filename="file-import.jpeg" title="Загрузка из файла" alt="Загрузка CSV с тремя демонстрационными товарами и сопоставление колонок с полями МойСклад"
+      caption="Реальная форма: CSV с тремя демонстрационными товарами. Перед выполнением приложение предлагает подготовить план." />
+  </ProductScenario>
+
+  <section class={productStyles.darkPanel} aria-labelledby="import-plan-title">
+    <div class={productStyles.copy}>
+      <h2 id="import-plan-title">Проверьте загрузку до подтверждения</h2>
+      <p>Подготовленный план позволяет сверить будущую операцию с исходным файлом.</p>
+      <h3>Связи с существующими объектами</h3>
+      <p>Указывайте ID в соответствии с шаблоном. Не рассчитывайте на автоматическое сопоставление по похожему названию.</p>
+      <h3>Проверка перед повторной загрузкой</h3>
+      <p>Сначала изучите итог предыдущего запуска. Если часть объектов уже создана, повторение всего файла может не соответствовать вашей задаче; автоматическое предотвращение дублей не обещается.</p>
+    </div>
+    <Screenshot filename="import-plan.png" title="План импорта" dark alt="Проверка плана импорта из файла: будущие объекты и результаты проверки строк"
+      caption="Сверьте план с исходным файлом перед подтверждением обработки." />
+  </section>
+
+  <Fragment slot="editorial">
+    <section aria-labelledby="import-formats-title">
+      <h2 id="import-formats-title">Какой формат выбрать</h2>
+      <DataTable label="Форматы файлов по сценариям импорта" columns={['Задача', 'Формат']} rowHeaders compact
+        rows={[
+          ['Создание товаров и контрагентов', 'XLSX или CSV'],
+          ['Создание документов', 'XLSX'],
+          ['Обновление прайс-листов', 'XLSX'],
+        ]} />
+      <Screenshot filename="import-template.png" title="Шаблон загрузки данных" alt="Реальный шаблон импорта в МойСклад с заголовками колонок и обезличенными примерами строк"
+        caption="Шаблон выбранного сценария с демонстрационными данными. Поля и связи заполняются до загрузки." />
+    </section>
+    <section aria-labelledby="import-workflow-title">
+      <h2 id="import-workflow-title">От подготовки файла до результата</h2>
+      <Checklist items={steps} label="Порядок импорта из файла" />
+      <aside data-article-note><p>Для обучения или проверки интеграции создавайте каталог и документы в отдельном тестовом аккаунте: загружаемые данные влияют на учёт.</p></aside>
+      <p class={styles.support}><a href={`${base}moysklad-izmenenie-cen/`}>Пересчитать цены по формуле →</a></p>
+      <p class={styles.support}><a href={`${base}moysklad-mass-operations/`}>Все поддерживаемые операции приложения →</a></p>
+    </section>
+  </Fragment>
+</ScenarioPage>
