@@ -49,6 +49,6 @@ final class WorkspaceController extends Controller
             }
         });
 
-        return redirect()->route('workspace.index', ['lead' => $lead->id])->with('status','Статус обновлён.');
+        return redirect()->route('workspace.index', ['lead' => $lead->id])->with('status', 'Статус обновлён.');
     }
 }

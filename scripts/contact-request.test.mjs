@@ -5,7 +5,7 @@ import { initContactRequest, normalizeTelegramContact } from '../src/components/
 
 function setup(fetch) {
   const fields = ['name', 'contact_method', 'contact', 'message', 'consent'];
-  const dom = new JSDOM(`<a href="#contact-request">Open</a><dialog data-contact-dialog><button data-contact-close>Close</button><span data-contact-label></span><span data-contact-hint></span><form><input name="name"><select name="contact_method"><option value="phone">Phone</option><option value="email">Email</option><option value="telegram">Telegram</option></select><input name="contact" value="+79991234567" required><textarea name="message">Test message</textarea><input name="consent" type="checkbox" checked required><input name="website">${fields.map(field => `<span data-field-error="${field}"></span>`).join('')}<p data-contact-status hidden></p><button type="submit">Send</button></form><div data-contact-success hidden tabindex="-1"></div></dialog>`, { url: 'https://example.test/product/?utm_source=test&email=private' });
+  const dom = new JSDOM(`<a href="#contact-request">Open</a><dialog data-contact-dialog><button data-contact-close>Close</button><span data-contact-label></span><form><input name="name"><select name="contact_method"><option value="phone">Phone</option><option value="email">Email</option><option value="telegram">Telegram</option><option value="max">MAX</option></select><input name="contact" value="+79991234567" required><details><summary>Comment</summary><textarea name="message">Test message</textarea></details><input name="consent" type="checkbox" checked required><input name="website">${fields.map(field => `<span data-field-error="${field}"></span>`).join('')}<p data-contact-status hidden></p><button type="submit">Send</button></form><div data-contact-success hidden tabindex="-1"></div></dialog>`, { url: 'https://example.test/product/?utm_source=test&email=private' });
   const { window } = dom;
   window.fetch = fetch;
   const dialog = window.document.querySelector('dialog');
@@ -111,5 +111,34 @@ test('bounds attribution and sends canonical Telegram without changing inputs on
   assert.equal(payload.page_path.length, 512);
   assert.equal(payload.utm.utm_source.length, 200);
   assert.equal(app.form.elements.contact.value, 'https://t.me/example_user');
+  app.window.close();
+});
+
+
+test('MAX sends a phone contact and preserves it after a failed request', async () => {
+  let payload;
+  const app = setup(async (url, options) => {
+    if (url === '/api/lead-session') return session();
+    payload = JSON.parse(options.body);
+    return { ok: false, status: 500, json: async () => ({}) };
+  });
+  app.form.elements.contact_method.value = 'max';
+  app.form.elements.contact_method.dispatchEvent(new app.window.Event('change'));
+  assert.equal(app.form.elements.contact.type, 'tel');
+  app.form.elements.contact.value = '+79991234567';
+  app.submit(); await tick();
+  assert.equal(payload.contact_method, 'max');
+  assert.equal(payload.contact, '+79991234567');
+  assert.equal(app.form.elements.contact.value, '+79991234567');
+  app.window.close();
+});
+
+test('a comment error opens the collapsed field and focuses it', async () => {
+  const app = setup(async url => url === '/api/lead-session' ? session() : { ok: false, status: 422, json: async () => ({ errors: { message: ['Too long'] } }) });
+  app.window.document.querySelector('a').click();
+  assert.equal(app.form.querySelector('details').open, false);
+  app.submit(); await tick();
+  assert.equal(app.form.querySelector('details').open, true);
+  assert.equal(app.window.document.activeElement, app.form.elements.message);
   app.window.close();
 });

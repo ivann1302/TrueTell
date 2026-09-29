@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class WorkspaceAccess
 {
-    public function handle(Request $request, Closure $next, string $level = 'verified'): Response
+    public function handle(Request $request, Closure $next, string $level = 'staff'): Response
     {
         $user = $request->user();
         if (! $user || ! $user->active) {
@@ -20,9 +20,6 @@ final class WorkspaceAccess
             $request->session()->regenerateToken();
 
             return $request->expectsJson() ? response()->json(['message' => 'Unauthorized'], 401) : redirect()->route('workspace.login');
-        }
-        if ($level !== 'pending' && (! $user->totp_confirmed_at || ! $request->session()->get('two_factor_verified'))) {
-            return redirect()->route('workspace.two-factor');
         }
         if ($level === 'admin' && $user->role !== 'admin') {
             abort(403);

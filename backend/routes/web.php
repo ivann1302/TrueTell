@@ -15,10 +15,6 @@ Route::middleware(PrivateHeaders::class)->group(function (): void {
         Route::get('/login', [WorkspaceAuthController::class, 'login'])->name('login');
         Route::post('/login', [WorkspaceAuthController::class, 'authenticate'])->middleware('throttle:login')->name('login.store');
         Route::post('/logout', [WorkspaceAuthController::class, 'logout'])->name('logout');
-        Route::middleware('workspace:pending')->group(function (): void {
-            Route::get('/two-factor', [WorkspaceAuthController::class, 'challenge'])->name('two-factor');
-            Route::post('/two-factor', [WorkspaceAuthController::class, 'verify'])->middleware('throttle:totp')->name('two-factor.store');
-        });
         Route::middleware('workspace')->group(function (): void {
             Route::get('/', [WorkspaceController::class, 'index'])->name('index');
             Route::post('/leads/{lead}/status', [WorkspaceController::class, 'status'])->name('leads.status');

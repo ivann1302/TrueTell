@@ -26,7 +26,7 @@ final class WorkspaceUsersController extends Controller
         $data = $r->validate(['name' => 'required|string|max:120', 'email' => 'required|email:rfc|max:254|unique:users,email', 'password' => ['required', 'string', 'confirmed', 'max:256', Password::min(14)->letters()->numbers()]]);
         User::create(['name' => $data['name'], 'email' => $data['email'], 'password' => $data['password']]);
 
-        return redirect()->route('workspace.users')->with('status', 'Сотрудник добавлен. Передайте пароль лично; при первом входе он настроит второй фактор.');
+        return redirect()->route('workspace.users')->with('status', 'Сотрудник добавлен. Передайте пароль лично.');
     }
 
     public function toggle(Request $r, User $user): RedirectResponse

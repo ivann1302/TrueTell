@@ -22,6 +22,5 @@ final class AppServiceProvider extends ServiceProvider
         }
         RateLimiter::for('leads', fn (Request $r) => [Limit::perMinute(5)->by($r->ip()), Limit::perDay(100)->by($r->ip())]);
         RateLimiter::for('login', fn (Request $r) => [Limit::perMinute(10)->by($r->ip()), Limit::perMinute(5)->by(hash('sha256', strtolower(is_string($r->input('email')) ? $r->input('email') : '')))]);
-        RateLimiter::for('totp', fn (Request $r) => [Limit::perMinute(5)->by('user:'.$r->user()?->id), Limit::perMinute(15)->by('ip:'.$r->ip())]);
     }
 }

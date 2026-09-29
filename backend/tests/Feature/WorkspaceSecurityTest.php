@@ -24,22 +24,23 @@ final class WorkspaceSecurityTest extends TestCase
         return $u;
     }
 
-    public function test_password_only_does_not_allow_leads(): void
+    public function test_existing_totp_user_can_login_with_password_only(): void
     {
         $u = $this->verified();
-        $this->actingAs($u)->get('/workspace')->assertRedirect('/workspace/two-factor');
+        $this->post('/workspace/login', ['email' => $u->email, 'password' => 'password'])->assertRedirect('/workspace');
+        $this->get('/workspace')->assertOk();
     }
 
     public function test_staff_cannot_manage_users(): void
     {
-        $this->actingAs($this->verified())->withSession(['two_factor_verified' => true])->post('/workspace/users', [])->assertForbidden();
+        $this->actingAs($this->verified())->post('/workspace/users', [])->assertForbidden();
     }
 
     public function test_disabled_user_is_logged_out(): void
     {
         $u = $this->verified();
         $u->forceFill(['active' => false])->save();
-        $this->actingAs($u)->withSession(['two_factor_verified' => true])->get('/workspace')->assertRedirect('/workspace/login');
+        $this->actingAs($u)->get('/workspace')->assertRedirect('/workspace/login');
         $this->assertGuest();
     }
 
@@ -47,23 +48,31 @@ final class WorkspaceSecurityTest extends TestCase
     {
         $u = $this->verified();
         $l = Lead::create(['idempotency_key' => (string) Str::uuid(), 'contact_method' => 'email', 'contact' => 'a@example.com', 'contact_hash' => Lead::searchHash('a@example.com'), 'page_path' => '/', 'consented_at' => now(), 'consent_version' => 'test']);
-        $this->actingAs($u)->withSession(['two_factor_verified' => true])->post('/workspace/leads/'.$l->id.'/status', ['status' => 'processed'])->assertRedirect();
+        $this->actingAs($u)->post('/workspace/leads/'.$l->id.'/status', ['status' => 'processed'])->assertRedirect();
         $this->assertDatabaseHas('leads', ['id' => $l->id, 'status' => 'processed']);
         $this->assertDatabaseHas('lead_audits', ['lead_id' => $l->id, 'user_id' => $u->id, 'status' => 'processed']);
     }
 
-    public function test_totp_code_cannot_be_reused(): void
+    public function test_second_factor_endpoints_are_removed(): void
     {
-        $u = $this->verified();
-        $code = (new Google2FA)->getCurrentOtp($u->totp_secret);
-        $this->actingAs($u)->withSession(['auth_started_at' => time()])->post('/workspace/two-factor', ['code' => $code])->assertRedirect('/workspace');
-        $this->withSession(['two_factor_verified' => false, 'auth_started_at' => time()])->post('/workspace/two-factor', ['code' => $code])->assertSessionHasErrors('code');
+        $this->actingAs($this->verified());
+        $this->get('/workspace/two-factor')->assertNotFound();
+        $this->post('/workspace/two-factor', ['code' => '123456'])->assertNotFound();
+    }
+
+    public function test_login_throttle_still_limits_password_attempts(): void
+    {
+        for ($i = 0; $i < 5; $i++) {
+            $this->post('/workspace/login', ['email' => 'unknown@example.com', 'password' => 'wrong'])->assertSessionHasErrors('email');
+        }
+        $this->post('/workspace/login', ['email' => 'unknown@example.com', 'password' => 'wrong'])->assertStatus(429);
+        $this->assertGuest();
     }
 
     public function test_admin_cannot_disable_self(): void
     {
         $u = $this->verified('admin');
-        $this->actingAs($u)->withSession(['two_factor_verified' => true])->post('/workspace/users/'.$u->id.'/toggle')->assertForbidden();
+        $this->actingAs($u)->post('/workspace/users/'.$u->id.'/toggle')->assertForbidden();
     }
 
     public function test_wrong_password_and_disabled_user_have_same_error(): void

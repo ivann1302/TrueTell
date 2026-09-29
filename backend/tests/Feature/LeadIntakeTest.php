@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
+use App\Models\Lead;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use Tests\TestCase;
@@ -54,5 +56,20 @@ final class LeadIntakeTest extends TestCase
     {
         $this->get('/workspace')->assertRedirect('/workspace/login');
         $this->getJson('/workspace')->assertUnauthorized();
+    }
+
+    public function test_max_contact_is_validated_stored_and_displayed(): void
+    {
+        $payload = $this->payload();
+        $payload['contact_method'] = 'max';
+        $payload['contact'] = '+7 (999) 123-45-67';
+        $this->postJson('/api/leads', $payload)->assertCreated();
+        $lead = Lead::firstOrFail();
+        $this->assertSame('max', $lead->contact_method);
+        $this->assertSame($payload['contact'], $lead->contact);
+        $this->actingAs(User::factory()->create())->get('/workspace?lead='.$lead->id)->assertOk()->assertSee('MAX');
+        $payload['idempotency_key'] = (string) Str::uuid();
+        $payload['contact'] = 'not-a-number';
+        $this->postJson('/api/leads', $payload)->assertUnprocessable()->assertJsonValidationErrors('contact');
     }
 }

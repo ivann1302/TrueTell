@@ -14,7 +14,7 @@ final class ResetWorkspaceAccess extends Command
 {
     protected $signature = 'crm:reset-access {email}';
 
-    protected $description = 'Reset password and TOTP after independently verifying identity; revokes sessions';
+    protected $description = 'Reset password after independently verifying identity; revokes sessions';
 
     public function handle(): int
     {
@@ -24,7 +24,7 @@ final class ResetWorkspaceAccess extends Command
 
             return self::FAILURE;
         }
-        if (! $this->confirm('Identity verified? Reset password, TOTP and all sessions?', false)) {
+        if (! $this->confirm('Identity verified? Reset password and all sessions?', false)) {
             return self::FAILURE;
         }
         $password = $this->secret('New password (14+ characters, letters and numbers)');
@@ -38,7 +38,7 @@ final class ResetWorkspaceAccess extends Command
             $user->forceFill(['password' => $password, 'totp_secret' => null, 'totp_confirmed_at' => null, 'totp_last_step' => null])->save();
             DB::table('sessions')->where('user_id', $user->id)->delete();
         });
-        $this->info('Access reset. TOTP enrollment is required on next login.');
+        $this->info('Access reset. Sign in with the new password.');
 
         return self::SUCCESS;
     }

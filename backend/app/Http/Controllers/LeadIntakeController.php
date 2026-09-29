@@ -22,13 +22,13 @@ final class LeadIntakeController extends Controller
     {
         $contactRules = match ($request->input('contact_method')) {
             'email' => ['email:rfc', 'max:254'],
-            'phone' => ['regex:/^\+?(?=(?:\D*\d){7,15}\D*$)[0-9 ()-]{7,25}$/', 'min:7', 'max:25'],
+            'phone', 'max' => ['regex:/^\+?(?=(?:\D*\d){7,15}\D*$)[0-9 ()-]{7,25}$/', 'min:7', 'max:25'],
             'telegram' => ['regex:/^@[a-zA-Z][a-zA-Z0-9_]{4,31}$/'],
             default => [],
         };
         $data = $request->validate([
             'idempotency_key' => ['required', 'uuid'], 'name' => ['nullable', 'string', 'max:120'],
-            'contact_method' => ['required', Rule::in(['email', 'phone', 'telegram'])],
+            'contact_method' => ['required', Rule::in(['email', 'phone', 'telegram', 'max'])],
             'contact' => array_merge(['required', 'string'], $contactRules),
             'message' => ['nullable', 'string', 'max:5000'], 'consent' => ['required', 'accepted'],
             'website' => ['nullable', 'string', 'max:0'],

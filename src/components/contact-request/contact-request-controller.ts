@@ -1,7 +1,8 @@
 const methods = {
-  phone: { label: 'Телефон', type: 'tel', autocomplete: 'tel', hint: 'Укажите номер с кодом страны.' },
-  email: { label: 'Email', type: 'email', autocomplete: 'email', hint: 'Укажите адрес электронной почты.' },
-  telegram: { label: 'Telegram', type: 'text', autocomplete: 'off', hint: 'Укажите @username или ссылку t.me/username.' },
+  phone: { label: 'Телефон', type: 'tel', autocomplete: 'tel', placeholder: '+7 999 123-45-67' },
+  email: { label: 'Email', type: 'email', autocomplete: 'email', placeholder: 'name@example.ru' },
+  telegram: { label: 'Telegram', type: 'text', autocomplete: 'off', placeholder: '@username или t.me/username' },
+  max: { label: 'Телефон в MAX', type: 'tel', autocomplete: 'tel', placeholder: '+7 999 123-45-67' },
 } as const;
 
 export function normalizeTelegramContact(value: string): string {
@@ -46,9 +47,9 @@ export function initContactRequest(doc: Document) {
     contact.setAttribute('autocomplete', selected.autocomplete);
     contact.value = contacts[method.value] || '';
     dialog!.querySelector('[data-contact-label]')!.textContent = selected.label;
-    dialog!.querySelector('[data-contact-hint]')!.textContent = selected.hint;
+    contact.placeholder = selected.placeholder;
     contact.removeAttribute('aria-invalid');
-    contact.setAttribute('aria-describedby', 'request-contact-hint request-contact-error');
+    contact.setAttribute('aria-describedby', 'request-contact-error');
     form.querySelector('[data-field-error="contact"]')!.textContent = '';
   }
   method.addEventListener('change', updateMethod);
@@ -125,6 +126,8 @@ export function initContactRequest(doc: Document) {
           const messages = result.errors?.[field];
           if (!Array.isArray(messages) || typeof messages[0] !== 'string') continue;
           const control = form.elements.namedItem(field) as HTMLElement;
+          const details = control.closest('details');
+          if (details) details.open = true;
           control.setAttribute('aria-invalid', 'true');
           control.setAttribute('aria-describedby', `request-${field}-error`);
           form.querySelector(`[data-field-error="${field}"]`)!.textContent = messages[0];
@@ -137,6 +140,7 @@ export function initContactRequest(doc: Document) {
       if (response.status === 419) throw new Error('Сессия истекла. Нажмите «Отправить заявку» ещё раз.');
       if (!response.ok || result.ok !== true) throw new Error('Не удалось отправить заявку. Попробуйте ещё раз.');
       form.reset();
+      form.querySelectorAll('details').forEach(details => { details.open = false; });
       for (const field of Object.keys(contacts)) delete contacts[field];
       updateMethod();
       key = win.crypto.randomUUID();

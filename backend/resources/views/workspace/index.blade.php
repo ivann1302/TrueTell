@@ -48,7 +48,7 @@
             <div class="detail-heading"><h2 id="detail-title">Заявка № {{ $selected->reference }}</h2><span class="status status-{{ $selected->status }}">{{ $selected->status === 'new' ? 'Новая' : 'Обработана' }}</span></div>
             <dl class="detail-fields">
                 <div><dt>Имя</dt><dd>{{ $selected->name ?: 'Не указано' }}</dd></div>
-                <div><dt>Контакт · {{ ['phone' => 'Телефон', 'email' => 'Почта', 'telegram' => 'Telegram', 'whatsapp' => 'WhatsApp'][$selected->contact_method] ?? $selected->contact_method }}</dt><dd>{{ $selected->contact }}</dd></div>
+                <div><dt>Контакт · {{ ['phone' => 'Телефон', 'email' => 'Почта', 'telegram' => 'Telegram', 'max' => 'MAX', 'whatsapp' => 'WhatsApp'][$selected->contact_method] ?? $selected->contact_method }}</dt><dd>{{ $selected->contact }}</dd></div>
                 <div><dt>Сообщение</dt><dd class="message-text">{{ $selected->message ?: 'Без сообщения' }}</dd></div>
                 <div><dt>Получена</dt><dd><time datetime="{{ $selected->created_at->toIso8601String() }}">{{ $selected->created_at->format('d.m.Y в H:i') }}</time></dd></div>
                 <div><dt>Источник</dt><dd>{{ $selected->source ?: 'Не указан' }}</dd></div>
