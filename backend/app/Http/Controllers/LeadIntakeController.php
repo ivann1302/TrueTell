@@ -21,13 +21,13 @@ final class LeadIntakeController extends Controller
     public function store(Request $request): JsonResponse
     {
         $contactRules = match ($request->input('contact_method')) {
-            'email' => ['email:rfc', 'max:254'],
-            'phone', 'max' => ['regex:/^\+?(?=(?:\D*\d){7,15}\D*$)[0-9 ()-]{7,25}$/', 'min:7', 'max:25'],
+            'email' => ['email:rfc', 'regex:/^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)+$/', 'max:254'],
+            'phone', 'max' => ['regex:/^\+7(?=(?:\D*\d){10}\D*$)[0-9 ()-]{10,20}$/', 'max:25'],
             'telegram' => ['regex:/^@[a-zA-Z][a-zA-Z0-9_]{4,31}$/'],
             default => [],
         };
         $data = $request->validate([
-            'idempotency_key' => ['required', 'uuid'], 'name' => ['nullable', 'string', 'max:120'],
+            'idempotency_key' => ['required', 'uuid'], 'name' => ['required', 'string', 'max:120'],
             'contact_method' => ['required', Rule::in(['email', 'phone', 'telegram', 'max'])],
             'contact' => array_merge(['required', 'string'], $contactRules),
             'message' => ['nullable', 'string', 'max:5000'], 'consent' => ['required', 'accepted'],
@@ -36,7 +36,7 @@ final class LeadIntakeController extends Controller
             'source' => ['nullable', 'string', 'max:200'],
             'utm' => ['nullable', 'array:utm_source,utm_medium,utm_campaign,utm_content,utm_term'],
             'utm.*' => ['nullable', 'string', 'max:200'],
-        ], ['contact.regex' => 'Проверьте контакт: телефон или Telegram @username.', 'consent.accepted' => 'Необходимо согласие на обработку данных.']);
+        ], ['name.required' => 'Введите имя.', 'contact.regex' => 'Проверьте формат контакта.', 'contact.email' => 'Введите email в формате name@example.ru.', 'consent.accepted' => 'Необходимо согласие на обработку данных.']);
         DB::transaction(function () use ($data): void {
             // The unique key handles overlapping submissions, not only sequential retries.
             $lead = Lead::firstOrCreate(['idempotency_key' => $data['idempotency_key']], [

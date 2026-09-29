@@ -8,28 +8,37 @@ const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
   <h2 id="contact-request-title">Обсудить задачу</h2>
   <form data-contact-form>
     <div class={styles.field}>
-      <label for="request-name">Имя <span>необязательно</span></label>
-      <input id="request-name" name="name" autocomplete="name" maxlength="120" autofocus />
+      <label for="request-name">Имя <span aria-hidden="true">*</span></label>
+      <input id="request-name" name="name" autocomplete="name" maxlength="120" required autofocus aria-describedby="request-name-error" />
       <span class={styles.error} id="request-name-error" data-field-error="name"></span>
     </div>
     <div class={styles.field}>
-      <label for="request-method">Как с вами связаться</label>
-      <select id="request-method" name="contact_method"><option value="phone">Телефон</option><option value="email">Email</option><option value="telegram">Telegram</option><option value="max">MAX</option></select>
+      <label id="request-method-label" for="request-method-button">Способ связи</label>
+      <div class={styles.method} data-method-picker>
+        <select id="request-method" name="contact_method" hidden tabindex="-1" aria-hidden="true"><option value="phone">Телефон</option><option value="email">Email</option><option value="telegram">Telegram</option><option value="max">MAX</option></select>
+        <button id="request-method-button" class={styles.methodButton} type="button" data-method-toggle aria-haspopup="listbox" aria-expanded="false" aria-controls="request-method-options" aria-labelledby="request-method-label request-method-value">
+          <span id="request-method-value" data-method-value>Телефон</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+        <div id="request-method-options" class={styles.methodOptions} role="listbox" aria-labelledby="request-method-label" data-method-options hidden>
+          {['Телефон', 'Email', 'Telegram', 'MAX'].map((label, index) => <button type="button" role="option" aria-selected={index === 0 ? 'true' : 'false'} tabindex="-1" data-method-option={['phone', 'email', 'telegram', 'max'][index]}>{label}<span aria-hidden="true">✓</span></button>)}
+        </div>
+      </div>
       <span class={styles.error} id="request-contact_method-error" data-field-error="contact_method"></span>
     </div>
     <div class={styles.field}>
-      <label for="request-contact" data-contact-label>Телефон</label>
-      <input id="request-contact" name="contact" type="tel" autocomplete="tel" maxlength="255" required aria-describedby="request-contact-error" placeholder="+7 999 123-45-67" />
+      <label for="request-contact"><span data-contact-label>Телефон</span> <span aria-hidden="true">*</span></label>
+      <div class={styles.contactInput} data-contact-input>
+        <span class={styles.prefix} data-contact-prefix aria-hidden="true" hidden>@</span>
+        <input id="request-contact" name="contact" type="tel" inputmode="tel" autocomplete="tel" maxlength="255" required aria-describedby="request-contact-error" placeholder="+7 (999) 999-99-99" />
+      </div>
       <span class={styles.error} id="request-contact-error" data-field-error="contact"></span>
     </div>
-    <details class={styles.comment}>
-      <summary>Добавить комментарий</summary>
-      <div class={styles.field}>
+    <div class={styles.field}>
       <label for="request-message">Комментарий</label>
       <textarea id="request-message" name="message" rows="3" maxlength="5000"></textarea>
       <span class={styles.error} id="request-message-error" data-field-error="message"></span>
-      </div>
-    </details>
+    </div>
     <div class={styles.trap} aria-hidden="true"><label>Ваш сайт<input name="website" tabindex="-1" autocomplete="off" /></label></div>
     <div>
       <label class={styles.consent}><input name="consent" type="checkbox" required aria-describedby="request-consent-error" /><span>Согласен на <a href={`${base}request-consent/`} target="_blank" rel="noopener noreferrer">обработку персональных данных</a>.</span></label>

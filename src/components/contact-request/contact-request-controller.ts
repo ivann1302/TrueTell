@@ -1,8 +1,11 @@
+import { initContactMethodPicker } from './contact-method-picker.ts';
+import { formatPhone, maskPhone, deletePhoneDigit } from './contact-phone.ts';
+
 const methods = {
-  phone: { label: 'Телефон', type: 'tel', autocomplete: 'tel', placeholder: '+7 999 123-45-67' },
+  phone: { label: 'Телефон', type: 'tel', autocomplete: 'tel', placeholder: '+7 (999) 999-99-99' },
   email: { label: 'Email', type: 'email', autocomplete: 'email', placeholder: 'name@example.ru' },
-  telegram: { label: 'Telegram', type: 'text', autocomplete: 'off', placeholder: '@username или t.me/username' },
-  max: { label: 'Телефон в MAX', type: 'tel', autocomplete: 'tel', placeholder: '+7 999 123-45-67' },
+  telegram: { label: 'Telegram', type: 'text', autocomplete: 'off', placeholder: 'username' },
+  max: { label: 'Телефон в MAX', type: 'tel', autocomplete: 'tel', placeholder: '+7 (999) 999-99-99' },
 } as const;
 
 export function normalizeTelegramContact(value: string): string {
@@ -27,6 +30,10 @@ export function initContactRequest(doc: Document) {
   const form = dialog.querySelector<HTMLFormElement>('form')!;
   const method = form.elements.namedItem('contact_method') as HTMLSelectElement;
   const contact = form.elements.namedItem('contact') as HTMLInputElement;
+  const name = form.elements.namedItem('name') as HTMLInputElement;
+  const prefix = dialog.querySelector<HTMLElement>('[data-contact-prefix]');
+  const syncPicker = initContactMethodPicker(dialog, method);
+  const isPhone = () => method.value === 'phone' || method.value === 'max';
   const submit = form.querySelector<HTMLButtonElement>('[type="submit"]')!;
   const status = form.querySelector<HTMLElement>('[data-contact-status]')!;
   const success = dialog.querySelector<HTMLElement>('[data-contact-success]')!;
@@ -45,7 +52,12 @@ export function initContactRequest(doc: Document) {
     contact.type = selected.type;
     contact.maxLength = method.value === 'email' ? 254 : 255;
     contact.setAttribute('autocomplete', selected.autocomplete);
+    contact.inputMode = isPhone() ? 'tel' : method.value === 'email' ? 'email' : 'text';
     contact.value = contacts[method.value] || '';
+    if (isPhone()) contact.value = formatPhone(contact.value);
+    if (prefix) prefix.hidden = method.value !== 'telegram';
+    contact.parentElement?.toggleAttribute('data-has-prefix', method.value === 'telegram');
+    contact.setCustomValidity('');
     dialog!.querySelector('[data-contact-label]')!.textContent = selected.label;
     contact.placeholder = selected.placeholder;
     contact.removeAttribute('aria-invalid');
@@ -53,6 +65,26 @@ export function initContactRequest(doc: Document) {
     form.querySelector('[data-field-error="contact"]')!.textContent = '';
   }
   method.addEventListener('change', updateMethod);
+  function validateContact() {
+    const value = contact.value.trim();
+    let message = '';
+    if (value && isPhone() && !/^\+7 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}$/.test(value)) message = 'Введите номер полностью: +7 (999) 999-99-99.';
+    if (value && method.value === 'telegram' && !/^@[a-zA-Z][a-zA-Z0-9_]{4,31}$/.test(normalizeTelegramContact(value))) message = 'Введите имя пользователя Telegram: от 5 до 32 латинских букв, цифр или _.';
+    if (value && method.value === 'email' && !/^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)+$/.test(value)) message = 'Введите email в формате name@example.ru.';
+    contact.setCustomValidity(message);
+  }
+  name.addEventListener('input', () => name.setCustomValidity(name.value.trim() ? '' : 'Введите имя.'));
+  contact.addEventListener('beforeinput', event => {
+    if (isPhone()) { deletePhoneDigit(event as InputEvent, contact); validateContact(); }
+  });
+  contact.addEventListener('input', () => {
+    if (isPhone()) maskPhone(contact);
+    if (method.value === 'telegram') {
+      const normalized = normalizeTelegramContact(contact.value);
+      if (normalized.startsWith('@') || contact.value.startsWith('@')) contact.value = normalized.replace(/^@+/, '');
+    }
+    validateContact();
+  });
   function open(trigger: HTMLElement | null) {
     if (dialog!.open) return;
     opener = trigger;
@@ -88,6 +120,9 @@ export function initContactRequest(doc: Document) {
 
   form.addEventListener('submit', async event => {
     event.preventDefault();
+    name.setCustomValidity(name.value.trim() ? '' : 'Введите имя.');
+    if (isPhone()) contact.value = formatPhone(contact.value);
+    validateContact();
     if (pending || !form.reportValidity()) return;
     pending = true;
     submit.disabled = true;
@@ -125,9 +160,7 @@ export function initContactRequest(doc: Document) {
         for (const field of ['name', 'contact_method', 'contact', 'message', 'consent']) {
           const messages = result.errors?.[field];
           if (!Array.isArray(messages) || typeof messages[0] !== 'string') continue;
-          const control = form.elements.namedItem(field) as HTMLElement;
-          const details = control.closest('details');
-          if (details) details.open = true;
+          const control = (field === 'contact_method' ? dialog!.querySelector('[data-method-toggle]') : form.elements.namedItem(field)) as HTMLElement;
           control.setAttribute('aria-invalid', 'true');
           control.setAttribute('aria-describedby', `request-${field}-error`);
           form.querySelector(`[data-field-error="${field}"]`)!.textContent = messages[0];
@@ -140,9 +173,9 @@ export function initContactRequest(doc: Document) {
       if (response.status === 419) throw new Error('Сессия истекла. Нажмите «Отправить заявку» ещё раз.');
       if (!response.ok || result.ok !== true) throw new Error('Не удалось отправить заявку. Попробуйте ещё раз.');
       form.reset();
-      form.querySelectorAll('details').forEach(details => { details.open = false; });
       for (const field of Object.keys(contacts)) delete contacts[field];
       updateMethod();
+      syncPicker?.();
       key = win.crypto.randomUUID();
       form.hidden = true;
       success.hidden = false;

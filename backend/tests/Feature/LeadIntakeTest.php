@@ -72,4 +72,21 @@ final class LeadIntakeTest extends TestCase
         $payload['contact'] = 'not-a-number';
         $this->postJson('/api/leads', $payload)->assertUnprocessable()->assertJsonValidationErrors('contact');
     }
+
+    public function test_name_and_complete_contact_formats_are_required(): void
+    {
+        $payload = $this->payload();
+        $payload['name'] = '   ';
+        $this->postJson('/api/leads', $payload)->assertUnprocessable()->assertJsonValidationErrors('name');
+        $payload['name'] = 'Anna';
+        $payload['contact_method'] = 'email';
+        $payload['contact'] = 'anna@localhost';
+        $this->postJson('/api/leads', $payload)->assertUnprocessable()->assertJsonValidationErrors('contact');
+        $payload['contact_method'] = 'phone';
+        $payload['contact'] = '+7 (999) 123';
+        $this->postJson('/api/leads', $payload)->assertUnprocessable()->assertJsonValidationErrors('contact');
+        $payload['contact_method'] = 'max';
+        $this->postJson('/api/leads', $payload)->assertUnprocessable()->assertJsonValidationErrors('contact');
+        $this->assertDatabaseCount('leads', 0);
+    }
 }

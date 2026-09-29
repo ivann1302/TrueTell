@@ -5,7 +5,7 @@ import { initContactRequest, normalizeTelegramContact } from '../src/components/
 
 function setup(fetch) {
   const fields = ['name', 'contact_method', 'contact', 'message', 'consent'];
-  const dom = new JSDOM(`<a href="#contact-request">Open</a><dialog data-contact-dialog><button data-contact-close>Close</button><span data-contact-label></span><form><input name="name"><select name="contact_method"><option value="phone">Phone</option><option value="email">Email</option><option value="telegram">Telegram</option><option value="max">MAX</option></select><input name="contact" value="+79991234567" required><details><summary>Comment</summary><textarea name="message">Test message</textarea></details><input name="consent" type="checkbox" checked required><input name="website">${fields.map(field => `<span data-field-error="${field}"></span>`).join('')}<p data-contact-status hidden></p><button type="submit">Send</button></form><div data-contact-success hidden tabindex="-1"></div></dialog>`, { url: 'https://example.test/product/?utm_source=test&email=private' });
+  const dom = new JSDOM(`<a href="#contact-request">Open</a><dialog data-contact-dialog><button data-contact-close>Close</button><span data-contact-label></span><form><input name="name" value="Anna" required><select name="contact_method"><option value="phone">Phone</option><option value="email">Email</option><option value="telegram">Telegram</option><option value="max">MAX</option></select><input name="contact" value="+79991234567" required><textarea name="message">Test message</textarea><input name="consent" type="checkbox" checked required><input name="website">${fields.map(field => `<span data-field-error="${field}"></span>`).join('')}<p data-contact-status hidden></p><button type="submit">Send</button></form><div data-contact-success hidden tabindex="-1"></div></dialog>`, { url: 'https://example.test/product/?utm_source=test&email=private' });
   const { window } = dom;
   window.fetch = fetch;
   const dialog = window.document.querySelector('dialog');
@@ -30,7 +30,7 @@ test('failed submission retains inputs and idempotency key; success clears data 
     return { ok: succeed, status: succeed ? 201 : 500, json: async () => ({ ok: succeed }) };
   });
   app.submit(); await tick();
-  assert.equal(app.form.elements.contact.value, '+79991234567');
+  assert.equal(app.form.elements.contact.value, '+7 (999) 123-45-67');
   assert.equal(app.form.hidden, false);
   succeed = true; app.submit(); await tick();
   assert.equal(app.form.hidden, true);
@@ -78,7 +78,7 @@ test('switching contact method preserves each value and updates email validation
   app.form.elements.contact.value = 'hello@example.test';
   app.form.elements.contact_method.value = 'phone';
   app.form.elements.contact_method.dispatchEvent(new app.window.Event('change'));
-  assert.equal(app.form.elements.contact.value, '+79991234567');
+  assert.equal(app.form.elements.contact.value, '+7 (999) 123-45-67');
   app.window.close();
 });
 
@@ -128,17 +128,15 @@ test('MAX sends a phone contact and preserves it after a failed request', async 
   app.form.elements.contact.value = '+79991234567';
   app.submit(); await tick();
   assert.equal(payload.contact_method, 'max');
-  assert.equal(payload.contact, '+79991234567');
-  assert.equal(app.form.elements.contact.value, '+79991234567');
+  assert.equal(payload.contact, '+7 (999) 123-45-67');
+  assert.equal(app.form.elements.contact.value, '+7 (999) 123-45-67');
   app.window.close();
 });
 
-test('a comment error opens the collapsed field and focuses it', async () => {
+test('a comment error focuses the visible field', async () => {
   const app = setup(async url => url === '/api/lead-session' ? session() : { ok: false, status: 422, json: async () => ({ errors: { message: ['Too long'] } }) });
   app.window.document.querySelector('a').click();
-  assert.equal(app.form.querySelector('details').open, false);
   app.submit(); await tick();
-  assert.equal(app.form.querySelector('details').open, true);
   assert.equal(app.window.document.activeElement, app.form.elements.message);
   app.window.close();
 });
