@@ -23,35 +23,35 @@ const internalHref = (path: string) => `${base}${path.replace(/^\//, '')}`;
     </header>
 
     <div class={styles.appProducts} aria-label="Приложения TrueTell для бизнес-систем">
-      <article class={styles.appProduct}>
+      <a class={styles.appProduct} href={internalHref(cleanerProductPath)}>
         <div class={styles.appHeading}>
           <h3 class={styles.appTitle}>Очистка Битрикс24</h3>
           <img class={styles.appIcon} src={bitrix24Icon.src} alt="" width="512" height="512" loading="lazy" decoding="async" />
         </div>
         <p class={styles.appDescription}>Лиды и сделки — по фильтрам, с проверкой и отчётом.</p>
-        <a class={styles.productButton} href={internalHref(cleanerProductPath)}>
+        <span class={styles.productButton}>
           Посмотреть приложение<span aria-hidden="true">›</span>
-        </a>
-      </article>
+        </span>
+      </a>
 
-      <article class={styles.appProduct}>
+      <a class={styles.appProduct} href={internalHref(moyskladOperationsProductPath)}>
         <div class={styles.appHeading}>
           <h3 class={styles.appTitle}>Массовые операции в МойСклад</h3>
           <img class={styles.appIcon} src={moyskladIcon.src} alt="" width="120" height="120" loading="lazy" decoding="async" />
         </div>
         <p class={styles.appDescription}>Товары, цены и документы — массовые операции с проверкой.</p>
-        <a class={styles.productButton} href={internalHref(moyskladOperationsProductPath)}>
+        <span class={styles.productButton}>
           Посмотреть приложение<span aria-hidden="true">›</span>
-        </a>
-      </article>
+        </span>
+      </a>
 
-      <article class:list={[styles.appProduct, styles.biProduct]}>
+      <a class:list={[styles.appProduct, styles.biProduct]} href={internalHref('/bi-analitika/')}>
         <h3 class={styles.appTitle}>BI-аналитика для торговли</h3>
         <p class={styles.appDescription}>Продажи, остатки и маржинальность в одном управленческом контуре.</p>
-        <a class={styles.productButton} href={internalHref('/bi-analitika/')}>
+        <span class={styles.productButton}>
           Посмотреть BI-решение<span aria-hidden="true">›</span>
-        </a>
-      </article>
+        </span>
+      </a>
     </div>
 
     <a class:list={[styles.allProductsLink, styles.mobileAllProductsLink]} href={internalHref('/products/')}>

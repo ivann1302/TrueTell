@@ -23,6 +23,12 @@ test('scenario pages share the application identity and keep unfinished screensh
     const pending = doc.querySelectorAll('[data-screenshot-pending]').length;
     const images = doc.querySelectorAll('main figure img').length;
     assert(images + pending >= 2, `Missing scenario visuals: ${slug}`);
+    if (slug === 'import') {
+      assert.equal(pending, 0, 'Import scenario still has screenshot placeholders');
+      const imageSources = [...doc.querySelectorAll('main figure img')].map((image) => image.getAttribute('src'));
+      assert(imageSources.some((src) => src.includes('/import-plan.')), 'Import plan screenshot missing');
+      assert(imageSources.some((src) => src.includes('/import-template.')), 'Import template screenshot missing');
+    }
     if (pending) {
       assert.match(doc.querySelector('meta[name="robots"]').content, /noindex/);
       assert(!sitemap.includes(`<loc>${origin}${path}</loc>`), `Unfinished scenario in sitemap: ${slug}`);

@@ -78,16 +78,24 @@
   border: 1px solid #182131;
   border-radius: 24px;
   box-sizing: border-box;
+  color: #10131a;
   display: flex;
   flex-direction: column;
   min-height: 0;
   min-width: 0;
   padding: 32px;
   text-align: left;
+  text-decoration: none;
   transition: border-color 180ms ease;
 
   &:hover {
     border-color: #1765da;
+  }
+
+  &:focus-visible {
+    border-color: #1765da;
+    outline: 2px solid #1765da;
+    outline-offset: 4px;
   }
 }
 
@@ -96,9 +104,7 @@
     transition: transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
   }
 
-  &:focus-within {
-    border-color: #1765da;
-
+  &:focus-visible {
     .appTitle {
       transform: translateY(-4px);
     }
@@ -155,14 +161,10 @@
   text-decoration: none;
   transition: background-color 180ms ease, color 180ms ease;
 
-  &:hover {
+  .appProduct:hover &,
+  .appProduct:focus-visible & {
     background: #182131;
     color: #f7f8fa;
-  }
-
-  &:focus-visible {
-    outline: 2px solid #1765da;
-    outline-offset: 4px;
   }
 }
 
@@ -172,6 +174,11 @@
   isolation: isolate;
   overflow: hidden;
   position: relative;
+
+  &:focus-visible {
+    border-color: #4b9cff;
+    outline-color: #4b9cff;
+  }
 
   &::before {
     background-image: radial-gradient(circle, rgba(247, 248, 250, 0.2) 0.75px, transparent 0.95px);
@@ -215,7 +222,7 @@
     transition: transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
   }
 
-  &:focus-within {
+  &:focus-visible {
     &::before,
     &::after {
       opacity: 1;
@@ -247,15 +254,12 @@
 .biProduct .productButton {
   border-color: rgba(247, 248, 250, 0.42);
   color: #f7f8fa;
+}
 
-  &:hover {
-    background: #f7f8fa;
-    color: #182131;
-  }
-
-  &:focus-visible {
-    outline-color: #4b9cff;
-  }
+.biProduct:hover .productButton,
+.biProduct:focus-visible .productButton {
+  background: #f7f8fa;
+  color: #182131;
 }
 
 @media (max-width: 1050px) {
