@@ -40,16 +40,20 @@
 
 .features { margin-top: 96px; }
 .sectionLead { margin: 24px 0 0; max-width: 620px; color: #616875; line-height: 1.65; }
-.featureList { margin: 32px 0 0; }
-.featureList > div {
+.useCases {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   gap: 64px;
-  border-top: 1px solid #d3d7de;
-  padding-block: 32px;
+  margin-top: 80px;
 }
-.featureList dt { font-size: 1.125rem; font-weight: 500; line-height: 1.45; }
-.featureList dd { margin: 0; max-width: 620px; color: #616875; line-height: 1.65; }
+.descriptionList { margin: 0; }
+.descriptionList > div + div {
+  border-top: 1px solid #d3d7de;
+  margin-top: 24px;
+  padding-top: 24px;
+}
+.descriptionList dt { font-size: 1.125rem; font-weight: 500; line-height: 1.45; }
+.descriptionList dd { margin: 8px 0 0; max-width: 620px; color: #616875; line-height: 1.65; }
 
 .boundaries {
   @include product-surface.dark-surface();
@@ -70,8 +74,8 @@
 
 @media (max-width: 768px) {
   .container { width: calc(100% - 32px); }
-  .features, .boundaries, .faq { margin-top: 72px; }
-  .featureList > div { grid-template-columns: minmax(0, 1fr); gap: 8px; padding-block: 24px; }
+  .features, .useCases, .boundaries, .faq { margin-top: 72px; }
+  .useCases { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .boundaries { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 48px 24px; }
   .connection .button { width: 100%; }
 }

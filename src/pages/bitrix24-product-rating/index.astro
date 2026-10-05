@@ -6,11 +6,14 @@ import ProductSummary from '../../components/product-summary/product-summary.ast
 import ProductScenario from '../../components/product-scenario/product-scenario.astro';
 import ArticleFigure from '../../components/editorial/article-figure.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
+import LineWave from '../../components/ui/line-wave.astro';
+import ActionIcon from '../../components/product-scenario/action-icon.astro';
 import { companyInfo } from '../../config/company';
 import { productRating as product, productRatingPath } from '../../config/products';
 import screenshot from '../../images/products/product-rating/products.png';
 import heroStyles from '../../styles/product-hero.module.scss';
 import closingStyles from '../../styles/product-closing.module.scss';
+import layout from '../../styles/product-panels.module.scss';
 import styles from './page.module.scss';
 
 const title = `${product.heading} — ${companyInfo.brandName}`;
@@ -20,14 +23,19 @@ const siteRoot = new URL(base, Astro.site ?? 'https://truetell-retail.ru');
 const pageUrl = new URL(productRatingPath.slice(1), siteRoot).href;
 const imageUrl = new URL(screenshot.src, siteRoot).href;
 const imageAlt = `Интерфейс приложения «${product.name}» на тестовых данных: рейтинг товаров, доля продаж, ABC-класс и месячная динамика выбранного товара`;
-const features = [
-  ['Рейтинг товаров', 'Сумма товарных строк, количество, доля продаж и число сделок. Товары и вариации с разными ID учитываются отдельно.'],
-  ['Рейтинг клиентов', 'Сумма и число сделок, средний, минимальный и максимальный чек. Каждая сделка относится к одному покупателю, без повторного оборота по дополнительным контактам.'],
-  ['Сравнение периодов', 'Месячный график и сравнение с аналогичным периодом прошлого года помогают увидеть рост и снижение продаж.'],
-  ['ABC-анализ', 'Группы A, B и C показывают вклад товаров и клиентов в выбранную сумму. Для товаров база — сумма товарных строк, для клиентов — сумма сделок.'],
-  ['Фильтры и поиск', 'Период, воронка, менеджер, источник и валюта задают область анализа. Текстовый поиск помогает найти строку, сохраняя исходную базу долей и ABC.'],
-  ['Сделки и Excel', 'Расшифровка показывает, из каких сделок складывается результат. Выгрузка включает весь отфильтрованный рейтинг, а не только текущую страницу таблицы.'],
+const useCases = [
+  ['Приоритеты по товарам', 'Определить товары с наибольшим вкладом в продажи.'],
+  ['Работа с клиентами', 'Сравнить покупателей по сумме и частоте сделок.'],
+  ['Изменение продаж', 'Посмотреть рост и снижение относительно прошлого года.'],
 ];
+const features = [
+  ['Рейтинг товаров', 'Сумма товарных строк, количество, доля продаж и число сделок. Товары и вариации с разными ID учитываются отдельно.', 'price'],
+  ['Рейтинг клиентов', 'Сумма и число сделок, средний, минимальный и максимальный чек. Каждая сделка относится к одному покупателю, без повторного оборота по дополнительным контактам.', 'review'],
+  ['Сравнение периодов', 'Месячный график и сравнение с аналогичным периодом прошлого года помогают увидеть рост и снижение продаж.', 'report'],
+  ['ABC-анализ', 'Группы A, B и C показывают вклад товаров и клиентов в выбранную сумму. Для товаров база — сумма товарных строк, для клиентов — сумма сделок.', 'report'],
+  ['Фильтры и поиск', 'Период, воронка, менеджер, источник и валюта задают область анализа. Текстовый поиск помогает найти строку, сохраняя исходную базу долей и ABC.', 'filter'],
+  ['Сделки и Excel', 'Расшифровка показывает, из каких сделок складывается результат. Выгрузка включает весь отфильтрованный рейтинг, а не только текущую страницу таблицы.', 'report'],
+] as const;
 const faqItems = [
   { question: `Можно ли уже подключить приложение «${product.name}»?`, answer: 'Продукт готовится к запуску. Интерфейс и расчёты реализованы; проверка подключения, прав и работы на реальном портале ещё не завершена. Оставьте заявку, чтобы обсудить ваш сценарий и условия подключения.' },
   { question: 'По каким данным строится рейтинг?', answer: 'По проектной модели приложение анализирует сделки облачного Битрикс24, доступные текущему пользователю. По умолчанию учитываются успешные сделки за выбранный период по дате завершения. Изменение фильтров меняет область анализа.' },
@@ -55,7 +63,8 @@ const structuredData = {
   <AppHeader />
   <main class:list={['site-content', styles.page, heroStyles.productPage, closingStyles.flushFooter]}>
     <div class={styles.container}>
-      <header class={heroStyles.hero}>
+      <header class:list={[heroStyles.hero, heroStyles.heroWave]}>
+        <LineWave centerOnMobile />
         <div class={heroStyles.heroCopy}>
           <h1>{product.heading}</h1>
           <p class={heroStyles.heroDescription}>Какие товары дают больше продаж и какие клиенты покупают чаще — с динамикой и расшифровкой до сделок.</p>
@@ -79,11 +88,18 @@ const structuredData = {
         <ArticleFigure src={screenshot} fullSize alt={imageAlt} caption="Настоящий интерфейс приложения на тестовых данных. Значения иллюстрируют работу рейтинга." />
       </ProductScenario>
 
-      <section class={styles.features} aria-labelledby="features-title">
+      <section class:list={[styles.useCases, layout.textPanel]} aria-labelledby="use-cases-title">
+        <h2 id="use-cases-title">Когда нужен рейтинг продаж</h2>
+        <dl class={styles.descriptionList}>
+          {useCases.map(([heading, text]) => <div><dt>{heading}</dt><dd>{text}</dd></div>)}
+        </dl>
+      </section>
+
+      <section class:list={[styles.features, layout.features, layout.textPanel]} aria-labelledby="features-title">
         <h2 id="features-title">Что предусмотрено в приложении</h2>
         <p class={styles.sectionLead}>Товары и клиенты в одном отчёте, от общей картины до конкретной сделки.</p>
-        <dl class={styles.featureList}>
-          {features.map(([heading, text]) => <div><dt>{heading}</dt><dd>{text}</dd></div>)}
+        <dl class={layout.featureGrid}>
+          {features.map(([heading, text, icon]) => <div><dt><ActionIcon name={icon} />{heading}</dt><dd>{text}</dd></div>)}
         </dl>
       </section>
 
@@ -101,6 +117,7 @@ const structuredData = {
     </div>
   </main>
   <div class={closingStyles.closingSurface}>
+    <LineWave />
     <div class={styles.container}>
       <section class:list={[styles.connection, closingStyles.connectionDark]} aria-labelledby="connection-title">
         <h2 id="connection-title">Обсудим анализ продаж в вашем Битрикс24</h2>
