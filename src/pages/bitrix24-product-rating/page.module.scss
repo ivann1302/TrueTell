@@ -61,7 +61,7 @@
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   gap: 64px;
   margin-top: 96px;
-  padding-block: 64px;
+  padding-block: 80px;
 
   p { margin: 0; max-width: 620px; color: #c8cdd5; line-height: 1.65; }
   p + p { margin-top: 24px; }
@@ -76,6 +76,6 @@
   .container { width: calc(100% - 32px); }
   .features, .useCases, .boundaries, .faq { margin-top: 72px; }
   .useCases { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .boundaries { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 48px 24px; }
+  .boundaries { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 64px 24px; }
   .connection .button { width: 100%; }
 }

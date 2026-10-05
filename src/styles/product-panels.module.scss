@@ -37,7 +37,7 @@
 .workflow.workflow {
   grid-template-columns: minmax(0, 1fr);
   gap: 48px;
-  padding-block: 64px;
+  padding-block: 80px;
 
   ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; }
   li + li { margin-top: 0; }
@@ -53,7 +53,7 @@
   .featureGrid { grid-template-columns: minmax(0, 1fr); margin-top: 32px; gap: 32px; }
   .screenshots.screenshots img { aspect-ratio: auto; }
   .workflow.workflow {
-    padding-block: 48px;
+    padding-block: 64px;
     gap: 32px;
 
     ol { grid-template-columns: minmax(0, 1fr); gap: 32px; }
