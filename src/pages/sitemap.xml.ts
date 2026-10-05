@@ -11,6 +11,7 @@ export function GET() {
     { path: '', changefreq: 'weekly', priority: '1.0' },
     { path: 'products/', changefreq: 'monthly', priority: '0.8' },
     { path: 'bitrix24-cleaner/', changefreq: 'monthly', priority: '0.8' },
+    { path: 'bitrix24-product-rating/', changefreq: 'monthly', priority: '0.8' },
     { path: 'moysklad-mass-operations/', changefreq: 'monthly', priority: '0.8' },
     { path: 'moysklad-izmenenie-cen/', changefreq: 'monthly', priority: '0.8' },
     { path: 'moysklad-import/', changefreq: 'monthly', priority: '0.8' },

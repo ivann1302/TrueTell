@@ -1,5 +1,5 @@
 ---
-import { cleanerProduct, cleanerProductPath, moyskladOperationsProduct, moyskladOperationsProductPath } from '../../config/products';
+import { cleanerProduct, cleanerProductPath, moyskladOperationsProduct, moyskladOperationsProductPath, productRating, productRatingPath } from '../../config/products';
 import { companyInfo } from '../../config/company';
 import styles from './product-catalog-section.module.scss';
 
@@ -33,6 +33,12 @@ const products = [
     description: 'Оценка идеи до вложений по динамике реального интереса.',
     action: 'Узнать о проекте',
     href: consultationUrl,
+  },
+  {
+    title: productRating.heading,
+    description: productRating.catalogDescription,
+    action: 'Посмотреть приложение',
+    href: productRatingPath,
   },
 ];
 ---

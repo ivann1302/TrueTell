@@ -1,0 +1,77 @@
+@use '../../styles/product-surface';
+
+.page.page {
+  background: #f6f7f9;
+  color: #10131a;
+  text-align: left;
+}
+
+.container {
+  width: min(calc(100% - 64px), 1240px);
+  margin-inline: auto;
+}
+
+.page h2 {
+  margin: 0;
+  font-size: clamp(1.75rem, 2.8vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: #1765da;
+  color: #fff;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: none;
+
+  &:hover { background: #1455c0; }
+  &:focus-visible { outline: 2px solid #4b9cff; outline-offset: 5px; }
+}
+
+.features { margin-top: 96px; }
+.sectionLead { margin: 24px 0 0; max-width: 620px; color: #616875; line-height: 1.65; }
+.featureList { margin: 32px 0 0; }
+.featureList > div {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 64px;
+  border-top: 1px solid #d3d7de;
+  padding-block: 32px;
+}
+.featureList dt { font-size: 1.125rem; font-weight: 500; line-height: 1.45; }
+.featureList dd { margin: 0; max-width: 620px; color: #616875; line-height: 1.65; }
+
+.boundaries {
+  @include product-surface.dark-surface();
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 64px;
+  margin-top: 96px;
+  padding-block: 64px;
+
+  p { margin: 0; max-width: 620px; color: #c8cdd5; line-height: 1.65; }
+  p + p { margin-top: 24px; }
+}
+
+.faq { --article-space-section: 32px; margin-top: 80px; }
+.connection { display: grid; }
+.connection p { line-height: 1.65; }
+.connection .button { margin-top: 24px; }
+
+@media (max-width: 768px) {
+  .container { width: calc(100% - 32px); }
+  .features, .boundaries, .faq { margin-top: 72px; }
+  .featureList > div { grid-template-columns: minmax(0, 1fr); gap: 8px; padding-block: 24px; }
+  .boundaries { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 48px 24px; }
+  .connection .button { width: 100%; }
+}
