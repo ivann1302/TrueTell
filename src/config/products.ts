@@ -3,10 +3,10 @@ export const cleanerProductPath = '/bitrix24-cleaner/';
 export const productRatingPath = '/bitrix24-product-rating/';
 
 export const productRating = {
-  name: 'product_rating',
-  heading: 'Рейтинг товаров и клиентов в Битрикс24',
+  name: 'Рейтинг продаж',
+  heading: 'Рейтинг продаж в Битрикс24',
   description:
-    'product_rating — приложение для анализа товаров и клиентов по сделкам Битрикс24. Рейтинги, динамика продаж, ABC-анализ, детализация и Excel. Продукт готовится к запуску.',
+    'Рейтинг продаж — приложение для анализа товаров и клиентов по сделкам Битрикс24. Рейтинги, динамика продаж, ABC-анализ, детализация и Excel. Продукт готовится к запуску.',
   catalogDescription:
     'Рейтинги товаров и клиентов, динамика продаж и расшифровка до сделок. Приложение готовится к запуску.',
   connectionActionLabel: 'Обсудить подключение',
