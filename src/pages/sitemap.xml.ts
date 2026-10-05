@@ -14,6 +14,7 @@ export function GET() {
     { path: 'moysklad-mass-operations/', changefreq: 'monthly', priority: '0.8' },
     { path: 'moysklad-izmenenie-cen/', changefreq: 'monthly', priority: '0.8' },
     { path: 'moysklad-import/', changefreq: 'monthly', priority: '0.8' },
+    ...['backup-moysklad/', 'upravlenie-rezervami-moysklad/', 'moysklad-udalenie/', 'moysklad-arhivirovanie/', 'moysklad-izmenenie-tovarov/', 'moysklad-izmenenie-dokumentov/'].map((path) => ({ path, changefreq: 'monthly', priority: '0.8' })),
     { path: 'bi-analitika/', changefreq: 'monthly', priority: '0.8' },
     { path: 'blog/', changefreq: 'weekly', priority: '0.7' },
     { path: 'knowledge-base/', changefreq: 'monthly', priority: '0.8' },

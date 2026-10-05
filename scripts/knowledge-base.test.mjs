@@ -32,7 +32,7 @@ test('knowledge base groups published materials and links all six MoySklad scena
   }
 });
 
-test('knowledge base replaces Cases in navigation while draft scenarios stay outside the sitemap and blog', () => {
+test('knowledge base replaces Cases in navigation while all scenarios enter the sitemap and stay outside the blog', () => {
   const home = new JSDOM(readFileSync('dist/index.html', 'utf8')).window.document;
   const blog = new JSDOM(readFileSync('dist/blog/index.html', 'utf8')).window.document;
   const sitemap = readFileSync('dist/sitemap.xml', 'utf8');
@@ -52,13 +52,8 @@ test('knowledge base replaces Cases in navigation while draft scenarios stay out
     const graph = JSON.parse(guide.querySelector('script[type="application/ld+json"]').textContent)['@graph'];
     assert(graph.some((node) => node['@type'] === 'Article'), `Guide still uses blog schema: ${slug}`);
   }
-  const publishedScenarios = new Set(['izmenenie-cen', 'import']);
   for (const slug of scenarioSlugs) {
     assert(!blog.querySelector(`a[href="/moysklad-${slug}/"]`), `Scenario unexpectedly listed in blog: ${slug}`);
-    if (publishedScenarios.has(slug)) {
-      assert(sitemap.includes(`<loc>${origin}/moysklad-${slug}/</loc>`), `Published scenario missing from sitemap: ${slug}`);
-    } else {
-      assert(!sitemap.includes(`<loc>${origin}/moysklad-${slug}/</loc>`), `Draft scenario in sitemap: ${slug}`);
-    }
+    assert(sitemap.includes(`<loc>${origin}/moysklad-${slug}/</loc>`), `Scenario missing from sitemap: ${slug}`);
   }
 });

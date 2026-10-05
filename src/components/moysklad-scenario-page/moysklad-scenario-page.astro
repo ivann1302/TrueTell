@@ -32,7 +32,7 @@ interface Props {
 }
 
 const { slug, label, title, description, heroTitle, heroDescription, summaryDescription,
-  mentions, faqItems, connectionTitle, connectionDescription, draft = false, ogImage, ogImageAlt } = Astro.props;
+  mentions, faqItems, connectionTitle, connectionDescription, ogImage, ogImageAlt } = Astro.props;
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const siteRoot = new URL(base, Astro.site);
 const canonicalPath = `/moysklad-${slug}/`;
@@ -68,7 +68,6 @@ const structuredData = {
 ---
 
 <BaseLayout {title} {description} {canonicalPath} {structuredData}
-  robots={draft ? 'noindex, follow' : 'index, follow'}
   ogImage={ogImage && new URL(ogImage.src, siteRoot).href} {ogImageAlt}>
   <AppHeader />
   <main class:list={['site-content', editorialStyles.page, styles.page, heroStyles.productPage, closingStyles.flushFooter]}>

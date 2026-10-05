@@ -9,8 +9,8 @@ test('requires one self-canonical and root-level content URL', () => {
     assert.throws(() => validateRouteHtml(html, `${origin}/cleaner/`, [`${origin}/cleaner/`]));
   }
 });
-test('keeps noindex placeholders out of sitemap and indexable pages in it', () => {
-  assert.doesNotThrow(() => validateRouteHtml(page('/draft/', 'noindex'), `${origin}/draft/`, []));
+test('rejects noindex content pages and requires sitemap entries', () => {
+  assert.throws(() => validateRouteHtml(page('/draft/', 'noindex'), `${origin}/draft/`, []), /noindex/i);
   assert.throws(() => validateRouteHtml(page('/draft/', 'noindex'), `${origin}/draft/`, [`${origin}/draft/`]));
   assert.throws(() => validateRouteHtml(page('/cleaner/'), `${origin}/cleaner/`, []));
 });

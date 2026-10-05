@@ -22,6 +22,7 @@ export function validateRouteHtml(html, url, sitemapUrls) {
     return { redirect: target.href };
   }
   if (target.href !== url) throw new Error(`Canonical mismatch: ${url}`);
+  if (noindex) throw new Error(`Non-redirect page must not be noindex: ${url}`);
   if (listed === noindex) throw new Error(`Sitemap/indexability mismatch: ${url}`);
   return { document };
 }

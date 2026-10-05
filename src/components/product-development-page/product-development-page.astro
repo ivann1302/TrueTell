@@ -42,7 +42,7 @@ const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const toSitePath = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
 ---
 
-<BaseLayout {title} {description} {canonicalPath} robots="noindex, follow">
+<BaseLayout {title} {description} {canonicalPath}>
   <AppHeader />
 
   <main class="site-content">

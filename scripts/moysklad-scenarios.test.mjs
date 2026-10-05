@@ -7,7 +7,7 @@ const slugs = ['izmenenie-cen', 'udalenie', 'izmenenie-tovarov', 'arhivirovanie'
 const origin = 'https://truetell-retail.ru';
 const productPath = '/moysklad-mass-operations/';
 
-test('scenario pages share the application identity and keep unfinished screenshots out of search', () => {
+test('scenario pages share the application identity and remain indexable while screenshots are pending', () => {
   const sitemap = readFileSync('dist/sitemap.xml', 'utf8');
   const titles = new Set();
   for (const slug of slugs) {
@@ -29,13 +29,8 @@ test('scenario pages share the application identity and keep unfinished screensh
       assert(imageSources.some((src) => src.includes('/import-plan.')), 'Import plan screenshot missing');
       assert(imageSources.some((src) => src.includes('/import-template.')), 'Import template screenshot missing');
     }
-    if (pending) {
-      assert.match(doc.querySelector('meta[name="robots"]').content, /noindex/);
-      assert(!sitemap.includes(`<loc>${origin}${path}</loc>`), `Unfinished scenario in sitemap: ${slug}`);
-    } else {
-      assert.equal(doc.querySelector('meta[name="robots"]').content, 'index, follow');
-      assert(sitemap.includes(`<loc>${origin}${path}</loc>`));
-    }
+    assert.equal(doc.querySelector('meta[name="robots"]').content, 'index, follow');
+    assert(sitemap.includes(`<loc>${origin}${path}</loc>`));
     titles.add(doc.title);
   }
   assert.equal(titles.size, slugs.length);

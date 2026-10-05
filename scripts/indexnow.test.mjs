@@ -29,15 +29,12 @@ test('fails after bounded server retries', async () => {
   assert.equal(calls, 4);
 });
 
-test('requires a non-indexable 404 without a misleading canonical URL', () => {
+test('allows the requested 404 indexing policy without a misleading canonical URL', () => {
   assert.equal(typeof deployment.validateNotFoundHtml, 'function');
-  const valid = '<meta name="robots" content="noindex, follow"><title>404</title>';
+  const valid = '<meta name="robots" content="index, follow"><title>404</title>';
 
   assert.doesNotThrow(() => deployment.validateNotFoundHtml(valid));
-  assert.throws(
-    () => deployment.validateNotFoundHtml('<meta name="robots" content="index, follow"><title>404</title>'),
-    /noindex/i,
-  );
+  assert.throws(() => deployment.validateNotFoundHtml(valid.replace('index, follow', 'noindex, follow')), /noindex/i);
   assert.throws(
     () => deployment.validateNotFoundHtml(`${valid}<link rel="canonical" href="https://truetell-retail.ru/">`),
     /canonical/i,
