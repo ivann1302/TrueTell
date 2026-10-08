@@ -1,5 +1,5 @@
 import { companyInfo } from '../../config/company';
-import logo from '../../images/logo/logo.png';
+import { createOrganizationLogo } from './createOrganizationLogo';
 
 export const DEFAULT_ARTICLE_AUTHOR = companyInfo.editorial.defaultAuthor;
 
@@ -71,12 +71,7 @@ export function createArticleStructuredData({
         '@type': 'Organization',
         name: companyInfo.brandName,
         url: publisherUrl,
-        logo: {
-          '@type': 'ImageObject',
-          url: new URL(logo.src, publisherUrl).toString(),
-          width: logo.width,
-          height: logo.height,
-        },
+        logo: createOrganizationLogo(publisherUrl),
       },
     },
     {

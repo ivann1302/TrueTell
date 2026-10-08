@@ -12,6 +12,7 @@ import SiteFooter from '../../components/footer/site-footer.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { companyInfo } from '../../config/company';
+import { createOrganizationLogo } from '../../utils/functions/createOrganizationLogo';
 import { cleanerProduct, cleanerProductPath } from '../../config/products';
 import selection from '../../images/products/cleaner-selection.png';
 import confirmation from '../../images/products/cleaner-confirmation.png';
@@ -88,7 +89,7 @@ const structuredData = {
       name: cleanerProduct.name, url: pageUrl, description,
       applicationCategory: 'BusinessApplication', operatingSystem: 'Web browser', inLanguage: 'ru-RU',
       screenshot: screenshots.map(({ src }) => new URL(src.src, siteRoot).href),
-      publisher: { '@type': 'Organization', name: companyInfo.brandName, url: siteRoot.href },
+      publisher: { '@type': 'Organization', name: companyInfo.brandName, url: siteRoot.href, logo: createOrganizationLogo(siteRoot.href) },
       featureList: features.map(([heading, text]) => `${heading}. ${text}`),
     },
     {

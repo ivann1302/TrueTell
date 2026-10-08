@@ -17,6 +17,7 @@ import SiteFooter from '../../components/footer/site-footer.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { companyInfo } from '../../config/company';
+import { createOrganizationLogo } from '../../utils/functions/createOrganizationLogo';
 import { moyskladOperationsProduct as product, moyskladOperationsProductPath as productPath } from '../../config/products';
 import styles from '../bitrix24-cleaner/page.module.scss';
 import heroStyles from '../../styles/product-hero.module.scss';
@@ -64,7 +65,7 @@ const structuredData = {
       '@type': 'SoftwareApplication', '@id': `${pageUrl}#application`,
       name: product.name, url: pageUrl, description,
       applicationCategory: 'BusinessApplication', operatingSystem: 'Web browser', inLanguage: 'ru-RU',
-      publisher: { '@type': 'Organization', name: companyInfo.brandName, url: siteRoot.href },
+      publisher: { '@type': 'Organization', name: companyInfo.brandName, url: siteRoot.href, logo: createOrganizationLogo(siteRoot.href) },
       screenshot: [prices, pricePlan, fileImport, deletePlan, history].map((src) => new URL(src.src, siteRoot).href),
       featureList: features.map(([heading, text]) => `${heading}. ${text}`),
     },

@@ -23,7 +23,7 @@ export function sitemapUrls(xml, site) {
 
 export function validateNotFoundHtml(html) {
   const document = new JSDOM(html).window.document;
-  if (/\bnoindex\b/i.test(document.querySelector('meta[name="robots"]')?.content ?? '')) throw new Error('404 page must not be noindex');
+  if (!/\b(?:noindex|none)\b/i.test(document.querySelector('meta[name="robots"]')?.content ?? '')) throw new Error('404 page must be noindex');
   if (document.querySelector('link[rel="canonical"]')) throw new Error('404 page must not have a canonical URL');
 }
 

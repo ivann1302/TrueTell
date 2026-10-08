@@ -3,9 +3,18 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { JSDOM } from 'jsdom';
 import { allArticles, isPublicArticle } from '../src/config/articles.ts';
+import { hasNoindex } from './page-indexing.mjs';
 
 const origin = 'https://truetell-retail.ru';
 const document = async file => new JSDOM(await readFile(file, 'utf8')).window.document;
+
+test('the direct 404 document is noindex, has no canonical and stays outside sitemap', async () => {
+  const doc = await document('dist/404.html');
+  assert(hasNoindex(doc), 'The direct /404.html URL must not be indexed even when served with HTTP 200');
+  assert.equal(doc.querySelector('link[rel="canonical"]'), null);
+  const sitemap = await readFile('dist/sitemap.xml', 'utf8');
+  assert(!sitemap.includes('/404.html'));
+});
 
 test('all sitemap routes have distinct metadata, one H1, self-canonical and matching Open Graph', async () => {
   const sitemap = new JSDOM(await readFile('dist/sitemap.xml', 'utf8'), { contentType: 'text/xml' }).window.document;

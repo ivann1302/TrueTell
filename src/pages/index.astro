@@ -11,6 +11,7 @@ import IntegrationsSection from '../sections/integrations-section/integrations-s
 import ProductChoiceSection from '../sections/product-choice-section/product-choice-section.astro';
 import ProductShowcaseSection from '../sections/product-showcase-section/product-showcase-section.astro';
 import { companyInfo } from '../config/company';
+import { createOrganizationLogo } from '../utils/functions/createOrganizationLogo';
 
 import heroStyles from '../sections/hero-section/hero-section.module.scss';
 
@@ -26,6 +27,7 @@ const structuredData = {
       '@type': 'Organization',
       name: companyInfo.brandName,
       url: siteUrl,
+      logo: createOrganizationLogo(siteUrl),
       email: companyInfo.contacts.email,
       telephone: companyInfo.contacts.phone.e164,
       sameAs: [companyInfo.contacts.telegram.url],
