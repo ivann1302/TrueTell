@@ -13,6 +13,7 @@ const blogHref = `${base}blog/`;
 
 const articles = blogArticles.map((article) => ({
   ...article,
+  description: article.summaryDescription ?? article.description,
   href: article.hrefPath ? `${base}${article.hrefPath}` : undefined,
 }));
 const hasCarousel = !page && articles.length > 2;
@@ -27,7 +28,10 @@ const hasCarousel = !page && articles.length > 2;
   <div class={styles.container}>
     <header class={styles.header}>
       {page ? (
-        <h1 id="blog-title" class={styles.title}>Блог</h1>
+        <div>
+          <h1 id="blog-title" class={styles.title}>Блог</h1>
+          <p class={styles.pageIntro}>Разборы аналитики и автоматизации: как работать с данными и принимать решения. Пошаговые инструкции — в <a href={`${base}knowledge-base/`}>базе знаний</a>.</p>
+        </div>
       ) : (
         <h2 id="blog-title" class={styles.title}>Блог</h2>
       )}
@@ -47,7 +51,7 @@ const hasCarousel = !page && articles.length > 2;
 
     <div
       id={hasCarousel ? 'home-blog-track' : undefined}
-      class:list={[styles.grid, articles.length === 2 && styles.twoArticleGrid, hasCarousel && styles.carousel]}
+      class:list={[styles.grid, articles.length < 3 && styles.compactGrid, articles.length === 1 && styles.singleArticleGrid, hasCarousel && styles.carousel]}
       data-carousel-track={hasCarousel || undefined}
       role={hasCarousel ? 'region' : undefined}
       aria-label={hasCarousel ? 'Статьи блога' : undefined}
@@ -58,13 +62,13 @@ const hasCarousel = !page && articles.length > 2;
           {article.href ? (
             <a class={styles.cardLink} href={article.href}>
               {article.category && <span class={styles.articleMeta}>{article.category}</span>}
-              <h3 class={styles.articleTitle}>{article.title}</h3>
+              {page ? <h2 class={styles.articleTitle}>{article.title}</h2> : <h3 class={styles.articleTitle}>{article.title}</h3>}
               <p class={styles.description}>{article.description}</p>
               <span class={styles.readMore}>Читать статью <span aria-hidden="true">→</span></span>
             </a>
           ) : (
             <>
-              <h3 class={styles.articleTitle}>{article.title}</h3>
+              {page ? <h2 class={styles.articleTitle}>{article.title}</h2> : <h3 class={styles.articleTitle}>{article.title}</h3>}
               <p class={styles.description}>{article.description}</p>
             </>
           )}

@@ -194,10 +194,10 @@
   line-height: 1.4;
 }
 
-.itemStatus {
+.itemDescription {
   color: #616875;
-  font-size: 0.8125rem;
-  line-height: 1.4;
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
 .arrow {
@@ -276,4 +276,9 @@
       padding: 20px;
     }
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .links a, .categoryNav a { transition: none; }
+  .links a:hover { transform: none; }
 }

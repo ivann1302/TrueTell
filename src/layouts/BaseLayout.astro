@@ -4,6 +4,7 @@ import '../App.css';
 import favicon from '../images/logo/short-white-logo.svg';
 import ContactRequest from '../components/contact-request/contact-request.astro';
 import PrivacyControls from '../components/privacy/privacy-controls.astro';
+import { companyInfo } from '../config/company';
 
 interface Props {
   title: string;
@@ -19,6 +20,10 @@ interface Props {
   robots?: 'index, follow' | 'noindex, follow' | 'noindex, nofollow';
   publishedTime?: string;
   modifiedTime?: string;
+  contentType?: 'knowledge' | 'blog' | 'commercial' | 'legal' | 'system';
+  contentCategory?: string;
+  contentStatus?: 'published' | 'draft';
+  relatedProduct?: string | null;
 }
 
 const {
@@ -35,12 +40,16 @@ const {
   robots = 'index, follow',
   publishedTime,
   modifiedTime,
+  contentType = 'system',
+  contentCategory,
+  contentStatus = 'published',
+  relatedProduct,
 } = Astro.props;
 const site = Astro.site ?? new URL('https://truetell-retail.ru');
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const canonicalUrl = canonicalPath === false
   ? undefined
-  : new URL(`${base}${canonicalPath.replace(/^\//, '')}`, site);
+  : new URL(/^https?:\/\//.test(canonicalPath) ? canonicalPath : `${base}${canonicalPath.replace(/^\//, '')}`, site);
 ---
 
 <!doctype html>
@@ -51,6 +60,10 @@ const canonicalUrl = canonicalPath === false
     <meta name="description" content={description} />
     {author && <meta name="author" content={author} />}
     <meta name="robots" content={robots} />
+    <meta name="truetell:type" content={contentType} />
+    <meta name="truetell:status" content={contentStatus} />
+    {contentCategory && <meta name="truetell:category" content={contentCategory} />}
+    {relatedProduct && <meta name="truetell:related-product" content={relatedProduct} />}
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' data: *.yandex.cloud *.yandex.ru *.yandex-team.ru *.yandex.net *.yandex.com yastat.net yastatic.net https://api-maps.yandex.ru https://*.maps.yandex.net https://yandex.ru/clck/click https://mc.yandex.com https://mc.yandex.ru; style-src 'self' 'unsafe-inline'; img-src 'self' *.yandex.cloud *.yandex.ru *.yandex-team.ru *.yandex.net *.yandex.com yastat.net yastatic.net data: https://mc.yandex.com https://mc.yandex.ru; connect-src 'self' 'unsafe-inline' 'unsafe-eval' data: ws: wss: localhost:* *.yandex.cloud *.yandex.ru *.yandex-team.ru *.yandex.net *.yandex.com yastat.net yastatic.net https://api-maps.yandex.ru https://*.maps.yandex.net https://yandex.ru/clck/click https://mc.yandex.com https://mc.yandex.ru https://datalens.yandex.ru https://datalens.yandex.com https://datalens.yandex; frame-src 'self' https://forms.yandex.ru https://forms.yandex.cloud https://api-maps.yandex.ru blob: https://mc.yandex.ru https://mc.yandex.com https://*.truetell.ru https://datalens.yandex.ru https://datalens.yandex.com https://datalens.yandex https://yandex.ru"
@@ -58,7 +71,7 @@ const canonicalUrl = canonicalPath === false
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:type" content={ogType} />
-    <meta property="og:site_name" content="TrueTell" />
+    <meta property="og:site_name" content={companyInfo.brandName} />
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
     {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}

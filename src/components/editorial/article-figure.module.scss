@@ -21,6 +21,11 @@
   min-width: 0;
 }
 
+.compact {
+  margin-inline: auto;
+  max-width: 320px;
+}
+
 .preview {
   display: block;
   border: 1px solid #d3d7de;

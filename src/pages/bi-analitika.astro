@@ -1,4 +1,5 @@
 ---
+import ProductArticles from '../components/editorial/product-articles.astro';
 import { Image } from 'astro:assets';
 
 import AppHeader from '../components/header/header.astro';
@@ -181,7 +182,7 @@ const structuredData = {
 };
 ---
 
-<BaseLayout {title} {description} canonicalPath="/bi-analitika/" {structuredData}>
+<BaseLayout contentType="commercial" contentCategory="BI-аналитика" {title} {description} canonicalPath="/bi-analitika/" {structuredData}>
   <AppHeader />
 
   <main class="site-content">
@@ -468,6 +469,8 @@ const structuredData = {
         </div>
       </div>
     </section>
+
+    <ProductArticles productPath="/bi-analitika/" />
 
     <section id="demo" class={styles.ctaSection} aria-labelledby="cta-title">
       <LineWave />

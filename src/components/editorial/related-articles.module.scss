@@ -2,7 +2,8 @@
   background: #f0f2f5;
   border-top: 1px solid #e3e6eb;
   color: #10131a;
-  padding: var(--article-space-shell) 0;
+  text-align: left;
+  padding: var(--article-space-shell, 48px) 0;
 }
 
 .container {
@@ -110,7 +111,7 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: var(--article-space-shell) 0;
+    padding: var(--article-space-shell, 32px) 0;
   }
 
   .container {
@@ -119,11 +120,18 @@
 
   .header {
     align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
     margin-bottom: 24px;
 
     h2 {
+      flex-basis: 100%;
       font-size: clamp(2rem, 10vw, 2.6rem);
     }
+  }
+
+  .header [data-carousel-controls] {
+    margin-left: auto;
   }
 
   .track {

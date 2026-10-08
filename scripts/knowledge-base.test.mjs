@@ -2,13 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { JSDOM } from 'jsdom';
+import { getCatalogArticles } from '../src/config/articles.ts';
 
 const origin = 'https://truetell-retail.ru';
 const scenarioSlugs = ['izmenenie-cen', 'udalenie', 'izmenenie-tovarov', 'arhivirovanie', 'import', 'izmenenie-dokumentov'];
-const guideSlugs = ['udalennye-lidy-bitrix24', 'ne-udalyaetsya-lid-bitrix24', 'udalenie-proigrannyh-sdelok-bitrix24', 'bitrix24-udalenie-lidov-za-period', 'kak-vosstanovit-udalennye-zakazy-tovary-moysklad'];
-const blogSlugs = ['kak-snyat-rezervy-moysklad', 'bi-analitika-chto-eto-prostymi-slovami'];
+const guideSlugs = getCatalogArticles('knowledge').map(article => article.hrefPath.replace(/\/$/, ''));
+const blogSlugs = getCatalogArticles('blog').map(article => article.hrefPath.replace(/\/$/, ''));
 
-test('knowledge base groups published materials and links all six MoySklad scenarios', () => {
+test('knowledge base automatically groups published instructions without commercial scenarios', () => {
   const doc = new JSDOM(readFileSync('dist/knowledge-base/index.html', 'utf8')).window.document;
   const links = [...doc.querySelectorAll('main a[href]')].map((link) => link.getAttribute('href'));
 
@@ -24,7 +25,7 @@ test('knowledge base groups published materials and links all six MoySklad scena
   for (const slug of guideSlugs) assert(links.includes(`/${slug}/`), `Missing guide: ${slug}`);
   for (const slug of blogSlugs) assert(!links.includes(`/${slug}/`), `Blog article repeated in knowledge base: ${slug}`);
   for (const slug of scenarioSlugs) {
-    assert(links.includes(`/moysklad-${slug}/`), `Missing MoySklad scenario: ${slug}`);
+    assert(!links.includes(`/moysklad-${slug}/`), `Commercial scenario in knowledge base: ${slug}`);
   }
   for (const href of links.filter((link) => link.startsWith('/'))) {
     assert.match(href, /^\/[^/]+\/$/, `Knowledge-base material is not directly below the home page: ${href}`);

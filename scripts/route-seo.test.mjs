@@ -9,8 +9,8 @@ test('requires one self-canonical and root-level content URL', () => {
     assert.throws(() => validateRouteHtml(html, `${origin}/cleaner/`, [`${origin}/cleaner/`]));
   }
 });
-test('rejects noindex content pages and requires sitemap entries', () => {
-  assert.throws(() => validateRouteHtml(page('/draft/', 'noindex'), `${origin}/draft/`, []), /noindex/i);
+test('allows deliberate noindex pages outside sitemap and requires entries for indexable content', () => {
+  assert.doesNotThrow(() => validateRouteHtml(page('/draft/', 'noindex'), `${origin}/draft/`, []));
   assert.throws(() => validateRouteHtml(page('/draft/', 'noindex'), `${origin}/draft/`, [`${origin}/draft/`]));
   assert.throws(() => validateRouteHtml(page('/cleaner/'), `${origin}/cleaner/`, []));
 });
@@ -29,4 +29,13 @@ test('allows legacy redirect files only with matching target and noindex outside
   assert.deepEqual(validateRouteHtml(html, `${origin}/products/cleaner/`, []), { redirect: `${origin}/cleaner/` });
   assert.throws(() => validateRouteHtml(html, `${origin}/products/cleaner/`, [`${origin}/products/cleaner/`]));
   assert.throws(() => validateRouteHtml(html.replace('url=/cleaner/', 'url=/wrong/'), `${origin}/products/cleaner/`, []));
+});
+
+test('matches generator exclusions for canonical aliases and crawler-specific directives', () => {
+  const url = `${origin}/guide/`;
+  assert.doesNotThrow(() => validateRouteHtml(page('/guide/', 'none'), url, []));
+  assert.doesNotThrow(() => validateRouteHtml(page('/guide/', 'index, follow', '<meta name="Googlebot" content="noindex">'), url, []));
+  assert.doesNotThrow(() => validateRouteHtml(page('/guide/', 'index, follow', '<meta name="robots" content="noindex">'), url, []));
+  assert.doesNotThrow(() => validateRouteHtml(page('/canonical/'), url, []));
+  assert.throws(() => validateRouteHtml(page('/canonical/'), url, [url]));
 });

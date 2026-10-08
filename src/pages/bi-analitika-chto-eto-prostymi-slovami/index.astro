@@ -7,7 +7,7 @@ import Checklist from '../../components/editorial/checklist.astro';
 import DataTable from '../../components/editorial/data-table.astro';
 import InlineConsultation from '../../components/editorial/inline-consultation.astro';
 import RelatedArticles from '../../components/editorial/related-articles.astro';
-import { biRelatedArticles } from '../../config/articles';
+import { getArticle, getRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
 import { cleanerProduct, cleanerProductPath } from '../../config/products';
 import biFlowImage from '../../images/articles/bi-data-to-dashboard.png';
@@ -15,15 +15,15 @@ import ConsultationCtaSection from '../../sections/consultation-cta-section/cons
 import FaqSection from '../../sections/faq-section/faq-section.astro';
 import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
 
-const title = 'BI-аналитика: что это простыми словами и зачем бизнесу';
-const description =
-  'BI-аналитика простыми словами: как данные из CRM, продаж, склада и рекламы превращаются в понятные дашборды и помогают принимать решения.';
+const article = getArticle('bi-analitika-chto-eto-prostymi-slovami/');
+const title = article.title;
+const description = article.description;
 const ogTitle = 'BI-аналитика простыми словами: как работают бизнес-дашборды';
 const ogDescription =
   'Понятно объясняем, что такое BI, откуда берутся данные на дашбордах и в каких случаях бизнесу действительно нужна BI-аналитика.';
-const canonicalPath = '/bi-analitika-chto-eto-prostymi-slovami/';
-const publishedDate = '2026-09-08T00:00:00+03:00';
-const modifiedDate = '2026-09-22T00:00:00+03:00';
+const canonicalPath = `/${article.hrefPath}`;
+const publishedDate = article.publishedAt;
+const modifiedDate = article.updatedAt;
 const authorName = companyInfo.editorial.defaultAuthor;
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const cleanerHref = `${base}${cleanerProductPath.slice(1)}`;
@@ -31,7 +31,7 @@ const siteRoot = new URL(base, import.meta.env.SITE);
 const homeUrl = siteRoot.toString();
 const blogUrl = new URL('blog/', siteRoot).toString();
 const articleUrl = new URL('bi-analitika-chto-eto-prostymi-slovami/', siteRoot).toString();
-const productUrl = `${base}bi-analitika/`;
+const productUrl = `${base}${article.relatedProduct!.slice(1)}`;
 const imageAlt =
   'Схема, в которой данные CRM, склада, заказов и рекламы объединяются в модель данных и поступают на BI-дашборд';
 const ogImage = new URL(biFlowImage.src, siteRoot).toString();
@@ -119,11 +119,8 @@ const implementationSteps = [
   },
 ];
 
-const relatedArticles = biRelatedArticles.map((article) => ({
-  ...article,
-  href: `${base}${article.hrefPath}`,
-}));
-
+const relatedArticles = getRelatedArticles(article.hrefPath)
+  .map((item) => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
 const faqItems = [
   {
     question: 'Что такое BI простыми словами?',
@@ -163,6 +160,7 @@ const faqItems = [
 ];
 
 const structuredData = createArticleStructuredData({
+  articleType: article.type === 'knowledge' ? 'Article' : 'BlogPosting',
   title,
   description,
   articleUrl,
@@ -512,10 +510,8 @@ const structuredData = createArticleStructuredData({
   <FaqSection items={faqItems} id="faq" variant="article" />
 
   <ArticleSources
-    publishedIso="2026-09-08"
-    publishedLabel="8 сентября 2026"
-    modifiedIso="2026-09-22"
-    modifiedLabel="22 сентября 2026"
+    publishedIso={article.publishedAt}
+    modifiedIso={article.updatedAt}
     sources={sourceLinks}
   />
 

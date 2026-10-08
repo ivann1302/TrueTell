@@ -67,7 +67,7 @@ const structuredData = {
 };
 ---
 
-<BaseLayout {title} {description} {canonicalPath} {structuredData}
+<BaseLayout contentType="commercial" contentCategory="МойСклад" relatedProduct={productPath} {title} {description} {canonicalPath} {structuredData}
   ogImage={ogImage && new URL(ogImage.src, siteRoot).href} {ogImageAlt}>
   <AppHeader />
   <main class:list={['site-content', editorialStyles.page, styles.page, heroStyles.productPage, closingStyles.flushFooter]}>

@@ -17,6 +17,8 @@ interface Props {
   intro: string;
   breadcrumbs: Breadcrumb[];
   quickAnswerLabel?: string;
+  variant?: 'default' | 'dark';
+  action?: { href: string; label: string; description: string };
 }
 
 const {
@@ -25,10 +27,13 @@ const {
   intro,
   breadcrumbs,
   quickAnswerLabel = 'Быстрый ответ',
+  variant = 'default',
+  action,
 } = Astro.props;
 ---
 
-<header class={styles.hero}>
+<header class:list={[styles.hero, variant === 'dark' && styles.darkHero]}>
+  <slot name="background" />
   <div class={styles.container}>
     <nav class={styles.breadcrumbs} aria-label="Хлебные крошки">
       <ol>
@@ -48,6 +53,12 @@ const {
             part.accent ? <span class={styles.headingAccent}>{part.text}</span> : part.text,
           )}
         </h1>
+        {action && (
+          <div class={styles.action}>
+            <p>{action.description}</p>
+            <a href={action.href}>{action.label}</a>
+          </div>
+        )}
       </div>
 
       <p class={styles.intro}>{intro}</p>

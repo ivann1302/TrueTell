@@ -18,7 +18,7 @@ Build the page with `src/components/editorial/article-layout.astro`. Keep this o
 3. An opening lead that explains the problem in plain language.
 4. Optional contextual note for one important distinction; do not stack multiple notice cards.
 5. Main sections written primarily as connected prose. Use one H2 per search-intent subtopic and H3 only for genuine subsections.
-6. One mandatory, relevant image through `article-figure.astro`, normally in the first third or middle of the article where it advances the explanation.
+6. At least two distinct, relevant images through `article-figure.astro`: the first in the early body, the second in a different relevant section. Place each where it advances the explanation; do not stack both together just to meet the count.
 7. Optional `data-table.astro` for comparisons/mappings and `checklist.astro` only for a true process or verification sequence.
 8. One `inline-consultation.astro` at a natural point where the reader may need help.
 9. FAQ through `src/sections/faq-section/faq-section.astro` with `variant="article"`. Pass the same FAQ data into `FAQPage` structured data.
@@ -73,13 +73,13 @@ Use the “Компактный ритм статьи” contract in `DESIGN_SYS
 
 ## Image requirement
 
-Every published article requires at least one meaningful raster image.
+Every published article requires at least two distinct, meaningful raster images in its body. A repeated asset, logo, or decorative background does not count. Do not generate fictitious product screenshots.
 
-- Prefer a diagram, process illustration, or editorial visual that explains the subject rather than a generic stock-like banner.
-- When generating an image, use the `imagegen` skill and base the prompt on the TrueTell visual system: dark navy field, restrained light-blue illumination, fine dot/grid texture, clean technical composition, no decorative dashboard clichés, and no embedded text unless essential.
+- Prioritize useful reader-facing infographics: a sequence, decision tree, comparison, or relationship that explains the adjacent text. Use accurate labels and arrows; a set of decorative icons is not enough.
+- All images created or generated for the project must have a genuinely transparent background. Use the `imagegen` skill with `transparent_background: true` for raster generation or editing. Do not bake in a navy/white surface, dots, gradients, shadows behind the composition, or a checkerboard. Use existing blue accents and dark text for the light article body. Add concise labels when they make the infographic useful; never invent data or product screenshots.
 - Store article images in `src/images/articles/` with a stable descriptive filename.
 - Render the image with `article-figure.astro`; provide a specific Russian `alt` and an optional caption that adds context rather than repeating the alt.
-- Check crop and legibility at desktop and mobile widths. Keep the source large enough for responsive output while relying on Astro for optimized formats.
+- Verify actual alpha in the saved source and optimized output. Check every label for accuracy and legibility at about 358 px body width. Check crop and legibility at desktop and mobile widths. Keep the source large enough for responsive output while relying on Astro for optimized formats.
 
 ## Metadata and structured data
 
@@ -88,7 +88,7 @@ Each article provides:
 - unique title and description;
 - canonical root-level path;
 - article Open Graph title and description;
-- the mandatory article image as an absolute Open Graph and Twitter image with matching descriptive alt text;
+- the primary article image as an absolute Open Graph and Twitter image with matching descriptive alt text;
 - `BlogPosting` with headline, description, URL, dates, language, author, and publisher;
 - `BreadcrumbList` matching the visible breadcrumbs;
 - `FAQPage` only when the visible FAQ exists and using the same question/answer strings.
@@ -103,11 +103,11 @@ Use authoritative source links where the topic depends on external product behav
 - Root-level URL and canonical agree; «Блог» remains in breadcrumbs.
 - H1 and metadata match the article intent without stuffing keywords.
 - Prose has clear transitions and does not overuse lists, cards, or checklists.
-- Mandatory image exists, is relevant, has alt text, and is responsive.
+- At least two distinct images exist in different relevant body sections, explain their adjacent text, have useful alt text, and are responsive. Newly created images have real alpha transparency, useful information, and readable mobile labels; optimization preserves alpha.
 - FAQ content and structured data match exactly.
 - Product and consultation CTAs are contextual and working.
 - Published card appears in the blog registry; related cards have stable root-level links.
 - Sitemap includes only real public pages.
 - Spacing follows the shared compact rhythm; adjacent-element checks from the spacing section pass at mobile, tablet and desktop widths.
 - Production build succeeds.
-- Desktop and mobile visual review covers the hero, image, table, FAQ, CTAs, related carousel, and overflow/focus behavior.
+- Desktop and mobile visual review covers the hero, both images, table, FAQ, CTAs, related carousel, and overflow/focus behavior.

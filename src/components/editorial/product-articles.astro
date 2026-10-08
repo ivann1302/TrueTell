@@ -1,0 +1,14 @@
+---
+import { getProductArticles } from '../../config/articles';
+import RelatedArticles from './related-articles.astro';
+
+interface Props { productPath: string; }
+const { productPath } = Astro.props;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const items = getProductArticles(productPath).map(article => ({
+  ...article,
+  description: article.summaryDescription ?? article.description,
+  href: `${base}${article.hrefPath}`,
+}));
+---
+{items.length > 0 && <RelatedArticles {items} title="Инструкции и полезные материалы" />}

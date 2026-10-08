@@ -1,4 +1,5 @@
 import { companyInfo } from '../../config/company';
+import logo from '../../images/logo/logo.png';
 
 export const DEFAULT_ARTICLE_AUTHOR = companyInfo.editorial.defaultAuthor;
 
@@ -24,7 +25,7 @@ interface ArticleStructuredDataOptions {
   title: string;
   description: string;
   articleUrl: string;
-  publishedDate: string;
+  publishedDate?: string;
   modifiedDate?: string;
   publisherUrl: string;
   breadcrumbs: ArticleBreadcrumbItem[];
@@ -57,8 +58,8 @@ export function createArticleStructuredData({
       description,
       url: articleUrl,
       mainEntityOfPage: articleUrl,
-      datePublished: publishedDate,
-      dateModified: modifiedDate,
+      ...(publishedDate ? { datePublished: publishedDate } : {}),
+      ...(modifiedDate ? { dateModified: modifiedDate } : {}),
       inLanguage: 'ru-RU',
       ...(image ? { image } : {}),
       ...(articleSection ? { articleSection } : {}),
@@ -70,6 +71,12 @@ export function createArticleStructuredData({
         '@type': 'Organization',
         name: companyInfo.brandName,
         url: publisherUrl,
+        logo: {
+          '@type': 'ImageObject',
+          url: new URL(logo.src, publisherUrl).toString(),
+          width: logo.width,
+          height: logo.height,
+        },
       },
     },
     {

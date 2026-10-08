@@ -6,21 +6,23 @@ import ArticleSources from '../../components/editorial/article-sources.astro';
 import DataTable from '../../components/editorial/data-table.astro';
 import InlineConsultation from '../../components/editorial/inline-consultation.astro';
 import RelatedArticles from '../../components/editorial/related-articles.astro';
-import { allArticles } from '../../config/articles';
+import { getArticle, getRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
-import { cleanerProduct, cleanerProductPath } from '../../config/products';
+import { cleanerProduct } from '../../config/products';
 import leadCleanupImage from '../../images/articles/bitrix24-lead-cleanup.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
 import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
 
-const title = "Как удалить старые лиды в Битрикс24 за выбранный период";
-const description = "Как удалить старые лиды в Битрикс24 по дате создания: настроить период и стадии, проверить выборку, выполнить массовое удаление и разобраться с корзиной CRM.";
-const canonicalPath = '/bitrix24-udalenie-lidov-za-period/';
-const publishedDate = '2026-09-22T00:00:00+03:00';
+const article = getArticle('bitrix24-udalenie-lidov-za-period/');
+const title = article.title;
+const description = article.description;
+const canonicalPath = `/${article.hrefPath}`;
+const publishedDate = article.publishedAt;
+const modifiedDate = article.updatedAt;
 const authorName = companyInfo.editorial.defaultAuthor;
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
-const cleanerHref = `${base}${cleanerProductPath.slice(1)}`;
+const cleanerHref = `${base}${article.relatedProduct!.slice(1)}`;
 const siteRoot = new URL(base, import.meta.env.SITE);
 const homeUrl = siteRoot.toString();
 const knowledgeBaseUrl = new URL('knowledge-base/', siteRoot).toString();
@@ -112,10 +114,8 @@ const faqItems = [
     "answer": "Отбор по дате отвечает на вопрос, когда создали записи. Он не устанавливает, относятся ли две карточки к одному обращению. Если проблема в дублях, сначала выясните, какая информация хранится в каждой карточке: удаление более старой записи может убрать полезные сведения."
   }
 ];
-const relatedArticles = allArticles
-  .filter((article) => article.hrefPath && article.hrefPath !== canonicalPath.slice(1))
-  .slice(0, 3)
-  .map((article) => ({ ...article, href: `${base}${article.hrefPath}` }));
+const relatedArticles = getRelatedArticles(article.hrefPath)
+  .map((item) => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
 const howTos = [
   {
     "id": "howto-delete-leads",
@@ -151,12 +151,13 @@ const howTos = [
 ];
 
 const structuredData = createArticleStructuredData({
-  articleType: 'Article',
+  articleType: article.type === 'knowledge' ? 'Article' : 'BlogPosting',
   howTos,
   title,
   description,
   articleUrl,
   publishedDate,
+  modifiedDate,
   publisherUrl: homeUrl,
   author: authorName,
   image: ogImage,
@@ -185,7 +186,7 @@ const structuredData = createArticleStructuredData({
   {breadcrumbs}
   author={authorName}
   publishedTime={publishedDate}
-  modifiedTime={publishedDate}
+  modifiedTime={modifiedDate}
 >
   <Fragment slot="quick-answer">
     <p>Откройте список лидов, задайте фильтр по <strong>дате создания и текущей стадии</strong>. Проверьте найденные карточки, отметьте нужные записи и выберите групповое действие «Удалить».</p>
@@ -262,7 +263,7 @@ const structuredData = createArticleStructuredData({
   </section>
 
   <FaqSection items={faqItems} id="faq" variant="article" />
-  <ArticleSources publishedIso="2026-09-22" publishedLabel="22 сентября 2026" sources={sourceLinks} />
+  <ArticleSources publishedIso={article.publishedAt} sources={sourceLinks} />
 
   <Fragment slot="article-end">
     <ArticleProductCta

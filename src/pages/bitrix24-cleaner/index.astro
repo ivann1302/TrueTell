@@ -1,4 +1,5 @@
 ---
+import ProductArticles from '../../components/editorial/product-articles.astro';
 import LineWave from '../../components/ui/line-wave.astro';
 import closingStyles from '../../styles/product-closing.module.scss';
 import ActionIcon from '../../components/product-scenario/action-icon.astro';
@@ -109,7 +110,7 @@ const structuredData = {
 };
 ---
 
-<BaseLayout {title} {description} {structuredData} canonicalPath={cleanerProductPath}
+<BaseLayout contentType="commercial" contentCategory="Битрикс24" {title} {description} {structuredData} canonicalPath={cleanerProductPath}
   {ogTitle} {ogDescription} ogImage={new URL(confirmation.src, siteRoot).href} ogImageAlt={screenshots[1].alt}>
   <AppHeader />
   <main class:list={['site-content', styles.page, heroStyles.productPage, closingStyles.flushFooter]}>
@@ -172,6 +173,8 @@ const structuredData = {
         <ol>{steps.map(({ icon, title, text }) => <li><ActionIcon name={icon} /><h3>{title}</h3><p>{text}</p></li>)}</ol>
         <p class={layout.workflowNote}>После подтверждения — <strong>5 секунд на отмену</strong>. Затем держите вкладку открытой до завершения. <strong>Общего отката нет.</strong></p>
       </section>
+
+      <ProductArticles productPath={cleanerProductPath} />
 
       <div class={styles.faq}>
         <FaqSection items={faqItems} title="Что нужно знать перед началом" id="cleaner-faq" variant="article" />

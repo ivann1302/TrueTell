@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
+import seoIntegration from './scripts/seo-integration.mjs';
 
 const isGitHubPages = process.env.GITHUB_PAGES === 'true';
 
@@ -30,5 +31,5 @@ export default defineConfig({
       strictPort: true,
     },
   },
-  integrations: [react()],
+  integrations: [react(), seoIntegration()],
 });

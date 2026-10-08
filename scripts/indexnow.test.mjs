@@ -53,13 +53,14 @@ test('requires an explicit allow policy for supported AI crawlers', () => {
   );
 });
 
-test('rejects synthetic sitemap freshness dates', () => {
+test('accepts recorded sitemap modification dates and rejects malformed dates', () => {
   assert.equal(typeof deployment.validateSitemapXml, 'function');
   const valid = xml(['https://truetell-retail.ru/']);
 
   assert.deepEqual(deployment.validateSitemapXml(valid, 'https://truetell-retail.ru'), ['https://truetell-retail.ru/']);
+  assert.doesNotThrow(() => deployment.validateSitemapXml(valid.replace('</url>', '<lastmod>2026-09-15</lastmod></url>'), 'https://truetell-retail.ru'));
   assert.throws(
-    () => deployment.validateSitemapXml(valid.replace('</url>', '<lastmod>2026-09-15</lastmod></url>'), 'https://truetell-retail.ru'),
+    () => deployment.validateSitemapXml(valid.replace('</url>', '<lastmod>yesterday</lastmod></url>'), 'https://truetell-retail.ru'),
     /lastmod/i,
   );
 });

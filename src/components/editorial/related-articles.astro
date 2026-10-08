@@ -17,14 +17,14 @@ interface Props {
 const { items, title = 'Материалы по теме' } = Astro.props;
 ---
 
-<section class={styles.section} aria-labelledby="related-articles-title" data-article-carousel>
+{items.length > 0 && <section class={styles.section} aria-labelledby="related-articles-title" data-article-carousel={items.length > 1 || undefined}>
   <div class={styles.container}>
     <header class={styles.header}>
       <h2 id="related-articles-title">{title}</h2>
-      <CarouselControls trackId="related-articles-track" />
+      {items.length > 1 && <CarouselControls trackId="related-articles-track" />}
     </header>
 
-    <div id="related-articles-track" class={styles.track} data-carousel-track role="region" tabindex="0" aria-label="Связанные материалы">
+    <div id="related-articles-track" class={styles.track} data-carousel-track={items.length > 1 || undefined} role={items.length > 1 ? "region" : undefined} tabindex={items.length > 1 ? 0 : undefined} aria-label={items.length > 1 ? "Связанные материалы" : undefined}>
       {items.map((item) => (
         <article class={styles.slide}>
           <a href={item.href}>
@@ -37,4 +37,4 @@ const { items, title = 'Материалы по теме' } = Astro.props;
       ))}
     </div>
   </div>
-</section>
+</section>}

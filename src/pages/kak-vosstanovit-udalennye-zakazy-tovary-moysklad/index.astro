@@ -7,7 +7,7 @@ import Checklist from '../../components/editorial/checklist.astro';
 import DataTable from '../../components/editorial/data-table.astro';
 import InlineConsultation from '../../components/editorial/inline-consultation.astro';
 import RelatedArticles from '../../components/editorial/related-articles.astro';
-import { backupRelatedArticles } from '../../config/articles';
+import { getArticle, getRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
 import { cleanerProduct, cleanerProductPath } from '../../config/products';
 import backupRecoveryImage from '../../images/articles/moysklad-backup-recovery.png';
@@ -15,15 +15,15 @@ import ConsultationCtaSection from '../../sections/consultation-cta-section/cons
 import FaqSection from '../../sections/faq-section/faq-section.astro';
 import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
 
-const title = 'Как восстановить удаленные заказы и товары в МоемСкладе';
-const description =
-  'Как восстановить заказ или товар в МоемСкладе, где найти архив товаров, сколько хранятся удаленные документы и когда данные уже не вернуть.';
+const article = getArticle('kak-vosstanovit-udalennye-zakazy-tovary-moysklad/');
+const title = article.title;
+const description = article.description;
 const ogTitle = 'Как восстановить удаленные данные в МоемСкладе';
 const ogDescription =
   'Чем архив отличается от удаления, как вернуть заказ из Корзины и почему Excel-выгрузка не заменяет полноценный backup.';
-const canonicalPath = '/kak-vosstanovit-udalennye-zakazy-tovary-moysklad/';
-const publishedDate = '2026-09-08T00:00:00+03:00';
-const modifiedDate = '2026-09-22T00:00:00+03:00';
+const canonicalPath = `/${article.hrefPath}`;
+const publishedDate = article.publishedAt;
+const modifiedDate = article.updatedAt;
 const authorName = companyInfo.editorial.defaultAuthor;
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const cleanerHref = `${base}${cleanerProductPath.slice(1)}`;
@@ -31,7 +31,7 @@ const siteRoot = new URL(base, import.meta.env.SITE);
 const homeUrl = siteRoot.toString();
 const knowledgeBaseUrl = new URL('knowledge-base/', siteRoot).toString();
 const articleUrl = new URL('kak-vosstanovit-udalennye-zakazy-tovary-moysklad/', siteRoot).toString();
-const productUrl = `${base}backup-moysklad/`;
+const productUrl = `${base}${article.relatedProduct!.slice(1)}`;
 const imageAlt =
   'Схема резервного копирования заказов и товаров МоегоСклада с историей версий и двумя сценариями восстановления';
 const ogImage = new URL(backupRecoveryImage.src, siteRoot).toString();
@@ -118,11 +118,8 @@ const firstActions = [
   },
 ];
 
-const relatedArticles = backupRelatedArticles.map((article) => ({
-  ...article,
-  href: `${base}${article.hrefPath}`,
-}));
-
+const relatedArticles = getRelatedArticles(article.hrefPath)
+  .map((item) => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
 const faqItems = [
   {
     question: 'Где находится архив товаров в МоемСкладе?',
@@ -203,7 +200,7 @@ const howTos = [
 ];
 
 const structuredData = createArticleStructuredData({
-  articleType: 'Article',
+  articleType: article.type === 'knowledge' ? 'Article' : 'BlogPosting',
   howTos,
   title,
   description,
@@ -547,10 +544,8 @@ const structuredData = createArticleStructuredData({
   <FaqSection items={faqItems} id="faq" variant="article" />
 
   <ArticleSources
-    publishedIso="2026-09-08"
-    publishedLabel="8 сентября 2026"
-    modifiedIso="2026-09-22"
-    modifiedLabel="22 сентября 2026"
+    publishedIso={article.publishedAt}
+    modifiedIso={article.updatedAt}
     sources={sourceLinks}
   />
 

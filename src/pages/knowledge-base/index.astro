@@ -2,79 +2,28 @@
 import AppHeader from '../../components/header/header.astro';
 import SiteFooter from '../../components/footer/site-footer.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { knowledgeBaseArticles } from '../../config/articles';
+import { groupKnowledgeArticles } from '../../config/articles';
 import bitrix24Icon from '../../images/logo/bitrix24-app-icon.svg';
 import moyskladIcon from '../../images/logo/moysklad-app-icon.svg';
 import styles from './knowledge-base.module.scss';
 
-const article = (path: string) => {
-  const item = knowledgeBaseArticles.find(({ hrefPath }) => hrefPath === path);
-  if (!item) throw new Error(`Knowledge base article not found: ${path}`);
-  return { href: `/${path}`, title: item.title };
-};
-
-const sections = [
-  {
-    id: 'bitrix24',
-    title: 'Битрикс24',
-    icon: bitrix24Icon,
-    topics: [
-      {
-        title: 'Лиды',
-        items: [
-          article('udalennye-lidy-bitrix24/'),
-          article('ne-udalyaetsya-lid-bitrix24/'),
-          article('bitrix24-udalenie-lidov-za-period/'),
-        ],
-      },
-      {
-        title: 'Сделки',
-        items: [article('udalenie-proigrannyh-sdelok-bitrix24/')],
-      },
-    ],
-  },
-  {
-    id: 'moysklad',
-    title: 'МойСклад',
-    icon: moyskladIcon,
-    topics: [
-      {
-        title: 'Товары и цены',
-        items: [
-          { href: '/moysklad-izmenenie-cen/', title: 'Массовое изменение цен' },
-          { href: '/moysklad-izmenenie-tovarov/', title: 'Массовое изменение товаров', draft: true },
-          { href: '/moysklad-arhivirovanie/', title: 'Архивирование товаров', draft: true },
-        ],
-      },
-      {
-        title: 'Импорт и документы',
-        items: [
-          { href: '/moysklad-import/', title: 'Импорт товаров' },
-          { href: '/moysklad-izmenenie-dokumentov/', title: 'Массовое изменение документов', draft: true },
-        ],
-      },
-      {
-        title: 'Удаление и восстановление',
-        items: [
-          { href: '/moysklad-udalenie/', title: 'Массовое удаление товаров', draft: true },
-          article('kak-vosstanovit-udalennye-zakazy-tovary-moysklad/'),
-        ],
-      },
-    ],
-  },
-];
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const sections = groupKnowledgeArticles().map(section => ({
+  ...section,
+  icon: section.title === 'Битрикс24' ? bitrix24Icon : section.title === 'МойСклад' ? moyskladIcon : undefined,
+}));
 
 const title = 'База знаний TrueTell — инструкции по Битрикс24 и МоемуСкладу';
 const description = 'Практические инструкции по Битрикс24 и МоемуСкладу: лиды, сделки, товары, импорт, удаление и восстановление данных.';
 ---
 
-<BaseLayout {title} {description} canonicalPath="/knowledge-base/">
+<BaseLayout contentCategory="База знаний" {title} {description} canonicalPath="/knowledge-base/">
   <AppHeader />
   <main class={styles.page}>
     <header class={styles.intro}>
       <div class={styles.container}>
         <h1>База знаний</h1>
-        <p>Практические инструкции по Битрикс24 и МоемуСкладу — по системам и темам.</p>
+        <p>Инструкции по Битрикс24, МоемуСкладу и приложениям: как выполнить операцию, найти причину ошибки и проверить результат.</p>
         <nav class={styles.categoryNav} aria-label="Разделы базы знаний">
           {sections.map((section) => (
             <a href={`#${section.id}`}>
@@ -105,10 +54,10 @@ const description = 'Практические инструкции по Битр
                   <ul class={styles.links}>
                     {topic.items.map((item) => (
                       <li>
-                        <a href={item.href}>
+                        <a href={`${base}${item.hrefPath}`}>
                           <span class={styles.itemCopy}>
                             <span class={styles.itemTitle}>{item.title}</span>
-                            {'draft' in item && item.draft && <span class={styles.itemStatus}>Скриншоты готовятся</span>}
+                            <span class={styles.itemDescription}>{item.summaryDescription ?? item.description}</span>
                           </span>
                           <span class={styles.arrow} aria-hidden="true">→</span>
                         </a>

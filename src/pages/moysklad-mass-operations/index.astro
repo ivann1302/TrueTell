@@ -1,4 +1,5 @@
 ---
+import ProductArticles from '../../components/editorial/product-articles.astro';
 import closingStyles from '../../styles/product-closing.module.scss';
 import ProductScenario from '../../components/product-scenario/product-scenario.astro';
 import ProductSummary from '../../components/product-summary/product-summary.astro';
@@ -86,7 +87,7 @@ const structuredData = {
 };
 ---
 
-<BaseLayout {title} {description} {ogTitle} {ogDescription} {structuredData} canonicalPath={productPath} ogImage={new URL(pricePlan.src, siteRoot).href} ogImageAlt="План изменения цен в МойСклад: исходные и рассчитанные значения">
+<BaseLayout contentType="commercial" contentCategory="МойСклад" {title} {description} {ogTitle} {ogDescription} {structuredData} canonicalPath={productPath} ogImage={new URL(pricePlan.src, siteRoot).href} ogImageAlt="План изменения цен в МойСклад: исходные и рассчитанные значения">
   <AppHeader />
   <main class:list={['site-content', styles.page, heroStyles.productPage, closingStyles.flushFooter]}>
     <div class={styles.container}>
@@ -212,6 +213,8 @@ const structuredData = {
           </li>
         ))}</ol>
       </section>
+
+      <ProductArticles productPath={productPath} />
 
       <div class={styles.faq}>
         <FaqSection items={faqItems} title="Что нужно знать перед началом" id="moysklad-operations-faq" variant="article" />

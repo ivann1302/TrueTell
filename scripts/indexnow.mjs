@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { JSDOM } from 'jsdom';
 import { validateRouteTree } from './route-seo.mjs';
+import { validateContentDate } from './seo-build.mjs';
 
 export function sitemapUrls(xml, site) {
   const document = new JSDOM(xml, { contentType: 'text/xml' }).window.document;
@@ -54,7 +55,7 @@ export function validateRobots(robots, site) {
 
 export function validateSitemapXml(xml, site) {
   const document = new JSDOM(xml, { contentType: 'text/xml' }).window.document;
-  if (document.querySelector('lastmod')) throw new Error('Sitemap lastmod must be omitted until content dates are tracked');
+  for (const date of document.querySelectorAll('lastmod')) validateContentDate(date.textContent, 'sitemap lastmod');
   const entries = [...document.querySelectorAll('url > loc')].map((el) => el.textContent.trim());
   if (new Set(entries).size !== entries.length) throw new Error('Duplicate sitemap URLs');
   return sitemapUrls(xml, site);

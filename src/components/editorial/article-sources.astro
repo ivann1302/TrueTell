@@ -7,23 +7,24 @@ interface SourceLink {
 }
 
 interface Props {
-  publishedIso: string;
-  publishedLabel: string;
+  publishedIso?: string;
+  publishedLabel?: string;
   sources: SourceLink[];
   modifiedIso?: string;
   modifiedLabel?: string;
 }
 
 const { publishedIso, publishedLabel, sources, modifiedIso, modifiedLabel } = Astro.props;
+const dateLabel = (iso: string) => new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Moscow' }).format(new Date(iso)).replace(/ г\.$/, '');
 ---
 
 <footer class={styles.sources}>
-  <p class={styles.publishedDate}>
-    Опубликовано <time datetime={publishedIso}>{publishedLabel}</time>
-    {modifiedIso && modifiedLabel && (
-      <Fragment> · Обновлено <time datetime={modifiedIso}>{modifiedLabel}</time></Fragment>
+  {publishedIso && <p class={styles.publishedDate}>
+    Опубликовано <time datetime={publishedIso}>{publishedLabel ?? dateLabel(publishedIso)}</time>
+    {modifiedIso && (
+      <Fragment> · Обновлено <time datetime={modifiedIso}>{modifiedLabel ?? dateLabel(modifiedIso)}</time></Fragment>
     )}
-  </p>
+  </p>}
   <p>Официальные материалы</p>
   <ul>
     {sources.map((source) => (

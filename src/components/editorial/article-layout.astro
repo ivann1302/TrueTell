@@ -5,6 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleContent from './article-content.astro';
 import ArticleHero from './article-hero.astro';
 import styles from './article-layout.module.scss';
+import { getArticle } from '../../config/articles';
 
 interface Breadcrumb {
   label: string;
@@ -33,6 +34,8 @@ interface Props {
   publishedTime?: string;
   modifiedTime?: string;
   quickAnswerLabel?: string;
+  heroVariant?: 'default' | 'dark';
+  heroAction?: { href: string; label: string; description: string };
 }
 
 const {
@@ -49,16 +52,23 @@ const {
   ogImage,
   ogImageAlt,
   author,
-  publishedTime,
-  modifiedTime,
   quickAnswerLabel = 'Быстрый ответ',
+  heroVariant = 'default',
+  heroAction,
 } = Astro.props;
+const metadata = getArticle(canonicalPath);
+const robots = metadata.status === 'draft' || !metadata.indexable ? 'noindex, nofollow' : 'index, follow';
 ---
 
 <BaseLayout
-  {title}
+  title={metadata.seoTitle ?? title}
   {description}
-  {canonicalPath}
+  canonicalPath={metadata.canonical ?? canonicalPath}
+  {robots}
+  contentType={metadata.type}
+  contentCategory={`${metadata.category} / ${metadata.topic}`}
+  contentStatus={metadata.status}
+  relatedProduct={metadata.relatedProduct}
   {structuredData}
   ogType="article"
   {ogTitle}
@@ -66,14 +76,15 @@ const {
   {ogImage}
   {ogImageAlt}
   {author}
-  {publishedTime}
-  {modifiedTime}
+  publishedTime={metadata.publishedAt}
+  modifiedTime={metadata.updatedAt}
 >
   <AppHeader />
 
   <main class="site-content">
     <article class={styles.page}>
-      <ArticleHero {titleParts} {category} {intro} {breadcrumbs} {quickAnswerLabel}>
+      <ArticleHero {titleParts} {category} {intro} {breadcrumbs} {quickAnswerLabel} variant={heroVariant} action={heroAction}>
+        <Fragment slot="background"><slot name="hero-background" /></Fragment>
         <slot name="quick-answer" />
       </ArticleHero>
 

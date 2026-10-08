@@ -7,7 +7,7 @@ interface Props { title: string; description: string; path: string; }
 const { title, description, path } = Astro.props;
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 ---
-<BaseLayout title={`${title} — TrueTell`} {description} canonicalPath={path}>
+<BaseLayout contentType="legal" contentCategory="Правовые документы" title={`${title} — TrueTell`} {description} canonicalPath={path}>
   <div class={styles.header}><Header showPricing={false} /></div>
   <main class={styles.document}>
     <a href={base}>Главная</a>

@@ -1,17 +1,18 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { join, relative, sep } from 'node:path';
 import { JSDOM } from 'jsdom';
+import { hasNoindex } from './page-indexing.mjs';
 
 export function validateRouteHtml(html, url, sitemapUrls) {
   const document = new JSDOM(html).window.document;
   const canonical = [...document.querySelectorAll('link[rel="canonical"]')];
-  const noindex = /\bnoindex\b/i.test(document.querySelector('meta[name="robots"]')?.content ?? '');
+  const noindex = hasNoindex(document) || document.querySelector('meta[name="truetell:status"]')?.content === 'draft';
   const listed = sitemapUrls.includes(url);
   const refresh = document.querySelector('meta[http-equiv="refresh" i]');
   if (canonical.length !== 1) throw new Error(`Expected one canonical: ${url}`);
   const target = new URL(canonical[0].href);
   const contentPath = /^\/(?:[^/]+\/)?$/.test(target.pathname);
-  if (target.origin !== new URL(url).origin || target.search || target.hash || !contentPath) {
+  if (target.protocol !== 'https:' || target.search || target.hash || !contentPath) {
     throw new Error(`Invalid canonical or nested URL: ${url}`);
   }
   if (refresh) {
@@ -21,8 +22,10 @@ export function validateRouteHtml(html, url, sitemapUrls) {
     }
     return { redirect: target.href };
   }
-  if (target.href !== url) throw new Error(`Canonical mismatch: ${url}`);
-  if (noindex) throw new Error(`Non-redirect page must not be noindex: ${url}`);
+  if (target.href !== url) {
+    if (listed) throw new Error(`Canonical mismatch: ${url}`);
+    return { alias: target.href, document };
+  }
   if (listed === noindex) throw new Error(`Sitemap/indexability mismatch: ${url}`);
   return { document };
 }
@@ -48,7 +51,13 @@ export async function validateRouteTree(directory, site, urls) {
     if (result.redirect) {
       if (!pages.has(result.redirect)) throw new Error(`Missing redirect target: ${url}`);
       redirects.add(url);
-    } else documents.push([url, result.document]);
+    } else {
+      if (result.alias) {
+        if (new URL(result.alias).origin === new URL(site).origin && !pages.has(result.alias)) throw new Error(`Missing canonical target: ${url}`);
+        redirects.add(url);
+      }
+      documents.push([url, result.document]);
+    }
   }
   for (const [url, document] of documents) {
     for (const link of document.querySelectorAll('a[href]')) {
