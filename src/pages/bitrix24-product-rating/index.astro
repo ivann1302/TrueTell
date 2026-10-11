@@ -5,6 +5,7 @@ import SiteFooter from '../../components/footer/site-footer.astro';
 import ProductSummary from '../../components/product-summary/product-summary.astro';
 import ProductScenario from '../../components/product-scenario/product-scenario.astro';
 import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ProductArticles from '../../components/editorial/product-articles.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
 import LineWave from '../../components/ui/line-wave.astro';
 import ActionIcon from '../../components/product-scenario/action-icon.astro';
@@ -115,6 +116,7 @@ const structuredData = {
         <FaqSection items={faqItems} title="Вопросы о приложении" id="product-rating-faq" variant="article" />
       </div>
     </div>
+    <ProductArticles productPath={productRatingPath} />
   </main>
   <div class={closingStyles.closingSurface}>
     <LineWave />

@@ -79,7 +79,8 @@ export const allArticles: CatalogArticle[] = [
     "status": "published",
     "indexable": true,
     "relatedProduct": "/bitrix24-cleaner/",
-    "publishedAt": "2026-09-22T00:00:00+03:00"
+    "publishedAt": "2026-09-22T00:00:00+03:00",
+    "updatedAt": "2026-10-09T00:00:00+03:00"
   },
   {
     "title": "Как снять все резервы в МоемСкладе и почему они зависают",
@@ -93,7 +94,7 @@ export const allArticles: CatalogArticle[] = [
     "indexable": true,
     "relatedProduct": "/upravlenie-rezervami-moysklad/",
     "publishedAt": "2026-09-08T00:00:00+03:00",
-    "updatedAt": "2026-09-22T00:00:00+03:00"
+    "updatedAt": "2026-10-10T00:00:00+03:00"
   },
   {
     "title": "BI-аналитика: что это простыми словами и зачем бизнесу",
@@ -103,12 +104,12 @@ export const allArticles: CatalogArticle[] = [
     "type": "blog",
     "category": "BI-аналитика",
     "topic": "Аналитика продаж",
-    "relatedArticles": ["kak-snyat-rezervy-moysklad/", "kak-vosstanovit-udalennye-zakazy-tovary-moysklad/"],
+    "relatedArticles": ["kak-snyat-rezervy-moysklad/", "kak-vosstanovit-udalennye-zakazy-tovary-moysklad/", "otchety-po-prodazham-bitrix24/"],
     "status": "published",
     "indexable": true,
     "relatedProduct": "/bi-analitika/",
     "publishedAt": "2026-09-08T00:00:00+03:00",
-    "updatedAt": "2026-09-22T00:00:00+03:00"
+    "updatedAt": "2026-10-09T00:00:00+03:00"
   },
   {
     "title": "Как восстановить удаленные заказы и товары в МоемСкладе",
@@ -123,6 +124,59 @@ export const allArticles: CatalogArticle[] = [
     "relatedProduct": "/backup-moysklad/",
     "publishedAt": "2026-09-08T00:00:00+03:00",
     "updatedAt": "2026-09-22T00:00:00+03:00"
+  },
+  {
+    "title": "Отчёты по продажам в Битрикс24: как проверить результаты отдела",
+    "seoTitle": "Отчёты по продажам в Битрикс24 — менеджеры, план и проверка",
+    "description": "Как проверить продажи в Битрикс24: выбрать отчёт по менеджерам, настроить период, сравнить план и факт, сверить сделки и разобраться в расхождениях цифр.",
+    "summaryDescription": "Штатные отчёты по менеджерам, выбор периода, план и факт: как проверить результаты отдела и объяснить расхождения в цифрах.",
+    "hrefPath": "otchety-po-prodazham-bitrix24/",
+    "type": "knowledge",
+    "category": "Битрикс24",
+    "topic": "Аналитика продаж",
+    "status": "published",
+    "indexable": true,
+    "relatedProduct": "/bitrix24-product-rating/",
+    "relatedArticles": [
+      "bi-analitika-chto-eto-prostymi-slovami/"
+    ],
+    "publishedAt": "2026-10-09T00:00:00+03:00"
+  },
+  {
+    "title": "Остатки в МойСклад: контроль запасов и поиск неликвида",
+    "seoTitle": "Остатки в МойСклад: как контролировать запас и найти неликвид",
+    "description": "Как посмотреть остатки в МойСклад, проверить резервы и ожидания, сопоставить запас с продажами и найти кандидатов в неликвид без ошибок в учёте.",
+    "summaryDescription": "Как проверить складские показатели, сопоставить запас с продажами и выбрать действие для залежавшихся товаров.",
+    "hrefPath": "ostatki-moysklad/",
+    "type": "knowledge",
+    "category": "МойСклад",
+    "topic": "Остатки и запасы",
+    "status": "published",
+    "indexable": true,
+    "relatedProduct": "/bi-analitika/",
+    "relatedArticles": [
+      "kak-snyat-rezervy-moysklad/",
+      "bi-analitika-chto-eto-prostymi-slovami/"
+    ],
+    "publishedAt": "2026-10-10T00:00:00+03:00"
+  },
+  {
+    "title": "Дашборд руководителя в Битрикс24: какие показатели и графики выбрать",
+    "seoTitle": "Дашборд руководителя в Битрикс24 — показатели и графики",
+    "description": "Какие показатели включить в дашборд руководителя в Битрикс24, как выбрать графики, проверить расчёты и определить, достаточно ли штатных отчётов.",
+    "summaryDescription": "Как выбрать показатели и графики для руководителя продаж, проверить расчёты и определить подходящий способ реализации дашборда.",
+    "hrefPath": "dashbord-rukovoditelya-bitrix24/",
+    "type": "blog",
+    "category": "Битрикс24",
+    "topic": "Аналитика продаж",
+    "status": "published",
+    "indexable": true,
+    "relatedProduct": "/bi-analitika/",
+    "relatedArticles": [
+      "otchety-po-prodazham-bitrix24/",
+      "bi-analitika-chto-eto-prostymi-slovami/"
+    ],
+    "publishedAt": "2026-10-10T00:00:00+03:00"
   }
 ];
 
