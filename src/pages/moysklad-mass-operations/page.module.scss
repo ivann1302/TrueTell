@@ -5,7 +5,6 @@
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   gap: 64px;
-  margin-top: 96px;
 
   h3 {
     margin: 0;
@@ -14,6 +13,8 @@
     line-height: 1.45;
   }
 }
+
+.cleanup { margin-top: var(--section-gap); }
 
 .copy {
   > p {
@@ -80,6 +81,7 @@
 
 .darkPanel {
   @include product-surface.dark-surface();
+  --surface-inset: 48px;
 
   .copy > p,
   li > p,
@@ -233,12 +235,16 @@
   .cleanup,
   .darkPanel {
     grid-template-columns: minmax(0, 1fr);
-    margin-top: 72px;
   }
 
   .darkPanel {
+    --surface-inset: 32px;
     padding: 32px 24px;
   }
+}
+
+.darkPanel {
+  @include product-surface.section-spacing(var(--section-gap), 0px, var(--surface-inset));
 }
 
 

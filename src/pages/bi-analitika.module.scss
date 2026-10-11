@@ -1,7 +1,7 @@
-$dark: #101621;
+$dark: var(--surface-dark);
 $dark-soft: #182131;
 $surface: #ffffff;
-$background: #f6f7f9;
+$background: var(--bg);
 $text: #10131a;
 $secondary: #616875;
 $muted: #9298a3;
@@ -155,7 +155,7 @@ $brand-hover: #1455c0;
 }
 
 .painSection {
-  background: #f0f2f5;
+  background: $background;
   padding: 128px 0;
 }
 
@@ -435,7 +435,7 @@ $brand-hover: #1455c0;
 }
 
 .pricingSection {
-  background: $surface;
+  background: $background;
   padding: 128px 0;
 }
 
@@ -553,7 +553,7 @@ $brand-hover: #1455c0;
 }
 
 .caseSection {
-  background: #f0f2f5;
+  background: $background;
   padding: 128px 0;
 }
 

@@ -2,7 +2,7 @@
 @use '../../components/ui/liquid-glass/liquid-glass' as liquid-glass;
 
 .section {
-  background: #101621;
+  background: var(--surface-dark);
   box-sizing: border-box;
   color: #f7f8fa;
   isolation: isolate;

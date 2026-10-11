@@ -3,7 +3,7 @@
 
 .hero {
   border-bottom: 1px solid var(--article-border);
-  padding: 136px 0 var(--article-space-shell);
+  padding: 136px 0 0;
 }
 
 .container {
@@ -57,6 +57,7 @@
   display: grid;
   gap: 64px;
   grid-template-columns: minmax(0, 8fr) minmax(280px, 4fr);
+  padding-bottom: 24px;
 }
 
 .heroMain h1 {
@@ -134,7 +135,7 @@
       rgba(23, 101, 218, 0.035) 48%,
       rgba(16, 22, 33, 0) 76%
     ),
-    #101621;
+    var(--surface-dark);
   border: 1px solid rgba(247, 248, 250, 0.1);
   border-radius: 14px;
   color: #f7f8fa;
@@ -142,9 +143,10 @@
   gap: 48px;
   grid-template-columns: minmax(100px, 2fr) minmax(0, 8fr);
   isolation: isolate;
-  margin-top: var(--article-space-shell);
+  margin-top: 0;
   overflow: clip;
   padding: 32px;
+  padding-block: calc(32px + var(--article-space-shell) - 24px) calc(32px + var(--article-space-shell));
   position: relative;
 
   &::before {
@@ -231,7 +233,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: 112px 0 var(--article-space-shell);
+    padding: 112px 0 0;
   }
 
   .container {
@@ -263,8 +265,9 @@
   .quickAnswer {
     gap: 16px;
     grid-template-columns: 1fr;
-    margin-top: var(--article-space-shell);
+    margin-top: 0;
     padding: 24px;
+    padding-block: calc(24px + var(--article-space-shell) - 24px) calc(24px + var(--article-space-shell));
   }
 
   .quickAnswerContent :global(p) {

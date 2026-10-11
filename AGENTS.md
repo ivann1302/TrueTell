@@ -14,6 +14,8 @@
 - Follow `DESIGN_SYSTEM.md` as the visual source of truth.
 - Center hero H1 headings on mobile screens (up to 768px) across all current and future pages. Preserve body-text and desktop alignment.
 - Large dark-blue sections with dot patterns use edge-to-edge backgrounds on mobile and desktop, with content kept in a readable container. Keep product/article/case cards in grids separate.
+- All light page backgrounds, full-width light sections, and the spaces between them use `var(--bg)` (`#F6F7F9`). White is reserved for cards, tables, forms, controls, and authentic image content. Use the shared tokens from `src/styles/site-surfaces.scss` instead of duplicating page background colors.
+- Vertical spacing belonging to a dark dotted section uses the same `var(--surface-dark)` (`#101621`) background. Put that spacing inside the section as padding, including its full-bleed background and dot layer; do not use external margins that expose a light parent. Use the shared full-bleed/product surface spacing mixins. Preserve the content rhythm on desktop and mobile.
 - Do not render visible breadcrumbs on product pages, including products in development. Apply this to future product pages too; articles keep their editorial breadcrumbs. Valid breadcrumb structured data may remain.
 - Never introduce a new visual language without updating `DESIGN_SYSTEM.md` in the same task.
 - Read all company identity, legal details, editorial author data, and contact links from `src/config/company.ts`. Never hardcode duplicate values in pages or components.

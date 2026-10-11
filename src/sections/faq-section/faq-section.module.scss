@@ -1,7 +1,7 @@
 @use '../../styles/breakpoints' as *;
 
 .section {
-  background: #f6f7f9;
+  background: var(--bg);
   box-sizing: border-box;
   color: #10131a;
   padding: 48px 0 128px;
@@ -38,7 +38,7 @@
   position: relative;
 
   &::before {
-    background: #101621;
+    background: var(--surface-dark);
     border-radius: 14px;
     content: '';
     inset: 0 -24px;

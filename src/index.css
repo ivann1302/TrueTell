@@ -1,4 +1,5 @@
 @import './fonts/font.scss';
+@import './styles/site-surfaces.scss';
 
 :root {
   /* Color Variables */
@@ -10,8 +11,8 @@
   --light-gray: #F0F0F0;
   --gray: #666666;
   --black: #242424;
-  --background-white: #FFFFFF;
-  --background-dark: #242424;
+  --background-white: var(--bg);
+  --background-dark: var(--surface-dark);
   --text-primary: #333333;
   --text-secondary: #666666;
   --shadow-blue: #646CFF;
@@ -24,9 +25,9 @@
   --gradient-blue-start: #E1F1FF;
   --gradient-blue-end: #C3E2FF;
 
-  color-scheme: light dark;
-  color: var(--white-transparent-medium);
-  background-color: var(--background-dark);
+  color-scheme: light;
+  color: #10131a;
+  background-color: var(--bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -40,7 +41,7 @@ html {
 }
 
 body {
-  background-color: var(--background-white);
+  background-color: var(--bg);
   margin: 0;
   min-width: 320px;
   min-height: 100vh;

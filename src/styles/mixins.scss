@@ -14,7 +14,7 @@
 // Миксин для секций
 @mixin section {
   width: 100%;
-  background: $white;
+  background: var(--bg);
   padding: $section-padding-top 0 0 0;
   display: flex;
   justify-content: center;

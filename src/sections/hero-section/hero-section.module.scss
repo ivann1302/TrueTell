@@ -11,7 +11,7 @@
       rgba(23, 101, 218, 0.04) 44%,
       rgba(16, 22, 33, 0) 74%
     ),
-    #101621;
+    var(--surface-dark);
   box-sizing: border-box;
   color: #f7f8fa;
   display: flex;
@@ -60,7 +60,7 @@
         rgba(23, 101, 218, 0.04) 44%,
         rgba(16, 22, 33, 0) 76%
       ),
-      #101621;
+      var(--surface-dark);
     min-height: 100vh;
     min-height: 100svh;
     padding: 144px 16px 88px;

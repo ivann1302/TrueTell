@@ -1,5 +1,5 @@
 .page {
-  background: #f6f7f9;
+  background: var(--bg);
   color: #10131a;
 }
 
@@ -12,7 +12,7 @@
   align-items: center;
   background:
     radial-gradient(ellipse 58% 64% at 4% 0%, rgba(75, 156, 255, 0.12), transparent 74%),
-    #101621;
+    var(--surface-dark);
   box-sizing: border-box;
   color: #f7f8fa;
   display: flex;
@@ -93,9 +93,7 @@
   padding: 112px 0;
   scroll-margin-top: 80px;
 
-  &:nth-child(even) {
-    background: #fff;
-  }
+  background: var(--bg);
 }
 
 .sectionHeading {
@@ -179,7 +177,7 @@
 }
 
 .section:nth-child(even) .links a {
-  background: #f6f7f9;
+  background: var(--bg);
 }
 
 .itemCopy {

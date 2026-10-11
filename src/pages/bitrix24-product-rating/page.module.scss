@@ -1,7 +1,7 @@
 @use '../../styles/product-surface';
 
 .page.page {
-  background: #f6f7f9;
+  background: var(--bg);
   color: #10131a;
   text-align: left;
 }
@@ -57,11 +57,10 @@
 
 .boundaries {
   @include product-surface.dark-surface();
+  --surface-inset: 80px;
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   gap: 64px;
-  margin-top: 96px;
-  padding-block: 80px;
 
   p { margin: 0; max-width: 620px; color: #c8cdd5; line-height: 1.65; }
   p + p { margin-top: 24px; }
@@ -74,8 +73,12 @@
 
 @media (max-width: 768px) {
   .container { width: calc(100% - 32px); }
-  .features, .useCases, .boundaries, .faq { margin-top: 72px; }
+  .features, .useCases, .faq { margin-top: 72px; }
   .useCases { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .boundaries { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 64px 24px; }
+  .boundaries { --surface-inset: 64px; grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 64px 24px; }
   .connection .button { width: 100%; }
+}
+
+.boundaries {
+  @include product-surface.section-spacing(var(--section-gap), 0px, var(--surface-inset));
 }

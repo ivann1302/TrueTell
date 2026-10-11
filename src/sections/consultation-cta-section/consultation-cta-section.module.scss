@@ -12,7 +12,7 @@
       rgba(23, 101, 218, 0.035) 48%,
       rgba(16, 22, 33, 0) 76%
     ),
-    #101621;
+    var(--surface-dark);
   box-sizing: border-box;
   color: #f7f8fa;
   isolation: isolate;
@@ -154,7 +154,7 @@
         rgba(23, 101, 218, 0.035) 48%,
         rgba(16, 22, 33, 0) 76%
       ),
-      #101621;
+      var(--surface-dark);
   }
 }
 
@@ -173,7 +173,7 @@
         rgba(23, 101, 218, 0.03) 48%,
         rgba(16, 22, 33, 0) 76%
       ),
-      #101621;
+      var(--surface-dark);
     min-height: 392px;
     padding: 48px 0;
 

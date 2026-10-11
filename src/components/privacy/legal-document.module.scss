@@ -14,7 +14,7 @@
   @media (max-width: 600px) { padding: 120px 0 48px; h2 { font-size: 22px; } }
 }
 
-.header :global([data-site-header]) { background: #101621; }
+.header :global([data-site-header]) { background: var(--surface-dark); }
 
 @media (max-width: 768px) {
   .document h1 { text-align: center; }

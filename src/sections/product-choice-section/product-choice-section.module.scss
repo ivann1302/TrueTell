@@ -2,7 +2,7 @@
 
 .section {
   align-items: center;
-  background: #f6f7f9;
+  background: var(--bg);
   box-sizing: border-box;
   color: #10131a;
   display: flex;
@@ -176,8 +176,8 @@
   }
 
   &:active {
-    background: #101621;
-    border-color: #101621;
+    background: var(--surface-dark);
+    border-color: var(--surface-dark);
     transform: translateY(0);
   }
 }

@@ -1,3 +1,5 @@
+@use './product-surface';
+
 .textPanel {
   padding: 48px;
   border: 1px solid #d3d7de;
@@ -35,9 +37,9 @@
 }
 
 .workflow.workflow {
+  @include product-surface.section-spacing(var(--section-gap), 0px, 80px);
   grid-template-columns: minmax(0, 1fr);
   gap: 48px;
-  padding-block: 80px;
 
   ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; }
   li + li { margin-top: 0; }
@@ -53,7 +55,7 @@
   .featureGrid { grid-template-columns: minmax(0, 1fr); margin-top: 32px; gap: 32px; }
   .screenshots.screenshots img { aspect-ratio: auto; }
   .workflow.workflow {
-    padding-block: 64px;
+    @include product-surface.section-spacing(var(--section-gap), 0px, 64px);
     gap: 32px;
 
     ol { grid-template-columns: minmax(0, 1fr); gap: 32px; }

@@ -1,7 +1,7 @@
 @use '../../styles/full-bleed-surface';
 
 .page {
-  background: #f6f7f9;
+  background: var(--bg);
   box-sizing: border-box;
   color: #10131a;
   min-height: 760px;
@@ -22,7 +22,7 @@
       rgba(23, 101, 218, 0.035) 48%,
       rgba(16, 22, 33, 0) 76%
     ),
-    #101621;
+    var(--surface-dark);
   border-radius: 20px;
   box-sizing: border-box;
   color: #f7f8fa;

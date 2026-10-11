@@ -1,0 +1,15 @@
+// Public page surfaces. White is reserved for cards, controls and real UI.
+:root {
+  --bg: #f6f7f9;
+  --surface: #fff;
+  --surface-subtle: #f0f2f5;
+  --surface-dark: #101621;
+  --surface-dark-soft: #182131;
+  --section-gap: 96px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-gap: 72px;
+  }
+}

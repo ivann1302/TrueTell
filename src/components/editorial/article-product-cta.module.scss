@@ -14,14 +14,15 @@
       rgba(23, 101, 218, 0.025) 48%,
       rgba(16, 22, 33, 0) 76%
     ),
-    #101621;
+    var(--surface-dark);
   border-radius: 20px;
   box-sizing: border-box;
   color: #f7f8fa;
   isolation: isolate;
-  margin: 0 auto var(--article-space-shell);
+  margin: 0 auto;
   overflow: clip;
   padding: 48px;
+  padding-bottom: calc(48px + var(--article-space-shell));
   position: relative;
   width: min(calc(100% - 64px), 1240px);
 
@@ -118,6 +119,7 @@
   .cta {
     border-radius: 14px;
     padding: 32px 24px;
+    padding-bottom: calc(32px + var(--article-space-shell));
     width: min(calc(100% - 32px), 1240px);
   }
 
