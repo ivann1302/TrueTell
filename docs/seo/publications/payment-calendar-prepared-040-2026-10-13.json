@@ -1,0 +1,858 @@
+{
+  "id": "040",
+  "seoId": "SEO-050",
+  "preparedAt": "2026-10-13T01:51:15+03:00",
+  "action": "CREATE",
+  "type": "blog",
+  "title": "Платёжный календарь в CRM и финансовый календарь компании: в чём разница",
+  "intent": "Compare employee actions, expected receipts by deals and company cashflow planning; choose data scope and verified capabilities without repeating the partial-payment instruction",
+  "plannedUrl": "https://truetell-retail.ru/platezhnyy-kalendar-bitrix24/",
+  "previewUrl": "http://127.0.0.1:4346/platezhnyy-kalendar-bitrix24/",
+  "stages": {
+    "content_ready": true,
+    "local_QA_passed": true,
+    "deployed": false,
+    "live_verified": false,
+    "crawled": false,
+    "indexed": false
+  },
+  "publicationDate": {
+    "localCandidateStamp": "2026-10-13T01:39:02+03:00",
+    "status": "Provisional preparation stamp; replace with actual first publication time before authorized deployment",
+    "relatedArticleModifiedTimes": "Provisional until release; existing publishedAt preserved"
+  },
+  "backlog": {
+    "release": "039",
+    "sourceWorkbook": "TrueTell_SEO_Backlog_013_2026-10-10.xlsx",
+    "outputWorkbook": "TrueTell_SEO_Backlog_039_2026-10-13.xlsx",
+    "tasks": 56,
+    "taskStatus": "local_QA_passed — готово; не опубликовано",
+    "journal": "docs/seo/publications/backlog-updated-039-2026-10-13.json",
+    "outputSha256": "d85c2d1b559cc26ac34ae871a327240c6ed473e82e5ab8db5e2290477eb771a4",
+    "independentFinalReviewPassed": true
+  },
+  "product": {
+    "path": "/Users/ivan/projects/bitrix_payment_schedule",
+    "confirmedVersion": "0.3.2",
+    "checkedDate": "2026-10-13",
+    "evidence": "Read-only README/source verification: saved schedule of permitted deal, planned dates/amounts and CRM mismatch. Receipts, financial changes, common report and calendar remain planned. Company expenses, bank balances, cash-gap calculation and automatic bank reconciliation not confirmed as available.",
+    "appModified": false,
+    "distributionModified": false,
+    "crmWrites": false,
+    "realPortalTested": false
+  },
+  "factVerificationDate": "2026-10-13",
+  "sources": [
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/25376268/",
+      "updated": "2026-07-23",
+      "supports": "CRM invoice due-date grouping; no monetary column totals; dragging changes due date"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/24853428/",
+      "updated": "2026-07-21",
+      "supports": "Event calendar; Calendar CRM option is calls and meetings planned from cards"
+    },
+    {
+      "url": "https://v8.1c.ru/metod/article/platezhnyy-kalendar-chtoby-izbezhat-kassovogo-razryva-i-sokhranit-platezhesposobnost.htm",
+      "published": "2026-03-17",
+      "supports": "Financial calendar income/outflow, dates, accounts and balances; unchanged legacy demonstration screenshot"
+    },
+    {
+      "url": "https://v8.1c.ru/news/planiruyte-dengi-biznesa-s-platezhnym-kalendarem.htm",
+      "published": "2026-06-09",
+      "supports": "Planning expected incoming and outgoing money; recurring operations are not specifically attributed to this source"
+    },
+    {
+      "url": "https://v8.1c.ru/erp/treasury/",
+      "supports": "Treasury calendar: available initial cash, expected customer receipts, supplier and other payments"
+    },
+    {
+      "url": "https://www.bitrix24.ru/apps/app/gorillas.app5/",
+      "supports": "Vendor states incoming and outgoing payments; not independently tested or endorsed"
+    }
+  ],
+  "financialBoundary": "Synthetic educational calculation of a plan for one account in RUB. A negative forecast is uncovered need under the assumptions, not an actual permitted bank overdraft. Intraday ordering and uncertain expected dates are explained. No financial operations performed.",
+  "example": {
+    "currency": "RUB",
+    "opening": 30000,
+    "days": [
+      {
+        "opening": 30000,
+        "incoming": 20000,
+        "outgoing": 60000,
+        "closing": -10000
+      },
+      {
+        "opening": -10000,
+        "incoming": 50000,
+        "outgoing": 10000,
+        "closing": 30000
+      }
+    ]
+  },
+  "images": [
+    {
+      "path": "src/images/articles/bitrix24-invoice-deadlines-official.jpg",
+      "kind": "Unaltered official screenshot",
+      "dimensions": [
+        1277,
+        726
+      ],
+      "originalUrl": "https://helpdesk.bitrix24.ru/upload/medialibrary/7a2/nevlt8f03qwey90yzsjgrrupy2rg37a5/Скриншот 1.jpg",
+      "captionLimit": "Documentation demo dates and clients; invoice deadlines, not company cash forecast",
+      "sha256": "22369739994b03650de7683747a9d25d049ec03b7118abb5099fd3e672f265ce"
+    },
+    {
+      "path": "src/images/articles/one-c-payment-calendar-official.png",
+      "kind": "Unaltered official screenshot",
+      "dimensions": [
+        930,
+        771
+      ],
+      "originalUrl": "https://v8.1c.ru/upload/products/unf/articles/slea/pcalendar_3.png",
+      "captionLimit": "Original documentation example including 2019 dates; not TrueTell UI or our company data",
+      "sha256": "5d6a2962e8efcab05950e7d9900e6671d9fa52a3e8e4b28f307783c0b9a72ef4"
+    },
+    {
+      "path": "src/images/articles/payment-calendar-daily-balance.png",
+      "kind": "TrueTell original educational proportional bar infographic; source SVG rasterized to transparent PNG",
+      "dimensions": [
+        1440,
+        880
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "webpAlphaPreserved": true,
+      "source": "src/images/articles/payment-calendar-daily-balance.svg",
+      "sha256": "ad27f4c971fc4a7fa8996630986c271361dea44f2fbd8b4856bb9b24e0fc7592"
+    }
+  ],
+  "seo": {
+    "registry": "src/config/articles.ts",
+    "catalog": "blog",
+    "canonicalUrlsInPreparedBuild": 43,
+    "knowledgeArticles": 15,
+    "blogArticles": 6,
+    "previousLiveCanonicalUrls": 40,
+    "previousLiveArticles": 18,
+    "pendingArticles": [
+      "chastichnaya-oplata-bitrix24/",
+      "debitorskaya-zadolzhennost-bitrix24/",
+      "platezhnyy-kalendar-bitrix24/"
+    ],
+    "incomingArticleLinks": [
+      "/debitorskaya-zadolzhennost-bitrix24/",
+      "/dashbord-rukovoditelya-bitrix24/"
+    ],
+    "visibleBreadcrumbs": false,
+    "structuredBreadcrumbHierarchy": "Home -> Blog -> Article",
+    "visibleAndSchemaFaqCount": 6,
+    "officialSourcesCount": 6,
+    "noNewProductPage": true,
+    "indexNowSubmitted": false,
+    "sitemapSubmitted": false,
+    "googleIndexSubmission": false
+  },
+  "relatedChanges": {
+    "debtArticle": "One incoming paragraph and related card; two occurrences of version0.3.0 updated to0.3.2; limitations retained.",
+    "dashboardArticle": "One incoming paragraph and related card.",
+    "partialPaymentArticle": "Unchanged in040. Refresh version0.3.0 before future publication; tracked in SEO-048."
+  },
+  "design": "Shared ArticleLayout and editorial components, #101621 dotted hero min100svh, #F6F7F9 light background, native closed sources, tall dark CTA, no visible breadcrumbs, no new shared CSS or dependencies.",
+  "verification": {
+    "productionBuild": {
+      "command": "npm run build",
+      "exitCode": 0,
+      "canonicalUrls": 43,
+      "builtPages": 44,
+      "durationSeconds": 2.24
+    },
+    "tests": {
+      "command": "node --test scripts/*.test.mjs",
+      "exitCode": 0,
+      "passed": 68,
+      "failed": 0
+    },
+    "lint": {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "errors": 0,
+      "existingWarnings": 3,
+      "warningsFiles": [
+        "src/components/chart-section/chart-section.tsx",
+        "src/sections/slider-section/slider-section.tsx"
+      ]
+    },
+    "indexNowCheck": {
+      "command": "node scripts/indexnow.mjs --check",
+      "exitCode": 0,
+      "validatedUrls": 43,
+      "submission": false
+    },
+    "browser": {
+      "checks": 16,
+      "viewportWidths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "routes": [
+        "/platezhnyy-kalendar-bitrix24/",
+        "/debitorskaya-zadolzhennost-bitrix24/",
+        "/dashbord-rukovoditelya-bitrix24/",
+        "/blog/"
+      ],
+      "screenshots": 15,
+      "overflow": 0,
+      "imagesDecoded": 3,
+      "faqKeyboardWidths": [
+        390,
+        1440
+      ],
+      "sourcesKeyboardWidths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "sourcesWithoutJavascriptWidth": 390,
+      "contactDialogOpensClosesWidths": [
+        390,
+        1440
+      ],
+      "formSubmitted": false,
+      "privacyFixture": "Analytics rejected in isolated local test contexts; external requests blocked"
+    },
+    "tableKeyboard": {
+      "checks": 4,
+      "viewportWidths": [
+        320,
+        390
+      ],
+      "tables": 2,
+      "focusOutline": "solid",
+      "reachedRightEdgeByKeyboard": true,
+      "pageOverflow": 0
+    },
+    "imagesAndMath": {
+      "passed": true,
+      "images": [
+        {
+          "name": "bitrix24-invoice-deadlines-official.jpg",
+          "unalteredOfficialOriginal": true,
+          "sha256": "22369739994b03650de7683747a9d25d049ec03b7118abb5099fd3e672f265ce"
+        },
+        {
+          "name": "one-c-payment-calendar-official.png",
+          "unalteredOfficialOriginal": true,
+          "sha256": "5d6a2962e8efcab05950e7d9900e6671d9fa52a3e8e4b28f307783c0b9a72ef4"
+        },
+        {
+          "path": "/private/tmp/truetell-calendar-040/src/images/articles/payment-calendar-daily-balance.png",
+          "width": 1440,
+          "height": 880,
+          "hasAlpha": true,
+          "alphaMin": 0,
+          "alphaMax": 255
+        },
+        {
+          "path": "/private/tmp/truetell-calendar-040/dist/_astro/payment-calendar-daily-balance.NEJI0wWD_1QqqdG.webp",
+          "width": 480,
+          "height": 293,
+          "hasAlpha": true,
+          "alphaMin": 0,
+          "alphaMax": 255
+        },
+        {
+          "path": "/private/tmp/truetell-calendar-040/dist/_astro/payment-calendar-daily-balance.NEJI0wWD_2dRznt.webp",
+          "width": 800,
+          "height": 489,
+          "hasAlpha": true,
+          "alphaMin": 0,
+          "alphaMax": 255
+        },
+        {
+          "path": "/private/tmp/truetell-calendar-040/dist/_astro/payment-calendar-daily-balance.NEJI0wWD_2gTkcb.webp",
+          "width": 1280,
+          "height": 782,
+          "hasAlpha": true,
+          "alphaMin": 0,
+          "alphaMax": 255
+        },
+        {
+          "path": "/private/tmp/truetell-calendar-040/dist/_astro/payment-calendar-daily-balance.NEJI0wWD_Z1lVNaV.webp",
+          "width": 1440,
+          "height": 880,
+          "hasAlpha": true,
+          "alphaMin": 0,
+          "alphaMax": 255
+        }
+      ],
+      "money": {
+        "currency": "RUB",
+        "opening": 30000,
+        "days": [
+          {
+            "opening": 30000,
+            "incoming": 20000,
+            "outgoing": 60000,
+            "closing": -10000
+          },
+          {
+            "opening": -10000,
+            "incoming": 50000,
+            "outgoing": 10000,
+            "closing": 30000
+          }
+        ]
+      },
+      "exampleIsSynthetic": true,
+      "realCRMTested": false
+    },
+    "mainCandidateEquivalence": {
+      "passed": true,
+      "files": 372,
+      "mainOnly": [],
+      "candidateOnly": [],
+      "different": [],
+      "htmlSha256": "eb2a31431c66be4efb5cc62a06a2ce994602b093a1e556603e49ad69fa215e6e",
+      "main": "/Users/ivan/projects/TrueTell/dist",
+      "candidate": "/private/tmp/truetell-calendar-040/dist"
+    },
+    "scopedTransfer": {
+      "passed": true,
+      "files": [
+        "src/pages/platezhnyy-kalendar-bitrix24/index.astro",
+        "src/config/articles.ts",
+        "src/pages/debitorskaya-zadolzhennost-bitrix24/index.astro",
+        "src/pages/dashbord-rukovoditelya-bitrix24/index.astro",
+        "scripts/article-catalog.test.mjs",
+        "src/images/articles/one-c-payment-calendar-official.png",
+        "src/images/articles/payment-calendar-daily-balance.png",
+        "src/images/articles/payment-calendar-daily-balance.svg",
+        "docs/seo/site-map.md",
+        "docs/seo/publications/backlog-updated-039-2026-10-13.json"
+      ],
+      "baselineFilesChecked": 567,
+      "preexistingChangesPreserved": true,
+      "unownedFilesChanged": [],
+      "deployed": false,
+      "sha256": {
+        "src/pages/platezhnyy-kalendar-bitrix24/index.astro": "145d11fb9966857d1a3ed442a92f7e9bd608fc768790744c208f0179ec071b98",
+        "src/config/articles.ts": "2a1f7ee4cc7860e09268498ce503ad7b89057795c79c6123f8c41637ceb9a38f",
+        "src/pages/debitorskaya-zadolzhennost-bitrix24/index.astro": "3d9d30f84418d613b4bd5de77717569e6c34e8405da7301f64f67311f173d472",
+        "src/pages/dashbord-rukovoditelya-bitrix24/index.astro": "f64ffdb700be69ebc2bd83e188a9d11e480afc5b39615652186126ecff903f96",
+        "scripts/article-catalog.test.mjs": "72381be827ec597d90739d0d28443cbafb9290e689272fea5064e8a3f101e78c",
+        "src/images/articles/one-c-payment-calendar-official.png": "5d6a2962e8efcab05950e7d9900e6671d9fa52a3e8e4b28f307783c0b9a72ef4",
+        "src/images/articles/payment-calendar-daily-balance.png": "ad27f4c971fc4a7fa8996630986c271361dea44f2fbd8b4856bb9b24e0fc7592",
+        "src/images/articles/payment-calendar-daily-balance.svg": "b21731496b7ad2e8d6d7cd13951274331f3f85a5b78ae874d278b3f25ca4570f",
+        "docs/seo/site-map.md": "818456e6695386dcf6d40570d0712477558a0ab4af345d77bc285d807b5ba890",
+        "docs/seo/publications/backlog-updated-039-2026-10-13.json": "4b71cbfee27c9c1b266e29dc886681ec58c91b553ce1691e9d92a09f2f167dfd"
+      }
+    },
+    "inAppPreview": {
+      "tabId": "17",
+      "reloadedFinalBuild": true,
+      "markedDeliverable": true
+    }
+  },
+  "independentReview": {
+    "release": "040",
+    "seoId": "SEO-050",
+    "type": "blog",
+    "action": "CREATE",
+    "slug": "/platezhnyy-kalendar-bitrix24/",
+    "reviewer": "independent child agent /root/review_payment_semantics_036",
+    "author": "parent agent /root",
+    "checkedAtUtc": "2026-10-12T22:47:11.652266+00:00",
+    "stage": "final_local_candidate_review",
+    "result": "passed",
+    "passed": true,
+    "articleReviewComplete": true,
+    "openFindings": [],
+    "sourcePath": "/private/tmp/truetell-calendar-040/src/pages/platezhnyy-kalendar-bitrix24/index.astro",
+    "sourceSha256": "145d11fb9966857d1a3ed442a92f7e9bd608fc768790744c208f0179ec071b98",
+    "compiledHtmlPath": "/private/tmp/truetell-calendar-040/dist/platezhnyy-kalendar-bitrix24/index.html",
+    "compiledHtmlSha256": "eb2a31431c66be4efb5cc62a06a2ce994602b093a1e556603e49ad69fa215e6e",
+    "articleSourceUnchangedSinceAcceptedDraft": true,
+    "protocol": "/Users/ivan/projects/TrueTell/docs/seo/editorial-review-protocol.md",
+    "draftReviewPath": "/private/tmp/calendar-040-review/draft-review.json",
+    "closedFindings": [
+      {
+        "id": "040-P1-SHARED-COMPONENT-PROPS",
+        "priority": "P1",
+        "status": "closed_independently_in_source_and_compiled_html",
+        "issue": "Неверные пропсы ArticleSources, ArticleProductCta, RelatedArticles, InlineConsultation, неверное поле ссылки companyInfo и отсутствие article-варианта FAQ нарушали контракт компонентов; Sources вызывал ошибку map для undefined.",
+        "resolution": "sources/publishedIso/modifiedIso; titleParts/actionLabel; items; description/actionLabel; companyInfo.contacts.consultationUrl; variant=article.",
+        "evidence": "Compiled HTML содержит 6 ссылок списка источников, описание консультации, конечный заголовок CTA, href #contact-request и 3 связанные карточки. Нет undefined. Проверен успешный актуальный draft-build.log. Отсутствие публикационных дат в draft поддерживается и не было причиной ошибки.",
+        "finalHtmlRechecked": true
+      },
+      {
+        "id": "040-P3-JUNE-SOURCE-ATTRIBUTION",
+        "priority": "P3",
+        "status": "closed_independently_in_source_and_compiled_html",
+        "issue": "Июньской новости 1С ранее приписывалось отдельное описание регулярных поступлений и выплат, которого в ней нет.",
+        "resolution": "Предложение теперь: «Материал разработчика 1С разбирает планирование поступлений и выплат». Авторский тезис о повторяющихся движениях отделён.",
+        "sourceUrl": "https://v8.1c.ru/news/planiruyte-dengi-biznesa-s-platezhnym-kalendarem.htm",
+        "finalHtmlRechecked": true
+      }
+    ],
+    "scope": [
+      "Полный текущий текст, 6 FAQ, реестр draft, сравнительный блоговый интент и ограничения TrueTell.",
+      "Самостоятельная проверка официальных источников Битрикс24, 1С и описания разработчика приложения Gorillas; разграничение документации и тестирования продукта.",
+      "Сопоставление текущего README 0.3.2 и ранее просмотренного актуального серверного кода с обещаниями статьи.",
+      "Compiled draft HTML: заголовки, canonical, robots, BlogPosting, BreadcrumbList, FAQPage, исправленные общие компоненты, внутренние ссылки и доступность локальных ресурсов.",
+      "Пиксели двух подлинных снимков и учебной инфографики, подписи, alt, оригиналы, арифметика, PNG alpha и четыре оптимизированных WebP alpha.",
+      "Входящие абзацы в долгах и дашборде; две замены версии 0.3.0 на 0.3.2 в статье о долгах.",
+      "Финальная сборка, метаданные eligible-кандидата, каталог Блог, входящие compiled страницы, sitemap и все 15 переданных PNG; прочитаны QA helper и сохранённые результаты."
+    ],
+    "factualConclusions": [
+      "Сроки Битрикс24 — группировка счетов по сроку оплаты без общих денежных итогов колонок; перетаскивание меняет срок. Текст этого не скрывает.",
+      "Календарь CRM в настройках штатного календаря относится к звонкам и встречам. Календарь событий не назван расчётом банковских остатков.",
+      "Входящие и исходящие платежи Gorillas обозначены как заявление разработчика, а не результат проверки приложения. Статья не приписывает всем CRM-календарям ограничение только поступлениями.",
+      "Финансовый прогноз включает доступные начальные деньги, поступления и выплаты по датам, счета, кассы и валюты. Сумма сделки, успешная стадия, сообщение и закрытая задача не выданы за банковский факт.",
+      "Учебный минус — нехватка при допущениях плана, не разрешённый овердрафт и не обещание выполнения банком неподкреплённой выплаты. Оговорены очередность внутри дня и неопределённость обещанной даты.",
+      "TrueTell 0.3.2 описан как просмотр сохранённого графика доступной сделки. Учёт поступлений, финансовые изменения, отчёт и календарь явно в плане. Полный календарь выплат, банковских остатков, кассовый разрыв и банковская сверка не обещаны как доступные."
+    ],
+    "math": {
+      "currency": "RUB",
+      "accountScope": "один условный счёт",
+      "opening": 30000,
+      "days": [
+        {
+          "opening": 30000,
+          "incoming": 20000,
+          "outgoing": 60000,
+          "closing": -10000
+        },
+        {
+          "opening": -10000,
+          "incoming": 50000,
+          "outgoing": 10000,
+          "closing": 30000
+        }
+      ],
+      "totalIncoming": 70000,
+      "totalOutgoing": 70000,
+      "ending": 30000,
+      "dayOneUncoveredNeed": 10000,
+      "independentlyRecomputed": true,
+      "chartPositiveBarHeight": 150,
+      "chartNegativeBarHeight": 50,
+      "proportionsAndZeroAxisCorrect": true,
+      "syntheticExampleClearlyLabelled": true
+    },
+    "intent": {
+      "distinct": true,
+      "primaryQuestion": "Как выбрать состав календаря и данные для действий сотрудников, ожидаемых оплат по сделкам или полного денежного плана компании?",
+      "partialPaymentBoundary": "Нет повторной пошаговой инструкции журнала одной сделки; дана смысловая ссылка.",
+      "debtBoundary": "Нет повторного расчёта портфеля просрочки и поручений менеджерам; отдельный фокус на будущих потоках и доступных деньгах.",
+      "commercialLandingClaimed": false,
+      "keywordDemandRemeasured": false
+    },
+    "images": [
+      {
+        "name": "bitrix24-invoice-deadlines-official.jpg",
+        "kind": "official_original",
+        "sourceUrl": "https://helpdesk.bitrix24.ru/open/25376268/",
+        "sha256": "22369739994b03650de7683747a9d25d049ec03b7118abb5099fd3e672f265ce",
+        "pixelsIndependentlyViewed": true,
+        "candidateMatchesSavedOriginal": true,
+        "captionBoundaryCorrect": true
+      },
+      {
+        "name": "one-c-payment-calendar-official.png",
+        "kind": "official_original",
+        "sourceUrl": "https://v8.1c.ru/metod/article/platezhnyy-kalendar-chtoby-izbezhat-kassovogo-razryva-i-sokhranit-platezhesposobnost.htm",
+        "assetUrl": "https://v8.1c.ru/upload/products/unf/articles/slea/pcalendar_3.png",
+        "sha256": "5d6a2962e8efcab05950e7d9900e6671d9fa52a3e8e4b28f307783c0b9a72ef4",
+        "dimensions": [
+          930,
+          771
+        ],
+        "pixelsIndependentlyViewed": true,
+        "candidateMatchesSavedOriginal": true,
+        "original2019DatesClearlyDisclosed": true,
+        "notTrueTellInterfaceClaimed": true
+      },
+      {
+        "name": "payment-calendar-daily-balance.png",
+        "kind": "synthetic_educational_chart",
+        "dimensions": [
+          1440,
+          880
+        ],
+        "pixelsIndependentlyViewed": true,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "optimizedWebpWidths": [
+          480,
+          800,
+          1280,
+          1440
+        ],
+        "optimizedWebpAlphaExtrema": [
+          0,
+          255
+        ],
+        "optimizedAlphaIndependentlyMeasured": true,
+        "fullSizeOriginalAvailable": true,
+        "captionAndAltCorrect": true
+      }
+    ],
+    "primarySourceUrls": [
+      "https://helpdesk.bitrix24.ru/open/25376268/",
+      "https://helpdesk.bitrix24.ru/open/24853428/",
+      "https://helpdesk.bitrix24.ru/open/26295296/",
+      "https://helpdesk.bitrix24.ru/open/18223692/",
+      "https://v8.1c.ru/metod/article/platezhnyy-kalendar-chtoby-izbezhat-kassovogo-razryva-i-sokhranit-platezhesposobnost.htm",
+      "https://v8.1c.ru/news/planiruyte-dengi-biznesa-s-platezhnym-kalendarem.htm",
+      "https://v8.1c.ru/erp/treasury/",
+      "https://www.bitrix24.ru/apps/app/gorillas.app5/"
+    ],
+    "finalMetadata": {
+      "title": "Платёжный календарь в Битрикс24: CRM и финансы компании",
+      "h1": "Платёжный календарь в CRM и финансовый календарь компании: в чём разница",
+      "h1Count": 1,
+      "canonical": "https://truetell-retail.ru/platezhnyy-kalendar-bitrix24/",
+      "robots": "index, follow",
+      "type": "blog",
+      "registryStatus": "published",
+      "description": "Чем календарь поступлений по сделкам отличается от финансового плана компании: сроки, выплаты, доступные деньги и расчёт остатка на каждый день.",
+      "ogTitle": "Платёжный календарь в Битрикс24: CRM и финансы компании",
+      "ogDescription": "Чем календарь поступлений по сделкам отличается от финансового плана компании: сроки, выплаты, доступные деньги и расчёт остатка на каждый день.",
+      "ogUrl": "https://truetell-retail.ru/platezhnyy-kalendar-bitrix24/",
+      "ogType": "article",
+      "ogImage": "https://truetell-retail.ru/_astro/bitrix24-invoice-deadlines-official.COXcK8XP.jpg",
+      "ogAlt": "Официальный экран Битрикс24: счета в режиме Сроки, сгруппированные по датам оплаты",
+      "twitterMatchesOg": true,
+      "articlePublishedTime": "2026-10-13T01:39:02+03:00",
+      "articleModifiedTime": "2026-10-13T01:39:02+03:00",
+      "datesMatchRegistryAndSchema": true,
+      "datesProvisionalUntilActualRelease": true,
+      "visibleBreadcrumbNavigation": false
+    },
+    "structuredData": {
+      "types": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "blogPosting": {
+        "@type": "BlogPosting",
+        "headline": "Платёжный календарь в CRM и финансовый календарь компании: в чём разница",
+        "description": "Чем календарь поступлений по сделкам отличается от финансового плана компании: сроки, выплаты, доступные деньги и расчёт остатка на каждый день.",
+        "url": "https://truetell-retail.ru/platezhnyy-kalendar-bitrix24/",
+        "mainEntityOfPage": "https://truetell-retail.ru/platezhnyy-kalendar-bitrix24/",
+        "datePublished": "2026-10-13T01:39:02+03:00",
+        "dateModified": "2026-10-13T01:39:02+03:00",
+        "inLanguage": "ru-RU",
+        "image": "https://truetell-retail.ru/_astro/bitrix24-invoice-deadlines-official.COXcK8XP.jpg",
+        "articleSection": "Планирование оплат",
+        "author": {
+          "@type": "Person",
+          "name": "Нарчук Иван Валериевич"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "TrueTell",
+          "url": "https://truetell-retail.ru/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://truetell-retail.ru/_astro/organization-logo.DHE3J1nh.svg",
+            "width": 600,
+            "height": 120
+          }
+        }
+      },
+      "breadcrumbList": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "https://truetell-retail.ru/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Блог",
+            "item": "https://truetell-retail.ru/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Платёжный календарь в CRM и финансовый календарь компании: в чём разница",
+            "item": "https://truetell-retail.ru/platezhnyy-kalendar-bitrix24/"
+          }
+        ]
+      },
+      "visibleFaqCount": 6,
+      "schemaFaqCount": 6,
+      "allSixFaqQuestionsAndAnswersMatch": true
+    },
+    "compiledResourcesAndLinks": {
+      "figures": 3,
+      "fullSizeOriginalLinks": 3,
+      "fullSizeLinksTargetBlankAndNoopener": true,
+      "localAssetRefs": 17,
+      "missingAssets": 0,
+      "sourcesListLinks": 6,
+      "relatedCards": 3,
+      "consultationHref": "#contact-request",
+      "noUndefined": true
+    },
+    "catalogAndIncoming": {
+      "blogCardCount": 6,
+      "newCandidateCardCount": 1,
+      "newCandidateCardTitleMatchesH1": true,
+      "sitemapCanonicalCount": 43,
+      "sitemapUnique": true,
+      "sitemapIncludesCandidate": true,
+      "incomingRoutes": [
+        "/debitorskaya-zadolzhennost-bitrix24/",
+        "/dashbord-rukovoditelya-bitrix24/"
+      ],
+      "eachIncomingRouteContainsBodyLinkAndRelatedCard": true,
+      "incomingUpdatedAtMetaAndSchemaMatchCandidateStamp": true,
+      "previousRelatedLinksPreserved": true,
+      "debtArticleTwoSourceVersionReplacementsVerified": true,
+      "debtCompiledOld030Absent": true,
+      "debtProductPromisesRemainReadOnly": true,
+      "partialPaymentArticleSourceUnchanged": true
+    },
+    "visualReview": {
+      "screenshotsDirectory": "/private/tmp/calendar-040-qa",
+      "savedScreenshotsIndependentlyViewed": true,
+      "screenshotCount": 15,
+      "widthsViewed": [
+        390,
+        1440
+      ],
+      "screenshots": [
+        {
+          "file": "cta-1440.png",
+          "sha256": "98eb88b6769a95dee4d94123030698609cfd78c28216e42b7f9e9e82ac2e26ed"
+        },
+        {
+          "file": "cta-390.png",
+          "sha256": "275ae49f785bd52b1f0578ad5b62800149a5e18d207a72e5651b581653ce10f9"
+        },
+        {
+          "file": "faq-1440.png",
+          "sha256": "2c96d54867cbf88d2f00532508e23dec512f35f3e215eed2281684e486f84d60"
+        },
+        {
+          "file": "faq-390.png",
+          "sha256": "453533ade76a0587953653a2e7a380cab922c67b80f5284af51219ed2f6bdf6b"
+        },
+        {
+          "file": "figure-0-1440.png",
+          "sha256": "6ea463096aaa01e4c5cb7f7a41b42d80b4d2c3a47e27fae67b0c5afb05c12195"
+        },
+        {
+          "file": "figure-0-390.png",
+          "sha256": "750b3907f800680a3dd1e9cb1a3de7e7e115d72495346d36ab98f7bab960a92b"
+        },
+        {
+          "file": "figure-1-1440.png",
+          "sha256": "e964c1fae7a56db62bfca3552d302e27789725ed7d142444b053625b375e5475"
+        },
+        {
+          "file": "figure-1-390.png",
+          "sha256": "9a30602ef369d455e30c4787b0ef29663ab769b00e24cdefc0716a5295f585f9"
+        },
+        {
+          "file": "figure-2-1440.png",
+          "sha256": "f5ffaa81ec27347196fb40f2f2fd16ad0c18bfa8a5494d4f0c37dfb630ccf1d9"
+        },
+        {
+          "file": "figure-2-390.png",
+          "sha256": "020e373be0c808048a2de67546b56ba6456665e6c732e1fb05c144b848b9ce2e"
+        },
+        {
+          "file": "hero-1440.png",
+          "sha256": "11a10f73ebbefd5a0bab984bfe5faac26f7634d9bbcf361822e0b45907d6f429"
+        },
+        {
+          "file": "hero-390.png",
+          "sha256": "b0906b3f08cb3a734db48d100b27f9819f62220b2bf5a225034ed0f87afde173"
+        },
+        {
+          "file": "journal-1440.png",
+          "sha256": "48c191a0b0f6c9bfc780a9c1478ac34e3b11c8ec2d2b76876174a0fc7d7c3a73"
+        },
+        {
+          "file": "journal-390.png",
+          "sha256": "ca1e7bf235ff4b9ea8fee3dd1c54b7c6c92afd160c67d75ba0394c890bdda422"
+        },
+        {
+          "file": "journal-right-390.png",
+          "sha256": "23ca138201d6b7fa5a40d9e43bde2e1464bd5ef2d548c78d6f1013d8182b3f9d"
+        }
+      ],
+      "heroReadable": true,
+      "threeFiguresAndCaptionsReadable": true,
+      "fullSizeLinksVisible": true,
+      "dailyChartZeroAxisAndMinusVisible": true,
+      "mobileTableLeftAndRightViewsReadable": true,
+      "faqAndCtaReadable": true,
+      "lightBodyAndDarkDottedHeroCtaConsistent": true,
+      "newDecorativeAiPeopleOrScenes": false,
+      "ownBrowserMeasurementPerformed": false
+    },
+    "browserEvidence": {
+      "path": "/private/tmp/calendar-040-qa/verification.json",
+      "helper": "/private/tmp/calendar-040-qa.mjs",
+      "helperAndSavedResultsRead": true,
+      "authorReportedPassed": true,
+      "routeWidthCheckCount": 16,
+      "routes": [
+        "/platezhnyy-kalendar-bitrix24/",
+        "/debitorskaya-zadolzhennost-bitrix24/",
+        "/dashbord-rukovoditelya-bitrix24/",
+        "/blog/"
+      ],
+      "layoutWidths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "sourcesKeyboardWidths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "sourcesWithoutJavascriptWidth": 390,
+      "nativeSourcesWithoutJavascript": true,
+      "faqKeyboardWidths": [
+        390,
+        1440
+      ],
+      "contactDialogOpenCloseWidths": [
+        390,
+        1440
+      ],
+      "falseFaqContactValuesAt320768MeanNotExecuted": true,
+      "tableKeyboardWidths": [
+        320,
+        390
+      ],
+      "tableKeyboardCheckCount": 4,
+      "bothTablesReachRightEdgeWithoutPageOverflow": true,
+      "figureMarginsAssertedInHelper": [
+        24,
+        24
+      ],
+      "figureMarginsCheckedOnAllFourWidthsByAuthor": true,
+      "formSubmitted": false,
+      "measurementsIndependentlyRepeated": false
+    },
+    "authorVerificationLogs": {
+      "build": "/private/tmp/calendar-040-release/candidate-build.log",
+      "buildCompleted": true,
+      "builtPages": 44,
+      "canonicalUrls": 43,
+      "tests": "/private/tmp/calendar-040-release/candidate-tests.log",
+      "testsPassed": 68,
+      "testsFailed": 0,
+      "lint": "/private/tmp/calendar-040-release/candidate-lint.log",
+      "lintErrors": 0,
+      "existingLintWarnings": 3,
+      "indexNow": "/private/tmp/calendar-040-release/candidate-indexnow-check.log",
+      "indexNowCheckedUrls": 43,
+      "indexNowSubmissionReported": false,
+      "assetMath": "/private/tmp/calendar-040-release/asset-and-math-verification.json",
+      "assetMathPassed": true,
+      "buildTestsLintIndependentlyRerun": false
+    },
+    "backlog039": {
+      "status": "final_saved_workbook_review_passed",
+      "workbookSha256": "d85c2d1b559cc26ac34ae871a327240c6ed473e82e5ab8db5e2290477eb771a4",
+      "verificationSha256Matches": true,
+      "reviewReport": "/private/tmp/calendar-040-review/backlog-final-review.json",
+      "seo050LocalQaPassedNotPublished": true,
+      "plannedProductratingsDetails014034NotReclassifiedAsCompleted": true
+    },
+    "statusBoundaries": {
+      "content_ready": true,
+      "local_QA_passed": "Author browser evidence plus independent source/HTML/PNG review; no own browser measurements.",
+      "registryPublishedMeans": "Редакционно готовый локальный eligible-кандидат, не подтверждение размещения.",
+      "deployed": false,
+      "live_verified": false,
+      "crawled": false,
+      "indexed": false,
+      "datesRefreshRequiredForAuthorizedActualRelease": true
+    },
+    "limits": {
+      "ownBrowserMeasurements": false,
+      "realBitrixPortalTested": false,
+      "GorillasOr1CApplicationTested": false,
+      "paymentApplicationStarted": false,
+      "financialOrCrmRecordsCreated": false,
+      "testsOrBuildRunByReviewer": false,
+      "liveHttpRepeated": false,
+      "gscInspectionsRepeated": false,
+      "workbookModified": false,
+      "projectOrSharedFilesModified": false,
+      "deployed": false,
+      "urlsSubmitted": false,
+      "reviewerOnlyWroteReport": "/private/tmp/calendar-040-review/final-review.json"
+    },
+    "remainingBeforeActualRelease": [
+      "Отдельное разрешение на публикацию, актуальные даты фактического выпуска и проверка опубликованного HTTP/контента/ссылок/изображений. Это граница выпуска, не открытое замечание к локальному кандидату."
+    ],
+    "equivalentMain": {
+      "checkedAtUtc": "2026-10-12T22:50:18.820988+00:00",
+      "mainRoot": "/Users/ivan/projects/TrueTell",
+      "candidateRoot": "/private/tmp/truetell-calendar-040",
+      "publicDistFilesMain": 372,
+      "publicDistFilesCandidate": 372,
+      "allDistBytesIndependentlyCompared": true,
+      "mainOnly": [],
+      "candidateOnly": [],
+      "different": [],
+      "mainHtmlSha256": "eb2a31431c66be4efb5cc62a06a2ce994602b093a1e556603e49ad69fa215e6e",
+      "mainSourceSha256": "145d11fb9966857d1a3ed442a92f7e9bd608fc768790744c208f0179ec071b98",
+      "mainSourceMatchesAcceptedCandidate": true,
+      "scopedTransferFiles": 10,
+      "actualMainScopedHashesMatchTransferRecord": true,
+      "scopedHashMismatches": [],
+      "authorGuardBaselineFilesChecked": 567,
+      "authorGuardUnownedFilesChanged": [],
+      "fullGuardBaselineIndependentlyRerun": false,
+      "mainTestsLogRead": true,
+      "mainTestsPass": 68,
+      "mainTestsFail": 0,
+      "mainIndexNowCheckLogRead": true,
+      "mainIndexNowCheckedUrls": 43,
+      "ownMainBrowserMeasurements": false,
+      "deployed": false
+    },
+    "lastAddendumCheckedAtUtc": "2026-10-12T22:50:18.820988+00:00"
+  },
+  "limits": [
+    "Not deployed; no live QA or Google index claim.",
+    "FAQ/contact dialog interactions tested at390/1440; table keyboard tested at320/390; sources onall4 and withoutJS390.",
+    "Existing unrelated mobile issues SEO-053—056 remain open.",
+    "Related037/038 also await release; verify the complete link chain before publication.",
+    "Preparation timestamps are provisional."
+  ],
+  "evidence": "work/payment-calendar-040/final",
+  "deliverables": [
+    "TrueTell_Payment_Calendar_040_2026-10-13.txt",
+    "TrueTell_Payment_Calendar_040_2026-10-13.zip",
+    "TrueTell_Payment_Calendar_040_2026-10-13.png"
+  ],
+  "articleSourceSha256": "145d11fb9966857d1a3ed442a92f7e9bd608fc768790744c208f0179ec071b98",
+  "articleHtmlSha256": "eb2a31431c66be4efb5cc62a06a2ce994602b093a1e556603e49ad69fa215e6e"
+}

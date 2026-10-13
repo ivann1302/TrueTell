@@ -1,0 +1,64 @@
+{
+  "taskId": "SEO-041-PUBLISH-024",
+  "status": "published-and-verified",
+  "action": "CREATE",
+  "contentType": "knowledge",
+  "priority": "P1",
+  "title": "BI-аналитика Битрикс24: первый отчёт из CRM",
+  "url": "https://truetell-retail.ru/bi-analitika-bitrix24-pervyy-otchet/",
+  "intent": "Create a first native Bitrix24 BI report counting unique deals created in a selected period by current responsible, then reconcile with CRM source records.",
+  "releaseId": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791747362-1",
+  "previousReleaseRetained": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791744015-1",
+  "publishedArticles": 12,
+  "publishedCanonicalUrls": 34,
+  "mainLocalCanonicalUrls": 36,
+  "changedMainSourceFiles": [
+    "src/config/articles.ts",
+    "scripts/article-catalog.test.mjs",
+    "src/pages/bi-analitika-chto-eto-prostymi-slovami/index.astro",
+    "src/pages/dashbord-rukovoditelya-bitrix24/index.astro",
+    "src/pages/skvoznaya-analitika-bitrix24/index.astro",
+    "src/pages/bi-analitika-bitrix24-pervyy-otchet/index.astro",
+    "src/images/articles/bitrix24-first-bi-records-editorial.png",
+    "src/images/articles/bitrix24-bi-crm-deal-chart-official.jpg",
+    "src/images/articles/bitrix24-bi-period-filter-official.jpg"
+  ],
+  "images": {
+    "total": 3,
+    "editorialImageGenTransparent": 1,
+    "unalteredOfficialScreenshotsWithFullSizeLinks": 2,
+    "sourceHashesAndOptimizedAlphaVerified": true
+  },
+  "checks": {
+    "candidateBuild": true,
+    "mainBuild": true,
+    "candidateTestsPassed": 68,
+    "mainTestsPassed": 68,
+    "lintErrors": 0,
+    "existingLintWarnings": 3,
+    "indexnowCheckPublicUrls": 34,
+    "indexnowSubmitted": false,
+    "localBrowserChecks": 24,
+    "publicBrowserChecks": 24,
+    "viewportWidths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "nativeWithoutJavaScript": true,
+    "liveFileHashesVerified": 24,
+    "sitemapUpdated": true,
+    "incomingPagesWithLinks": 5,
+    "contentReviewedAgainstOfficialDocs": true,
+    "reviewFindingsFixed": [
+      "crm_deal pipeline field CATEGORY",
+      "report publication and access group before sharing",
+      "recorded update dates on three modified articles"
+    ],
+    "crmSessionCheckPassedDuringActivation": true,
+    "pendingRoutesRemain404": true
+  },
+  "limits": "The tutorial was checked against official documentation and independent review. It was not executed inside a customer Bitrix24 portal. Interface, tariff and role availability are qualified in the article.",
+  "verifiedAt": "2026-10-11T19:41:40.845649+00:00"
+}

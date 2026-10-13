@@ -1,5 +1,7 @@
 ---
 import ArticleFigure from '../../components/editorial/article-figure.astro';
+import articleIllustration from '../../images/articles/record-recovery-editorial.png';
+import trashRestoreImage from '../../images/articles/moysklad-trash-restore-official.png';
 import ArticleLayout from '../../components/editorial/article-layout.astro';
 import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
 import ArticleSources from '../../components/editorial/article-sources.astro';
@@ -10,7 +12,6 @@ import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { getArticle, getRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
 import { cleanerProduct, cleanerProductPath } from '../../config/products';
-import backupRecoveryImage from '../../images/articles/moysklad-backup-recovery.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
 import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
@@ -32,9 +33,8 @@ const homeUrl = siteRoot.toString();
 const knowledgeBaseUrl = new URL('knowledge-base/', siteRoot).toString();
 const articleUrl = new URL('kak-vosstanovit-udalennye-zakazy-tovary-moysklad/', siteRoot).toString();
 const productUrl = `${base}${article.relatedProduct!.slice(1)}`;
-const imageAlt =
-  'Схема резервного копирования заказов и товаров МоегоСклада с историей версий и двумя сценариями восстановления';
-const ogImage = new URL(backupRecoveryImage.src, siteRoot).toString();
+const imageAlt = "Сотрудник ищет сохранённый документ среди архивных папок";
+const ogImage = new URL(articleIllustration.src, siteRoot).toString();
 
 const titleParts = [
   { text: 'Как восстановить ' },
@@ -42,11 +42,6 @@ const titleParts = [
   { text: ' в МоемСкладе' },
 ];
 
-const breadcrumbs = [
-  { label: 'Главная', href: base },
-  { label: 'База знаний', href: `${base}knowledge-base/` },
-  { label: 'Восстановление данных в МоемСкладе' },
-];
 
 const sourceLinks = [
   {
@@ -231,7 +226,7 @@ const structuredData = createArticleStructuredData({
   ogImageAlt={imageAlt}
   category="МойСклад"
   intro="Разбираемся, чем архив отличается от удаления, как вернуть документ из Корзины и в каких случаях данные придется восстанавливать из внешней копии."
-  {breadcrumbs}
+
   author={authorName}
   publishedTime={publishedDate}
   modifiedTime={modifiedDate}
@@ -259,6 +254,7 @@ const structuredData = createArticleStructuredData({
     Корзину документов или окончательное удаление. От правильной диагностики зависит, вернется
     ли прежний объект со своей историей или в системе появится только похожая новая карточка.
   </p>
+  <ArticleFigure src={articleIllustration} alt="Сотрудник ищет сохранённый документ среди архивных папок" caption="Сначала определите, где сохранились сведения: в архиве, корзине или отдельной копии. Иллюстрация поиска документа; эти способы дают разные результаты." />
 
   <aside data-article-note>
     <strong>Архив, Корзина и бэкап решают разные задачи</strong>
@@ -347,11 +343,7 @@ const structuredData = createArticleStructuredData({
       просто возвращает существующий объект в обычную работу.
     </p>
 
-    <ArticleFigure
-      src={backupRecoveryImage}
-      alt={imageAlt}
-      caption="Резервная копия сохраняет версии данных, а восстановление разделяет простой возврат документа и контролируемое воссоздание удаленной сущности."
-    />
+
   </section>
 
   <section aria-labelledby="restore-order">
@@ -375,6 +367,7 @@ const structuredData = createArticleStructuredData({
       Если момент уже упущен, но семь дней еще не прошли, Корзина остается самым надежным путем:
       она возвращает именно прежний документ, а не его приблизительную копию.
     </p>
+    <ArticleFigure src={trashRestoreImage} fullSize alt="Корзина МоегоСклада с выбранной отгрузкой и пунктом Восстановить в меню Изменить" caption="Меню «Изменить → Восстановить» в корзине — кадр из официальной справки МоегоСклада. В примере выбрана отгрузка. Восстановление заказа возможно, если он попал в заранее включённую корзину и срок хранения ещё не истёк." />
   </section>
 
   <section aria-labelledby="older-than-seven-days">

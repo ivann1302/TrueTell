@@ -1,5 +1,8 @@
 ---
 import ArticleFigure from '../../components/editorial/article-figure.astro';
+import articleIllustration from '../../images/articles/inventory-check-editorial.png';
+import stockDetailImage from '../../images/articles/moysklad-stock-detail-official.png';
+import stockBiImage from '../../images/bi-dashboard/stock.png';
 import ArticleLayout from '../../components/editorial/article-layout.astro';
 import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
 import ArticleSources from '../../components/editorial/article-sources.astro';
@@ -9,8 +12,6 @@ import InlineConsultation from '../../components/editorial/inline-consultation.a
 import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { getArticle, getRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
-import stockAvailableImage from '../../images/articles/moysklad-stock-available.png';
-import deadstockImage from '../../images/articles/moysklad-stock-deadstock.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
 import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
@@ -23,10 +24,9 @@ const siteRoot = new URL(base, import.meta.env.SITE);
 const articleUrl = new URL(article.hrefPath, siteRoot).toString();
 const productHref = `${base}${article.relatedProduct!.slice(1)}`;
 const authorName = companyInfo.editorial.defaultAuthor;
-const imageAlt = 'Как остаток, ожидание и резерв формируют показатель «Доступно»';
-const ogImage = new URL(stockAvailableImage.src, siteRoot).toString();
+const imageAlt = "Сотрудник сверяет товары на складской полке с листом учёта";
+const ogImage = new URL(articleIllustration.src, siteRoot).toString();
 const titleParts = [{ text: 'Остатки ' }, { text: 'в МойСклад', accent: true }, { text: ': контроль запасов и поиск неликвида' }];
-const breadcrumbs = [{ label: 'Главная', href: base }, { label: 'База знаний', href: `${base}knowledge-base/` }, { label: title }];
 const sourceLinks = [
   {
     "label": "Отчёт «Остатки» — Служба поддержки МоегоСклада",
@@ -173,7 +173,7 @@ const structuredData = createArticleStructuredData({
 });
 ---
 
-<ArticleLayout {title} {titleParts} {description} {canonicalPath} {structuredData} {breadcrumbs}
+<ArticleLayout {title} {titleParts} {description} {canonicalPath} {structuredData}
   ogTitle={article.seoTitle} ogDescription={description} {ogImage} ogImageAlt={imageAlt}
   category={article.category} author={authorName}
   intro="Как проверить наличие по складам, сопоставить запасы с продажами и выбрать действие для залежавшихся товаров.">
@@ -183,6 +183,7 @@ const structuredData = createArticleStructuredData({
   </Fragment>
 
   <p data-article-lead>Большой запас сам по себе не означает проблему. Одни товары нужны для ближайшего сезона, другие поступили вчера, третьи лежат в магазине, где на них нет спроса. Задача анализа — разделить эти ситуации и выбрать действие для конкретной позиции.</p>
+  <ArticleFigure src={articleIllustration} alt="Сотрудник сверяет товары на складской полке с листом учёта" caption="Проверку запаса начинайте с конкретного товара: сопоставьте наличие, документы и действующие обязательства. Иллюстрация складской сверки." />
   <section aria-labelledby="stock-report">
     <h2 id="stock-report">Где посмотреть остатки товаров в МойСклад</h2>
     <p>Откройте <strong>Склад → Остатки</strong>. Начните с варианта <strong>«Остатки по товарам»</strong>, затем:</p>
@@ -198,8 +199,9 @@ const structuredData = createArticleStructuredData({
     <p>В МойСклад применяется формула:</p>
     <p><strong>Доступно = Остаток + Ожидание − Резерв.</strong></p>
     <p>Поэтому положительное «Доступно» не подтверждает, что весь этот товар уже можно взять с полки. Например, в условной ситуации остаток — 10 штук, ожидание — 20, резерв — 8. Доступно получится 22, хотя учётный остаток на складе равен 10. Перед обещанием отгрузки сегодня проверьте наличие, обязательства и дату поступления ожидаемой партии. Определения и формула приведены в <a href="https://support.moysklad.ru/hc/ru/товары%20и%20склады/остатки%20и%20себестоимость/складскои_учет_остатки_резервы_ожидания" target="_blank" rel="noopener noreferrer">документации складского учёта</a>.</p>
-    <ArticleFigure src={stockAvailableImage} alt="Как остаток, ожидание и резерв формируют показатель «Доступно»" compact caption="Ожидаемая поставка участвует в расчёте доступного количества, но ещё не стала товаром на полке." />
+
     <p>Если запас есть, а распоряжаться им мешают старые заказы, разберите причину резерва. Для этой задачи пригодится отдельная инструкция <a href={`${base}kak-snyat-rezervy-moysklad/`}>«Как снять резервы в МойСклад и почему они зависают»</a>. Снимать все резервы только ради красивого показателя доступности не следует: среди них могут быть действующие обязательства.</p>
+    <ArticleFigure src={stockDetailImage} fullSize alt="Детализация товара в отчёте Остатки МоегоСклада: количество, резерв, ожидание и документы" caption="Фрагмент отчёта из официальной справки МоегоСклада. Показатели выбранного товара можно сопоставить с документами; значения на кадре приведены как пример интерфейса." />
   </section>
 
   <section aria-labelledby="incorrect-stock">
@@ -241,10 +243,11 @@ const structuredData = createArticleStructuredData({
       <li>Нет ли ошибки в документах, цене, карточке или передаче данных из канала продаж?</li>
     </ul>
     <p>Позиция могла долго отсутствовать и поступить перед отчётом. Тогда нулевые продажи за прошлый период ничего не говорят о способности продать текущую партию. Для другой позиции причиной окажется неверная выкладка или отсутствие фотографии в интернет-магазине. Уценка до проверки причины не обязательно решит проблему.</p>
-    <ArticleFigure src={deadstockImage} alt="Порядок проверки кандидата в неликвид: наличие, отсутствие продаж, причины и действие" compact caption="Отсутствие продаж — повод проверить товар и условия продажи перед выбором действия." />
+
     <h3 id="stock-value">5. Оцените деньги в запасе</h3>
     <p>Для определения очереди разбора используйте стоимость текущего запаса по себестоимости. Она помогает увидеть, какие позиции удерживают больше оборотных средств. Начните с дорогих кандидатов без продаж, затем переходите к менее значимым по сумме.</p>
     <p>Цена продажи показывает другую величину — возможную выручку при реализации по этой цене. Её нельзя представлять как уже вложенные деньги или гарантированную сумму возврата. Если себестоимость отсутствует либо выглядит неверной, сначала проверьте исходные поступления: ранжирование по недостоверной стоимости даст неверный приоритет.</p>
+    <ArticleFigure src={stockBiImage} fullSize alt="Демонстрационный отчёт TrueTell BI: количество и себестоимость запасов по товарным категориям" caption="Пример отчёта TrueTell BI о стоимости запаса по категориям. Для поиска неликвида отдельно сопоставьте остатки с продажами: этот экран сам по себе не доказывает отсутствие спроса." />
   </section>
 
   <section aria-labelledby="stock-actions">
@@ -263,6 +266,8 @@ const structuredData = createArticleStructuredData({
     <p>Сохраните простой рабочий список: товар и модификация, склад, дата остатка, количество, себестоимость запаса, продажи за период, причина отклонения, действие, ответственный и срок. После выполнения действия сравните результат на тех же условиях. Регулярность проверки подбирайте по скорости изменения ассортимента: быстро продающиеся товары требуют внимания чаще, чем медленный сезонный запас.</p>
   </section>
 
+  <p>Для проверки результата реализации перейдите к <a href={`${base}otchety-moysklad/`}>отчётам МойСклад о продажах, прибыли и магазинах</a>: там разобраны возвраты, себестоимость и сравнение точек на одинаковых условиях.</p>
+
   <section aria-labelledby="stock-bi">
     <h2 id="stock-bi">Когда полезна BI-аналитика остатков</h2>
     <p>Штатные отчёты подходят для проверки конкретного склада и документов. Когда нужно регулярно сравнивать несколько точек, категории, продажи и стоимость запасов, удобнее согласовать единую модель анализа.</p>
@@ -271,8 +276,10 @@ const structuredData = createArticleStructuredData({
     <InlineConsultation title="Нужно сопоставить остатки и продажи нескольких точек?" description="Обсудим источники данных, правила отбора кандидатов в неликвид и нужные разрезы отчёта." />
   </section>
 
+  <p>Если товар продаётся на площадках, проверьте не только общий запас, но и количество, которое уходит на витрину. В <a href={`${base}moysklad-dlya-marketpleysov/`}>разборе МоегоСклада для маркетплейсов</a> показано, как согласовать склады, резерв и обмен ценами.</p>
+
   <FaqSection items={faqItems} id="faq" variant="article" />
-  <ArticleSources publishedIso={article.publishedAt} sources={sourceLinks} />
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
   <Fragment slot="article-end">
     <ArticleProductCta titleParts={[{ text: 'Свяжите продажи и ' }, { text: 'товарные запасы', accent: true }]}
       description="Посмотрите демонстрацию BI-аналитики TrueTell по остаткам, продажам и магазинам. Обсудим состав данных и правила анализа для вашей компании."

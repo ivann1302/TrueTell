@@ -1,0 +1,444 @@
+{
+  "id": "042",
+  "action": "PUBLISH",
+  "phase": "authorized_release_prepared_before_git_push",
+  "preparedAt": "2026-10-13T11:58:30+03:00",
+  "authorization": "Owner: запушь все и зальется на сайт автоматически",
+  "repository": "ivann1302/TrueTell",
+  "branch": "main",
+  "baseCommit": "ed2a51fa263a95177663c7aefd56dab2ecad0d97",
+  "scope": "All current non-ignored TrueTell repository changes; release3 prepared payment articles and shared editorial/design/catalog changes",
+  "newUrls": [
+    "https://truetell-retail.ru/chastichnaya-oplata-bitrix24/",
+    "https://truetell-retail.ru/debitorskaya-zadolzhennost-bitrix24/",
+    "https://truetell-retail.ru/platezhnyy-kalendar-bitrix24/"
+  ],
+  "releasePreparation": {
+    "release": "042",
+    "authorizedBy": "Owner explicitly requested pushing all TrueTell changes and automatic site deployment",
+    "releaseAttemptStartedAt": "2026-10-13T11:32:56+03:00",
+    "newArticles": [
+      "platezhnyy-kalendar-bitrix24/",
+      "debitorskaya-zadolzhennost-bitrix24/",
+      "chastichnaya-oplata-bitrix24/"
+    ],
+    "incomingUpdated": [
+      "otchety-po-prodazham-bitrix24/",
+      "bi-analitika-bitrix24-pervyy-otchet/",
+      "dashbord-rukovoditelya-bitrix24/"
+    ],
+    "dateChanges": [
+      {
+        "hrefPath": "platezhnyy-kalendar-bitrix24/",
+        "field": "publishedAt",
+        "before": "2026-10-13T01:39:02+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "hrefPath": "platezhnyy-kalendar-bitrix24/",
+        "field": "updatedAt",
+        "before": "2026-10-13T01:39:02+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "hrefPath": "debitorskaya-zadolzhennost-bitrix24/",
+        "field": "publishedAt",
+        "before": "2026-10-12T21:41:57+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "hrefPath": "debitorskaya-zadolzhennost-bitrix24/",
+        "field": "updatedAt",
+        "before": "2026-10-13T01:39:02+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "hrefPath": "chastichnaya-oplata-bitrix24/",
+        "field": "publishedAt",
+        "before": "2026-10-12T20:06:40+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "hrefPath": "chastichnaya-oplata-bitrix24/",
+        "field": "updatedAt",
+        "before": "2026-10-12T21:41:57+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "hrefPath": "otchety-po-prodazham-bitrix24/",
+        "field": "updatedAt",
+        "before": "2026-10-12T20:06:40+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "hrefPath": "dashbord-rukovoditelya-bitrix24/",
+        "field": "updatedAt",
+        "before": "2026-10-13T01:39:02+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "hrefPath": "bi-analitika-bitrix24-pervyy-otchet/",
+        "field": "updatedAt",
+        "before": "2026-10-12T20:06:40+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      }
+    ],
+    "productVersion": "0.3.2",
+    "productREADMEsha256": "ed111c7d359b6acf8bc12c9166c2d00c8a1162709073d19cf58f107f8c6c6c2d",
+    "productBoundary": "Only viewing available; receipts, financial changes, report and calendar still planned",
+    "articleBodyChange": "Single0.3.0 to0.3.2 occurrence in partial payment; capability qualifications retained",
+    "existingPublishedDatesPreserved": true,
+    "mainSourceSha256": {
+      "src/config/articles.ts": "7e0929969f0b1805ff2db804512b554a646097ab026e85b5d2b30518799dcff8",
+      "src/pages/chastichnaya-oplata-bitrix24/index.astro": "5a0250f87550e708bad8c7f7c1ab91fb7793ed8ce439bbd7e0144a5e77de4dfa"
+    },
+    "deployed": false,
+    "formattingCleanup": {
+      "passed": true,
+      "files": {
+        "src/config/articles.ts": [
+          270,
+          291
+        ],
+        "src/pages/bi-analitika-chto-eto-prostymi-slovami/index.astro": [
+          188,
+          244
+        ],
+        "src/pages/bitrix24-udalenie-lidov-za-period/index.astro": [
+          183,
+          209
+        ],
+        "src/pages/dashbord-rukovoditelya-bitrix24/index.astro": [
+          181,
+          209
+        ],
+        "src/pages/kak-snyat-rezervy-moysklad/index.astro": [
+          160,
+          215
+        ],
+        "src/pages/kak-vosstanovit-udalennye-zakazy-tovary-moysklad/index.astro": [
+          229,
+          346
+        ],
+        "src/pages/ne-udalyaetsya-lid-bitrix24/index.astro": [
+          176
+        ],
+        "src/pages/ostatki-moysklad/index.astro": [
+          202,
+          246
+        ],
+        "src/pages/otchety-po-prodazham-bitrix24/index.astro": [
+          114,
+          130
+        ],
+        "src/pages/udalenie-proigrannyh-sdelok-bitrix24/index.astro": [
+          201
+        ],
+        "src/pages/udalennye-lidy-bitrix24/index.astro": [
+          174,
+          247
+        ]
+      },
+      "lines": 20,
+      "onlyTrailingWhitespaceRemoved": true,
+      "diffCheckExitCode": 0
+    }
+  },
+  "localVerification": {
+    "build": {
+      "exitCode": 0,
+      "canonicalUrls": 43,
+      "pages": 44
+    },
+    "tests": {
+      "passed": 68,
+      "failed": 0
+    },
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 3
+    },
+    "indexNowCheck": {
+      "validatedUrls": 43,
+      "manualSubmission": false
+    },
+    "gitDiffCheck": {
+      "exitCode": 0
+    },
+    "heroRegression041": {
+      "articles": 21,
+      "measurements": 147,
+      "desktopDelta": 0,
+      "sourceUnchanged": true
+    }
+  },
+  "independentPreReleaseReview": {
+    "release": "042",
+    "reviewedAt": "2026-10-13T11:57:07+03:00",
+    "passed": true,
+    "findings": [],
+    "scope": "Final version/date delta, preservation of existing publication dates and hero, approved local compiled HTML; prior facts/assets reviews retained.",
+    "dateChanges": [
+      {
+        "slug": "platezhnyy-kalendar-bitrix24/",
+        "field": "publishedAt",
+        "before": "2026-10-13T01:39:02+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "slug": "platezhnyy-kalendar-bitrix24/",
+        "field": "updatedAt",
+        "before": "2026-10-13T01:39:02+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "slug": "debitorskaya-zadolzhennost-bitrix24/",
+        "field": "publishedAt",
+        "before": "2026-10-12T21:41:57+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "slug": "debitorskaya-zadolzhennost-bitrix24/",
+        "field": "updatedAt",
+        "before": "2026-10-13T01:39:02+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "slug": "chastichnaya-oplata-bitrix24/",
+        "field": "publishedAt",
+        "before": "2026-10-12T20:06:40+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "slug": "chastichnaya-oplata-bitrix24/",
+        "field": "updatedAt",
+        "before": "2026-10-12T21:41:57+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "slug": "otchety-po-prodazham-bitrix24/",
+        "field": "updatedAt",
+        "before": "2026-10-12T20:06:40+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "slug": "dashbord-rukovoditelya-bitrix24/",
+        "field": "updatedAt",
+        "before": "2026-10-13T01:39:02+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      },
+      {
+        "slug": "bi-analitika-bitrix24-pervyy-otchet/",
+        "field": "updatedAt",
+        "before": "2026-10-12T20:06:40+03:00",
+        "after": "2026-10-13T11:32:56+03:00"
+      }
+    ],
+    "existingPublishedDatesPreserved": 18,
+    "registryOnlyDatesChanged": false,
+    "partialOnlySingleVersionReplacement": true,
+    "productEvidence": {
+      "path": "/Users/ivan/projects/bitrix_payment_schedule/README.md",
+      "sha256": "ed111c7d359b6acf8bc12c9166c2d00c8a1162709073d19cf58f107f8c6c6c2d",
+      "currentVersion": "0.3.2",
+      "available": "View saved permitted deal schedule, planned dates/amounts and CRM discrepancy",
+      "plannedNotAvailable": [
+        "receipts/corrections",
+        "full generator",
+        "report",
+        "both CSV exports",
+        "calendar"
+      ],
+      "basis": "Fresh README, not live product test"
+    },
+    "heroCssSha256": "d392f10e43ba5990227ac8d7a20c398944f200095faa0f7bde52e8fffada6a07",
+    "heroCssUnchanged": true,
+    "debtAndCalendarSourceUnchanged": true,
+    "compiledLocalReview": {
+      "passed": true,
+      "stamp": "2026-10-13T11:32:56+03:00",
+      "results": [
+        {
+          "route": "chastichnaya-oplata-bitrix24/",
+          "publishedAt": "2026-10-13T11:32:56+03:00",
+          "updatedAt": "2026-10-13T11:32:56+03:00",
+          "type": "Article",
+          "faq": 6,
+          "figures": 3,
+          "sources": 5,
+          "heroGridRules": true
+        },
+        {
+          "route": "debitorskaya-zadolzhennost-bitrix24/",
+          "publishedAt": "2026-10-13T11:32:56+03:00",
+          "updatedAt": "2026-10-13T11:32:56+03:00",
+          "type": "BlogPosting",
+          "faq": 6,
+          "figures": 3,
+          "sources": 5,
+          "heroGridRules": true
+        },
+        {
+          "route": "platezhnyy-kalendar-bitrix24/",
+          "publishedAt": "2026-10-13T11:32:56+03:00",
+          "updatedAt": "2026-10-13T11:32:56+03:00",
+          "type": "BlogPosting",
+          "faq": 6,
+          "figures": 3,
+          "sources": 6,
+          "heroGridRules": true
+        }
+      ],
+      "canonicalUrls": 43,
+      "liveChecked": false
+    },
+    "checksEvidence": {
+      "build": "Complete, 43 canonical URLs and 44 pages",
+      "tests": "68 passed, 0 failed",
+      "lint": "0 errors, 3 existing warnings",
+      "indexnow": "--check validated 43 URLs; no submission"
+    },
+    "sourceSha256": {
+      "src/config/articles.ts": "7e0929969f0b1805ff2db804512b554a646097ab026e85b5d2b30518799dcff8",
+      "src/pages/chastichnaya-oplata-bitrix24/index.astro": "5a0250f87550e708bad8c7f7c1ab91fb7793ed8ce439bbd7e0144a5e77de4dfa",
+      "src/pages/debitorskaya-zadolzhennost-bitrix24/index.astro": "3d9d30f84418d613b4bd5de77717569e6c34e8405da7301f64f67311f173d472",
+      "src/pages/platezhnyy-kalendar-bitrix24/index.astro": "145d11fb9966857d1a3ed442a92f7e9bd608fc768790744c208f0179ec071b98",
+      "src/components/editorial/article-hero.module.scss": "d392f10e43ba5990227ac8d7a20c398944f200095faa0f7bde52e8fffada6a07"
+    },
+    "deployed": false,
+    "liveReviewPending": true,
+    "limits": [
+      "New dates reflect this authorized release attempt and need post-deployment confirmation.",
+      "Product boundaries reviewed from current README, not a live Bitrix24 product session.",
+      "No Git, push or deployment actions performed by reviewer."
+    ],
+    "registrySemanticChangeOnlyDates": true,
+    "whitespaceCleanupReview": {
+      "passed": true,
+      "files": [
+        {
+          "file": "src/config/articles.ts",
+          "lines": [
+            270,
+            291
+          ],
+          "afterSha256": "7e0929969f0b1805ff2db804512b554a646097ab026e85b5d2b30518799dcff8"
+        },
+        {
+          "file": "src/pages/bi-analitika-chto-eto-prostymi-slovami/index.astro",
+          "lines": [
+            188,
+            244
+          ],
+          "afterSha256": "6e15474dbaff6009d9e32bf033f907ce973657726fa035ed635cc019ea7e8222"
+        },
+        {
+          "file": "src/pages/bitrix24-udalenie-lidov-za-period/index.astro",
+          "lines": [
+            183,
+            209
+          ],
+          "afterSha256": "6561f251ef5ca033100a0f68842d9746d125581b0d1e7f2e82bf385b44ca68bc"
+        },
+        {
+          "file": "src/pages/dashbord-rukovoditelya-bitrix24/index.astro",
+          "lines": [
+            181,
+            209
+          ],
+          "afterSha256": "e5d40af255921d78dce1dd55a4b5aafa68933d496aee9e3aac522067a52fbb49"
+        },
+        {
+          "file": "src/pages/kak-snyat-rezervy-moysklad/index.astro",
+          "lines": [
+            160,
+            215
+          ],
+          "afterSha256": "9b5147a7d165b2c235ebce9fdc9ad2835ba892de75cbb56c8953cd1968349c3f"
+        },
+        {
+          "file": "src/pages/kak-vosstanovit-udalennye-zakazy-tovary-moysklad/index.astro",
+          "lines": [
+            229,
+            346
+          ],
+          "afterSha256": "0c3d4bfb946f2d27a99cc996e0f6dec807fd231e5e545b7b9c5c0bd64bba04c9"
+        },
+        {
+          "file": "src/pages/ne-udalyaetsya-lid-bitrix24/index.astro",
+          "lines": [
+            176
+          ],
+          "afterSha256": "ce23879ed59c70a14710401dbe90aacac907167a67db4980f4072b72109c8840"
+        },
+        {
+          "file": "src/pages/ostatki-moysklad/index.astro",
+          "lines": [
+            202,
+            246
+          ],
+          "afterSha256": "7914cfca93044767623adad2d9052d96651d81edce353cb9349d5887d21b36ad"
+        },
+        {
+          "file": "src/pages/otchety-po-prodazham-bitrix24/index.astro",
+          "lines": [
+            114,
+            130
+          ],
+          "afterSha256": "33b02a34acbe1e6122c3146b45baf5f9e07bb76c8b0b631d82e2a6b4edc041b8"
+        },
+        {
+          "file": "src/pages/udalenie-proigrannyh-sdelok-bitrix24/index.astro",
+          "lines": [
+            201
+          ],
+          "afterSha256": "987a6106517c6b834fb4b4484afbea166c3b49f7b0cd7e500afa23ac7785a162"
+        },
+        {
+          "file": "src/pages/udalennye-lidy-bitrix24/index.astro",
+          "lines": [
+            174,
+            247
+          ],
+          "afterSha256": "0bad6b9c7cac95a6aac438aa674352adae86d32e262417c6f6ea17033fc21159"
+        }
+      ],
+      "lines": 20,
+      "onlyTrailingWhitespaceRemoved": true,
+      "distFilesIndependentlyHashChecked": 372,
+      "renderDifferent": [],
+      "gitDiffCheckReportedExitCode": 0
+    },
+    "latestChecksEvidenceSha256": {
+      "main-build.log": "a4076081d8285417240980f769906bd7d36b162862007999150d753933b4a6f4",
+      "main-tests.log": "c57c3ac27f513030558b1f13efbe7cdbdd2ef9cc99d3edd9400d2aeec9563c06",
+      "main-lint.log": "08d7b6968dd44ea111538b9c39efab3128db96769331a54ce4a80e430fa68e27",
+      "main-indexnow-check.log": "4b8b228d843b5593e0ff2265313d798d3dfb32afbac3716c3880a14030086963"
+    }
+  },
+  "workflow": {
+    "file": ".github/workflows/deploy.yml",
+    "name": "CI and SprintHost deploy",
+    "trigger": "push to main",
+    "jobs": [
+      "build",
+      "backend-checks",
+      "package",
+      "deploy",
+      "indexnow"
+    ],
+    "automaticIndexNow": "Existing post-deploy workflow step; no manual submission added"
+  },
+  "stages": {
+    "local_QA_passed": true,
+    "push_completed": false,
+    "deployed": false,
+    "live_verified": false,
+    "search_indexing_checked": false
+  },
+  "postReleaseEvidence": "SEO workspace: work/publish-042/final and docs/seo/publications/articles-publish-042-2026-10-13.json",
+  "limits": [
+    "This is a pre-push snapshot. CI, deployment and public HTTP/assets are confirmed by the separate post-release report.",
+    "Product functionality reviewed from README/source; real customer portal and banking actions not tested."
+  ]
+}

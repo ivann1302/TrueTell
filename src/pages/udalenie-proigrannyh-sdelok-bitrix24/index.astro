@@ -1,5 +1,8 @@
 ---
 import ArticleFigure from '../../components/editorial/article-figure.astro';
+import articleIllustration from '../../images/articles/record-selection-editorial.png';
+import dealFilterImage from '../../images/articles/bitrix24-deal-filter-native.png';
+import selectionImage from '../../images/products/cleaner-selection.png';
 import ArticleLayout from '../../components/editorial/article-layout.astro';
 import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
 import ArticleSources from '../../components/editorial/article-sources.astro';
@@ -10,7 +13,6 @@ import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { getArticle, getRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
 import { cleanerProduct } from '../../config/products';
-import dealCleanupImage from '../../images/articles/bitrix24-lost-deals.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
 import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
@@ -28,18 +30,13 @@ const siteRoot = new URL(base, import.meta.env.SITE);
 const homeUrl = siteRoot.toString();
 const knowledgeBaseUrl = new URL('knowledge-base/', siteRoot).toString();
 const articleUrl = new URL('udalenie-proigrannyh-sdelok-bitrix24/', siteRoot).toString();
-const imageAlt = 'Схема отбора проигранных сделок: сохранение истории для повторного контакта и удаление ненужных записей';
-const ogImage = new URL(dealCleanupImage.src, siteRoot).toString();
+const imageAlt = "Сотрудник проверяет бумажные записи перед разделением на сохранённые и отобранные";
+const ogImage = new URL(articleIllustration.src, siteRoot).toString();
 const ogDescription = 'Отбор по стадии, проверка исключений и удаление ненужных сделок: как очистить CRM и сохранить полезную историю.';
 const titleParts = [
   { text: 'Как удалить ' },
   { text: 'проигранные сделки в Битрикс24', accent: true },
   { text: ' и сохранить нужные' },
-];
-const breadcrumbs = [
-  { label: 'Главная', href: base },
-  { label: 'База знаний', href: `${base}knowledge-base/` },
-  { label: title },
 ];
 const sourceLinks = [
   {
@@ -161,7 +158,7 @@ const structuredData = createArticleStructuredData({
   ogTitle={title} {ogDescription} {ogImage} ogImageAlt={imageAlt}
   category="Битрикс24"
   intro="Как отобрать сделки по текущей стадии, проверить исключения и очистить CRM, сохранив историю для повторных продаж и аналитики."
-  {breadcrumbs} author={authorName} publishedTime={publishedDate} modifiedTime={modifiedDate}
+  author={authorName} publishedTime={publishedDate} modifiedTime={modifiedDate}
 >
   <Fragment slot="quick-answer">
     <p>Откройте список сделок, отберите записи по <strong>текущей проигранной стадии</strong>, проверьте выборку и выполните групповое удаление. Если чистите только часть базы, ограничьте отбор воронкой и периодом.</p>
@@ -169,12 +166,14 @@ const structuredData = createArticleStructuredData({
   </Fragment>
 
   <p data-article-lead>Самая сложная часть очистки — определить, какие отказы действительно можно убрать. Под одной проигранной стадией могут оказаться тестовая заявка, окончательный отказ и клиент, который попросил вернуться через полгода. Удалить их вместе легко; восстановить смысл переговоров после такой уборки гораздо труднее.</p>
+  <ArticleFigure src={articleIllustration} alt="Сотрудник проверяет бумажные записи перед разделением на сохранённые и отобранные" caption="Отказы с договорённостью о повторном контакте требуют отдельного решения. Иллюстрация проверки записей перед очисткой." />
 
   <section aria-labelledby="keep-deals">
 
     <h2 id="keep-deals">Какие проигранные сделки <span data-heading-accent>стоит оставить</span></h2>
 
     <p>Начните с причины очистки. Если завершённые сделки просто мешают в ежедневной работе, достаточно изменить рабочий фильтр. Удаление имеет смысл, когда записи действительно больше не нужны: например, это проверочные обращения после настройки формы или заведомо нецелевые заявки, которые компания решила не хранить.</p>
+    <p>Пошаговая выгрузка и сверка уникальных ID описаны в <a href={`${base}eksport-lidov-sdelok-bitrix24-pered-udaleniem/`}>инструкции по экспорту лидов и сделок перед удалением</a>. Она помогает проверить состав операции, а сохранённый файл не заменяет полную резервную копию CRM.</p>
 
     <p>С реальными отказами осторожнее. Клиент мог отказаться из-за временного отсутствия бюджета, переноса проекта или неподходящих сроков. В карточке остаются условия предложения и договорённости, которые помогут при следующем обращении. Прежде чем убирать такую сделку, согласуйте с ответственным, нужна ли ему эта история.</p>
 
@@ -197,8 +196,9 @@ const structuredData = createArticleStructuredData({
     <p>Представим, что в компании настроены отдельные стадии «Не наш профиль» и «Вернуться позже». Широкий отбор всех проигранных сделок объединит обе категории. Если договорились очищать только нецелевые обращения, нужно ограничиться первой стадией. Одного признака «закрыта» для такой задачи тоже недостаточно: закрытая сделка может быть успешной.</p>
 
     <p>Начинать удобнее с одной воронки. Так проще сопоставить стадии с принятыми в отделе правилами и обсудить исключения с менеджерами. Перед поиском проверьте уже установленные условия: оставшийся фильтр по ответственному или периоду может сделать выборку неожиданно маленькой.</p>
+    <ArticleFigure src={dealFilterImage} fullSize alt="Фильтр проваленных сделок Битрикс24 с диапазоном даты создания" caption="Реальный фильтр: группа стадий «Сделка провалена» и дата создания с 01.10.2026 по 31.10.2026. Условия ещё не применены; дата создания отличается от даты отказа." />
 
-    <ArticleFigure src={dealCleanupImage} alt={imageAlt} caption="Схема принципа отбора: история для повторного контакта остаётся в CRM, удаляются только согласованные ненужные записи. Это иллюстрация, а не экран Битрикс24." />
+
 
   </section>
 
@@ -274,6 +274,7 @@ const structuredData = createArticleStructuredData({
     <p>Если вы уже определили, какие проигранные сделки можно убрать, следующий шаг — подобрать для них условия удаления. Обсудим ваш сценарий и сопоставим его с доступными возможностями ПО до начала очистки.</p>
 
     <p>Для очистки другой части CRM пригодится отдельная инструкция: <a href={`${base}bitrix24-udalenie-lidov-za-period/`}>как удалить старые лиды за выбранный период</a>. У лидов и сделок различаются стадии и контекст работы, поэтому проверяйте их отдельными выборками.</p>
+    <ArticleFigure src={selectionImage} fullSize alt="Предпросмотр выбранных сделок в TrueTell Cleaner с количеством записей и экспортом CSV" caption="Демонстрационный экран TrueTell Cleaner в режиме сделок: видны состав выборки, количество и экспорт CSV. Для лидов проверяют свою выборку; CSV не заменяет полную резервную копию CRM." />
 
   </section>
 

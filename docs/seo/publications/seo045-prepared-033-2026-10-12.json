@@ -1,0 +1,159 @@
+{
+  "taskId": "SEO045-033",
+  "action": "CREATE",
+  "articleType": "blog",
+  "title": "МойСклад для маркетплейсов: заказы, остатки и цены",
+  "route": "/moysklad-dlya-marketpleysov/",
+  "contentReady": true,
+  "localQaPassed": true,
+  "independentReviewPassed": true,
+  "preparedAt": "2026-10-12T10:33:31.144290+00:00",
+  "deploymentStatus": "awaiting_explicit_owner_publication_approval",
+  "deployed": false,
+  "liveVerified": false,
+  "liveCanonicalUrls": 37,
+  "combinedCandidateCanonicalUrls": 40,
+  "newArticleRoutes": [
+    "/massovoe-udalenie-lidov-bitrix24/",
+    "/eksport-lidov-sdelok-bitrix24-pered-udaleniem/",
+    "/moysklad-dlya-marketpleysov/"
+  ],
+  "automaticApprovalReviewRejectedActivation": true,
+  "rejectionReason": "Preparation consent was not considered clear consent to production deployment; docs/seo/content-publishing.md requires separate deployment permission. Do not bypass.",
+  "provisionalFirstPublicationMetadata": true,
+  "beforeApprovedActivation": "Set actual first-publication dates for the three new articles, rebuild and verify; then activate a combined patch against the current live baseline, check live pages and have reviewer inspect live version. Submit expanded sitemap only after actual publication.",
+  "images": {
+    "officialUnalteredScreenshots": 2,
+    "nativeInfographics": 1,
+    "generatedPeopleUsed": false,
+    "allFullSize": true,
+    "transparentInfographicAlphaPreserved": true
+  },
+  "verification": {
+    "candidateAndMainBuildsMatchForAllChangedFiles": true,
+    "candidateTestsPassed": 68,
+    "mainTestsPassed": 68,
+    "lintErrors": 0,
+    "preexistingWarnings": 3,
+    "responsiveChecks": 24,
+    "viewports": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "nativeSourcesKeyboardAndNoJs": true,
+    "faqMatchesJsonLd": 7,
+    "indexNowCheckOnlyUrls": 40,
+    "urlSubmissionPerformed": false
+  },
+  "scope": {
+    "changedSources": 10,
+    "incomingContextualArticles": 3,
+    "combinedStaticFiles": 51,
+    "crmAssetsUnchanged": true
+  },
+  "review": {
+    "taskId": "SEO045-033",
+    "reviewDate": "2026-10-12",
+    "status": "editorial_review_passed_not_deployed",
+    "reviewer": "/root/review_seo045_033",
+    "openFindings": [],
+    "scope": [
+      "Final source",
+      "Registry and three contextual incoming paragraphs",
+      "Current primary documentation",
+      "Built HTML and sitemap",
+      "Original image hashes",
+      "PNG/WebP transparency",
+      "Eight desktop/mobile screenshots"
+    ],
+    "facts": {
+      "basicOzonWbDirectionsQualified": true,
+      "fbsFormula": "10 - 3 = 7",
+      "moyskladAvailableFormula": "10 + 5 - 3 = 12",
+      "yandexSeparatelyQualified": true,
+      "trueTellNotPromisedAsMarketplaceConnector": true,
+      "screenshotOriginalsIndependentlyVerified": 2
+    },
+    "html": {
+      "canonicalOgAligned": true,
+      "h1": 1,
+      "articleType": "BlogPosting",
+      "catalog": "blog",
+      "visibleBreadcrumbs": false,
+      "faqVisibleAndSchemaEqual": 7,
+      "sourcesInitiallyClosed": true,
+      "fullSizeOriginals": 3,
+      "sitemapUrls": 40
+    },
+    "images": {
+      "pngAlpha": true,
+      "optimizedWebpAlpha": true,
+      "infographicCorrect": true,
+      "visualViewports": [
+        390,
+        1440
+      ]
+    },
+    "primaryVerificationReadByReviewer": {
+      "testsPassed": 68,
+      "testsFailed": 0,
+      "lintErrors": 0,
+      "existingLintWarnings": 3,
+      "responsiveChecks": 24,
+      "indexNowLocalCheckUrls": 40
+    },
+    "limits": [
+      "Reviewer independently read sources, HTML and saved screenshots. Interactive browser unavailable to reviewer; keyboard/no-JS/geometry checks rely on primary QA.",
+      "No live MoySklad account or actual marketplace exchange tested.",
+      "No publication or live-version verification performed. Initial publication dates are provisional until approved release."
+    ]
+  },
+  "boundaries": [
+    "Official documentation, source and screenshots checked; no actual marketplace account/exchange tested.",
+    "Editorial readiness is not publication, crawling or indexing.",
+    "Reviewer interactive browser unavailable; independently viewed saved QA images."
+  ],
+  "primarySources": {
+    "selectionRule": "Owner12.10.2026: authentic screenshots and useful infographics; less obvious AI styling",
+    "images": [
+      {
+        "file": "moysklad-wb-warehouse-official.png",
+        "source": "https://support.moysklad.ru/hc/_next/static/media/28945341793938.565dd29d.png",
+        "documentation": "https://support.moysklad.ru/hc/ru/онлаин%20торговля/маркетплеисы/wildberries",
+        "sha256": "de120dd1127557cc3f9e54a9b71c3cb775d3476b0a0099f086be6937eb11d839",
+        "unaltered": true,
+        "scope": "BasicWB FBS warehouse matching, separateFBO; screenshot does not prove successful exchange"
+      },
+      {
+        "file": "moysklad-wb-prices-official.png",
+        "source": "https://support.moysklad.ru/hc/_next/static/media/22255961382290.723f81fa.png",
+        "documentation": "https://support.moysklad.ru/hc/ru/онлаин%20торговля/маркетплеисы/wildberries",
+        "sha256": "b3f1ff00377c4d0ec86f271a0fd9532d596894a85f895cddb56ce2c6bae8f9c1",
+        "unaltered": true,
+        "scope": "BasicWB retail and discounted price mapping; not an export success screen"
+      },
+      {
+        "file": "moysklad-marketplace-stock-infographic.png",
+        "type": "nativeSVG rendered toPNG",
+        "generator": "build-infographic.mjs",
+        "transparentBackground": true,
+        "fictionalUi": false,
+        "data": {
+          "example": true,
+          "stock": 10,
+          "reserve": 3,
+          "expected": 5,
+          "basicFbsOzonWb": 7,
+          "moyskladAvailable": 12
+        },
+        "scope": "One item, one warehouse and one moment; not universal Yandex module formula"
+      }
+    ]
+  },
+  "supersededByApprovedPublication": "ARTICLES-PUBLISH-035",
+  "currentPublicationStatus": "live_verified",
+  "currentReleaseId": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791808931-1",
+  "historicalPreparedRecord": true
+}

@@ -20,7 +20,13 @@ test('home shows two app products with icons and BI as the third card', () => {
   assert.equal(biCard.parentElement, appCards[0].parentElement, 'BI is outside the product card grid');
   assert.equal(biCard.parentElement.children.length, 3);
   assert(biCard.compareDocumentPosition(appCards[1]) & doc.defaultView.Node.DOCUMENT_POSITION_PRECEDING);
-  assert(!section.textContent.includes('Проверка бизнес-идей'));
+  assert(!/бизнес[ -]?иде|проверить идею|проверки идеи/i.test(doc.body.textContent));
+  const choice = doc.querySelector('[data-product-choice]');
+  assert.deepEqual([...choice.querySelectorAll('[data-product-option]')].map(option => option.dataset.productOption), ['bi', 'crm', 'marketplaces']);
+  assert.equal(choice.querySelectorAll('[data-product-panel]').length, 3);
+  assert.equal(doc.querySelectorAll('details[name="product-solutions"]').length, 3);
+  const catalog = new JSDOM(readFileSync('dist/products/index.html', 'utf8')).window.document;
+  assert.equal(catalog.querySelectorAll('main h2').length, 4);
   assert(!doc.querySelector('#cases'), 'Old generic cases block remains on home');
   assert(doc.querySelector('footer a[href="/knowledge-base/"]'), 'Footer knowledge-base link missing');
 });

@@ -1,0 +1,186 @@
+{
+  "taskId": "ARTICLES-PUBLISH-035",
+  "status": "live_verified",
+  "verifiedAt": "2026-10-12T12:46:49.170709+00:00",
+  "ownerExplicitPublicationApproval": true,
+  "authorization": "Owner12.10.2026 agreed to the explicit question to publish all3reviewed articles. Historical activation refusal032 was resolved by this new direct consent.",
+  "releaseId": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791808931-1",
+  "previousReleaseRetained": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791793751-1",
+  "publicationTimestampMoscow": "2026-10-12T15:35:42+03:00",
+  "newArticles": [
+    {
+      "url": "https://truetell-retail.ru/massovoe-udalenie-lidov-bitrix24/",
+      "status": 200,
+      "title": "Как массово удалить лиды в Битрикс24 — все или по фильтру",
+      "images": 2,
+      "canonicalCorrect": true,
+      "datePublished": "2026-10-12T15:35:42+03:00",
+      "dateModified": "2026-10-12T15:35:42+03:00",
+      "robots": "index, follow"
+    },
+    {
+      "url": "https://truetell-retail.ru/eksport-lidov-sdelok-bitrix24-pered-udaleniem/",
+      "status": 200,
+      "title": "Экспорт лидов и сделок из Битрикс24 перед удалением — Excel и CSV",
+      "images": 3,
+      "canonicalCorrect": true,
+      "datePublished": "2026-10-12T15:35:42+03:00",
+      "dateModified": "2026-10-12T15:35:42+03:00",
+      "robots": "index, follow"
+    },
+    {
+      "url": "https://truetell-retail.ru/moysklad-dlya-marketpleysov/",
+      "status": 200,
+      "title": "МойСклад для маркетплейсов: заказы, остатки и цены",
+      "images": 3,
+      "canonicalCorrect": true,
+      "datePublished": "2026-10-12T15:35:42+03:00",
+      "dateModified": "2026-10-12T15:35:42+03:00",
+      "robots": "index, follow"
+    }
+  ],
+  "canonicalUrls": 40,
+  "articleCount": 18,
+  "knowledgeArticles": 14,
+  "blogArticles": 4,
+  "verifiedStaticFiles": 51,
+  "crmAssetsUnchanged": true,
+  "verification": {
+    "candidateTestsPassed": 68,
+    "mainTestsPassed": 68,
+    "lintErrors": 0,
+    "preexistingLintWarnings": 3,
+    "buildsPassed": true,
+    "localIndexNowCheckPassed": 40,
+    "indexNowSubmitted": false,
+    "liveChromeChecks": 52,
+    "viewports": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "nativeSourcesKeyboardAndWithoutJs": true,
+    "fullSizeOriginalsAvailable": true,
+    "independentLiveReview": {
+      "date": "2026-10-12",
+      "status": "live_verified",
+      "openFindings": [],
+      "cleaner": {
+        "reviewer": "/root/review_cleaner_032",
+        "articles": 2,
+        "sourceBodiesAndImagesUnchanged": true,
+        "onlyMetadataDatesChanged": true,
+        "liveHtmlMatchesBuild": true,
+        "originalAndWebpFilesVerified": 20,
+        "faqEachMatchesSchema": 7,
+        "canonicalRobotsOgDatesCorrect": true,
+        "liveScreenshotsReviewed": [
+          390,
+          1440
+        ],
+        "releaseAndSitemapVerified": true,
+        "evidence": "review-cleaner-035-final.json"
+      },
+      "seo045": {
+        "reviewer": "/root/review_seo045_033",
+        "sourceBodyAndImagesUnchanged": true,
+        "onlyMetadataDatesChanged": true,
+        "liveHtmlMatchesBuild": true,
+        "originalFilesVerified": 3,
+        "webpFilesVerified": 10,
+        "faqMatchesSchema": 7,
+        "canonicalRobotsOgDatesCorrect": true,
+        "incomingLinksVerified": 5,
+        "liveScreenshotsReviewed": 8,
+        "sitemapUrls": 40
+      },
+      "limits": [
+        "Both reviewers independently checked source, liveHTTP, HTML, image hashes and saved screenshots.",
+        "Interactive browser unavailable to reviewers. Primary ran52Chrome checks at320/390/768/1440px including keyboard and noJS; reviewers independently assessed snapshots.",
+        "No real client Bitrix24 deletion/export, Cleaner iframe operation or MoySklad marketplace exchange tested.",
+        "GSC data read by primary; independent live editorial review does not prove search indexing."
+      ]
+    }
+  },
+  "gsc": {
+    "sitemapSubmitted": true,
+    "accepted": true,
+    "confirmed": true,
+    "lastSubmitted": "2026-10-12T12:48:27.379Z",
+    "downloadPending": true,
+    "lastDownloadedStill": "2026-10-10T12:11:29.330Z",
+    "oldGoogleDownloadedContent": [
+      {
+        "type": "web",
+        "submitted": "32",
+        "indexed": "0"
+      }
+    ],
+    "newUrlInspection": [
+      {
+        "url": "https://truetell-retail.ru/massovoe-udalenie-lidov-bitrix24/",
+        "verdict": "NEUTRAL",
+        "coverageState": "URL is unknown to Google",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "lastCrawlTime": null,
+        "googleCanonical": null,
+        "userCanonical": null,
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:truetell-retail.ru&id=9kFiMeJMzkYM_2k-fjYamw&utm_medium=link&utm_source=api"
+      },
+      {
+        "url": "https://truetell-retail.ru/eksport-lidov-sdelok-bitrix24-pered-udaleniem/",
+        "verdict": "NEUTRAL",
+        "coverageState": "URL is unknown to Google",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "lastCrawlTime": null,
+        "googleCanonical": null,
+        "userCanonical": null,
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:truetell-retail.ru&id=3k2HG-3c0IJneyUO0BQjsg&utm_medium=link&utm_source=api"
+      },
+      {
+        "url": "https://truetell-retail.ru/moysklad-dlya-marketpleysov/",
+        "verdict": "NEUTRAL",
+        "coverageState": "URL is unknown to Google",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "lastCrawlTime": null,
+        "googleCanonical": null,
+        "userCanonical": null,
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:truetell-retail.ru&id=yHWEW4NKa_BzXBdct1x1XQ&utm_medium=link&utm_source=api"
+      }
+    ],
+    "inspectionSuccesses": 3,
+    "individualIndexingRequests": false,
+    "submissionDoesNotProveIndexing": true
+  },
+  "nextSteps": [
+    {
+      "priority": 1,
+      "action": "INDEXATION_REVIEW",
+      "scope": "Повторная проверка обнаруженных/просканированных без индексации страниц и новых3URL после чтения sitemap Google. Проверить причины, содержание и ссылки; не считатьunknown доказательством ошибки сразу после выпуска.",
+      "timeframe": "Следующая ручная сессия; повторный срез через7–10дней как рабочий ориентир, без гарантии индексации.",
+      "automationCreated": false
+    },
+    {
+      "priority": 2,
+      "action": "COMMERCIAL_REVIEW",
+      "scope": "Проверить коммерческие страницы МойСклад: ясность задач, реальные функции/готовность, демонстрации, скриншоты, связность со статьями и путь к обращению.",
+      "reason": "Статьи уже связывают спрос с продуктами; следующий полезный результат — понятный переход читателя к решению."
+    },
+    {
+      "priority": 3,
+      "action": "KEYWORD_AND_INTENT_RESEARCH",
+      "scope": "Составить следующий контентный цикл по импорту и массовому изменению данных МойСклад. Кандидаты: ошибки импорта, дубли, варианты товара и обновление цен. Сначала проверить спрос и пересечение с существующими продуктами/статьями; выбратьCREATE/UPDATE/NO_PAGE.",
+      "demandStatus": "Новая частотность ещё не измерена; это направления исследования, а не утверждённая очередь статей."
+    },
+    {
+      "priority": 4,
+      "action": "CTR_REASSESSMENT",
+      "scope": "После накопления данных повторить анализ запросов, позиций и сниппетов. Не менятьTitle/Description только по нулевым кликам на малой выборке.",
+      "timeframe": "2–4недели, ручная проверка.",
+      "automationCreated": false
+    }
+  ],
+  "backlogScope": "The transferred content queueSEO037–045 is now published. The original45taskExcel007 remains unavailable; existingExcel013 contains an older partial backlog and was not rewritten as though complete.",
+  "historicalPreparedPackages": "032and033prepared artifacts remain historical; current approved publication035 supersedes their pending status."
+}

@@ -1,0 +1,443 @@
+{
+  "id": "041",
+  "action": "UPDATE",
+  "checkedDate": "2026-10-13",
+  "preparedAt": "2026-10-13T02:06:47+03:00",
+  "scope": "Shared hero alignment for all21 current and future TrueTell articles",
+  "request": "Left category/H1 and right introduction columns must begin at the same vertical level on desktop",
+  "rootCause": "heroMain started at grid row2 while introduction auto-placed at row1; display:contents makes both elements direct grid items.",
+  "fix": {
+    "heroMain": "grid-row:1/3",
+    "intro": "grid-row:1",
+    "quickAnswer": "grid-row:2",
+    "mobile": "existing grid-row:auto and one column retained"
+  },
+  "persistentRuleFiles": [
+    "AGENTS.md",
+    "DESIGN_SYSTEM.md",
+    ".agents/skills/truetell-article-authoring/references/article-model.md",
+    "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/AGENTS.md"
+  ],
+  "sourceSha256": "d392f10e43ba5990227ac8d7a20c398944f200095faa0f7bde52e8fffada6a07",
+  "sourceScope": {
+    "passed": true,
+    "baselineSourceFiles": 572,
+    "changed": [
+      ".agents/skills/truetell-article-authoring/references/article-model.md",
+      "AGENTS.md",
+      "DESIGN_SYSTEM.md",
+      "src/components/editorial/article-hero.module.scss"
+    ],
+    "unrelatedSourceChanges": [],
+    "registryAndArticleSourcesUnchanged": true,
+    "sourceSha256": "d392f10e43ba5990227ac8d7a20c398944f200095faa0f7bde52e8fffada6a07",
+    "metadataDateChanges": false,
+    "newDependencies": false,
+    "deployed": false
+  },
+  "stages": {
+    "implemented": true,
+    "local_QA_passed": true,
+    "deployed": false,
+    "live_verified": false
+  },
+  "previewUrl": "http://127.0.0.1:4347/platezhnyy-kalendar-bitrix24/",
+  "verification": {
+    "redTest": {
+      "command": "node /private/tmp/hero-alignment-041-qa.mjs --before",
+      "exitCode": 1,
+      "expectedFailure": "Desktop hero columns must begin at the same vertical level",
+      "desktopDeltaPx": 145.5625,
+      "javascriptErrors": 0
+    },
+    "browser": {
+      "command": "node /private/tmp/hero-alignment-041-qa.mjs",
+      "exitCode": 0,
+      "articles": 21,
+      "checks": 147,
+      "widths": [
+        320,
+        390,
+        768,
+        769,
+        1024,
+        1440,
+        1920
+      ],
+      "desktopChecks": 84,
+      "desktopMaximumDeltaPx": 0,
+      "pageOverflow": 0,
+      "javascriptErrors": 0,
+      "rightQuickAnswerFollowsIntro": true,
+      "background": "#101621",
+      "dotPattern": "18px18px",
+      "minimumHeight": "100svh",
+      "mobileCenteredH1AndOneColumn": true,
+      "currentCalendar390GeometryMatchesBefore": true,
+      "formSubmitted": false,
+      "externalRequestsBlocked": true
+    },
+    "productionBuild": {
+      "command": "npm run build",
+      "exitCode": 0,
+      "canonicalUrls": 43,
+      "builtPages": 44
+    },
+    "tests": {
+      "command": "node --test scripts/*.test.mjs",
+      "exitCode": 0,
+      "passed": 68,
+      "failed": 0
+    },
+    "lint": {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "errors": 0,
+      "existingWarnings": 3
+    },
+    "indexNowCheck": {
+      "command": "node scripts/indexnow.mjs --check",
+      "exitCode": 0,
+      "validatedUrls": 43,
+      "submission": false
+    },
+    "inAppPreview": {
+      "tabId": "17",
+      "viewportWidth": 1280,
+      "leftTop": 184,
+      "rightTop": 184,
+      "deltaPx": 0,
+      "markedDeliverable": true
+    },
+    "primaryVisualReview": {
+      "screenshots": [
+        "after-1440.png",
+        "after-390.png",
+        "ostatki-moysklad-1440.png",
+        "otchety-po-prodazham-bitrix24-1440.png"
+      ],
+      "openFindings": []
+    }
+  },
+  "independentReview": {
+    "task": "Article hero desktop alignment 041",
+    "reviewedAt": "2026-10-13",
+    "role": "Independent read-only reviewer",
+    "passed": true,
+    "findings": [],
+    "closedBaselineFinding": {
+      "severity": "P2",
+      "cause": "Left hero column was explicitly assigned grid row 2 while right introduction began in row 1",
+      "confirmedBeforeDelta1440": 145.5625,
+      "confirmedAfterDelta": 0
+    },
+    "minimality": {
+      "baselineFileCount": 572,
+      "modifiedFiles": [
+        ".agents/skills/truetell-article-authoring/references/article-model.md",
+        "AGENTS.md",
+        "DESIGN_SYSTEM.md",
+        "src/components/editorial/article-hero.module.scss"
+      ],
+      "unownedModifiedFiles": [],
+      "cssChange": "Only three grid-row placements changed; mobile auto reset and existing dark/full-width/100svh/typography rules remain intact",
+      "articleBodiesAndRegistryUnchanged": true,
+      "sourceSha256": "d392f10e43ba5990227ac8d7a20c398944f200095faa0f7bde52e8fffada6a07"
+    },
+    "inheritance": {
+      "registeredArticles": 21,
+      "allUseSharedArticleLayoutHero": true,
+      "futureRuleRecordedIn": [
+        "AGENTS.md",
+        "DESIGN_SYSTEM.md",
+        ".agents/skills/truetell-article-authoring/references/article-model.md",
+        "SEO workspace AGENTS.md"
+      ]
+    },
+    "compiledCss": {
+      "mode": "Astro inlines optimized CSS into HTML; grid-row/grid-column optimized to grid-area",
+      "articles": [
+        {
+          "route": "/bi-analitika-bitrix24-pervyy-otchet/",
+          "htmlSha256": "4d79f0474640aca3f187d9fbd344eac0aaa9569a09335fda1dfc5959dc5f1fd5",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/bi-analitika-chto-eto-prostymi-slovami/",
+          "htmlSha256": "01136f1d3681a50951ab362873fd9b8c060722b37ee85cf28e91e361faf21669",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/bitrix24-moysklad-integraciya/",
+          "htmlSha256": "e9229115648e6c91abfb961460f2e782d08716cf2691a3a354ef54d6b9387fc6",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/bitrix24-udalenie-lidov-za-period/",
+          "htmlSha256": "766bc8c406231b7832a00aa52789dc65f6664821b1aff9f2ae1a16931a4aded9",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/chastichnaya-oplata-bitrix24/",
+          "htmlSha256": "20008b017ebca3a45c64b7e508359ec58891b535558dfc087ffed252ac6a7698",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/dashbord-rukovoditelya-bitrix24/",
+          "htmlSha256": "1e6bb49db122b9e89da7e50239138beaea0ee9c8e54bb41b18b7217508aaf9bc",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/debitorskaya-zadolzhennost-bitrix24/",
+          "htmlSha256": "1f0ef5ac9acf7e0a06ee6665da158a98ed171ccce43620611b4eb69823621d27",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/eksport-lidov-sdelok-bitrix24-pered-udaleniem/",
+          "htmlSha256": "b57b5d3f386fb2a53050a5e0ff27bed9af2b3b1db7b08b5f8106c6c9d57612ea",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/kak-snyat-rezervy-moysklad/",
+          "htmlSha256": "a0c591fd96565a1f454c252348b9461e757a4c48eca25de578efd4f5f52c26c2",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/kak-vosstanovit-udalennye-zakazy-tovary-moysklad/",
+          "htmlSha256": "e26b4e7add4008e90013dcacc9352758ecedc109b2b9620f8a49ee087cdfcd46",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/massovoe-udalenie-lidov-bitrix24/",
+          "htmlSha256": "e1d3147a2f88686e2145c9e4312a3f0f3910d057cbe7ce93fd530faedb225a2f",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/moysklad-dlya-marketpleysov/",
+          "htmlSha256": "d129d702ffca89363257870e6433d146acc6d310f8093c7e042f55f9f48bbb53",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/ne-udalyaetsya-lid-bitrix24/",
+          "htmlSha256": "683d8606fe5dbb8e87bcf88a1d4b6a89d3404a7a90044401142590ad3246ba7e",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/ostatki-moysklad/",
+          "htmlSha256": "c7ac29d7cdfe9e246a96d8901ed8ae501ccb4813b5d2ce3e7102222ddffb7eaa",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/otchety-moysklad/",
+          "htmlSha256": "0eb8b1704c3f0fe7fac4b7ea31c461a9857f908cb77f384ae014be6e950e30bb",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/otchety-po-prodazham-bitrix24/",
+          "htmlSha256": "47f644bb6bf5c87963c29b7956649b2c385568855902c9f817cd2be7286a054e",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/platezhnyy-kalendar-bitrix24/",
+          "htmlSha256": "45a2b06d44c869c8e13a2092e4461e73ca6884ce04a12ce11a0778bee96b0031",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/skvoznaya-analitika-bitrix24/",
+          "htmlSha256": "7e248f97ff713ed2a75dd9202143540af0cd727c1d96e81fd40e3b58d3d81235",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/udalenie-proigrannyh-sdelok-bitrix24/",
+          "htmlSha256": "9ce4f19af39ef6b228984170f028099083a0adb4d24a717ad64d9f43055ec8ae",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/udalennye-lidy-bitrix24/",
+          "htmlSha256": "c0308d06432c66b539590ba2367fceeee6a500e346ccdc875ad84fd342b6c356",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        },
+        {
+          "route": "/voronka-prodazh-bitrix24/",
+          "htmlSha256": "6e2f9f43ead5ca6967c917d4fa764e218653c0f98d154f3d91db10ea69470649",
+          "heroGridRules": [
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19{grid-area:1/1/3}",
+            "._darkHero_1rv9e_215 ._intro_1rv9e_73{color:#c8cdd5;grid-area:1/2;max-width:none;margin:0}",
+            "._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{background:0 0;grid-area:2/2;margin:0;padding:0;display:block}",
+            "._darkHero_1rv9e_215 ._heroMain_1rv9e_19,._darkHero_1rv9e_215 ._intro_1rv9e_73,._darkHero_1rv9e_215 ._quickAnswer_1rv9e_81{grid-area:auto/1}"
+          ]
+        }
+      ]
+    },
+    "browserQA": {
+      "primaryEvidenceRechecked": {
+        "articles": 21,
+        "widths": [
+          320,
+          390,
+          768,
+          769,
+          1024,
+          1440,
+          1920
+        ],
+        "measurements": 147,
+        "desktopMaxDelta": 0,
+        "pageOverflow": 0,
+        "runtimeErrors": 0,
+        "mobile390ScreenshotByteIdentical": true
+      },
+      "reviewerIndependentRun": {
+        "command": "node /private/tmp/hero-alignment-041-review/verify-render.mjs",
+        "exitCode": 0,
+        "samples": 9,
+        "routes": [
+          "/platezhnyy-kalendar-bitrix24/",
+          "/ostatki-moysklad/",
+          "/otchety-po-prodazham-bitrix24/"
+        ],
+        "widths": [
+          769,
+          1440,
+          390
+        ],
+        "desktopMaxDelta": 0,
+        "mobileChecks": 3
+      },
+      "imagesVisuallyInspected": [
+        "/private/tmp/hero-alignment-041/before-1440.png",
+        "/private/tmp/hero-alignment-041/after-1440.png",
+        "/private/tmp/hero-alignment-041/after-390.png",
+        "/private/tmp/hero-alignment-041/ostatki-moysklad-1440.png",
+        "/private/tmp/hero-alignment-041/otchety-po-prodazham-bitrix24-1440.png"
+      ]
+    },
+    "automatedEvidenceRead": {
+      "build": "43 canonical URLs; 44 built page files; complete",
+      "tests": "68 passed, 0 failed",
+      "lint": "0 errors, 3 existing React hooks warnings in unchanged files",
+      "indexnow": "--check validated 43 URLs; no submission"
+    },
+    "evidenceSha256": {
+      "after-verification.json": "0145a94355d98ec7ccfdac5083b4ce5af8d6004d41a1778bc28914e7944edb55",
+      "main-tests.log": "cae02ae611fdf8b554ddb1d72eb4a5997284b0d75e8ae04e47710df0b1464393",
+      "main-build.log": "326a0bea480f1512459a785cdb1382c027bb61021ee7c30a3e3b037139fee864",
+      "main-lint.log": "08d7b6968dd44ea111538b9c39efab3128db96769331a54ce4a80e430fa68e27",
+      "main-indexnow-check.log": "4b8b228d843b5593e0ff2265313d798d3dfb32afbac3716c3880a14030086963",
+      "independent-render.json": "18ca5172cf3042665c5038a25340df6550598cbfaaa129b663add2213ef32221"
+    },
+    "limits": [
+      "Local built version and source reviewed; no deployment or live-site publication verification.",
+      "Article content, dates, metadata and product facts were not edited; unchanged sources verified against task baseline. No new factual product review was needed.",
+      "Primary all-article geometry results were re-read and independently validated; reviewer reran a nine-case browser sample rather than duplicating all 147 cases."
+    ],
+    "deployed": false
+  },
+  "limits": [
+    "Local build and browser verification only; no deployment, live QA, indexing or search submissions.",
+    "Article text, metadata and dates, registry, images, dependencies and mobile reset unchanged.",
+    "Field CWV and other open mobile issues not claimed fixed."
+  ],
+  "evidence": "work/article-hero-alignment-041/final",
+  "deliverable": "TrueTell_Article_Hero_Alignment_041_2026-10-13.png"
+}

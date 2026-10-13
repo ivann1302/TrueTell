@@ -1,0 +1,66 @@
+{
+  "taskId": "SEO-042-PUBLISH-026",
+  "status": "published-and-verified",
+  "action": "CREATE",
+  "contentType": "knowledge",
+  "priority": "P2",
+  "title": "Отчёты в МойСклад: продажи, прибыль и магазины",
+  "url": "https://truetell-retail.ru/otchety-moysklad/",
+  "intent": "Choose native MoySklad sales/profit/cash report, reconcile returns and cost, compare retail points on consistent conditions with a separate official print template.",
+  "releaseId": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791750693-1",
+  "previousReleaseRetained": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791747362-1",
+  "publishedArticles": 13,
+  "publishedCanonicalUrls": 35,
+  "mainLocalCanonicalUrls": 37,
+  "changedMainSourceFiles": [
+    "src/config/articles.ts",
+    "scripts/article-catalog.test.mjs",
+    "src/pages/ostatki-moysklad/index.astro",
+    "src/pages/bi-analitika-chto-eto-prostymi-slovami/index.astro",
+    "src/pages/otchety-moysklad/index.astro",
+    "src/images/articles/moysklad-retail-reports-editorial.png",
+    "src/images/articles/moysklad-profitability-report-official.png",
+    "src/images/articles/moysklad-profit-loss-report-official.png"
+  ],
+  "images": {
+    "total": 3,
+    "editorialImageGenTransparent": 1,
+    "unalteredOfficialScreenshotsWithFullSizeLinks": 2,
+    "sourceHashesAndOptimizedAlphaVerified": true,
+    "mode": "built-in image_gen",
+    "exactPrompt": "image-prompts.json"
+  },
+  "checks": {
+    "candidateBuild": true,
+    "mainBuild": true,
+    "candidateTestsPassed": 68,
+    "mainTestsPassed": 68,
+    "lintErrors": 0,
+    "existingLintWarnings": 3,
+    "indexnowCheckPublicUrls": 35,
+    "indexnowSubmitted": false,
+    "localBrowserChecks": 20,
+    "publicBrowserChecks": 20,
+    "viewportWidths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "nativeWithoutJavaScript": true,
+    "liveFileHashesVerified": 23,
+    "sitemapUpdated": true,
+    "incomingArticleLinks": 2,
+    "catalogAndProductPageLinks": 2,
+    "independentReview": "passed-before-and-after-publication",
+    "reviewFindingsFixed": [
+      "Returned unit cost stays in expenses in incorrect example",
+      "Account-in-profit is an expense category setting"
+    ],
+    "crmSessionCheckPassedDuringActivation": true,
+    "pendingRoutesRemain404": true
+  },
+  "limits": "Product facts independently checked against current official documentation. No authenticated MoySklad account used; the print template was not executed on real shop data. Publication does not establish crawling, indexing or rankings.",
+  "nextTask": "SEO-043: Воронка продаж в Битрикс24: проблемные этапы — knowledge/P2; not started",
+  "verifiedAt": "2026-10-11T20:41:19.176061+00:00"
+}

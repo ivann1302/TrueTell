@@ -1,5 +1,8 @@
 ---
 import ArticleFigure from '../../components/editorial/article-figure.astro';
+import articleIllustration from '../../images/articles/record-selection-editorial.png';
+import selectionImage from '../../images/products/cleaner-selection.png';
+import recycleImage from '../../images/articles/bitrix24-recycle-filter-native.png';
 import ArticleLayout from '../../components/editorial/article-layout.astro';
 import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
 import ArticleSources from '../../components/editorial/article-sources.astro';
@@ -9,7 +12,6 @@ import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { getArticle, getRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
 import { cleanerProduct } from '../../config/products';
-import leadCleanupImage from '../../images/articles/bitrix24-lead-cleanup.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
 import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
@@ -27,18 +29,13 @@ const siteRoot = new URL(base, import.meta.env.SITE);
 const homeUrl = siteRoot.toString();
 const knowledgeBaseUrl = new URL('knowledge-base/', siteRoot).toString();
 const articleUrl = new URL('bitrix24-udalenie-lidov-za-period/', siteRoot).toString();
-const imageAlt = 'Схема отбора лидов по периоду, проверки карточек и разделения действующих обращений и записей для удаления';
-const ogImage = new URL(leadCleanupImage.src, siteRoot).toString();
+const imageAlt = "Сотрудник проверяет бумажные записи перед разделением на сохранённые и отобранные";
+const ogImage = new URL(articleIllustration.src, siteRoot).toString();
 const ogDescription = 'Отбор по датам и текущей стадии, проверка карточек, массовое удаление и восстановление из корзины. Разбираем на примере одного квартала.';
 const titleParts = [
   { text: 'Как удалить ' },
   { text: 'старые лиды в Битрикс24', accent: true },
   { text: ' за выбранный период' },
-];
-const breadcrumbs = [
-  { label: 'Главная', href: base },
-  { label: 'База знаний', href: `${base}knowledge-base/` },
-  { label: title },
 ];
 const sourceLinks = [
   {
@@ -183,7 +180,7 @@ const structuredData = createArticleStructuredData({
   ogImageAlt={imageAlt}
   category="Битрикс24"
   intro="Разбираем очистку на примере одного квартала: как отобрать ненужные обращения, сохранить важные данные и проверить результат удаления."
-  {breadcrumbs}
+
   author={authorName}
   publishedTime={publishedDate}
   modifiedTime={modifiedDate}
@@ -194,6 +191,7 @@ const structuredData = createArticleStructuredData({
   </Fragment>
 
   <p data-article-lead>Главная сложность начинается раньше нажатия кнопки. Лид, созданный год назад, может оставаться действующим: клиент вернулся к обсуждению, менеджер договорился о звонке, закупку перенесли на следующий квартал. Поэтому сначала определите, какие обращения действительно можно убрать, и только потом задавайте даты.</p>
+  <ArticleFigure src={articleIllustration} alt="Сотрудник проверяет бумажные записи перед разделением на сохранённые и отобранные" caption="Давняя дата сама по себе не делает обращение ненужным: сначала проверьте отбор и действующие договорённости. Иллюстрация сортировки записей." />
 
   <section aria-labelledby="which-leads">
     <h2 id="which-leads">Какие старые лиды <span data-heading-accent>стоит удалять</span></h2>
@@ -208,11 +206,7 @@ const structuredData = createArticleStructuredData({
     <DataTable label="Как выбрать критерии отбора лидов" columns={['Что требуется найти', 'На что ориентироваться']} rows={periodRows} rowHeaders compact />
     <p>В фильтрах Битрикс24 различаются текущая стадия и стадия по истории. Исторический фильтр может найти лид, который раньше был забракован, а затем вернулся в работу. Для нашего сценария используйте текущее состояние «Лид забракован» или конкретную текущую стадию, принятую в вашей CRM. <a href={sourceLinks[1].href} target="_blank" rel="noopener noreferrer">Как работают фильтры в CRM</a>.</p>
     <p>Сами границы периода тоже лучше сформулировать заранее: например, «весь первый квартал, включая 31 марта». После настройки посмотрите несколько карточек на границах диапазона. Если ваш интерфейс позволяет задавать время, убедитесь, что конечная граница охватывает последний день целиком. Это особенно полезно при последующем переносе того же условия в приложение или интеграцию.</p>
-    <ArticleFigure
-      src={leadCleanupImage}
-      alt={imageAlt}
-      caption="Схема процесса, не скриншот Битрикс24: отбор по периоду → проверка карточек → сохранение нужных данных → удаление согласованной выборки. Действующие обращения остаются в CRM."
-    />
+
   </section>
 
   <section aria-labelledby="delete-by-date">
@@ -220,6 +214,7 @@ const structuredData = createArticleStructuredData({
     <h3 id="delete-by-date-step-1">1. Откройте список и настройте фильтр</h3>
     <p>Перейдите в CRM, откройте лиды и выберите представление «Список». Нажмите <strong>«Фильтр + поиск»</strong>, проверьте уже заданные условия и добавьте нужные поля через <strong>«Добавить поле»</strong>. Для учебного примера задайте дату создания с 01.01.2025 по 31.03.2025 и текущее состояние забракованных лидов, затем выполните поиск. Если очистка касается одного менеджера, дополнительно ограничьте выборку ответственным. <a href={sourceLinks[1].href} target="_blank" rel="noopener noreferrer">Поиск элементов CRM, фильтры CRM</a>.</p>
     <p>Не оставляйте незамеченными условия от предыдущей работы. Например, ограничение по одному сотруднику может сделать выборку неполной. Перед продолжением прочитайте фильтр как предложение: «Созданы в первом квартале 2025 года, сейчас забракованы, относятся к выбранному ответственному». Оно должно совпадать с вашей задачей.</p>
+    <p>Если отбор зависит не только от даты, смотрите общую инструкцию <a href={`${base}massovoe-udalenie-lidov-bitrix24/`}>«Как массово удалить лиды по фильтру»</a>: в ней разобраны выбор отдельных строк, опция «Для всех» и проверка прав перед очисткой.</p>
     <h3 id="delete-by-date-step-2">2. Проверьте карточки, которые попали в выборку</h3>
     <p>Откройте несколько записей с разными датами и ответственными. Посмотрите причину отказа, последние сообщения и договорённости. Если среди кандидатов встретилась карточка с обещанным повторным звонком, остановитесь и уточните отбор. Несколько проверок не доказывают безопасность всей выборки, но помогают обнаружить ошибку в самом правиле.</p>
     <p>Дополнительный фильтр <strong>«Дела → Нет дел»</strong> означает отсутствие запланированных дел. Он не доказывает, что лид бесполезен: сотрудник мог просто не поставить следующее напоминание. Используйте этот признак как повод для проверки, а не как самостоятельное основание для удаления. <a href={sourceLinks[1].href} target="_blank" rel="noopener noreferrer">Значения фильтра «Дела»</a>.</p>
@@ -239,6 +234,7 @@ const structuredData = createArticleStructuredData({
     <h3 id="delete-by-date-step-5">5. Проверьте результат по тем же условиям</h3>
     <p>После завершения обновите список и повторите исходный фильтр. Если удаляли только часть записей, проверьте, что исчезли именно они. Если обрабатывали всю выборку, выясните причину оставшихся карточек, прежде чем повторять операцию.</p>
     <p>Сравнивать одни только числа недостаточно: пока шла очистка, другой сотрудник мог поменять стадию или ответственного. При расхождении сверяйте конкретные ID из сохранённого списка и сообщения об ошибках. Не расширяйте период, чтобы добиться пустого экрана: пустой экран сам по себе не подтверждает правильность удаления.</p>
+    <ArticleFigure src={selectionImage} fullSize alt="Предпросмотр выбранных сделок в TrueTell Cleaner с количеством записей и экспортом CSV" caption="Демонстрационный экран TrueTell Cleaner в режиме сделок: видны состав выборки, количество и экспорт CSV. Для лидов проверяют свою выборку; CSV не заменяет полную резервную копию CRM." />
   </section>
 
   <section aria-labelledby="crm-cleanup">
@@ -253,6 +249,7 @@ const structuredData = createArticleStructuredData({
     <p>Если корзина включена для лидов, удалённые записи можно найти в разделе <strong>«CRM → Ещё → Корзина»</strong>. Возможность восстановления зависит от тарифа. Администратор видит все удалённые элементы, сотрудник — удалённые им самим. Поэтому условия восстановления лучше проверить до очистки. <a href={sourceLinks[3].href} target="_blank" rel="noopener noreferrer">Корзина CRM</a>.</p>
     <p>Документация описывает хранение в течение 30 дней с последующим автоматическим удалением по 100 элементов в день; при большой очереди фактический срок может увеличиться. Не рассчитывайте на эту очередь как на дополнительную гарантию. При восстановлении у элемента меняется ID, поэтому прежняя ссылка на карточку не сохранится. <a href={sourceLinks[3].href} target="_blank" rel="noopener noreferrer">Сроки и восстановление</a>.</p>
     <p>Если цель — освободить хранилище, учитывайте ещё одно различие: данные в корзине продолжают занимать место. Окончательная очистка — отдельный шаг, к которому стоит переходить после проверки результата. <a href={sourceLinks[4].href} target="_blank" rel="noopener noreferrer">Удаление и занятое место</a>.</p>
+    <ArticleFigure src={recycleImage} fullSize portrait alt="Фильтр корзины CRM Битрикс24: период удаления, тип записи и кнопка Найти" caption="Реальный фильтр корзины CRM. Для поиска лидов выберите тип «Лид» и период удаления. Кадр показывает настройки поиска; восстановление записи на нём не выполняется." />
   </section>
 
   <section aria-labelledby="application">

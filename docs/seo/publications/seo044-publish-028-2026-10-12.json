@@ -1,0 +1,113 @@
+{
+  "taskId": "SEO-044-PUBLISH-028",
+  "status": "published-and-verified",
+  "action": "CREATE",
+  "contentType": "blog",
+  "priority": "P2",
+  "title": "Битрикс24 и МойСклад: как связать данные CRM и склада",
+  "url": "https://truetell-retail.ru/bitrix24-moysklad-integraciya/",
+  "intent": "Choose the scope and ownership rules for CRM/warehouse data exchange; reconcile stock definitions and lifecycle documents; accept a small integration pilot without assuming every connector supports every event.",
+  "releaseId": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791757956-1",
+  "previousReleaseRetained": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791754232-1",
+  "publishedArticles": 15,
+  "publishedCanonicalUrls": 37,
+  "mainLocalCanonicalUrls": 39,
+  "changedMainSourceFiles": [
+    "src/config/articles.ts",
+    "scripts/article-catalog.test.mjs",
+    "src/pages/bi-analitika-chto-eto-prostymi-slovami/index.astro",
+    "src/pages/otchety-moysklad/index.astro",
+    "src/pages/bi-analitika-bitrix24-pervyy-otchet/index.astro",
+    "src/pages/bitrix24-moysklad-integraciya/index.astro",
+    "src/images/articles/bitrix24-moysklad-order-check-editorial.png",
+    "src/images/articles/bitrix24-stock-quantity-official.jpg"
+  ],
+  "images": {
+    "total": 3,
+    "editorialImageGenTransparent": 1,
+    "unalteredOfficialScreenshotsWithFullSizeLinks": 2,
+    "reusedVerifiedExistingScreenshot": 1,
+    "sourceHashesAndOptimizedAlphaVerified": true,
+    "mode": "built-in image_gen",
+    "exactPrompt": "image-prompts.json"
+  },
+  "checks": {
+    "candidateBuild": true,
+    "mainBuild": true,
+    "candidateTestsPassed": 68,
+    "mainTestsPassed": 68,
+    "lintErrors": 0,
+    "existingLintWarnings": 3,
+    "indexnowCheckPublicUrls": 37,
+    "indexnowSubmitted": false,
+    "localBrowserChecks": 20,
+    "publicBrowserChecks": 20,
+    "viewportWidths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "nativeWithoutJavaScript": true,
+    "liveFileHashesVerified": 17,
+    "sitemapUpdated": true,
+    "incomingArticleLinks": 3,
+    "blogCatalogAndHomeLinks": 2,
+    "homeOnlyBlogSectionChanged": true,
+    "independentReview": "passed-before-and-after-publication",
+    "reviewFindingsFixed": [
+      "Corrected shared ArticleLayout article-end/after-article slots and CTA/related props; verified in built HTML",
+      "Corrected createArticleStructuredData articleUrl/publisherUrl/image/author parameters; verified BlogPosting/FAQ/Breadcrumb in built HTML"
+    ],
+    "crmSessionCheckPassedDuringActivation": true,
+    "pendingRoutesRemain404": true
+  },
+  "limits": "Current official documents and developer catalog statements checked independently. No authenticated Bitrix24/MoySklad account, connector exchange or API synchronization tested. Publication does not establish crawling, indexing or rankings.",
+  "nextTask": "SEO-045: МойСклад для маркетплейсов: заказы, остатки, цены — blog/P3; not started",
+  "verifiedAt": "2026-10-11T22:38:26.045577+00:00",
+  "independentReviewEvidence": {
+    "reviewer": "/root/review_seo044_028",
+    "status": "passed-before-and-after-publication",
+    "candidateReviewedAt": "2026-10-11T22:31:36.751457+00:00",
+    "candidateHtmlSha256": "ef93680edf46a7f772fd4e0e04b1142dfaba2ae1e236976f5817aa2e4d19866c",
+    "openFindings": [],
+    "fixedP2": [
+      "Corrected shared ArticleLayout article-end/after-article slots and CTA/related props; verified in built HTML",
+      "Corrected createArticleStructuredData articleUrl/publisherUrl/image/author parameters; verified BlogPosting/FAQ/Breadcrumb in built HTML"
+    ],
+    "fixedP3": [],
+    "checks": [
+      "Primary official facts and live source URLs",
+      "Independent intent and CREATE/blog classification",
+      "Different availability definitions and hypothetical 12/7 example",
+      "Native stock UI path and correct screenshot captions",
+      "3 incoming source links and current URLs",
+      "Three images and all source hashes, alpha preserved",
+      "Final HTML metadata/BlogPosting/FAQ/Breadcrumb/CTA/related/sources",
+      "All 10 local screenshots at 390/1440 and primary 20-check QA report"
+    ],
+    "limits": [
+      "No authenticated Bitrix24 or MoySklad account test",
+      "No connector or API exchange executed",
+      "Independent visual/HTML/HTTP verification; interactive automated checks from primary agent",
+      "Search crawling/indexing/rankings not checked"
+    ],
+    "liveReviewedAt": "2026-10-11T22:38:26.006255+00:00",
+    "liveReleaseId": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791757956-1",
+    "liveHtmlSha256": "ef93680edf46a7f772fd4e0e04b1142dfaba2ae1e236976f5817aa2e4d19866c",
+    "liveChecks": [
+      "17/17 independently checked public HTTP200/file hashes",
+      "Self-canonical/indexable HTML and no blocking X-Robots-Tag",
+      "Metadata/schema/3 images/2 original-image links/CTA/related",
+      "3 incoming articles, blog catalog and homepage links",
+      "Sitemap37 and both pending Cleaner routes404/excluded",
+      "All10 public screenshots viewed at390/1440",
+      "Primary20-check browser report reviewed"
+    ]
+  },
+  "deliverable": {
+    "archive": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/deliverables/TrueTell_SEO044_Published_028_2026-10-12.zip",
+    "bytes": 7928256,
+    "sha256": "995ad07e988454f85fee712a09c91c2a1b8be232363c1d692e983e24c99979d5"
+  }
+}

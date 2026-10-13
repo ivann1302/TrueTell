@@ -1,5 +1,7 @@
 ---
 import ArticleFigure from '../../components/editorial/article-figure.astro';
+import articleIllustration from '../../images/articles/inventory-check-editorial.png';
+import orderReserveImage from '../../images/articles/moysklad-order-reserve-official.png';
 import ArticleLayout from '../../components/editorial/article-layout.astro';
 import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
 import ArticleSources from '../../components/editorial/article-sources.astro';
@@ -9,7 +11,6 @@ import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { companyInfo } from '../../config/company';
 import { cleanerProduct, cleanerProductPath } from '../../config/products';
 import { getArticle, getRelatedArticles } from '../../config/articles';
-import reserveFlowImage from '../../images/articles/moysklad-reserve-flow.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
 import {
@@ -34,8 +35,8 @@ const homeUrl = siteRoot.toString();
 const knowledgeBaseUrl = new URL('knowledge-base/', siteRoot).toString();
 const articleUrl = new URL('kak-snyat-rezervy-moysklad/', siteRoot).toString();
 const productUrl = `${base}${article.relatedProduct!.slice(1)}`;
-const imageAlt = 'Схема движения товара со склада через резерв заказа к доступному остатку';
-const ogImage = new URL(reserveFlowImage.src, siteRoot).toString();
+const imageAlt = "Сотрудник сверяет товары на складской полке с листом учёта";
+const ogImage = new URL(articleIllustration.src, siteRoot).toString();
 
 const titleParts = [
   { text: 'Как снять все ' },
@@ -43,11 +44,6 @@ const titleParts = [
   { text: ' и почему они зависают' },
 ];
 
-const breadcrumbs = [
-  { label: 'Главная', href: base },
-  { label: 'База знаний', href: `${base}knowledge-base/` },
-  { label: 'Резервы в МоемСкладе' },
-];
 
 const sourceLinks = [
   {
@@ -161,7 +157,7 @@ const structuredData = createArticleStructuredData({
   ogImageAlt={imageAlt}
   category="МойСклад"
   intro="Разбираемся, где искать активный резерв, почему одной отмены заказа бывает недостаточно и как безопасно обработать сотни старых документов."
-  {breadcrumbs}
+
   author={authorName}
   publishedTime={publishedDate}
   modifiedTime={modifiedDate}
@@ -189,6 +185,7 @@ const structuredData = createArticleStructuredData({
             остаток. Разберём, как найти такой документ, освободить товар и проверить,
             что следующая отмена не приведёт к той же проблеме.
           </p>
+  <ArticleFigure src={articleIllustration} alt="Сотрудник сверяет товары на складской полке с листом учёта" caption="Перед снятием резерва проверьте товар и обязательства по заказу. Иллюстрация складской сверки; резерв не всегда означает наличие товара на полке." />
 
           <aside data-article-note>
             <strong>Главное различие</strong>
@@ -215,11 +212,7 @@ const structuredData = createArticleStructuredData({
               покупателям и должна учитываться при планировании следующих продаж.
             </p>
 
-            <ArticleFigure
-              src={reserveFlowImage}
-              alt={imageAlt}
-              caption="Резерв связывает товар с заказом; после завершения сценария часть остатка снова становится доступной."
-            />
+
 
             <DataTable
               label="Показатели складского учёта"
@@ -260,6 +253,7 @@ const structuredData = createArticleStructuredData({
               но не объясняет, откуда взялся резерв. Если его создаёт интеграция или незавершённый
               сценарий, через несколько дней товар снова окажется недоступным для продажи.
             </p>
+    <ArticleFigure src={orderReserveImage} fullSize alt="Флажок Резерв в заказе покупателя МоегоСклада" caption="Флажок «Резерв» в заказе покупателя — кадр из официальной справки МоегоСклада. Для отмены резервирования всего заказа снимите флажок и сохраните документ; резерв отдельных позиций проверяется отдельно." />
           </section>
 
           <section aria-labelledby="why-stuck">

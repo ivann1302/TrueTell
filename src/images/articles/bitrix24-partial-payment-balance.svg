@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="560" viewBox="0 0 720 560">
+  <g font-family="Arial, sans-serif" fill="#10131A">
+    <text x="28" y="58" font-size="30">Сумма сделки</text>
+    <text x="28" y="126" font-size="58" font-weight="600">120 000 ₽</text>
+    <line x1="28" y1="164" x2="692" y2="164" stroke="#D3D7DE" stroke-width="2"/>
+    <text x="28" y="218" font-size="30">Поступило двумя платежами</text>
+    <text x="28" y="276" font-size="38">30 000 + 42 000 = <tspan fill="#1765DA" font-weight="600">72 000 ₽</tspan></text>
+    <rect x="28" y="310" width="664" height="22" rx="4" fill="#D3D7DE"/>
+    <rect x="28" y="310" width="398.4" height="22" rx="4" fill="#1765DA"/>
+    <text x="28" y="381" font-size="30">Остаток к оплате</text>
+    <text x="28" y="449" font-size="58" font-weight="600">48 000 ₽</text>
+    <text x="28" y="512" font-size="25" fill="#616875">До согласованного срока это не просрочка</text>
+  </g>
+</svg>

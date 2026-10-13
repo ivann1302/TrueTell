@@ -1,0 +1,73 @@
+{
+  "taskId": "CLEANER-032",
+  "action": "PREPARE_PENDING_ARTICLES",
+  "routes": [
+    "/massovoe-udalenie-lidov-bitrix24/",
+    "/eksport-lidov-sdelok-bitrix24-pered-udaleniem/"
+  ],
+  "contentReady": true,
+  "localQaPassed": true,
+  "independentReviewPassed": true,
+  "preparedAt": "2026-10-12T10:33:31.144290+00:00",
+  "deploymentStatus": "awaiting_explicit_owner_publication_approval",
+  "deployed": false,
+  "liveVerified": false,
+  "liveCanonicalUrls": 37,
+  "combinedCandidateCanonicalUrls": 40,
+  "newArticleRoutes": [
+    "/massovoe-udalenie-lidov-bitrix24/",
+    "/eksport-lidov-sdelok-bitrix24-pered-udaleniem/",
+    "/moysklad-dlya-marketpleysov/"
+  ],
+  "automaticApprovalReviewRejectedActivation": true,
+  "rejectionReason": "Preparation consent was not considered clear consent to production deployment; docs/seo/content-publishing.md requires separate deployment permission. Do not bypass.",
+  "provisionalFirstPublicationMetadata": true,
+  "beforeApprovedActivation": "Set actual first-publication dates for the three new articles, rebuild and verify; then activate a combined patch against the current live baseline, check live pages and have reviewer inspect live version. Submit expanded sitemap only after actual publication.",
+  "images": {
+    "officialUnalteredScreenshots": 4,
+    "nativeInfographics": 1,
+    "generatedPeopleUsed": false
+  },
+  "review": {
+    "status": "local-QA-passed-awaiting-publication-approval",
+    "reviewer": "/root/review_cleaner_032",
+    "openFindings": [],
+    "fixedFindings": [
+      "4oldschemes replaced with4unaltered official screenshots plusnative data infographic",
+      "Actual first-release date prepared as12.10for2exactregistry entries; refresh if approval onanotherdate",
+      "Unsupported tariff-dependent native deletion size/speed claim removed",
+      "Direct bin-space source and native importCSVclarification added",
+      "Transparent infographic has contrast outline for standalone viewers"
+    ],
+    "evidence": {
+      "officialScreenshotHashesIndependentlyVerified": 4,
+      "pngAndOptimizedWebpAlphaVerified": true,
+      "nativeInfographic5rows4ids995repeated": true,
+      "dateDiffOnly5AffectedArticles": true,
+      "independentBuiltHtmlMetadataSchemaFaqLinksChecked": true,
+      "faqEach": 7,
+      "savedVisualSamples": [
+        390,
+        1440
+      ],
+      "primaryBrowserChecks": 28,
+      "primaryNativeWithoutJavaScript": true
+    },
+    "limits": "Reviewer examined code, current official sources, cleanHTML, hashes and saved images; CUA unavailable, direct keyboard/noJS/geometry relies on primary logs. No real portal deletion/export or Cleaner iframe tested. Publication has not happened."
+  },
+  "verification": {
+    "responsiveChecks": 28,
+    "testsPassed": 68,
+    "candidateCanonicalUrls": 39,
+    "cleanerHtmlUnchangedInCombined40UrlBuild": true,
+    "uploadedPackageActivated": false
+  },
+  "boundaries": [
+    "Real portal deletion/export and Cleaner iframe were not tested.",
+    "Package032 was uploaded to incoming, activation was rejected before execution. Combined publication must use prepared033 version after explicit consent."
+  ],
+  "supersededByApprovedPublication": "ARTICLES-PUBLISH-035",
+  "currentPublicationStatus": "live_verified",
+  "currentReleaseId": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791808931-1",
+  "historicalPreparedRecord": true
+}

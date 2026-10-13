@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="660" viewBox="0 0 640 660">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M1 1 6 4 1 7" fill="none" stroke="#1765DA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="#1765DA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="64" y="8" width="512" height="72" rx="10"/>
+    <path d="M320 82v38" marker-end="url(#arrow)"/>
+    <rect x="152" y="132" width="336" height="72" rx="10"/>
+    <path d="M320 206v38" marker-end="url(#arrow)"/>
+    <rect x="96" y="256" width="448" height="72" rx="10"/>
+    <path d="M320 330v40M152 400v-30h336v30"/>
+    <path d="M152 386v24" marker-end="url(#arrow)"/>
+    <path d="M488 386v24" marker-end="url(#arrow)"/>
+    <rect x="16" y="424" width="272" height="106" rx="10"/>
+    <rect x="352" y="424" width="272" height="106" rx="10"/>
+    <path d="M152 532v38" marker-end="url(#arrow)"/>
+    <path d="M488 532v38" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#10131A" font-family="Arial, sans-serif" text-anchor="middle" font-size="32">
+    <text x="320" y="55">CRM → Лиды → Список</text>
+    <text x="320" y="179">Фильтр</text>
+    <text x="320" y="303">Проверить выборку</text>
+    <text x="152" y="465">Выбрать строки</text>
+    <text x="152" y="505" font-size="28">вручную</text>
+    <text x="488" y="465">«Для всех»</text>
+    <text x="488" y="505" font-size="28">вся выборка</text>
+    <text x="152" y="611" fill="#1765DA">Удалить</text>
+    <text x="152" y="647" font-size="28">выбранные</text>
+    <text x="488" y="611" fill="#1765DA">Удалить</text>
+    <text x="488" y="647" font-size="28">все найденные</text>
+  </g>
+</svg>

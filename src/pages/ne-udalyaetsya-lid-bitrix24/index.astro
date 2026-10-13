@@ -1,5 +1,7 @@
 ---
 import ArticleFigure from '../../components/editorial/article-figure.astro';
+import articleIllustration from '../../images/articles/record-selection-editorial.png';
+import selectionImage from '../../images/products/cleaner-selection.png';
 import ArticleLayout from '../../components/editorial/article-layout.astro';
 import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
 import ArticleSources from '../../components/editorial/article-sources.astro';
@@ -9,7 +11,6 @@ import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { getArticle, getRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
 import { cleanerProduct } from '../../config/products';
-import leadDebugImage from '../../images/articles/bitrix24-lead-diagnostics.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
 import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
@@ -28,18 +29,13 @@ const siteRoot = new URL(base, import.meta.env.SITE);
 const homeUrl = siteRoot.toString();
 const knowledgeBaseUrl = new URL('knowledge-base/', siteRoot).toString();
 const articleUrl = new URL('ne-udalyaetsya-lid-bitrix24/', siteRoot).toString();
-const imageAlt = 'Диагностика ошибки удаления лида: проверка доступа, ответа интеграции и идентификаторов похожих карточек';
-const ogImage = new URL(leadDebugImage.src, siteRoot).toString();
+const imageAlt = "Сотрудник проверяет бумажные записи перед разделением на сохранённые и отобранные";
+const ogImage = new URL(articleIllustration.src, siteRoot).toString();
 const ogDescription = 'Как найти причину ошибки удаления: проверить доступ, работу приложения и повторное появление лида. Что сделать до массовой очистки CRM.';
 const titleParts = [
   { text: 'Почему ' },
   { text: 'не удаляется лид в Битрикс24', accent: true },
   { text: ': что проверить' },
-];
-const breadcrumbs = [
-  { label: 'Главная', href: base },
-  { label: 'База знаний', href: `${base}knowledge-base/` },
-  { label: title },
 ];
 const sourceLinks = [
   {
@@ -141,7 +137,7 @@ const structuredData = createArticleStructuredData({
   ogTitle={title} {ogDescription} {ogImage} ogImageAlt={imageAlt}
   category="Битрикс24"
   intro="Проверяем доступ, сообщение об ошибке и ID записи. Разбираемся, почему удаление не запускается, приложение возвращает ошибку или похожий лид появляется снова."
-  {breadcrumbs} author={authorName} publishedTime={publishedDate} modifiedTime={modifiedDate}
+  author={authorName} publishedTime={publishedDate} modifiedTime={modifiedDate}
 >
   <Fragment slot="quick-answer">
     <p>Сначала проверьте <strong>право на удаление</strong>, затем — точный текст ошибки и ID лида. Если кнопки нет, начните с меню действий и проверки доступа у администратора. Если команда доступна, но не работает, отдельно проверьте интерфейс или приложение.</p>
@@ -149,6 +145,7 @@ const structuredData = createArticleStructuredData({
   </Fragment>
 
   <p data-article-lead>Одинаковые имя и телефон могут принадлежать разным записям. Именно поэтому диагностику лучше начинать с одного конкретного лида, а не с повторного удаления всей подборки.</p>
+  <ArticleFigure src={articleIllustration} alt="Сотрудник проверяет бумажные записи перед разделением на сохранённые и отобранные" caption="Начните с одной конкретной записи и проверьте её идентификатор, права и результат действия. Иллюстрация внимательной проверки карточек." />
 
   <section aria-labelledby="locate-problem">
 
@@ -176,7 +173,7 @@ const structuredData = createArticleStructuredData({
 
     <p>Не просите сразу полный административный доступ. Сначала нужно понять, какие лиды вам разрешено удалять по правилам компании, и настроить соответствующие права. После изменения доступа заново откройте карточку и проверьте появление команды.</p>
 
-    <ArticleFigure src={leadDebugImage} alt={imageAlt} caption="Схема диагностики: доступ, ошибка приложения и идентификатор записи проверяются отдельно. Иллюстрация не воспроизводит интерфейс Битрикс24." />
+
 
   </section>
 
@@ -255,6 +252,7 @@ const structuredData = createArticleStructuredData({
     <p>Для одного ненужного лида достаточно штатного действия. Когда требуется регулярно убирать группы записей, полезнее выстроить повторяемую процедуру отбора и проверки.</p>
 
     <p>После диагностики переходите к инструкции <a href={`${base}bitrix24-udalenie-lidov-za-period/`}>как удалить старые лиды в Битрикс24 за выбранный период</a>: в ней разобраны отбор по датам, проверка карточек и массовая операция.</p>
+    <ArticleFigure src={selectionImage} fullSize alt="Предпросмотр выбранных сделок в TrueTell Cleaner с количеством записей и экспортом CSV" caption="Демонстрационный экран TrueTell Cleaner в режиме сделок: видны состав выборки, количество и экспорт CSV. Для лидов проверяют свою выборку; CSV не заменяет полную резервную копию CRM." />
 
   </section>
 

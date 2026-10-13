@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="650" viewBox="0 0 960 650">
+<g font-family="Arial, sans-serif">
+<text paint-order="stroke fill" stroke="#F6F7F9" stroke-width="3" stroke-linejoin="round" x="28" y="54" font-size="40" font-weight="600" fill="#101621">На складе 10 единиц</text>
+<text paint-order="stroke fill" stroke="#F6F7F9" stroke-width="3" stroke-linejoin="round" x="28" y="103" font-size="32" fill="#616875">3 в резерве · 5 ожидаются</text>
+<text paint-order="stroke fill" stroke="#F6F7F9" stroke-width="3" stroke-linejoin="round" x="28" y="189" font-size="36" font-weight="600" fill="#101621">Выгрузка FBS: 10 − 3 = 7</text>
+<rect x="28" y="216" width="449.17" height="76" rx="5" fill="#4B9CFF"/>
+<text paint-order="stroke fill" stroke="#F6F7F9" stroke-width="3" stroke-linejoin="round" x="839" y="271" font-size="64" font-weight="600" fill="#101621">7</text>
+<text paint-order="stroke fill" stroke="#F6F7F9" stroke-width="3" stroke-linejoin="round" x="28" y="363" font-size="36" font-weight="600" fill="#101621">«Доступно»: 10 + 5 − 3 = 12</text>
+<rect x="28" y="390" width="770" height="76" rx="5" fill="#9298A3"/>
+<rect x="28" y="390" width="449.17" height="76" rx="5" fill="#4B9CFF"/>
+<text paint-order="stroke fill" stroke="#F6F7F9" stroke-width="3" stroke-linejoin="round" x="820" y="445" font-size="64" font-weight="600" fill="#101621">12</text>
+<rect x="28" y="525" width="28" height="28" rx="3" fill="#4B9CFF"/>
+<text paint-order="stroke fill" stroke="#F6F7F9" stroke-width="3" stroke-linejoin="round" x="72" y="550" font-size="31" fill="#101621">Свободный товар на складе</text>
+<rect x="28" y="578" width="28" height="28" rx="3" fill="#9298A3"/>
+<text paint-order="stroke fill" stroke="#F6F7F9" stroke-width="3" stroke-linejoin="round" x="72" y="603" font-size="31" fill="#101621">Ожидание: товар ещё не поступил</text>
+</g></svg>

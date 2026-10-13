@@ -1,0 +1,52 @@
+{
+  "taskId": "GSC-INDEXATION-031",
+  "status": "sitemap-submitted-and-targets-checked",
+  "checkedAt": "2026-10-12T09:12:44.779Z",
+  "siteUrl": "sc-domain:truetell-retail.ru",
+  "sitemapUrl": "https://truetell-retail.ru/sitemap.xml",
+  "liveSitemapUrls": 37,
+  "liveReleaseId": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791793751-1",
+  "accepted": true,
+  "confirmed": true,
+  "lastSubmitted": "2026-10-12T09:11:25.957Z",
+  "downloadPending": true,
+  "lastDownloadStill": "2026-10-10T12:11:29.330Z",
+  "googleLastDownloadedUrls": 32,
+  "submissionIsNotIndexing": true,
+  "inspectionTargetUrls": 14,
+  "inspectionFailures": 0,
+  "inspectionCounts": {
+    "Discovered - currently not indexed": 4,
+    "URL is unknown to Google": 8,
+    "Crawled - currently not indexed": 2
+  },
+  "coverageChanges": [
+    {
+      "url": "https://truetell-retail.ru/backup-moysklad/",
+      "before": "URL is unknown to Google",
+      "after": "Discovered - currently not indexed"
+    },
+    {
+      "url": "https://truetell-retail.ru/moysklad-izmenenie-dokumentov/",
+      "before": "URL is unknown to Google",
+      "after": "Discovered - currently not indexed"
+    },
+    {
+      "url": "https://truetell-retail.ru/upravlenie-rezervami-moysklad/",
+      "before": "URL is unknown to Google",
+      "after": "Discovered - currently not indexed"
+    }
+  ],
+  "newlyIndexedAmongTargets": 0,
+  "unchanged23OtherUrlsNotReinspectedInThisTask": true,
+  "quotaRemaining": 1949,
+  "siteChanged": false,
+  "individualIndexRequestsSubmitted": false,
+  "automationCreated": false,
+  "existingTestsPassed": 68,
+  "nextAction": "Publish the2preparedCleanerarticles after facts/images/date corrections and independent review; resubmit the expanded sitemap after publication. Check Google download/index state in the next owner-authorized session.",
+  "methodSources": [
+    "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap",
+    "https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "task": "SEO-040-PUBLISH-021",
+  "url": "https://truetell-retail.ru/skvoznaya-analitika-bitrix24/",
+  "publication": {
+    "status": "published-and-verified",
+    "releaseId": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791728970-1",
+    "baseReleaseId": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791715060-1",
+    "archiveSha256": "cdc364a3236fddb8760692c1867af8d5296614ab802f261e42baa49fe3dab0aa",
+    "files": 20,
+    "bytes": 3574693,
+    "pages": [
+      "bi-analitika/index.html",
+      "bitrix24-udalenie-lidov-za-period/index.html",
+      "dashbord-rukovoditelya-bitrix24/index.html",
+      "knowledge-base/index.html",
+      "ne-udalyaetsya-lid-bitrix24/index.html",
+      "otchety-po-prodazham-bitrix24/index.html",
+      "skvoznaya-analitika-bitrix24/index.html",
+      "udalenie-proigrannyh-sdelok-bitrix24/index.html",
+      "udalennye-lidy-bitrix24/index.html"
+    ],
+    "sitemapCount": 33,
+    "sitemapIncluded": true,
+    "verifiedAt": "2026-10-11T14:49:00.785487+00:00"
+  },
+  "verification": {
+    "task": "SEO-040-PUBLISH-021",
+    "review": "No Critical or Important findings; official source factcheck passed; corrected hero screenshots visually verified.",
+    "candidate": {
+      "build": true,
+      "tests": {
+        "passed": 68,
+        "failed": 0
+      },
+      "lint": {
+        "errors": 0,
+        "preExistingWarnings": 3
+      },
+      "indexnowCheck": {
+        "passed": true,
+        "urls": 33,
+        "submitted": false
+      },
+      "mobileWidths": [
+        320,
+        390,
+        768,
+        1440
+      ]
+    },
+    "main": {
+      "build": true,
+      "tests": {
+        "passed": 68,
+        "failed": 0
+      },
+      "lint": {
+        "errors": 0,
+        "preExistingWarnings": 3
+      },
+      "indexnowCheck": {
+        "passed": true,
+        "urls": 35,
+        "submitted": false
+      },
+      "includesTwoUnpublishedCleanerRoutesInLocalBuild": true
+    },
+    "publicationUses": "isolated candidate with 33 canonical URLs; preserves current site and backend",
+    "publication": {
+      "status": "published-and-verified",
+      "url": "https://truetell-retail.ru/skvoznaya-analitika-bitrix24/",
+      "verifiedFiles": 20,
+      "publicUIWidths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "apiLeadSession": 200,
+      "sitemapCount": 33,
+      "searchIndexingConfirmed": false
+    }
+  },
+  "imageSources": {
+    "editorial": "built-in-imagegen; transparentBackground true; prompt in workspace package021",
+    "screenshot": "https://helpdesk.bitrix24.ru/images/helpdesk/screenshots/ru/gb/screenshot/563.jpg"
+  },
+  "sourcesUpdatedInMain": true
+}

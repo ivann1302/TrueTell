@@ -1,0 +1,79 @@
+{
+  "task": "CTR-034",
+  "checkedAt": "2026-10-12T10:07:43.763Z",
+  "siteUrl": "sc-domain:truetell-retail.ru",
+  "status": "analysis_complete_no_metadata_change",
+  "period": {
+    "from": "2026-09-12",
+    "through": "2026-10-09",
+    "days": 28,
+    "dateBasis": "America/Los_Angeles",
+    "firstIncompleteDate": "2026-10-10",
+    "dataSource": "GSC API"
+  },
+  "pages": [
+    {
+      "url": "https://truetell-retail.ru/udalennye-lidy-bitrix24/",
+      "title": "Удалённые лиды в Битрикс24: где корзина и как восстановить",
+      "description": "Где находятся удалённые лиды в Битрикс24, сколько они хранятся в корзине, как восстановить лид и что делать, если его уже нет в корзине.",
+      "canonical": "https://truetell-retail.ru/udalennye-lidy-bitrix24/",
+      "metrics": {
+        "impressions": 95,
+        "clicks": 0,
+        "ctr": 0,
+        "averagePosition": 5.8
+      },
+      "visibleQueries": [
+        {
+          "keys": [
+            "некачественный лид"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 82
+        }
+      ],
+      "returnedAllAvailableRows": true,
+      "decision": "NO_CHANGE",
+      "reason": "Объём показов мал, а запросы почти не раскрыты. Несоответствие интента заголовку не доказано. Нулевые клики сами по себе не подтверждают плохой сниппет."
+    },
+    {
+      "url": "https://truetell-retail.ru/bitrix24-udalenie-lidov-za-period/",
+      "title": "Как удалить старые лиды в Битрикс24 за выбранный период",
+      "description": "Как удалить старые лиды в Битрикс24 по дате создания: настроить период и стадии, проверить выборку, выполнить массовое удаление и разобраться с корзиной CRM.",
+      "canonical": "https://truetell-retail.ru/bitrix24-udalenie-lidov-za-period/",
+      "metrics": {
+        "impressions": 42,
+        "clicks": 0,
+        "ctr": 0,
+        "averagePosition": 7.095238095238095
+      },
+      "visibleQueries": [],
+      "returnedAllAvailableRows": true,
+      "decision": "NO_CHANGE",
+      "reason": "Объём показов мал, а запросы почти не раскрыты. Несоответствие интента заголовку не доказано. Нулевые клики сами по себе не подтверждают плохой сниппет."
+    }
+  ],
+  "limitations": [
+    "Средняя позиция относится к показам за период, а не к текущему месту по определённому запросу.",
+    "Запросы не исчерпывают показы страницы: GSC скрывает анонимизированные запросы и ограничивает сохраняемые строки. Причину пропуска каждого запроса установить нельзя.",
+    "Для удалённых лидов виден один запрос с одним показом; для удаления за период — ни одного. Большую часть поискового интента оценить нельзя.",
+    "Проверены опубликованные HTML Title/Description; фактически показанные Google заголовки и сниппеты отдельно не измерялись."
+  ],
+  "officialReferences": [
+    {
+      "url": "https://support.google.com/webmasters/answer/17011259?hl=en",
+      "supports": "Анонимизация запросов и ограничения строк отчёта GSC."
+    }
+  ],
+  "nextStep": "Повторить вручную через 2–4 недели на данных полного периода и оценивать клики/CTR по видимым релевантным запросам и сопоставимым позициям. Автоматизация не создавалась.",
+  "productionChanges": false,
+  "metadataChanges": false,
+  "indexingRequests": false,
+  "sharedFinalVerification": {
+    "mainTestsPassed": 68,
+    "mainTestsFailed": 0,
+    "record": "../seo045-prepared-033/main-tests.log"
+  }
+}

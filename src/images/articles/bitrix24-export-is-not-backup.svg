@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="464" viewBox="0 0 640 464">
+  <g fill="none" stroke="#1765DA" stroke-width="3">
+    <rect x="32" y="12" width="576" height="156" rx="10"/>
+    <rect x="32" y="288" width="576" height="156" rx="10"/>
+  </g>
+  <g fill="#10131A" font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="320" y="64" font-size="38">Выгрузка Excel / CSV</text>
+    <text x="320" y="340" font-size="38">Копия всего портала</text>
+    <text x="320" y="110" font-size="32">Поля выбранных записей</text>
+    <text x="320" y="148" font-size="30">по настройкам экспорта</text>
+    <text x="320" y="396" font-size="30">История · файлы · настройки</text>
+    <text x="320" y="255" font-size="80" fill="#1765DA">≠</text>
+  </g>
+</svg>

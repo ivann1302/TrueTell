@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import { allArticles, getCatalogArticles, groupKnowledgeArticles, getRelatedArticles, getProductArticles } from '../src/config/articles.ts';
 
 test('instructions and analytical articles have distinct catalog ownership', () => {
-  assert.equal(getCatalogArticles('knowledge').length, 8);
-  assert.equal(getCatalogArticles('blog').length, 2);
+  assert.equal(getCatalogArticles('knowledge').length, 15);
+  assert.equal(getCatalogArticles('blog').length, 6);
   assert.equal(new Set(allArticles.map(article => article.hrefPath)).size, allArticles.length);
 });
 
@@ -27,6 +27,6 @@ test('related articles reuse metadata and stay relevant without commercial cards
     assert.notEqual(article.hrefPath, source.hrefPath);
     assert.equal(article.status, 'published');
   }
-  assert.equal(getProductArticles('/bitrix24-cleaner/').length, 4);
-  assert.deepEqual(getProductArticles('/bi-analitika/').map(article => article.type), ['blog', 'knowledge', 'blog']);
+  assert.equal(getProductArticles('/bitrix24-cleaner/').length, 6);
+  assert.deepEqual(getProductArticles('/bi-analitika/').map(article => article.type), ['blog', 'knowledge', 'blog', 'knowledge', 'knowledge', 'knowledge']);
 });

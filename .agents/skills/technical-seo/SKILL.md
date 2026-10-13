@@ -11,7 +11,7 @@ Optimize public pages for a user’s intent first; never generate content merely
 
 - Provide a unique title and meta description, canonical URL, appropriate robots directive, Open Graph metadata, and exactly one primary H1.
 - Maintain logical H2/H3 hierarchy, semantic HTML, descriptive alt text, crawlable internal links with descriptive anchors, clean URLs, and correct indexability.
-- Keep sitemap and `robots.txt` aligned with public, indexable routes. Add breadcrumbs where the information architecture needs them.
+- Keep sitemap and `robots.txt` aligned with public, indexable routes. Do not render visible breadcrumb navigation on TrueTell pages, including future articles (owner rule, 12.10.2026); use the shared header and contextual links. Valid BreadcrumbList schema may describe the actual information hierarchy.
 - Add structured data only when it accurately applies. Use Organization, WebSite, BreadcrumbList, or other schema types only in their valid contexts.
 - Prevent duplicate metadata, broken or non-crawlable internal links, thin pages, doorway-like pages, keyword stuffing, and near-duplicate integration pages.
 

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="636" viewBox="0 0 640 636">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M1 1 6 4 1 7" fill="none" stroke="#1765DA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="#1765DA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="48" y="12" width="544" height="80" rx="10"/>
+    <rect x="48" y="144" width="544" height="80" rx="10"/>
+    <rect x="48" y="276" width="544" height="80" rx="10"/>
+    <rect x="48" y="408" width="544" height="80" rx="10"/>
+    <rect x="48" y="540" width="544" height="80" rx="10"/>
+    <path d="M320 94v36" marker-end="url(#arrow)"/>
+    <path d="M320 226v36" marker-end="url(#arrow)"/>
+    <path d="M320 358v36" marker-end="url(#arrow)"/>
+    <path d="M320 490v36" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#10131A" font-family="Arial, sans-serif" font-size="36" text-anchor="middle">
+    <text x="320" y="65">Фильтр и выборка</text>
+    <text x="320" y="197">Экспорт в Excel / CSV</text>
+    <text x="320" y="329">Сверить уникальные ID</text>
+    <text x="320" y="461">Сохранить оригинал</text>
+    <text x="320" y="593">Согласованное удаление</text>
+  </g>
+</svg>

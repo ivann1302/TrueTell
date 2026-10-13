@@ -7,11 +7,6 @@ import ArticleHero from './article-hero.astro';
 import styles from './article-layout.module.scss';
 import { getArticle } from '../../config/articles';
 
-interface Breadcrumb {
-  label: string;
-  href?: string;
-}
-
 interface TitlePart {
   text: string;
   accent?: boolean;
@@ -24,7 +19,6 @@ interface Props {
   canonicalPath: string;
   category: string;
   intro: string;
-  breadcrumbs: Breadcrumb[];
   structuredData?: Record<string, unknown>;
   ogTitle?: string;
   ogDescription?: string;
@@ -34,7 +28,6 @@ interface Props {
   publishedTime?: string;
   modifiedTime?: string;
   quickAnswerLabel?: string;
-  heroVariant?: 'default' | 'dark';
   heroAction?: { href: string; label: string; description: string };
 }
 
@@ -45,7 +38,6 @@ const {
   canonicalPath,
   category,
   intro,
-  breadcrumbs,
   structuredData,
   ogTitle,
   ogDescription,
@@ -53,7 +45,6 @@ const {
   ogImageAlt,
   author,
   quickAnswerLabel = 'Быстрый ответ',
-  heroVariant = 'default',
   heroAction,
 } = Astro.props;
 const metadata = getArticle(canonicalPath);
@@ -83,8 +74,7 @@ const robots = metadata.status === 'draft' || !metadata.indexable ? 'noindex, no
 
   <main class="site-content">
     <article class={styles.page}>
-      <ArticleHero {titleParts} {category} {intro} {breadcrumbs} {quickAnswerLabel} variant={heroVariant} action={heroAction}>
-        <Fragment slot="background"><slot name="hero-background" /></Fragment>
+      <ArticleHero {titleParts} {category} {intro} {quickAnswerLabel} action={heroAction}>
         <slot name="quick-answer" />
       </ArticleHero>
 

@@ -1,0 +1,111 @@
+{
+  "taskId": "SEO-043-PUBLISH-027",
+  "status": "published-and-verified",
+  "action": "CREATE",
+  "contentType": "knowledge",
+  "priority": "P2",
+  "title": "Воронка продаж в Битрикс24: как найти проблемные этапы",
+  "url": "https://truetell-retail.ru/voronka-prodazh-bitrix24/",
+  "intent": "Diagnose skipped, lost and delayed sales stages in Bitrix24: choose funnel and report period, verify individual deal histories and current stages, define a next action.",
+  "releaseId": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791754232-1",
+  "previousReleaseRetained": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791750693-1",
+  "publishedArticles": 14,
+  "publishedCanonicalUrls": 36,
+  "mainLocalCanonicalUrls": 38,
+  "changedMainSourceFiles": [
+    "src/config/articles.ts",
+    "scripts/article-catalog.test.mjs",
+    "src/pages/otchety-po-prodazham-bitrix24/index.astro",
+    "src/pages/dashbord-rukovoditelya-bitrix24/index.astro",
+    "src/pages/bi-analitika-bitrix24-pervyy-otchet/index.astro",
+    "src/pages/voronka-prodazh-bitrix24/index.astro",
+    "src/images/articles/bitrix24-sales-followup-editorial.png",
+    "src/images/articles/bitrix24-classic-funnel-official.jpg",
+    "src/images/articles/bitrix24-conversion-funnel-official.jpg"
+  ],
+  "images": {
+    "total": 3,
+    "editorialImageGenTransparent": 1,
+    "unalteredOfficialScreenshotsWithFullSizeLinks": 2,
+    "sourceHashesAndOptimizedAlphaVerified": true,
+    "mode": "built-in image_gen",
+    "exactPrompt": "image-prompts.json"
+  },
+  "checks": {
+    "candidateBuild": true,
+    "mainBuild": true,
+    "candidateTestsPassed": 68,
+    "mainTestsPassed": 68,
+    "lintErrors": 0,
+    "existingLintWarnings": 3,
+    "indexnowCheckPublicUrls": 36,
+    "indexnowSubmitted": false,
+    "localBrowserChecks": 20,
+    "publicBrowserChecks": 20,
+    "viewportWidths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "nativeWithoutJavaScript": true,
+    "liveFileHashesVerified": 23,
+    "sitemapUpdated": true,
+    "incomingArticleLinks": 3,
+    "catalogLinks": 1,
+    "independentReview": "passed-before-and-after-publication",
+    "reviewFindingsFixed": [
+      "Named quantity/sum click for report detail list, checked against official 9673603",
+      "Named separate report and full official path for Forgotten deals, checked against 10519434"
+    ],
+    "crmSessionCheckPassedDuringActivation": true,
+    "pendingRoutesRemain404": true
+  },
+  "limits": "Product facts independently checked against current official documentation. No authenticated Bitrix24 account used; no client CRM data or live tenant interface tested. Publication does not establish crawling, indexing or rankings.",
+  "nextTask": "SEO-044: Битрикс24 + МойСклад: данные CRM и склада — blog/P2; not started",
+  "verifiedAt": "2026-10-11T21:34:23.963331+00:00",
+  "independentReviewEvidence": {
+    "reviewer": "/root/review_seo043_027",
+    "status": "passed-before-and-after-publication",
+    "candidateReviewedAt": "2026-10-11T21:30:18.152229+00:00",
+    "candidateHtmlSha256": "8d7dcf0d84c1eb13c1b504b3a81882ee052c29c22da0b779bec7ec8aeabfa0f9",
+    "openFindings": [],
+    "fixedP3": [
+      "Named quantity/sum click for report detail list, checked against official 9673603",
+      "Named separate report and full official path for Forgotten deals, checked against 10519434"
+    ],
+    "checks": [
+      "Official facts and current interface paths",
+      "Intent and neighboring articles",
+      "Hypothetical completed cohort calculations",
+      "Title/meta/schema/sitemap 36 URLs and 3 incoming links",
+      "Three source images and transparent PNG/WebP alpha",
+      "Screenshots at 390/1440 and primary 20-check browser report",
+      "Both P3 rechecked in final built HTML"
+    ],
+    "limits": [
+      "No authenticated Bitrix24 account test",
+      "Reviewer CUA unavailable; own interactive browser checks not claimed",
+      "Search crawling, indexing and rankings not checked"
+    ],
+    "liveReviewedAt": "2026-10-11T21:34:23.918424+00:00",
+    "liveReleaseId": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791754232-1",
+    "liveHtmlSha256": "8d7dcf0d84c1eb13c1b504b3a81882ee052c29c22da0b779bec7ec8aeabfa0f9",
+    "liveChecks": [
+      "HTTP 200 and no blocking X-Robots-Tag",
+      "All 23 public file SHA-256 values match publication",
+      "Release ID matches",
+      "H1/canonical/robots/OG/Article/BreadcrumbList/FAQPage",
+      "Three images, alpha and two full-size links",
+      "Three incoming links and visible modified dates",
+      "Sitemap contains 36 URLs, includes article and excludes pending",
+      "Both pending Cleaner routes return 404",
+      "Production screenshots hero/figures/CTA and primary 20-check browser report"
+    ]
+  },
+  "deliverable": {
+    "archive": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/deliverables/TrueTell_SEO043_Published_027_2026-10-12.zip",
+    "bytes": 8633309,
+    "sha256": "3e8c06852a25874b36674176302a40132b5da5924e4e575cd4d95cfd771e03d9"
+  }
+}

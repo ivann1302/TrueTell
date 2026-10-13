@@ -49,7 +49,8 @@ test('knowledge base replaces Cases in navigation while all scenarios enter the 
     assert(!blogLinks.includes(`/${slug}/`), `Guide repeated in blog: ${slug}`);
     assert(sitemap.includes(`<loc>${origin}/${slug}/</loc>`), `Guide missing from sitemap: ${slug}`);
     const guide = new JSDOM(readFileSync(`dist/${slug}/index.html`, 'utf8')).window.document;
-    assert(guide.querySelector('a[href="/knowledge-base/"]'), `Guide breadcrumb does not point to knowledge base: ${slug}`);
+    assert(guide.querySelector('nav[aria-label="Основная навигация"] a[href="/knowledge-base/"]'), `Header knowledge-base link missing: ${slug}`);
+    assert(!guide.querySelector('nav[aria-label="Хлебные крошки"]'), `Visible breadcrumb navigation remains: ${slug}`);
     const graph = JSON.parse(guide.querySelector('script[type="application/ld+json"]').textContent)['@graph'];
     assert(graph.some((node) => node['@type'] === 'Article'), `Guide still uses blog schema: ${slug}`);
   }

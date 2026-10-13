@@ -1,0 +1,194 @@
+{
+  "id": "039",
+  "checkedDate": "2026-10-13",
+  "action": "UPDATE",
+  "sourceWorkbook": "TrueTell_SEO_Backlog_013_2026-10-10.xlsx",
+  "sourceSha256": "69c5edbe54c17352feea4a775f987a83a22b35fca51de4aa9fc84e0083eb117c",
+  "output": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/deliverables/TrueTell_SEO_Backlog_039_2026-10-13.xlsx",
+  "outputSha256": "d85c2d1b559cc26ac34ae871a327240c6ed473e82e5ab8db5e2290477eb771a4",
+  "tasks": 56,
+  "originalTasksPreserved": 34,
+  "addedTasks": 22,
+  "sheetsPreserved": 7,
+  "liveSitemapUrls": 40,
+  "publicHttp200": 40,
+  "preparedArticlesHttp404": 3,
+  "approvedCalendarArticleHttp404": true,
+  "freshGoogleUrlInspections": 40,
+  "indexedPass": 23,
+  "notIndexed": 17,
+  "sitemapGoogleLastDownloaded": "2026-10-10T12:11:29.330Z",
+  "sitemapGoogleOldSubmittedUrls": 32,
+  "sitemapGooglePending": true,
+  "actualSource007Missing": true,
+  "unknownTasks035036NotInvented": true,
+  "googleIndexSubmission": false,
+  "sitemapSubmitted": false,
+  "siteDeployed": false,
+  "appModified": false,
+  "verification": {
+    "passed": true,
+    "sheetsPreserved": [
+      "SEO-бэклог",
+      "Журнал изменений",
+      "GSC — замеры",
+      "Инструкция",
+      "Локально vs прод",
+      "Продакшен 08.10",
+      "SEO-006 исследование"
+    ],
+    "tasks": 56,
+    "originalTaskIdsPreserved": 34,
+    "addedTaskIds": 22,
+    "historicalDataSheetsUnchanged": [
+      "GSC — замеры",
+      "Продакшен 08.10",
+      "SEO-006 исследование"
+    ],
+    "originalFormulasPreservedExceptExpandedTaskCounter": 0,
+    "taskCounter": {
+      "formula": "COUNTA('SEO-бэклог'!A2:A57)",
+      "value": 56
+    },
+    "originalValidationFilterProtectionPanesPreserved": true,
+    "unrequestedTaskCellsPreserved": true,
+    "formulaErrorScanMatches": 0,
+    "zipIntegrity": true,
+    "sha256": "d85c2d1b559cc26ac34ae871a327240c6ed473e82e5ab8db5e2290477eb771a4"
+  },
+  "limits": [
+    "URL Inspection PASS does not prove that the newest content has been recrawled; crawl timestamps recorded separately.",
+    "Mobile issues are from the laboratory audit12.10; no new reproduction13.10.",
+    "Historical performance and production snapshot sheets remain unchanged.",
+    "Original descriptive-status dropdown retained from source; no unrelated validation redesign."
+  ],
+  "evidence": "work/backlog-039/final",
+  "calendarArticleReadyLocally": true,
+  "localArticles": 21,
+  "localKnowledgeArticles": 15,
+  "localBlogArticles": 6,
+  "localCanonicalUrls": 43,
+  "latestPreparedRelease": "040",
+  "sourceOutput013Unchanged": true,
+  "editorialReview": "Independent reviewer checked GSC evidence and workbook statuses; SEO-034 retained as planned UPDATE. Final 040 readiness recorded without publication.",
+  "independentFinalReview": {
+    "release": "039",
+    "checkedAtUtc": "2026-10-12T22:50:18.820988+00:00",
+    "reviewer": "independent child agent /root/review_payment_semantics_036",
+    "result": "passed",
+    "passed": true,
+    "openFindings": [],
+    "workbook": "/private/tmp/backlog-039/TrueTell_SEO_Backlog_039_2026-10-13.xlsx",
+    "workbookSha256": "d85c2d1b559cc26ac34ae871a327240c6ed473e82e5ab8db5e2290477eb771a4",
+    "authorVerification": "/private/tmp/backlog-039/verification.json",
+    "verificationSha256MatchesWorkbook": true,
+    "scope": "Короткая повторная read-only проверка финальной синхронизации готовности статьи 040: ZIP/XML Excel, ключевые ячейки, сводка, журнал, сохранённые HTTP/GSC и три PNG. Новые API inspections, live HTTP и пересчёт/редактирование Excel не выполнялись.",
+    "sheets": [
+      "SEO-бэклог",
+      "Журнал изменений",
+      "GSC — замеры",
+      "Инструкция",
+      "Локально vs прод",
+      "Продакшен 08.10",
+      "SEO-006 исследование"
+    ],
+    "sheetCount": 7,
+    "taskCount": 56,
+    "uniqueTaskCount": 56,
+    "seo050": {
+      "row": 49,
+      "slug": "/platezhnyy-kalendar-bitrix24/",
+      "title": "Платёжный календарь в CRM и финансовый календарь компании: в чём разница",
+      "type": "Блог",
+      "statusF49": "local_QA_passed — готово; не опубликовано",
+      "publicationDateG49": null,
+      "nextActionsJ49": "Перед разрешённой публикацией заменить предварительные даты; проверить ссылки на 037/038 и статус продукта, затем live QA и sitemap.",
+      "sourceK49": "Выпуск 040: официальные Битрикс24/1С, README 0.3.2, независимое ревью, build/tests/lint/браузерный QA. HTTP404 13.10.",
+      "localL49": "Статья и метаданные, 2 официальных скриншота и учебная инфографика готовы; 6 FAQ, источники и перелинковка. Даты подготовки предварительные.",
+      "productionM49": "HTTP404; деплоя/live_QA/индексации нет. Три готовых материала 037/038/040 ждут разрешённого выпуска.",
+      "matchesIndependentArticle040Review": true
+    },
+    "summary": {
+      "localArticles": 21,
+      "localKnowledge": 15,
+      "localBlog": 6,
+      "localCanonicalUrls": 43,
+      "publicArticlesInSavedEvidence": 18,
+      "publicKnowledgeInSavedEvidence": 14,
+      "publicBlogInSavedEvidence": 4,
+      "publicCanonicalUrlsInSavedEvidence": 40,
+      "readyUnpublishedArticles": [
+        "037",
+        "038",
+        "040"
+      ],
+      "preparedUrlHttp404Count": 3,
+      "cellsChecked": [
+        "Локально vs прод!C7",
+        "Локально vs прод!D7",
+        "Локально vs прод!D8",
+        "Локально vs прод!D11",
+        "Локально vs прод!H3"
+      ]
+    },
+    "journal": {
+      "finalReadinessEntryRow": 68,
+      "task": "SEO-050",
+      "entryPresent": true,
+      "entrySaysNotPublished": true,
+      "entryPublicationDateBlank": true,
+      "historicalPreservationAuthorVerificationRead": true,
+      "fullHistoricalJournalPreservationIndependentlyRerun": false
+    },
+    "productratingsDetails": {
+      "seo034Cell": "SEO-бэклог!F35",
+      "seo034Status": "planned — UPDATE: функции и реальные скриншоты",
+      "plannedUpdatePreserved": true,
+      "seo014Cell": "SEO-бэклог!F15",
+      "seo014Status": "Страница доступна; обновление функций отдельно в SEO-034",
+      "seo014OldMetaAndImageAuditRemainsSeparatePlannedWork": true,
+      "newFeaturesOrScreenshotsIndependentlyTested": false
+    },
+    "savedEvidence": {
+      "httpCheckedAt": "2026-10-13T01:09:12+03:00",
+      "public200": 40,
+      "prepared404": [
+        "https://truetell-retail.ru/chastichnaya-oplata-bitrix24/",
+        "https://truetell-retail.ru/debitorskaya-zadolzhennost-bitrix24/",
+        "https://truetell-retail.ru/platezhnyy-kalendar-bitrix24/"
+      ],
+      "gscInspected": 40,
+      "gscFailures": [],
+      "gscPass": 23,
+      "gscNeutral": 17,
+      "gscCountsMatchUpdates": true,
+      "publicOrGscNewStateNotInferredFromLocalReadiness": true,
+      "apiOrHttpIndependentlyRepeated": false
+    },
+    "visuals": {
+      "imagesIndependentlyViewed": [
+        "/private/tmp/backlog-039/after-pending.png",
+        "/private/tmp/backlog-039/after-actions.png",
+        "/private/tmp/backlog-039/after-summary.png"
+      ],
+      "keyRowsAndLocalPublicDistinctionReadable": true,
+      "nativeExcelUiOrFullWorkbookRenderingIndependentlyTested": false
+    },
+    "authorMechanicalChecksRead": {
+      "sevenSheetsPreserved": true,
+      "historicalThreeSheetsUnchanged": true,
+      "validationsFilterProtectionPanesPreserved": true,
+      "formulaErrors": 0,
+      "zipIntegrity": true,
+      "allMechanicalChecksIndependentlyRepeated": false
+    },
+    "limits": {
+      "workbookModified": false,
+      "workbookRecalculated": false,
+      "realCrmOrApplicationChanged": false,
+      "deployed": false,
+      "urlsSubmitted": false,
+      "reviewerOnlyWroteReport": "/private/tmp/calendar-040-review/backlog-final-review.json"
+    }
+  }
+}

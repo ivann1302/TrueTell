@@ -1,0 +1,109 @@
+{
+  "task": "ARTICLE-HERO-022",
+  "publication": {
+    "status": "published-and-verified",
+    "releaseId": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791732457-1",
+    "baseReleaseId": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791728970-1",
+    "archiveSha256": "ce53c02df6e55e37f1dcfa5846bf9fd07d758a3d99b4d9616d417badea9ba650",
+    "files": 11,
+    "bytes": 309919,
+    "pages": [
+      "bi-analitika-chto-eto-prostymi-slovami/index.html",
+      "bitrix24-udalenie-lidov-za-period/index.html",
+      "dashbord-rukovoditelya-bitrix24/index.html",
+      "kak-snyat-rezervy-moysklad/index.html",
+      "kak-vosstanovit-udalennye-zakazy-tovary-moysklad/index.html",
+      "ne-udalyaetsya-lid-bitrix24/index.html",
+      "ostatki-moysklad/index.html",
+      "otchety-po-prodazham-bitrix24/index.html",
+      "skvoznaya-analitika-bitrix24/index.html",
+      "udalenie-proigrannyh-sdelok-bitrix24/index.html",
+      "udalennye-lidy-bitrix24/index.html"
+    ],
+    "sitemapCount": 33,
+    "sitemapIncluded": false,
+    "verifiedAt": "2026-10-11T15:43:16.374645+00:00"
+  },
+  "verification": {
+    "task": "ARTICLE-HERO-022",
+    "candidate": {
+      "build": true,
+      "testsPassed": 68,
+      "testsFailed": 0,
+      "lintErrors": 0,
+      "preExistingLintWarnings": 3,
+      "indexnowCheck": {
+        "urls": 33,
+        "submitted": false
+      },
+      "uiChecks": 44,
+      "uiViolations": 0,
+      "articleCount": 11,
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "allVisibleArticleTextPreserved": true,
+      "allCanonicalsPreserved": true
+    },
+    "main": {
+      "build": true,
+      "testsPassed": 68,
+      "testsFailed": 0,
+      "lintErrors": 0,
+      "preExistingLintWarnings": 3,
+      "indexnowCheck": {
+        "urls": 35,
+        "submitted": false
+      },
+      "sharedRuleCoversTwoPendingArticles": true
+    },
+    "surface": {
+      "color": "#101621",
+      "pattern": "18px18px dots; same uniform mask",
+      "height": "min100svh with100vh fallback, grow when needed to preserve text",
+      "headerStartsAtTop": true,
+      "heroBackgroundAnimation": false
+    },
+    "sourceDocuments": [
+      "AGENTS.md",
+      "DESIGN_SYSTEM.md",
+      ".agents/skills/truetell-article-authoring/SKILL.md",
+      ".agents/skills/truetell-article-authoring/references/article-model.md"
+    ],
+    "review": {
+      "result": "ready-for-publication",
+      "critical": 0,
+      "important": 0,
+      "minor": 0,
+      "independentlyVerifiedSEOAndBodyDOMPreserved": true,
+      "browser": "Chrome"
+    },
+    "publication": {
+      "status": "published-and-verified",
+      "verifiedFiles": 11,
+      "uiChecks": 44,
+      "uiViolations": 0,
+      "articleCount": 11,
+      "sitemapCount": 33,
+      "previousReleaseRetained": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791728970-1",
+      "apiSessionVerifiedDuringActivation": true,
+      "formsSubmitted": false
+    },
+    "transportObservations": {
+      "directIpSSH": "banner timeout on activation attempts",
+      "domainSSHWithPinnedKnownHostAlias": "activation succeeded",
+      "sftpUpload": "connection dropped",
+      "legacyScp": "upload succeeded",
+      "cause": "not established"
+    }
+  },
+  "ruleRecordedIn": [
+    "AGENTS.md:22",
+    "DESIGN_SYSTEM.md:1382",
+    ".agents/skills/truetell-article-authoring/SKILL.md",
+    ".agents/skills/truetell-article-authoring/references/article-model.md"
+  ]
+}

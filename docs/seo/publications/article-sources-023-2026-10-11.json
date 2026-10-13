@@ -1,0 +1,32 @@
+{
+  "taskId": "ARTICLE-SOURCES-023",
+  "status": "published-and-verified",
+  "releaseId": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791744015-1",
+  "previousReleaseRetained": "ed2a51fa263a95177663c7aefd56dab2ecad0d97-1791732457-1",
+  "changedSourceFiles": [
+    "src/components/editorial/article-sources.astro",
+    "src/components/editorial/article-sources.module.scss",
+    "DESIGN_SYSTEM.md",
+    ".agents/skills/truetell-article-authoring/references/article-model.md"
+  ],
+  "publishedArticles": 11,
+  "localArticleRoutesInheritingComponent": 13,
+  "behavior": "Native details/summary, closed by default; dates visible; unchanged source links in server-rendered HTML; keyboard and pointer; 44px summary target; no JavaScript required.",
+  "checks": {
+    "build": true,
+    "testsPassed": 68,
+    "lintErrors": 0,
+    "existingLintWarnings": 3,
+    "indexnowCheckPublicUrls": 33,
+    "indexnowSubmitted": false,
+    "localBrowserChecks": 44,
+    "publicBrowserChecks": 13,
+    "liveHtmlHashesVerified": 11,
+    "withoutJavaScript": true,
+    "preservedDatesLinksArticleTextCanonical": true,
+    "sitemapUnchanged": true,
+    "crmSessionCheckPassedDuringActivation": true,
+    "reviewFindings": 0
+  },
+  "verifiedAt": "2026-10-11T18:45:00.455083+00:00"
+}

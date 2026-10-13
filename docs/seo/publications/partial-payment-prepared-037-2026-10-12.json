@@ -1,0 +1,303 @@
+{
+  "id": "037",
+  "preparedAt": "2026-10-12T20:53:43+03:00",
+  "action": "CREATE",
+  "type": "knowledge",
+  "title": "Частичная оплата в Битрикс24: поступления и остаток к оплате",
+  "intent": "Account for confirmed partial receipts for one CRM deal, preserve individual entries and show a reconciled balance; distinguish receipts from deal amount and sales stage",
+  "plannedUrl": "https://truetell-retail.ru/chastichnaya-oplata-bitrix24/",
+  "previewUrl": "http://127.0.0.1:4344/chastichnaya-oplata-bitrix24/",
+  "stages": {
+    "content_ready": true,
+    "local_QA_passed": true,
+    "deployed": false,
+    "live_verified": false,
+    "crawled": false,
+    "indexed": false
+  },
+  "publicationDate": {
+    "localCandidateStamp": "2026-10-12T20:06:40+03:00",
+    "status": "provisional preparation stamp; replace with actual first publication time before an authorized deploy",
+    "relatedArticleModifiedTimes": "also provisional until release"
+  },
+  "product": {
+    "path": "/Users/ivan/projects/bitrix_payment_schedule",
+    "confirmedVersion": "0.3.0",
+    "checkedDate": "2026-10-12",
+    "evidence": "README: view saved permitted deal schedule, planned dates, sums, mismatch with CRM; financial writes/receipts/returns/debt/overdue remain planned",
+    "appModified": false,
+    "distributionModified": false,
+    "crmWrites": false,
+    "realPortalTested": false
+  },
+  "sources": [
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/28102982/",
+      "supports": "Payment link button, rights, order amount and timeline events; not a complete arbitrary receipt ledger"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/18291172/",
+      "supports": "Sending, viewing and paying are separate events; payment statuses"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/22048980/",
+      "supports": "Custom Money fields store amount and currency; field creation permissions"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/22804914/",
+      "supports": "Create/select existing CRM fields"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/23960160/",
+      "supports": "Timeline comments can be edited and deleted"
+    }
+  ],
+  "factVerificationDate": "2026-10-12",
+  "manualWorkflow": "Editorial proposal for manual receipt journal and custom summary Money fields; not a native automatic bank ledger",
+  "example": {
+    "kind": "educational, not a client result",
+    "dealId": "D-1042",
+    "currency": "RUB",
+    "dealAmount": 120000,
+    "receipts": [
+      30000,
+      42000
+    ],
+    "received": 72000,
+    "balance": 48000,
+    "remainingDueDate": "2026-10-20",
+    "refundExample": {
+      "refund": 15000,
+      "netReceived": 57000,
+      "balanceIfDealPriceUnchanged": 63000
+    }
+  },
+  "images": [
+    {
+      "path": "src/images/articles/bitrix24-payment-link-official.jpg",
+      "kind": "unaltered official screenshot",
+      "originalUrl": "https://helpdesk.bitrix24.ru/images/helpdesk/screenshots/ru/am/oplata_v_sdelke/2.jpg",
+      "dimensions": [
+        1920,
+        1086
+      ]
+    },
+    {
+      "path": "src/images/articles/bitrix24-money-field-type-official.jpg",
+      "kind": "unaltered official screenshot",
+      "originalUrl": "https://helpdesk.bitrix24.ru/images/helpdesk/screenshots/ru/kk/polzpolya/1.jpg",
+      "dimensions": [
+        1280,
+        724
+      ],
+      "captionLimit": "String is selected in the original screenshot; the visible type list includes Money"
+    },
+    {
+      "path": "src/images/articles/bitrix24-partial-payment-balance.png",
+      "kind": "TrueTell educational infographic, rasterized from repository SVG",
+      "dimensions": [
+        1440,
+        1120
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "webpAlphaPreserved": true
+    }
+  ],
+  "seo": {
+    "registry": "src/config/articles.ts",
+    "catalog": "knowledge-base",
+    "incomingArticleLinks": [
+      "/otchety-po-prodazham-bitrix24/",
+      "/bi-analitika-bitrix24-pervyy-otchet/"
+    ],
+    "canonicalUrlsInPreparedBuild": 41,
+    "knowledgeArticles": 15,
+    "blogArticles": 4,
+    "visibleBreadcrumbs": false,
+    "visibleAndSchemaFaqCount": 6,
+    "noNewProductPage": true,
+    "indexNowSubmitted": false,
+    "sitemapSubmitted": false
+  },
+  "design": "Shared ArticleLayout/Hero/Figure/DataTable/Checklist/FAQ/Sources/CTA/Related. Hero #101621 with dot pattern and min 100svh; light #F6F7F9; closed sources; expanded dark CTA.",
+  "verification": {
+    "productionBuild": {
+      "command": "npm run build",
+      "exitCode": 0,
+      "canonicalUrls": 41,
+      "builtPages": 42,
+      "durationSeconds": 1.77
+    },
+    "tests": {
+      "command": "node --test scripts/*.test.mjs",
+      "exitCode": 0,
+      "passed": 68,
+      "failed": 0
+    },
+    "lint": {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "errors": 0,
+      "existingWarnings": 3,
+      "warningsFiles": [
+        "src/components/chart-section/chart-section.tsx",
+        "src/sections/slider-section/slider-section.tsx"
+      ]
+    },
+    "indexNowCheck": {
+      "command": "node scripts/indexnow.mjs --check",
+      "exitCode": 0,
+      "validatedUrls": 41,
+      "submission": false
+    },
+    "browser": {
+      "checks": 16,
+      "viewportWidths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "screenshotsReviewed": [
+        390,
+        1440
+      ],
+      "pageOverflow": 0,
+      "imagesDecoded": 3,
+      "canonicalVerified": true,
+      "faqKeyboardWidths": [
+        390,
+        1440
+      ],
+      "sourcesKeyboardWidths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "sourcesWithoutJavascript": true,
+      "contactDialogOpensClosesWidths": [
+        390,
+        1440
+      ],
+      "formSubmitted": false
+    },
+    "tableKeyboard": {
+      "checks": 4,
+      "viewportWidths": [
+        320,
+        390
+      ],
+      "tables": 2,
+      "pageOverflow": 0,
+      "focusOutline": "solid",
+      "result": "ArrowRight moved each region; see table-keyboard.json"
+    },
+    "servedStaticCopy": {
+      "files": 347,
+      "mainBuildBytesVerified": true
+    }
+  },
+  "independentReview": {
+    "reviewer": "/root/review_payment_semantics_036",
+    "mode": "independent, read-only",
+    "result": "No open P1/P2/P3 findings",
+    "reviewedSourceSha256": "df12ab4125c7e5fe9e3b31e696435751cfb72258870755f882d7b218ce93640d",
+    "scope": [
+      "Current official Bitrix24 documentation",
+      "Read-only payment app README 0.3.0",
+      "Final source and built HTML",
+      "Metadata, Article/BreadcrumbList/FAQPage and six visible FAQs",
+      "Three original images, captions, full-size links, alpha preservation",
+      "Desktop and mobile browser screenshots"
+    ],
+    "findings": [
+      {
+        "priority": "P2",
+        "issue": "BI link implied the existing guide taught reports on receipts",
+        "resolution": "Clarified that it counts deals; payment reporting needs receipt records and a CRM relation",
+        "status": "independently rechecked and closed"
+      },
+      {
+        "priority": "P3",
+        "issue": "Bank statement filename was not a stable source identifier",
+        "resolution": "Used stable bank account/service + operation ID; store filename separately",
+        "status": "independently rechecked and closed"
+      },
+      {
+        "priority": "P2",
+        "issue": "Compact four-column journal fragmented words on mobile",
+        "resolution": "Used standard shared horizontally scrollable DataTable for both tables; added a scroll hint; saved left/right views and keyboard metrics",
+        "status": "independently rechecked and closed"
+      }
+    ],
+    "limits": [
+      "Reviewer did not independently run browser automation",
+      "No client Bitrix24 portal or bank operations tested",
+      "No publication, crawling or indexing verified"
+    ]
+  },
+  "fileManifest": [
+    {
+      "path": "src/pages/chastichnaya-oplata-bitrix24/index.astro",
+      "sha256": "df12ab4125c7e5fe9e3b31e696435751cfb72258870755f882d7b218ce93640d"
+    },
+    {
+      "path": "src/config/articles.ts",
+      "sha256": "92b0186dfb4840f3c2178b68cfafa2afbdc867b0937287f40be26a26541c5715"
+    },
+    {
+      "path": "src/pages/otchety-po-prodazham-bitrix24/index.astro",
+      "sha256": "37497d69f8defed429455e72abe8066a32217da5d6a3c5f873e3269195365478"
+    },
+    {
+      "path": "src/pages/bi-analitika-bitrix24-pervyy-otchet/index.astro",
+      "sha256": "67a7b45fb5d1a5dc28ee3fa55dcc1f429e601f11a3b69cb3e327124ca618036b"
+    },
+    {
+      "path": "scripts/article-catalog.test.mjs",
+      "sha256": "79effd0235967524286c16d08be47b2ad92278ae739d616c9f8b272eec1befd7"
+    },
+    {
+      "path": "src/images/articles/bitrix24-payment-link-official.jpg",
+      "sha256": "3600e5d2e5506f22230566b0dd173fb30cd7851b2b6ee77c610a6496473e332a"
+    },
+    {
+      "path": "src/images/articles/bitrix24-money-field-type-official.jpg",
+      "sha256": "d5918b1b1306eb27f386f0dcc4d8f41b08a52d10d278e0da279b03db501a6df9"
+    },
+    {
+      "path": "src/images/articles/bitrix24-partial-payment-balance.svg",
+      "sha256": "abc19aa7654ee6a7026d91b69475603412764fdfd482d0ebcc5f7ac4f2b53901"
+    },
+    {
+      "path": "src/images/articles/bitrix24-partial-payment-balance.png",
+      "sha256": "e9f727c1cf2ccf93fe445956714bdedea977b99d57c371150fa8c621b333ed72"
+    },
+    {
+      "path": "docs/seo/site-map.md",
+      "sha256": "f1c1530a1eeb001ffafbb1e1f78f4549fbd9d915cdd08233ac2b97906734cdde"
+    }
+  ],
+  "preservation": {
+    "scopedFilesTransferred": 10,
+    "otherExistingNonignoredFilesUnchangedAtTransfer": 549,
+    "backups": "work/partial-payment-037/final/main-before",
+    "preexistingWorkingTreeChangesPreserved": true
+  },
+  "implementationNotes": [
+    "Copied candidate files in Documents showed blocking reads/Node ECANCELED; plain byte copy under /private/tmp built successfully. Root cause not established.",
+    "QA helper first tried to inspect lazy-loaded images before scrolling; corrected to scroll and await decode. Final run passed.",
+    "No new dependencies, React islands or shared component/style modifications."
+  ],
+  "nextReleaseChecks": [
+    "Obtain publication authorization for this article",
+    "Refresh provisional publication/modified dates to actual release",
+    "Recheck current payment app readiness if it changes",
+    "Run required checks after any release changes",
+    "Verify live HTML, images, links, robots and sitemap after deployment; do not equate deployment with indexing"
+  ]
+}

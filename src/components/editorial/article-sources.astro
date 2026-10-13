@@ -25,12 +25,19 @@ const dateLabel = (iso: string) => new Intl.DateTimeFormat('ru-RU', { day: 'nume
       <Fragment> · Обновлено <time datetime={modifiedIso}>{modifiedLabel ?? dateLabel(modifiedIso)}</time></Fragment>
     )}
   </p>}
-  <p>Официальные материалы</p>
-  <ul>
-    {sources.map((source) => (
-      <li>
-        <a href={source.href} target="_blank" rel="noopener noreferrer">{source.label}</a>
-      </li>
-    ))}
-  </ul>
+  <details class={styles.disclosure}>
+    <summary class={styles.summary}>
+      <span>Официальные материалы</span>
+      <svg class={styles.chevron} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="m6 9 6 6 6-6"></path>
+      </svg>
+    </summary>
+    <ul>
+      {sources.map((source) => (
+        <li>
+          <a href={source.href} target="_blank" rel="noopener noreferrer">{source.label}</a>
+        </li>
+      ))}
+    </ul>
+  </details>
 </footer>

@@ -24,6 +24,8 @@ test('all sitemap routes have distinct metadata, one H1, self-canonical and matc
   for (const entry of entries) {
     const url = entry.querySelector('loc').textContent;
     const doc = await document(`dist${new URL(url).pathname}index.html`);
+    assert(!doc.querySelector('nav[aria-label="Хлебные крошки"], [aria-label*="breadcrumb" i], [class*="breadcrumb" i]'), `Visible breadcrumb navigation remains: ${url}`);
+    assert(!/бизнес[ -]?иде|проверить идею|проверки идеи/i.test(doc.body.textContent), `Retired product remains: ${url}`);
     assert(!urls.has(url)); urls.add(url);
     assert(!titles.has(doc.title), `Duplicate title: ${url}`); titles.add(doc.title);
     const description = doc.querySelector('meta[name="description"]').content;
@@ -55,6 +57,6 @@ test('article metadata and recorded dates reach HTML and the Article/BlogPosting
     const breadcrumb = nodes.find(node => node['@type'] === 'BreadcrumbList');
     const section = article.type === 'knowledge' ? 'knowledge-base/' : 'blog/';
     assert.equal(breadcrumb.itemListElement[1].item, `${origin}/${section}`);
-    assert(doc.querySelector(`main a[href="/${section}"]`));
+    assert(doc.querySelector(`nav[aria-label="Основная навигация"] a[href="/${section}"]`));
   }
 });

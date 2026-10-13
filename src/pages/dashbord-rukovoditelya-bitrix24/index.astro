@@ -1,5 +1,8 @@
 ---
 import ArticleFigure from '../../components/editorial/article-figure.astro';
+import articleIllustration from '../../images/articles/report-verification-editorial.png';
+import salesReportImage from '../../images/articles/bitrix24-sales-report-native.png';
+import overviewImage from '../../images/bi-dashboard/overview.png';
 import ArticleLayout from '../../components/editorial/article-layout.astro';
 import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
 import ArticleSources from '../../components/editorial/article-sources.astro';
@@ -8,8 +11,6 @@ import InlineConsultation from '../../components/editorial/inline-consultation.a
 import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { getArticle, getRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
-import decisionsImage from '../../images/articles/bitrix24-dashboard-decisions.png';
-import chartsImage from '../../images/articles/bitrix24-dashboard-charts.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
 import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
@@ -22,10 +23,9 @@ const siteRoot = new URL(base, import.meta.env.SITE);
 const articleUrl = new URL(article.hrefPath, siteRoot).toString();
 const productHref = `${base}${article.relatedProduct!.slice(1)}`;
 const authorName = companyInfo.editorial.defaultAuthor;
-const imageAlt = 'Последовательность работы с дашбордом: вопрос руководителя, правило расчёта, график, исходные сделки и действие';
-const ogImage = new URL(decisionsImage.src, siteRoot).toString();
+const imageAlt = "Аналитик сверяет сводный бумажный отчёт с исходными записями";
+const ogImage = new URL(articleIllustration.src, siteRoot).toString();
 const titleParts = [{ text:'Дашборд руководителя ' }, { text:'в Битрикс24', accent:true }, { text:': какие показатели и графики выбрать' }];
-const breadcrumbs = [{ label:'Главная', href:base }, { label:'Блог', href:`${base}blog/` }, { label:title }];
 const sourceLinks = [
   {
     "label": "CRM-аналитика — Поддержка24",
@@ -162,7 +162,7 @@ const structuredData = createArticleStructuredData({
 });
 ---
 
-<ArticleLayout {title} {titleParts} {description} {canonicalPath} {structuredData} {breadcrumbs}
+<ArticleLayout {title} {titleParts} {description} {canonicalPath} {structuredData}
   ogTitle={article.seoTitle} ogDescription={description} {ogImage} ogImageAlt={imageAlt}
   category={article.category} author={authorName}
   intro="Как выбрать показатели и графики для руководителя продаж, проверить расчёты и определить подходящий способ реализации дашборда.">
@@ -172,18 +172,20 @@ const structuredData = createArticleStructuredData({
   </Fragment>
 
   <p data-article-lead>На планёрке мало увидеть итог продаж. Руководителю нужно понять, какие сделки его сформировали, где результат расходится с планом и какое действие стоит назначить команде. С этого и начните проектирование панели.</p>
+  <ArticleFigure src={articleIllustration} alt="Аналитик сверяет сводный бумажный отчёт с исходными записями" caption="Сводный график помогает начать разбор. Чтобы проверить причину изменения, нужны исходные записи и единые правила расчёта. Иллюстрация сверки." />
   <section aria-labelledby="dashboard-decisions">
     <h2 id="dashboard-decisions">Какие решения должен поддерживать дашборд</h2>
     <p>Руководителю отдела продаж нужен путь от общего результата к конкретной проблеме. Например, сумма успешных сделок снизилась. Следующий вопрос — в каком направлении и у каких сотрудников произошло изменение. Затем нужно открыть соответствующие сделки и понять, что можно сделать: уточнить предложение, пересмотреть распределение клиентов или разобрать затянувшиеся переговоры.</p>
     <p>Поэтому для каждого показателя полезно заранее определить решение, которое он помогает принять. Если число растёт или падает, что именно будет проверять руководитель? Показатель без понятного продолжения быстро превращается в справочную цифру, которую открывают перед совещанием.</p>
     <p>У директора компании и руководителя отдела могут быть разные панели. Первому нужны результаты направлений и связь продаж с деньгами и расходами. Второму — результат команды и состояние её сделок. Разделение этих задач помогает оставить на первом экране только необходимые данные.</p>
-    <ArticleFigure src={decisionsImage} compact alt="Последовательность работы с дашбордом: вопрос руководителя, правило расчёта, график, исходные сделки и действие" caption="Для каждого графика заранее определите, какие записи объясняют результат и какое действие может последовать." />
+
   </section>
 
   <section aria-labelledby="dashboard-metrics">
     <h2 id="dashboard-metrics">Какие показатели включить в дашборд Битрикс24</h2>
     <p>Ниже — предлагаемый стартовый набор для отдела продаж. Это состав управленческой панели, который нужно адаптировать к вашему процессу; он не является названием одного готового отчёта Битрикс24.</p>
     <DataTable label="Стартовый набор показателей дашборда руководителя" columns={tableData[0].columns} rows={tableData[0].rows} rowHeaders />
+    <p>Если вопрос руководителя — хватит ли денег на ближайшие выплаты, одного графика продаж недостаточно. Какие данные потребуются для этого решения, объясняем в <a href={`${base}platezhnyy-kalendar-bitrix24/`}>сравнении платёжного календаря CRM и финансового календаря компании</a>.</p>
     <p>Денежный показатель подпишите точно. Сумма успешных сделок отражает сведения CRM и сама по себе не подтверждает поступление денег или прибыль. Если руководитель контролирует оплаты, ему нужен отдельный показатель из соответствующего источника.</p>
     <p>Для выполнения плана также необходимы одинаковые единицы. Цель по количеству продаж нельзя сопоставлять с денежной суммой. В штатном <a href="https://helpdesk.bitrix24.ru/open/12027656/" target="_blank" rel="noopener noreferrer">«Плане продаж» Битрикс24</a> предусмотрены цели по сумме или числу успешных сделок; доступность функции нужно проверить для своего портала.</p>
     <h3>Как не перепутать разные виды конверсии</h3>
@@ -203,17 +205,20 @@ const structuredData = createArticleStructuredData({
     <h3>Таблица для проверки причин</h3>
     <p>Когда требуется разобраться в отклонении, оставьте таблицу с ID сделки, ответственным, стадией, суммой и датами, которые используются в расчёте. Предусмотрите переход к карточке CRM или другой способ найти исходную запись.</p>
     <p>Переход по клику на график зависит от конкретного отчёта и его настройки. Если его нет, добавьте связанную детализацию. Руководитель должен иметь возможность проверить, какие сделки сформировали итог.</p>
-    <ArticleFigure src={chartsImage} compact alt="Выбор визуализации по задаче: динамика — линия, сравнение — столбцы, подробности — таблица" caption="Одна визуализация отвечает на один основной вопрос. Детализация помогает проверить ответ." />
+    <ArticleFigure src={salesReportImage} fullSize alt="Отчёт Вклад в продажи Битрикс24: период, график и показатели менеджера" caption="Реальный отчёт «Вклад в продажи» на одной тестовой сделке; имя сотрудника скрыто. Сумма выигранных сделок не подтверждает получение оплаты." />
+
   </section>
 
   <section aria-labelledby="dashboard-tools">
     <h2 id="dashboard-tools">Что выбрать для дашборда руководителя</h2>
+    <p>Для сравнения рекламных каналов добавьте проверку источников и расходов. В статье <a href={`${base}skvoznaya-analitika-bitrix24/`}>о сквозной аналитике в Битрикс24</a> показано, как проследить обращение до сделки и учесть поздние продажи.</p>
     <p>CRM-аналитика, BI Конструктор и внешняя BI-система решают разные задачи настройки и сопровождения. Сначала проверьте, хватает ли готовых отчётов. Более сложный инструмент оправдан конкретным требованием: своей формулой, необходимым источником данных или общими правилами отчётности компании.</p>
     <DataTable label="Выбор инструмента для дашборда" columns={tableData[1].columns} rows={tableData[1].rows} rowHeaders />
     <p>В <a href="https://helpdesk.bitrix24.ru/open/9673603/" target="_blank" rel="noopener noreferrer">CRM-аналитике</a> есть готовые отчёты для проверки продаж. Порядок работы с ними разобран отдельно в статье <a href={`${base}otchety-po-prodazham-bitrix24/`}>«Отчёты по продажам в Битрикс24»</a>.</p>
     <p>В <a href="https://helpdesk.bitrix24.ru/open/18897300/" target="_blank" rel="noopener noreferrer">BI Конструкторе</a> можно создавать свои отчёты и дополнять их графиками и таблицами. Начать удобно с копии подходящего системного отчёта: оригинал напрямую не редактируется. Сначала проверьте его расчёты, затем добавляйте нужные разрезы. <a href="https://helpdesk.bitrix24.ru/open/19498394/" target="_blank" rel="noopener noreferrer">Как создавать отчёты в BI Конструкторе</a>.</p>
     <p>Несколько источников данных не означают, что обязательно нужна внешняя BI-система. BI Конструктор поддерживает <a href="https://helpdesk.bitrix24.ru/open/28344102/" target="_blank" rel="noopener noreferrer">внешние базы MySQL, PostgreSQL и ClickHouse</a>. Подключение требует настройки, а порядок отличается для облачной и коробочной версий. Сравните способы работы с вашими источниками, прежде чем выбирать отдельную платформу.</p>
     <InlineConsultation variant="product" title="Нужно согласовать показатели и источники?" description="Начните с перечня решений руководителя и данных, из которых должны получаться ответы. Обсудим состав первого дашборда и правила проверки расчётов." href={productHref} actionLabel="Обсудить BI-аналитику" />
+    <ArticleFigure src={overviewImage} fullSize alt="Демонстрационная панель TrueTell BI для розницы: период, выручка, валовая прибыль и динамика" caption="Демонстрационный экран TrueTell BI для розничных данных. Это пример компоновки показателей и графиков, а не встроенный отчёт Битрикс24 или результат клиента." />
   </section>
 
   <section aria-labelledby="dashboard-validation">
@@ -239,10 +244,15 @@ const structuredData = createArticleStructuredData({
     <p>Например, сумма продаж почти не изменилась, а успешных сделок стало меньше. Это повод проверить, не сформирован ли итог несколькими крупными заказами, и посмотреть поступление новых сделок. Само сочетание показателей ещё не устанавливает причину: её нужно искать в деталях.</p>
     <p>Если руководителю важен следующий разрез — какие товары и клиенты формируют продажи, — его можно вынести в отдельный отчёт. На странице <a href={`${base}bitrix24-product-rating/`}>«Рейтинг продаж» TrueTell</a> описаны рейтинги товаров и клиентов, динамика и ABC-анализ. Продукт готовится к запуску; условия подключения обсуждаются отдельно.</p>
     <p>Когда одни и те же правила расчёта нужны нескольким подразделениям, полезно согласовать общую модель показателей. Как данные разных систем связываются для анализа, объясняет материал <a href={`${base}bi-analitika-chto-eto-prostymi-slovami/`}>«BI-аналитика: что это простыми словами»</a>.</p>
+    <p>Чтобы перейти от выбора показателей к настройке, используйте <a href="/bi-analitika-bitrix24-pervyy-otchet/">инструкцию по первому BI-отчёту из CRM</a>. В ней разобран небольшой отчёт по созданным сделкам с выбором периода и проверкой уникальных ID.</p>
   </section>
 
+  <p>Для проверки конкретного сигнала на панели используйте <a href={`${base}voronka-prodazh-bitrix24/`}>диагностику воронки продаж Битрикс24</a>: отличите пропуск стадии от потери или задержки и сверяйте вывод по исходным сделкам.</p>
+
+  <p>Если руководитель контролирует расчёты с клиентами, добавьте отдельный <a href={`${base}debitorskaya-zadolzhennost-bitrix24/`}>разбор остатков и просрочки по обязательствам</a>. Для него нужны подтверждённые поступления и сроки оплаты; суммы успешных сделок этих данных не заменяют.</p>
+
   <FaqSection items={faqItems} id="faq" variant="article" />
-  <ArticleSources publishedIso={article.publishedAt} sources={sourceLinks} />
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
   <Fragment slot="article-end">
     <ArticleProductCta titleParts={[{ text:'Согласуйте показатели ' }, { text:'вашей команды', accent:true }]}
       description="Сформулируйте вопросы руководителя и перечислите системы, в которых находятся нужные данные. Определим состав первого дашборда, правила расчёта и способ проверки результата."

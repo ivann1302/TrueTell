@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="512" viewBox="0 0 640 512">
+  <g fill="none" stroke="#1765DA" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m34 42 16 16 30-36M34 170l16 16 30-36M34 298l16 16 30-36M34 426l16 16 30-36"/>
+  </g>
+  <g stroke="#E3E6EB" stroke-width="2">
+    <path d="M112 112h496M112 240h496M112 368h496"/>
+  </g>
+  <g fill="#10131A" font-family="Arial, sans-serif" font-size="36">
+    <text x="112" y="51">Фильтр</text>
+    <text x="112" y="179">Нужные лиды</text>
+    <text x="112" y="307">Экспорт</text>
+    <text x="112" y="435">Подтверждение</text>
+  </g>
+  <g fill="#616875" font-family="Arial, sans-serif" font-size="30">
+    <text x="112" y="93">верные условия</text>
+    <text x="112" y="221">исключены из выборки</text>
+    <text x="112" y="349">файл сохранён и проверен</text>
+    <text x="112" y="477">объём проверен</text>
+  </g>
+</svg>

@@ -1,11 +1,6 @@
 ---
 import styles from './article-hero.module.scss';
 
-interface Breadcrumb {
-  label: string;
-  href?: string;
-}
-
 interface TitlePart {
   text: string;
   accent?: boolean;
@@ -15,9 +10,7 @@ interface Props {
   titleParts: TitlePart[];
   category: string;
   intro: string;
-  breadcrumbs: Breadcrumb[];
   quickAnswerLabel?: string;
-  variant?: 'default' | 'dark';
   action?: { href: string; label: string; description: string };
 }
 
@@ -25,26 +18,13 @@ const {
   titleParts,
   category,
   intro,
-  breadcrumbs,
   quickAnswerLabel = 'Быстрый ответ',
-  variant = 'default',
   action,
 } = Astro.props;
 ---
 
-<header class:list={[styles.hero, variant === 'dark' && styles.darkHero]}>
-  <slot name="background" />
+<header class:list={[styles.hero, styles.darkHero]}>
   <div class={styles.container}>
-    <nav class={styles.breadcrumbs} aria-label="Хлебные крошки">
-      <ol>
-        {breadcrumbs.map((item, index) => (
-          <li aria-current={index === breadcrumbs.length - 1 ? 'page' : undefined}>
-            {item.href ? <a href={item.href}>{item.label}</a> : item.label}
-          </li>
-        ))}
-      </ol>
-    </nav>
-
     <div class={styles.heroGrid}>
       <div class={styles.heroMain}>
         <p class={styles.meta}>{category}</p>

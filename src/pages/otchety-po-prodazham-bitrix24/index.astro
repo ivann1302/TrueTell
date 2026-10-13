@@ -1,5 +1,7 @@
 ---
 import ArticleFigure from '../../components/editorial/article-figure.astro';
+import articleIllustration from '../../images/articles/report-verification-editorial.png';
+import salesReportImage from '../../images/articles/bitrix24-sales-report-native.png';
 import ArticleLayout from '../../components/editorial/article-layout.astro';
 import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
 import ArticleSources from '../../components/editorial/article-sources.astro';
@@ -10,8 +12,6 @@ import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { getArticle, getRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
 import { productRating } from '../../config/products';
-import reportStepsImage from '../../images/articles/bitrix24-sales-report-check.png';
-import reportDatesImage from '../../images/articles/bitrix24-sales-report-dates.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
 import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
@@ -24,17 +24,12 @@ const siteRoot = new URL(base, import.meta.env.SITE);
 const articleUrl = new URL(article.hrefPath, siteRoot).toString();
 const productHref = `${base}${article.relatedProduct!.slice(1)}`;
 const authorName = companyInfo.editorial.defaultAuthor;
-const imageAlt = 'Проверка продаж: определить период и правило даты, выбрать воронку и менеджеров, отобрать успешные сделки и сверить карточки';
-const ogImage = new URL(reportStepsImage.src, siteRoot).toString();
+const imageAlt = "Аналитик сверяет сводный бумажный отчёт с исходными записями";
+const ogImage = new URL(articleIllustration.src, siteRoot).toString();
 const titleParts = [
   { text: 'Отчёты по продажам ' },
   { text: 'в Битрикс24', accent: true },
   { text: ': как проверить результаты отдела' },
-];
-const breadcrumbs = [
-  { label: 'Главная', href: base },
-  { label: 'База знаний', href: `${base}knowledge-base/` },
-  { label: title },
 ];
 const sourceLinks = [
   { label: 'CRM-аналитика — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/9673603/' },
@@ -98,7 +93,7 @@ const structuredData = createArticleStructuredData({
 ---
 
 <ArticleLayout
-  {title} {titleParts} {description} {canonicalPath} {structuredData} {breadcrumbs}
+  {title} {titleParts} {description} {canonicalPath} {structuredData}
   ogTitle={article.seoTitle} ogDescription={description} {ogImage} ogImageAlt={imageAlt}
   category={article.category} author={authorName}
   intro="Как выбрать штатный отчёт, проверить период и фильтры, сравнить менеджеров и объяснить расхождения в цифрах."
@@ -109,13 +104,14 @@ const structuredData = createArticleStructuredData({
   </Fragment>
 
   <p data-article-lead>Отчёт помогает ответить на конкретный вопрос: кто закрыл продажи, изменился ли результат или выполнен ли план. Но одинаковое слово «продажи» может обозначать разные выборки. Начните с того, что хотите измерить, а затем проверьте, какие сделки попали в расчёт.</p>
+  <ArticleFigure src={articleIllustration} alt="Аналитик сверяет сводный бумажный отчёт с исходными записями" caption="Проверка отчёта включает сверку исходных записей: за одинаковыми итогами могут стоять разные условия отбора. Иллюстрация работы аналитика." />
 
   <section aria-labelledby="choose-report">
     <h2 id="choose-report">Какой отчёт <span data-heading-accent>выбрать для задачи</span></h2>
     <p>Для первой проверки не обязательно собирать собственный дашборд. Штатные отчёты уже закрывают несколько разных задач руководителя. Выберите тот, у которого показатель соответствует вашему вопросу.</p>
     <DataTable label="Штатные отчёты Битрикс24 для проверки продаж" columns={['Что проверить', 'С чего начать', 'Что показывает']} rows={reportRows} rowHeaders compact />
     <p>Рейтинг сотрудников, выполнение плана и движение по стадиям дополняют друг друга. Например, высокая сумма выигранных сделок не объясняет, почему часть обращений застряла на согласовании. Это повод открыть воронку и проверить конкретный этап, а не объявить один показатель оценкой всей работы отдела.</p>
-    <ArticleFigure src={reportStepsImage} alt={imageAlt} compact caption="От настройки выборки к проверке исходных карточек. Схема объясняет порядок анализа, а не изображает интерфейс Битрикс24." />
+
   </section>
 
   <section aria-labelledby="manager-report">
@@ -124,13 +120,14 @@ const structuredData = createArticleStructuredData({
     <Checklist items={reportSteps} label="Порядок проверки отчёта по продажам менеджеров" />
     <p>Путь к разделу приведён по <a href={sourceLinks[1].href} target="_blank" rel="noopener noreferrer">официальной инструкции «Вклад в продажи»</a>. Если в вашем портале меню выглядит иначе, найдите отчёт по названию и уточните доступность у администратора. Облачный и коробочный интерфейсы могут различаться.</p>
     <p>Выборочная сверка не доказывает точность каждой карточки, но помогает обнаружить неверную стадию, сумму или условие отбора. Если результат неожиданен, сначала разберите сделки, из которых он сложился, и только потом делайте вывод о сотруднике.</p>
+    <ArticleFigure src={salesReportImage} fullSize alt="Отчёт Вклад в продажи Битрикс24: период, график и показатели менеджера" caption="Реальный отчёт «Вклад в продажи» на одной тестовой сделке; имя сотрудника скрыто. Сумма выигранных сделок не подтверждает получение оплаты." />
   </section>
 
   <section aria-labelledby="report-dates">
     <h2 id="report-dates">Почему <span data-heading-accent>важно правило даты</span></h2>
     <p><strong>Дата создания</strong> отвечает на вопрос, когда появилась сделка. <strong>Дата завершения</strong> помогает отбирать закрытые сделки. <strong>Отчётный период</strong> в CRM-аналитике учитывает элементы, с которыми шла работа: создание, изменение, завершение и другие предусмотренные отчётом условия.</p>
     <p>Например, сделку создали в сентябре, а успешно закрыли в октябре. Отбор по созданию в октябре её исключит, хотя продажа завершилась в октябре. Для вопроса «что закрыли за месяц» проверяйте соответствующее поле даты и успешный результат; для вопроса «с чем работали» нужны другие условия.</p>
-    <ArticleFigure src={reportDatesImage} alt="Дата создания показывает появление сделки, дата завершения — её закрытие, отчётный период — работу с элементами CRM" compact caption="Одинаковый месяц в разных полях не гарантирует одинаковый набор сделок." />
+
     <p>Есть ещё одна ловушка: <strong>скрытое поле «Отчётный период» продолжает влиять на выборку</strong>. Если используете другие даты, проверьте его значение и задайте охватывающий их диапазон. Не скрывайте поле, рассчитывая отменить условие. Это ограничение описано в <a href={sourceLinks[4].href} target="_blank" rel="noopener noreferrer">справке об отчётном периоде</a>.</p>
   </section>
 
@@ -141,7 +138,7 @@ const structuredData = createArticleStructuredData({
     <p>Не вычисляйте конверсию по удобному списку «всех сделок», не проверив основу отчёта. Классическая и конверсионная воронки отвечают на разные вопросы. Для корректного сравнения сотрудников нужны одинаковые правила расчёта и сопоставимые условия работы.</p>
     <h3 id="sales-plan">Как сопоставить план и факт</h3>
     <p>В <a href={sourceLinks[3].href} target="_blank" rel="noopener noreferrer">«Плане продаж»</a> можно задать цель по сумме или количеству успешных сделок, выбрать период и вид плана: по сотрудникам, направлениям или компании. В текущей справке путь указан как CRM → Аналитика → Оперативная аналитика → Воронка продаж → План продаж.</p>
-    <p>Если цель выражена в сумме успешных сделок, сравнивайте её с тем же показателем. План по поступлению денег нельзя автоматически проверять суммой закрытых карточек CRM. Отдельно учитывайте доступность функции на тарифе и права на просмотр или изменение плана.</p>
+    <p>Если цель выражена в сумме успешных сделок, сравнивайте её с тем же показателем. План по поступлению денег нельзя автоматически проверять суммой закрытых карточек CRM. Если клиент платит частями, отдельно <a href={`${base}chastichnaya-oplata-bitrix24/`}>проверьте поступления и остаток к оплате по сделке</a>. Отдельно учитывайте доступность функции на тарифе и права на просмотр или изменение плана.</p>
   </section>
 
   <section aria-labelledby="different-totals">
@@ -164,16 +161,19 @@ const structuredData = createArticleStructuredData({
     <p>Практический итог проверки — конкретное действие. Например, разобрать сделки на согласовании, уточнить причину провала направления или исправить правило заполнения суммы. Сохранённая таблица без решения не помогает руководителю управлять следующей неделей.</p>
   </section>
 
+  <p>Если вопрос связан с пропущенными этапами, отказами или задержками, переходите к <a href={`${base}voronka-prodazh-bitrix24/`}>проверке проблемных этапов воронки продаж Битрикс24</a>. В ней разобраны виды отчёта, история переходов и действия по конкретным сделкам.</p>
+
   <section aria-labelledby="additional-analysis">
     <h2 id="additional-analysis">Когда нужна <span data-heading-accent>дополнительная аналитика</span></h2>
     <p>Для проверки результатов сотрудников начните со штатных отчётов. Если следующий вопрос — какие товары и клиенты дают больше продаж, нужен другой разрез. В приложении <a href={productHref}>«Рейтинг продаж» TrueTell</a> предусмотрены рейтинги товаров и клиентов, динамика, ABC-анализ и детализация до сделок. Продукт готовится к запуску; условия подключения обсуждаются отдельно.</p>
+    <p>Если нужно понять, какие рекламные каналы приводят к продажам, потребуется связать обращение с источником и учесть расходы. Настройку и контрольный путь клиента разбираем в статье <a href={`${base}skvoznaya-analitika-bitrix24/`}>о сквозной аналитике в Битрикс24</a>.</p>
     <p>Рейтинг товаров и клиентов дополняет проверку отдела, но не заменяет отчёт по менеджерам и не подтверждает оплаты или прибыль. Если требуется связать CRM с учётной системой и другими источниками, сначала определите состав данных и правила расчёта. О том, как устроен такой подход, читайте в материале <a href={`${base}bi-analitika-chto-eto-prostymi-slovami/`}>«BI-аналитика: что это простыми словами»</a>.</p>
     <InlineConsultation variant="product" title="Нужен анализ товаров и клиентов по сделкам?" description="Посмотрите, какие разрезы предусмотрены в «Рейтинге продаж». Продукт готовится к запуску — можно обсудить ваш сценарий подключения." href={productHref} actionLabel="Посмотреть рейтинг продаж" />
       <p>Для собственной панели прочитайте <a href={`${base}dashbord-rukovoditelya-bitrix24/`}>как выбрать показатели и графики дашборда руководителя в Битрикс24</a>.</p>
   </section>
 
   <FaqSection items={faqItems} id="faq" variant="article" />
-  <ArticleSources publishedIso={article.publishedAt} sources={sourceLinks} />
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
 
   <Fragment slot="article-end">
     <ArticleProductCta titleParts={[{ text: 'От результата отдела к ' }, { text: 'товарам и клиентам', accent: true }]} description={productRating.description} href={productHref} actionLabel="Посмотреть рейтинг продаж" />

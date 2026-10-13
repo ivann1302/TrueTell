@@ -34,12 +34,4 @@ export const products: Product[] = [
     action: 'Обсудить интеграцию',
     href: companyInfo.contacts.consultationUrl,
   },
-  {
-    id: 'ideas',
-    problem: 'Проверить идею до вложений',
-    title: 'Сервис проверки бизнес-идей',
-    description: 'Структурированная проверка идеи до инвестиций в разработку и продвижение.',
-    action: 'Узнать о запуске',
-    href: companyInfo.contacts.consultationUrl,
-  },
 ];

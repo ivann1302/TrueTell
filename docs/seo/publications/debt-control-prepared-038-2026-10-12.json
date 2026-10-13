@@ -1,0 +1,544 @@
+{
+  "id": "038",
+  "preparedAt": "2026-10-12T22:07:18+03:00",
+  "action": "CREATE",
+  "type": "blog",
+  "title": "Дебиторская задолженность в Битрикс24: что контролировать руководителю",
+  "intent": "Manage confirmed customer obligations across deals, separate overdue and future balances, verify receipts and assign accountable follow-up tasks",
+  "plannedUrl": "https://truetell-retail.ru/debitorskaya-zadolzhennost-bitrix24/",
+  "previewUrl": "http://127.0.0.1:4345/debitorskaya-zadolzhennost-bitrix24/",
+  "stages": {
+    "content_ready": true,
+    "local_QA_passed": true,
+    "deployed": false,
+    "live_verified": false,
+    "crawled": false,
+    "indexed": false
+  },
+  "publicationDate": {
+    "localCandidateStamp": "2026-10-12T21:41:57+03:00",
+    "status": "Provisional preparation stamp; replace with actual first publication time before authorized deployment",
+    "relatedArticleModifiedTimes": "Provisional until release"
+  },
+  "product": {
+    "path": "/Users/ivan/projects/bitrix_payment_schedule",
+    "confirmedVersion": "0.3.0",
+    "checkedDate": "2026-10-12",
+    "evidence": "Read-only README/source review: saved permitted deal schedule, dates, amounts and CRM mismatch; receipts, debt, overdue, common report and calendar remain planned",
+    "appModified": false,
+    "distributionModified": false,
+    "crmWrites": false,
+    "realPortalTested": false
+  },
+  "sources": [
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/24206616/",
+      "supports": "Invoice due-date filter and separate deal payment-status filter; tariff limits"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/25376268/",
+      "supports": "CRM invoice Deadlines view, due-date columns, no money totals per column, dragging changes the invoice due date"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/18291172/",
+      "supports": "Order/payment timeline statuses; visiting a payment page differs from successful payment"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/24212648/",
+      "supports": "CRM tasks with assignee/deadline/deal relation; CRM closure and task control behavior"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/23240636/",
+      "supports": "CRM access and visibility scope"
+    }
+  ],
+  "factVerificationDate": "2026-10-12",
+  "financialBoundary": "Editorial management workflow, not proof of accounting receivables or legal collection advice. Confirm obligations and primary documents with the company financial data owner.",
+  "example": {
+    "currency": "RUB",
+    "asOf": "2026-10-12",
+    "dealAmounts": [
+      120000,
+      90000,
+      50000
+    ],
+    "netReceipts": [
+      72000,
+      30000,
+      50000
+    ],
+    "balances": [
+      48000,
+      60000,
+      0
+    ],
+    "overdue": 40000,
+    "future": 68000,
+    "kind": "Educational synthetic example, not a client result",
+    "totalDealAmount": 260000,
+    "totalNetReceipts": 152000,
+    "totalBalance": 108000,
+    "allocation": "D-1181: 30000 received against the 70000 obligation due 2026-10-05; 40000 overdue; separate 20000 obligation due 2026-10-25",
+    "unknownDates": "Separate pending-verification queue, excluded from confirmed overdue/future totals"
+  },
+  "images": [
+    {
+      "path": "src/images/articles/bitrix24-invoice-deadlines-official.jpg",
+      "kind": "Unaltered official screenshot",
+      "originalUrl": "https://helpdesk.bitrix24.ru/upload/medialibrary/7a2/nevlt8f03qwey90yzsjgrrupy2rg37a5/Скриншот 1.jpg",
+      "dimensions": [
+        1277,
+        726
+      ],
+      "captionLimit": "Documentation demo dates/clients, invoice view; no calculated company debt"
+    },
+    {
+      "path": "src/images/articles/bitrix24-crm-task-assignee-official.jpg",
+      "kind": "Unaltered official screenshot",
+      "originalUrl": "https://helpdesk.bitrix24.ru/images/helpdesk/screenshots/ru/gb/screenshot/905.jpg",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "captionLimit": "Prepare-contract task; not proof of payment or a debt report"
+    },
+    {
+      "path": "src/images/articles/bitrix24-overdue-and-future-balance.png",
+      "kind": "TrueTell educational proportional infographic, repository SVG rasterized to PNG",
+      "dimensions": [
+        1440,
+        1240
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "webpAlphaPreserved": true
+    }
+  ],
+  "seo": {
+    "registry": "src/config/articles.ts",
+    "catalog": "blog",
+    "incomingArticleLinks": [
+      "/chastichnaya-oplata-bitrix24/",
+      "/dashbord-rukovoditelya-bitrix24/"
+    ],
+    "canonicalUrlsInPreparedBuild": 42,
+    "knowledgeArticles": 15,
+    "blogArticles": 5,
+    "previousLiveCanonicalUrls": 40,
+    "pendingArticles": [
+      "chastichnaya-oplata-bitrix24/",
+      "debitorskaya-zadolzhennost-bitrix24/"
+    ],
+    "visibleBreadcrumbs": false,
+    "structuredBreadcrumbHierarchy": "Home -> Blog -> Article",
+    "visibleAndSchemaFaqCount": 6,
+    "noNewProductPage": true,
+    "indexNowSubmitted": false,
+    "sitemapSubmitted": false
+  },
+  "design": "Shared editorial components; #101621 dotted hero with min 100svh, #F6F7F9 light background, closed native sources, expanded shared dark CTA. No invented product interface.",
+  "sharedSpacingFix": {
+    "path": "src/components/editorial/article-figure.module.scss",
+    "rootCause": "Later .expandable margin:0 overrode .figure margin with equal specificity",
+    "declaration": "margin: var(--article-space-block, 0px) 0",
+    "redTest": "exit1: margin-top 0 != 24",
+    "afterNewArticle": "All three figures: computed margins and actual adjacent-text gaps 24px on 390/1440",
+    "productFallback": "0px retained outside article token scope",
+    "lastSectionChild": "Existing article flow rule may legitimately set bottom margin0 for the last element",
+    "regressionChecks": 46
+  },
+  "verification": {
+    "productionBuild": {
+      "command": "npm run build",
+      "exitCode": 0,
+      "canonicalUrls": 42,
+      "builtPages": 43,
+      "durationSeconds": 2.19
+    },
+    "tests": {
+      "command": "node --test scripts/*.test.mjs",
+      "exitCode": 0,
+      "passed": 68,
+      "failed": 0
+    },
+    "lint": {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "errors": 0,
+      "existingWarnings": 3,
+      "warningsFiles": [
+        "src/components/chart-section/chart-section.tsx",
+        "src/sections/slider-section/slider-section.tsx"
+      ]
+    },
+    "indexNowCheck": {
+      "command": "node scripts/indexnow.mjs --check",
+      "exitCode": 0,
+      "validatedUrls": 42,
+      "submission": false
+    },
+    "browser": {
+      "checks": 16,
+      "viewportWidths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "screenshots": 15,
+      "pageOverflow": 0,
+      "imagesDecoded": 3,
+      "faqAndSourceKeyboard": true,
+      "sourcesWithoutJavascript": true,
+      "contactDialogOpensClosesWidths": [
+        390,
+        1440
+      ],
+      "formSubmitted": false
+    },
+    "tableKeyboard": {
+      "checks": 2,
+      "viewportWidths": [
+        320,
+        390
+      ],
+      "focusOutline": "solid",
+      "reachedRightEdgeByKeyboard": true,
+      "pageOverflow": 0
+    },
+    "sharedSpacing": {
+      "checks": 46,
+      "articleRoutes": 20,
+      "productRoutes": 3,
+      "viewportWidths": [
+        390,
+        1440
+      ],
+      "passed": true
+    },
+    "servedStaticCopy": {
+      "files": 362,
+      "different": [],
+      "candidateOnly": [],
+      "articleHtmlSha256": "ba1c3fc1678a5fba5f2d5d693042f8135b3ad7d06a91c832a3a4ba34627169d2",
+      "articleSourceSha256": "7feb711ac3f3f3932444b7c1b69e874c4910158494f6e43e4ba254e679d6a39e"
+    },
+    "inAppPreview": {
+      "tabId": "15",
+      "reloadedFinalBuild": true,
+      "computedFigureMargins": "24px top and bottom for all3 figures",
+      "markedDeliverable": true
+    }
+  },
+  "independentReview": {
+    "release": "038",
+    "slug": "/debitorskaya-zadolzhennost-bitrix24/",
+    "reviewer": "review_payment_semantics_036 — независимый ревьюер",
+    "reviewedAtUtc": "2026-10-12T19:06:45.426988+00:00",
+    "status": "passed",
+    "passed": true,
+    "result": "Финальный локальный кандидат прошёл независимое ревью. Открытых P1/P2/P3 нет; P2 об отступах fullSize-изображений закрыто.",
+    "sourceSha256": "7feb711ac3f3f3932444b7c1b69e874c4910158494f6e43e4ba254e679d6a39e",
+    "htmlSha256": "ba1c3fc1678a5fba5f2d5d693042f8135b3ad7d06a91c832a3a4ba34627169d2",
+    "figureStylesSha256": "a7699f8cc7ff0bfc599dc221e7b98aff5c229c4e70541edadc6cb881dcbe6a28",
+    "openFindings": [],
+    "closedFindings": [
+      {
+        "priority": "P2",
+        "title": "Нулевые отступы вокруг fullSize-изображений в статьях",
+        "status": "closed",
+        "cause": "Позднее правило .expandable с margin: 0 перебивало .figure при одинаковой специфичности.",
+        "fix": "margin: var(--article-space-block, 0px) 0;",
+        "verification": "Правка присутствует в main и кандидате, а также в inline CSS финального HTML. Сохранённые метрики всех трёх figure №038 показывают margin-top, margin-bottom и реальные beforeGap/afterGap 24px на 390/1440. Последний элемент основного раздела по действующему контракту сохраняет margin-bottom 0; продукты без article token сохраняют нулевые отступы.",
+        "redTestEvidence": "/private/tmp/debt-038-release/spacing-before.log",
+        "greenTestEvidence": "/private/tmp/debt-038-qa/spacing-verification.json"
+      }
+    ],
+    "scope": {
+      "independentlyInspected": [
+        "Официальные первоисточники Битрикс24, актуальный README приложения и соответствие утверждений о версии 0.3.0.",
+        "Текст, управленческий интент, распределение поступлений, расчёты, шесть FAQ и подписи к исходным изображениям.",
+        "Исходники общей CSS-правки и область определения --article-space-block.",
+        "Финальный compiled HTML main и кандидата: canonical, title/description, OG/Twitter, BlogPosting, BreadcrumbList, FAQPage.",
+        "Совпадение всех шести вопросов/ответов JSON-LD с видимым FAQ; отсутствие видимых хлебных крошек.",
+        "Каталог блога: пять карточек, №038 присутствует. База знаний: 15 записей, №038 отсутствует.",
+        "Смысловые входящие ссылки и связанные карточки из частичной оплаты и дашборда руководителя.",
+        "15 обновлённых PNG на 390/1440: hero, три рисунка, таблица слева/справа, FAQ, CTA.",
+        "Хеши источника/HTML/CSS, полное побайтное соответствие 362 файлов dist main и кандидата.",
+        "Сохранённые QA-метрики и финальные журналы проверок; браузерный JSON-LD совпадает с текущим static HTML на всех четырёх ширинах."
+      ],
+      "modifiedByReviewer": [
+        "/private/tmp/debt-038-release/review-final.json"
+      ],
+      "projectFilesModifiedByReviewer": false
+    },
+    "content": {
+      "intent": "Блог о контроле нескольких обязательств, сроков и поручений руководителем; ручная инструкция отдельных поступлений вынесена в связанную knowledge-статью.",
+      "exampleCurrency": "RUB",
+      "exampleCutoff": "2026-10-12",
+      "exampleTotals": {
+        "cost": 260000,
+        "received": 152000,
+        "unpaid": 108000,
+        "overdue": 40000,
+        "futureDue": 68000
+      },
+      "productBoundary": "0.3.0 — чтение сохранённого графика разрешённой сделки. Учёт поступлений, остатки/просрочки, общий отчёт и календарь обозначены как план; готовая банковская сверка и уведомления не обещаны.",
+      "receivablesBoundary": "Управленческий остаток CRM не объявлен бухгалтерской дебиторской задолженностью; просрочка считается только по подтверждённой непогашенной части обязательств с прошедшим согласованным сроком. Неизвестные сроки и несверенные операции отделены."
+    },
+    "evidence": {
+      "mainDist": "/Users/ivan/projects/TrueTell/dist",
+      "candidateDist": "/private/tmp/truetell-debt-038/dist",
+      "publicFilesByteMatched": 362,
+      "spacing": {
+        "path": "/private/tmp/debt-038-qa/spacing-verification.json",
+        "passed": true,
+        "checks": 46,
+        "articleRoutes": 20,
+        "productRoutes": [
+          "bitrix24-cleaner/",
+          "moysklad-mass-operations/",
+          "bitrix24-product-rating/"
+        ],
+        "widths": [
+          390,
+          1440
+        ],
+        "articleFigureObservations": 76,
+        "productFigureObservations": 18,
+        "debtFigureMeasures": [
+          {
+            "width": 390,
+            "route": "debitorskaya-zadolzhennost-bitrix24/",
+            "figures": [
+              {
+                "top": 24,
+                "bottom": 24,
+                "beforeGap": 24,
+                "afterGap": 24,
+                "hasNext": true
+              },
+              {
+                "top": 24,
+                "bottom": 24,
+                "beforeGap": 24,
+                "afterGap": 24,
+                "hasNext": true
+              },
+              {
+                "top": 24,
+                "bottom": 24,
+                "beforeGap": 24,
+                "afterGap": 24,
+                "hasNext": true
+              }
+            ]
+          },
+          {
+            "width": 1440,
+            "route": "debitorskaya-zadolzhennost-bitrix24/",
+            "figures": [
+              {
+                "top": 24,
+                "bottom": 24,
+                "beforeGap": 24,
+                "afterGap": 24,
+                "hasNext": true
+              },
+              {
+                "top": 24,
+                "bottom": 24,
+                "beforeGap": 24,
+                "afterGap": 24,
+                "hasNext": true
+              },
+              {
+                "top": 24,
+                "bottom": 24,
+                "beforeGap": 24,
+                "afterGap": 24,
+                "hasNext": true
+              }
+            ]
+          }
+        ],
+        "allowedOtherGaps": "32px после figure в двух desktop-контекстах соответствует следующему H3 или основному section; соседние отступы схлопываются согласно дизайн-системе."
+      },
+      "browserQa": {
+        "path": "/private/tmp/debt-038-qa/verification.json",
+        "passed": true,
+        "checks": 16,
+        "widths": [
+          320,
+          390,
+          768,
+          1440
+        ],
+        "tableKeyboardChecks": 2,
+        "pageOverflow": false,
+        "nativeSourcesWithoutJavascript": true,
+        "formSubmitted": false
+      },
+      "visuallyInspectedScreenshots": [
+        {
+          "path": "/private/tmp/debt-038-qa/hero-390.png",
+          "sha256": "5c385c676bc0c7f67802ac947b696743792b7339bbf75bc86f03ff6eba81e5cd"
+        },
+        {
+          "path": "/private/tmp/debt-038-qa/hero-1440.png",
+          "sha256": "2a564769821e61d9a3d11314295e8c21394cd338e072e620a4285cb794aa8c4c"
+        },
+        {
+          "path": "/private/tmp/debt-038-qa/figure-0-390.png",
+          "sha256": "0cd249ac7f534f0a5735ba4a25649fa611716eff425fe17e27ac78947b870811"
+        },
+        {
+          "path": "/private/tmp/debt-038-qa/figure-0-1440.png",
+          "sha256": "2af0b1c5069611c917f766205f672ad8197fc1edc3ca2e607ae05e7854d5f879"
+        },
+        {
+          "path": "/private/tmp/debt-038-qa/figure-1-390.png",
+          "sha256": "0d63f8bd16ec1b95b17f493a180906a23c16f848cc9e42b84698976c7603a3a4"
+        },
+        {
+          "path": "/private/tmp/debt-038-qa/figure-1-1440.png",
+          "sha256": "a405ec1d7989df151362a882612335980bad249c2e557749301d484f80bc4325"
+        },
+        {
+          "path": "/private/tmp/debt-038-qa/figure-2-390.png",
+          "sha256": "b33681df05fe53c6e7b3c981efd1e435c5db55d9ffaffd035421b64bb6548be4"
+        },
+        {
+          "path": "/private/tmp/debt-038-qa/figure-2-1440.png",
+          "sha256": "cc4677573c76dbbcf934a7b680a8d956d9fa7f0cf304c80bf5fc8a331e5fd4ee"
+        },
+        {
+          "path": "/private/tmp/debt-038-qa/journal-390.png",
+          "sha256": "4851a4aea272d02a6c52eee85cc6b656a879ec4c9d6fe967969e9f46a76b1be9"
+        },
+        {
+          "path": "/private/tmp/debt-038-qa/journal-right-390.png",
+          "sha256": "318719e48a4950ff83704444114a7f6b672f9857d5e2cf977072d89657b16da4"
+        },
+        {
+          "path": "/private/tmp/debt-038-qa/journal-1440.png",
+          "sha256": "63c000ea28416a77a92dca9203ab1a612b5dc610faa8f4da2d6a0a8b9b0c902e"
+        },
+        {
+          "path": "/private/tmp/debt-038-qa/faq-390.png",
+          "sha256": "66660aa9458b60bc085e7b0303da4e06dfcbfaaada047c47709ee62df633d1bd"
+        },
+        {
+          "path": "/private/tmp/debt-038-qa/faq-1440.png",
+          "sha256": "d9a32fae7186202cd5f9f84fb1328ef2a177cbbc226c585a0b4855d74c34dbe9"
+        },
+        {
+          "path": "/private/tmp/debt-038-qa/cta-390.png",
+          "sha256": "d00041fad25160ae06a991fd13968aa2f750ed58a72add41914331ca1b60e280"
+        },
+        {
+          "path": "/private/tmp/debt-038-qa/cta-1440.png",
+          "sha256": "1823442af9279fe76ff80197092f002a7521fa603e6f862114e894869132324d"
+        }
+      ],
+      "authorFinalCheckLogs": {
+        "tests": {
+          "path": "/private/tmp/debt-038-release/main-tests-final.log",
+          "passed": 68,
+          "failed": 0
+        },
+        "lint": {
+          "path": "/private/tmp/debt-038-release/main-lint-final.log",
+          "errors": 0,
+          "existingWarnings": 3
+        },
+        "build": {
+          "path": "/private/tmp/debt-038-release/main-build-final.log",
+          "canonicalUrls": 42,
+          "pages": 43
+        },
+        "indexNowCheck": {
+          "path": "/private/tmp/debt-038-release/main-indexnow-final.log",
+          "validatedUrls": 42,
+          "submission": false
+        }
+      }
+    },
+    "limits": {
+      "ownBrowserMeasurementsPerformed": false,
+      "ownBrowserAttempt": "Открытие отдельной скрытой IAB-вкладки ранее завершилось таймаутом automatic permission approval review; подтверждённого открытия и собственного измерения нет. Это не отказ безопасности. Новый UI-вызов не выполнялся.",
+      "browserMetricsProvenance": "Метрики и PNG получены из сохранённых протоколов автора; ревьюер независимо прочитал их, проверил согласованность с исходниками и финальным HTML и визуально просмотрел PNG.",
+      "testCommandsRerunByReviewer": false,
+      "realCrmTested": false,
+      "paymentAppModified": false,
+      "productionDeploymentPerformed": false,
+      "publishedVersionVerified": false,
+      "indexingOrSearchResultsVerified": false,
+      "richResultsEligibilityClaimed": false,
+      "publicationDates": "Даты 2026-10-12T21:41:57+03:00 предварительные. Перед разрешённым фактическим деплоем заменить datePublished/dateModified и соответствующие записи на реальные даты выпуска.",
+      "verdictAppliesTo": "Подготовленному локальному кандидату с указанными хешами; не является подтверждением публикации или проверки реального клиентского портала."
+    }
+  },
+  "fileManifest": [
+    {
+      "path": "src/pages/debitorskaya-zadolzhennost-bitrix24/index.astro",
+      "sha256": "7feb711ac3f3f3932444b7c1b69e874c4910158494f6e43e4ba254e679d6a39e"
+    },
+    {
+      "path": "src/config/articles.ts",
+      "sha256": "d58d7ee141a01d5e488bc2f177748907a72ad9e3eb7ae97dbf1e4ea6cabe358d"
+    },
+    {
+      "path": "src/pages/chastichnaya-oplata-bitrix24/index.astro",
+      "sha256": "13897ddd03645e4225f9ad0c5d2e3d1fc5e871dd47d3ebce4f18cce53e700f43"
+    },
+    {
+      "path": "src/pages/dashbord-rukovoditelya-bitrix24/index.astro",
+      "sha256": "b76c57d4443ad82a11fd66ae1e1dfc0ca152a0b098f492559027e0f632874b3a"
+    },
+    {
+      "path": "scripts/article-catalog.test.mjs",
+      "sha256": "7122fda5a1430c8a42367264eda1f73d91091d36fc45d8bc917f27a335f5cbc8"
+    },
+    {
+      "path": "src/images/articles/bitrix24-invoice-deadlines-official.jpg",
+      "sha256": "22369739994b03650de7683747a9d25d049ec03b7118abb5099fd3e672f265ce"
+    },
+    {
+      "path": "src/images/articles/bitrix24-crm-task-assignee-official.jpg",
+      "sha256": "bdf51ce088ae8405c067473c6af70f387670bdc8ca7a259201c7170f2ab59350"
+    },
+    {
+      "path": "src/images/articles/bitrix24-overdue-and-future-balance.svg",
+      "sha256": "400be14cb12cc24c2d34d9b248d7c74cabda1471135df41fa70006b7d8665c93"
+    },
+    {
+      "path": "src/images/articles/bitrix24-overdue-and-future-balance.png",
+      "sha256": "448d470f04a675fb5d177f0153cc4ad6d1cb37e7054bd29ccf5ce054f4e14717"
+    },
+    {
+      "path": "docs/seo/site-map.md",
+      "sha256": "29b2e5323ba6b37f44cd34b70c7c17913d996155787ee551421411b5e3353f5d"
+    },
+    {
+      "path": "src/components/editorial/article-figure.module.scss",
+      "sha256": "a7699f8cc7ff0bfc599dc221e7b98aff5c229c4e70541edadc6cb881dcbe6a28"
+    }
+  ],
+  "preservation": {
+    "scopedFilesTransferred": 11,
+    "otherExistingNonignoredFilesUnchangedAtTransferAndFinalCheck": 554,
+    "backups": "work/debt-control-038/final/main-before",
+    "preexistingWorkingTreeChangesPreserved": true
+  },
+  "archiveScope": "Incremental preparation bundle for the current TrueTell checkout: owned source/config/assets and review evidence. Not a standalone full-site deployment.",
+  "nextReleaseChecks": [
+    "Obtain authorization to publish the prepared articles",
+    "Refresh provisional publication and modification dates to actual release time",
+    "Recheck payment app readiness if changed",
+    "Run required checks after release changes",
+    "Verify live HTML, images, links, robots and sitemap after deployment; deployment is not indexing"
+  ]
+}

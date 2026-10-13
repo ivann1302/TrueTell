@@ -1,5 +1,7 @@
 ---
 import ArticleFigure from '../../components/editorial/article-figure.astro';
+import articleIllustration from '../../images/articles/report-verification-editorial.png';
+import overviewImage from '../../images/bi-dashboard/overview.png';
 import ArticleLayout from '../../components/editorial/article-layout.astro';
 import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
 import ArticleSources from '../../components/editorial/article-sources.astro';
@@ -10,7 +12,6 @@ import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { getArticle, getRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
 import { cleanerProduct, cleanerProductPath } from '../../config/products';
-import biFlowImage from '../../images/articles/bi-data-to-dashboard.png';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
 import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
@@ -32,20 +33,14 @@ const homeUrl = siteRoot.toString();
 const blogUrl = new URL('blog/', siteRoot).toString();
 const articleUrl = new URL('bi-analitika-chto-eto-prostymi-slovami/', siteRoot).toString();
 const productUrl = `${base}${article.relatedProduct!.slice(1)}`;
-const imageAlt =
-  'Схема, в которой данные CRM, склада, заказов и рекламы объединяются в модель данных и поступают на BI-дашборд';
-const ogImage = new URL(biFlowImage.src, siteRoot).toString();
+const imageAlt = "Аналитик сверяет сводный бумажный отчёт с исходными записями";
+const ogImage = new URL(articleIllustration.src, siteRoot).toString();
 
 const titleParts = [
   { text: 'BI-аналитика: ', accent: true },
   { text: 'что это простыми словами и зачем она бизнесу' },
 ];
 
-const breadcrumbs = [
-  { label: 'Главная', href: base },
-  { label: 'Блог', href: `${base}blog/` },
-  { label: 'BI-аналитика простыми словами' },
-];
 
 const sourceLinks = [
   {
@@ -190,7 +185,7 @@ const structuredData = createArticleStructuredData({
   ogImageAlt={imageAlt}
   category="BI-аналитика"
   intro="Разбираемся, как разрозненные данные превращаются в единую систему показателей, чем BI отличается от обычного отчёта и в какой момент он действительно нужен компании."
-  {breadcrumbs}
+
   author={authorName}
   publishedTime={publishedDate}
   modifiedTime={modifiedDate}
@@ -218,6 +213,7 @@ const structuredData = createArticleStructuredData({
     что закупать и где продавать, эти цифры нужно свести по одним товарам и за один период.
     На таком примере разберём, чем помогает BI.
   </p>
+  <ArticleFigure src={articleIllustration} alt="Аналитик сверяет сводный бумажный отчёт с исходными записями" caption="За сводным показателем стоят исходные записи и правила расчёта. Иллюстрация проверки отчёта перед решением." />
 
   <aside data-article-note>
     <strong>Главное различие</strong>
@@ -245,11 +241,7 @@ const structuredData = createArticleStructuredData({
       <strong> источники → подготовка → модель данных → показатели → визуализация → решение</strong>.
     </p>
 
-    <ArticleFigure
-      src={biFlowImage}
-      alt={imageAlt}
-      caption="BI связывает разрозненные источники через единую модель данных, а дашборд становится интерфейсом для анализа и решения."
-    />
+
 
     <p>
       Допустим, директор видит, что прибыль за месяц снизилась, хотя выручка выросла. В
@@ -336,6 +328,7 @@ const structuredData = createArticleStructuredData({
       показатели и сохраняет единые правила для всех пользователей.
     </p>
       <p>Для собственной панели прочитайте <a href={`${base}dashbord-rukovoditelya-bitrix24/`}>как выбрать показатели и графики дашборда руководителя в Битрикс24</a>.</p>
+    <ArticleFigure src={overviewImage} fullSize alt="Демонстрационная панель TrueTell BI для розницы: период, выручка, валовая прибыль и динамика" caption="Демонстрационный экран TrueTell BI для розничных данных. Это пример компоновки показателей и графиков, а не встроенный отчёт Битрикс24 или результат клиента." />
   </section>
 
   <section aria-labelledby="sources">
@@ -507,7 +500,12 @@ const structuredData = createArticleStructuredData({
       но каждый раз требует ручного сведения файлов, у вас есть конкретная задача для BI.
       Если расчёт пока вызывает споры, сначала согласуйте формулы — автоматизировать его рано.
     </p>
+    <p>Если задача связана с CRM Битрикс24, начните с <a href="/bi-analitika-bitrix24-pervyy-otchet/">первого отчёта в BI Конструкторе</a>: посчитайте созданные сделки по ответственным и сверьте результат с исходными записями.</p>
   </section>
+
+  <p>Если ваш вопрос касается только данных МоегоСклада, начните со <a href={`${base}otchety-moysklad/`}>штатных отчётов о продажах и прибыли</a>. Практический разбор поможет понять, какой ответ уже есть в сервисе и для чего понадобится отдельная модель BI.</p>
+
+  <p>Если отчёт объединяет CRM и склад, начните с <a href={`${base}bitrix24-moysklad-integraciya/`}>правил связи данных Битрикс24 и МойСклад</a>. Выберите ключи сопоставления и события продажи: сделка, заказ и отгрузка не должны давать повторный счёт одной операции.</p>
 
   <FaqSection items={faqItems} id="faq" variant="article" />
 

@@ -17,13 +17,26 @@
 }
 
 .expandable {
-  margin: 0;
+  margin: var(--article-space-block, 0px) 0;
   min-width: 0;
 }
 
 .compact {
   margin-inline: auto;
   max-width: 320px;
+}
+
+.portrait {
+  margin-inline: auto;
+  max-width: 480px;
+}
+
+.expandHint {
+  display: block;
+  color: #1765da;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  padding: 10px 12px;
 }
 
 .preview {

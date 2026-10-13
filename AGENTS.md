@@ -16,16 +16,24 @@
 - Large dark-blue sections with dot patterns use edge-to-edge backgrounds on mobile and desktop, with content kept in a readable container. Keep product/article/case cards in grids separate.
 - All light page backgrounds, full-width light sections, and the spaces between them use `var(--bg)` (`#F6F7F9`). White is reserved for cards, tables, forms, controls, and authentic image content. Use the shared tokens from `src/styles/site-surfaces.scss` instead of duplicating page background colors.
 - Vertical spacing belonging to a dark dotted section uses the same `var(--surface-dark)` (`#101621`) background. Put that spacing inside the section as padding, including its full-bleed background and dot layer; do not use external margins that expose a light parent. Use the shared full-bleed/product surface spacing mixins. Preserve the content rhythm on desktop and mobile.
-- Do not render visible breadcrumbs on product pages, including products in development. Apply this to future product pages too; articles keep their editorial breadcrumbs. Valid breadcrumb structured data may remain.
+- Do not render visible breadcrumb navigation anywhere on the site: articles, catalogs, product pages and all future pages. Use the shared header and contextual links for navigation. Valid BreadcrumbList structured data describing the actual catalog hierarchy may remain. Owner rule recorded on 12.10.2026.
+- The business-idea validation product was removed at the owner’s request on 12.10.2026. Do not restore its cards, choice options, copy or links on public pages.
 - Never introduce a new visual language without updating `DESIGN_SYSTEM.md` in the same task.
 - Read all company identity, legal details, editorial author data, and contact links from `src/config/company.ts`. Never hardcode duplicate values in pages or components.
+- On desktop above 768px, both article hero columns start at the same vertical level: category/H1 on the left, introduction on the right, with the quick answer below the introduction. Enforce this through the shared ArticleHero grid for every current and future article; retain the one-column mobile flow and centered H1. Owner rule recorded on 13.10.2026.
+- Article hero: every current and future article uses the shared ArticleHero with a solid var(--surface-dark) (#101621) background and the same dot pattern, edge to edge from the top under the header. Minimum height is 100svh (100vh fallback); grow only when content needs more room. No light hero variant, gradients, glows, or page-specific background animation. Preserve the centered mobile H1 and readable uncut text.
 - Reuse the shared editorial components and article shell. Do not create page-local versions of article heroes, content typography, figures, tables, checklists, FAQ, sources, article CTAs, or related-article carousels.
 - Every published article must contain at least two distinct, meaningful images rendered through the shared article figure component. Place them in different relevant sections of the body; do not repeat one asset or count decorative images toward this requirement.
-- All image assets created or generated for this project must have a genuinely transparent background. Preserve alpha through optimization; do not bake in white or dark surfaces, dot patterns, gradients, or a checkerboard.
-- Prioritize useful reader-facing infographics for article images: explain a sequence, decision, comparison, or relationship with accurate labels that remain readable on mobile. Do not add an image merely for decoration.
-- Keep infographics simple and compact; prefer vertical compositions where suitable and retain only essential labels.
+- Newly drawn or generated illustrations must have a genuinely transparent background. Preserve alpha through optimization; do not bake in surfaces, dot patterns, gradients, or a checkerboard. Authentic screenshots retain their actual interface surfaces and verified content.
+- Choose article images by reader intent. Prefer authentic screenshots and useful infographics explaining real controls, data, selection scope, comparisons and verification. The owner asked on12.10.2026 for less obvious AI styling and more infographics/screenshots. Use editorial illustration only when it explains the task better; do not default to generated people or decorative scenes. Match the TrueTell palette; label sources and examples, never invent product UI or results.
+- Do not default to narrow labeled box-and-arrow diagrams, large baked-in headings, or decorative icons. Use a diagram only when it explains a relationship better than a real scene or interface. Keep text labels minimal and readable on mobile. Give detailed screenshots a full-size link; constrain tall filter screenshots through the shared figure portrait variant.
 - Apply the anti-AI-slop rules to all UI work.
 - Always check mobile. Meaningful frontend changes require a production build and visual review.
+
+## Independent editorial review
+
+- The owner requested on 11.10.2026 that a second agent run in parallel to review our articles and factual accuracy. Apply `docs/seo/editorial-review-protocol.md` to new articles, substantive updates and retrospective content checks.
+- The primary agent authors and fixes; an independent read-only reviewer checks official sources, reproducibility, actual product capabilities, intent, SEO, images and the final version. Complete review before publication and recheck substantive fixes. Record the evidence and limits; do not confuse documentation review with a live product test or deployment with indexing.
 
 ## Verification after work
 
@@ -51,6 +59,6 @@
 ## Content architecture
 
 - Article metadata lives in `src/config/articles.ts`: `knowledge` instructions belong only to the knowledge base; `blog` analytical articles belong only to the blog. Keep existing root-level URLs.
-- Editorial breadcrumbs use «База знаний» for `knowledge` and «Блог» for `blog`; this classification supersedes older article-model wording that always required «Блог».
+- Classify `knowledge` articles in «База знаний» and `blog` articles in «Блог» through the registry and catalogs. No visible breadcrumb navigation is rendered; any BreadcrumbList schema follows the same actual hierarchy.
 - Follow `docs/seo/content-publishing.md` when adding articles. Use the registry for titles, descriptions, recorded dates, related articles and products; do not maintain another catalog or sitemap URL list.
 - `astro:build:done` generates the only sitemap and `docs/seo/site-map.md` from built HTML. Drafts, noindex pages, aliases, redirects and 404 are excluded; do not infer search indexing from the generated XML.
