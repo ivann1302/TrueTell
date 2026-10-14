@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-14",
+  "action": "UPDATE",
+  "type": "commercial",
+  "url": "https://truetell-retail.ru/bitrix24-product-rating/",
+  "status": "live_verified",
+  "scope": [
+    "src/pages/bitrix24-product-rating/index.astro"
+  ],
+  "deployment": {
+    "before": "a11f0606f3b859fdf5534d9469ef732b5da72ab7b8afab5db718d5a0d417a8d1",
+    "after": "10e5c4f0d5716859fb1b243d05e9c4ba7edcf143631c08b4a7e20f98f9d6cbd7",
+    "contactPreserved": true,
+    "scriptsPreserved": true,
+    "newClasses": [],
+    "baseRelease": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792004774-55",
+    "newRelease": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792006329-56"
+  },
+  "checks": {
+    "unitTests": 77,
+    "failed": 0,
+    "build": "PASS,49pages",
+    "lint": "0errors,3existingwarnings",
+    "seo": "PASS,44URLs,IndexNownotSubmitted",
+    "localWidths": [
+      390,
+      768,
+      1440
+    ],
+    "liveWidths": [
+      390,
+      1440
+    ],
+    "overflow": false,
+    "canonical": "PASS",
+    "robots": "index, follow",
+    "faqKeyboard": "PASS",
+    "brokenImages": 0
+  },
+  "review": {
+    "reviewer": "/root/truetell_rating_review",
+    "final": "READY",
+    "changes": "P3 date range within one year clarified"
+  },
+  "preserved": [
+    "all other public files",
+    "backend",
+    "contact dialog and scripts",
+    "existing image and CSS"
+  ],
+  "limits": [
+    "product remains final acceptance stage",
+    "company isolation and startup reliability unresolved",
+    "no search indexing verified"
+  ]
+}
