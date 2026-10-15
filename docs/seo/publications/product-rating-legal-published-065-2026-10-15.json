@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-15",
+  "documents": [
+    {
+      "route": "/bitrix24-product-rating-license/",
+      "file": "work/rating-legal-upload/license.html",
+      "bytes": 53612,
+      "sha256": "cb6000fb309b6fa4878c1464e075af3a15e55bad88a7f60c4010b8cb6f248d7c",
+      "robots": "noindex, follow",
+      "inSitemap": false,
+      "mainClassesReused": true,
+      "scriptsPreserved": true
+    },
+    {
+      "route": "/bitrix24-product-rating-privacy/",
+      "file": "work/rating-legal-upload/privacy.html",
+      "bytes": 54064,
+      "sha256": "bf89cc9c2a3f5b8e5f1aa9bf0b0ed04b336562c4dbb324e1ac1ae637723b87fa",
+      "robots": "noindex, follow",
+      "inSitemap": false,
+      "mainClassesReused": true,
+      "scriptsPreserved": true
+    }
+  ],
+  "checks": {
+    "tests": 77,
+    "failures": 0,
+    "build": "PASS 59 pages",
+    "lint": "PASS 3 existing warnings",
+    "indexnowCheck": "PASS 55 URLs, no submission"
+  },
+  "publication": "live_verified",
+  "deployment": {
+    "baseRelease": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792066415-64",
+    "newRelease": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792066991-65",
+    "scope": "Two new legal pages and release.json; existing site, sitemap and backend unchanged",
+    "publicSha256Matches": true
+  },
+  "vendor": {
+    "appRegionId": 74786,
+    "descriptionId": 60092,
+    "linksSaved": true,
+    "moderationSubmitted": false
+  },
+  "legalBasis": "Adapted existing TrueTell documents for actual product behavior; not an independent legal opinion"
+}

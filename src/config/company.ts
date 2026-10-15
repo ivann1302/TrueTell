@@ -16,6 +16,7 @@ export const companyInfo = {
   },
   contacts: {
     email: 'truetell@bk.ru',
+    productRatingSupportEmail: 'ivann97n@gmail.com',
     phone: {
       display: '+7 (993) 280-64-41',
       e164: `+${phoneDigits}`,
