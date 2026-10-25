@@ -1,0 +1,125 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import { fieldDirectoryProduct } from '../../config/products';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import Checklist from '../../components/editorial/checklist.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import biImage from '../../images/articles/bitrix24-bi-userfield-codes-official.jpg';
+import searchImage from '../../images/articles/truetell-field-directory-code-search-live.jpg';
+const article = getArticle('nazvanie-polya-uf-crm-bitrix24/');
+const { title, description } = article;
+const canonicalPath = `/${article.hrefPath}`;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const ogImage = new URL(biImage.src, siteRoot).toString();
+const imageAlt = 'BI Конструктор: набор crm_deal_uf и колонки пользовательских полей с техническими именами uf_crm';
+const titleParts = [{ text: 'Как узнать ' }, { text: 'название поля UF_CRM', accent: true }, { text: ' в BI-отчёте Битрикс24' }];
+const sourceLinks = [
+  { label: 'Название пользовательского поля и подписи в BI — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/24352300/' },
+  { label: 'Наборы данных BI Конструктора — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/24355590/' },
+  { label: 'Наборы данных: сделки и пользовательские поля — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/22848752/' },
+  { label: 'Описания полей crm.item.fields — REST API Битрикс24', href: 'https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-fields.html' },
+  { label: 'Пользовательские поля в CRM — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/22048980/' },
+];
+const datasets = [
+  ['crm_deal_uf', 'Сделки'], ['crm_lead_uf', 'Лиды'], ['crm_contact_uf', 'Контакты'], ['crm_company_uf', 'Компании'],
+];
+const faqItems = [
+  { question: 'Что означает UF_CRM в названии колонки BI?', answer: 'Так выглядит часть технического имени пользовательского поля CRM. Сам код не объясняет бизнес-смысл данных. Чтобы найти название, определите сущность и портал, а затем сопоставьте полное имя с описанием поля.' },
+  { question: 'Можно ли найти название поля по коду в справочнике?', answer: 'Да, если описание поля возвращено API и проходит фильтры. Выберите нужную сущность и вставьте код в «Поиск поля». Поиск допускает частичные совпадения, поэтому проверьте полное техническое имя в найденной строке.' },
+  { question: 'Почему поиск по UF_CRM ничего не нашёл?', answer: 'Возможны другой портал или сущность, оставшиеся фильтры, ошибка чтения API либо отсутствие поля в текущем каталоге. Если в отчёте используется SQL-псевдоним или расчётная колонка, сначала найдите исходный столбец в настройках датасета или запросе.' },
+  { question: 'Название поля в CRM совпадает с подписью графика?', answer: 'Не обязательно. Подпись графика может быть задана вручную, а колонка — получена выражением или переименована в SQL. Проверяйте источник колонки, прежде чем связывать подпись с определённым полем CRM.' },
+  { question: 'Справочник сам заменит UF_CRM понятным названием в BI?', answer: 'Нет. Справочник показывает описания полей четырёх сущностей CRM. Он не читает настройки BI, не подключает наборы данных и не меняет подписи графиков.' },
+  { question: 'Можно ли по названию определить, как считать показатель?', answer: 'Нет. Дополнительно нужны тип и смысл данных в BI, обработка пустых значений, фильтры и правила расчёта. Технический тип поля CRM сам по себе не подтверждает тип колонки набора данных или корректность суммы.' },
+];
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const structuredData = createArticleStructuredData({
+  articleType: 'Article', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  articleSection: article.category,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() }, { name: title, item: articleUrl }], faqItems,
+});
+---
+<ArticleLayout {title} {titleParts} {description} {canonicalPath} category={article.category}
+  intro="Вместо понятного названия в отчёте виден технический код. Найдите исходное поле, проверьте его сущность и отделите название CRM от подписи графика."
+  {structuredData} ogTitle={article.seoTitle ?? title} ogDescription={description} {ogImage} ogImageAlt={imageAlt} author={authorName}>
+  <Fragment slot="quick-answer">
+    <p>Сначала определите <strong>портал и сущность CRM</strong>, из которых пришла колонка. Затем найдите полный код в установленном справочнике полей либо сопоставьте его с кодом в настройках пользовательских полей Битрикс24.</p>
+    <p>После проверки названия задайте понятную подпись средствами BI. <strong>Справочник не переименовывает отчёт автоматически</strong>, а подпись графика может отличаться от текущего названия поля в CRM.</p>
+  </Fragment>
+  <p data-article-lead>В списке колонок BI встречаются имена вроде <code>uf_crm_1645431691305</code>. По ним трудно понять, что хранится в поле и можно ли использовать его в показателе. Начните с поиска исходного описания: иначе под понятной подписью легко оставить совсем другое значение.</p>
+  <section aria-labelledby="find-source">
+    <h2 id="find-source">Сначала определите <span data-heading-accent>источник колонки</span></h2>
+    <p>Посмотрите, на каком наборе данных построен график. Если это виртуальный набор, откройте его SQL-запрос и проследите колонку до исходной таблицы: видимое имя могло появиться после <code>AS</code>, вычисления или объединения данных. Подпись «Срок оплаты» сама по себе не доказывает, что колонка связана с одноимённым полем сделки.</p>
+    <ArticleFigure src={biImage} fullSize alt={imageAlt}
+      caption="Подлинный пример Поддержки24: в наборе crm_deal_uf видны технические имена пользовательских полей сделок. Это экран BI Конструктора; коды относятся к примеру справки, а не к тестовому порталу на следующем скриншоте. В полном размере можно прочитать имена колонок." />
+    <p>Для основных сущностей в <a href={sourceLinks[1].href} target="_blank" rel="noopener noreferrer">каталоге BI-наборов Битрикс24</a> предусмотрены отдельные наборы пользовательских полей. Используйте их как подсказку, в какой сущности искать описание.</p>
+    <DataTable label="Соответствие наборов пользовательских полей сущностям CRM" columns={['Набор данных', 'Где искать поле']} rows={datasets} rowHeaders />
+    <p>При объединении нескольких наборов проверьте, из какой таблицы взята именно ваша колонка. Найденное поле контакта не заменяет поле сделки с похожим названием. Уточните также портал: код из отчёта другой организации нельзя сопоставлять с текущим каталогом только по подписи.</p>
+  </section>
+  <section aria-labelledby="search-by-code">
+    <h2 id="search-by-code">Как найти название <span data-heading-accent>в справочнике полей</span></h2>
+    <p>Если «Справочник полей CRM» от {companyInfo.brandName} уже подключён к нужному порталу, откройте его. В текущей версии доступны сделки, лиды, контакты и компании. Счета и смарт-процессы этим каталогом не охвачены.</p>
+    <Checklist label="Поиск названия по известному техническому коду" items={[
+      { title: 'Выберите сущность из источника отчёта.', description: 'Например, для crm_deal_uf начните со вкладки «Сделки». Не ищите сразу во всех каталогах по похожей подписи.' },
+      { title: 'Сбросьте лишние фильтры.', description: 'Тип и категория применяются вместе с поиском. Для первой проверки оставьте «Все типы» и «Все поля».' },
+      { title: 'Вставьте код в «Поиск поля».', description: 'Для строки вида uf_crm_… поиск без учёта регистра может найти исходный код UF_CRM_…, если различие только в регистре. Другой формат имени требует отдельной сверки.' },
+      { title: 'Сравните полный код и прочитайте название.', description: 'Поиск находит и частичные совпадения. Убедитесь, что выбрана нужная строка, затем запишите сущность, название, техническое имя и тип.' },
+    ]} />
+    <ArticleFigure src={searchImage} fullSize
+      alt="В справочнике полей сделки поиск UF_CRM_1791480592669 нашёл название CALC_COMP — исходное число и тип double"
+      caption="Реальная проверка на тестовом портале, 14.10.2026, справочник 1.0.2: по полному коду UF_CRM_1791480592669 найдена одна строка «CALC_COMP — исходное число». Это демонстрационное поле. Поиск названия проверен; подключение этого поля к BI здесь не тестировалось." />
+    <p>На скриншоте поиск связывает конкретное техническое имя с названием и типом. Он не доказывает, что колонка отчёта использует это поле без преобразований. После поиска вернитесь к источнику BI и сверьте его с найденным описанием.</p>
+    <p>Справочник ищет по названию, основному коду и дополнительному имени API, если оно получено. Он не преобразует автоматически все варианты <code>UF_CRM</code>, <code>ufCrm</code> и псевдонимы SQL. Для REST метод <a href={sourceLinks[3].href} target="_blank" rel="noopener noreferrer">crm.item.fields</a> отдельно управляет форматом пользовательских имён через <code>useOriginalUfNames</code>; правила другого инструмента проверяют по его документации.</p>
+    <InlineConsultation title="Не получается сопоставить колонку с полем CRM?" description="Разберём источник отчёта, сущность и формат кода. Для обсуждения достаточно обезличенного имени колонки и описания задачи." href={companyInfo.contacts.consultationUrl} actionLabel="Обсудить отчёт" />
+  </section>
+  <section aria-labelledby="native-settings">
+    <h2 id="native-settings">Как проверить название <span data-heading-accent>через настройки CRM</span></h2>
+    <p>Без справочника откройте CRM → Ещё → Настройки → Настройки CRM → Настройки форм и отчётов → Пользовательские поля. Выберите нужный тип элемента, откройте существующее поле через его меню → Изменить и сопоставьте код в адресе страницы с колонкой BI. Названия пунктов зависят от интерфейса и доступных прав.</p>
+    <p>Не выбирайте поле по порядку в списке или сходству подписи. Проверяйте техническое имя целиком. В <a href={`${base}kod-polya-bitrix24/`}>инструкции о коде поля Битрикс24</a> показано, где он находится и чем отличается от числового ID. Для чтения сведений сохранять изменения поля не нужно.</p>
+    <p>Если полей много, попросите администратора или интегратора помочь с сопоставлением. После проверки нескольких колонок можно подготовить <a href={`${base}spisok-poley-bitrix24/`}>каталог названий и кодов в CSV</a> и использовать его как рабочий список. Это не резервная копия CRM и не выгрузка значений для отчёта.</p>
+  </section>
+  <section aria-labelledby="readable-label">
+    <h2 id="readable-label">Как сделать подпись <span data-heading-accent>в отчёте понятной</span></h2>
+    <p>Найденное название сначала согласуйте с владельцем показателя. Условное «Дата оплаты» может означать план, поступление или дату ручного подтверждения менеджером. Подпись должна объяснять смысл колонки, а не просто повторять короткое имя из CRM.</p>
+    <p>В BI Конструкторе подпись задают на уровне SQL, датасета или отдельного графика; <a href={sourceLinks[0].href} target="_blank" rel="noopener noreferrer">официальная справка</a> описывает эти способы. Для виртуального набора путь начинается с «Датасеты» → нужный набор → «Редактировать» → «Столбцы». Измените нужную подпись и сохраните результат. Для формул разумно сохранять технические имена на латинице. Если меняете системный отчёт, сначала создайте его копию. Для другой BI-системы используйте её собственные настройки названий.</p>
+    <p>Выберите область изменения: подпись только одного графика или общее обозначение в наборе данных. После сохранения проверьте отображение и зависимые формулы. Смена подписи не меняет значение поля CRM, не исправляет тип данных и не настраивает расчёт показателя.</p>
+  </section>
+  <section aria-labelledby="not-found">
+    <h2 id="not-found">Что делать, <span data-heading-accent>если соответствие не найдено</span></h2>
+    <p><strong>Проверьте исходное имя.</strong> В отчёте может использоваться SQL-псевдоним или расчётная колонка. Найдите исходное выражение. Не пытайтесь восстановить код поля только по цифрам из видимого названия.</p>
+    <p><strong>Проверьте портал, сущность и фильтры.</strong> Снимите ограничения поиска и обновите каталог. Если приложение показывает ошибку чтения API, это не результат «поле отсутствует»; выполните предложенный в интерфейсе шаг восстановления или обратитесь к администратору.</p>
+    <p><strong>Проверьте историю поля.</strong> Название могли изменить, а поле — удалить и создать заново. Сверьте текущие настройки с документацией интеграции. Старый скриншот или прежняя подпись не подтверждают, что новое поле имеет тот же код и смысл.</p>
+    <p><strong>Не подменяйте неизвестное похожим.</strong> До подтверждения оставьте колонку в списке вопросов к автору отчёта. Для передачи задачи достаточно указать набор данных, исходный код, предполагаемую сущность и что именно не удалось проверить.</p>
+  </section>
+  <section aria-labelledby="verify-meaning">
+    <h2 id="verify-meaning">Название найдено: <span data-heading-accent>что проверить перед расчётом</span></h2>
+    <p>Отдельно проверьте представление значений в BI. Например, официальный набор <a href={sourceLinks[2].href} target="_blank" rel="noopener noreferrer">crm_deal_uf</a> описывает пользовательские колонки как строки. Тип <code>double</code> в метаданных CRM сам по себе не делает колонку BI числом, пригодным для суммирования. Преобразование, пустые и некорректные значения проверяют отдельно на выбранных данных.</p>
+    <p>Зафиксируйте связь «портал → сущность → исходный код → название CRM → подпись BI» и назначение показателя. Это поможет следующему сотруднику отличить переименование графика от изменения источника данных. Для подготовки самого отчёта используйте <a href={`${base}bi-analitika-bitrix24-pervyy-otchet/`}>пошаговый разбор первого BI-отчёта</a>.</p>
+  </section>
+  <p>Для проверки найденного описания пригодится <a href={`${base}tipy-poley-crm-bitrix24/`}>разбор типов и свойств полей CRM</a>. Он объясняет происхождение поля, множественность и отличие технической обязательности API от настроек стадии.</p>
+
+  <p>Если найденное имя нужно передать в REST API, используйте <a href={`${base}uf-crm-ufcrm-bitrix24-api/`}>разбор UF_CRM, ufCrm и системных ключей</a>. Формат колонки BI не заменяет правила REST-метода.</p>
+
+  <FaqSection variant="article" items={faqItems} />
+  <ArticleSources sources={sourceLinks} publishedIso={article.publishedAt} modifiedIso={article.updatedAt} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Разберитесь в ' }, { text: 'полях вашего портала', accent: true }]}
+      description={`Справочник полей CRM от ${companyInfo.brandName} помогает находить названия и технические коды. Приложение доступно в Маркете Битрикс24; настройка BI выполняется отдельно.`}
+      href={fieldDirectoryProduct.marketplaceUrl} actionLabel={fieldDirectoryProduct.connectionActionLabel} />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

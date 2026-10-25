@@ -1,0 +1,165 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import { fieldDirectoryProduct } from '../../config/products';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import Checklist from '../../components/editorial/checklist.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import settingsImage from '../../images/articles/bitrix24-userfield-code-address-official.jpg';
+import directoryImage from '../../images/articles/truetell-field-directory-custom-live.png';
+import biImage from '../../images/articles/bitrix24-bi-userfield-codes-official.jpg';
+
+const article = getArticle('kod-polya-bitrix24/');
+const { title, description } = article;
+const canonicalPath = `/${article.hrefPath}`;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const imageAlt = 'Официальный экран настроек поля Готовность к отправке: код UF_CRM_1645431691305 выделен в адресной строке';
+const ogImage = new URL(settingsImage.src, siteRoot).toString();
+const titleParts = [{ text: 'Как узнать ' }, { text: 'код поля', accent: true }, { text: ' в Битрикс24: где найти UF_CRM' }];
+const sourceLinks = [
+  { label: 'Код пользовательского поля и BI-отчёт — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/24352300/' },
+  { label: 'Пользовательские поля в CRM — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/22048980/' },
+  { label: 'Получить описания полей: crm.item.fields — REST API Битрикс24', href: 'https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-fields.html' },
+  { label: 'Типы объектов CRM и их идентификаторы — REST API Битрикс24', href: 'https://apidocs.bitrix24.ru/api-reference/crm/data-types.html' },
+  { label: 'Поле сделки: числовой ID и FIELD_NAME — REST API Битрикс24', href: 'https://apidocs.bitrix24.ru/api-reference/crm/deals/user-defined-fields/crm-deal-userfield-get.html' },
+  { label: 'Пользовательское поле в шаблоне документа — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/18167706/' },
+];
+const terms = [
+  ['Название', 'Понятная подпись в карточке, например «Готовность к отправке»', 'Помогает человеку найти нужное поле'],
+  ['Код поля', 'Техническое имя, например UF_CRM_1645431691305', 'Указывает, к какому полю обращается инструмент'],
+  ['Числовой ID поля', 'Отдельный идентификатор описания пользовательского поля', 'Нужен некоторым методам управления полями'],
+  ['ID записи CRM', 'Идентификатор конкретной сделки, лида, контакта или компании', 'Указывает, с какой карточкой работают'],
+];
+const nativeSteps = [
+  { title: 'Откройте настройки пользовательских полей.', description: 'В справке указан путь CRM → Настройки → Настройки CRM → Настройки форм и отчетов → Пользовательские поля. Названия и расположение меню на вашем портале могут отличаться.' },
+  { title: 'Выберите нужный тип элемента.', description: 'Если интеграция работает со сделкой, ищите поле сделки. Поле контакта с похожим названием — другое поле.' },
+  { title: 'Откройте настройки существующего поля.', description: 'Найдите его по названию. В списке используйте меню рядом с полем → Изменить. Для этой проверки достаточно посмотреть настройки.' },
+  { title: 'Скопируйте код из адреса страницы.', description: 'В примере ниже после CRM_DEAL/edit/ находится UF_CRM_1645431691305. Скопируйте только код, без пути, слешей и параметров URL. Если редактор открыт внутри панели и адрес не виден, используйте справочник или попросите администратора проверить поле.' },
+];
+const faqItems = [
+  { question: 'Где посмотреть код пользовательского поля сделки в Битрикс24?', answer: 'Откройте настройки пользовательских полей CRM, выберите поля сделки и существующее поле через его меню → Изменить. В официальном примере код UF_CRM виден в адресе страницы настроек. Другой способ — найти поле сделки по названию в установленном справочнике полей.' },
+  { question: 'Код UF_CRM и ID поля — одно и то же?', answer: 'Нет. UF_CRM — часть технического имени поля, а числовой ID описания поля используется отдельно в некоторых REST-методах. ID сделки или другой CRM-записи — ещё один идентификатор. Если в настройке интеграции написано «ID», уточните, какой именно идентификатор она ожидает.' },
+  { question: 'Почему код поля бывает UF_CRM, а бывает ufCrm?', answer: 'Формат зависит от метода и его параметров. crm.item.fields по умолчанию возвращает пользовательские имена в camelCase; useOriginalUfNames=Y включает исходные имена UF_CRM. Используйте формат, который ожидает конкретный метод, и не преобразуйте регистр самостоятельно.' },
+  { question: 'Можно ли найти название поля, если известен только код?', answer: 'Да. В справочнике выберите соответствующую сущность и вставьте код в поиск. Если поле возвращено API и проходит фильтры, таблица покажет его название. Для колонки BI сначала уточните, к какому объекту и набору данных она относится.' },
+  { question: 'Можно ли вставить код REST API в шаблон документа?', answer: 'Сначала проверьте код в собственном списке полей генератора документов. В официальном примере код пользовательского поля шаблона имеет вид {UfCrm1690456612616}. Он не заменяется механическим изменением регистра REST-кода.' },
+  { question: 'Что делать, если поле не найдено в справочнике?', answer: 'Проверьте выбранную сущность, поиск, тип и категорию; сбросьте лишние фильтры и обновите каталог. Уточните, существует ли поле в этом портале и доступно ли чтение его описания с вашими правами. Ошибка доступа и пустой результат поиска требуют разных действий.' },
+  { question: 'Справочник показывает значения полей в сделках?', answer: 'Нет. Справочник показывает описания полей: названия, коды, типы и технические свойства API. Он не читает значения в карточках и не определяет, сколько сделок заполнили поле.' },
+];
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({
+  ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}`,
+}));
+const structuredData = createArticleStructuredData({
+  articleType: 'Article', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  articleSection: article.category,
+  breadcrumbs: [
+    { name: 'Главная', item: siteRoot.toString() },
+    { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() },
+    { name: title, item: articleUrl },
+  ], faqItems,
+});
+---
+
+<ArticleLayout {title} {titleParts} {description} {canonicalPath} category={article.category}
+  intro="Найдите техническое имя поля по его названию, проверьте сущность CRM и передайте подходящий код для интеграции, REST API или отчёта."
+  {structuredData} ogTitle={article.seoTitle ?? title} ogDescription={description}
+  {ogImage} ogImageAlt={imageAlt} author={authorName}>
+  <Fragment slot="quick-answer">
+    <p>Откройте <strong>настройки пользовательских полей CRM</strong>, выберите нужную сущность и существующее поле. В официальном примере его код <code>UF_CRM_…</code> виден в адресной строке страницы настроек. При установленном справочнике можно найти поле по названию и скопировать код из таблицы.</p>
+    <p>Перед использованием уточните, <strong>куда вы передаёте код</strong>. Название поля, числовой ID, код REST API и обозначение в шаблоне документа решают разные задачи.</p>
+  </Fragment>
+
+  <p data-article-lead>При настройке обмена интегратор просит «код поля», а в карточке сделки видно только привычное название. Начните с двух уточнений: в какой сущности хранится поле и какой инструмент будет его использовать. Затем найдите существующее поле и проверьте его техническое имя. Создавать новое поле для этой проверки не требуется.</p>
+
+  <section aria-labelledby="field-name-code-id">
+    <h2 id="field-name-code-id">Название, код и ID: <span data-heading-accent>что именно нужно найти</span></h2>
+    <p>Подпись «Готовность к отправке» объясняет смысл поля сотруднику. В обмене данных инструмент обращается к техническому имени. При этом слово «ID» может относиться к описанию поля или к конкретной карточке CRM. Заменить один идентификатор другим нельзя.</p>
+    <DataTable label="Отличие названия поля, кода, ID описания поля и ID записи CRM" columns={['Что передают', 'Что это означает', 'Для чего нужно']} rows={terms} rowHeaders />
+    <p>В официальном примере настроек ниже название связано с кодом <code>UF_CRM_1645431691305</code>. Это код из документации, а не значение для вашей интеграции. У вашего поля может быть другое имя; суффикс после <code>UF_CRM_</code> не обязательно состоит только из цифр. Например, в <a href={sourceLinks[4].href} target="_blank" rel="noopener noreferrer">документации полей сделки</a> используется <code>UF_CRM_HELLO_WORLD</code>.</p>
+  </section>
+
+  <section aria-labelledby="native-field-settings">
+    <h2 id="native-field-settings">Как найти код <span data-heading-accent>через настройки Битрикс24</span></h2>
+    <p>Этот способ удобен, если нужно проверить одно поле и у вас есть доступ к его настройкам. Сначала убедитесь, что смотрите нужный портал и тип элемента CRM.</p>
+    <Checklist label="Порядок поиска кода существующего пользовательского поля" items={nativeSteps} />
+    <ArticleFigure src={settingsImage} fullSize alt={imageAlt}
+      caption="Подлинный скриншот Поддержки24: поле «Готовность к отправке», код UF_CRM_1645431691305 выделен в адресной строке. Интерфейс и код относятся к примеру справки; в вашем портале проверьте своё поле. Детали можно открыть в полном размере." />
+    <p>Открытие редактора здесь нужно для чтения сведений. Если задача состоит только в поиске кода, выйдите без сохранения изменений. При отсутствии доступа попросите администратора проверить конкретное поле; получение кода не требует выдавать доступ ко всем настройкам сотруднику.</p>
+    <p>Порядок открытия поля через меню описан в <a href={sourceLinks[1].href} target="_blank" rel="noopener noreferrer">справке о пользовательских полях CRM</a>, а пример адреса — в <a href={sourceLinks[0].href} target="_blank" rel="noopener noreferrer">официальном разборе поиска названия поля</a>.</p>
+  </section>
+
+  <section aria-labelledby="directory-search">
+    <h2 id="directory-search">Как найти поле <span data-heading-accent>в справочнике {companyInfo.brandName}</span></h2>
+    <p>Если «Справочник полей CRM» уже подключён к вашему порталу, откройте его и выберите «Сделки», «Лиды», «Контакты» или «Компании». Введите название либо известный код в поле «Поиск поля». При необходимости выберите категорию «Пользовательские» и нужный тип.</p>
+    <p>Сверьте название в найденной строке. Основное техническое имя подписано «Код универсального API». Нажмите «Копировать» рядом с нужным кодом, вставьте его в целевую настройку и проверьте результат. Если браузер не даёт скопировать автоматически, выделите сам код и скопируйте вручную.</p>
+    <ArticleFigure src={directoryImage} fullSize
+      alt={`Фрагмент установленного справочника ${companyInfo.brandName}: поиск демонстрационного поля CALC_COMP — исходное число показывает его код UF_CRM_1791480592669`}
+      caption="Реальный экран установленного справочника, снят 14.10.2026 на тестовом портале. Поиск по названию демонстрационного поля дал одну строку; код и количество относятся только к этому тесту. На экране описания полей, без значений клиентских карточек." />
+    <p>Если API передал дополнительное имя, оно показано отдельно как «Дополнительный код API». Выбирайте код по документации своего инструмента. Наличие двух имён не означает, что они взаимозаменяемы во всех REST-методах.</p>
+    <p>Колонка «Обязательное» показывает технический признак <code>isRequired</code> из API. Он не определяет, обязательно ли заполнять поле на конкретной стадии CRM.</p>
+    <p>Для передачи нескольких полей можно выгрузить CSV текущего списка. Экспорт выполняется отдельно для выбранной сущности с действующими фильтрами. В файле будут описания и коды полей; значения сделок и полная конфигурация CRM туда не входят.</p>
+    <InlineConsultation title="Нужно подключить справочник к вашему порталу?"
+      description="Поможем с установкой приложения из Маркета и выбором кодов для вашей интеграции. Справочник показывает описания полей CRM и не изменяет их."
+      href={companyInfo.contacts.consultationUrl} actionLabel="Обсудить подключение" />
+  </section>
+
+  <section aria-labelledby="code-for-target-tool">
+    <h2 id="code-for-target-tool">Какой код использовать <span data-heading-accent>в REST API, BI и документах</span></h2>
+    <h3>REST API: проверьте метод и формат имён</h3>
+    <p>Метод <code>crm.item.fields</code> возвращает описания полей выбранного типа элемента. Для сделок передают <code>entityTypeId=2</code>, для лидов — <code>1</code>, контактов — <code>3</code>, компаний — <code>4</code>. Технический код служит ключом в <code>result.fields</code>, а свойство <code>title</code> содержит название.</p>
+    <p>По умолчанию метод возвращает пользовательские имена в camelCase. В официальном примере это <code>ufCrm2_1639669411830</code>. Параметр <code>useOriginalUfNames=Y</code> возвращает исходное имя <code>UF_CRM_2_1639669411830</code>. Наш справочник запрашивает исходные имена пользовательских полей. Формат системных полей и требования другого метода проверяйте отдельно по <a href={sourceLinks[2].href} target="_blank" rel="noopener noreferrer">документации API</a>.</p>
+    <h3>BI: сопоставьте колонку с полем нужной сущности</h3>
+    <p>Если из отчёта известен только технический код, уточните его набор данных и тип элемента CRM. Затем найдите соответствующее поле в настройках либо справочнике своего портала. В BI обозначение колонки может отличаться от формата REST, поэтому не переносите его в запрос без проверки.</p>
+    <ArticleFigure src={biImage} fullSize
+      alt="Официальный экран BI Конструктора: в наборе crm_deal_uf названия колонок пользовательских полей показаны как uf_crm с техническими суффиксами"
+      caption={`Оригинальный пример Поддержки24: пользовательские поля сделок в наборе crm_deal_uf отображаются техническими именами. Это экран BI Конструктора, а не справочника ${companyInfo.brandName}. Формат колонки проверяют в контексте конкретного набора данных.`} />
+    <p>Если вы только осваиваете отчёты, начните с <a href={`${base}bi-analitika-bitrix24-pervyy-otchet/`}>инструкции по первому BI-отчёту из CRM</a>. Название поля помогает понять данные, но не объясняет само по себе правила расчёта показателя.</p>
+    <h3>Шаблон документа: используйте его собственный список полей</h3>
+    <p>В генераторе документов найдите поле через список кодов шаблона. Официальный пример пользовательского обозначения — <code>{'{UfCrm1690456612616}'}</code>. Скобки и формат имени относятся к генератору документов. Полученный REST-код не превращайте в такой шаблон вручную; нужный код копируйте из <a href={sourceLinks[5].href} target="_blank" rel="noopener noreferrer">списка полей самого документа</a>.</p>
+  </section>
+
+  <section aria-labelledby="field-not-found">
+    <h2 id="field-not-found">Что проверить, <span data-heading-accent>если поле не находится</span></h2>
+    <p><strong>Сущность и портал.</strong> «Дата оплаты» в сделке и похожая подпись в контакте могут относиться к разным полям. Проверьте место хранения и не переносите код из другого портала по совпадению названия.</p>
+    <p><strong>Фильтры справочника.</strong> Поиск, тип и категория работают совместно. Снимите лишние ограничения и обновите каталог: выбранный тип может скрывать нужную строку, даже если название совпадает.</p>
+    <p><strong>Права и ошибку загрузки.</strong> Пустой результат поиска отличается от отказа API. Если приложение сообщает об ошибке доступа, попросите администратора проверить текущие разрешения. Обновление страницы не делает недоступные сведения доступными.</p>
+    <p><strong>Само поле.</strong> Сверьте его существование в настройках. Поле могли удалить и создать заново с похожей подписью. Не выводите актуальный код из старого скриншота или окончания прежнего имени.</p>
+    <p>Когда готовите обмен с внешней системой, запишите рядом с кодом его сущность, понятное название и назначение. Подход к согласованию данных разобран в статье <a href={`${base}bitrix24-moysklad-integraciya/`}>об интеграции Битрикс24 и МоегоСклада</a>. Совпадение подписей не подтверждает одинаковый смысл полей.</p>
+  </section>
+
+  <section aria-labelledby="field-code-check">
+    <h2 id="field-code-check">Перед передачей кода <span data-heading-accent>проверьте четыре вещи</span></h2>
+    <Checklist label="Проверка найденного кода перед использованием" items={[
+      { title: 'Правильный портал и сущность.', description: 'Код получен для того поля сделки, лида, контакта или компании, с которым работает интеграция.' },
+      { title: 'Назначение поля понятно.', description: 'Согласованы название, тип и смысл данных. Похожие подписи не считаются одним полем автоматически.' },
+      { title: 'Формат подходит целевому инструменту.', description: 'Проверены REST-метод и параметры, набор BI или собственный список кодов шаблона документа.' },
+      { title: 'Передан точный код.', description: 'Нет слешей, части адреса, пробелов и самостоятельного изменения регистра. Числовой ID не подставлен вместо имени поля.' },
+    ]} />
+  </section>
+
+  <p>Если интегратору нужны коды нескольких полей, подготовьте <a href={`${base}spisok-poley-bitrix24/`}>каталог и CSV</a> с проверенной областью выгрузки.</p>
+
+  <p>Перед использованием кода в запросе сверьте <a href={`${base}uf-crm-ufcrm-bitrix24-api/`}>формат имени выбранного REST-метода</a>: UF_CRM и ufCrm зависят от режима и не заменяют друг друга автоматически.</p>
+
+  <FaqSection variant="article" items={faqItems} />
+  <ArticleSources sources={sourceLinks} publishedIso={article.publishedAt} modifiedIso={article.updatedAt} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Найдите нужные ' }, { text: 'поля CRM', accent: true }]}
+      description={`Справочник полей CRM от ${companyInfo.brandName} помогает искать названия и технические коды полей сделок, лидов, контактов и компаний. Откройте приложение в Маркете Битрикс24 и установите его в свой облачный портал.`}
+      href={fieldDirectoryProduct.marketplaceUrl} actionLabel={fieldDirectoryProduct.connectionActionLabel} />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

@@ -1,0 +1,123 @@
+{
+  "release": "077",
+  "date": "2026-10-22",
+  "taskId": "SEO-048",
+  "action": "UPDATE",
+  "type": "knowledge",
+  "route": "/chastichnaya-oplata-bitrix24/",
+  "status": "local_QA_passed",
+  "deployed": false,
+  "intent": "Как учесть частичные поступления одной сделки, распределить деньги по срокам и исправить запись без потери истории",
+  "changes": [
+    "Новый самостоятельный пример DEMO-001: платёж 42000 распределён как36000+6000; второе поступление 6000; итог48000/остаток72000/просрочка36000 на22.10",
+    "Показаны исправление распределения с нулевым изменением общего факта и реальный возврат 6000",
+    "Добавлен неизменный рендер реального листа Журнал XLSX 076 с подписью и fullSize",
+    "Ссылка к существующему шаблону 076; URL и shared layout сохранены",
+    "Обновлены метаданные,8 FAQ и честный датированный статус приложения 0.4.3"
+  ],
+  "demand": {
+    "source": "research 075; wordstat-ui.json",
+    "region": "Россия 225",
+    "devices": "Все",
+    "period": "21.09–21.10.2026",
+    "observations": {
+      "битрикс24 частичная оплата": 3,
+      "битрикс24 оплата частями": 3,
+      "распределение оплаты по этапам": 3
+    },
+    "limitations": "Широкие частоты пересекаются; не суммируются и не равны трафику, людям или лидам. Не основание для дублирующей страницы."
+  },
+  "verification": {
+    "build": {
+      "pages": 64,
+      "canonicalUrls": 58
+    },
+    "nodeTests": {
+      "passed": 87,
+      "failed": 0
+    },
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 3
+    },
+    "indexnow": "--check only; no submissions",
+    "metadata": "1H1,self-canonical,8 FAQ matched to JSON-LD,no visible breadcrumbs",
+    "images": "4 distinct figures; authentic official screenshots, existing infographic and real worksheet render",
+    "viewports": [
+      390,
+      768,
+      769,
+      1440
+    ],
+    "browser": "Desktop hero columns aligned; category/H1 centered through768; no page overflow; keyboard scroll of table and native FAQ/sources tested; no console errors observed",
+    "template": "Anchor navigation confirmed; HTTP200 and SHA equality with unchanged076 XLSX",
+    "math": {
+      "initial": {
+        "received": 48000,
+        "remaining": 72000,
+        "overdue": 36000
+      },
+      "wrong": {
+        "received": 48000,
+        "remaining": 72000,
+        "overdue": 42000
+      },
+      "corrected": {
+        "received": 48000,
+        "remaining": 72000,
+        "overdue": 36000
+      },
+      "refunded": {
+        "received": 42000,
+        "remaining": 78000,
+        "overdue": 42000
+      }
+    },
+    "backlog": {
+      "changedCells": 18,
+      "unrelatedDataAndStylesPreserved": true,
+      "nativeExcelOpened": false
+    }
+  },
+  "review": {
+    "reviewer": "/root/review_product_tails_069",
+    "result": "PASS",
+    "findings": [
+      {
+        "priority": "P2",
+        "issue": "Числа двух примеров могли смешиваться в CRM-table и возврате 15000",
+        "resolution": "Перед таблицей/в label и в возврате явно назван D-1042",
+        "rechecked": true
+      },
+      {
+        "priority": "P3",
+        "issue": "Корректировки J003 не должны добавляться к правильному файлу 076",
+        "resolution": "Явно помечена альтернативная ошибка; указано не добавлять эти строки к правильному примеру",
+        "rechecked": true
+      }
+    ],
+    "boundaries": "Reviewer read sources, built HTML, screenshots and logs; did not execute tests/CUA/product or alter files"
+  },
+  "sources": [
+    "https://helpdesk.bitrix24.ru/open/28102982/",
+    "https://helpdesk.bitrix24.ru/open/18291172/",
+    "https://helpdesk.bitrix24.ru/open/22048980/",
+    "https://helpdesk.bitrix24.ru/open/22804914/",
+    "https://helpdesk.bitrix24.ru/open/23960160/",
+    "/Users/ivan/projects/bitrix_payment_schedule/README.md",
+    "/Users/ivan/projects/bitrix_payment_schedule/docs/progress.md"
+  ],
+  "publicationDependency": "Publish together with prepared076 article/asset/download: #download-payment-template is new in076. No deploy/push performed.",
+  "next": "SEO-049 UPDATE /debitorskaya-zadolzhennost-bitrix24/",
+  "boundaries": [
+    "Local site only; live version not verified for this release",
+    "Application and CRM data unchanged",
+    "No GSC/ranking/indexing check",
+    "Template076 unchanged; article correction/return variants not prefilled in it"
+  ],
+  "files": {
+    "src/pages/chastichnaya-oplata-bitrix24/index.astro": "ebd76a9ee99868eb182db333392295df6c74a8c860079a9898beb979de4c326e",
+    "src/config/articles.ts": "32d98a87bb6c5068863745639763ca90407e3876efc74c843f8811636d881704",
+    "src/images/articles/payment-allocation-journal-077.png": "c04ee30589132e51d8f6cbc2c02f7d7ccd8991fdb320d5b637bcd2f74e62b846"
+  }
+}

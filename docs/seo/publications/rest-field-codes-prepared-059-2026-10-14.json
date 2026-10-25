@@ -1,0 +1,176 @@
+{
+  "release": 59,
+  "date": "2026-10-14",
+  "taskId": "SEO-064",
+  "action": "CREATE",
+  "type": "knowledge",
+  "status": "local_QA_passed_draft_not_published",
+  "route": "/uf-crm-ufcrm-bitrix24-api/",
+  "preview": "http://127.0.0.1:4359/uf-crm-ufcrm-bitrix24-api/",
+  "intent": "Choose the exact field key for a specific REST method and explicit original-name mode, distinguish metadata/record response shapes, verify read-back after authorized writes.",
+  "productVersion": "1.0.2",
+  "research": "crm-field-directory-topics-048-2026-10-14.json",
+  "keywordLimits": "No new narrow frequency measurement. Existing topic research used; no search-volume or traffic forecast invented.",
+  "primarySources": [
+    "https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-fields.html",
+    "https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-get.html",
+    "https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-update.html",
+    "https://apidocs.bitrix24.ru/api-reference/crm/deals/crm-deal-fields.html",
+    "https://apidocs.bitrix24.ru/api-reference/crm/deals/crm-deal-update.html"
+  ],
+  "images": [
+    {
+      "file": "/Users/ivan/projects/TrueTell/src/images/articles/bitrix24-api-field-name-formats.png",
+      "kind": "Editorial infographic, SVG rasterized to PNG with real alpha",
+      "source": "Official crm.item.fields N/Y examples; not portal screenshot",
+      "sha256": "786707ae616475b73a1928b48e9b14bac07a00f993968705a15fc243e58d7303",
+      "fullSize": true
+    },
+    {
+      "file": "/Users/ivan/projects/TrueTell/src/images/articles/truetell-field-directory-title-codes-live.jpg",
+      "kind": "Authentic screenshot",
+      "source": "Installed test portal app22,14.10.2026",
+      "sha256": "c187298633e8683e1fcdaf4af5183961379e98b63ba810d84af89cb6f52867e0",
+      "fullSize": true
+    }
+  ],
+  "incoming": [
+    "/kod-polya-bitrix24/",
+    "/spisok-poley-bitrix24/",
+    "/nazvanie-polya-uf-crm-bitrix24/"
+  ],
+  "checks": {
+    "tests": {
+      "passed": 77,
+      "failed": 0
+    },
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 3
+    },
+    "build": {
+      "pages": 52,
+      "sitemapUrls": 44
+    },
+    "indexnowCheck": true,
+    "submission": false,
+    "html": {
+      "passed": true,
+      "h1": 1,
+      "robots": "noindex, nofollow",
+      "canonical": "https://truetell-retail.ru/uf-crm-ufcrm-bitrix24-api/",
+      "faq": 6,
+      "meaningfulImages": 2,
+      "internalLinkAndFileChecks": 38,
+      "errors": [],
+      "sitemapContainsDraft": false,
+      "catalogContainsDraft": false,
+      "htmlSha256": "1c911aca63f96c4c93e5c6b791e07dbd8c2ae0308858c3bae7a0ba7298f91b8e"
+    },
+    "responsiveWidths": [
+      320,
+      390,
+      768,
+      769,
+      1440
+    ],
+    "horizontalOverflow": false,
+    "mobileCategoryAndH1Centered": true,
+    "desktopHeroColumnTopsEqual": true,
+    "imagesComplete390": true,
+    "faqMouseAndSourcesKeyboard": true,
+    "tableArrowKeyScroll": {
+      "scrollLeft": 40,
+      "clientWidth": 354,
+      "scrollWidth": 640
+    },
+    "fullSizeImageBrowser": {
+      "complete": true,
+      "width": 1000,
+      "height": 810,
+      "background": "rgb(230,230,230)"
+    },
+    "browserPageErrors": 0,
+    "viewportReset": {
+      "width": 1280,
+      "height": 720
+    },
+    "optimizedAlpha": [
+      {
+        "file": "bitrix24-api-field-name-formats.Di5_yZlf_1ELgp5.webp",
+        "width": 1000,
+        "height": 810,
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "bitrix24-api-field-name-formats.Di5_yZlf_1El2si.webp",
+        "width": 800,
+        "height": 648,
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "bitrix24-api-field-name-formats.Di5_yZlf_ZSsPxW.webp",
+        "width": 480,
+        "height": 389,
+        "alpha": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  "liveProductObservation": {
+    "portalKind": "Test portal",
+    "application": 22,
+    "action": "Read/search metadata only",
+    "query": "Название",
+    "code": "title",
+    "upperName": "TITLE",
+    "type": "string",
+    "matches": 1,
+    "catalogTotal": 61,
+    "crmRecordValuesRead": false,
+    "writes": false
+  },
+  "limits": [
+    "No real crm.item.get/update or crm.deal.update executed; API examples and behavior verified in official documentation.",
+    "App not changed; no public Market availability claimed.",
+    "Production, deployment and search indexing not checked."
+  ],
+  "editorialReview": {
+    "reviewer": "/root/review_rest_field_codes_059",
+    "verdict": "APPROVE_LOCAL_DRAFT",
+    "openFindings": 0,
+    "scope": "Independent review of five official REST pages, app code, article, registry/links, SVG/PNG/screenshot and final HTML; independently checked RGBA/alpha in three optimized WebP. Supplied responsive screenshots inspected. Tests and browser actions run by primary agent only."
+  },
+  "publication": {
+    "performed": false,
+    "status": "draft",
+    "datesAssigned": false,
+    "noindex": true,
+    "catalogExcluded": true,
+    "sitemapExcluded": true,
+    "push": false
+  },
+  "backlog": "TrueTell_SEO_Backlog_059_2026-10-14.xlsx",
+  "sourceSha256": "3bb227b8414dbfe75553a8a4f6af4ea666da893dfc626bcbcc06989c9cd13b18",
+  "editableInfographic": {
+    "file": "/Users/ivan/projects/TrueTell/src/images/articles/bitrix24-api-field-name-formats.svg",
+    "sha256": "30ab3aad733380ae83c1e4459dbe94002e1b2b4f6660c9732bcadada11b92a47",
+    "sourceAlpha": {
+      "source": {
+        "width": 1000,
+        "height": 810,
+        "alphaMin": 0,
+        "alphaMax": 255
+      },
+      "textSource": "Official crm.item.fields examples; editorial comparison, not portal screenshot"
+    }
+  }
+}

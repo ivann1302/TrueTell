@@ -44,8 +44,8 @@ const structuredData = {
       <LineWave />
       <div class={heroStyles.container}>
         <h1 class={heroStyles.title}>Приложения для CRM и автоматизации бизнеса</h1>
-        <p class={heroStyles.subtitle}>Разрабатываем приложения для CRM и бизнес-систем, BI-аналитику и решения для автоматизации торговли и продаж.</p>
-        <div class={heroStyles.actions}>
+        <p class={heroStyles.subtitle} data-intro="description">Приложения для CRM, интеграции и BI-аналитика для торговли.</p>
+        <div class={heroStyles.actions} data-intro="actions">
           <a class={heroStyles.primaryAction} href="#products">Посмотреть решения</a>
           <a class={heroStyles.secondaryAction} href={companyInfo.contacts.consultationUrl}>Обсудить задачу</a>
         </div>
@@ -58,7 +58,8 @@ const structuredData = {
     <BlogSection />
     <FaqSection />
     <DecisionStatementSection />
-    <ConsultationCtaSection />
+    <ConsultationCtaSection description="Разберём вашу задачу и предложим следующий шаг." />
   </main>
   <SiteFooter />
 </BaseLayout>
+

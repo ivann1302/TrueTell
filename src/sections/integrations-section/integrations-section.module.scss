@@ -143,6 +143,7 @@
   box-sizing: border-box;
   display: flex;
   flex: 0 0 auto;
+  gap: 32px;
   justify-content: space-around;
   list-style: none;
   margin: 0;
@@ -153,9 +154,9 @@
 .integration {
   align-items: center;
   display: flex;
-  flex: 0 0 80px;
+  flex: 0 0 104px;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
   min-width: 0;
 }
 
@@ -163,34 +164,31 @@
   align-items: center;
   aspect-ratio: 1;
   background: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.82);
-  border-radius: 50%;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.2) inset,
-    0 8px 24px rgba(2, 8, 20, 0.18);
+  border: 1px solid #d3d7de;
+  border-radius: 14px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   overflow: hidden;
-  width: 72px;
+  width: 80px;
 }
 
 .logo {
   display: block;
-  height: 32px;
+  height: 44px;
   object-fit: contain;
-  width: 36px;
+  width: 48px;
 }
 
 .logo[data-fit='square'] {
   border-radius: 12px;
-  height: 38px;
-  width: 38px;
+  height: 52px;
+  width: 52px;
 }
 
 .logo[data-fit='wide'] {
-  height: 28px;
-  width: 44px;
+  height: 40px;
+  width: 60px;
 }
 
 .integrationName {
@@ -267,8 +265,8 @@
   }
 
   .integration {
-    flex-basis: 66px;
-    gap: 10px;
+    flex-basis: 104px;
+    gap: 20px;
   }
 
   .crmTrack .integration {
@@ -280,23 +278,23 @@
   }
 
   .logoDisc {
-    width: 60px;
+    width: 72px;
   }
 
   .logo {
-    height: 26px;
-    width: 30px;
+    height: 40px;
+    width: 44px;
   }
 
   .logo[data-fit='square'] {
     border-radius: 9px;
-    height: 32px;
-    width: 32px;
+    height: 48px;
+    width: 48px;
   }
 
   .logo[data-fit='wide'] {
-    height: 24px;
-    width: 38px;
+    height: 36px;
+    width: 56px;
   }
 
   .integrationName {

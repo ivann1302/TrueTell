@@ -1,0 +1,228 @@
+{
+  "release": "083",
+  "date": "2026-10-23",
+  "taskId": "SEO-074",
+  "action": "CREATE",
+  "type": "blog",
+  "status": "local_QA_passed",
+  "route": "/podklyuchit-ii-bitrix24/",
+  "title": "Как подключить ИИ к Битрикс24: встроенный помощник, чат-бот и внешняя нейросеть",
+  "articleSource": "/Users/ivan/projects/TrueTell/src/pages/podklyuchit-ii-bitrix24/index.astro",
+  "articleSha256": "0e00c4cd253f5c7d2a447ddeb7d87b06004e63da662cbf73ca63624e5a30f43d",
+  "localPreview": "http://127.0.0.1:4329/podklyuchit-ii-bitrix24/",
+  "deployed": false,
+  "indexingChecked": false,
+  "registryStatus": "draft",
+  "datePublished": null,
+  "contentReady": true,
+  "publicProductClaim": false,
+  "applicationChanged": false,
+  "clientPortalUsed": false,
+  "strategy": "План082: выбор подключения по задаче;MCP в H2;инструкции075/076 не дублируются и не выдаются за живыеURL.",
+  "sources": [
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/26952788/",
+      "checked": "2026-10-23"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/28790658/",
+      "checked": "2026-10-23"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/28426770/",
+      "checked": "2026-10-23"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/28719662/",
+      "checked": "2026-10-23"
+    },
+    {
+      "url": "https://apidocs.bitrix24.ru/ai-tools/mcp.html",
+      "checked": "2026-10-23"
+    }
+  ],
+  "images": [
+    {
+      "asset": "bitrix24-ai-connection-directions-083.png",
+      "type": "editorial_infographic",
+      "source": "SVG редакции;1100x920,alpha;направления запроса",
+      "section": "choose-ai-job",
+      "fullSize": true
+    },
+    {
+      "asset": "bitrix24-external-ai-access-official.jpg",
+      "type": "authentic_official_screenshot",
+      "source": "https://helpdesk.bitrix24.ru/images/helpdesk/screenshots/ru/am/MCP-server/2.1.jpg",
+      "section": "external-ai",
+      "fullSize": true,
+      "limits": "Публичная документация,не наш портал и не доказательство совместимости TrueTell"
+    }
+  ],
+  "verification": {
+    "build": "PASS65routes",
+    "lint": "PASS0errors;3existingReactwarnings",
+    "tests": "87/87PASS",
+    "indexnow": "--check58URLs;not submitted",
+    "html": {
+      "result": "PASS",
+      "canonical": "https://truetell-retail.ru/podklyuchit-ii-bitrix24/",
+      "publicationStatus": "draft",
+      "robots": "noindex, nofollow",
+      "publishedDatesOmitted": true,
+      "blogAndSitemapExcludeDraft": true,
+      "primaryHeadings": 1,
+      "faqItems": 7,
+      "faqMatchesSchema": true,
+      "sourcesClosed": true,
+      "sourceLinks": 5,
+      "internalPathsChecked": 8,
+      "illustrationAlphaPreserved": true,
+      "images": [
+        {
+          "src": "/_astro/bitrix24-ai-connection-directions-083.D0fDG94Q_Z2rr6xG.webp",
+          "width": 1100,
+          "height": 920,
+          "hasAlpha": true
+        },
+        {
+          "src": "/_astro/bitrix24-external-ai-access-official.VGECykwo_Z1wyvim.webp",
+          "width": 1920,
+          "height": 1086,
+          "hasAlpha": false
+        }
+      ],
+      "registryBeforePreserved": true
+    },
+    "browserLayout": [
+      {
+        "width": 1440,
+        "height": 640,
+        "scrollWidth": 1440,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 184,
+        "introTop": 184,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 878,
+            "src": "http://127.0.0.1:4362/_astro/bitrix24-ai-connection-directions-083.D0fDG94Q_Z2rr6xG.webp"
+          },
+          {
+            "loaded": true,
+            "width": 878,
+            "src": "http://127.0.0.1:4362/_astro/bitrix24-external-ai-access-official.VGECykwo_Z2k0c1M.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "width": 390,
+        "height": 640,
+        "scrollWidth": 390,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 136,
+        "introTop": 423.7109375,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 356,
+            "src": "http://127.0.0.1:4362/_astro/bitrix24-ai-connection-directions-083.D0fDG94Q_Z2rr6xG.webp"
+          },
+          {
+            "loaded": true,
+            "width": 356,
+            "src": "http://127.0.0.1:4362/_astro/bitrix24-external-ai-access-official.VGECykwo_Z2k0c1M.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "width": 768,
+        "height": 640,
+        "scrollWidth": 768,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 136,
+        "introTop": 366.3515625,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 734,
+            "src": "http://127.0.0.1:4362/_astro/bitrix24-ai-connection-directions-083.D0fDG94Q_Z2rr6xG.webp"
+          },
+          {
+            "loaded": true,
+            "width": 734,
+            "src": "http://127.0.0.1:4362/_astro/bitrix24-external-ai-access-official.VGECykwo_Z2k0c1M.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "width": 769,
+        "height": 640,
+        "scrollWidth": 769,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 184,
+        "introTop": 184,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 703,
+            "src": "http://127.0.0.1:4362/_astro/bitrix24-ai-connection-directions-083.D0fDG94Q_Z2rr6xG.webp"
+          },
+          {
+            "loaded": true,
+            "width": 703,
+            "src": "http://127.0.0.1:4362/_astro/bitrix24-external-ai-access-official.VGECykwo_Z2k0c1M.webp"
+          }
+        ],
+        "sourcesClosed": true
+      }
+    ],
+    "interactions": {
+      "faqOpen": true,
+      "faqKeyboardClosed": true,
+      "sourcesOpen": true,
+      "sourcesKeyboardClosed": true
+    },
+    "browserMethod": "CUA, локальные same-origin iframe390/768/769/1440x640;desktop1440масштабирован только отображением wrapper0.85. К клиентскому порталу не обращались.",
+    "backlog": {
+      "result": "PASS",
+      "tasks": 75,
+      "unchangedTasks": 74,
+      "sheets": 7,
+      "changedCells": 15,
+      "priorJournalRowsPreserved": 111,
+      "newJournalRows": 1,
+      "allPublicationDatesPreserved": true,
+      "unrelatedValuesFormulasStylesPreserved": true,
+      "nativeFeaturesPreserved": true,
+      "nativeExcelOpened": false,
+      "sha256": "46e50a5207964e1409ed0e0c4dd9900475dcaa5ea6f68449c3c329c01622a6b9"
+    }
+  },
+  "independentReview": {
+    "reviewer": "/root/review_ai_article_083",
+    "result": "READY / local_QA_passed",
+    "openFindings": [],
+    "closedFindings": [
+      "P3: внутренний QA-язык заменён на понятное объяснение и CTA"
+    ],
+    "checks": [
+      "Первоисточники и актуальный статус TrueTell",
+      "Текст, интент, FAQ/JSONLD,метаданные",
+      "Изображения и финальные hero/figure/FAQ/CTA390/1440",
+      "Логи сборки,87тестов и IndexNowcheck;авторские отчёты HTML/browserQA"
+    ],
+    "limits": "Портал,OAuth,реальные CRM-данные,продакшен и индексация не проверялись. Браузерные взаимодействия подтверждены сохранённым отчётом автора; рендеры просмотрены самостоятельно."
+  },
+  "next": "Отдельно выпуститьSEO-074 с фактической датой и liveQA. Затем готовитьSEO-075 после проверки конкретной связки клиента и сервера."
+}

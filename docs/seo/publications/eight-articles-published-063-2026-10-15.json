@@ -1,0 +1,220 @@
+{
+  "release": 63,
+  "date": "2026-10-15",
+  "request": "Опубликуй8готовых",
+  "authorization": "Explicit owner request in current conversation",
+  "status": "live_verified",
+  "releaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792049803-63",
+  "baseReleaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792006329-56",
+  "deployedBy": "Reviewed static overlay; current full release cloned, only allowlisted static files replaced, atomic activation with rollback",
+  "publicationVerifiedAt": "2026-10-15T07:38:58Z",
+  "articles": [
+    {
+      "taskId": "SEO-051",
+      "url": "https://truetell-retail.ru/grafik-platezhey-bitrix24/",
+      "title": "График платежей клиента в Битрикс24: этапы, суммы и сроки",
+      "status": "live_verified",
+      "publishedAt": "2026-10-15T10:30:03+03:00",
+      "http": 200,
+      "htmlSha256": "4960186c57921dbbcdf54dd502f576c6896f140b4f98e17981d677fa5bce0685",
+      "meaningfulFigures": 3
+    },
+    {
+      "taskId": "SEO-059",
+      "url": "https://truetell-retail.ru/kod-polya-bitrix24/",
+      "title": "Как узнать код поля в Битрикс24 — UF_CRM и название",
+      "status": "live_verified",
+      "publishedAt": "2026-10-15T10:30:03+03:00",
+      "http": 200,
+      "htmlSha256": "f345bf4a941f7388874a32915f97c1a48eb81abacc82b5ba8c948d4db050c060",
+      "meaningfulFigures": 3
+    },
+    {
+      "taskId": "SEO-061",
+      "url": "https://truetell-retail.ru/spisok-poley-bitrix24/",
+      "title": "Список полей Битрикс24: где посмотреть и выгрузить CSV",
+      "status": "live_verified",
+      "publishedAt": "2026-10-15T10:30:03+03:00",
+      "http": 200,
+      "htmlSha256": "7f319bb9437f0fe339a9b15831abc62e51b559b96bae94cf40bf9cb876706295",
+      "meaningfulFigures": 2
+    },
+    {
+      "taskId": "SEO-062",
+      "url": "https://truetell-retail.ru/nazvanie-polya-uf-crm-bitrix24/",
+      "title": "Название поля UF_CRM в BI-отчёте Битрикс24: как найти",
+      "status": "live_verified",
+      "publishedAt": "2026-10-15T10:30:03+03:00",
+      "http": 200,
+      "htmlSha256": "40e1f07644d3306928a403b3a05a6061d1f9f35bdcac698bdbb1223ff8bba77a",
+      "meaningfulFigures": 2
+    },
+    {
+      "taskId": "SEO-063",
+      "url": "https://truetell-retail.ru/tipy-poley-crm-bitrix24/",
+      "title": "Типы полей Битрикс24: множественность и обязательность",
+      "status": "live_verified",
+      "publishedAt": "2026-10-15T10:30:03+03:00",
+      "http": 200,
+      "htmlSha256": "1fb9772d55dc16f4e405bc66ca3a288d2a5f80cdaff8777f959c6977b2e39126",
+      "meaningfulFigures": 2
+    },
+    {
+      "taskId": "SEO-064",
+      "url": "https://truetell-retail.ru/uf-crm-ufcrm-bitrix24-api/",
+      "title": "UF_CRM и ufCrm, TITLE и title в API Битрикс24",
+      "status": "live_verified",
+      "publishedAt": "2026-10-15T10:30:03+03:00",
+      "http": 200,
+      "htmlSha256": "2b7c1cbd73ba4045b8b6687d318fd63148ca52cf5d6d5f4aad368f28d83ec116",
+      "meaningfulFigures": 2
+    },
+    {
+      "taskId": "SEO-065",
+      "url": "https://truetell-retail.ru/karta-sootvetstviya-poley-bitrix24/",
+      "title": "Карта соответствия полей Битрикс24: пример для интеграции",
+      "status": "live_verified",
+      "publishedAt": "2026-10-15T10:30:03+03:00",
+      "http": 200,
+      "htmlSha256": "0cd2e9faf838d46874ddae7a088f2c1b9b141aacabadd46ee9080f0805c2f063",
+      "meaningfulFigures": 2
+    },
+    {
+      "taskId": "SEO-066",
+      "url": "https://truetell-retail.ru/audit-poley-crm-bitrix24/",
+      "title": "Аудит полей CRM Битрикс24: назначение и зависимости",
+      "status": "live_verified",
+      "publishedAt": "2026-10-15T10:30:03+03:00",
+      "http": 200,
+      "htmlSha256": "25d8c3915720e2e79c76229e84b26de69d546803cf4175a052cebb2a2ca0ce09",
+      "meaningfulFigures": 2
+    }
+  ],
+  "scope": {
+    "newArticles": 8,
+    "existingContextLinkPages": 5,
+    "catalogs": 2,
+    "homeChange": "Two new blog cards only",
+    "sitemapUrls": 52,
+    "publishedKnowledge": 22,
+    "publishedBlog": 8,
+    "publishedArticles": 30,
+    "remainingCheckoutDrafts": 0,
+    "htmlFilesReplacedOrAdded": 16,
+    "assetFiles": 138,
+    "artifactFiles": 155,
+    "unaffectedOldPagesByteIdentical": 36,
+    "backendAndSharedPreserved": true,
+    "routingHtaccessPreserved": true,
+    "otherDirtySourceNotPublished": true,
+    "separatePreparedPackages051to053NotPublished": true
+  },
+  "verification": {
+    "build": {
+      "pass": true,
+      "pages": 54,
+      "canonicalUrls": 52
+    },
+    "lint": {
+      "errors": 0,
+      "preExistingWarnings": 3
+    },
+    "tests": {
+      "pass": 77,
+      "fail": 0
+    },
+    "validationOnly": {
+      "urls": 52,
+      "submitted": false
+    },
+    "live": {
+      "releaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792049803-63",
+      "verifiedAt": "2026-10-15T07:38:58Z",
+      "sitemapUrls": 52,
+      "newArticles": 8,
+      "htmlPagesVerified": 52,
+      "assetFilesVerified": 138,
+      "allHashesMatch": true,
+      "unaffectedLivePagesPreserved": 36
+    },
+    "browser": {
+      "source": "Actual production website via CUA",
+      "articles": 8,
+      "widths": [
+        390,
+        768,
+        769,
+        1440
+      ],
+      "checks": 32,
+      "overflow": false,
+      "heroDark": "#101621",
+      "mobileMetaH1Centered": true,
+      "desktopHeroColumnTopAligned": true,
+      "heroAtLeast100vh": true,
+      "contactDialogOpenedAndClosedWithoutSubmit": true,
+      "sourceAccordionKeyboardVerified": true,
+      "proofScreenshot": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/publish-063/live-desktop.png"
+    },
+    "gitDiffCheck": true
+  },
+  "reviews": {
+    "fields": {
+      "reviewer": "/root/review_publish_fields_063",
+      "verdict": "LIVE_VERIFIED_APPROVE",
+      "scope": "All seven source/compiled/freshly captured live HTMLs; official documentation and current app1.0.2 code/limits; metadata, FAQ, dates, catalog ownership,15 figures, sitemap52 and32 live responsive measurements. Independently fetched audit,REST,kod and sitemap: HTTP200, matching release hashes.",
+      "findings": [],
+      "boundary": "No new CRM portal execution; no search indexation measured."
+    },
+    "payment": {
+      "reviewer": "/root/review_publish_payment_063",
+      "verdict": "LIVE_VERIFIED_APPROVE",
+      "scope": "Grafik article,three related payment pages, official documentation,current app README/tests,images,final artifact155 files and activation. Additional freshHTTP grafik/partial/calendar200 exact hashes.",
+      "findings": [
+        {
+          "priority": "P2",
+          "finding": "Generator/financial commands described as still planned despite locally implemented0.4.0 core.",
+          "resolution": "Describe public0.3.2 availability only: saved permitted-deal schedule viewer; generator,receipts,financial edits/report/calendar unavailable in published supply.",
+          "verified": true
+        },
+        {
+          "priority": "P3",
+          "finding": "Ambiguous reference to financial functions after removing stale text.",
+          "resolution": "Explicitly list unavailable actions in partial-payment article.",
+          "verified": true
+        },
+        {
+          "priority": "P2",
+          "finding": "Full build references unrelated changed contact-request JS.",
+          "resolution": "All16 payload HTMLs preserve exact current production DqtxP574 script; existing frontend markup compatible,dialog opened/closed on live without submitting.",
+          "verified": true
+        },
+        {
+          "priority": "P3",
+          "finding": "New route directory permissions could depend on remote umask.",
+          "resolution": "umask022 and explicitchmod0755 for payload directory tree.",
+          "verified": true
+        }
+      ],
+      "boundary": "No form submission, live product operations or indexation check."
+    }
+  },
+  "indexation": {
+    "status": "not_measured",
+    "gsc": "No fresh accessible GSC in this release; previous audit062 recorded payment_required. Historical measurements preserved.",
+    "positionsMeasured": false,
+    "searchEngineUrlSubmissions": false
+  },
+  "evidence": {
+    "manifest": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/publish-063/manifest.json",
+    "publicHttpFiles": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/publish-063/live-verified.json",
+    "responsive": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/publish-063/live-responsive.json",
+    "buildLog": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/publish-063/build.log",
+    "testsLog": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/publish-063/tests.log",
+    "lintLog": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/publish-063/lint.log",
+    "deployLog": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/publish-063/deploy.log",
+    "archiveSha256": "3e684004b5286104168657358e7405d0b229f1d6c0ac889bd5a353a8e848a3cb",
+    "activationSha256": "5801ac9870a0f1a193c9a95d999f07615ce933725db83cb1fb1a204976482a5e"
+  },
+  "backlog": "TrueTell_SEO_Backlog_063_2026-10-15.xlsx"
+}

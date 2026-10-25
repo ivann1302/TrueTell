@@ -1,0 +1,106 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import rolesImage from '../../images/articles/moysklad-staff-roles-093.png';
+import exampleImage from '../../images/articles/moysklad-staff-shift-093.png';
+
+const article = getArticle('vyruchka-sotrudnikov-po-smenam-moysklad/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const canonicalPath = `/${article.hrefPath}`;
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const imageAlt = 'Различие ролей в розничной продаже: смена, владелец документа, кассир и продавец';
+const ogImage = new URL(rolesImage.src, siteRoot).toString();
+const titleParts = [{ text: 'Выручка сотрудников по сменам: ' }, { text: 'как считать', accent: true }];
+const roleRows = [
+  ['Смена', 'К какой смене и точке относится продажа', 'retailShift, retailStore в документе продажи'],
+  ['Владелец продажи', 'Какому сотруднику принадлежит документ', 'owner; проверить правила заполнения в компании'],
+  ['Кассир', 'Кто работал на кассе и оформил операцию', 'Не считать автоматически продавцом товара'],
+  ['Продавец-консультант', 'Кому бизнес относит продажу для премии', 'Нужен отдельный проверенный признак, если отличается от владельца'],
+];
+const faqItems = [
+  { question: 'Есть ли в МойСклад отчёт по продажам сотрудников?', answer: 'Да. В «Продажи → Прибыльность → По сотрудникам» можно посмотреть продажи и возвраты с фильтрами по точке, периоду и типу документа. Возврат в этом отчёте относится к владельцу исходной продажи, даже если документ возврата привязан к другому сотруднику.' },
+  { question: 'Можно ли получить выручку каждого сотрудника за смену?', answer: 'Для собственной таблицы свяжите ID розничной продажи с её розничной сменой и владельцем. Затем проверьте, соответствует ли владелец вашему правилу «продавец». Если в смене работает несколько консультантов, данные кассира или владельца сами по себе не задают распределение между ними.' },
+  { question: 'Кому относить возврат — продавцу или кассиру, который его оформил?', answer: 'Штатный отчёт «Прибыльность по сотрудникам» относит возврат к владельцу исходной продажи. Для премии можно согласовать другое правило, но его нужно записать отдельно и применить ко всем магазинам и периодам. Не меняйте правило от смены к смене.' },
+  { question: 'Можно ли брать выручку из отчёта для начисления зарплаты?', answer: 'Выручка — входное число, а не готовая сумма зарплаты. Положение о премировании должно определить возвраты в следующем месяце, совместные продажи, исключения, пороги и дату закрытия расчёта. Перед начислением сверьте исходные документы и правило атрибуции.' },
+  { question: 'Что делать, если продавцов в одном чеке несколько?', answer: 'Стандартный владелец документа даёт одно значение. Если бизнес делит один чек между людьми, нужен дополнительный проверяемый учёт вклада: например, согласованный признак по позиции или отдельный реестр долей. Без такого источника не распределяйте сумму поровну автоматически.' },
+];
+const sourceLinks = [
+  { label: 'Отчёт «Прибыльность», включая вкладку «По сотрудникам» — справка МойСклад', href: 'https://support.moysklad.ru/hc/ru/отчеты/отчет_прибыльность' },
+  { label: 'Розница: смены и результаты точек — справка МойСклад', href: 'https://support.moysklad.ru/hc/ru/касса%20и%20розница/розница/розница_обзор_возможностеи' },
+  { label: 'Поля розничной продажи в официальном SDK МойСклад', href: 'https://github.com/moysklad/remap-1.2-java-sdk/blob/master/docs/RetailDemand.md' },
+  { label: 'Поля розничного возврата в официальном SDK МойСклад', href: 'https://github.com/moysklad/remap-1.2-java-sdk/blob/master/docs/RetailShiftOperationRetailSalesReturn.md' },
+];
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const structuredData = createArticleStructuredData({
+  articleType: 'BlogPosting', title, description, articleUrl, publishedDate: article.publishedAt,
+  modifiedDate: article.updatedAt, publisherUrl: siteRoot.toString(), image: ogImage, author: authorName,
+  breadcrumbs: [
+    { name: 'Главная', item: siteRoot.toString() },
+    { name: 'Блог', item: new URL('blog/', siteRoot).toString() },
+    { name: title, item: articleUrl },
+  ], faqItems,
+});
+---
+
+<ArticleLayout {title} {titleParts} {description} {canonicalPath} {structuredData}
+  ogTitle={article.seoTitle} ogDescription={description} {ogImage} ogImageAlt={imageAlt}
+  category={article.category} author={authorName}
+  intro="Проверяем, кому в данных принадлежит продажа, привязываем её к смене и отделяем рабочий показатель от расчёта премии.">
+  <Fragment slot="quick-answer">
+    <p>В МойСклад уже есть <strong>«Продажи → Прибыльность → По сотрудникам»</strong> с продажами и возвратами. Для собственной таблицы «сотрудник × смена» связать розничную продажу с ID смены и её владельцем возможно по полям документа. Но владелец, кассир и продавец-консультант могут быть разными людьми — сначала проверьте правило учёта в своей точке.</p>
+    <p>Возврат в штатном отчёте относится к владельцу исходной продажи, даже если оформил его другой сотрудник. Выручку после возвратов можно использовать как входное число для премии только после утверждения правил атрибуции и периода.</p>
+  </Fragment>
+
+  <p data-article-lead>В одной смене два консультанта помогали покупателям, а чеки пробивал один кассир. Отчёт по кассиру покажет операции у кассы, но не докажет, кто продал каждый товар. Чтобы премия не стала спором из-за полей системы, сначала надо определить, кого компания считает продавцом в документе и как относится возврат.</p>
+  <ArticleFigure src={rolesImage} fullSize portrait alt={imageAlt} caption="Схема ролей, не экран МойСклад. Связь продажи со сменой и владельцем есть в модели документа; фактического продавца и долю каждого консультанта нужно подтвердить в учёте компании." />
+
+  <section aria-labelledby="native-report">
+    <h2 id="native-report">Что показывает штатный отчёт по сотрудникам</h2>
+    <p>Откройте <strong>«Продажи → Прибыльность → По сотрудникам»</strong> и задайте период, тип документа «Розничная продажа» и нужную точку. МойСклад показывает продажи, возвраты и показатели прибыльности. В справке отдельно сказано: возврат по продаже учитывается у владельца исходной продажи, хотя владелец самого возврата может быть другим.</p>
+    <p>В <strong>«Розница → Смены»</strong> можно посмотреть операции конкретной смены. Эти два экрана решают близкие, но разные вопросы: первый группирует по сотрудникам, второй — по сменам. Если нужен их общий разрез за сеть, соберите его из документов и проверьте на одной смене. Список штатных вариантов есть <a href={`${base}otchety-moysklad/`}>в обзоре отчётов</a>.</p>
+  </section>
+
+  <section aria-labelledby="roles">
+    <h2 id="roles">Кого считать продавцом: владелец, кассир или консультант</h2>
+    <p>В модели розничной продажи предусмотрены ссылки на точку, смену и <code>owner</code> — владельца документа. Проверьте, что эти поля заполнены в ваших документах: их наличие в API-модели само по себе этого не гарантирует. Даже заполненное поле владельца не доказывает, что он был консультантом. В магазине с общей кассой все документы могут принадлежать одному сотруднику, хотя продавали разные люди. Проверьте выборку чеков и рабочий процесс перед расчётом по владельцу.</p>
+    <DataTable label="Роли в расчёте выручки сотрудника" columns={['Роль', 'Что отвечает', 'Как проверить']} rows={roleRows} rowHeaders compact />
+    <p>Если один чек нужно распределить между несколькими продавцами, сохраните отдельный проверяемый признак по товарным позициям или утверждённый реестр долей. Сумма долей по каждой позиции или чеку должна давать 100%. Без такого источника нельзя честно вывести индивидуальную выручку из одного поля <code>owner</code>.</p>
+  </section>
+
+  <section aria-labelledby="example">
+    <h2 id="example">Учебный расчёт одной смены с возвратом</h2>
+    <p>В условной смене есть две продажи: документ на 1 000 ₽ принадлежит Анне, на 600 ₽ — Борису. В той же смене оформлен возврат 300 ₽ по продаже Анны; оформил его Борис. Если согласовано правило штатного отчёта «возврат относится к владельцу исходной продажи», у Анны остаётся 700 ₽, у Бориса — 600 ₽. Общий результат смены после возврата — 1 300 ₽. Это пример атрибуции, а не правило начисления зарплаты.</p>
+    <ArticleFigure src={exampleImage} fullSize portrait alt="Условная смена: Анна продала на 1000 рублей с возвратом 300, Борис продал на 600, общий итог 1300 рублей" caption="Условные числа при одном правиле атрибуции: 1 000 − 300 = 700 ₽ у Анны, 600 ₽ у Бориса, всего 1 300 ₽. Борис оформил возврат, но он связан с исходной продажей Анны." />
+    <p>Возврат может произойти уже в следующей смене или месяце. Тогда итог по смене продажи и поток возвратов по календарной дате будут различаться. До расчёта премии закрепите, уменьшает ли поздний возврат прежний расчётный период или текущий, и покажите такую корректировку сотруднику отдельно.</p>
+  </section>
+
+  <section aria-labelledby="payroll">
+    <h2 id="payroll">Что проверить до расчёта премии</h2>
+    <p>Выберите одну закрытую смену и сопоставьте её ID, список продаж и возвратов с собственной таблицей. Для каждой продажи проверьте владельца и фактическое правило работы точки; для возврата — связь с исходной продажей. Затем отдельно согласуйте совместные продажи, авансы, скидки, поздние возвраты и дату фиксации итогов. <a href={`${base}analiz-chekov-moysklad/`}>Разбор чеков</a> помогает сверить суммы и способы оплаты, но оплата картой или наличными сама по себе не меняет атрибуцию продавца.</p>
+    <p>Покажите сотруднику список конкретных документов, из которых сложилось число. Если после закрытия расчёта документ исправлен, нужна прозрачная корректировка, а не молчаливое изменение старой суммы. Порядок исправлений должен соответствовать вашей системе оплаты труда.</p>
+    <InlineConsultation title="Нужно связать смены с продавцами?" description="Разберём реальные поля одной точки, возвраты и правило, по которому компания относит чек сотруднику. Получится проверяемая основа для дальнейшего расчёта премии." />
+  </section>
+
+  <FaqSection id="faq" variant="article" title="Частые вопросы" items={faqItems} />
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Сначала определите, ' }, { text: 'чья это продажа', accent: true }]}
+      description="TrueTell разрабатывает подготовку данных МойСклад для аналитики. Поможем проверить связь смены, продажи, владельца и возврата до использования цифры в премировании."
+      href={companyInfo.contacts.consultationUrl} actionLabel="Обсудить задачу" />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <Fragment slot="after-article"><ConsultationCtaSection /></Fragment>
+</ArticleLayout>

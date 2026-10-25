@@ -26,7 +26,7 @@ const hasCarousel = !page && articles.length > 2;
   data-article-carousel={hasCarousel || undefined}
 >
   <div class={styles.container}>
-    <header class={styles.header}>
+    <header class={styles.header} data-reveal>
       {page ? (
         <div>
           <h1 id="blog-title" class={styles.title}>Блог</h1>
@@ -53,23 +53,24 @@ const hasCarousel = !page && articles.length > 2;
       id={hasCarousel ? 'home-blog-track' : undefined}
       class:list={[styles.grid, articles.length < 3 && styles.compactGrid, articles.length === 1 && styles.singleArticleGrid, hasCarousel && styles.carousel]}
       data-carousel-track={hasCarousel || undefined}
+      data-reveal={hasCarousel ? '1' : undefined}
       role={hasCarousel ? 'region' : undefined}
       aria-label={hasCarousel ? 'Статьи блога' : undefined}
       tabindex={hasCarousel ? 0 : undefined}
     >
-      {articles.map((article) => (
-        <article class={styles.card}>
+      {articles.map((article, index) => (
+        <article class={styles.card} data-reveal={page ? String(index % 3) : undefined}>
           {article.href ? (
             <a class={styles.cardLink} href={article.href}>
               {article.category && <span class={styles.articleMeta}>{article.category}</span>}
               {page ? <h2 class={styles.articleTitle}>{article.title}</h2> : <h3 class={styles.articleTitle}>{article.title}</h3>}
-              <p class={styles.description}>{article.description}</p>
+              {page && <p class={styles.description}>{article.description}</p>}
               <span class={styles.readMore}>Читать статью <span aria-hidden="true">→</span></span>
             </a>
           ) : (
             <>
               {page ? <h2 class={styles.articleTitle}>{article.title}</h2> : <h3 class={styles.articleTitle}>{article.title}</h3>}
-              <p class={styles.description}>{article.description}</p>
+              {page && <p class={styles.description}>{article.description}</p>}
             </>
           )}
         </article>

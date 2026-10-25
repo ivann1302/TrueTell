@@ -1,0 +1,20 @@
+{
+  "release": 58,
+  "date": "2026-10-14",
+  "taskId": "SEO-063",
+  "editorialReview": {
+    "reviewer": "/root/review_field_types_058",
+    "verdict": "APPROVE_LOCAL_DRAFT",
+    "openFindings": 0,
+    "fixed": "P3: vague special app type replaced by other API designation",
+    "scope": "Independent primary sources, app source, final article and built HTML review; supplied real responsive screenshots inspected. Tests and interactive browser run by primary agent only."
+  },
+  "limits": [
+    "CRM field type/multiplicity/stage settings were not changed; official documented constraints only.",
+    "Category filter click was attempted but tool did not execute it; filtering/classification logic reviewed in source, not claimed as current UI acceptance.",
+    "App not changed; Market release not claimed.",
+    "Production and search indexing not checked."
+  ],
+  "sourceSha256": "a42187a7dcc39310660f438b84a07e577e929c4714259527759722236ed1c1cb",
+  "htmlSha256": "f03fb2c01f893cd33b9a84ac9db7b771d632b643e22040868fda48908b84b598"
+}

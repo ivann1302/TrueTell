@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "taskId": "SEO-078",
+  "articleRelease": "089",
+  "date": "2026-10-25",
+  "url": "https://truetell-retail.ru/vygruzka-dannyh-moysklad-dlya-analitiki/",
+  "action": "CREATE",
+  "type": "blog",
+  "status": "live_verified",
+  "crawlStatus": "not_checked",
+  "indexStatus": "not_checked",
+  "productionRelease": "moysklad-export-089-20261025",
+  "previousRelease": "payments-080-20261022",
+  "publicationScope": [
+    "_astro/contact-request.astro_astro_type_script_index_0_lang.DhmXGeGg.js",
+    "_astro/moysklad-export-methods-089.7OtNv2YG.png",
+    "_astro/moysklad-export-methods-089.7OtNv2YG_2njPDJ.webp",
+    "_astro/moysklad-export-methods-089.7OtNv2YG_Z1d567F.webp",
+    "blog/index.html",
+    "ostatki-moysklad/index.html",
+    "otchety-moysklad/index.html",
+    "sitemap.xml",
+    "vygruzka-dannyh-moysklad-dlya-analitiki/index.html"
+  ],
+  "review": {
+    "protocol": "docs/seo/editorial-review-protocol.md",
+    "roles": [
+      "primary author",
+      "independent article reviewer"
+    ],
+    "completedAt": "2026-10-25",
+    "openP1P2": 0,
+    "resolvedP2": [
+      "Уточнена зависимость доступной функциональности JSON API от тарифа."
+    ],
+    "openP3": [
+      "Плановая входящая ссылка из общей статьи о BI пока не добавлена; есть ссылки из блога, отчётов и остатков."
+    ],
+    "factSources": [
+      "https://dev.moysklad.ru/doc/api/remap/1.2/",
+      "https://github.com/moysklad/api-remap-1.2-doc/blob/master/md/_restrictions.md",
+      "https://support.moysklad.ru/"
+    ],
+    "limits": [
+      "Клиентский аккаунт и тариф МойСклад не тестировались.",
+      "Работа разрабатываемого экстрактора не проверялась."
+    ]
+  },
+  "localVerification": {
+    "lint": "passed; 3 pre-existing warnings",
+    "build": "passed; 68 pages",
+    "tests": "88 passed, 0 failed",
+    "indexnowCheck": "passed; 59 production URLs",
+    "browserOverlayWidths": [
+      390,
+      768,
+      769,
+      1440
+    ],
+    "browserOverlay": "1 H1, no overflow, 2 images loaded, 4 FAQ items, canonical/robots/CTA valid; no page errors"
+  },
+  "liveVerification": {
+    "deploymentReceipt": "work/export-publication-089/activation-result.json",
+    "publicChecks": [
+      {
+        "path": "/_astro/contact-request.astro_astro_type_script_index_0_lang.DhmXGeGg.js",
+        "status": 200,
+        "sha256": "ac089ab0c39dd318f1bf9b4fdcb8a7e322360f76c985650bf9c7be203b653060"
+      },
+      {
+        "path": "/_astro/moysklad-export-methods-089.7OtNv2YG.png",
+        "status": 200,
+        "sha256": "cb454b09a70504c8a2e86a94d0c3561babd890e8e986752ba5a79c75db5a8b90"
+      },
+      {
+        "path": "/_astro/moysklad-export-methods-089.7OtNv2YG_2njPDJ.webp",
+        "status": 200,
+        "sha256": "b380fac5ea47609dbffbc409351478ebf11ccf5b1dc670c25e90ab4c98ee8df1"
+      },
+      {
+        "path": "/_astro/moysklad-export-methods-089.7OtNv2YG_Z1d567F.webp",
+        "status": 200,
+        "sha256": "f07cfddd70dd8bfe7c7b26c95faae5ef5a1d39202111b981407a699acb8039b1"
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "sha256": "2c6f8abc820ff2198ca9ae0eccc7348721b0b15d41a885cfa323921ba22b32d6"
+      },
+      {
+        "path": "/ostatki-moysklad/",
+        "status": 200,
+        "sha256": "81922b89415f0883db52cbf44b8fabaf91318b3ddff7d56c3b84050d57c868c9"
+      },
+      {
+        "path": "/otchety-moysklad/",
+        "status": 200,
+        "sha256": "50a3c9c66c575a804aeffbc9ff13e3bdb0999855ada2dc7b1ec3f5b52fd38038"
+      },
+      {
+        "path": "/sitemap.xml",
+        "status": 200,
+        "sha256": "94b7737b9e8b27170e29f3327f111cb34c0cc3c82de46a81b001e83bd96f9a7e"
+      },
+      {
+        "path": "/vygruzka-dannyh-moysklad-dlya-analitiki/",
+        "status": 200,
+        "sha256": "865919b424b6bf60a756e838e074e65a8e5840c8db5b09932817a3d2106d3071"
+      },
+      {
+        "path": "/release.json",
+        "status": 200,
+        "sha256": "fa6a471d3f103a3aa4d7f54d3d356f66afabcc78868a0d502488cc368926cc0e"
+      }
+    ],
+    "backendAndAllOtherFilesUnchanged": true,
+    "externalHttps": "article HTTP 200; HTML SHA-256 matches reviewed payload; reviewer checked blog, sitemap, related articles and image URLs"
+  },
+  "source": {
+    "siteRoute": "/Users/ivan/projects/TrueTell/src/pages/vygruzka-dannyh-moysklad-dlya-analitiki/index.astro",
+    "articleDraft": "outputs/export-analytics-089/TrueTell_Article_089_2026-10-25.md"
+  },
+  "nextAction": "Проверить обход и индексацию в GSC отдельно; при следующей редакционной доработке добавить ссылку из общей статьи о BI."
+}

@@ -53,18 +53,18 @@ const integrationGroups = [
 
 <section id="integrations" class={styles.section} aria-labelledby="integrations-title">
   <div class={styles.container}>
-    <header class={styles.header}>
+    <header class={styles.header} data-reveal>
       <h2 id="integrations-title" class={styles.title}>
         Интеграции с инструментами вашего бизнеса
       </h2>
       <p class={styles.description}>
-        Связываем CRM, облачные сервисы, аналитику, платежи и маркетплейсы в единый рабочий контур.
+        Связываем CRM, аналитику, платежи и маркетплейсы.
       </p>
     </header>
 
     <div class={styles.groups}>
       {integrationGroups.map((group) => (
-        <section class={styles.group} aria-labelledby={group.id}>
+        <section class={styles.group} aria-labelledby={group.id} data-reveal>
           <h3 id={group.id} class={styles.groupTitle}>{group.title}</h3>
 
           <ul class={styles.visuallyHidden}>

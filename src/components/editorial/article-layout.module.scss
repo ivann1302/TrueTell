@@ -7,10 +7,10 @@
   --article-border: #e3e6eb;
   --article-brand: #1765da;
   --article-space-text: 16px;
-  --article-space-block: 24px;
+  --article-space-block: 32px;
   --article-space-heading: 32px;
-  --article-space-section: 32px;
-  --article-space-shell: 48px;
+  --article-space-section: 40px;
+  --article-space-shell: 56px;
 
   background: var(--article-bg);
   box-sizing: border-box;
@@ -21,7 +21,7 @@
 @media (max-width: 768px) {
   .page {
     --article-space-heading: 24px;
-    --article-space-section: 24px;
-    --article-space-shell: 32px;
+    --article-space-section: 32px;
+    --article-space-shell: 40px;
   }
 }

@@ -5,5 +5,6 @@ import { companyInfo } from '../src/config/company.ts';
 await mkdir('backend/public', { recursive: true });
 await writeFile('backend/public/workspace.css', compile('backend/resources/scss/workspace.scss', { style: 'compressed' }).css);
 await writeFile('backend/config/company.json', JSON.stringify({ brandName: companyInfo.brandName }, null, 2) + '\n');
+await copyFile('src/config/support-applications.json', 'backend/config/support-applications.json');
 await mkdir('dist', { recursive: true });
 await Promise.all(['workspace.css', 'workspace.js'].map(file => copyFile(`backend/public/${file}`, `dist/${file}`)));

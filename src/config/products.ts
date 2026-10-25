@@ -1,3 +1,5 @@
+import { companyInfo } from './company';
+
 export const cleanerProductPath = '/bitrix24-cleaner/';
 
 export const productRatingPath = '/bitrix24-product-rating/';
@@ -6,10 +8,11 @@ export const productRating = {
   name: 'Рейтинг продаж',
   heading: 'Рейтинг продаж в Битрикс24',
   description:
-    'Рейтинг продаж — приложение для анализа товаров и клиентов по сделкам Битрикс24. Рейтинги, динамика продаж, ABC-анализ, детализация и Excel. Продукт готовится к запуску.',
+    'Рейтинг продаж — приложение для анализа товаров и клиентов по сделкам Битрикс24. Рейтинги, динамика продаж, ABC-анализ, детализация и Excel. Приложение доступно в Маркете Битрикс24.',
   catalogDescription:
-    'Рейтинги товаров и клиентов, динамика продаж и расшифровка до сделок. Приложение готовится к запуску.',
-  connectionActionLabel: 'Обсудить подключение',
+    'Рейтинги товаров и клиентов, динамика и Excel.',
+  marketplaceUrl: 'https://www.bitrix24.ru/apps/app/truetell.reyting_prodazh/',
+  connectionActionLabel: 'Открыть в Маркете',
 } as const;
 
 export const moyskladOperationsProductPath = '/moysklad-mass-operations/';
@@ -19,7 +22,7 @@ export const moyskladOperationsProduct = {
   description:
     'Массовое изменение товаров, цен и документов в МойСклад. Загрузка из файлов, удаление и очистка с проверкой плана и отчётом по каждому объекту.',
   catalogDescription:
-    'Изменение товаров, цен и документов, загрузка из файлов и очистка данных. Проверка плана перед запуском и отчёт по результатам.',
+    'Массовые изменения товаров, цен и документов. Загрузка и очистка.',
   connectionActionLabel: 'Узнать о подключении',
 } as const;
 
@@ -28,9 +31,34 @@ export const cleanerProduct = {
   description:
     'Удаляйте ненужные лиды и сделки в Битрикс24 по фильтрам. Проверка списка, исключения, пауза и CSV-отчёт. До 3 000 записей за операцию.',
   catalogDescription:
-    'Очистка CRM в Битрикс24 по фильтрам: проверка списка, исключения и отчёт по каждому ID.',
+    'Лиды и сделки: отбор, проверка списка и отчёт.',
   articleDescription:
     'Отберите ненужные лиды и сделки в Битрикс24 по фильтрам, проверьте список и исключите важные карточки. На странице приложения — возможности, порядок работы и информация о подключении.',
   articleActionLabel: 'Посмотреть приложение',
-  connectionActionLabel: 'Узнать о подключении',
+  marketplaceArticleDescription:
+    'Откройте приложение «Массовое удаление лидов и сделок» в Маркете Битрикс24. Перед очисткой сохраните нужные данные, проверьте выборку и исключите важные карточки.',
+  marketplaceUrl: 'https://www.bitrix24.ru/apps/app/truetell.massovoe_udalenie_lidov_i_sdelok/',
+  connectionActionLabel: 'Открыть в Маркете',
+} as const;
+
+export const fieldDirectoryProductPath = '/bitrix24-field-directory/';
+
+export const fieldDirectoryProduct = {
+  name: 'Поля CRM — поиск кодов и экспорт',
+  heading: 'Поиск кодов полей CRM в Битрикс24',
+  description:
+    'Найдите поле CRM Битрикс24 по названию или коду: тип, обязательность, множественность, копирование и CSV. Сделки, лиды, контакты и компании.',
+  catalogDescription:
+    'Коды и типы полей CRM: поиск, копирование и CSV.',
+  marketplaceUrl: 'https://www.bitrix24.ru/apps/app/truetell.crm_fields/',
+  connectionActionLabel: 'Открыть в Маркете',
+} as const;
+
+// Owner decision 23.10.2026: use our contact flow until the actual product page exists.
+export const mcpProduct = {
+  name: 'MCP TrueTell для Битрикс24',
+  articleDescription:
+    'Разрабатываем подключение внешнего ИИ к Битрикс24. Опишите вашу задачу, AI-клиент и нужные данные — обсудим сценарий и оставшиеся проверки. Открытая установка пока не заявлена.',
+  articleActionLabel: 'Обсудить MCP TrueTell',
+  articleHref: companyInfo.contacts.consultationUrl,
 } as const;

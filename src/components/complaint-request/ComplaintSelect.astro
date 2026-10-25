@@ -1,0 +1,26 @@
+---
+import styles from './complaint-select.module.scss';
+interface Props {
+  id: string;
+  name: string;
+  label: string;
+  choices: Record<string, string>;
+  placeholder?: string;
+}
+const { id, name, label, choices, placeholder } = Astro.props;
+const errorId = `complaint-${name}-error`;
+---
+<div class={styles.picker} data-complaint-select>
+  <label id={`${id}-label`} for={id}>{label}</label>
+  <select id={id} name={name} required aria-describedby={errorId}>
+    {placeholder && <option value="">{placeholder}</option>}
+    {Object.entries(choices).map(([value, text]) => <option value={value}>{text}</option>)}
+  </select>
+  <button class={styles.toggle} id={`${id}-toggle`} type="button" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls={`${id}-options`} aria-labelledby={`${id}-label ${id}-value`} aria-describedby={errorId} aria-required="true" data-select-toggle hidden>
+    <span id={`${id}-value`} data-select-value></span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+  </button>
+  <div class={styles.options} id={`${id}-options`} role="listbox" aria-labelledby={`${id}-label`} data-select-options hidden>
+    {Object.entries(choices).map(([value, text]) => <button type="button" role="option" aria-selected="false" tabindex="-1" data-select-option={value}><span>{text}</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></button>)}
+  </div>
+</div>

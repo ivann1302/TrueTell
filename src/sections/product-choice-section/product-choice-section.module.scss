@@ -88,7 +88,8 @@
 
 .optionArrow {
   color: rgba(16, 19, 26, 0.34);
-  font-size: 20px;
+  font-size: 24px;
+  line-height: 1;
   transition: transform 180ms ease;
 }
 
@@ -143,7 +144,7 @@
   display: inline-flex;
   font-size: 16px;
   font-weight: 500;
-  gap: 8px;
+  gap: 16px;
   justify-content: center;
   margin-top: 40px;
   min-height: 50px;
@@ -156,6 +157,10 @@
   white-space: nowrap;
 
   span {
+    flex: 0 0 24px;
+    font-size: 24px;
+    line-height: 1;
+    text-align: center;
     transition: transform 180ms ease;
   }
 
@@ -215,7 +220,7 @@
 
   .mobileAccordion {
     display: grid;
-    gap: 8px;
+    gap: 16px;
   }
 
   .accordionItem {
@@ -247,7 +252,7 @@
 
   .accordionToggle {
     color: rgba(16, 19, 26, 0.42);
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 400;
     line-height: 1;
     text-align: right;

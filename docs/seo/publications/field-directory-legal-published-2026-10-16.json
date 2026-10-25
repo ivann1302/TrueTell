@@ -1,0 +1,160 @@
+{
+  "date": "2026-10-16",
+  "task": "field-directory-legal",
+  "status": "published_and_vendor_draft_updated",
+  "documents": [
+    {
+      "route": "/bitrix24-field-directory-license/",
+      "file": "bitrix24-field-directory-license/index.html",
+      "bytes": 53225,
+      "sha256": "efc7f627689336f67047cfc339b23e900b4987943521ddd6d063526edf4a3337",
+      "robots": "noindex, follow",
+      "mainClassMatches": true,
+      "publishedAssetsPreserved": true,
+      "links": [
+        "/",
+        "/bitrix24-field-directory/",
+        "/bitrix24-field-directory-privacy/",
+        "/privacy/",
+        "/complaints/?app=crm-fields",
+        "mailto:truetell@bk.ru",
+        "/complaints/?app=crm-fields",
+        "mailto:truetell@bk.ru"
+      ]
+    },
+    {
+      "route": "/bitrix24-field-directory-privacy/",
+      "file": "bitrix24-field-directory-privacy/index.html",
+      "bytes": 53686,
+      "sha256": "82cdfe8ab754b0063e4189a5370785ad7b9453527bbc643bbc757b272a92ac1c",
+      "robots": "noindex, follow",
+      "mainClassMatches": true,
+      "publishedAssetsPreserved": true,
+      "links": [
+        "/",
+        "/privacy/",
+        "/cookies/",
+        "/bitrix24-field-directory-license/",
+        "mailto:truetell@bk.ru",
+        "/complaints/?app=crm-fields",
+        "/complaints/?app=crm-fields",
+        "mailto:truetell@bk.ru"
+      ]
+    }
+  ],
+  "checks": {
+    "build": "PASS 64 pages",
+    "tests": 77,
+    "testFailures": 0,
+    "lintErrors": 0,
+    "existingLintWarnings": 3,
+    "indexnowCheck": "PASS 58 URLs, no submission",
+    "responsive": [
+      {
+        "overflow": false,
+        "page": "license",
+        "scrollWidth": 320,
+        "width": 320
+      },
+      {
+        "overflow": false,
+        "page": "license",
+        "scrollWidth": 768,
+        "width": 768
+      },
+      {
+        "overflow": false,
+        "page": "license",
+        "scrollWidth": 1440,
+        "width": 1440
+      },
+      {
+        "overflow": false,
+        "page": "privacy",
+        "scrollWidth": 320,
+        "width": 320
+      },
+      {
+        "overflow": false,
+        "page": "privacy",
+        "scrollWidth": 390,
+        "width": 390
+      },
+      {
+        "overflow": false,
+        "page": "privacy",
+        "scrollWidth": 768,
+        "width": 768
+      },
+      {
+        "overflow": false,
+        "page": "privacy",
+        "scrollWidth": 1440,
+        "width": 1440
+      },
+      {
+        "page": "license",
+        "width": 390,
+        "scrollWidth": 390,
+        "overflow": false
+      }
+    ],
+    "independentReview": {
+      "date": "2026-10-16",
+      "reviewer": "/root/crm_fields_legal_review",
+      "result": "No P1/P2 or mandatory P3 findings in final source.",
+      "sourcesChecked": [
+        "Official Bitrix24 MCP common requirements",
+        "Official MCP profile and crm.item.fields",
+        "TrueTell company and product config",
+        "Application gateway and production contract",
+        "TrueTell support backend and registry"
+      ],
+      "limits": [
+        "Editorial and technical review, not independent legal opinion",
+        "No Market install, support staffing or live portal test"
+      ],
+      "sourceSha256": {
+        "src/pages/bitrix24-field-directory-license/index.astro": "9584d79ab6b9420088117d0b7a8623aea5d5336e443b9665c901eae77de99340",
+        "src/pages/bitrix24-field-directory-privacy/index.astro": "4d722620a95ae867569fc82d99fda26bb941c64342e72b1cb56861941ed74fe2"
+      }
+    }
+  },
+  "deployment": {
+    "baseRelease": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792137462-favicon",
+    "newRelease": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792144274-field-directory-legal",
+    "scope": "Two new legal HTML documents and release.json. Existing website, shared assets, sitemap and backend preserved.",
+    "publicHttpSha256Matches": true,
+    "rollbackTriggered": false
+  },
+  "browser": {
+    "publicLicenseDirectOpened": true,
+    "publicPrivacyDirectOpened": true,
+    "proofDirectory": "/Users/ivan/Documents/Codex/2026-10-12/24-crm-csv-sdk-rest-api/outputs/crm-fields-legal",
+    "interDocumentHrefVerified": true,
+    "repeatedLinkNavigation": "Not confirmed: in-app browser eventually returned ERR_SOCKET_NOT_CONNECTED; no bypass attempted.",
+    "mobile": "Local preview of exact deployment HTML at 320/390/768/1440; no horizontal overflow."
+  },
+  "vendor": {
+    "date": "2026-10-16",
+    "appId": 55394,
+    "appRegionId": 74812,
+    "descriptionId": 60120,
+    "license": "https://truetell-retail.ru/bitrix24-field-directory-license/",
+    "privacy": "https://truetell-retail.ru/bitrix24-field-directory-privacy/",
+    "support24hUnchanged": true,
+    "moderatorMatches": true,
+    "reloaded": true,
+    "moderationSubmitted": false
+  },
+  "legalBasis": "Owner-authorized adaptation of existing TrueTell documents to actual application behavior. Editorial/technical review, not independent legal opinion.",
+  "notPerformed": [
+    "Market moderation submission",
+    "Market install",
+    "CRM changes",
+    "app credential changes",
+    "pricing setting changes",
+    "agreement acceptance",
+    "search engine submission"
+  ]
+}

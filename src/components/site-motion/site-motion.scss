@@ -1,0 +1,63 @@
+// Shared by every public page. Content is visible until progressively enhanced.
+[data-site-motion] {
+  --reveal-distance: 16px;
+  --reveal-ease: cubic-bezier(.22, .61, .36, 1);
+  --reveal-step: 65ms;
+
+  [data-reveal="1"] { --reveal-order: 1; }
+  [data-reveal="2"] { --reveal-order: 2; }
+
+  [data-reveal-state="pending"] {
+    opacity: 0;
+    transform: translateY(var(--reveal-distance));
+  }
+
+  [data-reveal-state="revealed"] {
+    animation: site-content-reveal 500ms var(--reveal-ease) backwards;
+    animation-delay: calc(var(--reveal-order, 0) * var(--reveal-step));
+  }
+
+  // The H1 is opaque throughout: its paint does not wait for JavaScript or a fade.
+  main h1 {
+    animation: site-title-enter 600ms var(--reveal-ease) backwards;
+  }
+
+  [data-intro="description"],
+  [data-intro="actions"] {
+    animation: site-content-reveal 500ms var(--reveal-ease) backwards;
+    animation-delay: 65ms;
+  }
+
+  [data-intro="actions"] { animation-delay: 130ms; }
+
+  [data-intro]:focus-within {
+    animation: none;
+  }
+}
+
+@keyframes site-content-reveal {
+  from { opacity: 0; transform: translateY(var(--reveal-distance)); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes site-title-enter {
+  from { transform: translateY(12px); }
+  to { transform: none; }
+}
+
+@media (max-width: 768px) {
+  [data-site-motion] {
+    --reveal-distance: 8px;
+    --reveal-step: 40ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce), print {
+  [data-site-motion] main h1,
+  [data-site-motion] [data-reveal],
+  [data-site-motion] [data-intro] {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100">
+  <defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#101621}.h{font-size:31px;font-weight:700}.p{font-size:26px}.tag{font-size:21px;font-weight:700;fill:#386278}.n{font-size:36px;font-weight:700;fill:#087ebf}</style></defs>
+  <text x="38" y="55" class="h">Один чек может иметь две оплаты</text>
+  <text x="38" y="98" class="p">Учебный пример: три чека, 3 000 ₽</text>
+  <rect x="38" y="145" width="724" height="178" rx="20" fill="#e8f3fa"/>
+  <text x="66" y="193" class="tag">ЧЕК 1 · СМЕШАННАЯ ОПЛАТА</text>
+  <text x="66" y="249" class="p">400 ₽ наличными + 600 ₽ картой</text>
+  <text x="66" y="290" class="p">Один ID продажи, сумма 1 000 ₽</text>
+  <rect x="38" y="342" width="724" height="134" rx="20" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="66" y="391" class="tag">ЧЕК 2</text>
+  <text x="66" y="444" class="p">500 ₽ по QR</text>
+  <rect x="38" y="495" width="724" height="134" rx="20" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="66" y="544" class="tag">ЧЕК 3</text>
+  <text x="66" y="597" class="p">1 500 ₽ картой</text>
+  <rect x="38" y="663" width="724" height="274" rx="20" fill="#dceef8"/>
+  <text x="66" y="714" class="h">Итог по способам</text>
+  <text x="66" y="766" class="p">Наличные: 400 ₽</text>
+  <text x="66" y="808" class="p">Карта: 2 100 ₽</text>
+  <text x="66" y="850" class="p">QR: 500 ₽</text>
+  <text x="66" y="907" class="n">Вместе: 3 000 ₽</text>
+  <text x="38" y="1010" class="p">Чеков по-прежнему три, не четыре.</text>
+</svg>

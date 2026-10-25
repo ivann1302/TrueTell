@@ -1,0 +1,195 @@
+{
+  "release": "079",
+  "date": "2026-10-22",
+  "taskId": "SEO-050",
+  "action": "UPDATE",
+  "type": "blog",
+  "route": "/platezhnyy-kalendar-bitrix24/",
+  "status": "local_QA_passed",
+  "deployed": false,
+  "intent": "Выбрать охват календаря: действия менеджера, ожидаемые оплаты клиентов или полный денежный план компании",
+  "changes": [
+    "Сохранены сравнительный интент, URL и исходный двухдневный расчёт; добавлен новый момент внутри первого дня после частичного поступления",
+    "Показаны правильный пересчёт 42 000 + 8 000 − 60 000 = −10 000 ₽ и ошибка повторного учёта факта с ложным итогом +2 000 ₽",
+    "Добавлены смысловые ссылки на шаблон 076 и распределение частичной оплаты 077, уточнён ограниченный охват XLSX",
+    "Сохранены три полезных изображения; обновлены метаданные и FAQ до восьми вопросов",
+    "Во время подготовки по свежим документам подтверждено размещение приложения 0.4.4; продуктовые блоки и FAQ четырёх подготовленных статей синхронизированы без переписывания истории 076–078"
+  ],
+  "productStatus": {
+    "version": "0.4.4",
+    "evidence": "README, roadmap, последний раздел progress от 22.10; опубликован предпросмотр равного графика, после reload график пуст",
+    "available": "Просмотр и предпросмотр графика без сохранения",
+    "notReady": "Сохранение графика, поступления, исправления, общий отчёт, календарь, CSV, полный цикл оплат",
+    "checkedByThisTask": "Документация и публичные формулировки; приложение/CRM в этой задаче не запускались",
+    "readmeSHA256": "bb52db188cedde7ea986d5fba6238fc4d5abd1d133e99861dbcf978a400d7d66"
+  },
+  "demand": {
+    "source": "Исследование 075, wordstat-ui.json",
+    "region": "Россия 225",
+    "devices": "Все",
+    "period": "21.09.2026–21.10.2026",
+    "observations": {
+      "платежный календарь битрикс24": 5,
+      "ожидаемые оплаты битрикс24": 0
+    },
+    "limitations": "Наблюдения исследования 075, без нового замера в 079. Широкая частота не равна людям/трафику/лидам; отдельная дублирующая страница не создаётся."
+  },
+  "verification": {
+    "build": {
+      "pages": 64,
+      "canonicalUrls": 58
+    },
+    "tests": {
+      "passed": 87,
+      "failed": 0
+    },
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 3
+    },
+    "indexnow": "--check only; no submissions",
+    "metadata": {
+      "h1": 1,
+      "type": "BlogPosting",
+      "faq": 8,
+      "selfCanonical": true,
+      "visibleBreadcrumbs": false,
+      "faqMatchesJSONLD": true
+    },
+    "math": {
+      "opening": 30000,
+      "plannedReceipt": 20000,
+      "received": 12000,
+      "current": 42000,
+      "remaining": 8000,
+      "firstPayout": 60000,
+      "day1": -10000,
+      "day2": 30000,
+      "correct": -10000,
+      "duplicate": 2000,
+      "overstatement": 12000,
+      "receiptBoundaries": [
+        0,
+        12000,
+        20000
+      ]
+    },
+    "productBlocks": [
+      {
+        "route": "grafik-platezhey-bitrix24",
+        "version": "0.4.4",
+        "saveUnavailable": true,
+        "faqMatches": true
+      },
+      {
+        "route": "chastichnaya-oplata-bitrix24",
+        "version": "0.4.4",
+        "saveUnavailable": true,
+        "faqMatches": true
+      },
+      {
+        "route": "debitorskaya-zadolzhennost-bitrix24",
+        "version": "0.4.4",
+        "saveUnavailable": true,
+        "faqMatches": true
+      },
+      {
+        "route": "platezhnyy-kalendar-bitrix24",
+        "version": "0.4.4",
+        "saveUnavailable": true,
+        "faqMatches": true
+      }
+    ],
+    "browser": {
+      "viewports": [
+        {
+          "h1Align": "left",
+          "heroHeight": 1000,
+          "left": 310.125,
+          "metaAlign": "left",
+          "overflow": false,
+          "right": 310.125,
+          "width": 1440
+        },
+        {
+          "h1Align": "center",
+          "heroHeight": 1035.3984375,
+          "metaAlign": "center",
+          "overflow": false,
+          "width": 390
+        },
+        {
+          "h1Align": "center",
+          "metaAlign": "center",
+          "overflow": false,
+          "width": 768
+        },
+        {
+          "h1Align": "left",
+          "left": -11898.6640625,
+          "metaAlign": "left",
+          "overflow": false,
+          "right": -11898.6640625,
+          "width": 769
+        }
+      ],
+      "consoleErrors": [],
+      "tableKeyboard": {
+        "client": 354,
+        "left": 40,
+        "pageOverflow": false,
+        "total": 640
+      },
+      "faq": {
+        "focused": true,
+        "open": true
+      },
+      "sources": {
+        "focused": true,
+        "links": 6,
+        "open": true
+      },
+      "closedByDefault": {
+        "openFAQ": 0,
+        "sourcesOpen": false
+      }
+    },
+    "links": "Оба новых якоря существуют в сборке; XLSX HTTP 200 и совпадает с неизменным файлом 076",
+    "backlog": {
+      "changedCells": 20,
+      "unrelatedValuesFormulasStylesPreserved": true,
+      "nativeExcelOpened": false
+    }
+  },
+  "independentReview": {
+    "reviewer": "/root/review_product_tails_069",
+    "result": "PASS",
+    "remainingFindings": [],
+    "scope": "Шесть первоисточников, свежий статус приложения, все четыре source/HTML и просмотренные PNG; reviewer не запускал тесты/CUA/приложение и не менял файлы"
+  },
+  "sources": [
+    "https://helpdesk.bitrix24.ru/open/25376268/",
+    "https://helpdesk.bitrix24.ru/open/24853428/",
+    "https://v8.1c.ru/metod/article/platezhnyy-kalendar-chtoby-izbezhat-kassovogo-razryva-i-sokhranit-platezhesposobnost.htm",
+    "https://v8.1c.ru/news/planiruyte-dengi-biznesa-s-platezhnym-kalendarem.htm",
+    "https://v8.1c.ru/erp/treasury/",
+    "https://www.bitrix24.ru/apps/app/gorillas.app5/",
+    "/Users/ivan/projects/bitrix_payment_schedule/README.md",
+    "/Users/ivan/projects/bitrix_payment_schedule/docs/progress.md"
+  ],
+  "publicationDependency": "Выпускать четыре подготовленных обновления 076–079 вместе: ссылки используют новые якоря шаблона 076 и распределения 077. Финальные 0.4.4-блоки всех четырёх страниц входят в 079. Push/deploy сайта не выполнялись.",
+  "next": "После разрешения опубликовать пакет и проверить live. GSC/индексацию проверять отдельно. SEO-052 остаётся NO_PAGE до подтверждённого рабочего MVP.",
+  "boundaries": [
+    "Новая версия сайта не опубликована",
+    "Приложение и CRM не изменялись",
+    "GSC, позиции и индексация не проверялись",
+    "XLSX 076 не изменён; история протоколов 076–078 сохранена"
+  ],
+  "files": {
+    "src/pages/platezhnyy-kalendar-bitrix24/index.astro": "52eb236542d6c3a9a128ce1224a8e1e8d36e66fc7b176f793b1d717bcd227e0b",
+    "src/config/articles.ts": "d81f1065359bdffe8294e4b81a792cc96c98b3fc7b23e3e5a7bc4af28b0f10d1",
+    "src/pages/grafik-platezhey-bitrix24/index.astro": "b540ad28a54cdba61f7f56571ba5d613daf389a13a9e19349714172bc8bb75c0",
+    "src/pages/chastichnaya-oplata-bitrix24/index.astro": "4f2565aff5655c358a75c273edb28b552a6222d2d4618a22674a13edf1b5c57a",
+    "src/pages/debitorskaya-zadolzhennost-bitrix24/index.astro": "22639676388f655a7709833423f3c7cc7b12b51f6ab18601edd681a847bb601b"
+  }
+}

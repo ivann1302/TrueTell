@@ -1,0 +1,152 @@
+{
+  "date": "2026-10-15",
+  "request": "Увеличить иконки, выровнять отступы и сократить второстепенный текст в каталоге и на страницах продуктов TrueTell",
+  "status": "published_files_verified_responsive_checked_locally",
+  "catalog": "https://truetell-retail.ru/products/",
+  "releaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792083753-icon-spacing",
+  "baseReleaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792083268-67",
+  "scope": [
+    "bitrix24-cleaner/index.html",
+    "bitrix24-field-directory/index.html",
+    "bitrix24-product-rating/index.html",
+    "moysklad-arhivirovanie/index.html",
+    "moysklad-import/index.html",
+    "moysklad-izmenenie-cen/index.html",
+    "moysklad-izmenenie-dokumentov/index.html",
+    "moysklad-izmenenie-tovarov/index.html",
+    "moysklad-mass-operations/index.html",
+    "moysklad-udalenie/index.html",
+    "products/index.html"
+  ],
+  "design": {
+    "inlineProductIconPixels": 32,
+    "iconTextGapPixels": 20,
+    "descriptionIndentPixels": 52,
+    "catalogArrowPixels": 24,
+    "catalogActionGapPixels": 16,
+    "standaloneWorkflowIconsPixels": [
+      40,
+      48
+    ],
+    "featureDescriptions": {
+      "count": 18,
+      "beforeCharacters": 2529,
+      "afterCharacters": 987
+    },
+    "newLiteralReplacementsOverBase67": {
+      "directory": 8,
+      "catalog": 5
+    },
+    "ratingDescriptionsAlreadyPresentInBase67": 10
+  },
+  "sourceFilesInitialTaskHashes": {
+    "src/components/product-scenario/action-icon.module.scss": "c66d77e2044258aebc3566d6325f711055700fb4d311f75298dc6739c34474ae",
+    "src/components/product-scenario/product-scenario.module.scss": "fa16d081e9a30c1f0ea8f94dfc0b7d29e31e20db94980cecac7c1dd6e442a11c",
+    "src/styles/product-panels.module.scss": "f1a92d69775e9e0659036656d159147655234d594b74bda69eff9a7ccd3d9244",
+    "src/pages/moysklad-mass-operations/page.module.scss": "d77731cce5b22bb202fd387a9e934f4fe2b29d6f34085a99cc7c447792fa55db",
+    "src/pages/bitrix24-field-directory/index.astro": "12da5dca5005baabb448328099fc68ed8c3f3c2afa186966b564c2d4828e78e1",
+    "src/pages/bitrix24-product-rating/index.astro": "7497d02388767e33907cd28b6ed87726da0b997596a7259f878e2c0e98212cd9",
+    "src/config/products.ts": "d591dc4b42185c35726394be78f665744a7e6769b9d8778de7d9c9ba52f37468",
+    "src/sections/product-catalog-section/product-catalog-section.astro": "e399c250a20bb60d5e5cee7b97130d8772b54c27355516499a0289990424b43c",
+    "src/sections/product-catalog-section/product-catalog-section.module.scss": "65ff8ed741f583cf8d28db9243c0f42cfca3b703424e28d1068fd150e4bfde6b",
+    "DESIGN_SYSTEM.md": "fcab812cb79fb26703b2626bf8e76b44c1ca0f1c664e873c9ae4aa51b1f96d88"
+  },
+  "sourceFilesObservedAfterPublication": {
+    "src/components/product-scenario/action-icon.module.scss": "c66d77e2044258aebc3566d6325f711055700fb4d311f75298dc6739c34474ae",
+    "src/components/product-scenario/product-scenario.module.scss": "fa16d081e9a30c1f0ea8f94dfc0b7d29e31e20db94980cecac7c1dd6e442a11c",
+    "src/styles/product-panels.module.scss": "f1a92d69775e9e0659036656d159147655234d594b74bda69eff9a7ccd3d9244",
+    "src/pages/moysklad-mass-operations/page.module.scss": "d77731cce5b22bb202fd387a9e934f4fe2b29d6f34085a99cc7c447792fa55db",
+    "src/pages/bitrix24-field-directory/index.astro": "12da5dca5005baabb448328099fc68ed8c3f3c2afa186966b564c2d4828e78e1",
+    "src/pages/bitrix24-product-rating/index.astro": "0cfac369691e70a1cd598bad42728c826624330deac304e1a64af700e85a0200",
+    "src/config/products.ts": "d591dc4b42185c35726394be78f665744a7e6769b9d8778de7d9c9ba52f37468",
+    "src/sections/product-catalog-section/product-catalog-section.astro": "e399c250a20bb60d5e5cee7b97130d8772b54c27355516499a0289990424b43c",
+    "src/sections/product-catalog-section/product-catalog-section.module.scss": "65ff8ed741f583cf8d28db9243c0f42cfca3b703424e28d1068fd150e4bfde6b",
+    "DESIGN_SYSTEM.md": "fcab812cb79fb26703b2626bf8e76b44c1ca0f1c664e873c9ae4aa51b1f96d88"
+  },
+  "concurrentWork": {
+    "firstAttemptStoppedBeforeChanges": true,
+    "rebasedOnRelease": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792083268-67",
+    "ratingSourceAndLiveAdditionsPreserved": true,
+    "ratingHtmlBytesUnchangedExceptScopedStyle": true,
+    "unrelatedDirtySourceNotPublished": true
+  },
+  "checks": {
+    "isolatedBuild": {
+      "passed": true,
+      "pages": 62,
+      "sitemapUrls": 58
+    },
+    "nodeTests": {
+      "passed": 77,
+      "failed": 0
+    },
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 3
+    },
+    "indexnowCheck": {
+      "passed": true,
+      "urls": 58,
+      "submitted": false
+    },
+    "diffCheck": true,
+    "responsive": {
+      "routes": 11,
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "views": 44,
+      "horizontalOverflow": 0,
+      "croppedFeatureText": 0
+    },
+    "isolatedCache": "Local-only Vite cacheDir used after shared node_modules cache permission error; owner project configuration unchanged",
+    "published": {
+      "verifiedAt": "2026-10-15T17:08:34.366527+00:00",
+      "releaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792083753-icon-spacing",
+      "currentReleaseMatched": true,
+      "originHtmlHashesMatched": 11,
+      "backendDiffEmpty": true,
+      "sitemapIdentical": true,
+      "activationPublicHttpAndShaChecks": 10,
+      "publicReleaseDescriptorShaMatched": true,
+      "catalogVerification": "Exact local package browser QA plus activated hosting file SHA; no public catalog HTTP/browser request after browser policy restriction",
+      "activationLogSha256": "6639f7dc79edc33da10d4717ec4c1e50ed7cf35daf571fdace02ec49082750e6"
+    }
+  },
+  "review": {
+    "reviewer": "/root/review_field_product",
+    "verdict": "APPROVE",
+    "critical": 0,
+    "important": 0,
+    "minor": 0,
+    "scope": "Read-only review of source, rebased exact payload, screenshots, 44 responsive views, checks and activation script"
+  },
+  "deployment": {
+    "method": "Production HTML literal substitutions and one narrowly scoped override matching source style changes; existing scripts/classes/markup/assets preserved",
+    "atomicReleaseActivation": true,
+    "changedHtmlFiles": 11,
+    "otherChangedPublicFiles": [
+      "release.json"
+    ],
+    "archiveSha256": "8d93cef3a64a898ea57a27b086bb85d9fb21cea2acfc837382167ec7b34af0a9",
+    "activationSha256": "9f1bb1be287fffc121693e7e22619b3fc6489de19940aa666d597d5f77967e04",
+    "rollbackTarget": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792083268-67",
+    "backendDiffEmpty": true,
+    "sitemapIdentical": true
+  },
+  "proofScreenshotsLocalPackage": [
+    "/Users/ivan/Documents/Codex/2026-10-12/24-crm-csv-sdk-rest-api/outputs/truetell-icons-desktop.jpg",
+    "/Users/ivan/Documents/Codex/2026-10-12/24-crm-csv-sdk-rest-api/outputs/truetell-icons-mobile.jpg",
+    "/Users/ivan/Documents/Codex/2026-10-12/24-crm-csv-sdk-rest-api/outputs/truetell-icons-catalog-desktop.jpg",
+    "/Users/ivan/Documents/Codex/2026-10-12/24-crm-csv-sdk-rest-api/outputs/truetell-icons-catalog-mobile.jpg"
+  ],
+  "evidenceDirectory": "/Users/ivan/Documents/Codex/2026-10-12/24-crm-csv-sdk-rest-api/work/truetell-icon-spacing",
+  "limits": [
+    "Public catalog browser access was rejected by browser policy; no workaround used. Catalog checked in exact local package and by activated hosting file SHA, without claiming a public browser recheck.",
+    "No Bitrix24 app, CRM data, SDK, API integration or mobile app change in this website task.",
+    "Source changes left unstaged; no unrelated owner changes committed or reverted."
+  ]
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="820" viewBox="0 0 1000 820">
+<g font-family="Arial,Helvetica,sans-serif" fill="#10131A">
+<text x="48" y="56" font-size="34" fill="#616875">Учебный пример: статус доставки</text>
+<path d="M48 92H952" stroke="#D3D7DE" stroke-width="2"/>
+<text x="48" y="158" font-size="38" fill="#616875">Источник ERP</text>
+<text x="484" y="158" font-size="38" fill="#616875">Поле CRM: список</text>
+<text x="48" y="256" font-family="Menlo,DejaVu Sans Mono,monospace" font-size="48">ready</text>
+<text x="484" y="244" font-size="44">Готов к</text>
+<text x="484" y="296" font-size="44">отгрузке</text>
+<text x="484" y="352" font-size="34" fill="#1765DA">Учебный ID: 17</text>
+<path d="M48 397H952" stroke="#D3D7DE" stroke-width="2"/>
+<text x="48" y="488" font-family="Menlo,DejaVu Sans Mono,monospace" font-size="48">shipped</text>
+<text x="484" y="488" font-size="44">Отгружен</text>
+<text x="484" y="548" font-size="34" fill="#1765DA">Учебный ID: 23</text>
+<path d="M48 598H952" stroke="#D3D7DE" stroke-width="2"/>
+<text x="48" y="665" font-size="36">Это правило для поля «Статус доставки».</text>
+<text x="48" y="728" font-size="32" fill="#616875">Код поля и реальные ID вариантов</text>
+<text x="48" y="774" font-size="32" fill="#616875">проверяют отдельно на нужном портале.</text>
+</g></svg>

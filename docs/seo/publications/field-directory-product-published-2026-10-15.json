@@ -1,0 +1,137 @@
+{
+  "date": "2026-10-15",
+  "request": "Создать страницу приложения «Справочник полей CRM» на TrueTell со скриншотами и описанием функций, добавить в каталог",
+  "status": "live_verified",
+  "url": "https://truetell-retail.ru/bitrix24-field-directory/",
+  "catalog": "https://truetell-retail.ru/products/",
+  "releaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792081782-field-directory",
+  "baseReleaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792069260-66",
+  "appVersionForClaims": "1.0.2",
+  "referencesReviewed": [
+    "/bitrix24-product-rating/",
+    "/bitrix24-cleaner/",
+    "/products/"
+  ],
+  "design": "Existing product hero, ProductSummary, ProductScenario, ArticleFigure, features, FAQ, connection and SiteFooter hideDivider; no new visual system or client island",
+  "sourceFiles": {
+    "src/config/products.ts": "389788bae45bbe34b32f05f32e323ff61c7f81bfd5caccdb9908f6e5b19b20b6",
+    "src/sections/product-catalog-section/product-catalog-section.astro": "056949ff48d5411f9e841bf775ad14a2f87e749615bac28752d0040faa3f5be9",
+    "scripts/home-products.test.mjs": "8586fb0f5e5695e7e763c97d96651f718c829478eb56a4e11e4d88e066e0ae70",
+    "src/pages/bitrix24-field-directory/index.astro": "775cdbf9e5d6f00a08fe67f2db033e05d7a6ec0bdbe4f7e6bd14666b93520f87",
+    "src/pages/bitrix24-field-directory/page.module.scss": "16e417c3ec2780ebaccea841f20ec58797f8f1dde206428af89ab19de90a4c77"
+  },
+  "screenshots": [
+    {
+      "path": "src/images/articles/truetell-field-directory-list-live.jpg",
+      "source": "Actual installed test portal app22,14.10.2026; prior evidence field-list-prepared-056-2026-10-14.json",
+      "sha256": "16af31f03c262e889c33e8b50a7ac72795cb80b47e85a4d87a5163ff3ac9363b"
+    },
+    {
+      "path": "src/images/articles/truetell-field-directory-code-search-live.jpg",
+      "source": "Actual installed test portal app22; existing published field-code article asset; inspected before reuse",
+      "sha256": "6c744f653036bd892494362ae51a7b1f058012c9c50d94c0aa66681f6d9b34a1"
+    }
+  ],
+  "technicalEvidence": {
+    "officialMCP": "crm.item.fields params/returns verified2026-10-15:entityTypeId,useOriginalUfNamesY/N,fields metadata",
+    "source": "/Users/ivan/projects/bitrix_crm_field_directory/src",
+    "boundary": "Product capabilities verified from app1.0.2 source and prior portal evidence; no new CRM data operation in this website task"
+  },
+  "checks": {
+    "build": {
+      "passed": true,
+      "pages": 62,
+      "sitemapUrls": 58
+    },
+    "nodeTests": {
+      "passed": 77,
+      "failed": 0
+    },
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 3
+    },
+    "indexnowCheck": {
+      "passed": true,
+      "urls": 58,
+      "submitted": false
+    },
+    "diffCheck": true,
+    "localWidths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "localOverflow": false,
+    "publicResponsive": {
+      "measurements": [
+        {
+          "h1": "center",
+          "heroHeight": 900,
+          "overflow": false,
+          "width": 390
+        },
+        {
+          "h1": "center",
+          "heroHeight": 900,
+          "overflow": false,
+          "width": 768
+        },
+        {
+          "h1": "center",
+          "heroHeight": 900,
+          "overflow": false,
+          "width": 1440
+        }
+      ],
+      "faqKeyboard": true,
+      "contactOpenedWithoutSubmission": true
+    },
+    "publicAssets": {
+      "http200AndHashMatched": 20,
+      "verifiedAt": "2026-10-15T16:33:33.777579+00:00",
+      "allHashesMatch": true
+    },
+    "bothPublicImagesLoaded": true,
+    "publicCanonical": "https://truetell-retail.ru/bitrix24-field-directory/",
+    "oneH1": true,
+    "catalogNavigation": "Exact payload browser click plus byte-identical published catalog HTTP200",
+    "contact": "Production scriptDqtxP574 retained; dialog opened and closed in exact local payload and actual public page; no form submission",
+    "initialFailureFixed": "schema-images test detected missing Organization.logo; added shared createOrganizationLogo; final77/77"
+  },
+  "review": {
+    "reviewer": "/root/review_field_product",
+    "pageVerdict": "APPROVE",
+    "overlayVerdict": "APPROVE",
+    "critical": 0,
+    "important": 0,
+    "minor": 0,
+    "scope": "Independent read-only source, actual app, screenshots, compiled HTML, all17 payload hashes and activation plan; reviewer did not execute deploy"
+  },
+  "deployment": {
+    "method": "Clone current full release, replace only allowlisted static payload, atomic symlink activation, automatic rollback on failed public SHA verification",
+    "payloadFiles": 17,
+    "publicDiff": [
+      "new bitrix24-field-directory/index.html",
+      "products/index.html",
+      "sitemap.xml",
+      "release.json"
+    ],
+    "existingAssetsIdentical": 14,
+    "backendDiffEmpty": true,
+    "previousFourCatalogCardsIdentical": true,
+    "dialogMarkupIdentical": true,
+    "archiveSha256": "01a4c2540c30209fd16769299638172df7fc7b2f6ea007191f260e5b10519b0d",
+    "rollbackTarget": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792069260-66",
+    "unrelatedWorkingTreeChangesNotPublished": true
+  },
+  "evidenceDirectory": "/Users/ivan/Documents/Codex/2026-10-12/24-crm-csv-sdk-rest-api/work/truetell-field-product",
+  "proofScreenshot": "/Users/ivan/Documents/Codex/2026-10-12/24-crm-csv-sdk-rest-api/outputs/truetell-fields-page-live.jpg",
+  "limits": [
+    "Public Market install unavailable; connection CTA opens TrueTell consultation dialog",
+    "Bitrix24Mobile support not claimed",
+    "No form submission, current-user CRM-rights retest or search indexation verification in this website task",
+    "Source changes retained without staging or committing unrelated dirty files; exact task file hashes recorded"
+  ]
+}

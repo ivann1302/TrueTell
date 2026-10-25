@@ -1,0 +1,358 @@
+{
+  "release": "087",
+  "date": "2026-10-23",
+  "taskId": "SEO-067",
+  "ownerDecision": "Следующая тема общего бэклога",
+  "action": "CREATE",
+  "articleType": "blog",
+  "route": "/abc-xyz-analiz-tovarov/",
+  "title": "ABC/XYZ-анализ товаров: расчёт, матрица и решения",
+  "status": "local_QA_passed",
+  "registryStatus": "draft",
+  "deployed": false,
+  "indexingChecked": false,
+  "datePublished": null,
+  "applicationChanged": false,
+  "clientPortalUsed": false,
+  "articleSource": "/Users/ivan/projects/TrueTell/src/pages/abc-xyz-analiz-tovarov/index.astro",
+  "articleSha256": "638506d505262ca434f29ed4e9495a2c48a19778bb8f43cac38eacdbaf7884ad",
+  "localPreview": "http://127.0.0.1:4329/abc-xyz-analiz-tovarov/",
+  "intent": {
+    "primary": "Воспроизводимо рассчитать ABC/XYZ и интерпретировать группы перед решением по ассортименту.",
+    "existingCoverageChecked": [
+      "Рейтинг продаж — продукт, не методический расчёт",
+      "Остатки МойСклад — наличие/неликвид, не ABC/XYZ",
+      "Отчёты МойСклад и продажи Битрикс24 — выбор отчёта, не самостоятельный расчёт матрицы"
+    ],
+    "supportingNoPage": [
+      "ABC-анализ товаров: H2 той же статьи, без нового URL",
+      "XYZ в Битрикс24: честные ограничения продукта, без выдуманной посадочной"
+    ],
+    "fanout": [
+      "Что сравнивают ABC и XYZ?",
+      "Как выбрать метрику и период?",
+      "Куда относится товар, пересекающий порог?",
+      "Как посчитать population CV в Excel?",
+      "Что делать с нулями и отсутствующими данными?",
+      "Как прочитать AX–CZ и что проверить перед действием?",
+      "Что есть в Рейтинге продаж, а чего нет?"
+    ],
+    "internalLinks": [
+      "/bitrix24-product-rating/",
+      "/ostatki-moysklad/",
+      "/otchety-moysklad/"
+    ],
+    "futureIncoming": "После публикации автоматически появится в blog и ProductArticles Рейтинга продаж через relatedProduct."
+  },
+  "keywordEvidence": {
+    "sourceRelease": "079/080",
+    "sourceNote": "№080: ПРОВЕРЕНО в Wordstat 22.10.2026, Россия (225), все устройства. «abc xyz анализ»: без кавычек 2380 за 08.09.2026–07.10.2026; в кавычках 353 за 08.09.2026–07.10.2026. СЧ 100–3 000 — рабочая граница для широкой частотности. Это запросы, не люди и не прогноз трафика; частоты не складываются. Wordstat предупреждал о временной недоступности части данных. Источник: TrueTell_Wordstat_079_2026-10-22.xlsx, лист «Темы статей». https://wordstat.yandex.ru/?region=225&view=table&words=abc%20xyz%20анализ ; https://wordstat.yandex.ru/?region=225&view=table&words=\"abc%20xyz%20анализ\"",
+    "newWordstatMeasurement": false,
+    "limits": "Исторические запросы Wordstat, Россия/все устройства; широкие и кавычечные значения не складываются и не равны людям/лидам/прогнозу."
+  },
+  "numericalVerification": {
+    "result": "PASS",
+    "items": 8,
+    "intervals": 6,
+    "totalAmount": 159400,
+    "units": "шт.",
+    "currency": "RUB",
+    "abcMetric": "Постоянная цена × количество, положительные суммы; без налогов/возвратов в учебном примере.",
+    "xyzMetric": "Количество по месяцам, population std n=6; пороги10/25% только пример.",
+    "abcBoundary": "По накопленной доле до строки; T03=A при80,55% после строки; T06=B при97,49%.",
+    "classes": [
+      "AX",
+      "AY",
+      "AZ",
+      "BX",
+      "BY",
+      "BZ",
+      "CX",
+      "CZ"
+    ],
+    "independentMethods": [
+      "Авторский расчет math sqrt",
+      "Повторная сверка statistics.pstdev",
+      "Независимый statistics.pstdev ревьюера",
+      "Сопоставление числовых HTML-таблиц и JSON/CSV"
+    ],
+    "examplesNotClientData": true
+  },
+  "productEvidence": {
+    "project": "/Users/ivan/projects/bitrix_product_rating",
+    "sources": [
+      "docs/product.md:158–227",
+      "app/Domain/Analytics/AbcClassifier.php",
+      "resources/js/analytics/domain.ts:117–130",
+      "resources/js/export/reportExport.ts"
+    ],
+    "confirmed": "ABC, товары/клиенты, динамика, экспорт и детализация сделок.",
+    "notClaimed": "XYZ, остатки, закупки, маржа, бухгалтерская выручка, прогнозы.",
+    "screenshot": "src/images/products/product-rating/rating-products-2026-10.png; подлинная тестовая выборка, отличается от8SKU примера; исходник просмотрен, не изменён."
+  },
+  "sources": [
+    {
+      "url": "https://help.sap.com/docs/SAP_SUPPLY_CHAIN_MANAGEMENT/5632d7cbffa04b21be22106e9a212038/4d33d92edb9e00d3e10000000a42189b.html",
+      "checked": "2026-10-23",
+      "method": "Official documentation/search text, independent reviewer"
+    },
+    {
+      "url": "https://help.sap.com/docs/SAP_S4HANA_CLOUD/2bba750d1e124e1ea2a039bb1cd9b6c5/715c9c1479234351a27c9c01fce32cec.html",
+      "checked": "2026-10-23",
+      "method": "CUA after client rendering: full Russian text, threshold examples25/50%, seasonality. Web text parser returned0lines, not treated as missing content."
+    },
+    {
+      "url": "https://www.itl.nist.gov/div898/software/dataplot/refman2/auxillar/coefvari.htm",
+      "checked": "2026-10-23",
+      "method": "Official NIST documentation"
+    },
+    {
+      "url": "https://support.microsoft.com/en-us/excel/functions/stdev-p-function",
+      "checked": "2026-10-23",
+      "method": "Official Microsoft documentation"
+    },
+    {
+      "url": "https://support.microsoft.com/en-us/excel/functions/stdev-s-function",
+      "checked": "2026-10-23",
+      "method": "Official Microsoft documentation"
+    }
+  ],
+  "images": {
+    "newCharts": [
+      {
+        "name": "abc-pareto-example-087.png",
+        "width": 1100,
+        "height": 800,
+        "hasAlpha": true,
+        "transparentPixels": 762704,
+        "opaquePixels": 97000
+      },
+      {
+        "name": "abc-xyz-matrix-example-087.png",
+        "width": 1100,
+        "height": 900,
+        "hasAlpha": true,
+        "transparentPixels": 952627,
+        "opaquePixels": 14949
+      }
+    ],
+    "method": "Matplotlib in isolated temporary environment; figures derived from example.json, exported PNG/SVG, transparent background. No site dependencies added.",
+    "existingAuthenticScreenshot": true,
+    "fullSizeCount": 3
+  },
+  "verification": {
+    "build": "PASS,67routes",
+    "lint": "PASS,0errors;3existingReactwarnings",
+    "tests": "87/87PASS",
+    "indexnow": "--check58URLs,no submission",
+    "html": {
+      "result": "PASS",
+      "canonical": "https://truetell-retail.ru/abc-xyz-analiz-tovarov/",
+      "registryStatus": "draft",
+      "robots": "noindex, nofollow",
+      "datesOmitted": true,
+      "articleType": "blog",
+      "draftExcludedFromSitemapAndCatalogs": true,
+      "mainH1": 1,
+      "faqItems": 8,
+      "faqMatchesSchema": true,
+      "sourcesClosed": true,
+      "sourceCount": 5,
+      "figures": [
+        {
+          "src": "/_astro/abc-pareto-example-087.T8RS0DPZ_2hLxRJ.webp",
+          "width": 1100,
+          "height": 800,
+          "hasAlpha": true
+        },
+        {
+          "src": "/_astro/abc-xyz-matrix-example-087.CEQHgwsC_Zqf6IG.webp",
+          "width": 1100,
+          "height": 900,
+          "hasAlpha": true
+        },
+        {
+          "src": "/_astro/rating-products-2026-10.Dok6RcAr_Z1jLfCK.webp",
+          "width": 1440,
+          "height": 1000,
+          "hasAlpha": false
+        }
+      ],
+      "fullSizeFigures": 3,
+      "csv": [
+        {
+          "name": "abc-xyz-example-087.csv",
+          "bytes": 295,
+          "sha256": "ece9c548bf9ee73c4e7b423b8618f81b25c1220f5de277b8695f2863ccabc38e"
+        },
+        {
+          "name": "abc-xyz-results-087.csv",
+          "bytes": 686,
+          "sha256": "118704cf8fcccd896fe34a7a2849610d78fbfd047882177305bd281293a04501"
+        }
+      ],
+      "ownProductCtas": 2,
+      "internalPathsChecked": 13,
+      "allThreeNumericTablesMatchExample": true,
+      "decisionsCoverNineCells": true,
+      "registryOtherEntriesPreserved": true
+    },
+    "browserLayout": [
+      {
+        "route": "abc-xyz-analiz-tovarov",
+        "width": 390,
+        "height": 640,
+        "scrollWidth": 390,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 136,
+        "introTop": 377.96875,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 356,
+            "src": "http://127.0.0.1:4366/_astro/abc-pareto-example-087.T8RS0DPZ_Z1pNtJl.webp"
+          },
+          {
+            "loaded": true,
+            "width": 356,
+            "src": "http://127.0.0.1:4366/_astro/abc-xyz-matrix-example-087.CEQHgwsC_2nObCK.webp"
+          },
+          {
+            "loaded": true,
+            "width": 356,
+            "src": "http://127.0.0.1:4366/_astro/rating-products-2026-10.Dok6RcAr_1oK9Y4.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "abc-xyz-analiz-tovarov",
+        "width": 768,
+        "height": 640,
+        "scrollWidth": 768,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 136,
+        "introTop": 309.234375,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 734,
+            "src": "http://127.0.0.1:4366/_astro/abc-pareto-example-087.T8RS0DPZ_2hLxRJ.webp"
+          },
+          {
+            "loaded": true,
+            "width": 734,
+            "src": "http://127.0.0.1:4366/_astro/abc-xyz-matrix-example-087.CEQHgwsC_Zqf6IG.webp"
+          },
+          {
+            "loaded": true,
+            "width": 734,
+            "src": "http://127.0.0.1:4366/_astro/rating-products-2026-10.Dok6RcAr_TpAyA.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "abc-xyz-analiz-tovarov",
+        "width": 769,
+        "height": 640,
+        "scrollWidth": 769,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 184,
+        "introTop": 184,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 703,
+            "src": "http://127.0.0.1:4366/_astro/abc-pareto-example-087.T8RS0DPZ_2hLxRJ.webp"
+          },
+          {
+            "loaded": true,
+            "width": 703,
+            "src": "http://127.0.0.1:4366/_astro/abc-xyz-matrix-example-087.CEQHgwsC_Zqf6IG.webp"
+          },
+          {
+            "loaded": true,
+            "width": 703,
+            "src": "http://127.0.0.1:4366/_astro/rating-products-2026-10.Dok6RcAr_TpAyA.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "abc-xyz-analiz-tovarov",
+        "width": 1440,
+        "height": 640,
+        "scrollWidth": 1440,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 184,
+        "introTop": 184,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 878,
+            "src": "http://127.0.0.1:4366/_astro/abc-pareto-example-087.T8RS0DPZ_2hLxRJ.webp"
+          },
+          {
+            "loaded": true,
+            "width": 878,
+            "src": "http://127.0.0.1:4366/_astro/abc-xyz-matrix-example-087.CEQHgwsC_Zqf6IG.webp"
+          },
+          {
+            "loaded": true,
+            "width": 878,
+            "src": "http://127.0.0.1:4366/_astro/rating-products-2026-10.Dok6RcAr_TpAyA.webp"
+          }
+        ],
+        "sourcesClosed": true
+      }
+    ],
+    "interactions": {
+      "faqKeyboardOpen": true,
+      "faqKeyboardClosed": true,
+      "sourcesKeyboardOpen": true,
+      "sourcesKeyboardClosed": true,
+      "productPageOpened": true,
+      "productHasMarketplaceLink": true
+    },
+    "browserMethod": "CUA, same-origin iframe widths390/768/769/1440 x640; desktop display scale.85. Real4329 preview: FAQ/sources keyboard, CTA opened actual product page with Market link. CSV bytes/structure verified in dist; no Excel UI import performed.",
+    "backlog": {
+      "result": "PASS",
+      "tasks": 75,
+      "unchangedTasks": 74,
+      "updatedTasks": [
+        "SEO-067"
+      ],
+      "sheets": 7,
+      "changedCells": 16,
+      "priorJournalRowsPreserved": 119,
+      "newJournalRows": 1,
+      "allPublicationAndModificationDatesPreserved": true,
+      "unrelatedValuesFormulasStylesPreserved": true,
+      "nativeFeaturesPreserved": true,
+      "nativeExcelOpened": false,
+      "sha256": "3e509d5c5a0e4febe0d3ab58775312ab30c9aff80bbc81766c7825e870cc95e1"
+    }
+  },
+  "independentReview": {
+    "reviewer": "/root/review_abcxyz_087",
+    "result": "PASS",
+    "openP1P2": 0,
+    "closedFindings": [
+      "P2: ссылка на XYZ заменена на официальный Cloud вариант и проверена в отрисованном браузере.",
+      "P3: добавлена Microsoft STDEV.S как источник различия n/n−1.",
+      "P3: добавлены буквы ABC над столбцами Парето; поправлены отступы и клиппинг оси."
+    ],
+    "scope": "Первоисточники, фактические возможности продукта, полная статья, независимый пересчёт, исходные изображения, metadata/schema/distCSV.",
+    "limits": "Ревьюер не запускал приложение/CRM; browserQA и Excel preservation выполнены автором; публикация/индексация не выполнялись."
+  },
+  "next": "SEO-068: оборачиваемость запасов — формула и пример. До создания проверить самостоятельность относительно /ostatki-moysklad/. Подготовленные MCP074/075 и gate Claude076 сохранены."
+}

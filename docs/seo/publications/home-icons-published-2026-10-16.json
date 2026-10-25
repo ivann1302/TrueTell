@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-16",
+  "request": "Привести главную к общему стилю: крупнее иконки, ровные отступы и меньше второстепенного текста",
+  "url": "https://truetell-retail.ru/",
+  "status": "published_hash_verified_responsive_checked_locally",
+  "releaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792134806-home-icons",
+  "baseReleaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792083753-icon-spacing",
+  "sourceFiles": {
+    "src/pages/index.astro": {
+      "before": "e17a1194f040d3d04ebe702c7fc016aea8fee5c036342e932307a3dd40cd9bfc",
+      "after": "0e99f6b3bf7041efbd0e61787b65b993c851659ebab2138e219b9a94d9ab78ab"
+    },
+    "src/sections/product-choice-section/product-choice-data.ts": {
+      "before": "d61063e7ef6254a1bfe53a67c42ca9932e54b0caacf9d4529115343bb17bcd8a",
+      "after": "f251c1a04113b040a5d71a41e1d5a19d534dae6538f393ba123df2cfe21b22da"
+    },
+    "src/sections/product-choice-section/product-choice-section.module.scss": {
+      "before": "66e0637389ef3ccf16a174bcc335315f03612a9731d88f5c11549e7fa3304640",
+      "after": "5741360905c4aca97fffd08c45959c81b4bed02c8e563d8bf5869ca941929b3b"
+    },
+    "src/sections/product-showcase-section/product-showcase-section.astro": {
+      "before": "663f4fef6ad82fb036550cb0b63889353d9dee9730e69d3344d5e54e7cce6e9f",
+      "after": "6badd2ab6beec747815145c08c32126f25502f2408cda42931d6311f48adb3fd"
+    },
+    "src/sections/product-showcase-section/product-showcase-section.module.scss": {
+      "before": "ea8eca9ffd672f1263bdce1dc2b8b309d3a974ed3130f8e1b43d7597b6b785ef",
+      "after": "bd5266584ebc6612ba62f51020f1433a233b0d3290dea96b9f66c1cd6f2f68f5"
+    },
+    "src/sections/integrations-section/integrations-section.astro": {
+      "before": "30c65d8fde4da2ea97969964d68e23c746c038fd60297895eecac66f0f1249ae",
+      "after": "b036127e844c68ecb5f8b1e1929379d41901bb11cc3a5177e478cbe763486cc3"
+    },
+    "src/sections/integrations-section/integrations-section.module.scss": {
+      "before": "f79d665155d048d2a8b2c31e83a6ad75b22a9cef064825579329bf7f20234946",
+      "after": "c30244e3bf934c3afaa634fefe8061a048ba97e31aab569523f18317877cb4ad"
+    },
+    "src/sections/blog-section/blog-section.astro": {
+      "before": "5d84cfdf3f8dda043880fd6e749e638ea12c51531f034425b7119967cb54ccb1",
+      "after": "b01aadd7e1c587f4837af6a0c658c3ec426872a43f61c0d0e92e9b9d48ee4844"
+    },
+    "src/sections/blog-section/blog-section.module.scss": {
+      "before": "b71704821c72730ce3d2a7353939448c5a71acede5da26934dd48de37addc9b4",
+      "after": "0bbd4d83751ef953c14abfbe6b25db15f61ec8498c7cca38d7ac607db9856366"
+    },
+    "src/sections/consultation-cta-section/consultation-cta-section.module.scss": {
+      "before": "e84518f843d5b76f967c55c3ef139c7ae10200b13293faef5ca03e9d880c7204",
+      "after": "150422d28f2449fd43f493fe2ff430ce1640f375a7f79f6d5dcaac33b5a8bde1"
+    },
+    "src/components/article-carousel/carousel-controls.module.scss": {
+      "before": "51f900b0aebbe138c44c940755bbc21ababd8fce6b011a8f59381904742013b7",
+      "after": "555c5571898f3b5e968aff2dc63de0f3ee0502cc14acc48691aaf5b6a45690cd"
+    },
+    "DESIGN_SYSTEM.md": {
+      "before": "fcab812cb79fb26703b2626bf8e76b44c1ca0f1c664e873c9ae4aa51b1f96d88",
+      "after": "bf46fa485a0810e96d7cb63099adbab1a34008322f9673283aed87f0c0d5f243"
+    }
+  },
+  "design": {
+    "appLogosPixels": 64,
+    "logoHeadingGapPixels": 20,
+    "actionArrowsPixels": 24,
+    "actionGapPixels": 16,
+    "integrationFramesDesktopMobilePixels": [
+      80,
+      72
+    ],
+    "integrationLogoLabelGapPixels": 20,
+    "copy": "Shortened hero, three directions, product cards, integrations and consultation copy; 8 teaser descriptions removed from homepage only; blog catalog retains descriptions; FAQ preserved.",
+    "mobileFix": "aspect-ratio:auto removes inherited 320px card width in 288px mobile grid; content height remains unrestricted"
+  },
+  "checks": {
+    "build": {
+      "passed": true,
+      "pages": 62,
+      "sitemapUrls": 58,
+      "scope": "Isolated source copy with local Vite cacheDir; owner configuration unchanged"
+    },
+    "nodeTests": {
+      "passed": 77,
+      "failed": 0
+    },
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 3
+    },
+    "indexnowCheck": {
+      "passed": true,
+      "urls": 58,
+      "submitted": false
+    },
+    "diffCheck": true,
+    "responsive": {
+      "widths": [
+        320,
+        390,
+        768,
+        900,
+        1050,
+        1440
+      ],
+      "horizontalOverflow": 0,
+      "clippedText": 0,
+      "allCardsAndActionsFit": true
+    },
+    "interactions": {
+      "desktopChoices": [
+        {
+          "selected": "crm",
+          "visible": [
+            "crm"
+          ]
+        },
+        {
+          "selected": "marketplaces",
+          "visible": [
+            "marketplaces"
+          ]
+        },
+        {
+          "selected": "bi",
+          "visible": [
+            "bi"
+          ]
+        }
+      ],
+      "faqKeyboardOpen": true,
+      "contactOpenedWithoutSubmission": true,
+      "mobileChoices": [
+        {
+          "actionFits": true,
+          "arrow": "24px",
+          "gap": "16px",
+          "openCount": 1,
+          "title": "Понять, где бизнес теряет деньги"
+        },
+        {
+          "actionFits": true,
+          "arrow": "24px",
+          "gap": "16px",
+          "openCount": 1,
+          "title": "Связать CRM, данные и ИИ"
+        },
+        {
+          "actionFits": true,
+          "arrow": "24px",
+          "gap": "16px",
+          "openCount": 1,
+          "title": "Убрать ручную работу с маркетплейсами"
+        }
+      ],
+      "faqClosed": true
+    },
+    "reducedMotion": "Existing CSS rules preserved and present; OS preference not toggled",
+    "published": {
+      "verifiedAt": "2026-10-16T07:24:07.032377+00:00",
+      "currentReleaseMatched": true,
+      "originHomepageShaMatched": true,
+      "publicHomepageHttpAndShaDuringActivation": true,
+      "publicReleaseDescriptorShaDuringActivation": true,
+      "backendDiffEmpty": true,
+      "sitemapIdentical": true,
+      "publicBrowserAfterDeployment": "Unavailable: reload returned browser URL-policy block with network error page; no retries or bypass. Local exact package screenshots used."
+    }
+  },
+  "review": {
+    "reviewer": "/root/review_home_icons",
+    "verdict": "APPROVE",
+    "critical": 0,
+    "important": 0,
+    "minor": 0,
+    "limits": "Independent read-only source, exact payload, hashes, archive allowlist and activation review; browser/SSH/deploy performed by primary"
+  },
+  "deployment": {
+    "method": "Clone current full release and replace only homepage HTML: explicit literal copy reductions, removal of 8 homepage blog teasers, scoped CSS matching source changes; scripts, assets, metadata, links and FAQ preserved",
+    "changedPublicFiles": [
+      "index.html",
+      "release.json"
+    ],
+    "archiveSha256": "cf0b8680085f3668e684e2b99c92d1ce4963e77b1d20d6fb8500b6c580ef4ad5",
+    "activationSha256": "603447ed3a122906d6c1837f01bc404cc8b993deedbae45b8118feb94ccaa141",
+    "rollbackTarget": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792083753-icon-spacing",
+    "atomicActivation": true,
+    "firstConnectionFailure": "SSH returned255 before stage creation; read-only state check confirmed unchanged current and absent stage, next attempt succeeded",
+    "packaging": "COPYFILE_DISABLE=1; archive asserted to contain one regular index.html; AppleDouble excluded before publication"
+  },
+  "proofScreenshotsLocalExactPackage": [
+    "/Users/ivan/Documents/Codex/2026-10-12/24-crm-csv-sdk-rest-api/outputs/truetell-home-icons-local-desktop.jpg",
+    "/Users/ivan/Documents/Codex/2026-10-12/24-crm-csv-sdk-rest-api/outputs/truetell-home-icons-local-mobile.jpg"
+  ],
+  "evidenceDirectory": "/Users/ivan/Documents/Codex/2026-10-12/24-crm-csv-sdk-rest-api/work/truetell-home-icons",
+  "limits": [
+    "Public page browser reload failed after deployment; live rendered result not claimed. Activation HTTP/SHA and subsequent origin SHA passed.",
+    "No form submission, CRM operation, backend modification or indexing claim.",
+    "Unrelated dirty owner source not published, reverted, staged or committed."
+  ]
+}

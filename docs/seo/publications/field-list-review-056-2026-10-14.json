@@ -1,0 +1,20 @@
+{
+  "release": 56,
+  "date": "2026-10-14",
+  "taskId": "SEO-061",
+  "editorialReview": {
+    "reviewer": "/root/review_field_list_056",
+    "verdict": "APPROVE local draft",
+    "openFindings": 0,
+    "fixed": "P3: native menu path corrected to include More",
+    "scope": "Independent app source, primary API docs, article and built HTML review; supplied responsive screenshots inspected. Tests and interactive browser were run by primary agent only."
+  },
+  "limits": [
+    "IAB CSV download event timed out after 12 seconds; actual file download unverified. Export scope and format checked against app source, not claimed as live download acceptance.",
+    "Native Excel/Numbers and second user were not tested.",
+    "App not changed; Market release not claimed.",
+    "Production and search indexing not checked in this task."
+  ],
+  "sourceSha256": "ad03ea3ee46189636d40bb839a5adeeb86bdccd5b6778f8a11e27ecf40add1dd",
+  "htmlSha256": "2e3832ec3c200b26579ec3a15ea9f17e3985d0094f4f88238ca4eb83104c9501"
+}

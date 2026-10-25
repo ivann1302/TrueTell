@@ -1,0 +1,395 @@
+{
+  "release": 60,
+  "date": "2026-10-14",
+  "taskId": "SEO-065",
+  "route": "/karta-sootvetstviya-poley-bitrix24/",
+  "preview": "http://127.0.0.1:4360/karta-sootvetstviya-poley-bitrix24/",
+  "status": "local_QA_passed — draft, not published",
+  "type": "blog",
+  "intent": "Agree a field mapping contract before integration: business meaning, source of truth, exact fields, directions, enum values, record links, empty/clear policies, retries and acceptance criteria.",
+  "primarySources": [
+    "https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-fields.html",
+    "https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-update.html",
+    "https://apidocs.bitrix24.ru/api-reference/crm/data-types.html",
+    "https://helpdesk.bitrix24.ru/open/22048980/",
+    "https://apidocs.bitrix24.ru/api-reference/crm/deals/user-defined-fields/crm-deal-userfield-get.html"
+  ],
+  "images": [
+    {
+      "file": "/Users/ivan/projects/TrueTell/src/images/articles/bitrix24-field-value-mapping-demo.png",
+      "kind": "Editorial infographic; SVG rasterized to PNG with alpha",
+      "source": "Fictional status mapping with explicitly illustrative values/IDs",
+      "sha256": "4746a067addb5cff8b850eb0a0f4bf6be98efc1a05f523a245cf73c9061993c5",
+      "fullSize": true
+    },
+    {
+      "file": "/Users/ivan/projects/TrueTell/src/images/articles/truetell-field-directory-filtered-live.jpg",
+      "kind": "Authentic screenshot reused",
+      "source": "Release056, app1.0.2 test portal,14.10.2026",
+      "sha256": "7d468328bc65f7770de1e6cabbc8a89d857ea8214e47e29ff2b176cdb96356c9",
+      "fullSize": true
+    }
+  ],
+  "incoming": [
+    "/spisok-poley-bitrix24/",
+    "/uf-crm-ufcrm-bitrix24-api/",
+    "/bitrix24-moysklad-integraciya/"
+  ],
+  "limits": [
+    "Reuses authentic screenshot observed in release056 on 14.10.2026; no new portal test in060.",
+    "Methodology is editorial; ERP keys and enum IDs17/23 are fictional. No integration, CRM record read/write or clearing executed.",
+    "Application unchanged; no public Market availability claimed.",
+    "No push, deployment, URL submission, production QA or fresh GSC audit."
+  ],
+  "editorialReview": {
+    "reviewer": "/root/review_field_mapping_060",
+    "verdict": "APPROVE_LOCAL_DRAFT",
+    "openFindings": 0,
+    "scope": "Independent primary-source and app-code review; installed source/registry/links and HTML parsed independently; supplied responsive screenshots and alpha artifacts inspected. Browser actions and77tests performed by primary author."
+  },
+  "backlog": "TrueTell_SEO_Backlog_060_2026-10-14.xlsx",
+  "sourceSha256": "e93d591b701000406110c89d4e3d80faa6567a68980e559d94084e26df936eff",
+  "checks": {
+    "build": {
+      "passed": true,
+      "pages": 53,
+      "sitemapUrls": 44
+    },
+    "lint": {
+      "errors": 0,
+      "preExistingWarnings": 3
+    },
+    "tests": {
+      "passed": 77,
+      "failed": 0
+    },
+    "gitDiffCheck": true,
+    "indexNow": {
+      "validationOnly": true,
+      "urlsValidated": 44,
+      "submitted": false
+    },
+    "html": {
+      "passed": true,
+      "h1": 1,
+      "robots": "noindex, nofollow",
+      "canonical": "https://truetell-retail.ru/karta-sootvetstviya-poley-bitrix24/",
+      "faq": 6,
+      "meaningfulImages": 2,
+      "internalLinkAndFileChecks": 38,
+      "errors": [],
+      "sitemapContainsDraft": false,
+      "catalogContainsDraft": false,
+      "htmlSha256": "9672fa8217c2d4dd3d84971e86dfbd72250117f16f7db02c3bf456a548506417"
+    },
+    "browser": {
+      "hero": [
+        {
+          "h1Align": "center",
+          "h1Rects": [
+            {
+              "bottom": 216.5,
+              "left": 109.90625,
+              "right": 210.09375,
+              "top": 164
+            },
+            {
+              "bottom": 255.6640625,
+              "left": 43.0078125,
+              "right": 276.984375,
+              "top": 203.1640625
+            },
+            {
+              "bottom": 294.828125,
+              "left": 107.859375,
+              "right": 212.140625,
+              "top": 242.328125
+            },
+            {
+              "bottom": 333.9921875,
+              "left": 69.65625,
+              "right": 250.3359375,
+              "top": 281.4921875
+            },
+            {
+              "bottom": 373.15625,
+              "left": 24.7734375,
+              "right": 295.2265625,
+              "top": 320.65625
+            },
+            {
+              "bottom": 333.9921875,
+              "left": 69.65625,
+              "right": 250.3359375,
+              "top": 281.4921875
+            },
+            {
+              "bottom": 373.15625,
+              "left": 24.7734375,
+              "right": 295.2265625,
+              "top": 320.65625
+            }
+          ],
+          "hero": 908.796875,
+          "meta": "Битрикс24",
+          "metaAlign": "center",
+          "pageWidth": 320,
+          "width": 320
+        },
+        {
+          "h1Align": "center",
+          "h1Rects": [
+            {
+              "bottom": 228.5390625,
+              "left": 136.4921875,
+              "right": 253.5078125,
+              "top": 167.0390625
+            },
+            {
+              "bottom": 274.28125,
+              "left": 58.359375,
+              "right": 331.6328125,
+              "top": 212.78125
+            },
+            {
+              "bottom": 320.0234375,
+              "left": 25.1171875,
+              "right": 153.859375,
+              "top": 258.5234375
+            },
+            {
+              "bottom": 320.0234375,
+              "left": 153.859375,
+              "right": 364.8828125,
+              "top": 258.5234375
+            },
+            {
+              "bottom": 365.765625,
+              "left": 37.0546875,
+              "right": 352.9375,
+              "top": 304.265625
+            },
+            {
+              "bottom": 320.0234375,
+              "left": 153.859375,
+              "right": 364.8828125,
+              "top": 258.5234375
+            },
+            {
+              "bottom": 365.765625,
+              "left": 37.0546875,
+              "right": 352.9375,
+              "top": 304.265625
+            }
+          ],
+          "hero": 673.171875,
+          "meta": "Битрикс24",
+          "metaAlign": "center",
+          "pageWidth": 390,
+          "width": 390
+        },
+        {
+          "h1Align": "center",
+          "h1Rects": [
+            {
+              "bottom": 367.4921875,
+              "left": 55.625,
+              "right": 712.3671875,
+              "top": 290.9921875
+            },
+            {
+              "bottom": 424.609375,
+              "left": 50.7109375,
+              "right": 717.28125,
+              "top": 348.109375
+            },
+            {
+              "bottom": 424.609375,
+              "left": 50.7109375,
+              "right": 717.28125,
+              "top": 348.109375
+            }
+          ],
+          "hero": 390.125,
+          "meta": "Битрикс24",
+          "metaAlign": "center",
+          "pageWidth": 768,
+          "width": 768
+        },
+        {
+          "h1Align": "left",
+          "h1Rects": [
+            {
+              "bottom": 275,
+              "left": 32,
+              "right": 146.796875,
+              "top": 215
+            },
+            {
+              "bottom": 319.875,
+              "left": 32,
+              "right": 300.09375,
+              "top": 259.875
+            },
+            {
+              "bottom": 364.75,
+              "left": 32,
+              "right": 151.484375,
+              "top": 304.75
+            },
+            {
+              "bottom": 409.625,
+              "left": 32,
+              "right": 239.0234375,
+              "top": 349.625
+            },
+            {
+              "bottom": 454.5,
+              "left": 32,
+              "right": 341.8984375,
+              "top": 394.5
+            },
+            {
+              "bottom": 409.625,
+              "left": 32,
+              "right": 239.0234375,
+              "top": 349.625
+            },
+            {
+              "bottom": 454.5,
+              "left": 32,
+              "right": 341.8984375,
+              "top": 394.5
+            }
+          ],
+          "hero": 425.703125,
+          "meta": "Битрикс24",
+          "metaAlign": "left",
+          "pageWidth": 769,
+          "width": 769
+        },
+        {
+          "h1Align": "left",
+          "h1Rects": [
+            {
+              "bottom": 399.4765625,
+              "left": 100,
+              "right": 737.7109375,
+              "top": 300.9765625
+            },
+            {
+              "bottom": 472.9140625,
+              "left": 100,
+              "right": 306.6796875,
+              "top": 374.4140625
+            },
+            {
+              "bottom": 472.9140625,
+              "left": 306.6796875,
+              "right": 645.4453125,
+              "top": 374.4140625
+            },
+            {
+              "bottom": 546.3515625,
+              "left": 100,
+              "right": 607.1015625,
+              "top": 447.8515625
+            },
+            {
+              "bottom": 472.9140625,
+              "left": 306.6796875,
+              "right": 645.4453125,
+              "top": 374.4140625
+            },
+            {
+              "bottom": 546.3515625,
+              "left": 100,
+              "right": 607.1015625,
+              "top": 447.8515625
+            }
+          ],
+          "hero": 376.484375,
+          "meta": "Битрикс24",
+          "metaAlign": "left",
+          "pageWidth": 1440,
+          "width": 1440
+        }
+      ],
+      "desktopColumnsTop": {
+        "meta": 274.9765625,
+        "intro": 274.9765625
+      },
+      "table": {
+        "clientWidth": 354,
+        "scrollWidth": 640,
+        "scrollLeftAfterArrow": 25
+      },
+      "faqOpened": true,
+      "sourcesKeyboardOpened": true,
+      "fullSize": {
+        "width": 1000,
+        "height": 820,
+        "complete": true,
+        "background": "rgb(230, 230, 230)"
+      },
+      "consoleErrors": 0
+    },
+    "viewportReset": {
+      "width": 1280,
+      "height": 720
+    },
+    "optimizedAlpha": [
+      {
+        "file": "bitrix24-field-value-mapping-demo.CIx2NWwf_1XeOGM.webp",
+        "width": 480,
+        "height": 394,
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "bitrix24-field-value-mapping-demo.CIx2NWwf_1aFnHl.webp",
+        "width": 800,
+        "height": 656,
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "bitrix24-field-value-mapping-demo.CIx2NWwf_ZWus2H.webp",
+        "width": 1000,
+        "height": 820,
+        "alpha": [
+          0,
+          255
+        ]
+      }
+    ],
+    "backlog": {
+      "passed": true,
+      "tasks": 63,
+      "sheets": 7,
+      "oldCellsAndHistoryPreserved": true,
+      "nativeAndPanesPreserved": true,
+      "unrelatedFormatsPreserved": true,
+      "countFormulaExtended": true,
+      "formulaErrors": 0,
+      "sha256": "e05edf318d6d59330b76aff9f9b89b3fbe3798a587b72004a42e9a22496f83be"
+    }
+  },
+  "editableInfographic": {
+    "file": "/Users/ivan/projects/TrueTell/src/images/articles/bitrix24-field-value-mapping-demo.svg",
+    "sha256": "c815f8f5471a561fb106e4c8e01441334a83a4d5e2f18a7ec25ee87e0396fbe1",
+    "sourceAlpha": {
+      "width": 1000,
+      "height": 820,
+      "alpha": [
+        0,
+        255
+      ],
+      "type": "Editorial fictional example, not actual CRM config"
+    }
+  }
+}

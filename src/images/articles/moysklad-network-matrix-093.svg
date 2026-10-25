@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1120">
+  <defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#101621}.h{font-size:31px;font-weight:700}.p{font-size:26px}.tag{font-size:21px;font-weight:700;fill:#386278}.n{font-size:36px;font-weight:700;fill:#087ebf}</style></defs>
+  <text x="38" y="55" class="h">Магазин × товар × день</text>
+  <text x="38" y="98" class="p">Учебный макет, один товар и один день</text>
+  <rect x="38" y="145" width="724" height="165" rx="20" fill="#e8f3fa"/>
+  <text x="66" y="192" class="tag">МАГАЗИН А · ТОВАР X · 24 ОКТЯБРЯ</text>
+  <text x="66" y="248" class="p">Продано: 4 шт. · остаток вечером:</text>
+  <text x="644" y="248" class="n">0</text>
+  <rect x="38" y="329" width="724" height="165" rx="20" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="66" y="376" class="tag">МАГАЗИН Б · ТОВАР X · 24 ОКТЯБРЯ</text>
+  <text x="66" y="432" class="p">Продано: 2 шт. · остаток вечером:</text>
+  <text x="644" y="432" class="n">8</text>
+  <rect x="38" y="533" width="724" height="190" rx="20" fill="#dceef8"/>
+  <text x="66" y="585" class="h">Что видно сразу</text>
+  <text x="66" y="640" class="p">У магазина А стоит проверить</text>
+  <text x="66" y="681" class="p">движение товара и пополнение.</text>
+  <rect x="38" y="742" width="724" height="190" rx="20" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="66" y="794" class="h">Чего не видно</text>
+  <text x="66" y="849" class="p">Когда запас кончился и сколько</text>
+  <text x="66" y="890" class="p">покупателей хотели купить товар.</text>
+  <text x="38" y="1030" class="p">Ноль ≠ доказанные упущенные продажи.</text>
+</svg>

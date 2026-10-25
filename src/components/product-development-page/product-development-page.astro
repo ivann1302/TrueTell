@@ -49,13 +49,13 @@ const {
             <h1 id="product-development-title">
               {heading.map((segment) => segment.accent ? <span class={styles.headingAccent}>{segment.text}</span> : segment.text)}
             </h1>
-            <p class={heroStyles.heroDescription}>{releaseText}</p>
+            <p class={heroStyles.heroDescription} data-intro="description">{releaseText}</p>
           </div>
-          <div class={heroStyles.heroActions}>
+          <div class={heroStyles.heroActions} data-intro="actions">
             <a class={styles.primaryAction} href={companyInfo.contacts.consultationUrl}>{actionLabel}</a>
           </div>
         </header>
-        <div class={styles.afterHero}>
+        <div class={styles.afterHero} data-reveal>
           <p class={styles.status}>{statusLabel}</p>
           <p>{contactText}</p>
         </div>

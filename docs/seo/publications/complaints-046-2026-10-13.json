@@ -1,0 +1,61 @@
+{
+  "task": "complaints-046",
+  "ownerRequestDate": "2026-10-13",
+  "status": "published-and-verified",
+  "url": "https://truetell-retail.ru/complaints/",
+  "releaseId": "bd3c3b648082f2b975b496431bd102a4a642b516-1791923254-46",
+  "revision": "bd3c3b648082f2b975b496431bd102a4a642b516",
+  "previousReleaseRetained": "c055508554a786203e7fb92a7c30028543a650c8-38373144007-1",
+  "applicationRegistry": "src/config/support-applications.json",
+  "unknownApplication": "empty required selection",
+  "defaultContact": "telegram",
+  "contactMethods": [
+    "telegram",
+    "phone",
+    "max",
+    "whatsapp"
+  ],
+  "noindex": true,
+  "sitemapExcluded": true,
+  "checks": {
+    "nodeTests": 75,
+    "phpTests": 45,
+    "phpAssertions": 253,
+    "phpstanLevel9": true,
+    "pint": true,
+    "productionBuild": true,
+    "mainProductionBuild": true,
+    "lintErrors": 0,
+    "existingLintWarnings": 3,
+    "localWidths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "publishedViews": [
+      {
+        "width": 390,
+        "status": 200,
+        "prefill": true,
+        "overflow": false,
+        "browserErrors": 0
+      },
+      {
+        "width": 1440,
+        "status": 200,
+        "prefill": true,
+        "overflow": false,
+        "browserErrors": 0
+      }
+    ],
+    "csrfRejectedWithoutToken": true,
+    "liveCrmStoredEncrypted": true,
+    "telegramDelivered": true,
+    "syntheticRecordCleaned": true,
+    "independentReview": "passed; two initial P2 corrected and regression-tested"
+  },
+  "searchIndexingChecked": false,
+  "indexNowSubmitted": false,
+  "sharedBitrixRulesUpdated": true
+}

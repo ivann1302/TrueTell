@@ -1,0 +1,178 @@
+{
+  "release": "066",
+  "date": "2026-10-15",
+  "task": "SEO-007",
+  "action": "CREATE and publish",
+  "status": "live_verified",
+  "article": "https://truetell-retail.ru/ochistka-crm-bitrix24/",
+  "intent": "Общая инструкция выбора действия: исправление данных, объединение дублей, передача работы, удаление ненужных карточек и отдельная очистка занимаемого места. Не повторяет массовое удаление из SEO-008.",
+  "liveReleaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792069260-66",
+  "baseReleaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792068050-65",
+  "scope": {
+    "newArticles": 1,
+    "contextualIncomingArticles": 3,
+    "catalogOrProductCards": 2,
+    "htmlChanged": 6,
+    "sitemapUrls": 57,
+    "publishedArticles": 35,
+    "knowledgeArticles": 27,
+    "blogArticles": 8,
+    "drafts": 0,
+    "sourceFilesApplied": 9,
+    "assets": 50,
+    "newAssets": 9,
+    "existingAssetsBytesPreserved": 41,
+    "unaffectedPublicHtmlBytesPreserved": 51,
+    "backendAndRoutingPreserved": true
+  },
+  "verification": {
+    "build": "npm run build PASS: 61 routes, 57 canonical sitemap URLs",
+    "tests": "77/77 PASS after production build",
+    "lint": "npm run lint: 0 errors; 3 pre-existing React hook warnings",
+    "seoCheck": "node scripts/indexnow.mjs --check PASS: 57 URLs; no external submission",
+    "content": {
+      "passed": true,
+      "faqEntries": 6,
+      "faqVisibleMatchesSchema": true,
+      "distinctFigures": 3,
+      "fullSizeLinks": 3,
+      "internalLinksChecked": 28,
+      "incomingPages": 5,
+      "canonical": "https://truetell-retail.ru/ochistka-crm-bitrix24/",
+      "visibleBreadcrumbs": false,
+      "scope": "Published static payload; no installation or CRM deletion performed"
+    },
+    "responsive": [
+      {
+        "columnTopDelta": 287.7109375,
+        "figures": 3,
+        "h1Align": "center",
+        "heroColor": "rgb(16, 22, 33)",
+        "heroHeight": 900,
+        "metaAlign": "center",
+        "overflow": 0,
+        "sourcesClosed": true,
+        "width": 390
+      },
+      {
+        "columnTopDelta": 230.3515625,
+        "figures": 3,
+        "h1Align": "center",
+        "heroColor": "rgb(16, 22, 33)",
+        "heroHeight": 900,
+        "metaAlign": "center",
+        "overflow": 0,
+        "sourcesClosed": true,
+        "width": 768
+      },
+      {
+        "columnTopDelta": 0,
+        "figures": 3,
+        "h1Align": "left",
+        "heroColor": "rgb(16, 22, 33)",
+        "heroHeight": 900,
+        "metaAlign": "left",
+        "overflow": 0,
+        "sourcesClosed": true,
+        "width": 769
+      },
+      {
+        "columnTopDelta": 0,
+        "figures": 3,
+        "h1Align": "left",
+        "heroColor": "rgb(16, 22, 33)",
+        "heroHeight": 900,
+        "metaAlign": "left",
+        "overflow": 0,
+        "sourcesClosed": true,
+        "width": 1440
+      }
+    ],
+    "browserInteractions": {
+      "localAllThreeImagesLoaded": true,
+      "liveAllImageFilesHttpAndHashesVerified": true,
+      "sourcesInitiallyClosed": true,
+      "keyboardSourcesToggle": true,
+      "keyboardFaqToggle": true,
+      "visibleFocus": true,
+      "consultationDialogOpenClose": true,
+      "formsSubmitted": false,
+      "viewportOverrideReset": true
+    },
+    "live": {
+      "releaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792069260-66",
+      "verifiedAt": "2026-10-15T13:05:26Z",
+      "sitemapUrls": 57,
+      "newArticles": 1,
+      "htmlPagesVerified": 57,
+      "assetFilesVerified": 50,
+      "allHashesMatch": true,
+      "unaffectedLivePagesPreserved": 51
+    }
+  },
+  "independentReview": {
+    "agent": "/root/review_crm_cleanup_066",
+    "result": "APPROVE / LIVE_VERIFIED",
+    "openP1P2P3": 0,
+    "corrections": [
+      "Уточнено право администратора на окончательное удаление из корзины.",
+      "Сокращён заголовок раздела о дублях."
+    ],
+    "checked": "Официальные первоисточники, текущие README/STATUS Cleaner, исходник, реестр, входящие абзацы, изображения, архив, live HTTP и SHA256, sitemap. Все 57 файлов опубликованного манифеста независимо совпали с пакетом.",
+    "limits": "Отдельная браузерная UI-сессия ревьюера и живой SDK/удаление не выполнялись; просмотрены локальные визуальные доказательства основного агента."
+  },
+  "sourcesCheckedOn": "2026-10-15",
+  "sources": [
+    "https://helpdesk.bitrix24.ru/open/26995556/",
+    "https://helpdesk.bitrix24.ru/open/18354376/",
+    "https://helpdesk.bitrix24.ru/open/25343258/",
+    "https://helpdesk.bitrix24.ru/open/25368844/",
+    "https://helpdesk.bitrix24.ru/open/18001440/",
+    "https://helpdesk.bitrix24.ru/open/23240636/",
+    "https://helpdesk.bitrix24.ru/open/20966844/",
+    "https://helpdesk.bitrix24.ru/open/24668648/",
+    "https://helpdesk.bitrix24.ru/open/23238660/"
+  ],
+  "images": [
+    {
+      "source": "src/images/articles/bitrix24-cleanup-space-official.jpg",
+      "kind": "Официальный скриншот Поддержки24. Значения объёма обозначены примером, не данными нашего или клиентского портала."
+    },
+    {
+      "source": "src/images/articles/bitrix24-merge-preview-official.jpg",
+      "kind": "Официальный экран ручного объединения контактов с выбором основной карточки и значений."
+    },
+    {
+      "source": "src/images/products/cleaner-selection.png",
+      "kind": "Существующий демонстрационный read-only экран; 120 найдено, 1 исключено, 119 выбрано. Не доказательство клиентского удаления."
+    }
+  ],
+  "limitations": {
+    "indexationOrRankingsMeasured": false,
+    "freshGscAdded": false,
+    "liveClientPortalDeletionTested": false,
+    "externalUrlSubmission": false,
+    "existingMobileBacklog053to056": "excluded_by_owner; preserved unchanged",
+    "finalBrowserRetry": "После успешного live hero и проверки геометрии на 390/768/769/1440 во встроенном браузере произошёл ERR_SOCKET_NOT_CONNECTED. На последнем осмотре тела 2 новых изображения не успели загрузиться, одно ранее существующее загрузилось. Повторная навигация перешла на внутренний сетевой экран data:, который Browser Use не позволяет контролировать; дальнейшие попытки прекращены. Все изображения локально отрисованы, все 50 публичных файлов ресурсов проверены HTTP 200 и SHA двумя участниками; это не заменено утверждением об успешной повторной загрузке в браузере."
+  },
+  "backlog": {
+    "path": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/deliverables/TrueTell_SEO_Backlog_066_2026-10-15.xlsx",
+    "verification": {
+      "passed": true,
+      "tasks": 64,
+      "sheets": 7,
+      "publishedTasks": 1,
+      "excludedTasksPreserved": 4,
+      "historicalGscAndJournalPreserved": true,
+      "nativeAndPanesPreserved": true,
+      "unrelatedCellsAndFormatsPreserved": true,
+      "allFormulasPreserved": true,
+      "sourceUnchanged": true,
+      "freshGscMeasurementsAdded": false,
+      "formulaErrors": 0,
+      "sha256": "31440570949456c26a1bd8dab729f05838a656e1abfe1c97bf802b0847e44cef"
+    }
+  },
+  "evidenceDirectory": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/publish-066",
+  "completedAt": "2026-10-15T13:07:50.178620+00:00"
+}

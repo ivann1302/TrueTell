@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/build-crm-assets.mjs",
+    "build": "npm run check:article-humanizer && astro build && node scripts/build-crm-assets.mjs",
+    "check:article-humanizer": "node scripts/check-article-humanizer.mjs",
     "perf": "astro build && astro preview --force --host localhost --port 4322",
     "lint": "eslint .",
     "preview": "astro preview",

@@ -1,0 +1,120 @@
+{
+  "release": 57,
+  "date": "2026-10-14",
+  "taskId": "SEO-062",
+  "action": "CREATE",
+  "type": "knowledge",
+  "status": "local_QA_passed_draft_not_published",
+  "route": "/nazvanie-polya-uf-crm-bitrix24/",
+  "preview": "http://127.0.0.1:4357/nazvanie-polya-uf-crm-bitrix24/",
+  "intent": "Known BI column to CRM field title, with source/entity verification and separate display label in BI. Distinct from title-to-code049 and catalogCSV056.",
+  "productVersion": "1.0.2",
+  "research": "crm-field-directory-topics-048-2026-10-14.json",
+  "keywordLimits": "No new narrow frequency measurement. Existing topic research used; no search-volume or traffic forecast invented.",
+  "primarySources": [
+    "https://helpdesk.bitrix24.ru/open/24352300/",
+    "https://helpdesk.bitrix24.ru/open/24355590/",
+    "https://helpdesk.bitrix24.ru/open/22848752/",
+    "https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-fields.html",
+    "https://helpdesk.bitrix24.ru/open/22048980/"
+  ],
+  "images": [
+    {
+      "file": "/Users/ivan/projects/TrueTell/src/images/articles/bitrix24-bi-userfield-codes-official.jpg",
+      "source": "https://helpdesk.bitrix24.ru/upload/medialibrary/56a/3nri4rma9ve4mvgwwu57gvl3ewv7tgzw/06.jpg",
+      "sha256": "bce1251ea4da39cff1b66c663f2578d65a880454d8a501272012db703e339c95",
+      "fullSize": true
+    },
+    {
+      "file": "/Users/ivan/projects/TrueTell/src/images/articles/truetell-field-directory-code-search-live.jpg",
+      "source": "Actual installed test portal app22,14.10.2026",
+      "sha256": "6c744f653036bd892494362ae51a7b1f058012c9c50d94c0aa66681f6d9b34a1",
+      "fullSize": true
+    }
+  ],
+  "incoming": [
+    "/kod-polya-bitrix24/",
+    "/spisok-poley-bitrix24/",
+    "/bi-analitika-bitrix24-pervyy-otchet/"
+  ],
+  "checks": {
+    "tests": {
+      "passed": 77,
+      "failed": 0
+    },
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 3
+    },
+    "build": {
+      "pages": 50,
+      "sitemapUrls": 44
+    },
+    "indexnowCheck": true,
+    "submission": false,
+    "html": {
+      "passed": true,
+      "h1": 1,
+      "robots": "noindex, nofollow",
+      "canonical": "https://truetell-retail.ru/nazvanie-polya-uf-crm-bitrix24/",
+      "faq": 6,
+      "meaningfulImages": 2,
+      "internalLinkAndFileChecks": 37,
+      "errors": [],
+      "sitemapContainsDraft": false,
+      "catalogContainsDraft": false,
+      "htmlSha256": "8279da93a8b58795e7f4b9ce438b09509d6a8ddc7ab5f54dbdbed1838b45dfa1"
+    },
+    "responsiveWidths": [
+      320,
+      390,
+      768,
+      769,
+      1440
+    ],
+    "horizontalOverflow": false,
+    "mobileCategoryAndH1Centered": true,
+    "desktopHeroColumnTopsEqual": true,
+    "imagesComplete390": true,
+    "faqMouseAndSourcesKeyboard": true,
+    "tableArrowKeyScroll": {
+      "scrollLeft": 33.5,
+      "clientWidth": 354,
+      "scrollWidth": 640
+    }
+  },
+  "liveProductObservation": {
+    "portalKind": "Test portal",
+    "application": 22,
+    "action": "Read/search metadata only",
+    "query": "UF_CRM_1791480592669",
+    "result": "CALC_COMP — исходное число",
+    "matches": 1,
+    "catalogTotal": 61,
+    "crmRecordValuesRead": false,
+    "writes": false
+  },
+  "limits": [
+    "Demo field connection to BI and report relabeling were not tested in portal; documented official sequence only.",
+    "Native Excel/Numbers, downloads and second user outside this task.",
+    "App not changed; Market release not claimed.",
+    "Production and search indexing not checked."
+  ],
+  "editorialReview": {
+    "reviewer": "/root/review_bi_field_name_057",
+    "verdict": "APPROVE local draft",
+    "openFindings": 0,
+    "scope": "Independent official docs, app source, final article and built HTML review; supplied real responsive screenshots inspected. Tests and interactive browser run by primary agent only."
+  },
+  "publication": {
+    "performed": false,
+    "status": "draft",
+    "datesAssigned": false,
+    "noindex": true,
+    "catalogExcluded": true,
+    "sitemapExcluded": true,
+    "push": false
+  },
+  "backlog": "TrueTell_SEO_Backlog_057_2026-10-14.xlsx",
+  "sourceSha256": "f3cf3479255e54eab029c44abdf1342f45fab35f3a530279d2e8f3503e7cc556"
+}

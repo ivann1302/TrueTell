@@ -1,7 +1,7 @@
 ---
 import '../index.css';
 import '../App.css';
-import favicon from '../images/logo/short-white-logo.svg';
+import '../components/site-motion/site-motion.scss';
 import ContactRequest from '../components/contact-request/contact-request.astro';
 import PrivacyControls from '../components/privacy/privacy-controls.astro';
 import { companyInfo } from '../config/company';
@@ -24,6 +24,7 @@ interface Props {
   contentCategory?: string;
   contentStatus?: 'published' | 'draft';
   relatedProduct?: string | null;
+  contactDialog?: boolean;
 }
 
 const {
@@ -44,6 +45,7 @@ const {
   contentCategory,
   contentStatus = 'published',
   relatedProduct,
+  contactDialog = true,
 } = Astro.props;
 const site = Astro.site ?? new URL('https://truetell-retail.ru');
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
@@ -84,15 +86,23 @@ const canonicalUrl = canonicalPath === false
     <meta name="twitter:description" content={ogDescription} />
     {ogImage && <meta name="twitter:image" content={ogImage} />}
     {ogImage && ogImageAlt && <meta name="twitter:image:alt" content={ogImageAlt} />}
-    <link rel="icon" type="image/svg+xml" href={favicon.src} />
+    <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href={`${base}favicon.ico`} />
+    <link rel="icon" type="image/png" sizes="96x96" href={`${base}favicon-96x96.png`} />
+    <link rel="icon" type="image/svg+xml" sizes="any" href={`${base}favicon.svg`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${base}apple-touch-icon.png`} />
     <title>{title}</title>
     {structuredData && (
       <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     )}
   </head>
-  <body>
+  <body data-site-motion>
     <slot />
     <PrivacyControls />
-    <ContactRequest />
+    {contactDialog && <ContactRequest />}
   </body>
 </html>
+
+<script>
+  import { initSiteMotion } from '../components/site-motion/site-motion';
+  initSiteMotion(document.body);
+</script>

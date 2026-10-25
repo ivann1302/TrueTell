@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1010">
+  <defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#101621}.h{font-size:31px;font-weight:700}.p{font-size:27px}.n{font-size:34px;font-weight:700;fill:#087ebf}.tag{font-size:22px;font-weight:700;fill:#386278}</style></defs>
+  <text x="38" y="55" class="h">Сверка без двойного счёта</text>
+  <text x="38" y="98" class="p">Условный день одного магазина</text>
+  <rect x="38" y="145" width="724" height="120" rx="20" fill="#e8f3fa"/>
+  <text x="65" y="193" class="tag">1 · ПРОВЕРЬТЕ ПРОДАЖУ</text>
+  <text x="65" y="238" class="p">Чек: 10 000 ₽</text>
+  <rect x="38" y="290" width="724" height="175" rx="20" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="65" y="340" class="tag">2 · НАЙДИТЕ ПЛАТЁЖНЫЕ ДОКУМЕНТЫ</text>
+  <text x="65" y="390" class="p">ПКО 2 000 ₽ · входящий платёж 7 840 ₽</text>
+  <text x="65" y="431" class="p">Комиссия эквайринга 160 ₽</text>
+  <rect x="38" y="490" width="724" height="175" rx="20" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="65" y="540" class="tag">3 · ИСКЛЮЧИТЕ ВНУТРЕННИЙ ПЕРЕВОД</text>
+  <text x="65" y="590" class="p">−1 000 ₽ из кассы; +1 000 ₽ в банк</text>
+  <text x="65" y="631" class="p">Сумма потока извне: 0 ₽</text>
+  <rect x="38" y="690" width="724" height="220" rx="20" fill="#dceef8"/>
+  <text x="65" y="742" class="h">Контрольный результат</text>
+  <text x="65" y="800" class="n">2 000 + 7 840 = 9 840 ₽</text>
+  <text x="65" y="858" class="p">10 000 ₽ выручка ≠ 9 840 ₽ учтено</text>
+  <text x="38" y="968" class="p">Сверяйте исходный чек и документы.</text>
+</svg>

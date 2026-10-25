@@ -1,0 +1,106 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import checksImage from '../../images/articles/moysklad-receipts-example-093.png';
+import paymentsImage from '../../images/articles/moysklad-receipts-payments-093.png';
+
+const article = getArticle('analiz-chekov-moysklad/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const canonicalPath = `/${article.hrefPath}`;
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const imageAlt = 'Условный пример трёх чеков на 1000, 500 и 1500 рублей с расчётом среднего чека и числа строк';
+const ogImage = new URL(checksImage.src, siteRoot).toString();
+const titleParts = [{ text: 'Анализ чеков в рознице: ' }, { text: 'средний чек и оплаты', accent: true }];
+const metricRows = [
+  ['Средний чек продаж', 'Сумма продаж / число чеков продаж', '3 000 ₽ / 3 = 1 000 ₽'],
+  ['Число строк в чеке', 'Всего товарных строк / число чеков продаж', '6 / 3 = 2 строки'],
+  ['Товаров в чеке', 'Сумма количества единиц / число чеков продаж', 'Считать отдельно: не равно числу строк'],
+  ['Продажи с возвратами', 'Сумма продаж − сумма возвратов за выбранный период', '3 000 ₽ − 500 ₽ = 2 500 ₽'],
+];
+const faqItems = [
+  { question: 'Где в МойСклад посмотреть средний чек?', answer: 'В разделе «Розница → Точки продаж» МойСклад показывает средний чек по точкам. Также в официальной библиотеке шаблонов есть отчёт «Средний чек и общая сумма продаж по точкам» для списка розничных продаж. Перед сравнением уточните период, фильтры и правила возвратов.' },
+  { question: 'Как считать глубину чека?', answer: 'Сначала определите, что именно нужно: число товарных строк или число единиц. Для первого показателя разделите сумму строк продаж на число чеков продаж; для второго суммируйте количество по строкам. Условный пример с шестью строками и тремя чеками даёт две строки на чек.' },
+  { question: 'Как учесть смешанную оплату?', answer: 'Сумму каждого чека распределите по способам оплаты в той же строке чека или в связанной таблице оплат. Например, чек на 1 000 ₽ может содержать 400 ₽ наличными и 600 ₽ картой. Не считайте его двумя чеками; проверьте, что сумма способов равна сумме оплаты.' },
+  { question: 'Почему доли оплаты не совпадают с долями чеков?', answer: 'Один чек может быть оплачен несколькими способами. Долю денег по карте считают как сумму карточных оплат / сумму всех оплат, а долю чеков с картой — как количество чеков, где была карта / количество всех чеков. Это разные показатели.' },
+  { question: 'Возврат включать в средний чек?', answer: 'Удобно показывать средний чек продаж и возвраты отдельно. Если нужен показатель после возвратов, заранее задайте правило знаменателя: учитывать все чеки продаж, исключать полностью возвращённые покупки или считать по другой методике. Иначе сравнение магазинов будет вводить в заблуждение.' },
+];
+const sourceLinks = [
+  { label: 'Розница: обзор возможностей и отчётов — справка МойСклад', href: 'https://support.moysklad.ru/hc/ru/касса%20и%20розница/розница/розница_обзор_возможностеи' },
+  { label: 'Шаблоны списка розничных продаж — справка МойСклад', href: 'https://support.moysklad.ru/hc/ru/шаблоны/шаблоны%20по%20категориям/список_розничных_продаж' },
+  { label: 'Продажа в Кассе МойСклад и смешанная оплата — справка МойСклад', href: 'https://support.moysklad.ru/hc/ru/articles/115002507468' },
+  { label: 'Формулы полей розничной продажи, включая оплату по QR — справка МойСклад', href: 'https://support.moysklad.ru/hc/ru/шаблоны/формулы/основные_формулы_вывода_данных_из_документа' },
+];
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const structuredData = createArticleStructuredData({
+  articleType: 'BlogPosting', title, description, articleUrl, publishedDate: article.publishedAt,
+  modifiedDate: article.updatedAt, publisherUrl: siteRoot.toString(), image: ogImage, author: authorName,
+  breadcrumbs: [
+    { name: 'Главная', item: siteRoot.toString() },
+    { name: 'Блог', item: new URL('blog/', siteRoot).toString() },
+    { name: title, item: articleUrl },
+  ], faqItems,
+});
+---
+
+<ArticleLayout {title} {titleParts} {description} {canonicalPath} {structuredData}
+  ogTitle={article.seoTitle} ogDescription={description} {ogImage} ogImageAlt={imageAlt}
+  category={article.category} author={authorName}
+  intro="Показываем, как из розничных продаж получить понятные показатели по чекам и не потерять возвраты и смешанную оплату.">
+  <Fragment slot="quick-answer">
+    <p><strong>Средний чек продаж</strong> — сумма чеков продаж, делённая на их количество за одинаковый период и набор магазинов. Для глубины чека выберите единицу: товарные строки или проданные штуки. Возвраты показывайте отдельно и заранее определите, как они влияют на итог.</p>
+    <p>При смешанной оплате чек остаётся одним: суммы наличными, картой и по QR распределяются по способам, а их итог сверяется с оплатой чека. МойСклад показывает средний чек по точкам; для подробной таблицы есть официальные шаблоны розничных продаж.</p>
+  </Fragment>
+
+  <p data-article-lead>Руководитель видит выручку магазина, но хочет понять, покупают ли посетители больше товаров за визит и как распределены способы оплаты. Для этого недостаточно сложить суммы продаж. У каждого показателя нужен свой знаменатель: три чека — это три покупки, даже если один чек оплачен двумя способами.</p>
+  <ArticleFigure src={checksImage} fullSize portrait alt={imageAlt} caption="Учебные данные: три чека продаж на 3 000 ₽ и шесть товарных строк. Средний чек — 1 000 ₽, среднее число строк — 2. Возврат 500 ₽ показан отдельно, без изменения числа исходных чеков продаж." />
+
+  <section aria-labelledby="where">
+    <h2 id="where">Что уже есть в МойСклад</h2>
+    <p>В разделе <strong>«Розница → Точки продаж»</strong> есть средний чек, выручка и количество продаж по точкам. <strong>«Розница → Смены»</strong> показывает операции отдельной смены. Перед созданием собственной витрины проверьте, хватает ли этих разрезов. Официальная библиотека шаблонов предлагает для списка розничных продаж отдельные варианты: средний чек и общую сумму по точкам, позиции и возвращённые позиции, а также суммы по каждой форме оплаты.</p>
+    <p>Упомянутые шаблоны подключаются к списку <strong>«Розница → Продажи»</strong>. Возможность увидеть готовый показатель не означает, что его определение совпадает с вашим управленческим правилом. Сверьте фильтры, дату продажи и трактовку возврата на небольшом наборе чеков. Общий обзор отчётов дан <a href={`${base}otchety-moysklad/`}>в отдельной статье</a>.</p>
+  </section>
+
+  <section aria-labelledby="formulas">
+    <h2 id="formulas">Формулы: чек, строка, единица товара</h2>
+    <p>За один условный день есть три чека продаж: 1 000 ₽ с двумя товарными строками, 500 ₽ с одной и 1 500 ₽ с тремя. Сумма продаж — 3 000 ₽. Средний чек продаж — 3 000 / 3 = 1 000 ₽. Среднее число строк — 6 / 3 = 2. Если в одной строке лежат три одинаковые единицы товара, число единиц будет больше числа строк: эти показатели не стоит называть одним словом «глубина» без определения.</p>
+    <DataTable label="Расчёт показателей по условным чекам" columns={['Показатель', 'Формула', 'Пример']} rows={metricRows} rowHeaders compact />
+    <p>После покупки клиент может оформить полный или частичный возврат. В примере сумма возврата — 500 ₽, поэтому продажи за вычетом возвратов равны 2 500 ₽. Но обычный средний чек продаж остаётся 1 000 ₽: мы не меняли определение показателя и число чеков продаж. Для «чистого среднего чека» сначала согласуйте, включать ли полностью возвращённую покупку в знаменатель, и подпишите формулу в дашборде.</p>
+  </section>
+
+  <section aria-labelledby="payments">
+    <h2 id="payments">Наличные, карта и QR при смешанной оплате</h2>
+    <p>В условном наборе первый чек на 1 000 ₽ оплачен 400 ₽ наличными и 600 ₽ картой. Второй на 500 ₽ — по QR. Третий на 1 500 ₽ — картой. Итого: наличные 400 ₽, карта 2 100 ₽, QR 500 ₽, вместе 3 000 ₽. У первого чека два способа оплаты, но один ID продажи. МойСклад хранит суммы способов в полях документа. Если в собственной аналитической модели развернуть их в отдельные строки и сразу соединить с товарными позициями, сумма чека повторится по комбинациям строк. Сначала агрегируйте позиции и оплаты отдельно до уровня ID чека.</p>
+    <ArticleFigure src={paymentsImage} fullSize portrait alt="Условная сверка трёх чеков: 400 рублей наличными, 2100 картой и 500 по QR, всего 3000 рублей" caption="Учебная сверка способов оплаты. Чек №1 смешанный, но в числе продаж учитывается один раз. Сумма оплат 400 + 2 100 + 500 = 3 000 ₽ равна сумме трёх чеков." />
+    <p>МойСклад поддерживает смешанную оплату в Кассе и отдельные суммы карты и QR в шаблонах розничной продажи. В реальных данных проверьте авансы, сертификаты, возвраты денег и особенности вашего способа оплаты. Если нужен <a href={`${base}dds-roznicy-moysklad/`}>ДДС</a>, не складывайте оплату чека с последующим банковским зачислением: это разные события.</p>
+  </section>
+
+  <section aria-labelledby="control">
+    <h2 id="control">Как сверить расчёт по магазину</h2>
+    <p>Выберите один закрытый день и одну точку продаж. Сравните список ID розничных продаж с числом чеков в вашем отчёте. Затем проверьте по каждому ID сумму, количество товарных строк и разбивку оплат; отдельно выпишите возвраты. Контрольные суммы должны сходиться на уровне чека, смены и точки. Если показатель отличается, откройте конкретный документ и <a href={`${base}proverka-dannyh-moysklad-posle-vygruzki/`}>проверьте правки и удаления</a> после последней выгрузки.</p>
+    <p>Для анализа динамики сохраняйте одно определение среднего чека и единицу глубины во всех магазинах. Тогда изменение графика можно объяснить покупками, а не разной формулой в двух отчётах.</p>
+    <InlineConsultation title="Средний чек в отчётах расходится?" description="Разберём одну точку: список чеков, формулу знаменателя, возвраты и оплату. По этому примеру станет видно, какие данные нужны для общей аналитики." />
+  </section>
+
+  <FaqSection id="faq" variant="article" title="Частые вопросы" items={faqItems} />
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Сверьте чек ' }, { text: 'до общего графика', accent: true }]}
+      description="TrueTell разрабатывает подготовку данных МойСклад для аналитики. Поможем согласовать определения среднего чека, возвратов и способов оплаты для вашей розницы."
+      href={companyInfo.contacts.consultationUrl} actionLabel="Обсудить задачу" />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <Fragment slot="after-article"><ConsultationCtaSection /></Fragment>
+</ArticleLayout>

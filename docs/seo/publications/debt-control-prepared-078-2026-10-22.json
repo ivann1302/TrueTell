@@ -1,0 +1,162 @@
+{
+  "release": "078",
+  "date": "2026-10-22",
+  "taskId": "SEO-049",
+  "action": "UPDATE",
+  "type": "blog",
+  "route": "/debitorskaya-zadolzhennost-bitrix24/",
+  "status": "local_QA_passed",
+  "deployed": false,
+  "intent": "Контроль обязательств клиентов: просрочка, срок сегодня, будущие оплаты, очередь уточнений и поручения руководителя",
+  "changes": [
+    "Добавлена таблица состояний обязательства и следующего действия; неизвестная дата и несверенный факт обозначены как пересекающиеся причины уточнения",
+    "Сохранён учебный срез 12.10; добавлен повторный срез 22.10 при отсутствии новых поступлений и изменения условий",
+    "Добавлен пример поручения менеджеру с результатом и повторной сверкой; срок задачи не заменяет срок оплаты",
+    "Добавлена ссылка на ручной XLSX 076 одной сделки; его DEMO-001 явно исключена из реестра статьи",
+    "Актуализированы продуктовый блок и FAQ по версии 0.4.3, без обещания финансовой записи или общего отчёта",
+    "Сохранены URL, BlogPosting, общие компоненты и три полезных изображения; метаданные и дата изменения обновлены"
+  ],
+  "demand": {
+    "source": "Исследование 075, work/payment-semantics-075/wordstat-ui.json",
+    "period": "21.09.2026–21.10.2026",
+    "region": "Россия 225",
+    "devices": "Все",
+    "observations": {
+      "битрикс24 задолженность": 9,
+      "контроль оплаты счетов битрикс24": 2,
+      "битрикс24 просроченные платежи": 1
+    },
+    "limitations": "Наблюдения Wordstat из исследования 075, не повторный замер в 078. Широкие частоты пересекаются; не равны людям, трафику или лидам. Работа обновляет существующий URL."
+  },
+  "verification": {
+    "build": {
+      "pages": 64,
+      "canonicalUrls": 58
+    },
+    "tests": {
+      "passed": 87,
+      "failed": 0
+    },
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 3
+    },
+    "indexnow": "--check only; no submissions",
+    "metadata": {
+      "h1": 1,
+      "type": "BlogPosting",
+      "faq": 8,
+      "canonical": "self",
+      "visibleBreadcrumbs": false,
+      "faqMatchesJSONLD": true
+    },
+    "math": {
+      "firstCutoff": "2026-10-12",
+      "first": {
+        "plan": 260000,
+        "received": 152000,
+        "remaining": 108000,
+        "overdue": 40000,
+        "today": 0,
+        "future": 68000
+      },
+      "secondCutoff": "2026-10-22",
+      "second": {
+        "plan": 260000,
+        "received": 152000,
+        "remaining": 108000,
+        "overdue": 88000,
+        "today": 0,
+        "future": 20000
+      },
+      "dueTodayBoundary": {
+        "plan": 260000,
+        "received": 152000,
+        "remaining": 108000,
+        "overdue": 40000,
+        "today": 48000,
+        "future": 20000
+      },
+      "unknownDate": "clarify",
+      "unverifiedReceipt": "clarify",
+      "fullyPaid": "closed"
+    },
+    "browser": {
+      "viewports": [
+        {
+          "h1Align": "left",
+          "heroHeight": 1000,
+          "left": 280.4296875,
+          "metaAlign": "left",
+          "overflow": false,
+          "right": 280.4296875,
+          "width": 1440
+        },
+        {
+          "h1Align": "center",
+          "heroHeight": 1016.859375,
+          "metaAlign": "center",
+          "overflow": false,
+          "width": 390
+        },
+        {
+          "h1Align": "center",
+          "metaAlign": "center",
+          "overflow": false,
+          "width": 768
+        },
+        {
+          "h1Align": "left",
+          "left": 184,
+          "metaAlign": "left",
+          "overflow": false,
+          "right": 184,
+          "width": 769
+        }
+      ],
+      "consoleErrors": [],
+      "tableKeyboard": {
+        "scrollLeft": 15,
+        "clientWidth": 354,
+        "scrollWidth": 640,
+        "pageOverflow": false
+      },
+      "faqKeyboard": true,
+      "sourcesKeyboard": true
+    },
+    "images": "Три исходных изображения сохранены: два официальных скриншота и учебная инфографика; fullSize-ссылки существуют",
+    "links": "Локальные ссылки проверены сборкой; якорь шаблона существует; XLSX HTTP 200 и совпадает с неизменным файлом 076",
+    "backlog": {
+      "changedCells": 18,
+      "unrelatedDataAndStylesPreserved": true,
+      "nativeExcelOpened": false
+    }
+  },
+  "independentReview": {
+    "reviewer": "/root/review_product_tails_069",
+    "result": "PASS",
+    "remainingFindings": [],
+    "scope": "Официальные источники, исходник, собранный HTML, математика, изображения и логи; reviewer не запускал тесты/CUA/приложение и не менял файлы"
+  },
+  "sources": [
+    "https://helpdesk.bitrix24.ru/open/24206616/",
+    "https://helpdesk.bitrix24.ru/open/25376268/",
+    "https://helpdesk.bitrix24.ru/open/18291172/",
+    "https://helpdesk.bitrix24.ru/open/24212648/",
+    "https://helpdesk.bitrix24.ru/open/23240636/",
+    "/Users/ivan/projects/bitrix_payment_schedule/README.md",
+    "/Users/ivan/projects/bitrix_payment_schedule/docs/progress.md"
+  ],
+  "publicationDependency": "Выпускать с файлами обновления 076: ссылка использует его новый якорь и XLSX. Обновления 076–078 подготовлены локально; push/deploy не выполнялись.",
+  "next": "SEO-050 UPDATE /platezhnyy-kalendar-bitrix24/",
+  "boundaries": [
+    "Новая версия статьи не опубликована",
+    "Приложение и CRM не изменялись",
+    "GSC, позиции и индексация не проверялись",
+    "Шаблон 076 не изменён; нет банковской или CRM-синхронизации"
+  ],
+  "files": {
+    "src/pages/debitorskaya-zadolzhennost-bitrix24/index.astro": "62eda6e6fde9347548ceedbfb083bac9cd018134dfce90c7ed77a863a032dfcc",
+    "src/config/articles.ts": "68836b525a00adf00d358fa4ee14b7e841bcc2f0c3929eaac43968432ed75b2f"
+  }
+}

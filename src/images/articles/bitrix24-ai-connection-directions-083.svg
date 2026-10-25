@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="920" viewBox="0 0 1100 920">
+  <defs><marker id="a" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M2 2 9 6 2 10" fill="none" stroke="#1765DA" stroke-width="2"/></marker></defs>
+  <g font-family="Arial, sans-serif" fill="#101621">
+    <text x="40" y="65" font-size="40" fill="#616875">Где ваш чат</text>
+    <text x="660" y="65" font-size="40" fill="#616875">Где данные</text>
+    <path d="M40 100H1060M40 365H1060M40 630H1060" stroke="#D3D7DE" stroke-width="2"/>
+    <text x="40" y="205" font-size="52">В Битрикс24</text>
+    <text x="40" y="275" font-size="40" fill="#616875">BitrixGPT</text>
+    <path d="M490 220H590" stroke="#1765DA" stroke-width="4" marker-end="url(#a)"/>
+    <text x="660" y="205" font-size="52">Битрикс24</text>
+    <text x="660" y="275" font-size="40" fill="#616875">Его инструменты</text>
+    <text x="40" y="470" font-size="52">Внешний ИИ</text>
+    <text x="40" y="540" font-size="40" fill="#616875">Ваш AI-клиент</text>
+    <path d="M490 485H590" stroke="#1765DA" stroke-width="4" marker-end="url(#a)"/>
+    <text x="660" y="470" font-size="52">Битрикс24</text>
+    <text x="660" y="540" font-size="40" fill="#616875">Его инструменты</text>
+    <text x="40" y="735" font-size="52">В Битрикс24</text>
+    <text x="40" y="805" font-size="40" fill="#616875">BitrixGPT + MCP Hub</text>
+    <path d="M490 750H590" stroke="#1765DA" stroke-width="4" marker-end="url(#a)"/>
+    <text x="660" y="735" font-size="52">Внешний</text>
+    <text x="660" y="805" font-size="52">сервис</text>
+  </g>
+</svg>

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(PrivateHeaders::class)->group(function (): void {
     Route::get('/api/lead-session', [LeadIntakeController::class, 'session'])->middleware('throttle:60,1');
     Route::post('/api/leads', [LeadIntakeController::class, 'store'])->middleware('throttle:leads');
+    Route::post('/api/complaints', [LeadIntakeController::class, 'store'])->middleware('throttle:leads')->name('complaints.store');
     Route::prefix('workspace')->name('workspace.')->group(function (): void {
         Route::get('/login', [WorkspaceAuthController::class, 'login'])->name('login');
         Route::post('/login', [WorkspaceAuthController::class, 'authenticate'])->middleware('throttle:login')->name('login.store');

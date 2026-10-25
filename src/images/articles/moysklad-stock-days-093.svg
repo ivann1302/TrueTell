@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="670" viewBox="0 0 800 670">
+  <g font-family="Arial, Helvetica, sans-serif" fill="#101621">
+    <text x="28" y="59" font-size="35" font-weight="700">Остаток на конец дня</text>
+    <text x="28" y="101" font-size="23" fill="#526071">Учебный пример · один товар · один магазин</text>
+    <path d="M28 130H772" stroke="#BBC8D6" stroke-width="2"/>
+    <text x="28" y="190" font-size="23" fill="#526071">Дата</text>
+    <text x="455" y="190" font-size="23" fill="#526071">В учёте</text>
+    <text x="610" y="190" font-size="23" fill="#526071">Проверка</text>
+    <path d="M28 214H772" stroke="#D4DDE7" stroke-width="2"/>
+    <text x="28" y="271" font-size="28" font-weight="700">13 июля</text>
+    <text x="455" y="271" font-size="31" font-weight="700" fill="#3178D4">8 шт.</text>
+    <text x="610" y="271" font-size="22" fill="#526071">в наличии</text>
+    <path d="M28 302H772" stroke="#D4DDE7" stroke-width="2"/>
+    <text x="28" y="359" font-size="28" font-weight="700">14 июля</text>
+    <text x="455" y="359" font-size="31" font-weight="700" fill="#C94E43">0 шт.</text>
+    <text x="610" y="359" font-size="22" fill="#C94E43">проверить спрос</text>
+    <path d="M28 390H772" stroke="#D4DDE7" stroke-width="2"/>
+    <text x="28" y="447" font-size="28" font-weight="700">15 июля</text>
+    <text x="455" y="447" font-size="31" font-weight="700" fill="#3178D4">10 шт.</text>
+    <text x="610" y="447" font-size="22" fill="#526071">поступление</text>
+    <path d="M28 478H772" stroke="#D4DDE7" stroke-width="2"/>
+    <text x="28" y="535" font-size="28" font-weight="700">16 июля</text>
+    <text x="455" y="535" font-size="31" font-weight="700" fill="#3178D4">6 шт.</text>
+    <text x="610" y="535" font-size="22" fill="#526071">после продаж</text>
+    <path d="M28 566H772" stroke="#BBC8D6" stroke-width="2"/>
+    <text x="28" y="619" font-size="22" fill="#526071">Ноль в учёте — повод проверить полку и спрос,</text>
+    <text x="28" y="649" font-size="22" fill="#526071">а не готовая сумма упущенных продаж.</text>
+  </g>
+</svg>

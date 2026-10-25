@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-14",
+  "task": "complaints-selects-047",
+  "url": "https://truetell-retail.ru/complaints/?app=cleaner",
+  "release": {
+    "releaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1791925306-47",
+    "revision": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99",
+    "baseReleaseId": "bd3c3b648082f2b975b496431bd102a4a642b516-1791923254-46",
+    "archiveSha256": "c04d5bff4b381ee146d0a64673c974a99bc0c9db9379440e08a6800f8bd574fe",
+    "files": {
+      "public_html/_astro/Manrope-VariableFont_wght.B5-idWc8.woff2": "3e16073fb7ba266736bdeda86a02f65bf3a12884aa81904f14a967de94058c41",
+      "public_html/_astro/contact-request-controller.BQ14j-kp.js": "b3281e4a5ba47eee53dbda68b3fee9774d32b55df0733031e75099e4ee6c8707",
+      "public_html/_astro/index.astro_astro_type_script_index_0_lang.CuA6nNPh.js": "33da6fd8aa7b372031be8e86c8eb68ef3ac8dadb6254b4fcf80e0c65023cbb84",
+      "public_html/_astro/privacy-controls.astro_astro_type_script_index_0_lang.BLu9MYJB.js": "def3103aba12001c86168ad6bf112a22c5d140fcb35a7914413b37d6663465c0",
+      "public_html/_astro/short-white-logo.C5gaHnd_.svg": "80f22ab26ac4de1dd80bc2d725f4c761ebe210a879055b46e8a5e6d8f905d6c8",
+      "public_html/complaints/index.html": "92db49c1e43a1802a3b82e2690389717e295254bbeed2818802521e6e30af566"
+    }
+  },
+  "scope": "Custom application/contact selectors; 20px chevron padding; native no-JS fallback and visible required/error focus.",
+  "checks": {
+    "node --test scripts/*.test.mjs": {
+      "passed": 77,
+      "failed": 0
+    },
+    "npm run lint": {
+      "errors": 0,
+      "preexistingWarnings": 3
+    },
+    "npm run build": "passed",
+    "node scripts/indexnow.mjs --check": "passed",
+    "git diff --check": "passed"
+  },
+  "browserLocal": [
+    {
+      "width": 320,
+      "arrowInset": 21,
+      "keyboard": true,
+      "payload": true,
+      "overflow": false,
+      "jsErrors": []
+    },
+    {
+      "width": 390,
+      "arrowInset": 21,
+      "keyboard": true,
+      "payload": true,
+      "overflow": false,
+      "jsErrors": []
+    },
+    {
+      "width": 768,
+      "arrowInset": 21,
+      "keyboard": true,
+      "payload": true,
+      "overflow": false,
+      "jsErrors": []
+    },
+    {
+      "width": 1440,
+      "arrowInset": 21,
+      "keyboard": true,
+      "payload": true,
+      "overflow": false,
+      "jsErrors": []
+    }
+  ],
+  "browserProduction": {
+    "httpReleaseAndHtmlVerified": true,
+    "inAppBrowser": "Reloaded original tab; application and contact custom lists visibly checked; Cleaner and Telegram retained.",
+    "automated": "320/390 px interactions passed; longer runs interrupted by intermittent Chrome ERR_SOCKET_NOT_CONNECTED.",
+    "screenshots": [
+      "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/complaints-selects-047/production/applications-390.png",
+      "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/complaints-selects-047/production/methods-390.png"
+    ],
+    "submission": "Network intercepted for frontend payload checks; no new production CRM/Telegram submission."
+  },
+  "independentReview": {
+    "agent": "complaints_review",
+    "issues": [],
+    "addressedTests": "9/9 passed",
+    "screenReader": "Not tested with a screen reader."
+  },
+  "sourceHashes": {
+    "scripts/complaint-request.test.mjs": "ceec1cd2b64599d351c31920dcdde8b670a1bd84a65bf590ecba709f037c68ab",
+    "src/components/complaint-request/ComplaintSelect.astro": "36d9ce5c2e924ab739f81fea232b54abb717d63931730aee3a9459c8b2811467",
+    "src/components/complaint-request/complaint-select.module.scss": "c826375d7b00096aaa0b880d47ef3bee90ca44c7a833978451b535182e6723a4",
+    "src/components/complaint-request/complaint-select-picker.ts": "16dfc44920de432f3e8a68b8698ae73a28daea81388d0f9f9fe4f109f4727f78",
+    "src/components/complaint-request/complaint-request-controller.ts": "17573a57c10151a5b51854beab7829688ac25b52d3ac1384df2891600c24c2b3",
+    "src/pages/complaints/index.astro": "5322be0eca8b925a9ab65977d0de77b0bea92b5e222980de19254126278f221e"
+  }
+}

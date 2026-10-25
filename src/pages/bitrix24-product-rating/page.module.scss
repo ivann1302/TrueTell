@@ -82,3 +82,28 @@
 .boundaries {
   @include product-surface.section-spacing(var(--section-gap), 0px, var(--surface-inset));
 }
+
+
+.releaseNote {
+  color: #616875;
+  line-height: 1.65;
+  margin: 24px 0 0;
+  max-width: 72ch;
+}
+
+.screenshotStack {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+
+.page :global(figure a) {
+  font-family: inherit;
+}
+
+.legalLinks a {
+  color: #c8cdd5;
+  text-underline-offset: 3px;
+
+  &:focus-visible { outline: 2px solid #4b9cff; outline-offset: 4px; }
+}

@@ -1,0 +1,506 @@
+{
+  "release": "086",
+  "date": "2026-10-23",
+  "ownerDecision": "Усилить обзор MCP TrueTell",
+  "action": "UPDATE",
+  "taskIds": [
+    "SEO-074",
+    "SEO-075"
+  ],
+  "primaryTask": "SEO-074",
+  "status": "local_QA_passed",
+  "registryStatus": "draft",
+  "deployed": false,
+  "indexingChecked": false,
+  "datePublished": null,
+  "newUrls": 0,
+  "applicationChanged": false,
+  "clientPortalUsed": false,
+  "strategy": "Расширить полезность существующего обзора, сохранить путь к собственному MCP TrueTell. Не создавать конкурирующий технический URL и неподтверждённую инструкцию Claude.",
+  "articleChanges": {
+    "overview": "MCP-направления, примеры поиска известной записи/стадий/просрочек, ограниченность результатов, границы сводки, 9 FAQ и новые смысловые ссылки.",
+    "chatgpt": "Только 4 текстовые замены статуса; основная задача и метаданные сохранены.",
+    "images": "Прежние 2 релевантные прозрачные инфографики в каждой статье; статусные подписи актуализированы, fullSize сохранён."
+  },
+  "articles": [
+    {
+      "taskId": "SEO-074",
+      "route": "/podklyuchit-ii-bitrix24/",
+      "source": "/Users/ivan/projects/TrueTell/src/pages/podklyuchit-ii-bitrix24/index.astro",
+      "sha256": "17b45da511e60586f14013ee5070839d80650213d5e97ef5810c717c25944ba5",
+      "localPreview": "http://127.0.0.1:4329/podklyuchit-ii-bitrix24/"
+    },
+    {
+      "taskId": "SEO-075",
+      "route": "/chatgpt-bitrix24-mcp/",
+      "source": "/Users/ivan/projects/TrueTell/src/pages/chatgpt-bitrix24-mcp/index.astro",
+      "sha256": "1339d553aa00da30af7cc95a759835bdfc03e3a634b9ce205bdeb13dea158685",
+      "localPreview": "http://127.0.0.1:4329/chatgpt-bitrix24-mcp/"
+    }
+  ],
+  "semantics": {
+    "method": "Редакционная fan-out модель, не скрытые запросы Google/LLM.",
+    "newWordstatMeasurement": false,
+    "sourceRelease": "081/082",
+    "sourceWorkbook": "outputs/ai-connection-082/TrueTell_AI_Connection_Semantics_082_2026-10-23.xlsx",
+    "historicalKeywords": [
+      {
+        "id": "WS001",
+        "query": "mcp битрикс",
+        "count": 203,
+        "mode": "Широкая формулировка",
+        "periodStart": "2026-09-08",
+        "periodEnd": "2026-10-07",
+        "region": "Россия 225",
+        "devices": "Все",
+        "observedOn": "2026-10-23",
+        "source": "https://wordstat.yandex.ru/?region=225&view=table&words=mcp%20%D0%B1%D0%B8%D1%82%D1%80%D0%B8%D0%BA%D1%81",
+        "evidence": "PROVERENO_UI_SUMMARY_AND_TABLE",
+        "limitation": "Таблица хвостов доступна. Частота строк — отдельное наблюдение, не точная частота seed. Периоды разных запросов различаются; числа не складывать."
+      },
+      {
+        "id": "WS002",
+        "query": "mcp битрикс24",
+        "count": 189,
+        "mode": "Широкая формулировка",
+        "periodStart": "2026-09-08",
+        "periodEnd": "2026-10-07",
+        "region": "Россия 225",
+        "devices": "Все",
+        "observedOn": "2026-10-23",
+        "source": "https://wordstat.yandex.ru/?region=225&view=table&words=mcp%20%D0%B1%D0%B8%D1%82%D1%80%D0%B8%D0%BA%D1%8124",
+        "evidence": "PROVERENO_UI_SUMMARY_AND_TABLE",
+        "limitation": "Таблица хвостов доступна. Частота строк — отдельное наблюдение, не точная частота seed. Периоды разных запросов различаются; числа не складывать."
+      },
+      {
+        "id": "WS003",
+        "query": "mcp bitrix24",
+        "count": 170,
+        "mode": "Широкая формулировка",
+        "periodStart": "2026-09-08",
+        "periodEnd": "2026-10-07",
+        "region": "Россия 225",
+        "devices": "Все",
+        "observedOn": "2026-10-23",
+        "source": "https://wordstat.yandex.ru/?region=225&view=table&words=mcp%20bitrix24",
+        "evidence": "PROVERENO_UI_SUMMARY_AND_TABLE",
+        "limitation": "Таблица хвостов доступна. Частота строк — отдельное наблюдение, не точная частота seed. Периоды разных запросов различаются; числа не складывать."
+      },
+      {
+        "id": "WS006",
+        "query": "mcp сервер битрикс24",
+        "count": 47,
+        "mode": "Широкая формулировка",
+        "periodStart": "2026-09-08",
+        "periodEnd": "2026-10-07",
+        "region": "Россия 225",
+        "devices": "Все",
+        "observedOn": "2026-10-23",
+        "source": "https://wordstat.yandex.ru/?region=225&view=table&words=mcp%20%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%20%D0%B1%D0%B8%D1%82%D1%80%D0%B8%D0%BA%D1%8124",
+        "evidence": "PROVERENO_UI_SUMMARY_AND_TABLE",
+        "limitation": "Таблица хвостов доступна. Частота строк — отдельное наблюдение, не точная частота seed. Периоды разных запросов различаются; числа не складывать."
+      },
+      {
+        "id": "WS016",
+        "query": "подключить mcp битрикс24",
+        "count": 21,
+        "mode": "Широкая формулировка",
+        "periodStart": "2026-09-22",
+        "periodEnd": "2026-10-22",
+        "region": "Россия 225",
+        "devices": "Все",
+        "observedOn": "2026-10-23",
+        "source": "https://wordstat.yandex.ru/?region=225&view=table&words=%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20mcp%20%D0%B1%D0%B8%D1%82%D1%80%D0%B8%D0%BA%D1%8124",
+        "evidence": "PROVERENO_UI_SUMMARY_ONLY",
+        "limitation": "Счётчик виден, таблица хвостов не предоставлена. Не считать отсутствие строк нулём. Если счётчик 0, это явно показанный ноль. Периоды разных запросов различаются; числа не складывать."
+      },
+      {
+        "id": "WS023",
+        "query": "mcp сервер для bitrix24",
+        "count": 8,
+        "mode": "Широкая формулировка",
+        "periodStart": "2026-09-08",
+        "periodEnd": "2026-10-07",
+        "region": "Россия 225",
+        "devices": "Все",
+        "observedOn": "2026-10-23",
+        "source": "https://wordstat.yandex.ru/?region=225&view=table&words=mcp%20%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%20%D0%B4%D0%BB%D1%8F%20bitrix24",
+        "evidence": "PROVERENO_UI_SUMMARY_AND_TABLE",
+        "limitation": "Таблица хвостов доступна. Частота строк — отдельное наблюдение, не точная частота seed. Периоды разных запросов различаются; числа не складывать."
+      }
+    ],
+    "limits": "Сохранённые запросы Wordstat: Россия, все устройства, разные периоды/варианты не суммируются. Это запросы, не люди, лиды или прогноз. Новый спрос не приписывается.",
+    "fanout": [
+      {
+        "question": "Что подключается через MCP-сервер Битрикс24?",
+        "section": "mcp-server-bitrix24",
+        "action": "UPDATE",
+        "purpose": "Различить наш доступ к CRM, REST-документацию и сервисы для внутреннего агента."
+      },
+      {
+        "question": "Какие данные можно получить через наш MCP?",
+        "section": "first-scope",
+        "action": "UPDATE",
+        "purpose": "Дать примеры независимых чтений известных объектов и критерии сверки."
+      },
+      {
+        "question": "Можно ли назвать часть списка всеми сделками?",
+        "section": "partial-result",
+        "action": "UPDATE",
+        "purpose": "Объяснить truncated=true и ограничения итогов."
+      },
+      {
+        "question": "Готов ли весь цикл подключения?",
+        "section": "status",
+        "action": "UPDATE",
+        "purpose": "Отделить успешные 13 чтений от незавершённого lifecycle и других клиентов."
+      },
+      {
+        "question": "Нужна ли отдельная статья Claude сейчас?",
+        "section": null,
+        "action": "NO_PAGE_NOW",
+        "purpose": "Не создавать дубль подготовки до принятой связки Claude и самостоятельной пользы."
+      }
+    ]
+  },
+  "productEvidence": {
+    "source": "/Users/ivan/projects/bitrix_mcp/docs/evidence/codex-read-refresh-2026-10-23.json",
+    "snapshot": "work/mcp-scenarios-086/product-evidence.json",
+    "sha256": "53b01b32ca11385f73048647941f7ae0a6c03db3499223ac57bf87a2f3dcf5eb",
+    "supportingDocs": [
+      "MCP_PUBLIC_CLIENT_ACCEPTANCE.md",
+      "MCP_CODEX_PILOT_CHECKLIST.md"
+    ],
+    "accepted": "Персональный вход и ограниченные вызовы всех 13 инструментов чтения в Codex; independent readbacks совпали.",
+    "unaccepted": "Natural refresh failed; local fix not deployed. A/B, revoke/relogin, other clients not accepted.",
+    "salesLimit": "analyzedDeals=0; ненулевые суммы не проверены.",
+    "relationshipLimit": "Deal DTO не содержит связей contactId/companyId; независимые чтения не доказывают связанный сценарий."
+  },
+  "sources": [
+    {
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture",
+      "checked": "2026-10-23",
+      "role": "primary_factual_source_only"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/28719662/",
+      "checked": "2026-10-23",
+      "role": "primary_factual_source_only"
+    },
+    {
+      "url": "https://apidocs.bitrix24.ru/ai-tools/mcp.html",
+      "checked": "2026-10-23",
+      "role": "primary_factual_source_only"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/26952788/",
+      "checked": "2026-10-23",
+      "role": "primary_factual_source_only"
+    },
+    {
+      "url": "https://developers.openai.com/plugins/deploy/connect-chatgpt",
+      "checked": "2026-10-23",
+      "role": "primary_factual_source_only"
+    }
+  ],
+  "verification": {
+    "build": "PASS, 66 routes",
+    "lint": "PASS, 0 errors; 3 existing React hook warnings",
+    "tests": "87/87 PASS",
+    "indexnow": "--check, 58 URLs, no submission",
+    "html": {
+      "result": "PASS",
+      "registryOtherEntriesPreserved": true,
+      "articles": [
+        {
+          "route": "podklyuchit-ii-bitrix24",
+          "result": "PASS",
+          "canonical": "https://truetell-retail.ru/podklyuchit-ii-bitrix24/",
+          "status": "draft",
+          "publicationDatesOmitted": true,
+          "faqCount": 9,
+          "faqMatchesSchema": true,
+          "sourcesClosed": true,
+          "sourceOnlyOutboundLinks": 5,
+          "ownMcpCtas": 2,
+          "contactTargetExists": true,
+          "internalPaths": 8,
+          "draftExcludedFromSitemapAndCatalogs": true,
+          "images": [
+            {
+              "src": "/_astro/truetell-mcp-query-check-085.DQgc-GIA_7Rvm9.webp",
+              "width": 1100,
+              "height": 800,
+              "hasAlpha": true
+            },
+            {
+              "src": "/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp",
+              "width": 1100,
+              "height": 760,
+              "hasAlpha": true
+            }
+          ]
+        },
+        {
+          "route": "chatgpt-bitrix24-mcp",
+          "result": "PASS",
+          "canonical": "https://truetell-retail.ru/chatgpt-bitrix24-mcp/",
+          "status": "draft",
+          "publicationDatesOmitted": true,
+          "faqCount": 7,
+          "faqMatchesSchema": true,
+          "sourcesClosed": true,
+          "sourceOnlyOutboundLinks": 3,
+          "ownMcpCtas": 2,
+          "contactTargetExists": true,
+          "internalPaths": 7,
+          "draftExcludedFromSitemapAndCatalogs": true,
+          "images": [
+            {
+              "src": "/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp",
+              "width": 1100,
+              "height": 760,
+              "hasAlpha": true
+            },
+            {
+              "src": "/_astro/truetell-mcp-first-read-example-085.BcJRFA5s_1aUd3J.webp",
+              "width": 1100,
+              "height": 900,
+              "hasAlpha": true
+            }
+          ]
+        }
+      ]
+    },
+    "browserLayout": [
+      {
+        "route": "podklyuchit-ii-bitrix24",
+        "width": 390,
+        "height": 640,
+        "scrollWidth": 390,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 136,
+        "introTop": 423.7109375,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 356,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-query-check-085.DQgc-GIA_zCxXU.webp"
+          },
+          {
+            "loaded": true,
+            "width": 356,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z2rhyw2.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "podklyuchit-ii-bitrix24",
+        "width": 768,
+        "height": 640,
+        "scrollWidth": 768,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 136,
+        "introTop": 366.3515625,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 734,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-query-check-085.DQgc-GIA_7Rvm9.webp"
+          },
+          {
+            "loaded": true,
+            "width": 734,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "podklyuchit-ii-bitrix24",
+        "width": 769,
+        "height": 640,
+        "scrollWidth": 769,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 184,
+        "introTop": 184,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 703,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-query-check-085.DQgc-GIA_7Rvm9.webp"
+          },
+          {
+            "loaded": true,
+            "width": 703,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "podklyuchit-ii-bitrix24",
+        "width": 1440,
+        "height": 640,
+        "scrollWidth": 1440,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 184,
+        "introTop": 184,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 878,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-query-check-085.DQgc-GIA_7Rvm9.webp"
+          },
+          {
+            "loaded": true,
+            "width": 878,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "chatgpt-bitrix24-mcp",
+        "width": 390,
+        "height": 640,
+        "scrollWidth": 390,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 136,
+        "introTop": 423.7109375,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 356,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp"
+          },
+          {
+            "loaded": true,
+            "width": 356,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-first-read-example-085.BcJRFA5s_Z1RznAN.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "chatgpt-bitrix24-mcp",
+        "width": 768,
+        "height": 640,
+        "scrollWidth": 768,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 136,
+        "introTop": 366.3515625,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 734,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp"
+          },
+          {
+            "loaded": true,
+            "width": 734,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-first-read-example-085.BcJRFA5s_1aUd3J.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "chatgpt-bitrix24-mcp",
+        "width": 769,
+        "height": 640,
+        "scrollWidth": 769,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 184,
+        "introTop": 184,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 703,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp"
+          },
+          {
+            "loaded": true,
+            "width": 703,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-first-read-example-085.BcJRFA5s_1aUd3J.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "chatgpt-bitrix24-mcp",
+        "width": 1440,
+        "height": 640,
+        "scrollWidth": 1440,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 184,
+        "introTop": 184,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 878,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp"
+          },
+          {
+            "loaded": true,
+            "width": 878,
+            "src": "http://127.0.0.1:4365/_astro/truetell-mcp-first-read-example-085.BcJRFA5s_1aUd3J.webp"
+          }
+        ],
+        "sourcesClosed": true
+      }
+    ],
+    "interactions": {
+      "newFaqKeyboardOpen": true,
+      "newFaqKeyboardClosed": true,
+      "sourcesKeyboardOpen": true,
+      "sourcesKeyboardClosed": true,
+      "ownCtaOpenedForm": true
+    },
+    "browserMethod": "CUA, same-origin iframe widths390/768/769/1440 x640; desktop1440 display scale .85. Actual4329 preview: keyboard FAQ/sources and own CTA opens form; no submission.",
+    "backlog": {
+      "result": "PASS",
+      "tasks": 75,
+      "unchangedTasks": 73,
+      "updatedTasks": [
+        "SEO-074",
+        "SEO-075 status note only"
+      ],
+      "sheets": 7,
+      "changedCells": 23,
+      "priorJournalRowsPreserved": 117,
+      "newJournalRows": 2,
+      "allPublicationAndModificationDatesPreserved": true,
+      "unrelatedValuesFormulasStylesPreserved": true,
+      "nativeFeaturesPreserved": true,
+      "nativeExcelOpened": false,
+      "sha256": "e2f2cc4985cd7b867c9efefb34027b324a8f0b14b962c2f820969d460b807de2"
+    }
+  },
+  "independentReview": {
+    "reviewer": "/root/review_mcp_next_086",
+    "result": "PASS",
+    "openP1P2": 0,
+    "closedFindings": [
+      "P2: удалён неподтверждённый сценарий перехода от сделки к связанным контактам/компаниям; заменён независимыми известными ID."
+    ],
+    "limits": "Ревьюер самостоятельно читал код, evidence и первоисточники. CRM не запускался. Browser/Excel QA выполнены автором; публикация не проверялась."
+  },
+  "next": "Claude SEO-076 остаётся gated до проверки конкретного клиента и самостоятельных шагов. SEO-077 NO_PAGE. Публикация подготовленных статей требует отдельного разрешения и live QA."
+}

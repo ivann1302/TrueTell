@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="920" viewBox="0 0 1000 920">
+<g font-family="Arial,Helvetica,sans-serif" fill="#10131A">
+<text x="48" y="66" font-size="44">Три проверки перед решением</text>
+<path d="M48 104H952" stroke="#D3D7DE" stroke-width="2"/>
+<text x="48" y="176" font-size="36" fill="#1765DA">01</text>
+<text x="132" y="176" font-size="40">Каталог полей</text>
+<text x="132" y="234" font-size="34">Код, название и технические свойства</text>
+<text x="132" y="282" font-size="32" fill="#616875">Начальная инвентаризация</text>
+<path d="M48 328H952" stroke="#D3D7DE" stroke-width="2"/>
+<text x="48" y="402" font-size="36" fill="#1765DA">02</text>
+<text x="132" y="402" font-size="40">Значения в записях</text>
+<text x="132" y="460" font-size="34">Текущие и исторические данные</text>
+<text x="132" y="508" font-size="32" fill="#616875">Проверяют отдельно от каталога</text>
+<path d="M48 554H952" stroke="#D3D7DE" stroke-width="2"/>
+<text x="48" y="628" font-size="36" fill="#1765DA">03</text>
+<text x="132" y="628" font-size="40">Зависимости и назначение</text>
+<text x="132" y="686" font-size="34">Формы, роботы, отчёты и обмен</text>
+<text x="132" y="734" font-size="32" fill="#616875">Проверяют с владельцами процессов</text>
+<path d="M48 780H952" stroke="#D3D7DE" stroke-width="2"/>
+<text x="48" y="843" font-size="34">Справочник помогает с первой проверкой.</text>
+<text x="48" y="890" font-size="32" fill="#616875">Он не подтверждает, что поле можно удалить.</text>
+</g></svg>

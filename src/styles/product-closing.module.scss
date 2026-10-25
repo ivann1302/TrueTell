@@ -19,6 +19,7 @@
   color: #f7f8fa;
 
   p { color: #c8cdd5; }
+  p a { color: inherit; text-underline-offset: 3px; }
   h2 {
     margin: 0;
     font-size: clamp(1.75rem, 2.8vw, 2.5rem);

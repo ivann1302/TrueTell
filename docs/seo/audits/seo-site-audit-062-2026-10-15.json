@@ -1,0 +1,447 @@
+{
+  "release": 62,
+  "date": "2026-10-15",
+  "mode": "AUDIT",
+  "site": "https://truetell-retail.ru/",
+  "assessment": "Техническая основа публичного сайта в проверенном охвате исправна. Текущая поисковая эффективность остаётся не измеренной; основные действия — измеримость, согласованный выпуск готового контента и полезность продуктовых страниц.",
+  "technical": {
+    "sitemapUrls": 44,
+    "http200": 44,
+    "uniqueTitlesAndDescriptions": true,
+    "oneH1SelfCanonicalNoUnexpectedNoindex": true,
+    "orphanPages": 0,
+    "maxClickDepth": 3,
+    "linkedTargetsChecked": 50,
+    "linkedTargets200": 50,
+    "httpWwwRedirect": true,
+    "real404": true,
+    "schema": "JSON-LD положительно найден в static HTML; в DOM главной подтверждены Organization/WebSite, в одной статье390px — Article/BreadcrumbList/FAQPage. Google Rich Results не выполнялся."
+  },
+  "currentGsc": {
+    "available": false,
+    "reason": "GSC Wizard payment_required; direct browser not signed in",
+    "freshMetrics": null
+  },
+  "historicalGsc": {
+    "checkedDate": "2026-10-14",
+    "performancePeriod": {
+      "startDate": "2026-09-14",
+      "endDate": "2026-10-11",
+      "days": 28
+    },
+    "metrics": {
+      "clicks": 3,
+      "impressions": 222,
+      "ctr": 1.3513513513513513,
+      "avgPosition": 6.3108108108108105
+    },
+    "indexationThen": {
+      "indexed": 34,
+      "totalInspected": 43,
+      "notIndexed": 9
+    },
+    "source": "docs/seo/audits/seo-site-audit-050-2026-10-14.json",
+    "boundary": "Только исторический снимок. Не переносить34/43 на нынешние44URL и не считать среднюю позицию6.31 местом каждого целевого запроса."
+  },
+  "pagespeed": [
+    {
+      "name": "home",
+      "url": "https://truetell-retail.ru/",
+      "error": "Quota exceeded for quota metric 'Queries' and limit 'Queries per day' of service 'pagespeedonline.googleapis.com' for consumer 'project_number:583797351490'.",
+      "code": 429
+    },
+    {
+      "name": "article",
+      "url": "https://truetell-retail.ru/massovoe-udalenie-lidov-bitrix24/",
+      "error": "Quota exceeded for quota metric 'Queries' and limit 'Queries per day' of service 'pagespeedonline.googleapis.com' for consumer 'project_number:583797351490'.",
+      "code": 429
+    }
+  ],
+  "browser": {
+    "date": "2026-10-15",
+    "observations": [
+      {
+        "box": {
+          "left": 16,
+          "right": 317.625
+        },
+        "h1": "Приложения для CRM и автоматизации бизнеса",
+        "schemaTypes": [
+          "Organization",
+          "WebSite"
+        ],
+        "scrollWidth": 320,
+        "textRects": [
+          {
+            "left": 42.609375,
+            "right": 291.015625
+          },
+          {
+            "left": 66.828125,
+            "right": 266.7890625
+          },
+          {
+            "left": 16,
+            "right": 317.625
+          },
+          {
+            "left": 85.921875,
+            "right": 247.703125
+          }
+        ],
+        "url": "https://truetell-retail.ru/",
+        "width": 320
+      },
+      {
+        "box": {
+          "left": 16,
+          "right": 374
+        },
+        "h1": "Приложения для CRM и автоматизации бизнеса",
+        "schemaTypes": [
+          "Organization",
+          "WebSite"
+        ],
+        "scrollWidth": 390,
+        "textRects": [
+          {
+            "left": 62.890625,
+            "right": 327.1015625
+          },
+          {
+            "left": 88.65625,
+            "right": 301.34375
+          },
+          {
+            "left": 34.5859375,
+            "right": 355.40625
+          },
+          {
+            "left": 108.9609375,
+            "right": 281.0390625
+          }
+        ],
+        "url": "https://truetell-retail.ru/",
+        "width": 390
+      },
+      {
+        "box": {
+          "left": 310,
+          "right": 1130
+        },
+        "h1": "Приложения для CRM и автоматизации бизнеса",
+        "schemaTypes": [
+          "Organization",
+          "WebSite"
+        ],
+        "scrollWidth": 1440,
+        "textRects": [
+          {
+            "left": 347.578125,
+            "right": 1092.421875
+          },
+          {
+            "left": 335.2734375,
+            "right": 1104.7265625
+          }
+        ],
+        "url": "https://truetell-retail.ru/",
+        "width": 1440
+      },
+      {
+        "h1": "Как массово удалить лиды в Битрикс24: все сразу или по фильтру",
+        "schemaTypes": [
+          "Article",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "scrollWidth": 390,
+        "textRects": [
+          {
+            "left": 71.8671875,
+            "right": 148.296875
+          },
+          {
+            "left": 148.296875,
+            "right": 318.125
+          },
+          {
+            "left": 59.3359375,
+            "right": 330.65625
+          },
+          {
+            "left": 148.296875,
+            "right": 318.125
+          },
+          {
+            "left": 59.3359375,
+            "right": 330.65625
+          },
+          {
+            "left": 68.8125,
+            "right": 321.1875
+          },
+          {
+            "left": 59.7265625,
+            "right": 330.265625
+          },
+          {
+            "left": 82.6484375,
+            "right": 307.3515625
+          }
+        ],
+        "url": "https://truetell-retail.ru/massovoe-udalenie-lidov-bitrix24/",
+        "width": 390
+      }
+    ],
+    "limits": [
+      "Home rendered at320/390/1440 and Organization/WebSite positively observed in DOM.",
+      "Article initial DOM check at390px completed: H1, scrollWidth, text rectangles and Article/BreadcrumbList/FAQPage presence. Subsequent navigation/extended UI checks interrupted by browser connection errors.",
+      "Cookie first-visit behavior, cold-load CLS, field CWV and Google Rich Results Test not measured."
+    ],
+    "home320": {
+      "textRight": 317.625,
+      "viewportWidth": 320,
+      "rightGap": 2.375
+    },
+    "schemaValidation": "Positive presence in rendered DOM: Organization/WebSite on homepage and Article/BreadcrumbList/FAQPage on one article. Not Google validation."
+  },
+  "contentReview": {
+    "reviewer": "/root/review_seo_audit_062",
+    "sample": [
+      "/",
+      "/products/",
+      "/bitrix24-product-rating/",
+      "/otchety-po-prodazham-bitrix24/",
+      "/prognoz-prodazh-moysklad/"
+    ],
+    "finding": "Значимых фактических ошибок в двух прочитанных статьях не найдено. Отмечены границы демоданных, источники, ограничения и стадии подключения. Не является полным фактчеком22статей."
+  },
+  "drafts": {
+    "date": "2026-10-15",
+    "drafts": [
+      {
+        "route": "audit-poley-crm-bitrix24/",
+        "status": 404,
+        "referencedFromSitemapHtml": false
+      },
+      {
+        "route": "karta-sootvetstviya-poley-bitrix24/",
+        "status": 404,
+        "referencedFromSitemapHtml": false
+      },
+      {
+        "route": "uf-crm-ufcrm-bitrix24-api/",
+        "status": 404,
+        "referencedFromSitemapHtml": false
+      },
+      {
+        "route": "tipy-poley-crm-bitrix24/",
+        "status": 404,
+        "referencedFromSitemapHtml": false
+      },
+      {
+        "route": "nazvanie-polya-uf-crm-bitrix24/",
+        "status": 404,
+        "referencedFromSitemapHtml": false
+      },
+      {
+        "route": "spisok-poley-bitrix24/",
+        "status": 404,
+        "referencedFromSitemapHtml": false
+      },
+      {
+        "route": "kod-polya-bitrix24/",
+        "status": 404,
+        "referencedFromSitemapHtml": false
+      },
+      {
+        "route": "grafik-platezhey-bitrix24/",
+        "status": 404,
+        "referencedFromSitemapHtml": false
+      }
+    ],
+    "publishedInLocalRegistry": 22,
+    "businessIdeasInLiveHtml": false,
+    "cleanerMarketLinkLive": true
+  },
+  "findings": [
+    {
+      "id": "measurement",
+      "priority": "P1",
+      "finding": "Свежая поисковая эффективность и индексация не проверены",
+      "evidence": "GSC Wizard list_sites вернул payment_required; прямой браузер открыл публичную страницу входа Search Console. Повторные платные запросы не выполнялись.",
+      "impact": "Нельзя достоверно оценить текущие запросы, позиции, число страниц в индексе и изменения после выпуска.",
+      "action": "Восстановить доступ к GSC или использовать актуальную выгрузку из Search Console; повторить измерение завершённого периода, URL Inspection и состояние sitemap."
+    },
+    {
+      "id": "unpublished",
+      "priority": "P1",
+      "finding": "8 подготовленных статей пока не опубликованы",
+      "evidence": [
+        {
+          "route": "audit-poley-crm-bitrix24/",
+          "status": 404,
+          "referencedFromSitemapHtml": false
+        },
+        {
+          "route": "karta-sootvetstviya-poley-bitrix24/",
+          "status": 404,
+          "referencedFromSitemapHtml": false
+        },
+        {
+          "route": "uf-crm-ufcrm-bitrix24-api/",
+          "status": 404,
+          "referencedFromSitemapHtml": false
+        },
+        {
+          "route": "tipy-poley-crm-bitrix24/",
+          "status": 404,
+          "referencedFromSitemapHtml": false
+        },
+        {
+          "route": "nazvanie-polya-uf-crm-bitrix24/",
+          "status": 404,
+          "referencedFromSitemapHtml": false
+        },
+        {
+          "route": "spisok-poley-bitrix24/",
+          "status": 404,
+          "referencedFromSitemapHtml": false
+        },
+        {
+          "route": "kod-polya-bitrix24/",
+          "status": 404,
+          "referencedFromSitemapHtml": false
+        },
+        {
+          "route": "grafik-platezhey-bitrix24/",
+          "status": 404,
+          "referencedFromSitemapHtml": false
+        }
+      ],
+      "impact": "Кластер полей CRM существует только локально. Его подготовка ещё не означает доступность для поиска. На live нет ссылок на эти404 — это не дефект публичной перелинковки.",
+      "action": "Согласовать выпуск готового пакета, сверить актуальность продуктов, записать реальные даты и провести live QA. Не публиковать автоматически по результатам аудита."
+    },
+    {
+      "id": "placeholders",
+      "priority": "P2",
+      "finding": "Две коммерческие страницы остаются общими анонсами",
+      "evidence": {
+        "urls": [
+          "https://truetell-retail.ru/backup-moysklad/",
+          "https://truetell-retail.ru/upravlenie-rezervami-moysklad/"
+        ],
+        "text": "Продукт находится в разработке и в ближайшее время выйдет в свет.",
+        "mainWordsIncludingRelated": [
+          70,
+          67
+        ],
+        "incomingPagesEach": 1
+      },
+      "impact": "Страница почти не помогает понять реальный сценарий, ограничения и доступность подключения. Объём слов — описательный факт, не порог и не доказанная причина позиции.",
+      "action": "Уточнить роль этих URL. Добавлять проверенные сведения, когда есть что сообщить; заменить обещание скорого запуска на подтверждённый статус без неподтверждённого срока. Если самостоятельной пользы пока нет, отдельно решить необходимость индексирования. Это не основание немедленно удалять или закрывать URL; не дописывать текст ради длины."
+    },
+    {
+      "id": "links",
+      "priority": "P2",
+      "finding": "У части полезных страниц всего одна входящая страница",
+      "evidence": [
+        {
+          "url": "https://truetell-retail.ru/backup-moysklad/",
+          "incoming": 1,
+          "depth": 3
+        },
+        {
+          "url": "https://truetell-retail.ru/moysklad-arhivirovanie/",
+          "incoming": 1,
+          "depth": 2
+        },
+        {
+          "url": "https://truetell-retail.ru/moysklad-izmenenie-dokumentov/",
+          "incoming": 1,
+          "depth": 2
+        },
+        {
+          "url": "https://truetell-retail.ru/moysklad-izmenenie-tovarov/",
+          "incoming": 1,
+          "depth": 2
+        },
+        {
+          "url": "https://truetell-retail.ru/moysklad-udalenie/",
+          "incoming": 1,
+          "depth": 2
+        },
+        {
+          "url": "https://truetell-retail.ru/prognoz-prodazh-moysklad/",
+          "incoming": 1,
+          "depth": 2
+        },
+        {
+          "url": "https://truetell-retail.ru/upravlenie-rezervami-moysklad/",
+          "incoming": 1,
+          "depth": 3
+        }
+      ],
+      "impact": "Мало смысловых путей к страницам; это возможность улучшить навигацию, не установленная причина отсутствия индекса. Сирот нет, максимальная глубина3перехода.",
+      "action": "Начать с прогноза продаж и релевантных сценариев МойСклад: добавить уместные контекстные переходы из существующих инструкций, учитывая готовность продукта."
+    },
+    {
+      "id": "mobile",
+      "priority": "P3",
+      "finding": "У H1 главной на320px почти нет правого отступа",
+      "evidence": {
+        "textRight": 317.625,
+        "viewportWidth": 320,
+        "rightGap": 2.375
+      },
+      "impact": "Текст подходит примерно на2,4px к правому краю. На390px этого не наблюдалось. Это замечание вёрстки, не измеренный CWV или доказанный фактор потери трафика.",
+      "action": "Исправить перенос/ширину в задаче мобильного UX. Cookie первого визита и холодныйCLS повторить отдельно — этим просмотром они не закрыты."
+    },
+    {
+      "id": "rating-status",
+      "priority": "P3",
+      "finding": "Статус «Рейтинга продаж» на посадочной находится только в закрытомFAQ",
+      "evidence": {
+        "url": "https://truetell-retail.ru/bitrix24-product-rating/",
+        "faq": "Приложение проходит финальную проверку перед запуском.",
+        "catalog": "Приложение готовится к запуску."
+      },
+      "impact": "Стадия подключения яснее в каталоге, чем на посадочной. Сам CTA «Обсудить подключение» корректен.",
+      "action": "Показать честный статус нижеhero в кратком описании продукта. Не обещать установку или дату запуска без подтверждения."
+    }
+  ],
+  "limits": [
+    "Не измерены свежие Google/Яндекс позиции, обратные ссылки, заявки и установки из органики.",
+    "PageSpeed API ответил429 на два запроса. Свежие lab и fieldCWV не получены. Историческиеcookie/CLSзадачи не закрыты.",
+    "Начальное DOM-измерение статьи390px выполнено; дальнейшая навигация/расширеннаяUIпроверка прервались ошибкой соединения. СвежийHTTP44страниц и независимое чтение успешны; общий сбой сайта из этого не выводится.",
+    "web.open показал кэшглавной4днядавности с удалённым продуктомбизнесидей. Текущиеcurl/браузер/ревью подтвердилиегоотсутствие; кэшнеприняткактекущийдефект.",
+    "Краткий title/description сам по себе не оценён как проблема по формальному числу символов. Каннибализация по свежим поисковым данным не оценена."
+  ],
+  "actionsTaken": {
+    "siteCodeChanged": false,
+    "deployed": false,
+    "searchSubmission": false,
+    "auditEvidenceSaved": true
+  },
+  "backlog": "TrueTell_SEO_Backlog_062_2026-10-15.xlsx",
+  "priorityConvention": "P1/P2/P3 здесь — очередь SEO-работ и улучшений. Не классификация аварийности и не editorial-review severity; недоступность аналитики и согласованные draft не названы дефектами сайта.",
+  "independentAuditReview": {
+    "reviewer": "/root/review_seo_audit_062",
+    "verdict": "APPROVE",
+    "scope": "Independent fresh HTTP/HTML sample and review of main report/evidence. Three clarity suggestions applied: completed initial article DOM390 scope, work-priority semantics and honest launch status. Browser measurements and full44/50 crawl by main author; no new GSC or CWV claimed."
+  },
+  "backlogVerification": {
+    "passed": true,
+    "tasks": 64,
+    "sheets": 7,
+    "historicalGscAndJournalPreserved": true,
+    "nativeAndPanesPreserved": true,
+    "unrelatedCellsAndFormatsPreserved": true,
+    "allFormulasPreserved": true,
+    "sourceUnchanged": true,
+    "freshGscMeasurementsAdded": false,
+    "formulaErrors": 0,
+    "sha256": "a8458cdc4fb28b822a03352c800377404c1aed535a137f6178539ef688e03252"
+  }
+}

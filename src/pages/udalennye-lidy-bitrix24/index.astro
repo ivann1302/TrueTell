@@ -1,7 +1,7 @@
 ---
 import ArticleFigure from '../../components/editorial/article-figure.astro';
-import articleIllustration from '../../images/articles/record-recovery-editorial.png';
 import recycleImage from '../../images/articles/bitrix24-recycle-filter-native.png';
+import recycleEntryImage from '../../images/articles/bitrix24-recycle-entry-official.jpg';
 import selectionImage from '../../images/products/cleaner-selection.png';
 import ArticleLayout from '../../components/editorial/article-layout.astro';
 import ArticleSources from '../../components/editorial/article-sources.astro';
@@ -30,8 +30,8 @@ const siteRoot = new URL(base, import.meta.env.SITE);
 const homeUrl = siteRoot.toString();
 const knowledgeBaseUrl = new URL('knowledge-base/', siteRoot).toString();
 const articleUrl = new URL('udalennye-lidy-bitrix24/', siteRoot).toString();
-const imageAlt = "Сотрудник ищет сохранённый документ среди архивных папок";
-const ogImage = new URL(articleIllustration.src, siteRoot).toString();
+const imageAlt = 'Меню CRM Битрикс24 с переходом в Корзину';
+const ogImage = new URL(recycleEntryImage.src, siteRoot).toString();
 const ogDescription = description;
 const titleParts = [
   { text: 'Удалённые лиды в Битрикс24', accent: true },
@@ -156,10 +156,11 @@ const structuredData = createArticleStructuredData({
     <p>Стандартный срок хранения — <strong>до 30 дней</strong>. После восстановления у записи меняется ID. Если лида нет, сначала проверьте фильтр, права и настройки корзины.</p>
   </Fragment>
 
+  <p>Если исчезла карточка контакта, перейдите к <a href={`${base}udalenie-kontaktov-bitrix24/#contact-recovery`}>проверке удалённого контакта в корзине</a>: сначала выберите правильный тип элемента CRM.</p>
+
   <section aria-labelledby="find-trash">
     <h2 id="find-trash">Где находятся <span data-heading-accent>удалённые лиды в Битрикс24</span></h2>
     <p>Корзина CRM — первое место для поиска удалённой карточки. Не открывайте вместо неё корзину на Диске: там находятся файлы. Чтобы перейти к списку удалённых обращений:</p>
-  <ArticleFigure src={articleIllustration} alt="Сотрудник ищет сохранённый документ среди архивных папок" caption="Возврат прежней записи и создание новой карточки по сохранённым сведениям — разные результаты. Иллюстрация поиска сохранённого документа." />
     <ol>
       <li>Откройте раздел CRM.</li>
       <li>Перейдите в меню «Ещё».</li>
@@ -173,6 +174,8 @@ const structuredData = createArticleStructuredData({
     <ArticleFigure src={recycleImage} fullSize portrait alt="Фильтр корзины CRM Битрикс24: период удаления, тип записи и кнопка Найти" caption="Реальный фильтр корзины CRM. Для поиска лидов выберите тип «Лид» и период удаления. Кадр показывает настройки поиска; восстановление записи на нём не выполняется." />
 
   </section>
+
+    <p>Для организации-контрагента порядок проверки описан в <a href={`${base}udalenie-kompaniy-bitrix24/#company-restore`}>разделе о восстановлении удалённой компании</a>. В корзине важно выбрать соответствующий тип элемента.</p>
 
   <section aria-labelledby="retention-period">
     <h2 id="retention-period">Сколько хранятся <span data-heading-accent>удалённые лиды</span></h2>
@@ -245,7 +248,7 @@ const structuredData = createArticleStructuredData({
     <p>Порядок выбора отдельных строк и всей выборки есть в <a href={`${base}massovoe-udalenie-lidov-bitrix24/`}>инструкции по массовому удалению лидов</a>. До операции сохраните и сверьте данные по <a href={`${base}eksport-lidov-sdelok-bitrix24-pered-udaleniem/`}>порядку экспорта CRM перед удалением</a>.</p>
     <p>Дата создания сама по себе не означает, что обращение больше не нужно. Старый лид может содержать незавершённую договорённость. Чтобы удалить записи определённой категории, опишите её через доступные поля, например текущую стадию и ответственного, и проверьте пограничные случаи.</p>
 
-    <p>Если нужно регулярно очищать большое количество лидов и сделок по более точным условиям, можно использовать {companyInfo.brandName} Cleaner для Битрикс24. Приложение позволяет настроить фильтр, проверить найденные элементы и их количество, исключить важные карточки и затем подтвердить массовое удаление.</p>
+    <p>Если нужно регулярно очищать большое количество лидов и сделок по более точным условиям, можно использовать {companyInfo.brandName} Cleaner для Битрикс24. В интерфейсе приложения предусмотрены фильтр, проверка найденных элементов и их количества, исключение важных карточек и подтверждение массового удаления. Перед рабочей очисткой проверьте эти действия на своём портале.</p>
     <p>Подходящие сценарии — удалить старые лиды, записи за выбранный период или большую группу по согласованным условиям. Главное — сначала проверить выборку. Порядок отбора разобран в материале про <a href={`${base}bitrix24-udalenie-lidov-za-period/`}>удаление старых лидов за выбранный период</a>. Для сделок есть отдельная инструкция: <a href={`${base}udalenie-proigrannyh-sdelok-bitrix24/`}>как удалить проигранные сделки и сохранить нужные</a>.</p>
     <InlineConsultation
       variant="product"
@@ -253,7 +256,7 @@ const structuredData = createArticleStructuredData({
       description={`В ${companyInfo.brandName} Cleaner можно отобрать лиды и сделки по фильтрам, проверить список и исключить важные карточки перед подтверждением. Восстановление удалённых записей зависит от механизмов Битрикс24.`}
       href={cleanerHref} actionLabel="Массовое удаление лидов и сделок в Bitrix24"
     />
-    <ArticleFigure src={selectionImage} fullSize alt="Предпросмотр выбранных сделок в TrueTell Cleaner с количеством записей и экспортом CSV" caption="Демонстрационный экран TrueTell Cleaner в режиме сделок: видны состав выборки, количество и экспорт CSV. Для лидов проверяют свою выборку; CSV не заменяет полную резервную копию CRM." />
+    <ArticleFigure src={selectionImage} fullSize alt="Предпросмотр выбранных сделок в TrueTell Cleaner с количеством записей и кнопкой CSV" caption="Демонстрационный экран TrueTell Cleaner в режиме сделок: видны состав выборки, количество и кнопка подготовки CSV. Сохранение файла проверьте в своём браузере; CSV не заменяет полную резервную копию CRM." />
   </section>
 
   <section aria-labelledby="prevent-loss">
@@ -268,14 +271,6 @@ const structuredData = createArticleStructuredData({
     <p>Такой порядок полезен и при стандартных групповых действиях, и при работе с Cleaner. Проверка списка и количества помогает заметить ошибку до удаления; корзина остаётся средством исправить недавнюю ошибку, а не основанием пропускать проверку.</p>
   </section>
 
-  <section aria-labelledby="in-brief">
-    <h2 id="in-brief">Коротко</h2>
-    <p>Удалённые лиды ищите в <strong>CRM → Ещё → Корзина</strong>. Если запись ещё там и тариф допускает восстановление, её можно вернуть.</p>
-    <p>Стандартный срок хранения — до 30 дней. Администратор видит все удаления, обычный сотрудник — свои.</p>
-    <p>После восстановления меняется ID: найдите карточку в CRM и обновите старую ссылку.</p>
-    <p>Если записи уже нет, восстановление всего портала из резервной копии — крайний вариант. Облачные копии хранятся семь дней; откат удаляет изменения после выбранной точки.</p>
-  </section>
-
   <FaqSection items={faqItems} id="faq" variant="article" />
   <ArticleSources publishedIso={article.publishedAt} sources={sourceLinks} />
   <Fragment slot="article-end">
@@ -284,8 +279,8 @@ const structuredData = createArticleStructuredData({
   <Fragment slot="after-article">
     <ConsultationCtaSection
       title={cleanerProduct.name}
-      description={cleanerProduct.articleDescription}
-      href={cleanerHref} actionLabel={cleanerProduct.articleActionLabel}
+      description={`${cleanerProduct.marketplaceArticleDescription} Приложение не восстанавливает удалённые лиды.`}
+      href={cleanerProduct.marketplaceUrl} actionLabel={cleanerProduct.connectionActionLabel}
     />
   </Fragment>
 </ArticleLayout>

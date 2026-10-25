@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1060">
+  <defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#101621}.h{font-size:31px;font-weight:700}.p{font-size:26px}.tag{font-size:21px;font-weight:700;fill:#386278}.n{font-size:36px;font-weight:700;fill:#087ebf}</style></defs>
+  <text x="38" y="55" class="h">Выручка по одной смене</text>
+  <text x="38" y="98" class="p">Учебный пример атрибуции возврата</text>
+  <rect x="38" y="145" width="724" height="190" rx="20" fill="#e8f3fa"/>
+  <text x="66" y="192" class="tag">АННА · ВЛАДЕЛЕЦ ИСХОДНОЙ ПРОДАЖИ</text>
+  <text x="66" y="247" class="p">Продажа 1 000 ₽ − возврат 300 ₽</text>
+  <text x="66" y="305" class="n">Итог: 700 ₽</text>
+  <rect x="38" y="355" width="724" height="175" rx="20" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="66" y="403" class="tag">БОРИС · ВЛАДЕЛЕЦ ДРУГОЙ ПРОДАЖИ</text>
+  <text x="66" y="457" class="p">Продажа 600 ₽</text>
+  <text x="66" y="506" class="n">Итог: 600 ₽</text>
+  <rect x="38" y="551" width="724" height="140" rx="20" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="66" y="599" class="tag">ВОЗВРАТ ОФОРМИЛ БОРИС</text>
+  <text x="66" y="653" class="p">Но он связан с продажей Анны</text>
+  <rect x="38" y="722" width="724" height="178" rx="20" fill="#dceef8"/>
+  <text x="66" y="770" class="h">Итог смены после возврата</text>
+  <text x="66" y="832" class="n">700 + 600 = 1 300 ₽</text>
+  <text x="38" y="988" class="p">Это не сумма премии или зарплаты.</text>
+</svg>

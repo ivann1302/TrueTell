@@ -23,8 +23,8 @@ const description = 'Практические инструкции по Битр
     <header class={styles.intro}>
       <div class={styles.container}>
         <h1>База знаний</h1>
-        <p>Инструкции по Битрикс24, МоемуСкладу и приложениям: как выполнить операцию, найти причину ошибки и проверить результат.</p>
-        <nav class={styles.categoryNav} aria-label="Разделы базы знаний">
+        <p data-intro="description">Инструкции по Битрикс24, МоемуСкладу и приложениям: как выполнить операцию, найти причину ошибки и проверить результат.</p>
+        <nav class={styles.categoryNav} aria-label="Разделы базы знаний" data-intro="actions">
           {sections.map((section) => (
             <a href={`#${section.id}`}>
               <span>{section.title}</span>
@@ -50,10 +50,10 @@ const description = 'Практические инструкции по Битр
             <div class={styles.topics}>
               {section.topics.map((topic) => (
                 <div class={styles.topic}>
-                  <h3>{topic.title}</h3>
+                  <h3 data-reveal>{topic.title}</h3>
                   <ul class={styles.links}>
                     {topic.items.map((item) => (
-                      <li>
+                      <li data-reveal>
                         <a href={`${base}${item.hrefPath}`}>
                           <span class={styles.itemCopy}>
                             <span class={styles.itemTitle}>{item.title}</span>

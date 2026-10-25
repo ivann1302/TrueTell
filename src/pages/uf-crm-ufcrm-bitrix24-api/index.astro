@@ -1,0 +1,119 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import { fieldDirectoryProduct } from '../../config/products';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import Checklist from '../../components/editorial/checklist.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import formatsImage from '../../images/articles/bitrix24-api-field-name-formats.png';
+import directoryImage from '../../images/articles/truetell-field-directory-title-codes-live.jpg';
+const article = getArticle('uf-crm-ufcrm-bitrix24-api/');
+const { title, description } = article;
+const canonicalPath = `/${article.hrefPath}`;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const ogImage = new URL(formatsImage.src, siteRoot).toString();
+const imageAlt = 'Форматы crm.item.fields: при N — ufCrm2_1639669411830, при Y — UF_CRM_2_1639669411830; системное title и отдельный upperName TITLE';
+const titleParts = [{ text: 'UF_CRM и ufCrm: ' }, { text: 'коды полей API', accent: true }, { text: ' Битрикс24' }];
+const sourceLinks = [
+  { label: 'Описания полей crm.item.fields — REST API Битрикс24', href: 'https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-fields.html' },
+  { label: 'Чтение элемента crm.item.get — REST API Битрикс24', href: 'https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-get.html' },
+  { label: 'Обновление элемента crm.item.update — REST API Битрикс24', href: 'https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-update.html' },
+  { label: 'Поля сделки crm.deal.fields — REST API Битрикс24', href: 'https://apidocs.bitrix24.ru/api-reference/crm/deals/crm-deal-fields.html' },
+  { label: 'Изменение сделки crm.deal.update — REST API Битрикс24', href: 'https://apidocs.bitrix24.ru/api-reference/crm/deals/crm-deal-update.html' },
+];
+const methods = [
+  ['crm.item.fields', 'entityTypeId и режим N/Y', 'result.fields: точный ключ и описание; у title может быть upperName: TITLE'],
+  ['crm.item.get', 'entityTypeId, ID записи и режим N/Y', 'result.item: значения записи в выбранном формате'],
+  ['crm.deal.fields', 'Поля именно сделок', 'result: описания с ключами семейства методов сделок, например TITLE'],
+];
+const faqItems = [
+  { question: 'UF_CRM и ufCrm — это разные поля?', answer: 'Они могут обозначать одно пользовательское поле в разных режимах универсального API. Сначала проверьте портал, сущность и полное имя. Совпадение части имени само по себе не доказывает соответствие.' },
+  { question: 'Что делает useOriginalUfNames?', answer: 'В поддерживающих его универсальных методах параметр управляет форматом пользовательских имён. N соответствует camelCase, Y — исходным именам. Условия применения проверяйте на странице конкретного метода.' },
+  { question: 'Параметр Y превращает title в TITLE?', answer: 'Нет. Он относится к пользовательским полям. Для системного поля проверяйте точный ключ своего метода; например, crm.item.fields описывает title, а crm.deal.fields — TITLE.' },
+  { question: 'Можно ли использовать дополнительный код API вместо основного?', answer: 'Только если этот код соответствует требованиям выбранного метода. upperName в описании не означает, что два имени взаимозаменяемы в любом запросе. Основной ключ и дополнительное имя сверяют отдельно.' },
+  { question: 'Почему запрос успешен, а поле не изменилось?', answer: 'Проверьте ключ поля, сущность, ID, режим имён и формат значения. В crm.item.update некорректное поле может быть проигнорировано. После разрешённого изменения прочитайте запись через crm.item.get с согласованным режимом и сравните ожидаемое значение.' },
+  { question: 'Справочник автоматически исправит имена в моей интеграции?', answer: 'Нет. Справочник показывает метаданные четырёх основных сущностей и позволяет копировать коды. Он не редактирует запросы, не меняет поля и не настраивает интеграцию.' },
+];
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const structuredData = createArticleStructuredData({
+  articleType: 'Article', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  articleSection: article.category,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() }, { name: title, item: articleUrl }], faqItems,
+});
+---
+<ArticleLayout {title} {titleParts} {description} {canonicalPath} category={article.category}
+  intro="Как выбрать точное имя поля для REST-метода, зачем нужен useOriginalUfNames и почему нельзя автоматически менять регистр кода из справочника."
+  {structuredData} ogTitle={article.seoTitle ?? title} ogDescription={description} {ogImage} ogImageAlt={imageAlt} author={authorName}>
+  <Fragment slot="quick-answer">
+    <p>Начните с <strong>названия REST-метода и сущности</strong>. Для универсального API проверьте режим пользовательских имён <code>useOriginalUfNames</code>; затем используйте ключ из соответствующего описания поля.</p>
+    <p><code>UF_CRM_…</code> и <code>ufCrm…</code> могут быть двумя представлениями одного поля. Но <strong>механическая замена регистра не определяет правильный запрос</strong>: системные ключи и формат значений проверяются отдельно.</p>
+  </Fragment>
+  <p data-article-lead>В одном примере интеграции написано <code>TITLE</code>, в другом — <code>title</code>. Пользовательское поле тоже может выглядеть по-разному. Вместо попыток угадать имя зафиксируйте, какой метод вызывается, с каким типом элемента и в каком режиме. Это делает проверку воспроизводимой.</p>
+  <section aria-labelledby="custom-name-mode">
+    <h2 id="custom-name-mode">UF_CRM и ufCrm: <span data-heading-accent>два режима имён</span></h2>
+    <p>В <a href={sourceLinks[0].href} target="_blank" rel="noopener noreferrer">crm.item.fields</a> параметр <code>useOriginalUfNames</code> по умолчанию равен <code>N</code>. Для пользовательских полей это camelCase. Значение <code>Y</code> включает исходные имена. Пара из документации показана ниже; это пример формата, а не готовый код для вашего портала.</p>
+    <ArticleFigure src={formatsImage} fullSize alt={imageAlt}
+      caption="Редакционная инфографика по документации crm.item.fields. Два верхних примера показывают режимы имени пользовательского поля; нижний — системный ключ и дополнительное имя. Код из справки не подтверждает существование такого поля на вашем портале." />
+    <p>Параметр расположен на уровне запроса, рядом с <code>entityTypeId</code>, а не внутри <code>fields</code>. Сначала задайте режим явно при получении метаданных. Если затем читаете запись через <a href={sourceLinks[1].href} target="_blank" rel="noopener noreferrer">crm.item.get</a>, согласуйте тот же режим, чтобы сравнивать соответствующие имена.</p>
+    <p>Не выводите код другого поля из суффикса примера. Название, портал и сущность проверяются по текущим описаниям. Если требуется найти техническое имя по подписи, начните с <a href={`${base}kod-polya-bitrix24/`}>инструкции о коде поля</a>.</p>
+  </section>
+  <section aria-labelledby="system-name-method">
+    <h2 id="system-name-method">TITLE и title: <span data-heading-accent>проверьте семейство методов</span></h2>
+    <p>В универсальном описании поле названия имеет ключ <code>title</code>, а свойство <code>upperName</code> может содержать <code>TITLE</code>. У <a href={sourceLinks[3].href} target="_blank" rel="noopener noreferrer">crm.deal.fields</a> название сделки описано ключом <code>TITLE</code>. Параметр формата пользовательских имён не переименовывает системные поля.</p>
+    <DataTable label="Где искать ключи в разных методах CRM" columns={['Метод', 'Что уточнить', 'Что читать в ответе']} rows={methods} rowHeaders />
+    <p>У этих ответов различается и структура. Не ищите значения записи внутри описания поля: метаданные объясняют тип и свойства, а чтение записи возвращает её содержимое. Не переносите логику чтения <code>result.fields</code> в обработчик ответа <code>crm.deal.fields</code> без изменения структуры.</p>
+    <p>Для изменения сделки через <a href={sourceLinks[4].href} target="_blank" rel="noopener noreferrer">crm.deal.update</a> проверяйте правила этого метода и его объекта <code>fields</code>. Дополнительное имя из универсального ответа — подсказка для сверки, а не универсальная замена основного ключа.</p>
+  </section>
+  <section aria-labelledby="directory-codes">
+    <h2 id="directory-codes">Как читать <span data-heading-accent>два кода в справочнике</span></h2>
+    <p>Если справочник {companyInfo.brandName} уже подключён, выберите нужную сущность и найдите поле. Основное имя подписано «Код универсального API», а второе, если оно получено, — «Дополнительный код API». Не объединяйте их в одну строку и не копируйте поясняющие подписи вместе с кодом.</p>
+    <ArticleFigure src={directoryImage} fullSize
+      alt="Реальный справочник полей сделки: у поля Название основной код title, дополнительный код TITLE, тип string"
+      caption="Реальный тестовый портал, 14.10.2026, справочник 1.0.2. Поиск «Название» оставил одну строку: основной ключ title и дополнительный TITLE. Это описания поля, без чтения или изменения значения названия конкретной сделки." />
+    <p>Текущий справочник запрашивает <code>crm.item.fields</code> с <code>useOriginalUfNames=Y</code>, поэтому пользовательские ключи показывает в исходном формате. Системное <code>title</code> при этом остаётся <code>title</code>. Наличие второго имени зависит от того, что передал API.</p>
+    <p>Приложение помогает проверить метаданные сделок, лидов, контактов и компаний. Оно не переключает режим в вашей интеграции и не выполняет операции записи. Для нескольких полей можно подготовить <a href={`${base}spisok-poley-bitrix24/`}>каталог кодов в CSV</a>, сохранив рядом назначение каждого поля.</p>
+    <InlineConsultation title="Нужно проверить имена полей в интеграции?" description="Разберём конкретный метод, сущность, режим имён и формат данных. Для обсуждения подойдёт обезличенный фрагмент запроса без ключей доступа и клиентских значений." href={companyInfo.contacts.consultationUrl} actionLabel="Обсудить интеграцию" />
+  </section>
+  <section aria-labelledby="verify-request">
+    <h2 id="verify-request">Как проверить <span data-heading-accent>выбранный формат</span></h2>
+    <Checklist label="Проверка имени поля перед использованием в REST API" items={[
+      { title: 'Зафиксируйте метод и объект CRM.', description: 'Название метода, портал, сущность и ID записи — отдельные параметры задачи. entityTypeId описывает тип элемента, а ID — конкретную запись.' },
+      { title: 'Получите актуальное описание.', description: 'Для универсального семейства задайте режим имён явно и проверьте result.fields. Для семейства сделок используйте его собственные описания и ключи.' },
+      { title: 'Сверьте весь ключ и тип значения.', description: 'Проверьте полное имя без самостоятельного изменения регистра, затем тип, множественность и требования к передаче значения.' },
+      { title: 'Проверьте результат чтением.', description: 'После согласованного изменения прочитайте ту же запись подходящим методом и сравните нужное значение, а не только HTTP-статус запроса.' },
+    ]} />
+    <p>Для <a href={sourceLinks[2].href} target="_blank" rel="noopener noreferrer">crm.item.update</a> документация отдельно описывает <code>useOriginalUfNames</code> для имён в запросе и ответе. Некорректный ключ в <code>fields</code> может быть проигнорирован. Поэтому успешный HTTP-ответ не подтверждает, что нужное поле получило ожидаемое значение.</p>
+    <p>Чтобы проверить именно имена без изменения CRM, начните с метаданных и разрешённого чтения. Вызов записи — отдельное действие по задаче интеграции. Перед ним сверьте формат поля с документацией метода.</p>
+  </section>
+  <section aria-labelledby="wrong-field">
+    <h2 id="wrong-field">Если поле не находится <span data-heading-accent>или запрос не даёт ожидаемого результата</span></h2>
+    <p><strong>Проверьте семейство и режим.</strong> Имя могло быть взято из другого метода, CSV старой интеграции или BI-отчёта. При переносе запроса согласуйте источник метаданных и обработку ответа. Для BI есть отдельная инструкция <a href={`${base}nazvanie-polya-uf-crm-bitrix24/`}>по сопоставлению технической колонки и названия поля</a>.</p>
+    <p><strong>Проверьте сущность и полный код.</strong> Поле контакта не становится полем сделки из-за похожего названия. Если справочник даёт несколько совпадений по части кода, сравните имя целиком. Старый код удалённого и заново созданного поля не считается актуальным автоматически.</p>
+    <p><strong>Проверьте содержимое.</strong> Верное имя не исправляет неверный формат даты, массива или привязки. Отдельно прочитайте <a href={`${base}tipy-poley-crm-bitrix24/`}>тип и технические свойства поля</a>. Ограничение прав и ошибка значения требуют другого решения, чем выбор ключа.</p>
+    <p><strong>Проверьте чтение после записи.</strong> Убедитесь, что сравниваются та же сущность, запись и режим имён. Если значение не изменилось, разберите ответ API и переданный объект <code>fields</code>. Не перебирайте варианты кодов повторными изменениями рабочей карточки.</p>
+  </section>
+  <p>Точный код — часть технического описания. Для согласования бизнес-правил используйте <a href={`${base}karta-sootvetstviya-poley-bitrix24/`}>пример карты соответствия полей для интеграции</a>: он включает направление обмена, пустые значения, повторы и критерии проверки.</p>
+
+  <FaqSection variant="article" items={faqItems} />
+  <ArticleSources sources={sourceLinks} publishedIso={article.publishedAt} modifiedIso={article.updatedAt} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Проверьте ' }, { text: 'точные коды полей', accent: true }]}
+      description={`Справочник полей CRM от ${companyInfo.brandName} помогает находить основные и дополнительные имена API. Установите приложение из Маркета Битрикс24; формат кода выбирайте по документации конкретного REST-метода.`}
+      href={fieldDirectoryProduct.marketplaceUrl} actionLabel={fieldDirectoryProduct.connectionActionLabel} />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

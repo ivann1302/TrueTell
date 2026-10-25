@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="980" viewBox="0 0 800 980" role="img" aria-labelledby="title desc">
+  <title id="title">Как выбрать способ получать данные МойСклад</title>
+  <desc id="desc">Разовая проверка — отчёт и Excel. Ежедневный готовый отчёт — рассылка. Данные в своём приложении — JSON API. Общий дашборд магазинов — API и аналитическая база.</desc>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif;fill:#101621}
+    .kicker{fill:#2764ab;font-size:28px;font-weight:700}
+    .heading{font-size:39px;font-weight:700}
+    .number{fill:#2764ab;font-size:29px;font-weight:700}
+    .task{fill:#526174;font-size:30px}
+    .answer{font-size:40px;font-weight:700}
+    .line{stroke:#cbd6e4;stroke-width:2}
+    .note{fill:#526174;font-size:25px}
+  </style>
+  <text x="40" y="60" class="kicker">МойСклад · выбор способа</text>
+  <text x="40" y="112" class="heading">Какой результат нужен?</text>
+
+  <text x="40" y="190" class="number">01</text>
+  <text x="112" y="190" class="task">Разово проверить цифры</text>
+  <text x="112" y="247" class="answer">Отчёт → Excel</text>
+  <path class="line" d="M40 284H760"/>
+
+  <text x="40" y="356" class="number">02</text>
+  <text x="112" y="356" class="task">Получать готовый отчёт ежедневно</text>
+  <text x="112" y="413" class="answer">Рассылка на почту</text>
+  <path class="line" d="M40 450H760"/>
+
+  <text x="40" y="522" class="number">03</text>
+  <text x="112" y="522" class="task">Данные в своём приложении</text>
+  <text x="112" y="579" class="answer">JSON API</text>
+  <path class="line" d="M40 616H760"/>
+
+  <text x="40" y="688" class="number">04</text>
+  <text x="112" y="688" class="task">Общий дашборд магазинов</text>
+  <text x="112" y="745" class="answer">API + аналитическая база</text>
+  <path class="line" d="M40 782H760"/>
+
+  <text x="40" y="855" class="note">Частоту обновления и глубину истории</text>
+  <text x="40" y="893" class="note">для своего отчёта определите заранее.</text>
+</svg>

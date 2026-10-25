@@ -1,0 +1,350 @@
+{
+  "release": 49,
+  "task": "SEO-059",
+  "date": "2026-10-14",
+  "action": "CREATE",
+  "page_type": "knowledge",
+  "route": "/kod-polya-bitrix24/",
+  "title": "Как узнать код поля в Битрикс24: где найти UF_CRM",
+  "roles": {
+    "author": "/root",
+    "reviewer": "/root/review_field_code_article_049",
+    "review_mode": "independent read-only"
+  },
+  "verdict": "approve",
+  "open_findings": [],
+  "scope": [
+    "Final source, registry entry and three incoming links",
+    "Official Bitrix24 documentation independently read through MCP and web",
+    "Current app implementation and release documents; no app execution",
+    "Three source screenshots and five supplied local viewport screenshots",
+    "Built local HTML, metadata, JSON-LD, FAQ, figures, local links and sitemap",
+    "Author final build/lint/test/IndexNow logs and browser QA report"
+  ],
+  "facts": [
+    {
+      "claim": "CRM field code can be read from URL of opened user field in CRM settings",
+      "source": "https://helpdesk.bitrix24.ru/open/24352300/",
+      "evidence": "Official path: CRM > Настройки > Настройки CRM > Настройки форм и отчетов > Пользовательские поля; open field then inspect browser address bar",
+      "status": "official documentation"
+    },
+    {
+      "claim": "crm.item.fields returns fields map, key is field name/code; useOriginalUfNames Y yields original UF_CRM names, N/default camelCase",
+      "source": "https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-fields.html",
+      "status": "official documentation+MCP"
+    },
+    {
+      "claim": "entityTypeId mapping lead1/deal2/contact3/company4",
+      "source": "https://apidocs.bitrix24.ru/api-reference/crm/data-types.html",
+      "status": "official documentation"
+    },
+    {
+      "claim": "title and upperName separate metadata properties; isRequired/isMultiple/isDynamic separate flags",
+      "source": "https://apidocs.bitrix24.ru/api-reference/crm/data-types.html",
+      "status": "official documentation"
+    },
+    {
+      "claim": "Numeric definition ID distinct from symbolic FIELD_NAME; symbolic code need not have purely numeric suffix",
+      "source": "https://apidocs.bitrix24.ru/api-reference/crm/deals/user-defined-fields/crm-deal-userfield-get.html",
+      "evidence": "Official response shows ID6997 and FIELD_NAME UF_CRM_HELLO_WORLD",
+      "status": "official documentation+MCP"
+    },
+    {
+      "claim": "Numeric definition ID can be obtained via crm.deal.userfield.list; method returns ID and FIELD_NAME together",
+      "source": "https://apidocs.bitrix24.ru/api-reference/crm/deals/user-defined-fields/crm-deal-userfield-list.html",
+      "evidence": "Official response shows ID5815 and FIELD_NAME UF_CRM_1713790573",
+      "status": "official documentation+MCP"
+    },
+    {
+      "claim": "Document template uses own field list and brace placeholder {UfCrm…}; copy it directly from document template list",
+      "source": "https://helpdesk.bitrix24.ru/open/18167706/",
+      "status": "official documentation"
+    },
+    {
+      "claim": "App reads only metadata of four CRM types; exact returned key, optional upperName, search title/code/upperName, category/type filters, copy and filtered CSV",
+      "source": "/Users/ivan/projects/bitrix_crm_field_directory/src/bitrix/gateway.ts + src/fields/{normalize,filter,FieldsTable}.tsx + src/export/prepareExport.ts",
+      "status": "current implementation reviewed; no execution"
+    },
+    {
+      "claim": "App1.0.1 is documented as installed with full acceptance open, no Market release performed",
+      "source": "/Users/ivan/projects/bitrix_crm_field_directory/README.md + docs/limits.md",
+      "status": "current project documents; not independent live test"
+    }
+  ],
+  "editorial_and_product_review": {
+    "intent": "User can identify the existing CRM field code by its human title, confirm entity and target tool, and avoid confusing symbolic code with numeric field or record ID.",
+    "decision": "CREATE appropriate: no separate field-code article found in current registry; nearby payment, export and BI articles solve different tasks.",
+    "answer_first": true,
+    "native_read_only_route": "CRM settings > user fields > desired entity > menu > Edit; inspect code in address then leave without saving.",
+    "target_specific_codes": "Original UF_CRM versus crm.item.fields camelCase, BI dataset column and document placeholder separated; universal compatibility not claimed.",
+    "app_claims": "Four CRM entities, title/code search, category/type filters, exact code copy/manual fallback, filtered metadata CSV match current implementation.",
+    "limits_visible": "App is conditional on already connected portal; no Market availability, smart-process support, numeric definition ID export, CRM value export or full acceptance promised.",
+    "stage_requiredness": "isRequired is explicitly separated from CRM stage rules after screenshot.",
+    "contextual_cta": "Discussion of connection, current configured contact link; no invented product or Market destination."
+  },
+  "resolved_findings": [
+    {
+      "id": "R049-P3-1",
+      "priority": "P3",
+      "origin": "independent reviewer",
+      "issue": "Screenshot showed Required=No without an explicit API-versus-stage distinction.",
+      "resolution": "Final source line110 says the Required column is isRequired from API and does not determine requiredness at a CRM stage.",
+      "rechecked": "Source, current app tooltip/normalizer and final HTML; closed."
+    },
+    {
+      "id": "R049-P3-2",
+      "priority": "P3",
+      "origin": "independent reviewer",
+      "issue": "Non-numeric UF_CRM suffix statement lacked a direct supporting source in published source list.",
+      "resolution": "Source list now points to crm.deal.userfield.get; final line89 links its UF_CRM_HELLO_WORLD example.",
+      "rechecked": "Official MCP get response, final source and final HTML; closed."
+    },
+    {
+      "id": "R049-P2-hero",
+      "priority": "P2",
+      "origin": "author browser QA",
+      "issue": "Long word пользовательского clipped at390px despite masked horizontal overflow.",
+      "resolution": "Article title/titleParts shortened to Как узнать код поля в Битрикс24: где найти UF_CRM; user-field scope retained in description and body.",
+      "rechecked": "Independently viewed before/after supplied390px screenshots and final390/768/1440 screenshots; final H1 fully within visible width; closed."
+    },
+    {
+      "id": "R049-related",
+      "priority": "verification finding",
+      "origin": "author test run",
+      "issue": "Initial catalog test rejected first article related cards crossing category.",
+      "resolution": "Related integration card replaced with dashboard; integration retained in meaningful body/incoming link.",
+      "rechecked": "Final registry and built HTML read; targeted3pass and final77pass are documented by author; closed."
+    }
+  ],
+  "seo": {
+    "h1_count": 1,
+    "h1": "Как узнать код поля в Битрикс24: где найти UF_CRM",
+    "title": "Как узнать код поля в Битрикс24 — UF_CRM и название",
+    "canonical": [
+      "https://truetell-retail.ru/kod-polya-bitrix24/"
+    ],
+    "description": [
+      "Где найти код пользовательского поля Битрикс24: настройки CRM, поиск в справочнике, отличие от ID и проверка формата для REST API, BI и документов."
+    ],
+    "robots": [
+      "noindex, nofollow"
+    ],
+    "status": [
+      "draft"
+    ],
+    "og_twitter": "Absolute original screenshot, matching alt/title/description and canonical verified in built HTML.",
+    "schema": "Article, BreadcrumbList Главная > База знаний > article, FAQPage; no publication/modification dates.",
+    "visible_breadcrumbs": false,
+    "faq_count": 7,
+    "all_visible_faq_match_schema": true,
+    "details_initially_closed": true,
+    "duplicate_ids": [],
+    "missing_local_links_or_images": [],
+    "sitemap": "43 canonical URLs per final build and IndexNow-check logs; draft route excluded independently.",
+    "incoming_local": {
+      "bi-analitika-bitrix24-pervyy-otchet": true,
+      "bitrix24-moysklad-integraciya": true,
+      "grafik-platezhey-bitrix24": true
+    },
+    "published_outgoing_url_check": [
+      {
+        "url": "https://truetell-retail.ru/bi-analitika-bitrix24-pervyy-otchet/",
+        "http": 200,
+        "canonical": [
+          "https://truetell-retail.ru/bi-analitika-bitrix24-pervyy-otchet/"
+        ],
+        "title": "BI-аналитика Битрикс24: как создать первый отчёт из CRM",
+        "h1": "BI-аналитика Битрикс24: первый отчёт из CRM",
+        "robots": [
+          "index, follow"
+        ]
+      },
+      {
+        "url": "https://truetell-retail.ru/bitrix24-moysklad-integraciya/",
+        "http": 200,
+        "canonical": [
+          "https://truetell-retail.ru/bitrix24-moysklad-integraciya/"
+        ],
+        "title": "Интеграция Битрикс24 и МойСклад: данные, остатки и заказы",
+        "h1": "Битрикс24 и МойСклад: как связать данные CRM и склада",
+        "robots": [
+          "index, follow"
+        ]
+      },
+      {
+        "url": "https://truetell-retail.ru/chastichnaya-oplata-bitrix24/",
+        "http": 200,
+        "canonical": [
+          "https://truetell-retail.ru/chastichnaya-oplata-bitrix24/"
+        ],
+        "title": "Частичная оплата в Битрикс24 — учёт и остаток к оплате",
+        "h1": "Частичная оплата в Битрикс24: поступления и остаток к оплате",
+        "robots": [
+          "index, follow"
+        ]
+      },
+      {
+        "url": "https://truetell-retail.ru/dashbord-rukovoditelya-bitrix24/",
+        "http": 200,
+        "canonical": [
+          "https://truetell-retail.ru/dashbord-rukovoditelya-bitrix24/"
+        ],
+        "title": "Дашборд руководителя в Битрикс24 — показатели и графики",
+        "h1": "Дашборд руководителя в Битрикс24: какие показатели и графики выбрать",
+        "robots": [
+          "index, follow"
+        ]
+      }
+    ]
+  },
+  "images": {
+    "article_figures": [
+      {
+        "alt": "Официальный экран настроек поля Готовность к отправке: код UF_CRM_1645431691305 выделен в адресной строке",
+        "full_size_original": "/_astro/bitrix24-userfield-code-address-official.B8duwl8i.jpg",
+        "has_full_size_link_text": true
+      },
+      {
+        "alt": "Фрагмент установленного справочника TrueTell: поиск демонстрационного поля CALC_COMP — исходное число показывает его код UF_CRM_1791480592669",
+        "full_size_original": "/_astro/truetell-field-directory-custom-live.BGftOrx-.png",
+        "has_full_size_link_text": true
+      },
+      {
+        "alt": "Официальный экран BI Конструктора: в наборе crm_deal_uf названия колонок пользовательских полей показаны как uf_crm с техническими суффиксами",
+        "full_size_original": "/_astro/bitrix24-bi-userfield-codes-official.CFjectVx.jpg",
+        "has_full_size_link_text": true
+      }
+    ],
+    "distinct_meaningful_raster_count": 3,
+    "official_originals": [
+      {
+        "source": "https://helpdesk.bitrix24.ru/images/helpdesk/screenshots/ru/gb/screenshot/535.jpg",
+        "http": 200,
+        "name": "bitrix24-userfield-code-address-official.jpg",
+        "bytes": 534038,
+        "same_bytes": true,
+        "sha256": "13feb818d0e18f8c6a03cbcfb14d6810e7964c01a5826bcd4b614b0480076991"
+      },
+      {
+        "source": "https://helpdesk.bitrix24.ru/upload/medialibrary/56a/3nri4rma9ve4mvgwwu57gvl3ewv7tgzw/06.jpg",
+        "http": 200,
+        "name": "bitrix24-bi-userfield-codes-official.jpg",
+        "bytes": 142767,
+        "same_bytes": true,
+        "sha256": "bce1251ea4da39cff1b66c663f2578d65a880454d8a501272012db703e339c95"
+      }
+    ],
+    "live_app_screenshot": "Independently inspected local screenshot. Shows demo field CALC_COMP — исходное число, one row from61, UF_CRM_1791480592669 and double type; caption limits code/count to this test and excludes client card values. Portal capture itself was by author, not repeated by reviewer.",
+    "mobile_limit": "Detailed UI text is small in reduced images; all three use full-size original links, whose local targets exist. This limitation is explicitly recorded in author browser report.",
+    "alpha": "All article figures are authentic screenshots, so original opaque interface surfaces are appropriate; no generated illustration alpha claim needed."
+  },
+  "visual_review": {
+    "method": "Independent viewing of supplied local screenshots and original image files, not independent browser automation.",
+    "screenshots": [
+      "desktop-hero.png",
+      "mobile-hero.png",
+      "tablet-hero.png",
+      "desktop-directory.png",
+      "mobile-directory.png"
+    ],
+    "observed": "Dark full-width dotted hero, no visible breadcrumbs, same desktop start line, one-column centered H1 at390/768px, no clipped final H1, correct light body surface, visible full-size image link.",
+    "browser_report": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/field-code-049/browser-qa.json",
+    "browser_report_sha256": "3bce72029ebce06753ae4bdc1eea5e557760ca179c58542db9157905fbbe77ed",
+    "author_browser_results": "390/768/1440 widths have scrollWidth equal viewport; all3images loaded; FAQ and sources opened; contact form opened and no submission occurred."
+  },
+  "author_verification_logs": {
+    "tests": {
+      "path": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/field-code-049/tests-final.log",
+      "reviewed_result": "77 tests,77 pass,0 fail,0 cancelled,0 skipped"
+    },
+    "lint": {
+      "path": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/field-code-049/lint-final.log",
+      "reviewed_result": "0 errors,3 pre-existing React hook warnings"
+    },
+    "build": {
+      "path": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/field-code-049/build-final.log",
+      "reviewed_result": "Build Complete;47pages;43canonical sitemap URLs"
+    },
+    "indexnow_check": {
+      "path": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/field-code-049/indexnow-check-final.log",
+      "reviewed_result": "Validated43production URLs, deployment SEO files and key; this is a local check, not URL submission"
+    },
+    "execution_boundary": "Reviewer did not run builds, application tests, install or deployment; results are read from author final logs."
+  },
+  "reviewed_files": [
+    {
+      "file": "src/pages/kod-polya-bitrix24/index.astro",
+      "bytes": 28119,
+      "sha256": "5df0082d5731b07fe78b2e6e91dad0e211c11e359d42d3ff508a0a2a4bfad9a8"
+    },
+    {
+      "file": "src/config/articles.ts",
+      "bytes": 30186,
+      "sha256": "fc34a441d519b6b0dfc0255644b3bcffb58d7e6dfc4a832fb0ca7a217622bb20"
+    },
+    {
+      "file": "src/images/articles/bitrix24-userfield-code-address-official.jpg",
+      "bytes": 534038,
+      "sha256": "13feb818d0e18f8c6a03cbcfb14d6810e7964c01a5826bcd4b614b0480076991"
+    },
+    {
+      "file": "src/images/articles/truetell-field-directory-custom-live.png",
+      "bytes": 41128,
+      "sha256": "bda7ab4d4616cb8c44f1a24edb5d114445e751910a24c5ba1d1993d96d0e1069"
+    },
+    {
+      "file": "src/images/articles/bitrix24-bi-userfield-codes-official.jpg",
+      "bytes": 142767,
+      "sha256": "bce1251ea4da39cff1b66c663f2578d65a880454d8a501272012db703e339c95"
+    },
+    {
+      "file": "src/pages/bi-analitika-bitrix24-pervyy-otchet/index.astro",
+      "bytes": 33515,
+      "sha256": "d9678799eb3e47818c9aa54514bfbe6f871cef01f59f282ff9ecd8948312ceac"
+    },
+    {
+      "file": "src/pages/bitrix24-moysklad-integraciya/index.astro",
+      "bytes": 32929,
+      "sha256": "0437842b63c0eb3cd9e80807e21ec5f53c91007549429db7525fb9498cfba29c"
+    },
+    {
+      "file": "src/pages/grafik-platezhey-bitrix24/index.astro",
+      "bytes": 29575,
+      "sha256": "bc1bffc58f10b871ad35051a8d5797f9c9a250baa0bb0c8708706327e40ae615"
+    },
+    {
+      "file": "dist/kod-polya-bitrix24/index.html",
+      "bytes": 113711,
+      "sha256": "2d9b38866931dc649109f8d119e7fca9fa703424ef8ea57cfce1356b3dd102e8"
+    },
+    {
+      "file": "dist/sitemap.xml",
+      "bytes": 4667,
+      "sha256": "3dd60f9c49413ad62e127310c626a708ba8e785f0724b91c4fa2557c5a4a56ef"
+    }
+  ],
+  "evidence_files": [
+    "final-html-inspection.json",
+    "faq-figure-inspection.json",
+    "official-image-bytes.json",
+    "linked-published-url-status.json",
+    "reviewed-source-hashes.json"
+  ],
+  "status_boundaries": {
+    "content_ready": true,
+    "local_QA_reviewed": true,
+    "registry_status": "draft",
+    "deployed": false,
+    "live_verified_new_article": false,
+    "crawled": false,
+    "indexed": false
+  },
+  "limitations": [
+    "No shared repository modifications by reviewer; unrelated dirty043–047 changes were outside this review.",
+    "New article and three incoming link updates were not published or pushed. Existing public outgoing pages and official source images were checked directly over HTTP.",
+    "App release1.0.1 code/docs were inspected; customer portal scenarios, system clipboard bytes, CSV behavior in Excel/Numbers, second-user permissions and full product acceptance were not retested.",
+    "Five supplied viewport screenshots reviewed independently; interactions are confirmed by author browser QA report. Full-page keyboard/reduced-motion/browser checks were not independently repeated.",
+    "SEO workbook change is stated by author as SEO-059 draft; spreadsheet was outside this source/HTML review.",
+    "No search-engine submission or indexing check performed."
+  ]
+}

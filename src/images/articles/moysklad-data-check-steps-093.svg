@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100">
+  <defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#101621}.h{font-size:31px;font-weight:700}.p{font-size:26px}.num{font-size:33px;font-weight:700;fill:#087ebf}</style></defs>
+  <text x="38" y="55" class="h">Проверка расхождения за один день</text>
+  <text x="38" y="99" class="p">Одинаковые условия → причина → пересчёт</text>
+  <rect x="38" y="145" width="724" height="165" rx="22" fill="#e8f3fa"/>
+  <text x="66" y="195" class="num">01</text><text x="126" y="195" class="h">Сравните условия</text>
+  <text x="66" y="248" class="p">Период, магазин, часовой пояс, формула</text>
+  <rect x="38" y="329" width="724" height="165" rx="22" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="66" y="379" class="num">02</text><text x="126" y="379" class="h">Сравните ID документов</text>
+  <text x="66" y="432" class="p">Новый, изменённый или исчезнувший</text>
+  <rect x="38" y="513" width="724" height="165" rx="22" fill="#e8f3fa"/>
+  <text x="66" y="563" class="num">03</text><text x="126" y="563" class="h">Проверьте источник</text>
+  <text x="66" y="616" class="p">Карточка, «Изменения», аудит, корзина</text>
+  <rect x="38" y="697" width="724" height="165" rx="22" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="66" y="747" class="num">04</text><text x="126" y="747" class="h">Пересчитайте период</text>
+  <text x="66" y="800" class="p">И затронутые следующие дни для остатка</text>
+  <rect x="38" y="886" width="724" height="145" rx="22" fill="#dceef8"/>
+  <text x="66" y="941" class="h">Зафиксируйте причину</text>
+  <text x="66" y="991" class="p">ID, действие, дата и итог сверки</text>
+</svg>

@@ -1,0 +1,170 @@
+{
+  "id": "049",
+  "seoTask": "SEO-059",
+  "date": "2026-10-14",
+  "action": "CREATE",
+  "type": "knowledge",
+  "title": "Как узнать код поля в Битрикс24: где найти UF_CRM",
+  "path": "/kod-polya-bitrix24/",
+  "preview": "http://127.0.0.1:4350/kod-polya-bitrix24/",
+  "phase": "local_QA_passed",
+  "publication": "not_deployed",
+  "registry": {
+    "status": "draft",
+    "publishedAt": null,
+    "updatedAt": null,
+    "robots": "noindex, nofollow",
+    "inPublicCatalogs": false,
+    "inSitemap": false
+  },
+  "intent": "Найти точный код существующего пользовательского поля по названию; проверить портал, сущность и формат целевого инструмента. Различить название, символический код, числовой ID поля и ID записи CRM.",
+  "duplicateBoundary": {
+    "bi-analitika-bitrix24-pervyy-otchet": "Настройка первого отчёта; новая статья решает поиск и сопоставление кода поля.",
+    "grafik-platezhey-bitrix24": "Ручной план оплат; новая статья не расширяет этот сценарий и не обещает функции платёжного приложения."
+  },
+  "demand": {
+    "source": "Wordstat research048, 14.10.2026; Russia/all devices",
+    "query": "код поля битрикс24",
+    "displayedBroadCount": 33,
+    "periodStart": "2026-09-13",
+    "periodEnd": "2026-10-13",
+    "newMeasurement": false,
+    "qualification": "Широкая частотность, без прогноза трафика и оценки конкуренции. Другие периоды и пересекающиеся фразы не суммировались."
+  },
+  "product": {
+    "path": "/Users/ivan/projects/bitrix_crm_field_directory",
+    "reviewedVersion": "1.0.1",
+    "confirmedBoundary": "Чтение описаний полей сделок, лидов, контактов и компаний. Поиск названия/кода, фильтры, копирование и CSV метаданных текущей сущности/фильтров по реализации.",
+    "liveObservation": "Автор проверил поиск демонстрационного поля в установленном приложении: CALC_COMP — исходное число, код UF_CRM_1791480592669, одна строка из 61; чтение метаданных без клиентских карточек.",
+    "notExecuted": [
+      "Создание/изменение/удаление полей",
+      "Изменение разрешений",
+      "Установка приложения",
+      "Проверка системного буфера или CSV в Excel/Numbers",
+      "Второй пользователь и полный приёмочный цикл",
+      "Работа на клиентском портале"
+    ],
+    "marketReleaseConfirmed": false,
+    "applicationChanged": false
+  },
+  "images": [
+    {
+      "file": "src/images/articles/bitrix24-userfield-code-address-official.jpg",
+      "kind": "Подлинный неизменённый скриншот Поддержки24",
+      "page": "https://helpdesk.bitrix24.ru/open/24352300/",
+      "source": "https://helpdesk.bitrix24.ru/images/helpdesk/screenshots/ru/gb/screenshot/535.jpg",
+      "sha256": "13feb818d0e18f8c6a03cbcfb14d6810e7964c01a5826bcd4b614b0480076991",
+      "fullSizeOriginal": true
+    },
+    {
+      "file": "src/images/articles/truetell-field-directory-custom-live.png",
+      "kind": "Фрагмент настоящего интерфейса установленного справочника на тестовом портале",
+      "capturedDate": "2026-10-14",
+      "cropOnly": true,
+      "contentAltered": false,
+      "captionLimitsExample": true,
+      "sha256": "bda7ab4d4616cb8c44f1a24edb5d114445e751910a24c5ba1d1993d96d0e1069",
+      "fullSizeOriginal": true
+    },
+    {
+      "file": "src/images/articles/bitrix24-bi-userfield-codes-official.jpg",
+      "kind": "Подлинный неизменённый скриншот Поддержки24",
+      "page": "https://helpdesk.bitrix24.ru/open/24352300/",
+      "source": "https://helpdesk.bitrix24.ru/upload/medialibrary/56a/3nri4rma9ve4mvgwwu57gvl3ewv7tgzw/06.jpg",
+      "sha256": "bce1251ea4da39cff1b66c663f2578d65a880454d8a501272012db703e339c95",
+      "fullSizeOriginal": true
+    }
+  ],
+  "links": {
+    "incomingPrepared": [
+      "bi-analitika-bitrix24-pervyy-otchet",
+      "bitrix24-moysklad-integraciya",
+      "grafik-platezhey-bitrix24"
+    ],
+    "incomingPublishedPages": [
+      "bi-analitika-bitrix24-pervyy-otchet",
+      "bitrix24-moysklad-integraciya"
+    ],
+    "incomingDraft": "grafik-platezhey-bitrix24",
+    "related": [
+      "chastichnaya-oplata-bitrix24",
+      "dashbord-rukovoditelya-bitrix24",
+      "bi-analitika-bitrix24-pervyy-otchet"
+    ],
+    "productLandingCreated": false
+  },
+  "validation": {
+    "mainBuild": "passed; 47 built pages / 43 canonical sitemap URLs in current working checkout",
+    "mainTests": "77/77",
+    "lint": "0 errors / 3 pre-existing React hook warnings",
+    "indexNowCheck": "passed; 43 URLs, no submission",
+    "gitDiffCheck": "passed",
+    "faqCount": 7,
+    "figures": 3,
+    "draftMetadataVerified": true,
+    "visibleBreadcrumbs": false,
+    "sourcesClosed": true,
+    "faqSchemaMatchesVisible": true,
+    "sourceSha256": "5df0082d5731b07fe78b2e6e91dad0e211c11e359d42d3ff508a0a2a4bfad9a8",
+    "htmlSha256": "2d9b38866931dc649109f8d119e7fca9fa703424ef8ea57cfce1356b3dd102e8",
+    "visualWidths": [
+      390,
+      768,
+      1440
+    ],
+    "desktopColumnsTopMatch": true,
+    "mobileH1Centered": true,
+    "faqSourcesAndConsultationOpened": true,
+    "formSubmitted": false
+  },
+  "independentReview": {
+    "agent": "/root/review_field_code_article_049",
+    "result": "approve; no open findings",
+    "closed": [
+      "P3 isRequired vs CRM stage requiredness",
+      "P3 direct source for nonnumeric field code",
+      "P2 mobile H1 clipping",
+      "Related selection fits catalog rule"
+    ],
+    "evidence": "docs/seo/publications/field-code-review-049-2026-10-14.json",
+    "sha256": "e69f901a50a05e6b76186a1776735b545666601c85e804481b2ffde89f617212",
+    "executionBoundary": "Reviewer independently checked sources/current app code, HTML, image bytes and supplied screenshots. Build/test/browser interaction results read from author logs; product not executed by reviewer."
+  },
+  "backlog": {
+    "output": "deliverables/TrueTell_SEO_Backlog_049_2026-10-14.xlsx",
+    "passed": true,
+    "tasks": 57,
+    "newTask": "SEO-059",
+    "sheets": 7,
+    "oldTaskIdsPreserved": true,
+    "allOldJournalCellsPreserved": true,
+    "historicalDataSheetsUnchanged": 4,
+    "formulaPreservation": "Old formulas preserved; task-count formula B3 extended from A2:A57 to A2:A58 for new row",
+    "nativeFeaturesAndFreezePanesPreserved": true,
+    "oldCellFormatsPreserved": true,
+    "unrequestedCellsPreserved": true,
+    "formulaErrors": 0,
+    "newArticlePublished": false,
+    "sourceUnchanged": true,
+    "sha256": "df2113a23a23d3494d68925acb72d2e225e2de43ff58d50cc1d74d7ba340c0a9",
+    "nativeEngineBoundary": "Artifact Tool recalculation and rendering plus saved XLSX XML verification. Desktop Excel/Numbers not opened."
+  },
+  "publicationNextStep": "При разрешённом выпуске перевести запись в published, записать реальные даты новой статьи; обновить updatedAt двух уже опубликованных входящих страниц. Даты draft графика платежей задать при его выпуске. Повторить проверки, push и live QA; индексирование проверить отдельно.",
+  "stages": {
+    "content_ready": true,
+    "coded": true,
+    "local_QA_passed": true,
+    "pushed": false,
+    "deployed": false,
+    "crawled": false,
+    "indexed": false
+  },
+  "limits": [
+    "Локальная подготовка. Push/deploy и отправка URL не выполнялись.",
+    "Сборка содержит ранее подготовленные и параллельные изменения №043–047. Они не сбрасывались и не включались в отдельный коммит этой задачи. Проверенные 47 страниц не означают 47 новых или опубликованных страниц.",
+    "Новая статья и три входящие правки не проходили live QA. Существующие публичные цели ссылок и официальные изображения проверены независимо через HTTP.",
+    "Мелкие подписи скриншотов на телефоне требуют открытия оригинала.",
+    "Свежий GSC, общесайтовой alt-аудит и общий мобильный аудит не проводились."
+  ],
+  "evidenceDirectory": "work/field-code-049"
+}

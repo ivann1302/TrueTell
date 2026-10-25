@@ -1,0 +1,129 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import Checklist from '../../components/editorial/checklist.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { mcpProduct } from '../../config/products';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import statusImage from '../../images/articles/truetell-mcp-client-status-085.png';
+import firstReadImage from '../../images/articles/truetell-mcp-first-read-example-085.png';
+const article = getArticle('chatgpt-bitrix24-mcp/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const canonicalPath = `/${article.hrefPath}`;
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const sourceLinks = [
+  { label: 'Подключение собственного MCP в ChatGPT — документация OpenAI', href: 'https://developers.openai.com/plugins/deploy/connect-chatgpt' },
+  { label: 'Внешние AI-системы: отдельное официальное решение Битрикс24 — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/26952788/' },
+  { label: 'Developer MCP предоставляет документацию, а не данные портала — REST API Битрикс24', href: 'https://apidocs.bitrix24.ru/ai-tools/mcp.html' },
+];
+const imageAlt = 'Учебная сверка CRM и ответа ИИ: совпадают ID, название, стадия и ответственный';
+const ogImage = new URL(firstReadImage.src, siteRoot).toString();
+const titleParts = [{ text: 'ChatGPT и Битрикс24 через MCP TrueTell: ' }, { text: 'подготовка к подключению', accent: true }];
+const briefRows = [
+  ['Вопрос сотрудника', 'Найти одну согласованную сделку и показать четыре поля.', 'Задаёт проверяемую границу первого ответа.'],
+  ['Пользователь CRM', 'Сотрудник, которому доступна выбранная запись.', 'Позволяет сравнить данные при одинаковых правах.'],
+  ['Данные', 'ID, название, стадия и ответственный, если доступны инструменту.', 'Убирает лишние сведения из первоначальной проверки.'],
+  ['Критерий успеха', 'Найдена та же запись; значения совпали с карточкой.', 'Отделяет работающий доступ от общего текста о продажах.'],
+];
+const checkRows = [
+  ['Получен общий совет без записи', 'Чтение CRM не подтверждено.', 'Проверить, был ли вызов нужного инструмента и есть ли его результат.'],
+  ['Запись не найдена', 'Возможны неверный ID, условия отбора или недоступность записи пользователю.', 'Сначала открыть ту же карточку под тем же пользователем CRM.'],
+  ['Вместо названия пришёл код', 'Нужна подтверждённая расшифровка.', 'Не принимать догадку модели за стадию или имя сотрудника.'],
+  ['Получена только часть списка', 'Итог относится к возвращённой части.', 'Сохранить ограничение в ответе; для полного списка проверить продолжение выборки.'],
+];
+const faqItems = [
+  { question: 'Можно уже подключить MCP TrueTell к ChatGPT по этой статье?', answer: 'На 23 октября 2026 года путь подключения и первое чтение в ChatGPT ещё не приняты. Статья помогает подготовить сценарий и критерии проверки. Рабочие параметры и пошаговая инструкция должны появиться после фактической проверки этой связки.' },
+  { question: 'Что подготовить до подключения?', answer: 'Назовите задачу, AI-клиент, проверяющего пользователя и минимальные поля. Выберите известную запись, с которой можно сверить ответ. Для первого обсуждения достаточно описания сценария без передачи содержимого CRM.' },
+  { question: 'Почему здесь нет адреса сервера для установки?', answer: 'У MCP TrueTell должны быть собственные проверенные параметры подключения. Подстановка адреса отдельного официального решения Битрикс24 не подключает наше приложение. Пока открытая установка не заявлена, следующий шаг — обсуждение сценария с TrueTell.' },
+  { question: 'Работа в Codex подтверждает работу в ChatGPT?', answer: 'Нет. В Codex проверены персональный вход и ограниченные вызовы всех 13 инструментов чтения; полный цикл подключения ещё не принят. У каждого клиента нужно проверить собственный путь авторизации, доступные инструменты и реальный ответ. Результат Codex не является приёмкой ChatGPT или Claude.' },
+  { question: 'Как проверить, что ответ получен из CRM?', answer: 'Проверьте вызов инструмента и найденный ID, затем сравните поля с карточкой под тем же пользователем. Красивый текст, описание REST-метода или сообщение об успешном соединении сами по себе не доказывают чтение нужной записи.' },
+  { question: 'Можно ли сразу попросить ChatGPT изменить сделки?', answer: 'Эта подготовка относится к чтению. Возможности записи нельзя выводить из успешного чтения. Они требуют отдельно согласованных инструментов, разрешений и проверки последствий. Просьба в чате не заменяет технические ограничения доступа.' },
+  { question: 'Что написать TrueTell для обсуждения?', answer: 'Укажите ChatGPT как желаемый клиент, один вопрос к CRM, необходимые поля и способ сверки. Кнопка «Обсудить MCP TrueTell» открывает форму на этой странице; она не начинает установку и не запрашивает доступ к порталу.' },
+];
+const structuredData = createArticleStructuredData({
+  articleType: 'Article', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  articleSection: 'Подключение ИИ к CRM',
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() }, { name: title, item: articleUrl }],
+  faqItems,
+});
+---
+<ArticleLayout {title} {titleParts} {description} {canonicalPath} {structuredData}
+  ogTitle={article.seoTitle} ogDescription={description} {ogImage} ogImageAlt={imageAlt}
+  category={article.category} author={authorName}
+  intro="Готовим первый сценарий работы ChatGPT с CRM через наше приложение: какие данные нужны, кто проверяет ответ и что считать успешным результатом."
+>
+  <Fragment slot="quick-answer">
+    <p><strong>MCP TrueTell разрабатывается для связи внешнего ИИ с Битрикс24. Для ChatGPT подключение и первое чтение пока не приняты — здесь подготовка сценария, который можно обсудить с нашей командой.</strong></p>
+    <p>Выберите одну известную запись и несколько полей для сверки. Обсудим этот сценарий для MCP TrueTell с учётом текущей готовности подключения.</p>
+  </Fragment>
+  <p data-article-lead>Вы хотите спросить ChatGPT о конкретной сделке и получить ответ по своему Битрикс24. Чтобы подготовить такое подключение через MCP TrueTell, полезно заранее определить маленькую задачу: какую запись читать, какие поля вернуть и кто сравнит их с CRM. Это сократит неопределённость при будущей проверке.</p>
+  <section aria-labelledby="status">
+    <h2 id="status">Статус <span data-heading-accent>MCP TrueTell для ChatGPT</span></h2>
+    <p>На 23 октября 2026 года путь от входа до первого ответа по данным CRM в ChatGPT ещё не принят. В Codex уже проверены персональная OAuth-авторизация и ограниченные вызовы всех 13 инструментов чтения. Это включает поиск и просмотр отдельных сделок, контактов и компаний; результаты проверки не распространяются автоматически на другие клиенты.</p>
+    <ArticleFigure src={statusImage} fullSize
+      alt="Статус проверки MCP TrueTell: в Codex подтверждены вход и первые чтения; ChatGPT и Claude ещё не подтверждены"
+      caption="Статус на 23 октября 2026 года по отчёту разработки MCP TrueTell. В Codex проверены вход и ограниченные вызовы 13 инструментов чтения. Полный цикл подключения, другие клиенты и публичный выпуск ещё не приняты. Редакционная инфографика, не экран приложения." />
+    <p>Автоматическое продление доступа в Codex потребовало исправления; на момент этого снимка оно проверено локально, но ещё не опубликовано. Полный цикл подключения остаётся незавершённым. Это основание продолжать проверку, но не обещание готовой установки в ChatGPT. Его доступность, параметры подключения и требования к аккаунту нужно подтвердить отдельно. До этого не следует переносить инструкции или адреса другого сервера на MCP TrueTell.</p>
+  </section>
+  <section aria-labelledby="pilot-brief">
+    <h2 id="pilot-brief">Опишите <span data-heading-accent>первый полезный запрос</span></h2>
+    <p>Хорошая начальная задача помещается в одно предложение. Например: «Найти выбранную сделку и показать её ID, название, стадию и ответственного». Это учебный сценарий проверки чтения, а не перечень уже принятых возможностей ChatGPT.</p>
+    <DataTable label="Пример брифа для подключения ChatGPT через MCP TrueTell" columns={['Что определить', 'Учебный пример', 'Зачем это нужно']} rows={briefRows} rowHeaders />
+    <p>Для обсуждения не нужно выгружать клиентскую базу. Достаточно описать сущность, нужные поля и способ проверки. Если задачу нельзя проверить по одной карточке, заранее назовите отчёт, период или правило, с которыми будете сравнивать результат.</p>
+    <InlineConsultation variant="product" title="Подготовим ваш сценарий для MCP TrueTell" description="Напишите, что хотите узнать из CRM в ChatGPT. Обсудим минимальные данные и проверку результата с учётом текущей готовности нашего приложения." href={mcpProduct.articleHref} actionLabel={mcpProduct.articleActionLabel} />
+  </section>
+  <section aria-labelledby="permissions">
+    <h2 id="permissions">Согласуйте <span data-heading-accent>данные и права</span></h2>
+    <p>Выбранная запись должна быть видна тому пользователю CRM, под которым проводится проверка. Если человек и подключение работают с разным доступом, одинаковый запрос может дать разные результаты. Сначала проверьте карточку вручную и зафиксируйте её ID.</p>
+    <p>Просьба «ничего не изменяй» полезна как постановка задачи, но не меняет разрешения подключения. Для проверки чтения нужен инструмент чтения и согласованный доступ. Из успешного чтения нельзя выводить право на изменение или удаление записей.</p>
+    <p>Не включайте пароли и токены в текст задачи. Параметры авторизации, порядок выдачи и отзыва доступа для MCP TrueTell должны быть подтверждены в его собственной инструкции. Здесь эти шаги не подменяются порядком другого продукта.</p>
+  </section>
+  <section aria-labelledby="verify-answer">
+    <h2 id="verify-answer">Как сверить <span data-heading-accent>первый ответ</span></h2>
+    <p>Когда связка будет готова к проверке, начните с запроса ниже. Замените обозначение ID на заранее согласованную запись. Это шаблон будущей проверки, не результат выполненного подключения.</p>
+    <blockquote><p>Найди сделку с ID [ID тестовой сделки] в подключённом Битрикс24. Покажи ID, название, стадию и ответственного, если эти поля доступны инструменту. Используй только чтение. Если данных недостаточно, скажи, чего не хватает. Не дополняй отсутствующие поля догадками.</p></blockquote>
+    <ArticleFigure src={firstReadImage} fullSize alt={imageAlt} caption="Учебный пример: ID 123, название, стадия и ответственный должны совпасть с выбранной карточкой. Все значения вымышлены. Это редакционная инфографика, не скриншот CRM, ChatGPT или подтверждённого ответа MCP TrueTell." />
+    <Checklist label="Критерии первого успешного ответа" items={[
+      { title: 'Вызван нужный инструмент', description: 'Есть результат чтения данных, а не только общий совет модели или справка об API.' },
+      { title: 'Найдена та же запись', description: 'ID совпадает с выбранной карточкой. Похожее название не заменяет идентификатор.' },
+      { title: 'Поля подтверждаются в CRM', description: 'Стадия, название и ответственный сверены под тем же пользователем. Код не превращён в название по догадке.' },
+      { title: 'Границы результата сохранены', description: 'Ограниченная выборка названа частичной; отсутствующие поля и ошибки не скрыты.' },
+    ]} />
+    <p>Если инструмент возвращает технический код, сначала нужна его достоверная расшифровка. О назначении полей поможет <a href={`${base}kod-polya-bitrix24/`}>материал о кодах полей CRM</a>. Это отдельная проверка структуры данных; модель не должна придумывать значение незнакомого кода.</p>
+  </section>
+  <section aria-labelledby="diagnostics">
+    <h2 id="diagnostics">Что проверить, <span data-heading-accent>если ответ не совпал</span></h2>
+    <p>Эти ситуации помогают заранее составить критерии приёмки. Они не описывают обнаруженные ошибки готового подключения ChatGPT к нашему приложению.</p>
+    <DataTable label="Как трактовать результат будущей проверки ChatGPT и MCP TrueTell" columns={['Наблюдение', 'Что это означает', 'Следующая проверка']} rows={checkRows} rowHeaders />
+    <p>Сохраните дату, описание задачи, выбранный клиент и результат сверки. Для обсуждения сбоя достаточно его шага и обезличенного текста ошибки. Если нужен <a href={`${base}otchety-po-prodazham-bitrix24/`}>отчёт по продажам</a>, отдельно проверяйте полноту выборки и формулы: удачный ответ по одной сделке не подтверждает весь расчёт.</p>
+  </section>
+  <section aria-labelledby="next">
+    <h2 id="next">Что будет <span data-heading-accent>после подготовки</span></h2>
+    <p>Передайте короткий бриф команде TrueTell через форму ниже. Мы обсудим задачу применительно к нашему MCP, обозначим подтверждённые возможности и оставшиеся проверки. Подключение к порталу, сроки пилота и условия запуска требуют отдельного согласования.</p>
+    <p>Результат подготовки — понятный вопрос к CRM, минимальный состав данных и способ сверки. С таким брифом можно обсуждать подключение предметно и проверять будущую работу по конкретному результату.</p>
+  </section>
+
+  <FaqSection title="Вопросы о ChatGPT и MCP TrueTell" items={faqItems} variant="article" />
+  <p>Материал проверен 23 октября 2026 года. Статус MCP TrueTell сверён с отчётом разработки на эту дату. Подключение клиентского портала при подготовке статьи не выполнялось. Документация ниже поясняет общие принципы и отдельные решения; она не подтверждает готовность нашего приложения.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Обсудим ' }, { text: 'MCP TrueTell для вашей CRM', accent: true }]}
+      description={mcpProduct.articleDescription} href={mcpProduct.articleHref} actionLabel={mcpProduct.articleActionLabel} />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

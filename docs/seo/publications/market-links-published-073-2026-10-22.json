@@ -1,0 +1,254 @@
+{
+  "date": "2026-10-22",
+  "task": "Published Bitrix24 Market links and release-status updates",
+  "status": "live_verified",
+  "releaseId": "market-links-073-20261022",
+  "previousRelease": "fields-privacy-role-1792518685",
+  "scope": {
+    "htmlPages": 12,
+    "sourceFiles": 13,
+    "changedRuntimeAssets": 0,
+    "scopedCssRulesAdded": 2,
+    "backendAndOtherFilesUnchanged": true
+  },
+  "marketplaceUrls": {
+    "cleaner": "https://www.bitrix24.ru/apps/app/truetell.massovoe_udalenie_lidov_i_sdelok/",
+    "rating": "https://www.bitrix24.ru/apps/app/truetell.reyting_prodazh/",
+    "fields": "https://www.bitrix24.ru/apps/app/truetell.crm_fields/"
+  },
+  "changes": [
+    "Added Market URLs to the shared product configuration",
+    "Updated hero and closing CTA on both newly published product pages",
+    "Updated connection FAQ and matching FAQPage JSON-LD",
+    "Removed pre-release status from rating metadata, catalog and two sales articles",
+    "Changed product CTAs in seven CRM field articles to Market links; retained consultation flow",
+    "Qualified four-entity example instead of claiming smart processes unavailable",
+    "Kept help links readable on the dark closing surface"
+  ],
+  "quality": {
+    "tests": {
+      "pass": 87,
+      "fail": 0
+    },
+    "lint": {
+      "errors": 0,
+      "preExistingWarnings": 3
+    },
+    "build": {
+      "pages": 64,
+      "status": "PASS"
+    },
+    "indexnowCheck": {
+      "urls": 58,
+      "status": "PASS",
+      "submitted": false
+    },
+    "overlayVerification": "PASS: scripts, images, canonical, H1 and unrelated CSS preserved; two allowlisted text-link style additions",
+    "localResponsiveWidths": [
+      390,
+      768,
+      1440
+    ],
+    "liveBrowser": [
+      {
+        "market": [
+          "https://www.bitrix24.ru/apps/app/truetell.crm_fields/",
+          "https://www.bitrix24.ru/apps/app/truetell.crm_fields/"
+        ],
+        "outdated": false,
+        "path": "/bitrix24-field-directory/",
+        "scrollWidth": 390,
+        "width": 390
+      },
+      {
+        "market": [
+          "https://www.bitrix24.ru/apps/app/truetell.reyting_prodazh/",
+          "https://www.bitrix24.ru/apps/app/truetell.reyting_prodazh/"
+        ],
+        "outdated": false,
+        "path": "/bitrix24-product-rating/",
+        "scrollWidth": 390,
+        "width": 390
+      }
+    ],
+    "consultation": {
+      "productionKeyboardOpen": true,
+      "escapeClose": true,
+      "submitted": false
+    },
+    "finalMobileVisual": "PASS after animations: title, description and CTA visible; no horizontal overflow"
+  },
+  "publication": {
+    "status": "published",
+    "releaseId": "market-links-073-20261022",
+    "previousRelease": "fields-privacy-role-1792518685",
+    "archiveSha256": "69dc85ec349b82a26bc024c0e27057522bcef156a9303a9f8b4db8e9d33125d9",
+    "manifestSha256": "b64b9c743ac697b10e737faef7adaea6501190b3b5f97c839c4c2d608916baed",
+    "publicChecks": [
+      {
+        "path": "/audit-poley-crm-bitrix24/",
+        "status": 200,
+        "sha256": "3ad57235d8bdeba86d5dcc7913b7ec555dec577df4cdfcfde17581b1011298f8"
+      },
+      {
+        "path": "/bitrix24-field-directory/",
+        "status": 200,
+        "sha256": "0fac95572fe41c061b9501ebe74ea78c3b64b9e58fe60399bf0b8ee41ed9aa23"
+      },
+      {
+        "path": "/bitrix24-product-rating/",
+        "status": 200,
+        "sha256": "4dd82dcc104af40832729ef04f935acd83da4bcc872d98f16358e428789742d1"
+      },
+      {
+        "path": "/dashbord-rukovoditelya-bitrix24/",
+        "status": 200,
+        "sha256": "7f96aa4eefc389792cbbdc3d95ea26dba3bbee45e57c41209b87867ff7a974a2"
+      },
+      {
+        "path": "/karta-sootvetstviya-poley-bitrix24/",
+        "status": 200,
+        "sha256": "6b069c954f3751e03e378b9cddf9b2db4e6216cb154fd08f39469dcba3b2027c"
+      },
+      {
+        "path": "/kod-polya-bitrix24/",
+        "status": 200,
+        "sha256": "92eaeb5c10f8c9f24ae1d9c0a5854da983854b116bd3888666958dae7b1da738"
+      },
+      {
+        "path": "/nazvanie-polya-uf-crm-bitrix24/",
+        "status": 200,
+        "sha256": "db0a3430616748061750876c93e8a7ba89d93bf91774ca15340edf88dc1fbec6"
+      },
+      {
+        "path": "/otchety-po-prodazham-bitrix24/",
+        "status": 200,
+        "sha256": "2c00f1813d7f977f0dd94ea9ce0c417c2f6e7f9a85729903a292669296d16e06"
+      },
+      {
+        "path": "/products/",
+        "status": 200,
+        "sha256": "b2d1b18d2327cfb1338eaf78c5c67030bbb50226e88f43356f076d835483d590"
+      },
+      {
+        "path": "/spisok-poley-bitrix24/",
+        "status": 200,
+        "sha256": "0db3b0f3e47a1ae3b8c935df67123642fa1be88223dc859fc2314dab017874c0"
+      },
+      {
+        "path": "/tipy-poley-crm-bitrix24/",
+        "status": 200,
+        "sha256": "83158356558cab46acc52285c2a7e216a097b58362a81f48afdcf76bb457c579"
+      },
+      {
+        "path": "/uf-crm-ufcrm-bitrix24-api/",
+        "status": 200,
+        "sha256": "0d969df1c778c9254f36a6300bc0c60ebf2c3fb715e28d1dbd74011f85097a69"
+      },
+      {
+        "path": "/release.json",
+        "status": 200,
+        "sha256": "000a3c7a04965ba0a81139b01026ded0075e0ed1a6f573105f1fc784e35adb1c"
+      }
+    ],
+    "backendAndAllOtherFilesUnchanged": true,
+    "verifiedAt": "2026-10-22T10:59:11.383568+00:00"
+  },
+  "independentPublicHttp": [
+    {
+      "path": "/audit-poley-crm-bitrix24/",
+      "http": 200,
+      "sha256": "3ad57235d8bdeba86d5dcc7913b7ec555dec577df4cdfcfde17581b1011298f8",
+      "matchesReviewedPayload": true
+    },
+    {
+      "path": "/bitrix24-field-directory/",
+      "http": 200,
+      "sha256": "0fac95572fe41c061b9501ebe74ea78c3b64b9e58fe60399bf0b8ee41ed9aa23",
+      "matchesReviewedPayload": true
+    },
+    {
+      "path": "/bitrix24-product-rating/",
+      "http": 200,
+      "sha256": "4dd82dcc104af40832729ef04f935acd83da4bcc872d98f16358e428789742d1",
+      "matchesReviewedPayload": true
+    },
+    {
+      "path": "/dashbord-rukovoditelya-bitrix24/",
+      "http": 200,
+      "sha256": "7f96aa4eefc389792cbbdc3d95ea26dba3bbee45e57c41209b87867ff7a974a2",
+      "matchesReviewedPayload": true
+    },
+    {
+      "path": "/karta-sootvetstviya-poley-bitrix24/",
+      "http": 200,
+      "sha256": "6b069c954f3751e03e378b9cddf9b2db4e6216cb154fd08f39469dcba3b2027c",
+      "matchesReviewedPayload": true
+    },
+    {
+      "path": "/kod-polya-bitrix24/",
+      "http": 200,
+      "sha256": "92eaeb5c10f8c9f24ae1d9c0a5854da983854b116bd3888666958dae7b1da738",
+      "matchesReviewedPayload": true
+    },
+    {
+      "path": "/nazvanie-polya-uf-crm-bitrix24/",
+      "http": 200,
+      "sha256": "db0a3430616748061750876c93e8a7ba89d93bf91774ca15340edf88dc1fbec6",
+      "matchesReviewedPayload": true
+    },
+    {
+      "path": "/otchety-po-prodazham-bitrix24/",
+      "http": 200,
+      "sha256": "2c00f1813d7f977f0dd94ea9ce0c417c2f6e7f9a85729903a292669296d16e06",
+      "matchesReviewedPayload": true
+    },
+    {
+      "path": "/products/",
+      "http": 200,
+      "sha256": "b2d1b18d2327cfb1338eaf78c5c67030bbb50226e88f43356f076d835483d590",
+      "matchesReviewedPayload": true
+    },
+    {
+      "path": "/spisok-poley-bitrix24/",
+      "http": 200,
+      "sha256": "0db3b0f3e47a1ae3b8c935df67123642fa1be88223dc859fc2314dab017874c0",
+      "matchesReviewedPayload": true
+    },
+    {
+      "path": "/tipy-poley-crm-bitrix24/",
+      "http": 200,
+      "sha256": "83158356558cab46acc52285c2a7e216a097b58362a81f48afdcf76bb457c579",
+      "matchesReviewedPayload": true
+    },
+    {
+      "path": "/uf-crm-ufcrm-bitrix24-api/",
+      "http": 200,
+      "sha256": "0d969df1c778c9254f36a6300bc0c60ebf2c3fb715e28d1dbd74011f85097a69",
+      "matchesReviewedPayload": true
+    }
+  ],
+  "independentReview": {
+    "agent": "/root/review_market_links_070",
+    "contentAndDeploymentPackage": "APPROVED; no significant open findings",
+    "checks": [
+      "Source patch and compiled pages",
+      "Independent exact overlay reproduction and hashes",
+      "Archive allowlist and manifest",
+      "Activation baseline, atomic switch and rollback code review"
+    ],
+    "limits": "Reviewer did not install or run applications in a customer portal and did not operate CUA. Final live evidence reviewed separately.",
+    "finalStatus": "LIVE_VERIFIED APPROVED",
+    "finalChecks": [
+      "Own HTTP: two product pages and release.json match expected SHA256",
+      "All 12 plain URL verification records checked",
+      "Final reshot mobile screenshots reviewed; transient-animation screenshot finding closed"
+    ]
+  },
+  "evidenceDirectory": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/market-links-2026-10-22",
+  "limits": [
+    "Publication and links were checked; application installation and functional acceptance were not repeated",
+    "No unrelated working-tree changes were committed or deployed",
+    "Existing JavaScript and image assets were retained"
+  ]
+}

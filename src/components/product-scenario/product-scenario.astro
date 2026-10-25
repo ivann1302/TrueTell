@@ -20,7 +20,7 @@ const { id, title, description, steps } = Astro.props;
   <div class={styles.copy}>
     <h2 id={id}>{title}</h2>
     <p class={styles.description}>{description}</p>
-    <ul class={styles.steps}>
+    <ul class={styles.steps} data-reveal="1">
       {steps.map((step) => (
         <li>
           <ActionIcon name={step.icon} />

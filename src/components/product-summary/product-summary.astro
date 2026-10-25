@@ -5,5 +5,5 @@ const { description } = Astro.props;
 ---
 <section class={styles.summary} aria-labelledby="product-summary-title" data-product-summary>
   <h2 id="product-summary-title"><slot name="title" /></h2>
-  <p>{description}</p>
+  <p data-reveal="1">{description}</p>
 </section>

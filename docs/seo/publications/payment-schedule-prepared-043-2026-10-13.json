@@ -1,0 +1,158 @@
+{
+  "id": "043",
+  "seoTask": "SEO-051",
+  "date": "2026-10-13",
+  "recordedAt": "2026-10-13T16:46:09.289636+03:00",
+  "action": "CREATE",
+  "type": "knowledge",
+  "title": "Как составить график платежей клиента в Битрикс24",
+  "path": "/grafik-platezhey-bitrix24/",
+  "preview": "http://127.0.0.1:4348/grafik-platezhey-bitrix24/",
+  "phase": "local_QA_passed",
+  "publication": "not_deployed",
+  "registry": {
+    "status": "draft",
+    "publishedAt": null,
+    "updatedAt": null,
+    "robots": "noindex, nofollow",
+    "inPublicCatalogs": false,
+    "inSitemap": false
+  },
+  "intent": "Составить и поддерживать будущий план одной сделки: этап, сумма, валюта и срок; ручные поля, поручение сотруднику и перенос отдельного этапа с сохранением версии.",
+  "duplicateBoundary": {
+    "chastichnaya-oplata-bitrix24": "Учёт фактических поступлений и остатка — отдельный материал",
+    "debitorskaya-zadolzhennost-bitrix24": "Обязательства и просрочка — отдельный материал",
+    "platezhnyy-kalendar-bitrix24": "Охват календаря и денежный план компании — отдельный материал"
+  },
+  "demand": {
+    "source": "Wordstat research036,12.10.2026; Russia, all devices",
+    "newMeasurement": false,
+    "qualification": "Прямые запросы малочастотны; основание CREATE — самостоятельная задача читателя и согласованная очередь SEO-051, не прогноз трафика."
+  },
+  "product": {
+    "path": "/Users/ivan/projects/bitrix_payment_schedule",
+    "reviewedVersion": "0.3.2",
+    "confirmedBoundary": "Только просмотр сохранённого графика доступной сделки; генератор, финансовые изменения, поступления, общий отчёт и календарь в плане",
+    "customerPortalTested": false,
+    "applicationChanged": false
+  },
+  "images": [
+    {
+      "file": "src/images/articles/payment-schedule-three-stages.png",
+      "kind": "Учебная инфографика; собственный code-native SVG, растеризован Sharp",
+      "alpha": true,
+      "example": {
+        "totalRUB": 120000,
+        "amounts": [
+          36000,
+          48000,
+          36000
+        ],
+        "dates": [
+          "2026-10-14",
+          "2026-10-21",
+          "2026-10-28"
+        ]
+      },
+      "alteredProductScreenshot": false,
+      "sha256": "ab87bc558c48f3d718c825e5afaf3a11d65775699a848371927be33b1fea247e"
+    },
+    {
+      "file": "src/images/articles/bitrix24-money-field-type-official.jpg",
+      "kind": "Оригинальный скриншот Поддержки24",
+      "page": "https://helpdesk.bitrix24.ru/open/22048980/",
+      "source": "https://helpdesk.bitrix24.ru/images/helpdesk/screenshots/ru/kk/polzpolya/1.jpg",
+      "altered": false,
+      "sha256": "d5918b1b1306eb27f386f0dcc4d8f41b08a52d10d278e0da279b03db501a6df9"
+    },
+    {
+      "file": "src/images/articles/bitrix24-activity-deadline-official.jpg",
+      "kind": "Оригинальный скриншот Поддержки24",
+      "page": "https://helpdesk.bitrix24.ru/open/21064046/",
+      "source": "https://helpdesk.bitrix24.ru/images/helpdesk/screenshots/ru/kk/unidelo/7.jpg",
+      "altered": false,
+      "sha256": "f5baa62513bf4784b0e9e96c19d9cde1f74806fa72071526c0ea39c0048aee4d"
+    }
+  ],
+  "links": {
+    "incomingPrepared": [
+      "chastichnaya-oplata-bitrix24/",
+      "debitorskaya-zadolzhennost-bitrix24/",
+      "platezhnyy-kalendar-bitrix24/"
+    ],
+    "related": 3,
+    "productLandingCreated": false
+  },
+  "validation": {
+    "mainBuild": "passed;45 built pages;43 canonical sitemap URLs",
+    "mainTests": "68/68",
+    "lint": "0 errors,3 existing React hook warnings",
+    "indexNowCheck": "passed,43 URLs;no submission",
+    "visualWidths": [
+      320,
+      390,
+      768,
+      769,
+      1440
+    ],
+    "draftMetadataVerified": true,
+    "sharedHero": "#101621,dots,100svh;desktop columns start at same level;mobile centered H1",
+    "sourcesClosed": true,
+    "faqCount": 6,
+    "figures": 3,
+    "keyboardTablesFaqSources": "passed in independent review",
+    "sourceSha256": "e2af0301cf442c1000528a740603377e383e2512e55a4602fdb8d952cacfe7bb",
+    "htmlSha256": "001f1f8c8d0c552808687a4b82e335efd11caf36b2067e92317553d24d1349de",
+    "mainEqualsCleanCandidate": true
+  },
+  "cleanBuild": {
+    "scratch": "/private/tmp/payment-schedule-043-site",
+    "method": "main Git-tracked files plus seven prepared source/image files",
+    "unexpectedDuplicateFiles": 0,
+    "initialWorkspaceDistCopiesExcluded": "IndexNow initially detected index 2.html in synced scratch folder; rebuilt and rechecked in clean tmp; no source route changed"
+  },
+  "independentReview": {
+    "agent": "/root/review_payment_schedule_043",
+    "result": "PASS,no open findings",
+    "closed": [
+      "P2 related-card href mapping",
+      "P3 assign employee before Save",
+      "P3 clarify original field type String"
+    ],
+    "evidence": "work/payment-schedule-043/final/independent-review/final-review.json",
+    "finalHandoffEvidence": "work/payment-schedule-043/final/independent-review/final-handoff-review.json",
+    "finalHandoffSha256": "8e5a8b9640258b2e0b6a70978bb0e34323df3502c474a55f0fc76e55fc0c79d8",
+    "backlogAndMainRechecked": true
+  },
+  "backlog": {
+    "output": "deliverables/TrueTell_SEO_Backlog_043_2026-10-13.xlsx",
+    "sha256": "196a527a48d240aeabf24249b6f3e35561565f3f1dde29ef06028583acbebfa3",
+    "tasks": 56,
+    "sheets": 7,
+    "nativeFeaturesPreserved": true,
+    "allFormulasAndOldJournalPreserved": true,
+    "completedPublicationIds": [
+      "SEO-048",
+      "SEO-049",
+      "SEO-050"
+    ],
+    "newInstructionStatus": "SEO-051 local_QA_passed;draft;no first-publication date",
+    "gscBoundary": "23/40 PASS is historical snapshot039 before042; no fresh inspection in043"
+  },
+  "publicationNextStep": "При разрешённом выпуске перевести новую запись в published, записать настоящие publishedAt/updatedAt; обновить updatedAt трёх входящих страниц. Повторить проверки, push и live QA; индексирование проверять отдельно.",
+  "stages": {
+    "content_ready": true,
+    "coded": true,
+    "local_QA_passed": true,
+    "pushed": false,
+    "deployed": false,
+    "crawled": false,
+    "indexed": false
+  },
+  "limits": [
+    "Локальная подготовка; push, deploy и отправка URL в043 не выполнялись.",
+    "Клиентский портал, установка и денежные операции не проверялись.",
+    "Общие мобильные задачи SEO-053—056, полевые CWV и общий alt-аудит этим выпуском не закрываются."
+  ],
+  "evidenceDirectory": "work/payment-schedule-043/final"
+}

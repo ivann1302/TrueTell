@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="760" viewBox="0 0 1100 760">
+ <g font-family="Arial,sans-serif" fill="#101621">
+  <text x="40" y="65" font-size="40" fill="#616875">AI-клиент</text><text x="400" y="65" font-size="40" fill="#616875">Проверка MCP TrueTell</text>
+  <path d="M40 105H1060M40 320H1060M40 535H1060" stroke="#D3D7DE" stroke-width="2"/>
+  <text x="40" y="205" font-size="54">Codex</text><text x="400" y="180" font-size="44">Вход и первые чтения</text><text x="400" y="245" font-size="44" fill="#1765DA">проверены</text>
+  <text x="40" y="420" font-size="54">ChatGPT</text><text x="400" y="420" font-size="44" fill="#616875">Ещё не подтверждено</text>
+  <text x="40" y="635" font-size="54">Claude</text><text x="400" y="635" font-size="44" fill="#616875">Ещё не подтверждено</text>
+ </g>
+</svg>

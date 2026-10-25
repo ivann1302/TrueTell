@@ -34,17 +34,17 @@ const {
           )}
         </h1>
         {action && (
-          <div class={styles.action}>
+          <div class={styles.action} data-intro="actions">
             <p>{action.description}</p>
             <a href={action.href}>{action.label}</a>
           </div>
         )}
       </div>
 
-      <p class={styles.intro}>{intro}</p>
+      <p class={styles.intro} data-intro="description">{intro}</p>
     </div>
 
-    <aside class={styles.quickAnswer} aria-label={quickAnswerLabel}>
+    <aside class={styles.quickAnswer} aria-label={quickAnswerLabel} data-reveal>
       <span class={styles.quickAnswerLabel}>{quickAnswerLabel}</span>
       <div class={styles.quickAnswerContent}>
         <slot />

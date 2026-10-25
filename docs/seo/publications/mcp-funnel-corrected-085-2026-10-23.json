@@ -1,0 +1,388 @@
+{
+  "release": "085",
+  "date": "2026-10-23",
+  "action": "REWRITE",
+  "taskIds": [
+    "SEO-074",
+    "SEO-075"
+  ],
+  "ownerDecision": "Статьи ведут к нашему будущему MCP TrueTell, не к чужой установке или поддержке Битрикс24.",
+  "status": "local_QA_passed",
+  "registryStatus": "draft",
+  "deployed": false,
+  "indexingChecked": false,
+  "datePublished": null,
+  "applicationChanged": false,
+  "clientPortalUsed": false,
+  "strategy": "Обе статьи: основной сценарий и изображения про MCP TrueTell. Документация только в закрытом ArticleSources. CTA из общего mcpProduct ведёт к форме сайта до реальной страницы приложения. SEO-077 сохраняет NO_PAGE.",
+  "articles": [
+    {
+      "taskId": "SEO-074",
+      "route": "/podklyuchit-ii-bitrix24/",
+      "source": "/Users/ivan/projects/TrueTell/src/pages/podklyuchit-ii-bitrix24/index.astro",
+      "sha256": "cc47b4dd80e1e223f205c158d3f33d66978a287ec9b3866e10c646346248b3cb",
+      "localPreview": "http://127.0.0.1:4329/podklyuchit-ii-bitrix24/"
+    },
+    {
+      "taskId": "SEO-075",
+      "route": "/chatgpt-bitrix24-mcp/",
+      "source": "/Users/ivan/projects/TrueTell/src/pages/chatgpt-bitrix24-mcp/index.astro",
+      "sha256": "bf158a5e56afe92828a4f56b0090b3d90fa68d4e5de91e3cd4dc681e1164e7c9",
+      "localPreview": "http://127.0.0.1:4329/chatgpt-bitrix24-mcp/"
+    }
+  ],
+  "productEvidence": {
+    "source": "/Users/ivan/projects/bitrix_mcp/docs/AUTONOMOUS_RELEASE_STATUS_2026-10-23.md",
+    "checked": "2026-10-23",
+    "method": "Read-only development report; no tools called",
+    "accepted": "Персональный вход в Codex и четыре первых чтения. Ограниченные выборки не полные.",
+    "unaccepted": "ChatGPT/Claude, остальные инструменты и публичная готовность не подтверждены."
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/plugins/deploy/connect-chatgpt",
+      "checked": "2026-10-23",
+      "role": "primary_factual_source_only"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/26952788/",
+      "checked": "2026-10-23",
+      "role": "primary_factual_source_only"
+    },
+    {
+      "url": "https://apidocs.bitrix24.ru/ai-tools/mcp.html",
+      "checked": "2026-10-23",
+      "role": "primary_factual_source_only"
+    }
+  ],
+  "images": [
+    {
+      "name": "truetell-mcp-query-check-085.png",
+      "width": 1100,
+      "height": 800,
+      "hasAlpha": true,
+      "transparent": 827724,
+      "opaque": 22208
+    },
+    {
+      "name": "truetell-mcp-client-status-085.png",
+      "width": 1100,
+      "height": 760,
+      "hasAlpha": true,
+      "transparent": 795442,
+      "opaque": 25172
+    },
+    {
+      "name": "truetell-mcp-first-read-example-085.png",
+      "width": 1100,
+      "height": 900,
+      "hasAlpha": true,
+      "transparent": 934225,
+      "opaque": 31668
+    }
+  ],
+  "imageProvenance": "Три собственные прозрачные редакционные инфографики из SVG. Сверка содержит вымышленные значения. Статус по отчёту разработки. Не интерфейс готового продукта. В каждой статье 2 разных изображения с fullSize.",
+  "verification": {
+    "build": "PASS, 66 routes",
+    "lint": "PASS, 0 errors; 3 existing React hook warnings",
+    "tests": "87/87 PASS",
+    "indexnow": "--check, 58 URLs, no submission",
+    "html": {
+      "result": "PASS",
+      "registryOtherEntriesPreserved": true,
+      "articles": [
+        {
+          "route": "podklyuchit-ii-bitrix24",
+          "result": "PASS",
+          "canonical": "https://truetell-retail.ru/podklyuchit-ii-bitrix24/",
+          "status": "draft",
+          "publicationDatesOmitted": true,
+          "faqCount": 7,
+          "faqMatchesSchema": true,
+          "sourcesClosed": true,
+          "sourceOnlyOutboundLinks": 3,
+          "ownMcpCtas": 2,
+          "contactTargetExists": true,
+          "internalPaths": 7,
+          "draftExcludedFromSitemapAndCatalogs": true,
+          "images": [
+            {
+              "src": "/_astro/truetell-mcp-query-check-085.DQgc-GIA_7Rvm9.webp",
+              "width": 1100,
+              "height": 800,
+              "hasAlpha": true
+            },
+            {
+              "src": "/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp",
+              "width": 1100,
+              "height": 760,
+              "hasAlpha": true
+            }
+          ]
+        },
+        {
+          "route": "chatgpt-bitrix24-mcp",
+          "result": "PASS",
+          "canonical": "https://truetell-retail.ru/chatgpt-bitrix24-mcp/",
+          "status": "draft",
+          "publicationDatesOmitted": true,
+          "faqCount": 7,
+          "faqMatchesSchema": true,
+          "sourcesClosed": true,
+          "sourceOnlyOutboundLinks": 3,
+          "ownMcpCtas": 2,
+          "contactTargetExists": true,
+          "internalPaths": 7,
+          "draftExcludedFromSitemapAndCatalogs": true,
+          "images": [
+            {
+              "src": "/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp",
+              "width": 1100,
+              "height": 760,
+              "hasAlpha": true
+            },
+            {
+              "src": "/_astro/truetell-mcp-first-read-example-085.BcJRFA5s_1aUd3J.webp",
+              "width": 1100,
+              "height": 900,
+              "hasAlpha": true
+            }
+          ]
+        }
+      ]
+    },
+    "browserLayout": [
+      {
+        "route": "chatgpt-bitrix24-mcp",
+        "width": 390,
+        "height": 640,
+        "scrollWidth": 390,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 136,
+        "introTop": 423.7109375,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 356,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z2rhyw2.webp"
+          },
+          {
+            "loaded": true,
+            "width": 356,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-first-read-example-085.BcJRFA5s_Z1RznAN.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "chatgpt-bitrix24-mcp",
+        "width": 768,
+        "height": 640,
+        "scrollWidth": 768,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 136,
+        "introTop": 366.3515625,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 734,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp"
+          },
+          {
+            "loaded": true,
+            "width": 734,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-first-read-example-085.BcJRFA5s_1aUd3J.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "chatgpt-bitrix24-mcp",
+        "width": 769,
+        "height": 640,
+        "scrollWidth": 769,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 184,
+        "introTop": 184,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 703,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp"
+          },
+          {
+            "loaded": true,
+            "width": 703,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-first-read-example-085.BcJRFA5s_1aUd3J.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "chatgpt-bitrix24-mcp",
+        "width": 1440,
+        "height": 640,
+        "scrollWidth": 1440,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 184,
+        "introTop": 184,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 878,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp"
+          },
+          {
+            "loaded": true,
+            "width": 878,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-first-read-example-085.BcJRFA5s_1aUd3J.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "podklyuchit-ii-bitrix24",
+        "width": 390,
+        "height": 640,
+        "scrollWidth": 390,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 136,
+        "introTop": 423.7109375,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 356,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-query-check-085.DQgc-GIA_zCxXU.webp"
+          },
+          {
+            "loaded": true,
+            "width": 356,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z2rhyw2.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "podklyuchit-ii-bitrix24",
+        "width": 768,
+        "height": 640,
+        "scrollWidth": 768,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 136,
+        "introTop": 366.3515625,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 734,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-query-check-085.DQgc-GIA_7Rvm9.webp"
+          },
+          {
+            "loaded": true,
+            "width": 734,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "podklyuchit-ii-bitrix24",
+        "width": 769,
+        "height": 640,
+        "scrollWidth": 769,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 184,
+        "introTop": 184,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 703,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-query-check-085.DQgc-GIA_7Rvm9.webp"
+          },
+          {
+            "loaded": true,
+            "width": 703,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "route": "podklyuchit-ii-bitrix24",
+        "width": 1440,
+        "height": 640,
+        "scrollWidth": 1440,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 184,
+        "introTop": 184,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 878,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-query-check-085.DQgc-GIA_7Rvm9.webp"
+          },
+          {
+            "loaded": true,
+            "width": 878,
+            "src": "http://127.0.0.1:4364/_astro/truetell-mcp-client-status-085.CEgrk_HA_Z1evTxs.webp"
+          }
+        ],
+        "sourcesClosed": true
+      }
+    ],
+    "interactions": {
+      "faqOpen": true,
+      "faqClosed": true,
+      "sourcesOpen": true,
+      "sourcesClosed": true,
+      "ownCtaOpenedForm": true
+    },
+    "browserMethod": "CUA: same-origin iframe 390/768/769/1440, height640; desktop1440 display scale .85 without changing media width. Actual preview CTA opened form; no submission.",
+    "backlog": {
+      "result": "PASS",
+      "tasks": 75,
+      "unchangedTasks": 72,
+      "updatedTasks": [
+        "SEO-074",
+        "SEO-075",
+        "SEO-076"
+      ],
+      "sheets": 7,
+      "changedCells": 39,
+      "priorJournalRowsPreserved": 114,
+      "newJournalRows": 3,
+      "allPublicationAndModificationDatesPreserved": true,
+      "unrelatedValuesFormulasStylesPreserved": true,
+      "nativeFeaturesPreserved": true,
+      "nativeExcelOpened": false,
+      "sha256": "4eb061f81c4d93d2a3d20d8a106f8653f960305ea0d394c2bc463c6c0bd82e47"
+    }
+  },
+  "independentReview": {
+    "reviewer": "/root/review_mcp_funnel_085",
+    "result": "APPROVE",
+    "openP1P2": 0,
+    "closedFindings": [
+      "Уточнён заголовок FAQ ChatGPT.",
+      "При авторской визуальной QA старая схема083 не совпала с новой подписью074. Заменена точной инфографикой проверки; повторно одобрена ревьюером."
+    ],
+    "limits": "Ревьюер проверил код, документы и PNG read-only. Runtime/build/форма проверены автором; отправка формы и публикация не выполнялись."
+  },
+  "protocol": "docs/seo/product-content-funnel.md; правило добавлено в AGENTS обоих проектов и локальный редакционный skill/model.",
+  "next": "Продолжать семантику к собственному MCP. Claude076 только после приёмки конкретного клиента и появления самостоятельной пользы; не тиражировать страницы ожидания."
+}

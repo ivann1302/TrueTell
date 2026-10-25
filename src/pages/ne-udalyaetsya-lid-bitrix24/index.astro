@@ -1,6 +1,6 @@
 ---
 import ArticleFigure from '../../components/editorial/article-figure.astro';
-import articleIllustration from '../../images/articles/record-selection-editorial.png';
+import leadSelectionDiagram from '../../images/articles/bitrix24-bulk-lead-selection.png';
 import selectionImage from '../../images/products/cleaner-selection.png';
 import ArticleLayout from '../../components/editorial/article-layout.astro';
 import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
@@ -29,8 +29,8 @@ const siteRoot = new URL(base, import.meta.env.SITE);
 const homeUrl = siteRoot.toString();
 const knowledgeBaseUrl = new URL('knowledge-base/', siteRoot).toString();
 const articleUrl = new URL('ne-udalyaetsya-lid-bitrix24/', siteRoot).toString();
-const imageAlt = "Сотрудник проверяет бумажные записи перед разделением на сохранённые и отобранные";
-const ogImage = new URL(articleIllustration.src, siteRoot).toString();
+const imageAlt = 'Предпросмотр выборки в TrueTell Cleaner';
+const ogImage = new URL(selectionImage.src, siteRoot).toString();
 const ogDescription = 'Как найти причину ошибки удаления: проверить доступ, работу приложения и повторное появление лида. Что сделать до массовой очистки CRM.';
 const titleParts = [
   { text: 'Почему ' },
@@ -145,7 +145,6 @@ const structuredData = createArticleStructuredData({
   </Fragment>
 
   <p data-article-lead>Одинаковые имя и телефон могут принадлежать разным записям. Именно поэтому диагностику лучше начинать с одного конкретного лида, а не с повторного удаления всей подборки.</p>
-  <ArticleFigure src={articleIllustration} alt="Сотрудник проверяет бумажные записи перед разделением на сохранённые и отобранные" caption="Начните с одной конкретной записи и проверьте её идентификатор, права и результат действия. Иллюстрация внимательной проверки карточек." />
 
   <section aria-labelledby="locate-problem">
 
@@ -250,9 +249,10 @@ const structuredData = createArticleStructuredData({
     <p>Перед массовой операцией сформулируйте критерии отбора: какие записи больше не нужны бизнесу и какие обязательно сохранить. Одна только давняя дата создания — слабый критерий: среди старых обращений может оставаться действующий клиент. Просмотрите несколько карточек из подборки и согласуйте сохранение нужных данных. Экспорт полей не стоит считать полной резервной копией CRM с историей и связями.</p>
 
     <p>Для одного ненужного лида достаточно штатного действия. Когда требуется регулярно убирать группы записей, полезнее выстроить повторяемую процедуру отбора и проверки.</p>
+    <ArticleFigure src={leadSelectionDiagram} fullSize alt="Схема выбора лидов: фильтр, проверка выборки, ручное выделение или «Для всех», затем удаление" caption="Схема групповой очистки лидов. «Для всех» относится ко всей проверенной выборке, а ручные галочки — к отдельным строкам. Это редакционная схема, не экран Битрикс24." />
 
     <p>После диагностики переходите к инструкции <a href={`${base}bitrix24-udalenie-lidov-za-period/`}>как удалить старые лиды в Битрикс24 за выбранный период</a>: в ней разобраны отбор по датам, проверка карточек и массовая операция.</p>
-    <ArticleFigure src={selectionImage} fullSize alt="Предпросмотр выбранных сделок в TrueTell Cleaner с количеством записей и экспортом CSV" caption="Демонстрационный экран TrueTell Cleaner в режиме сделок: видны состав выборки, количество и экспорт CSV. Для лидов проверяют свою выборку; CSV не заменяет полную резервную копию CRM." />
+    <ArticleFigure src={selectionImage} fullSize alt="Предпросмотр выбранных сделок в TrueTell Cleaner с количеством записей и кнопкой CSV" caption="Демонстрационный экран TrueTell Cleaner в режиме сделок: видны состав выборки, количество и кнопка подготовки CSV. Для лидов проверяют свою выборку; сохранение файла проверьте в своём браузере. CSV не заменяет полную резервную копию CRM." />
 
   </section>
 
@@ -271,8 +271,8 @@ const structuredData = createArticleStructuredData({
   <Fragment slot="article-end">
     <ArticleProductCta
       titleParts={[{ text: 'После диагностики — ' }, { text: 'очистка по фильтрам', accent: true }]}
-      description={cleanerProduct.articleDescription}
-      href={cleanerHref} actionLabel={cleanerProduct.articleActionLabel}
+      description={`${cleanerProduct.marketplaceArticleDescription} Приложение не обходит права доступа Битрикс24.`}
+      href={cleanerProduct.marketplaceUrl} actionLabel={cleanerProduct.connectionActionLabel}
     />
     <RelatedArticles items={relatedArticles} />
   </Fragment>

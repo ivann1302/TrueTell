@@ -53,9 +53,9 @@ const groupName = `${id}-items`;
 >
   <div class={styles.container}>
     <div class={styles.content}>
-      <h2 id={titleId} class={styles.title}>{title}</h2>
+      <h2 id={titleId} class={styles.title} data-reveal>{title}</h2>
 
-      <div class={styles.accordion} data-faq-accordion>
+      <div class={styles.accordion} data-faq-accordion data-reveal="1">
         {items.map((item) => (
           <details class={styles.item} name={groupName}>
             <summary class={styles.question}>

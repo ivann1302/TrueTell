@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1050">
+  <defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#101621}.k{font-size:31px;font-weight:700}.s{font-size:27px}.b{font-size:34px;font-weight:700}.line{stroke:#1389c9;stroke-width:7;stroke-linecap:round;fill:none}</style></defs>
+  <text x="40" y="55" class="k">Как устроена аналитическая копия</text>
+  <rect x="40" y="100" width="720" height="210" rx="22" fill="#e8f3fa" stroke="#b2dff5" stroke-width="3"/>
+  <text x="75" y="154" class="b">МойСклад</text>
+  <text x="75" y="210" class="s">Продажи, возвраты, товары,</text>
+  <text x="75" y="250" class="s">платежи, смены и остатки</text>
+  <path d="M400 323v57m-20-20 20 20 20-20" class="line"/>
+  <rect x="40" y="398" width="720" height="230" rx="22" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="75" y="453" class="b">Аналитическая копия</text>
+  <text x="75" y="510" class="s">Исходные записи и правила расчёта</text>
+  <text x="75" y="554" class="s">История срезов и сверка изменений</text>
+  <path d="M400 640v57m-20-20 20 20 20-20" class="line"/>
+  <rect x="40" y="715" width="720" height="195" rx="22" fill="#e8f3fa" stroke="#b2dff5" stroke-width="3"/>
+  <text x="75" y="770" class="b">Инструмент аналитика</text>
+  <text x="75" y="828" class="s">Графики, таблицы и проверки</text>
+  <text x="75" y="870" class="s">с доступом по выбранной роли</text>
+  <text x="40" y="972" class="s">Учебная схема, не функция</text>
+  <text x="40" y="1012" class="s">подтверждённого продукта TrueTell.</text>
+</svg>

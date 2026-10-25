@@ -25,11 +25,12 @@ const external = href.startsWith('http');
   aria-label={variant === 'product' ? 'Приложение для вашей задачи' : 'Консультация'}
   data-inline-product={variant === 'product' || undefined}
 >
-  <div>
+  <div data-reveal>
     <strong>{title}</strong>
     <p>{description}</p>
   </div>
   <a
+    data-reveal="1"
     href={href}
     target={external ? '_blank' : undefined}
     rel={external ? 'noopener noreferrer' : undefined}

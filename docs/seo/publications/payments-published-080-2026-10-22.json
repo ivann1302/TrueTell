@@ -1,0 +1,274 @@
+{
+  "release": "080",
+  "date": "2026-10-22",
+  "task": "Publish reviewed payment article updates 076–079",
+  "status": "live_verified",
+  "releaseId": "payments-080-20261022",
+  "previousRelease": "market-links-073-20261022",
+  "action": "UPDATE",
+  "routes": [
+    "/grafik-platezhey-bitrix24/",
+    "/chastichnaya-oplata-bitrix24/",
+    "/debitorskaya-zadolzhennost-bitrix24/",
+    "/platezhnyy-kalendar-bitrix24/"
+  ],
+  "authorization": "Owner: давай опубликуем; продолжай",
+  "scope": {
+    "articleHTML": 4,
+    "catalogDescriptions": 2,
+    "newImageFiles": 10,
+    "newXLSX": 1,
+    "sitemapLastmod": 4,
+    "totalPayloadFiles": 18
+  },
+  "method": "Static overlay over the current production release. Fresh baseline/hash guards under deploy.lock, independent cp-a clone, exact full-release fingerprint diff, atomic symlink switch, automatic rollback on failed HTTP/hash verification.",
+  "git": {
+    "main": "c055508554a786203e7fb92a7c30028543a650c8",
+    "pushPerformed": false,
+    "reason": "GitHub main is older than current production. Full GitHub deployment would include outdated pages; current production retained as release baseline. Unrelated working-tree changes were not deployed."
+  },
+  "content": {
+    "productVersion": "0.4.4",
+    "available": "Viewing and preview without saving",
+    "notAvailable": "Saving schedule, receipts, corrections, overall report, calendar and CSV",
+    "reference": "Read-only project release documentation checked in079; no CRM or app operations in this release"
+  },
+  "quality": {
+    "preparedCandidate": "079: build64 pages/58canonical,87 tests pass,lint0errors/3existingwarnings,IndexNow--check only",
+    "packageValidation": "PASS",
+    "activationLocalTests": [
+      {
+        "case": "success",
+        "result": "PASS",
+        "expectedError": null
+      },
+      {
+        "case": "http_failure_rollback",
+        "result": "PASS",
+        "expectedError": "Public SHA mismatch: /grafik-platezhey-bitrix24/"
+      },
+      {
+        "case": "baseline_conflict",
+        "result": "PASS",
+        "expectedError": "Protected SHA: robots.txt"
+      },
+      {
+        "case": "bad_archive_hash",
+        "result": "PASS",
+        "expectedError": "Archive SHA mismatch"
+      }
+    ],
+    "exactOverlayBrowser": {
+      "mobileWidths": [
+        390
+      ],
+      "desktopWidths": [
+        1440
+      ],
+      "overflow": false,
+      "mobileTitleAndCategoryCentered": true,
+      "desktopHeroColumnsAligned": true,
+      "imagesAndTemplateScreenshotViewed": true
+    },
+    "liveBrowser": {
+      "status": "unavailable",
+      "reason": "Codex in-app browser ERR_SOCKET_NOT_CONNECTED for public site, two attempts",
+      "localExactOverlay": "CUA390/1440 passed",
+      "publicHTTP": "77 ordinary URLs hashes and 9 redirects passed",
+      "liveBrowserClaimed": false
+    },
+    "liveContent": [
+      {
+        "url": "https://truetell-retail.ru/grafik-platezhey-bitrix24/",
+        "result": "PASS",
+        "canonical": true,
+        "indexable": true,
+        "FAQ": 8,
+        "figures": 4,
+        "type": "Article",
+        "modified": "2026-10-22",
+        "productVersion": "0.4.4"
+      },
+      {
+        "url": "https://truetell-retail.ru/chastichnaya-oplata-bitrix24/",
+        "result": "PASS",
+        "canonical": true,
+        "indexable": true,
+        "FAQ": 8,
+        "figures": 4,
+        "type": "Article",
+        "modified": "2026-10-22",
+        "productVersion": "0.4.4"
+      },
+      {
+        "url": "https://truetell-retail.ru/debitorskaya-zadolzhennost-bitrix24/",
+        "result": "PASS",
+        "canonical": true,
+        "indexable": true,
+        "FAQ": 8,
+        "figures": 3,
+        "type": "BlogPosting",
+        "modified": "2026-10-22",
+        "productVersion": "0.4.4"
+      },
+      {
+        "url": "https://truetell-retail.ru/platezhnyy-kalendar-bitrix24/",
+        "result": "PASS",
+        "canonical": true,
+        "indexable": true,
+        "FAQ": 8,
+        "figures": 3,
+        "type": "BlogPosting",
+        "modified": "2026-10-22",
+        "productVersion": "0.4.4"
+      }
+    ],
+    "normalPublicHTTP": {
+      "verifiedURLs": 77,
+      "hashesMatch": true,
+      "redirects": 9,
+      "controlPagesUnchanged": true
+    },
+    "protectedExistingFiles": 55,
+    "backendAndOtherFilesUnchanged": true,
+    "backlog": {
+      "result": "PASS",
+      "changedCells": 32,
+      "allowedCells": 37,
+      "unrelatedValuesFormulasStylesPreserved": true,
+      "sheets": [
+        "SEO-бэклог",
+        "Журнал изменений",
+        "GSC — замеры",
+        "Инструкция",
+        "Локально vs прод",
+        "Продакшен 08.10",
+        "SEO-006 исследование"
+      ],
+      "nativeExcelOpened": false
+    }
+  },
+  "publication": {
+    "status": "published",
+    "releaseId": "payments-080-20261022",
+    "previousRelease": "market-links-073-20261022",
+    "archiveSha256": "b53c9360640d1b25b57e21e4b115c95602bc44d26043fa90118c3be0ce55cb23",
+    "manifestSha256": "58d0c27c77567c56cd2c6bed12917580e05c78a99e845d885aef4a4f5f94c7bd",
+    "publicChecks": [
+      {
+        "path": "/grafik-platezhey-bitrix24/",
+        "status": 200,
+        "sha256": "4e81db86d6fb2ca7fd296da0fb2026f88290d0305f840578608cd328ee70395a"
+      },
+      {
+        "path": "/chastichnaya-oplata-bitrix24/",
+        "status": 200,
+        "sha256": "6c40fc8cfe7a1cc0a8d543c148c825d489ef0e79b33b44dc7ea1db48d5bf1ea7"
+      },
+      {
+        "path": "/debitorskaya-zadolzhennost-bitrix24/",
+        "status": 200,
+        "sha256": "7402ed27a70da1b3f84b81b9c0e564f354171e722442f675b798289f253dcd17"
+      },
+      {
+        "path": "/platezhnyy-kalendar-bitrix24/",
+        "status": 200,
+        "sha256": "fa9e89f4ef16b8c7a8101888465c8c593e7932bde83d2be3520c929ec6e25b97"
+      },
+      {
+        "path": "/blog/",
+        "status": 200,
+        "sha256": "b3b605338edabc05e09638e0f6e5a75fb84d542769a6cbed46f374f3c84f3345"
+      },
+      {
+        "path": "/knowledge-base/",
+        "status": 200,
+        "sha256": "c335701edcb1a74ddbab2624e9104e900fbb7469ae2b9e0d7300faf86b15a93c"
+      },
+      {
+        "path": "/sitemap.xml",
+        "status": 200,
+        "sha256": "abb2f6d3314321776493cd4236165cee419bd1d083812b07b5000f55283e2404"
+      },
+      {
+        "path": "/_astro/payment-allocation-journal-077.NE7ugZk_.png",
+        "status": 200,
+        "sha256": "c04ee30589132e51d8f6cbc2c02f7d7ccd8991fdb320d5b637bcd2f74e62b846"
+      },
+      {
+        "path": "/_astro/payment-allocation-journal-077.NE7ugZk__Pr9XW.webp",
+        "status": 200,
+        "sha256": "d07ee53f6a2460d3ce9d58868a362d6d281e5e5fa0cf21014086016ea1972225"
+      },
+      {
+        "path": "/_astro/payment-allocation-journal-077.NE7ugZk__qfXsC.webp",
+        "status": 200,
+        "sha256": "34d365fb38c218312b533577cd12b8d411c7af425bb2a0695d21b778cd77231d"
+      },
+      {
+        "path": "/_astro/payment-allocation-journal-077.NE7ugZk__xQEpD.webp",
+        "status": 200,
+        "sha256": "a424a27f450efad0628e0ad57279436ea23c41bcddf74d156d4fcae8b1441cd0"
+      },
+      {
+        "path": "/_astro/payment-allocation-journal-077.NE7ugZk__xyPWo.webp",
+        "status": 200,
+        "sha256": "f52abacd6039ede1d772abd2f9ac9cce946853406fdc4675eb60c23f0cceec62"
+      },
+      {
+        "path": "/_astro/payment-schedule-template-076.BCHeE4bm.png",
+        "status": 200,
+        "sha256": "73531c28b258424e5053b1fbc2683239a0684653fc1ca25adea96ecf0c76ac9f"
+      },
+      {
+        "path": "/_astro/payment-schedule-template-076.BCHeE4bm_24knj0.webp",
+        "status": 200,
+        "sha256": "8ec49ddd8b2a7e4d2f17c030eb99199c49e98e1e57e4d562f949b2052bf5363d"
+      },
+      {
+        "path": "/_astro/payment-schedule-template-076.BCHeE4bm_2joSAo.webp",
+        "status": 200,
+        "sha256": "0b00a4a38ff259ff7e268771597f5897aa87d90329a88e0a994facce2a830ad7"
+      },
+      {
+        "path": "/_astro/payment-schedule-template-076.BCHeE4bm_Z11mGo.webp",
+        "status": 200,
+        "sha256": "6ea5de4f553c3e6a2897f434f7ed246e76ce8674c895d049c87bf896acfdfc71"
+      },
+      {
+        "path": "/_astro/payment-schedule-template-076.BCHeE4bm_gPxpx.webp",
+        "status": 200,
+        "sha256": "06bd8266618ab35b3f3cddfb60b424fbeae8eb4cabc74a410508ccd080b9d4e8"
+      },
+      {
+        "path": "/downloads/TrueTell_Payment_Schedule_Template_076_2026-10-22.xlsx",
+        "status": 200,
+        "sha256": "0203e9c49b306f63be6d198f3e09f78dec94945fa84c68912f49f247fb5babdc"
+      },
+      {
+        "path": "/release.json",
+        "status": 200,
+        "sha256": "af727babdb496d6d44d654da1a72835cf048cdf42a535740dec1c756cc605ce3"
+      }
+    ],
+    "backendAndAllOtherFilesUnchanged": true,
+    "verifiedAt": "2026-10-22T18:16:03.465434+00:00"
+  },
+  "independentReview": {
+    "reviewer": "/root/review_market_links_070",
+    "package": "PASS",
+    "closedFinding": "P2 catalog description class mismatch fixed by preserving production tags/attributes and replacing inner text only. Rechecked all6HTML, archive/manifest/activation hashes.",
+    "live": "PASS: own normal HTTP for four articles, XLSX and release marker; SHA256 match; canonical/metadata/robots,8FAQ/schema and sources verified.",
+    "limits": "No live CUA due socket connection error. Local exact package visual checks only. Search indexing and application operations not checked."
+  },
+  "backlog": "outputs/payment-publication-080/TrueTell_SEO_Backlog_080_2026-10-22.xlsx",
+  "next": "Check GSC/URL Inspection separately when requested. SEO-052 remains NO_PAGE until confirmed working MVP.",
+  "searchEngineSubmission": false,
+  "indexingChecked": false,
+  "evidenceDirectory": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/payment-publication-080",
+  "checksums": {
+    "archiveSha256": "b53c9360640d1b25b57e21e4b115c95602bc44d26043fa90118c3be0ce55cb23",
+    "manifestSha256": "58d0c27c77567c56cd2c6bed12917580e05c78a99e845d885aef4a4f5f94c7bd",
+    "activationSha256": "cc49087a3ac89074649a30e08df51ab90c8a8cfd60a878b6cf1935b558d1aec4"
+  }
+}

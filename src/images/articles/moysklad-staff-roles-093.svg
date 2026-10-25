@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1120">
+  <defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#101621}.h{font-size:31px;font-weight:700}.p{font-size:26px}.tag{font-size:21px;font-weight:700;fill:#386278}.n{font-size:30px;font-weight:700;fill:#087ebf}</style></defs>
+  <text x="38" y="55" class="h">Одна продажа — несколько ролей</text>
+  <text x="38" y="98" class="p">Схема связи, не экран МойСклад</text>
+  <rect x="38" y="145" width="724" height="150" rx="20" fill="#e8f3fa"/>
+  <text x="66" y="194" class="tag">РОЗНИЧНАЯ СМЕНА</text>
+  <text x="66" y="249" class="n">Точка и время работы кассы</text>
+  <path d="M400 305v50" stroke="#087ebf" stroke-width="5"/>
+  <path d="m389 344 11 12 11-12" fill="none" stroke="#087ebf" stroke-width="5"/>
+  <rect x="38" y="374" width="724" height="155" rx="20" fill="#dceef8"/>
+  <text x="66" y="423" class="tag">РОЗНИЧНАЯ ПРОДАЖА</text>
+  <text x="66" y="479" class="n">ID чека · ссылка на смену</text>
+  <rect x="38" y="562" width="724" height="148" rx="20" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="66" y="610" class="tag">ВЛАДЕЛЕЦ ДОКУМЕНТА · OWNER</text>
+  <text x="66" y="665" class="p">Поле есть, роль нужно проверить</text>
+  <rect x="38" y="731" width="724" height="148" rx="20" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="66" y="779" class="tag">КАССИР / ПРОДАВЕЦ-КОНСУЛЬТАНТ</text>
+  <text x="66" y="834" class="p">Могут быть разными людьми</text>
+  <text x="38" y="954" class="h">Для премии нужен договорённый</text>
+  <text x="38" y="997" class="h">и проверенный принцип атрибуции.</text>
+</svg>

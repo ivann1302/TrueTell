@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-16",
+  "site": "https://truetell-retail.ru/",
+  "change": "Header brand symbol recolored: navy #00205B background, white stylized T. Stable SVG, PNG96, ICO16/32/48, Apple180 URLs.",
+  "release": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792137462-favicon",
+  "previous_release": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792134806-home-icons",
+  "published_html_pages": 62,
+  "scope": "Only favicon links in existing production HTML and four icon assets; page body and backend unchanged.",
+  "checks": {
+    "tests_passed": 77,
+    "tests_failed": 0,
+    "lint_errors": 0,
+    "existing_lint_warnings": 3,
+    "build_pages": 62,
+    "seo_check_urls": 58,
+    "public": {
+      "/": {
+        "status": 200,
+        "type": "text/html",
+        "sha256": "8565ac9482d110b35ddaca2f9d2b549af3296ff23d6808655d58fa2b265b034f",
+        "bytes": 112063
+      },
+      "links": [
+        "<link rel=\"icon\" type=\"image/x-icon\" sizes=\"16x16 32x32 48x48\" href=\"/favicon.ico\">",
+        "<link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" href=\"/favicon-96x96.png\">",
+        "<link rel=\"icon\" type=\"image/svg+xml\" sizes=\"any\" href=\"/favicon.svg\">",
+        "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\">"
+      ],
+      "favicon.svg": {
+        "status": 200,
+        "type": "image/svg+xml",
+        "sha256": "2cd7c9093c4cfc837bfc66d09d33fba191b2acd26979d44757c6cac0253fdafd",
+        "bytes": 478
+      },
+      "favicon-96x96.png": {
+        "status": 200,
+        "type": "image/png",
+        "sha256": "4088ced3c10a69b0561351f329057325a46a6e06b4e7e9df2e75431fb79aef42",
+        "bytes": 2302
+      },
+      "favicon.ico": {
+        "status": 200,
+        "type": "image/vnd.microsoft.icon",
+        "sha256": "8780be924d93a15f3de028e317e1939a231c8dbc4a3ad0309db6ed7a638c7f2b",
+        "bytes": 2564
+      },
+      "apple-touch-icon.png": {
+        "status": 200,
+        "type": "image/png",
+        "sha256": "b6739aa11093ff99926a269dbd4356448d3ff8a2195bfb8947b8aa49f67bb124",
+        "bytes": 4525
+      },
+      "robots.txt": {
+        "status": 200,
+        "type": "text/plain",
+        "sha256": "1881e1f686c2dfa4ff901bbb712eef1c50352c9a1e1fec2fff70f8b72456f11e",
+        "bytes": 307
+      },
+      "robots": "User-agent: GPTBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: anthropic-ai\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nUser-agent: Bingbot\nAllow: /\n\nUser-agent: *\nAllow: /\n\nSitemap: https://truetell-retail.ru/sitemap.xml\n"
+    }
+  },
+  "google_search": "No indexing submission. Search appearance requires recrawl and is not guaranteed.",
+  "deployment_note": "Initial verification used /index.html, which redirects to /. Automatic rollback completed; corrected root URL verification and reactivated same verified release."
+}

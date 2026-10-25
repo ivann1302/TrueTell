@@ -76,9 +76,9 @@ const structuredData = {
         <LineWave centerOnMobile />
         <div class={heroStyles.heroCopy}>
           <h1>{heroTitle}</h1>
-          <p class={heroStyles.heroDescription}>{heroDescription}</p>
+          <p class={heroStyles.heroDescription} data-intro="description">{heroDescription}</p>
         </div>
-        <div class={heroStyles.heroActions}>
+        <div class={heroStyles.heroActions} data-intro="actions">
           <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{product.connectionActionLabel}</a>
         </div>
       </header>
@@ -96,8 +96,8 @@ const structuredData = {
     <LineWave />
     <div class={styles.container}>
       <section class:list={[styles.connection, closingStyles.connectionDark]} aria-labelledby="connection-title">
-        <h2 id="connection-title">{connectionTitle}</h2>
-        <div>
+        <h2 id="connection-title" data-reveal>{connectionTitle}</h2>
+        <div data-reveal="1">
           <p>{connectionDescription}</p>
           <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{product.connectionActionLabel}</a>
         </div>

@@ -120,11 +120,11 @@ const structuredData = {
         <LineWave centerOnMobile />
         <div class={heroStyles.heroCopy}>
           <h1>{cleanerProduct.name}</h1>
-          <p class={heroStyles.heroDescription}>Удаляйте ненужные записи одной операцией. Отбирайте по фильтрам и сохраняйте важные.</p>
+          <p class={heroStyles.heroDescription} data-intro="description">Удаляйте ненужные записи одной операцией. Отбирайте по фильтрам и сохраняйте важные.</p>
 
         </div>
-          <div class={heroStyles.heroActions}>
-            <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{cleanerProduct.connectionActionLabel}</a>
+          <div class={heroStyles.heroActions} data-intro="actions">
+            <a class={styles.button} href={cleanerProduct.marketplaceUrl} target="_blank" rel="noopener noreferrer">{cleanerProduct.connectionActionLabel}</a>
           </div>
       </header>
 
@@ -147,14 +147,14 @@ const structuredData = {
       <section class:list={[styles.useCases, layout.textPanel]} aria-labelledby="use-cases-title">
         <h2 id="use-cases-title">Когда нужна очистка CRM</h2>
         <dl class={styles.descriptionList}>
-          {useCases.map(([heading, text]) => <div><dt>{heading}</dt><dd>{text}</dd></div>)}
+          {useCases.map(([heading, text]) => <div data-reveal><dt>{heading}</dt><dd>{text}</dd></div>)}
         </dl>
       </section>
 
       <section class:list={[styles.features, layout.features, layout.textPanel]} aria-labelledby="features-title">
         <h2 id="features-title">Возможности приложения</h2>
         <dl class={layout.featureGrid}>
-          {features.map(([heading, text, icon]) => <div><dt><ActionIcon name={icon} />{heading}</dt><dd>{text}</dd></div>)}
+          {features.map(([heading, text, icon]) => <div data-reveal><dt><ActionIcon name={icon} />{heading}</dt><dd>{text}</dd></div>)}
         </dl>
       </section>
 
@@ -187,11 +187,11 @@ const structuredData = {
     <LineWave />
     <div class={styles.container}>
       <section class:list={[styles.connection, closingStyles.connectionDark]} aria-labelledby="connection-title">
-        <h2 id="connection-title">Подключение приложения</h2>
-        <div>
-          <p>Поможем подключить приложение к вашему Битрикс24.</p>
+        <h2 id="connection-title" data-reveal>Подключение приложения</h2>
+        <div data-reveal="1">
+          <p>Откройте приложение в Маркете Битрикс24. Если нужна помощь с настройкой, <a class={styles.licenseLink} href={companyInfo.contacts.consultationUrl}>обсудите подключение с нами</a>.</p>
           <p><a class={styles.licenseLink} href={`${base}bitrix24-cleaner-license/`}>Лицензионное соглашение</a><br /><a class={styles.licenseLink} href={`${base}bitrix24-cleaner-privacy/`}>Политика конфиденциальности</a></p>
-          <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{cleanerProduct.connectionActionLabel}</a>
+          <a class={styles.button} href={cleanerProduct.marketplaceUrl} target="_blank" rel="noopener noreferrer">{cleanerProduct.connectionActionLabel}</a>
         </div>
       </section>
     </div>

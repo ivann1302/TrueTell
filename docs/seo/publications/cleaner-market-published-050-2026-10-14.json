@@ -1,0 +1,38 @@
+{
+  "release": 50,
+  "date": "2026-10-14",
+  "action": "UPDATE",
+  "status": "published_verified",
+  "request": "Добавить ссылку на Маркет и заменить Узнать о подключении конкретным действием",
+  "page": "https://truetell-retail.ru/bitrix24-cleaner/",
+  "marketplaceUrl": "https://www.bitrix24.ru/apps/app/truetell.massovoe_udalenie_lidov_i_sdelok/",
+  "buttonLabel": "Открыть в Маркете",
+  "source": [
+    "src/config/products.ts",
+    "src/pages/bitrix24-cleaner/index.astro"
+  ],
+  "sourceState": "Requested source changes already present in the local working tree; verified and published without committing other pending work.",
+  "deployment": {
+    "id": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1791982841-50",
+    "revision": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99",
+    "baseReleaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1791925306-47",
+    "task": "cleaner-market-050",
+    "pageSha256": "4f3a2c890018db3a7ae5508c7583d00e9e9df15f629e8b6dccb87dab4f6be76c"
+  },
+  "scope": [
+    "Two primary anchors on Cleaner landing",
+    "Connection paragraph, with consultation kept for setup assistance"
+  ],
+  "verification": {
+    "build": "pass",
+    "nodeTests": "77 passed, 0 failed",
+    "lint": "0 errors, 3 existing React-hook warnings",
+    "indexnow": "--check passed, 43 production URLs; no submission",
+    "desktop": "1440px, two links to official Market listing, 48px height, no overflow",
+    "mobile": "390px, centered H1, two 48px links, no overflow",
+    "publicHttp": "200, exact expected SHA-256; two new labels, no old label",
+    "browser": "Fresh URL verified after bypassing stale browser cache"
+  },
+  "unchangedAssets": true,
+  "screenshot": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/deliverables/TrueTell_Cleaner_Market_050_2026-10-14.jpg"
+}

@@ -131,7 +131,9 @@ const structuredData = createArticleStructuredData({
     <p>Файл помогает сверить записи перед удалением. Он <strong>не является полной резервной копией портала</strong> и не гарантирует восстановления всей истории работы с клиентами.</p>
   </Fragment>
 
-  <p data-article-lead>Перед массовым удалением важно сохранить не просто таблицу, а понятный состав будущей операции: какие записи отобраны, по каким условиям и какие сведения останутся в файле. Ниже — порядок подготовки, сверка выгрузки и ограничения штатного экспорта.</p>
+  <p data-article-lead>Перед массовым удалением зафиксируйте состав операции: какие записи отобраны, по каким условиям и какие сведения сохранены в файле. Подготовьте выгрузку и сверьте её с выборкой, учитывая ограничения штатного экспорта.</p>
+
+  <p>После проверки выгрузки переходите к <a href={`${base}massovoe-udalenie-sdelok-bitrix24/`}>массовому удалению сделок</a>: отдельно проверьте воронку, состав выборки и действие «Для всех».</p>
 
   <section aria-labelledby="preparation">
     <h2 id="preparation">Короткий план <span data-heading-accent>перед очисткой CRM</span></h2>
@@ -214,7 +216,7 @@ const structuredData = createArticleStructuredData({
   <ArticleSources publishedIso={article.publishedAt} sources={sourceLinks} />
 
   <Fragment slot="article-end">
-    <ArticleProductCta titleParts={[{ text: 'Удаление ' }, { text: 'после проверки данных', accent: true }]} description={cleanerProduct.articleDescription} href={cleanerHref} actionLabel={cleanerProduct.articleActionLabel} />
+    <ArticleProductCta titleParts={[{ text: 'Удаление ' }, { text: 'после проверки данных', accent: true }]} description={cleanerProduct.marketplaceArticleDescription} href={cleanerProduct.marketplaceUrl} actionLabel={cleanerProduct.connectionActionLabel} />
     <RelatedArticles items={relatedArticles} />
   </Fragment>
   <Fragment slot="after-article">

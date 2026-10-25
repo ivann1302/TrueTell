@@ -1,6 +1,5 @@
 ---
 import ArticleFigure from '../../components/editorial/article-figure.astro';
-import articleIllustration from '../../images/articles/record-selection-editorial.png';
 import dealFilterImage from '../../images/articles/bitrix24-deal-filter-native.png';
 import selectionImage from '../../images/products/cleaner-selection.png';
 import ArticleLayout from '../../components/editorial/article-layout.astro';
@@ -30,8 +29,8 @@ const siteRoot = new URL(base, import.meta.env.SITE);
 const homeUrl = siteRoot.toString();
 const knowledgeBaseUrl = new URL('knowledge-base/', siteRoot).toString();
 const articleUrl = new URL('udalenie-proigrannyh-sdelok-bitrix24/', siteRoot).toString();
-const imageAlt = "Сотрудник проверяет бумажные записи перед разделением на сохранённые и отобранные";
-const ogImage = new URL(articleIllustration.src, siteRoot).toString();
+const imageAlt = 'Фильтр проигранных сделок Битрикс24 с группой стадий и датой создания';
+const ogImage = new URL(dealFilterImage.src, siteRoot).toString();
 const ogDescription = 'Отбор по стадии, проверка исключений и удаление ненужных сделок: как очистить CRM и сохранить полезную историю.';
 const titleParts = [
   { text: 'Как удалить ' },
@@ -166,7 +165,6 @@ const structuredData = createArticleStructuredData({
   </Fragment>
 
   <p data-article-lead>Самая сложная часть очистки — определить, какие отказы действительно можно убрать. Под одной проигранной стадией могут оказаться тестовая заявка, окончательный отказ и клиент, который попросил вернуться через полгода. Удалить их вместе легко; восстановить смысл переговоров после такой уборки гораздо труднее.</p>
-  <ArticleFigure src={articleIllustration} alt="Сотрудник проверяет бумажные записи перед разделением на сохранённые и отобранные" caption="Отказы с договорённостью о повторном контакте требуют отдельного решения. Иллюстрация проверки записей перед очисткой." />
 
   <section aria-labelledby="keep-deals">
 
@@ -211,6 +209,8 @@ const structuredData = createArticleStructuredData({
     <p>Не подменяйте одно событие другим только потому, что нужный фильтр проще найти. Для очистки записей, созданных за квартал, используйте дату создания. Для отбора по завершению проверьте соответствующее поле и его заполнение в вашей CRM; несколько карточек сопоставьте с историей работы. Неправильно заполненная дата делает даже аккуратно настроенный фильтр ненадёжным.</p>
 
   </section>
+
+  <p>Для удаления выбранных карточек независимо от исхода сделки смотрите <a href={`${base}massovoe-udalenie-sdelok-bitrix24/`}>общую инструкцию по массовому удалению сделок</a>. Она объясняет разницу между отмеченными строками, всеми страницами фильтра и всей базой портала.</p>
 
   <section aria-labelledby="delete-from-list">
 
@@ -274,7 +274,7 @@ const structuredData = createArticleStructuredData({
     <p>Если вы уже определили, какие проигранные сделки можно убрать, следующий шаг — подобрать для них условия удаления. Обсудим ваш сценарий и сопоставим его с доступными возможностями ПО до начала очистки.</p>
 
     <p>Для очистки другой части CRM пригодится отдельная инструкция: <a href={`${base}bitrix24-udalenie-lidov-za-period/`}>как удалить старые лиды за выбранный период</a>. У лидов и сделок различаются стадии и контекст работы, поэтому проверяйте их отдельными выборками.</p>
-    <ArticleFigure src={selectionImage} fullSize alt="Предпросмотр выбранных сделок в TrueTell Cleaner с количеством записей и экспортом CSV" caption="Демонстрационный экран TrueTell Cleaner в режиме сделок: видны состав выборки, количество и экспорт CSV. Для лидов проверяют свою выборку; CSV не заменяет полную резервную копию CRM." />
+    <ArticleFigure src={selectionImage} fullSize alt="Предпросмотр выбранных сделок в TrueTell Cleaner с количеством записей и кнопкой CSV" caption="Демонстрационный экран TrueTell Cleaner в режиме сделок: видны состав выборки, количество и кнопка подготовки CSV. Сохранение файла проверьте в своём браузере; CSV не заменяет полную резервную копию CRM." />
 
   </section>
 
@@ -283,8 +283,8 @@ const structuredData = createArticleStructuredData({
   <Fragment slot="article-end">
     <ArticleProductCta
       titleParts={[{ text: 'Удалить лишнее. ' }, { text: 'Сохранить нужное.', accent: true }]}
-      description={cleanerProduct.articleDescription}
-      href={cleanerHref} actionLabel={cleanerProduct.articleActionLabel}
+      description={cleanerProduct.marketplaceArticleDescription}
+      href={cleanerProduct.marketplaceUrl} actionLabel={cleanerProduct.connectionActionLabel}
     />
     <RelatedArticles items={relatedArticles} />
   </Fragment>

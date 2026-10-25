@@ -6,10 +6,8 @@ import ArticleLayout from '../../components/editorial/article-layout.astro';
 import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
 import ArticleSources from '../../components/editorial/article-sources.astro';
 import DataTable from '../../components/editorial/data-table.astro';
-import InlineConsultation from '../../components/editorial/inline-consultation.astro';
 import RelatedArticles from '../../components/editorial/related-articles.astro';
 import { companyInfo } from '../../config/company';
-import { cleanerProduct, cleanerProductPath } from '../../config/products';
 import { getArticle, getRelatedArticles } from '../../config/articles';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import FaqSection from '../../sections/faq-section/faq-section.astro';
@@ -29,7 +27,6 @@ const publishedDate = article.publishedAt;
 const modifiedDate = article.updatedAt;
 const authorName = DEFAULT_ARTICLE_AUTHOR;
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
-const cleanerHref = `${base}${cleanerProductPath.slice(1)}`;
 const siteRoot = new URL(base, import.meta.env.SITE);
 const homeUrl = siteRoot.toString();
 const knowledgeBaseUrl = new URL('knowledge-base/', siteRoot).toString();
@@ -182,8 +179,8 @@ const structuredData = createArticleStructuredData({
           <p data-article-lead>
             Покупатель отменил заказ, менеджер сменил статус, а товар по-прежнему числится
             в резерве. Для сотрудника работа закончена; в учёте заказ всё ещё удерживает
-            остаток. Разберём, как найти такой документ, освободить товар и проверить,
-            что следующая отмена не приведёт к той же проблеме.
+            остаток. Найдите заказ, проверьте основание резерва и снимите его только после
+            проверки обязательств перед покупателем. Затем выясните, почему отмена не освободила товар.
           </p>
   <ArticleFigure src={articleIllustration} alt="Сотрудник сверяет товары на складской полке с листом учёта" caption="Перед снятием резерва проверьте товар и обязательства по заказу. Иллюстрация складской сверки; резерв не всегда означает наличие товара на полке." />
 
@@ -337,14 +334,6 @@ const structuredData = createArticleStructuredData({
               от повторной продажи одного остатка. Сама настройка полезна; проблема возникает,
               когда автоматизировано только начало процесса.
             </p>
-
-    <InlineConsultation
-      variant="product"
-      title="Используете вместе с МоимСкладом Битрикс24?"
-      description={`Если вы также работаете в Битрикс24, посмотрите приложение «${cleanerProduct.name}» для отбора и проверки ненужных записей. Оно не снимает резервы МоегоСклада. На странице продукта — возможности и информация о подключении.`}
-      href={cleanerHref}
-      actionLabel={cleanerProduct.articleActionLabel}
-    />
 
             <p>
               Если отмена, неоплата или истечение срока остаются ручными действиями, старые

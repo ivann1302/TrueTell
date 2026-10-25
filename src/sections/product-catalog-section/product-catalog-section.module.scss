@@ -141,7 +141,7 @@
   display: inline-flex;
   font-size: 1rem;
   font-weight: 500;
-  gap: 8px;
+  gap: 16px;
   margin-top: 20px;
   max-height: 44px;
   min-height: 44px;
@@ -157,13 +157,14 @@
   width: fit-content;
 
   svg {
-    height: 20px;
+    flex: 0 0 24px;
+    height: 24px;
     stroke: currentColor;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 1.8;
     transition: transform 180ms ease;
-    width: 20px;
+    width: 24px;
   }
 }
 

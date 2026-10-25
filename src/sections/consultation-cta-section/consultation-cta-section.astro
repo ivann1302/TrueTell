@@ -24,9 +24,9 @@ const external = href.startsWith('http');
 
   <div class={styles.container}>
     <div class={styles.content}>
-      <h2 id="consultation-cta-title" class={styles.title}>{title}</h2>
+      <h2 id="consultation-cta-title" class={styles.title} data-reveal>{title}</h2>
 
-      <div class={styles.actionBlock}>
+      <div class={styles.actionBlock} data-reveal="1">
         <p class={styles.description}>
           {description}
         </p>

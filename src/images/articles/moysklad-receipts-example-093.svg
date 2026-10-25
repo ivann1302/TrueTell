@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1120">
+  <defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#101621}.h{font-size:31px;font-weight:700}.p{font-size:26px}.tag{font-size:21px;font-weight:700;fill:#386278}.n{font-size:36px;font-weight:700;fill:#087ebf}</style></defs>
+  <text x="38" y="55" class="h">Три чека — две средние величины</text>
+  <text x="38" y="98" class="p">Учебный пример одного магазина за день</text>
+  <rect x="38" y="145" width="724" height="135" rx="20" fill="#e8f3fa"/>
+  <text x="66" y="193" class="tag">ЧЕК 1 · ДВЕ ТОВАРНЫЕ СТРОКИ</text>
+  <text x="66" y="248" class="n">1 000 ₽</text>
+  <rect x="38" y="299" width="724" height="135" rx="20" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="66" y="347" class="tag">ЧЕК 2 · ОДНА ТОВАРНАЯ СТРОКА</text>
+  <text x="66" y="402" class="n">500 ₽</text>
+  <rect x="38" y="453" width="724" height="135" rx="20" fill="#e8f3fa"/>
+  <text x="66" y="501" class="tag">ЧЕК 3 · ТРИ ТОВАРНЫЕ СТРОКИ</text>
+  <text x="66" y="556" class="n">1 500 ₽</text>
+  <rect x="38" y="622" width="724" height="173" rx="20" fill="#dceef8"/>
+  <text x="66" y="672" class="h">Средний чек продаж</text>
+  <text x="66" y="730" class="n">3 000 ₽ / 3 = 1 000 ₽</text>
+  <rect x="38" y="815" width="724" height="173" rx="20" fill="#dceef8"/>
+  <text x="66" y="865" class="h">Среднее число строк</text>
+  <text x="66" y="923" class="n">6 строк / 3 = 2 строки</text>
+  <text x="38" y="1050" class="p">Возврат 500 ₽ показан отдельно.</text>
+</svg>

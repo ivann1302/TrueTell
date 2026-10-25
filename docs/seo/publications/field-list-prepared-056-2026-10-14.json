@@ -1,0 +1,106 @@
+{
+  "release": 56,
+  "date": "2026-10-14",
+  "taskId": "SEO-061",
+  "action": "CREATE",
+  "type": "knowledge",
+  "status": "local_QA_passed_draft_not_published",
+  "route": "/spisok-poley-bitrix24/",
+  "preview": "http://127.0.0.1:4356/spisok-poley-bitrix24/",
+  "productVersion": "1.0.2",
+  "research": "crm-field-directory-topics-048-2026-10-14.json",
+  "primarySources": [
+    "https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-fields.html",
+    "https://helpdesk.bitrix24.ru/open/22048980/",
+    "https://helpdesk.bitrix24.ru/open/20966844/",
+    "https://apidocs.bitrix24.ru/api-reference/crm/data-types.html"
+  ],
+  "images": [
+    {
+      "file": "/Users/ivan/projects/TrueTell/src/images/articles/truetell-field-directory-list-live.jpg",
+      "source": "Actual installed test portal app22,14.10.2026",
+      "meaning": "App22: deals metadata1-20of61",
+      "sha256": "16af31f03c262e889c33e8b50a7ac72795cb80b47e85a4d87a5163ff3ac9363b",
+      "recordValues": false,
+      "fullSize": true
+    },
+    {
+      "file": "/Users/ivan/projects/TrueTell/src/images/articles/truetell-field-directory-filtered-live.jpg",
+      "source": "Actual installed test portal app22,14.10.2026",
+      "meaning": "CALC_COMP:3test fields of61",
+      "sha256": "7d468328bc65f7770de1e6cabbc8a89d857ea8214e47e29ff2b176cdb96356c9",
+      "recordValues": false,
+      "fullSize": true
+    }
+  ],
+  "incoming": [
+    "/kod-polya-bitrix24/",
+    "/bi-analitika-bitrix24-pervyy-otchet/",
+    "/bitrix24-moysklad-integraciya/"
+  ],
+  "checks": {
+    "tests": {
+      "passed": 77,
+      "failed": 0
+    },
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 3
+    },
+    "build": {
+      "pages": 49,
+      "sitemapUrls": 44
+    },
+    "indexnowCheck": true,
+    "submission": false,
+    "html": {
+      "passed": true,
+      "h1": 1,
+      "robots": "noindex, nofollow",
+      "canonical": "https://truetell-retail.ru/spisok-poley-bitrix24/",
+      "faq": 7,
+      "meaningfulImages": 2,
+      "internalLinkAndFileChecks": 37,
+      "errors": [],
+      "sitemapContainsDraft": false,
+      "catalogContainsDraft": false,
+      "htmlSha256": "2e3832ec3c200b26579ec3a15ea9f17e3985d0094f4f88238ca4eb83104c9501"
+    },
+    "responsiveWidths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "horizontalOverflow": false,
+    "mobileCategoryAndH1Centered": true,
+    "desktopHeroColumnTopsEqual": true,
+    "tabletImagesComplete": true,
+    "faqMouseAndSourcesKeyboard": true,
+    "browserPageErrors": 0
+  },
+  "limits": [
+    "IAB CSV download event timed out after 12 seconds; actual file download unverified. Export scope and format checked against app source, not claimed as live download acceptance.",
+    "Native Excel/Numbers and second user were not tested.",
+    "App not changed; Market release not claimed.",
+    "Production and search indexing not checked in this task."
+  ],
+  "editorialReview": {
+    "reviewer": "/root/review_field_list_056",
+    "verdict": "APPROVE local draft",
+    "openFindings": 0,
+    "fixed": "P3: native menu path corrected to include More",
+    "scope": "Independent app source, primary API docs, article and built HTML review; supplied responsive screenshots inspected. Tests and interactive browser were run by primary agent only."
+  },
+  "publication": {
+    "performed": false,
+    "status": "draft",
+    "datesAssigned": false,
+    "noindex": true,
+    "catalogExcluded": true,
+    "sitemapExcluded": true,
+    "push": false
+  },
+  "backlog": "TrueTell_SEO_Backlog_056_2026-10-14.xlsx",
+  "sourceSha256": "ad03ea3ee46189636d40bb839a5adeeb86bdccd5b6778f8a11e27ecf40add1dd"
+}

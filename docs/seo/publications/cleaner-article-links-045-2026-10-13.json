@@ -1,0 +1,53 @@
+{
+  "release": 45,
+  "date": "2026-10-13",
+  "action": "UPDATE",
+  "status": "local_QA_passed_not_pushed",
+  "request": "добавь ссылки также в нужные статьи",
+  "marketplaceUrl": "https://www.bitrix24.ru/apps/app/truetell.massovoe_udalenie_lidov_i_sdelok/",
+  "scope": [
+    "massovoe-udalenie-lidov-bitrix24",
+    "eksport-lidov-sdelok-bitrix24-pered-udaleniem",
+    "bitrix24-udalenie-lidov-za-period",
+    "udalenie-proigrannyh-sdelok-bitrix24",
+    "udalennye-lidy-bitrix24",
+    "ne-udalyaetsya-lid-bitrix24"
+  ],
+  "changes": [
+    "One direct Market link per relevant Cleaner article in its existing final product CTA; shared URL and action label read from product configuration.",
+    "Internal product landing links retained in all six articles.",
+    "Shared Market-specific description; explicit no-restoration and no-permission-bypass qualifications in the corresponding two articles."
+  ],
+  "verification": {
+    "build": "pass",
+    "lint": "pass, 0 errors / 3 existing React hook warnings",
+    "tests": "68 passed after build completed",
+    "initialTests": "47 passed / 21 ENOENT because tests ran while build replaced dist; corrected command sequencing, full rerun passed.",
+    "indexnow": "--check only; 43 production URLs validated, no submission",
+    "html": "one exact Market link with _blank/noopener noreferrer; internal product links, canonical, indexability and H1 preserved in all six; registry/dates unchanged",
+    "desktop": "1280x720 shared ArticleProductCta visual check; 1440x900 recovery ConsultationCtaSection visual check",
+    "mobile": "all six pages checked at 390x844; no page overflow; Market links height 48 or 54 px",
+    "independentReview": "pass, no findings; report copied to evidence directory"
+  },
+  "evidenceDirectory": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/cleaner-article-links-045/final",
+  "fileHashes": {
+    "src/pages/massovoe-udalenie-lidov-bitrix24/index.astro": "bf28cc2393a474a294fbe283b49dda10ef7929bc4ae2e1f357b6cc49367a71c4",
+    "src/pages/eksport-lidov-sdelok-bitrix24-pered-udaleniem/index.astro": "6fd05c2a16e6ffaa20c27132ed084392550fc4a947005979c5f8592a4353c95a",
+    "src/pages/bitrix24-udalenie-lidov-za-period/index.astro": "bcb1d03e8ce9d98cb6f6b84030b56bb4c4d0f1ea85f252f8cedc7134f2780739",
+    "src/pages/udalenie-proigrannyh-sdelok-bitrix24/index.astro": "969f23250919c3f610efc10f01e6137f1955704b4769a494d90b2de481c1aa7f",
+    "src/pages/udalennye-lidy-bitrix24/index.astro": "2304e7cae46431bc392e6c36ff2851ca763ad3433e9cc4b04bcee95ab2b0e281",
+    "src/pages/ne-udalyaetsya-lid-bitrix24/index.astro": "405753f53a3e5fffcbc3144c962539e0ceb7607c8d3b656bbf8aab1a3b002922"
+  },
+  "screenshots": [
+    "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/deliverables/TrueTell_Cleaner_Article_Link_045_2026-10-13.png",
+    "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/deliverables/TrueTell_Cleaner_Article_Link_Mobile_045_2026-10-13.png",
+    "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/deliverables/TrueTell_Cleaner_Recovery_Article_Link_045_2026-10-13.png"
+  ],
+  "boundaries": [
+    "Local code update only; no commit, push, deployment or search submission.",
+    "Published page versions and installation/runtime in a customer portal not tested.",
+    "Independent reviewer verified Market description via web search but did not independently confirm HTTP 200.",
+    "Existing draft SEO-051 and release044 product-link changes preserved; unrelated article instructions/FAQ/images unchanged.",
+    "A stale viewport binding applied overrides to prior agent-created preview tab22; mobile checks used that tab, then restored its original URL and default viewport."
+  ]
+}

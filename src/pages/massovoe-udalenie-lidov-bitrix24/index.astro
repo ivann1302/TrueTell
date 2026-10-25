@@ -128,6 +128,9 @@ const structuredData = createArticleStructuredData({
   </Fragment>
 
   <p data-article-lead>Так можно удалить несколько выбранных лидов, все найденные по фильтру или весь доступный список без ограничивающих условий. Последний вариант требует особой осторожности: удалённые записи перестают учитываться в аналитических отчётах. Сначала определите, какие обращения действительно можно убрать.</p>
+  <p>Контакты очищают отдельно от лидов. Если задача касается карточек клиентов, используйте <a href={`${base}udalenie-kontaktov-bitrix24/`}>инструкцию по удалению контактов</a> с проверкой связанных элементов CRM.</p>
+
+  <p>Если задача касается сделок, используйте <a href={`${base}massovoe-udalenie-sdelok-bitrix24/`}>инструкцию по массовому удалению сделок</a>: в ней разобраны все страницы списка, воронки и проверка результата по ID.</p>
 
   <section aria-labelledby="delete-selected">
     <h2 id="delete-selected">Как удалить <span data-heading-accent>несколько лидов</span> в Битрикс24</h2>
@@ -189,6 +192,10 @@ const structuredData = createArticleStructuredData({
     <p>Убедитесь, что открыт нужный раздел и режим «Список», а ваша роль позволяет удалять выбранные элементы. Интерфейс и доступность фильтров зависят от тарифа и конфигурации портала. Если проблема остаётся, смотрите <a href={`${base}ne-udalyaetsya-lid-bitrix24/`}>почему не удаляется лид в Битрикс24 и что проверить</a>.</p>
   </section>
 
+    <p>Если нужно убрать организацию-контрагента, используйте отдельную <a href={`${base}udalenie-kompaniy-bitrix24/`}>инструкцию по удалению компаний в Битрикс24</a>: перед очисткой проверьте её контакты, сделки и реквизиты.</p>
+
+  <p>Если задача шире удаления лидов, начните с <a href={`${base}ochistka-crm-bitrix24/`}>общего порядка очистки CRM</a>: дубли, передача работы, исправление полей и занимаемое место требуют разных действий.</p>
+
   <section aria-labelledby="crm-cleanup">
     <h2 id="crm-cleanup">Чем удаление из списка отличается от <span data-heading-accent>«Очистки CRM»</span></h2>
     <p>В Битрикс24 есть отдельный инструмент «Очистка CRM» для анализа занимаемого места и удаления ненужных данных. Его можно открыть через «CRM → Ещё → Настройки → Настройки CRM → Другое → Чем занято место».</p>
@@ -207,7 +214,7 @@ const structuredData = createArticleStructuredData({
   <ArticleSources publishedIso={article.publishedAt} sources={sourceLinks} />
 
   <Fragment slot="article-end">
-    <ArticleProductCta titleParts={[{ text: 'Массовое удаление ' }, { text: 'с проверкой выборки', accent: true }]} description={cleanerProduct.articleDescription} href={cleanerHref} actionLabel={cleanerProduct.articleActionLabel} />
+    <ArticleProductCta titleParts={[{ text: 'Массовое удаление ' }, { text: 'с проверкой выборки', accent: true }]} description={cleanerProduct.marketplaceArticleDescription} href={cleanerProduct.marketplaceUrl} actionLabel={cleanerProduct.connectionActionLabel} />
     <RelatedArticles items={relatedArticles} />
   </Fragment>
   <Fragment slot="after-article">

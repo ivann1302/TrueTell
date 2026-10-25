@@ -1,5 +1,5 @@
 ---
-import { cleanerProduct, cleanerProductPath, moyskladOperationsProduct, moyskladOperationsProductPath, productRating, productRatingPath } from '../../config/products';
+import { fieldDirectoryProduct, fieldDirectoryProductPath, cleanerProduct, cleanerProductPath, moyskladOperationsProduct, moyskladOperationsProductPath, productRating, productRatingPath } from '../../config/products';
 import styles from './product-catalog-section.module.scss';
 
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
@@ -10,7 +10,7 @@ const resolveHref = (href: string) => href.startsWith('/')
 const products = [
   {
     title: 'BI-аналитика для торговли',
-    description: 'Продажи, остатки и маржинальность в одном управленческом контуре.',
+    description: 'Продажи, остатки и маржинальность.',
     action: 'Посмотреть BI-решение',
     href: '/bi-analitika/',
   },
@@ -32,6 +32,12 @@ const products = [
     action: 'Посмотреть приложение',
     href: productRatingPath,
   },
+  {
+    title: fieldDirectoryProduct.heading,
+    description: fieldDirectoryProduct.catalogDescription,
+    action: 'Посмотреть приложение',
+    href: fieldDirectoryProductPath,
+  },
 ];
 ---
 
@@ -42,11 +48,11 @@ const products = [
     </header>
 
     <ul class={styles.grid}>
-      {products.map((product) => {
+      {products.map((product, index) => {
         const external = product.href.startsWith('http');
 
         return (
-          <li>
+          <li data-reveal={String(index % 3)}>
             <a
               class={styles.card}
               href={resolveHref(product.href)}

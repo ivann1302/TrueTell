@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="900" viewBox="0 0 1100 900">
+ <g font-family="Arial,sans-serif" fill="#101621">
+  <text x="40" y="65" font-size="40" fill="#616875">Учебный пример сверки</text>
+  <text x="40" y="175" font-size="52">В карточке CRM</text><text x="600" y="175" font-size="52">В ответе ИИ</text>
+  <path d="M40 220H1060M550 270V730" stroke="#D3D7DE" stroke-width="2"/>
+  <text x="40" y="330" font-size="52" fill="#1765DA">ID 123</text><text x="600" y="330" font-size="52" fill="#1765DA">ID 123</text>
+  <text x="40" y="440" font-size="44">Заказ для офиса</text><text x="600" y="440" font-size="44">Заказ для офиса</text>
+  <text x="40" y="550" font-size="44">Стадия: новая</text><text x="600" y="550" font-size="44">Стадия: новая</text>
+  <text x="40" y="660" font-size="44">Ответственный: 7</text><text x="600" y="660" font-size="44">Ответственный: 7</text>
+  <text x="40" y="820" font-size="40" fill="#616875">Сначала найдите ту же запись, затем сравните поля.</text>
+ </g>
+</svg>

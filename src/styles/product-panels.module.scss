@@ -18,16 +18,17 @@
   margin: 48px 0 0;
 
   dt {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    align-items: start;
+    gap: 20px;
     font-size: 1.125rem;
     font-weight: 500;
     line-height: 1.45;
   }
 
   svg { flex-shrink: 0; color: #1765da; }
-  dd { margin: 12px 0 0 40px; max-width: 38ch; color: #616875; line-height: 1.65; }
+  dd { margin: 8px 0 0 52px; max-width: 38ch; color: #616875; line-height: 1.65; }
 }
 
 .screenshots.screenshots {

@@ -192,8 +192,8 @@ const structuredData = {
       <LineWave />
       <div class={heroStyles.container}>
         <h1 class={heroStyles.title}>BI-аналитика и дашборды для торговли</h1>
-        <p class={heroStyles.subtitle}>Объединяем данные о продажах, остатках и маржинальности, чтобы управленческие решения принимались по фактам.</p>
-        <div class={heroStyles.actions}>
+        <p class={heroStyles.subtitle} data-intro="description">Объединяем данные о продажах, остатках и маржинальности, чтобы управленческие решения принимались по фактам.</p>
+        <div class={heroStyles.actions} data-intro="actions">
           <a class={heroStyles.primaryAction} href="#demo">Посмотреть демо</a>
           <a class={heroStyles.secondaryAction} href={`${base}products/`}>Все решения</a>
         </div>
@@ -202,12 +202,12 @@ const structuredData = {
 
     <section class={styles.auditSection} aria-labelledby="audit-title">
       <div class={styles.container}>
-        <header class={styles.editorialHeader}>
+        <header class={styles.editorialHeader} data-reveal>
           <h2 id="audit-title">Сбросьте балласт</h2>
           <p>Увидьте товары, которые замораживают деньги, и принимайте решения о закупках на основе фактических продаж.</p>
         </header>
 
-        <div class={styles.dashboardFrame}>
+        <div class={styles.dashboardFrame} data-reveal>
           <div class={styles.dashboardBar} aria-hidden="true">
             <span>Неликвид и оборачиваемость</span>
             <span>Публичное демо · DataLens</span>
@@ -240,7 +240,7 @@ const structuredData = {
 
     <section class={styles.audienceSection} aria-labelledby="audience-title">
       <div class={styles.container}>
-        <div class={styles.splitHeading}>
+        <div class={styles.splitHeading} data-reveal>
           <h2 id="audience-title">Кому мы подходим?</h2>
           <p>Решение для розничного бизнеса, которому нужна единая и проверяемая картина вместо разрозненных таблиц.</p>
         </div>
@@ -260,14 +260,14 @@ const structuredData = {
 
     <section class={styles.painSection} aria-labelledby="pain-title">
       <div class={styles.container}>
-        <div class={styles.splitHeading}>
+        <div class={styles.splitHeading} data-reveal>
           <h2 id="pain-title">Какие боли мы закрываем?</h2>
           <p>Находим места, где ручные решения, интересы поставщиков и непрозрачные остатки снижают прибыль.</p>
         </div>
 
         <div class={styles.painList}>
           {painPoints.map((item) => (
-            <article>
+            <article data-reveal>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
             </article>
@@ -278,14 +278,14 @@ const structuredData = {
 
     <section id="features" class={styles.solutionSection} aria-labelledby="solution-title">
       <div class={styles.container}>
-        <div class={styles.solutionIntro}>
+        <div class={styles.solutionIntro} data-reveal>
           <h2 id="solution-title">Решение</h2>
           <p>Дашборд, который связывает закупки, продажи, остатки и прибыльность в одной системе координат.</p>
         </div>
 
         <div class={styles.capabilityList}>
           {capabilities.map((item) => (
-            <article>
+            <article data-reveal>
               <span class={styles.listMarker} aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"></path></svg>
               </span>
@@ -298,11 +298,11 @@ const structuredData = {
         </div>
 
         <div class={styles.profitPanel}>
-          <div class={styles.profitCopy}>
+          <div class={styles.profitCopy} data-reveal>
             <h3>Нацельтесь на прибыль</h3>
             <p>Показатели по всем точкам на одном экране.</p>
           </div>
-          <div class={styles.profitDashboard}>
+          <div class={styles.profitDashboard} data-reveal>
             <a class={styles.fullSizeLink} href={storesDashboardImage.src} target="_blank" rel="noopener noreferrer" aria-label="Открыть сравнение магазинов в полном размере — новая вкладка">
               <Image
                 class:list={[styles.dashboardImage, styles.dashboardImageDesktop]}
@@ -332,12 +332,12 @@ const structuredData = {
 
     <section class={styles.productViewSection} aria-labelledby="product-view-title">
       <div class={styles.container}>
-        <header class={styles.editorialHeader}>
+        <header class={styles.editorialHeader} data-reveal>
           <h2 id="product-view-title">Как это выглядит</h2>
           <p>Продажи, клиенты и прибыль в одном рабочем пространстве. На скриншотах — демонстрационные данные; откройте отчёт, чтобы рассмотреть детали.</p>
         </header>
 
-        <div class={styles.productImageFrame}>
+        <div class={styles.productImageFrame} data-reveal>
           <a class={styles.fullSizeLink} href={overviewDashboardImage.src} target="_blank" rel="noopener noreferrer" aria-label="Открыть общий дашборд в полном размере — новая вкладка">
             <Image
               class={styles.productImageDesktop}
@@ -386,7 +386,7 @@ const structuredData = {
     <section id="pricing" class={styles.pricingSection} aria-labelledby="pricing-title">
       <div class={styles.container}>
         <div class={styles.pricingLayout}>
-          <div class={styles.pricingIntro}>
+          <div class={styles.pricingIntro} data-reveal>
             <h2 id="pricing-title">Начните прямо сейчас</h2>
             <p>Испытайте перед покупкой: демо займёт одну минуту, и мы не попросим ваши контакты.</p>
             <a href={demoUrl} target="_blank" rel="noopener noreferrer">
@@ -397,7 +397,7 @@ const structuredData = {
 
           <div class={styles.priceList}>
             {pricing.map((item) => (
-              <article>
+              <article data-reveal>
                 <div>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
@@ -412,7 +412,7 @@ const structuredData = {
 
     <section id="cases" class={styles.caseSection} aria-labelledby="case-title">
       <div class={styles.container}>
-        <div class={styles.caseHeader}>
+        <div class={styles.caseHeader} data-reveal>
           <div class={styles.client}>
             <Image src={clientPhoto} alt="Дмитрий Баржин" width={120} height={120} format="webp" loading="lazy" />
             <div>
@@ -425,7 +425,7 @@ const structuredData = {
 
         <div class={styles.metrics}>
           {results.map((result) => (
-            <article>
+            <article data-reveal>
               <strong>{result.value}</strong>
               <p>{result.text}</p>
             </article>
@@ -436,7 +436,7 @@ const structuredData = {
 
     <section class={styles.stepsSection} aria-labelledby="steps-title">
       <div class={styles.container}>
-        <div class={styles.splitHeading}>
+        <div class={styles.splitHeading} data-reveal>
           <h2 id="steps-title">Этапы внедрения</h2>
           <p>Три понятных шага от текущей отчётности до работающего управленческого дашборда.</p>
         </div>
@@ -458,7 +458,7 @@ const structuredData = {
     <section class={styles.faqSection} aria-labelledby="faq-title">
       <div class={styles.container}>
         <h2 id="faq-title">Частые вопросы</h2>
-        <div class={styles.accordion}>
+        <div class={styles.accordion} data-reveal>
           {faqItems.map((item) => (
             <details name="bi-faq">
               <summary>
@@ -482,7 +482,7 @@ const structuredData = {
             <h2 id="cta-title">Поднимите прибыльность на 5% уже в этом месяце</h2>
             <p>Попробуйте сами — демо займёт одну минуту, и мы не попросим ваши контакты.</p>
           </div>
-          <div class={styles.ctaActions}>
+          <div class={styles.ctaActions} data-reveal>
             <a class={styles.primaryAction} href={demoUrl} target="_blank" rel="noopener noreferrer">Протестировать демо</a>
             <a class={styles.secondaryAction} href={companyInfo.contacts.consultationUrl}>Или напишите нам, мы же люди</a>
           </div>

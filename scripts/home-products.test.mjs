@@ -26,7 +26,8 @@ test('home shows two app products with icons and BI as the third card', () => {
   assert.equal(choice.querySelectorAll('[data-product-panel]').length, 3);
   assert.equal(doc.querySelectorAll('details[name="product-solutions"]').length, 3);
   const catalog = new JSDOM(readFileSync('dist/products/index.html', 'utf8')).window.document;
-  assert.equal(catalog.querySelectorAll('main h2').length, 4);
+  assert.equal(catalog.querySelectorAll('main h2').length, 5);
+  assert(catalog.querySelector('a[href="/bitrix24-field-directory/"] h2'), 'Field directory product missing from catalog');
   assert(!doc.querySelector('#cases'), 'Old generic cases block remains on home');
   assert(doc.querySelector('footer a[href="/knowledge-base/"]'), 'Footer knowledge-base link missing');
 });

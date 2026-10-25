@@ -4,7 +4,7 @@ declare(strict_types=1);
 // Local development only. Serves the production Astro build and Laravel on one origin.
 $root = dirname(__DIR__);
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-if (is_string($path) && (preg_match('~^/workspace(?:/|$)~', $path) || in_array($path, ['/api/leads', '/api/lead-session'], true))) {
+if (is_string($path) && (preg_match('~^/workspace(?:/|$)~', $path) || in_array($path, ['/api/leads', '/api/lead-session', '/api/complaints'], true))) {
     require $root.'/backend/public/index.php';
     return true;
 }

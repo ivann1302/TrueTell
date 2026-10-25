@@ -1,0 +1,206 @@
+{
+  "example": true,
+  "period": "6 законченных условных месяцев",
+  "unit": "шт.",
+  "currency": "RUB",
+  "revenueBasis": "Постоянная цена × количество; без возвратов и налогов, условные данные",
+  "totalAmount": 159400,
+  "thresholds": {
+    "abc": [
+      80,
+      95
+    ],
+    "abcBoundary": "cumulativeBefore; crossing item remains in preceding class",
+    "xyzPercent": [
+      10,
+      25
+    ]
+  },
+  "standardDeviation": "population, divisor n=6",
+  "items": [
+    {
+      "sku": "T01",
+      "months": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "price": 100,
+      "totalUnits": 600,
+      "amount": 60000,
+      "share": 37.641154328732746,
+      "cumulativeBefore": 0.0,
+      "cumulativeAfter": 37.641154328732746,
+      "abc": "A",
+      "mean": 100.0,
+      "stdPopulation": 0.0,
+      "cvPercent": 0.0,
+      "xyz": "X",
+      "cell": "AX"
+    },
+    {
+      "sku": "T02",
+      "months": [
+        60,
+        70,
+        80,
+        90,
+        100,
+        80
+      ],
+      "price": 80,
+      "totalUnits": 480,
+      "amount": 38400,
+      "share": 24.090338770388957,
+      "cumulativeBefore": 37.641154328732746,
+      "cumulativeAfter": 61.73149309912171,
+      "abc": "A",
+      "mean": 80.0,
+      "stdPopulation": 12.909944487358056,
+      "cvPercent": 16.13743060919757,
+      "xyz": "Y",
+      "cell": "AY"
+    },
+    {
+      "sku": "T03",
+      "months": [
+        0,
+        0,
+        0,
+        200,
+        0,
+        0
+      ],
+      "price": 150,
+      "totalUnits": 200,
+      "amount": 30000,
+      "share": 18.820577164366373,
+      "cumulativeBefore": 61.73149309912171,
+      "cumulativeAfter": 80.55207026348809,
+      "abc": "A",
+      "mean": 33.333333333333336,
+      "stdPopulation": 74.53559924999298,
+      "cvPercent": 223.60679774997894,
+      "xyz": "Z",
+      "cell": "AZ"
+    },
+    {
+      "sku": "T04",
+      "months": [
+        20,
+        21,
+        19,
+        20,
+        20,
+        20
+      ],
+      "price": 100,
+      "totalUnits": 120,
+      "amount": 12000,
+      "share": 7.528230865746549,
+      "cumulativeBefore": 80.55207026348809,
+      "cumulativeAfter": 88.08030112923463,
+      "abc": "B",
+      "mean": 20.0,
+      "stdPopulation": 0.5773502691896257,
+      "cvPercent": 2.8867513459481287,
+      "xyz": "X",
+      "cell": "BX"
+    },
+    {
+      "sku": "T05",
+      "months": [
+        10,
+        12,
+        15,
+        18,
+        20,
+        15
+      ],
+      "price": 100,
+      "totalUnits": 90,
+      "amount": 9000,
+      "share": 5.646173149309912,
+      "cumulativeBefore": 88.08030112923463,
+      "cumulativeAfter": 93.72647427854454,
+      "abc": "B",
+      "mean": 15.0,
+      "stdPopulation": 3.366501646120693,
+      "cvPercent": 22.443344307471286,
+      "xyz": "Y",
+      "cell": "BY"
+    },
+    {
+      "sku": "T06",
+      "months": [
+        0,
+        0,
+        20,
+        0,
+        10,
+        0
+      ],
+      "price": 200,
+      "totalUnits": 30,
+      "amount": 6000,
+      "share": 3.7641154328732744,
+      "cumulativeBefore": 93.72647427854454,
+      "cumulativeAfter": 97.49058971141781,
+      "abc": "B",
+      "mean": 5.0,
+      "stdPopulation": 7.637626158259733,
+      "cvPercent": 152.75252316519467,
+      "xyz": "Z",
+      "cell": "BZ"
+    },
+    {
+      "sku": "T07",
+      "months": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "price": 100,
+      "totalUnits": 30,
+      "amount": 3000,
+      "share": 1.8820577164366372,
+      "cumulativeBefore": 97.49058971141781,
+      "cumulativeAfter": 99.37264742785446,
+      "abc": "C",
+      "mean": 5.0,
+      "stdPopulation": 0.0,
+      "cvPercent": 0.0,
+      "xyz": "X",
+      "cell": "CX"
+    },
+    {
+      "sku": "T08",
+      "months": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        10
+      ],
+      "price": 100,
+      "totalUnits": 10,
+      "amount": 1000,
+      "share": 0.6273525721455459,
+      "cumulativeBefore": 99.37264742785446,
+      "cumulativeAfter": 100.0,
+      "abc": "C",
+      "mean": 1.6666666666666667,
+      "stdPopulation": 3.72677996249965,
+      "cvPercent": 223.60679774997897,
+      "xyz": "Z",
+      "cell": "CZ"
+    }
+  ]
+}

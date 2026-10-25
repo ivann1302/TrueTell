@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1090">
+  <defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#101621}.h{font-size:31px;font-weight:700}.p{font-size:26px}.num{font-size:32px;font-weight:700;fill:#087ebf}</style></defs>
+  <text x="38" y="55" class="h">Что делать с нулём в дашборде</text>
+  <text x="38" y="98" class="p">Редакционная схема проверки</text>
+  <rect x="38" y="145" width="724" height="158" rx="20" fill="#e8f3fa"/>
+  <text x="66" y="197" class="num">01</text><text x="127" y="197" class="h">Проверьте срез</text>
+  <text x="66" y="251" class="p">Склад, товар, дата и время</text>
+  <rect x="38" y="322" width="724" height="158" rx="20" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="66" y="374" class="num">02</text><text x="127" y="374" class="h">Откройте движения</text>
+  <text x="66" y="428" class="p">Приёмки, продажи, возвраты</text>
+  <rect x="38" y="499" width="724" height="158" rx="20" fill="#e8f3fa"/>
+  <text x="66" y="551" class="num">03</text><text x="127" y="551" class="h">Сравните соседние точки</text>
+  <text x="66" y="605" class="p">Продажи и доступный запас</text>
+  <rect x="38" y="676" width="724" height="158" rx="20" fill="#fff" stroke="#a9c6d6" stroke-width="3"/>
+  <text x="66" y="728" class="num">04</text><text x="127" y="728" class="h">Решите вопрос пополнения</text>
+  <text x="66" y="782" class="p">По документам, а не по догадке</text>
+  <rect x="38" y="865" width="724" height="148" rx="20" fill="#dceef8"/>
+  <text x="66" y="919" class="h">Спрос оценивают отдельно</text>
+  <text x="66" y="971" class="p">Нужны данные и методика оценки</text>
+</svg>

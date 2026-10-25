@@ -96,10 +96,10 @@ const structuredData = {
         <LineWave centerOnMobile />
         <div class={heroStyles.heroCopy}>
           <h1>{product.name}</h1>
-          <p class={heroStyles.heroDescription}>Обновляйте товары, цены и документы сразу для всей выборки — без ручного редактирования каждой карточки.</p>
+          <p class={heroStyles.heroDescription} data-intro="description">Обновляйте товары, цены и документы сразу для всей выборки — без ручного редактирования каждой карточки.</p>
 
         </div>
-          <div class={heroStyles.heroActions}>
+          <div class={heroStyles.heroActions} data-intro="actions">
             <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{product.connectionActionLabel}</a>
           </div>
       </header>
@@ -233,8 +233,8 @@ const structuredData = {
     <LineWave />
     <div class={styles.container}>
       <section class:list={[styles.connection, closingStyles.connectionDark]} aria-labelledby="connection-title">
-        <h2 id="connection-title">Подключение приложения</h2>
-        <div>
+        <h2 id="connection-title" data-reveal>Подключение приложения</h2>
+        <div data-reveal="1">
           <p>Расскажите о вашей задаче в МойСклад — поможем с подключением.</p>
           <a class={styles.button} href={companyInfo.contacts.consultationUrl}>{product.connectionActionLabel}</a>
         </div>

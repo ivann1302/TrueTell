@@ -1,0 +1,117 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import flowImage from '../../images/articles/moysklad-analytics-base-flow-093.png';
+import grainImage from '../../images/articles/moysklad-analytics-base-grain-093.png';
+
+const article = getArticle('analiticheskaya-baza-moysklad/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const canonicalPath = `/${article.hrefPath}`;
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const imageAlt = 'Схема аналитической копии: данные МойСклад поступают в отдельную базу и затем в инструмент анализа';
+const ogImage = new URL(flowImage.src, siteRoot).toString();
+const titleParts = [
+  { text: 'Своя аналитическая база для МойСклад: ' },
+  { text: 'что это и зачем рознице', accent: true },
+];
+const scopeRows = [
+  ['Штатный отчёт', 'Проверить показатель и исходные документы в МойСклад', 'Для общего ряда из разных отчётов нужны дополнительные правила'],
+  ['Выгрузка в Excel', 'Разобрать один период и передать файл', 'Новые документы и исправления не обновят сохранённый файл сами'],
+  ['Аналитическая база', 'Хранить подготовленные данные и повторять расчёт по одним правилам', 'Нужно определить состав, частоту обновления, доступы и сверку'],
+];
+const faqItems = [
+  { question: 'Зачем отдельная база, если в МойСклад есть отчёты?', answer: 'Штатный отчёт удобен для проверки одного показателя. Отдельная база полезна, когда нужно регулярно соединять продажи, возвраты, оплаты и остатки по товарам, магазинам и датам, сохраняя одни правила расчёта и историю сверок.' },
+  { question: 'Обязательно ли использовать ClickHouse?', answer: 'Нет. ClickHouse — один из вариантов аналитического хранилища для SQL-запросов по большим таблицам. Выбор базы зависит от объёма данных, частоты обновления, инструментов команды и стоимости эксплуатации.' },
+  { question: 'Может ли аналитик работать без права менять документы МойСклад?', answer: 'Да, если аналитик работает с отдельной копией и его роль в ней ограничена чтением. Права пользователя МойСклад, чьим токеном работает загрузчик, и права аналитика в базе настраивают раздельно. Возможность индивидуальной настройки прав пользователей МойСклад зависит от тарифа; проверьте оба доступа до передачи данных.' },
+  { question: 'Сохраняет ли база историю так, как она выглядела в прошлом?', answer: 'Только если это предусмотрено загрузкой. Повторный запрос остатка на прошлую дату может измениться после правки документов задним числом. Для истории ранее увиденных значений нужно сохранять версии срезов или снимки с временем загрузки и правилом пересчёта.' },
+  { question: 'Можно ли сразу подключить к такой базе BI?', answer: 'Подключение зависит от выбранного хранилища, способа доступа, драйвера и сетевых ограничений. Сначала проверьте одну таблицу и одну сверку с МойСклад; инструкцию для конкретного BI-инструмента имеет смысл публиковать после реального теста связки.' },
+];
+const sourceLinks = [
+  { label: 'JSON API 1.2 — официальная документация МойСклад', href: 'https://dev.moysklad.ru/doc/api/remap/1.2/' },
+  { label: 'Отчёт «Остатки» — справка МойСклад', href: 'https://support.moysklad.ru/hc/ru/товары%20и%20склады/остатки%20и%20себестоимость/отчет_остатки' },
+  { label: 'Отчёт «Прибыльность» — справка МойСклад', href: 'https://support.moysklad.ru/hc/ru/отчеты/отчет_прибыльность' },
+  { label: 'Что такое ClickHouse — документация разработчика', href: 'https://clickhouse.com/docs/get-started/about/intro' },
+  { label: 'Разграничение доступа и тарифы — справка МойСклад', href: 'https://support.moysklad.ru/hc/ru/управление%20аккаунтом/пользователи/разграничение_доступа_настроика_прав_роли' },
+  { label: 'Права пользователей и роли — документация ClickHouse', href: 'https://clickhouse.com/docs/concepts/features/security/access-rights' },
+];
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const structuredData = createArticleStructuredData({
+  articleType: 'BlogPosting', title, description, articleUrl, publishedDate: article.publishedAt,
+  modifiedDate: article.updatedAt, publisherUrl: siteRoot.toString(), image: ogImage, author: authorName,
+  breadcrumbs: [
+    { name: 'Главная', item: siteRoot.toString() },
+    { name: 'Блог', item: new URL('blog/', siteRoot).toString() },
+    { name: title, item: articleUrl },
+  ],
+  faqItems,
+});
+---
+
+<ArticleLayout {title} {titleParts} {description} {canonicalPath} {structuredData}
+  ogTitle={article.seoTitle} ogDescription={description} {ogImage} ogImageAlt={imageAlt}
+  category={article.category} author={authorName}
+  intro="Объясняем, из чего состоит аналитическая копия, какие вопросы она решает и как проверить данные и права до подключения дашбордов.">
+  <Fragment slot="quick-answer">
+    <p>Аналитическая база — отдельная копия выбранных данных МойСклад с правилами расчёта показателей. Она помогает сопоставлять продажи, возвраты, деньги и остатки по одним и тем же магазинам и датам.</p>
+    <p>Копию нужно обновлять и сверять с источником. Доступ аналитика к копии можно ограничить чтением подготовленных таблиц. Права пользователя МойСклад, чьим токеном работает загрузчик, зависят от тарифа и настроек; описанная архитектура не подтверждает готовую функцию экстрактора TrueTell.</p>
+  </Fragment>
+
+  <p data-article-lead>Представьте три магазина: директор хочет видеть продажи и остаток каждого товара за каждый день. В МойСклад есть отчёты по продажам и остаткам, но для такой таблицы надо согласовать магазин, товар, время среза и возвраты. Аналитическая база хранит результат этого согласования, чтобы не собирать его вручную перед каждым совещанием.</p>
+
+  <section aria-labelledby="what-is-base">
+    <h2 id="what-is-base">Что находится <span data-heading-accent>между МойСклад и графиком</span></h2>
+    <p>Сначала получают исходные записи: документы продаж и возвратов, справочники товаров и точек, платежи и остатки на выбранные моменты. Затем приводят идентификаторы и даты к общему виду, задают правила расчёта и сохраняют подготовленные таблицы. BI-инструмент или SQL-клиент читает их, не выполняя каждый раз длинную цепочку запросов к МойСклад.</p>
+    <ArticleFigure src={flowImage} fullSize portrait alt={imageAlt} caption="Учебная схема движения данных. Стрелки показывают один возможный проектный порядок; они не подтверждают готовую интеграцию или состав таблиц TrueTell." />
+    <p>Например, отчёт «Прибыльность» уже учитывает продажи и возвраты для расчёта результата товара. В собственной таблице придётся сохранить, какие документы вошли, к какой дате относится возврат и как меняется итог после исправления исходного документа. Для выбора разового отчёта сначала посмотрите <a href={`${base}otchety-moysklad/`}>штатные отчёты МойСклад</a>.</p>
+  </section>
+
+  <section aria-labelledby="difference">
+    <h2 id="difference">Чем база отличается от отчёта и Excel</h2>
+    <DataTable label="Сравнение способов работы с данными МойСклад" columns={['Способ', 'Когда полезен', 'Что потребует внимания']} rows={scopeRows} rowHeaders compact />
+    <p>База не делает цифры верными сама по себе. Если загрузить продажи без возвратов, неправильный магазин или устаревший остаток, дашборд уверенно покажет ошибку. Поэтому первым результатом проекта лучше считать не красивый экран, а воспроизводимую сверку одного товара и одного дня с МойСклад.</p>
+    <p>Если пока нужен один файл раз в месяц, отдельная инфраструктура может оказаться лишней. В <a href={`${base}vygruzka-dannyh-moysklad-dlya-analitiki/`}>сравнении способов выгрузки</a> есть выбор между Excel, рассылкой, API и базой по объёму ручной работы и свежести данных.</p>
+  </section>
+
+  <section aria-labelledby="mart">
+    <h2 id="mart">Какие таблицы нужны рознице</h2>
+    <p>Для первого вопроса «Что происходило с товаром в магазине каждый день?» достаточно небольшой модели: список товаров и точек, продажи с возвратами и остаток на конец дня. В строке дневной таблицы нужны дата, идентификатор товара, идентификатор точки, проданное количество, сумма и остаток. Укажите время среза и единицу измерения; иначе данные двух точек легко сравнить неверно.</p>
+    <ArticleFigure src={grainImage} fullSize portrait alt="Учебные строки аналитической таблицы за 14 июля: один товар в двух магазинах, продажи и остаток на конец дня" caption="Условные данные: в «Центре» продано 6 штук и остаток равен 0 шт., на «Севере» продано 2 штуки и осталось 17 шт. Это пример структуры строки, не оценка упущенных продаж." />
+    <p>Не соединяйте суммы чеков с каждой товарной позицией и каждой оплатой без учёта кратности: один чек может содержать несколько позиций и смешанную оплату. Разделите таблицы по уровню записи и сверьте итоги до объединения. Для анализа остатков по дням проверьте правила нулевых строк и правок задним числом в <a href={`${base}ostatki-moysklad/`}>отдельной инструкции об остатках</a>.</p>
+  </section>
+
+  <section aria-labelledby="technology">
+    <h2 id="technology">Нужен ли для этого ClickHouse</h2>
+    <p>ClickHouse — колоночная SQL-база для аналитических запросов. Она подходит, когда нужно группировать много строк по датам, товарам и магазинам. Но выбор технологии начинается с объёма данных, частоты обновления и навыков команды. Маленькую модель можно построить и на другом хранилище; название базы не заменяет правил расчёта.</p>
+    <p>Если аналитик будет подключать свой инструмент, заранее согласуйте адрес подключения, сеть, шифрование, список доступных таблиц и учётную запись только с нужными правами чтения. <a href={sourceLinks[5].href} target="_blank" rel="noopener noreferrer">ClickHouse поддерживает роли и права на таблицы</a>. Права загрузчика, который обновляет копию, должны быть отделены от прав читателя. Это проектное требование, а не заявленная конфигурация TrueTell.</p>
+  </section>
+
+  <section aria-labelledby="check">
+    <h2 id="check">Что проверить перед первым дашбордом</h2>
+    <p>Возьмите одну точку и три дня. Сверьте число документов и суммы продаж с «Прибыльностью», отдельно возвраты и оплаты, затем остаток одного товара на каждую дату. Запишите время выгрузки. На тестовом наборе или после реального исправления документа задним числом повторите расчёт: так выяснится, какие даты нужно перечитывать и как отличать сохранённый снимок от текущего пересчёта.</p>
+    <p>Следом проверьте права. Управление правами пользователей в МойСклад, по <a href={sourceLinks[4].href} target="_blank" rel="noopener noreferrer">официальной справке</a>, доступно на тарифах «Профессиональный» и «Корпоративный». Выясните, позволяет ли тариф дать пользователю МойСклад, от имени которого работает загрузчик, только нужное чтение. Права этого пользователя и роль аналитика в отдельной базе настраивают раздельно. Для аналитика ограничьте выборку подготовленными таблицами и проверьте доступ тестовым запросом. Если минимальные права источника недоступны, не считайте всю цепочку настроенной «только для чтения».</p>
+    <InlineConsultation title="Нужна таблица «магазин × товар × день»?" description="Начните с одного показателя и контрольного периода. Обсудим источники, правила возвратов, доступы и способ сверки с МойСклад." />
+  </section>
+
+  <FaqSection id="faq" variant="article" title="Частые вопросы" items={faqItems} />
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Обсудить ' }, { text: 'аналитическую базу', accent: true }]}
+      description="TrueTell разрабатывает подготовку данных МойСклад для аналитики. Опишите нужный отчёт и контрольные цифры; состав данных, сроки и доступы согласуем по реальной задаче."
+      href={companyInfo.contacts.consultationUrl} actionLabel="Обсудить задачу" />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <Fragment slot="after-article"><ConsultationCtaSection /></Fragment>
+</ArticleLayout>

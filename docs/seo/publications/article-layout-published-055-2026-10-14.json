@@ -1,0 +1,245 @@
+{
+  "release": 55,
+  "date": "2026-10-14",
+  "action": "UPDATE",
+  "status": "live_verified",
+  "request": "Центрировать рубрику на мобильной версии всех статей, немного увеличить межблочные интервалы, закрепить в SEO-навыке. Владелец отменил запрос новых изображений: существующие скриншоты есть.",
+  "scope": {
+    "publishedArticles": 22,
+    "registryRoutesIncludingDrafts": 24,
+    "sharedComponents": [
+      "ArticleHero",
+      "ArticleLayout"
+    ],
+    "mobileBreakpoint": 768,
+    "mobileCategoryAlignment": "center",
+    "desktopCategoryAlignment": "left",
+    "spacing": {
+      "text": 16,
+      "block": 32,
+      "sectionDesktop": 40,
+      "sectionMobile": 32,
+      "shellDesktop": 56,
+      "shellMobile": 40
+    }
+  },
+  "sourceFiles": {
+    "files": [
+      "src/components/editorial/article-hero.module.scss",
+      "src/components/editorial/article-layout.module.scss",
+      "DESIGN_SYSTEM.md",
+      "AGENTS.md",
+      ".agents/skills/truetell-article-authoring/SKILL.md",
+      ".agents/skills/truetell-article-authoring/references/article-model.md",
+      "docs/seo/content-publishing.md"
+    ],
+    "before": {
+      "src/components/editorial/article-hero.module.scss": "d392f10e43ba5990227ac8d7a20c398944f200095faa0f7bde52e8fffada6a07",
+      "src/components/editorial/article-layout.module.scss": "610f4c40a1693d1072da80c4524bf3055aa5817668093b47cc7dba119a05b1c9",
+      "DESIGN_SYSTEM.md": "9653a4dfd46c9368128148717ed92077bfa96027f5151002105ee00a7da143bb",
+      "AGENTS.md": "a07e81785fc428eeec8877c291ae75fd7d327264babe61f5206179d4f860e745",
+      ".agents/skills/truetell-article-authoring/SKILL.md": "023ce1f4c9688b48b3a6defe028e09663876dd13eec324cc6c5fcf5e97ee54c1",
+      ".agents/skills/truetell-article-authoring/references/article-model.md": "4a970a6ce859aff4429cdc37a51c0bd18d2c686589f2d76312fb9158f62683c1",
+      "docs/seo/content-publishing.md": "4c57b900955496b000a0507446f49ab1ca39277f5802c0828fa8ca01175f189c"
+    },
+    "after": {
+      "src/components/editorial/article-hero.module.scss": "6e1a006be581f9101e565f8c6864df58b6c00971292f41686db9dfadddc544a2",
+      "src/components/editorial/article-layout.module.scss": "b90d3f821e3b47b435b0b79200f9102631ca99beb17b9fd5660c8d95a471f859",
+      "DESIGN_SYSTEM.md": "e7b7dfeb9a80df6797f428c51c3629c5622b6b8290f9ee428308e91cba0f2b0d",
+      "AGENTS.md": "7c519ff6710db1a7597d0653cb96d97709a6d916cb1ac12efe1fa7a8335a46b3",
+      ".agents/skills/truetell-article-authoring/SKILL.md": "c3fc5221bd05f9c1b90d7502573395f87fd7528327ae6b10776a10ee0460baf5",
+      ".agents/skills/truetell-article-authoring/references/article-model.md": "73822bdaeddd186c8856456aa09563b3ee891c6730a4586c5d3c398910712ab6",
+      "docs/seo/content-publishing.md": "9e619497ce0b417a3831520e9aaeb745a62127ae81d3d9fa1276b90bfbc3ac50"
+    }
+  },
+  "seoSkill": [
+    ".agents/skills/truetell-article-authoring/SKILL.md",
+    ".agents/skills/truetell-article-authoring/references/article-model.md",
+    "DESIGN_SYSTEM.md",
+    "AGENTS.md",
+    "docs/seo/content-publishing.md",
+    "SEO-проект: docs/seo/article-layout-rules.md и AGENTS.md"
+  ],
+  "sourceArchive008": "unchanged",
+  "preservation": {
+    "articleTexts": true,
+    "metadataCanonicalDatesJsonLd": true,
+    "images": true,
+    "links": true,
+    "scripts": true,
+    "otherPages": true,
+    "sitemap": true,
+    "backend": true
+  },
+  "newImages": 0,
+  "review": {
+    "agent": "/root/article_layout_review",
+    "baseline": "Mobile category inherits left; old skill does not require center",
+    "candidate": "READY; no P1/P2; six screenshots reviewed",
+    "releasePackage": "Independently compared full DOM of all22articleHTML: only13sharedclass tokens and style contents differ; manifests verified"
+  },
+  "verification": {
+    "baseline": {
+      "mobileMetaAlignment": "left",
+      "block": "24px",
+      "section": "24px",
+      "shell": "32px"
+    },
+    "nodeTests": "77 passed,0 failed",
+    "lint": "0 errors,3 existing warnings",
+    "build": "48 pages,44 canonical sitemap URLs",
+    "indexnow": "--check passed; no submission",
+    "localViews": 110,
+    "stagedViews": 110,
+    "liveViews": 110,
+    "widths": [
+      320,
+      390,
+      768,
+      769,
+      1440
+    ],
+    "liveHttp": {
+      "passed": true,
+      "release": {
+        "id": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792004774-55",
+        "revision": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99",
+        "baseReleaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792002866-54",
+        "task": "article-layout-055",
+        "date": "2026-10-14",
+        "articles": 22,
+        "scope": "Shared article category alignment and spacing; content preserved"
+      },
+      "files": [
+        {
+          "name": "bi-analitika-bitrix24-pervyy-otchet/index.html",
+          "status": 200,
+          "sha256": "aa9f953c25d83ec010dbc3aea76608abf440daf627fb52904ce0302e8965b724"
+        },
+        {
+          "name": "bitrix24-udalenie-lidov-za-period/index.html",
+          "status": 200,
+          "sha256": "0e8b055be1e56fbe66084eaf91067043bc23659a51356ed94766414f3de1f84b"
+        },
+        {
+          "name": "bitrix24-moysklad-integraciya/index.html",
+          "status": 200,
+          "sha256": "bc740e1470a72e9cb407af33876274ba5dd3fcedd22095b17627d9dee57648fe"
+        },
+        {
+          "name": "bi-analitika-chto-eto-prostymi-slovami/index.html",
+          "status": 200,
+          "sha256": "a9caaa2e18b3bbbafa621e7f3d4687c59ac9b725775017082da251f5fa96f137"
+        },
+        {
+          "name": "chastichnaya-oplata-bitrix24/index.html",
+          "status": 200,
+          "sha256": "61c012b6d5c65e5a80fad71dcb205d54862e4df599f17f8942c16fc4dfe81a45"
+        },
+        {
+          "name": "dashbord-rukovoditelya-bitrix24/index.html",
+          "status": 200,
+          "sha256": "f79e4fd5c8ba3399b71a530afd606b8913dd701591eecdac2e2fc3679ed5d435"
+        },
+        {
+          "name": "debitorskaya-zadolzhennost-bitrix24/index.html",
+          "status": 200,
+          "sha256": "1ef4b85da0b5be736fe25d9e1617d602ea6f2952c7c4230fec64df3d2eae2946"
+        },
+        {
+          "name": "eksport-lidov-sdelok-bitrix24-pered-udaleniem/index.html",
+          "status": 200,
+          "sha256": "6156e0f4b3a04cdca55c57b8ee155b330d3b4c421c8ce3596d1754553d13fe85"
+        },
+        {
+          "name": "kak-snyat-rezervy-moysklad/index.html",
+          "status": 200,
+          "sha256": "13d0e8219635f847df2768c2c8ce93fcd43ab14af3aec2643867a119bb5504ed"
+        },
+        {
+          "name": "kak-vosstanovit-udalennye-zakazy-tovary-moysklad/index.html",
+          "status": 200,
+          "sha256": "0c0530e8ea2d641e7058238d7f68a5c59ed95e2b8e5da9aef30d59298e6cf046"
+        },
+        {
+          "name": "massovoe-udalenie-lidov-bitrix24/index.html",
+          "status": 200,
+          "sha256": "0d647abea5dcb08e850fb63b3bcb50c262f12800048530cf0a915d79682bedeb"
+        },
+        {
+          "name": "moysklad-dlya-marketpleysov/index.html",
+          "status": 200,
+          "sha256": "dc5c9800864dfcf5247617e4b0e77e4d8b76880cdd88d13120f31d9a0a8cca71"
+        },
+        {
+          "name": "ne-udalyaetsya-lid-bitrix24/index.html",
+          "status": 200,
+          "sha256": "63a39495b829f219a97d4f01c81006754299d0e9fbc7e431341d16b5e8197341"
+        },
+        {
+          "name": "ostatki-moysklad/index.html",
+          "status": 200,
+          "sha256": "9ba35942f804d0075f4b4869597f46908fd250e3750ad3be8846fe3257b769d7"
+        },
+        {
+          "name": "otchety-moysklad/index.html",
+          "status": 200,
+          "sha256": "84079472f2d84c2793db30cc291a2791d729dfd2861d3262a68d4a2390c5d0bd"
+        },
+        {
+          "name": "otchety-po-prodazham-bitrix24/index.html",
+          "status": 200,
+          "sha256": "49ae00af0cca1df8bae1307129806679e798a4778f4f3afff43a9ea9f3913c3c"
+        },
+        {
+          "name": "platezhnyy-kalendar-bitrix24/index.html",
+          "status": 200,
+          "sha256": "4f55409fffddf0361f4718fe80a5cb661ec2dae1f895ca6291296c8916d1d87d"
+        },
+        {
+          "name": "prognoz-prodazh-moysklad/index.html",
+          "status": 200,
+          "sha256": "276ea96997da31f29794b98239babeb3fa78b0f36ff2d14294e95fcbde29f83f"
+        },
+        {
+          "name": "skvoznaya-analitika-bitrix24/index.html",
+          "status": 200,
+          "sha256": "692ba69bb1aab351fff53e096fe4a67b1228021fb379c4ce1ef67f6f87eb699d"
+        },
+        {
+          "name": "udalenie-proigrannyh-sdelok-bitrix24/index.html",
+          "status": 200,
+          "sha256": "41af81b08bb3ad9faa1978dc7a14495d799d6538839892f000e3e3e492dd1295"
+        },
+        {
+          "name": "udalennye-lidy-bitrix24/index.html",
+          "status": 200,
+          "sha256": "a2ff0c8d785acbe4f17c4ac3b1f9a26073f31676a318603fbfc848239f789d03"
+        },
+        {
+          "name": "voronka-prodazh-bitrix24/index.html",
+          "status": 200,
+          "sha256": "8703321739bbbdcf4382431d9cfb281cfd41579a763493d6e74399c43e010cec"
+        }
+      ]
+    },
+    "imageBoundary": "All original image attributes unchanged;3forecast screenshots decoded in mobile/desktop QA"
+  },
+  "deployment": {
+    "id": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792004774-55",
+    "baseReleaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792002866-54",
+    "changedFiles": 22,
+    "files": "Only published article HTML;CSS inline",
+    "rollback": "All22publichashes checked afteractivation; previous release restored on failure"
+  },
+  "stages": {
+    "local_QA_passed": true,
+    "deployed": true,
+    "live_verified": true
+  },
+  "limits": [
+    "Article content and product capabilities were not changed or retested",
+    "Live browser review renders freshHTTPcapturedHTML;uses existing/staticassets",
+    "Search crawling/indexing not measured or submitted"
+  ]
+}

@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { companyInfo } from '../../config/company';
+import applications from '../../config/support-applications.json';
+import ComplaintSelect from '../../components/complaint-request/ComplaintSelect.astro';
+import logo from '../../images/logo/short-white-logo.svg';
+import styles from './page.module.scss';
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+---
+<BaseLayout title="Жалоба на приложение — TrueTell" description="Сообщите о проблеме в приложении TrueTell и оставьте контакт для обратной связи." canonicalPath="/complaints/" robots="noindex, follow" contentType="system" contactDialog={false}>
+  <main class={styles.page}>
+    <div class={styles.content}>
+      <a class={styles.brand} href={base} aria-label={`${companyInfo.brandName} — на главную`}><img src={logo.src} width="32" height="32" alt="" /><span>{companyInfo.brandName}</span></a>
+      <header class={styles.heading}><h1>Жалоба на приложение</h1><p>Опишите проблему и оставьте контакт для ответа.</p></header>
+      <section class={styles.panel} aria-label="Форма жалобы">
+        <form data-complaint-form method="post" action="/api/complaints">
+          <div class={styles.field}>
+            <ComplaintSelect id="complaint-application" name="application" label="Приложение" choices={applications} placeholder="Выберите приложение" />
+            <span class={styles.error} id="complaint-application-error" data-field-error="application"></span>
+          </div>
+          <div class={styles.field}>
+            <label for="complaint-message">Описание проблемы</label>
+            <textarea id="complaint-message" name="message" rows="5" maxlength="5000" required aria-describedby="complaint-message-hint complaint-message-error"></textarea>
+            <span class={styles.hint} id="complaint-message-hint">Что вы пытались сделать и что произошло?</span>
+            <span class={styles.error} id="complaint-message-error" data-field-error="message"></span>
+          </div>
+          <div class={styles.field}>
+            <label for="complaint-name">Имя</label>
+            <input id="complaint-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="complaint-name-error" />
+            <span class={styles.error} id="complaint-name-error" data-field-error="name"></span>
+          </div>
+          <div class={styles.contactRow}>
+            <div class={styles.field}>
+              <ComplaintSelect id="complaint-method" name="contact_method" label="Способ связи" choices={{ telegram: 'Telegram', phone: 'Телефон', max: 'MAX', whatsapp: 'WhatsApp' }} />
+              <span class={styles.error} id="complaint-contact_method-error" data-field-error="contact_method"></span>
+            </div>
+            <div class={styles.field}>
+              <label for="complaint-contact" data-contact-label>Telegram</label>
+              <div class={styles.contactInput} data-has-prefix><span class={styles.prefix} data-contact-prefix aria-hidden="true">@</span><input id="complaint-contact" name="contact" autocomplete="off" maxlength="255" placeholder="username" required aria-describedby="complaint-contact-error" /></div>
+              <span class={styles.error} id="complaint-contact-error" data-field-error="contact"></span>
+            </div>
+          </div>
+          <div class={styles.trap} aria-hidden="true"><label>Ваш сайт<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+          <div><label class={styles.consent}><input name="consent" type="checkbox" required aria-describedby="complaint-consent-error" /><span>Согласен на <a href={`${base}request-consent/`} target="_blank" rel="noopener noreferrer">обработку персональных данных</a> для ответа на обращение.</span></label><span class={styles.error} id="complaint-consent-error" data-field-error="consent"></span></div>
+          <p class={styles.error} data-complaint-status role="alert" hidden></p>
+          <button class={styles.submit} type="submit" disabled>Отправить жалобу</button>
+        </form>
+        <div class={styles.success} data-complaint-success hidden tabindex="-1" role="status"><h2>Жалоба отправлена</h2><p>Мы свяжемся с вами по указанному контакту.</p></div>
+        <noscript><p class={styles.hint}>Для отправки формы включите JavaScript. Также можно написать на <a href={`mailto:${companyInfo.contacts.email}`}>{companyInfo.contacts.email}</a>.</p></noscript>
+      </section>
+      <footer class={styles.footer}><a href={`${base}privacy/`}>Персональные данные</a><a href={`${base}cookies/`} data-cookie-open>Настройки cookie</a></footer>
+    </div>
+  </main>
+</BaseLayout>
+<script>
+  import { initComplaintForm } from '../../components/complaint-request/complaint-request-controller';
+  initComplaintForm(document);
+</script>

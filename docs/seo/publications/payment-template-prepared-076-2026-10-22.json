@@ -1,0 +1,64 @@
+{
+  "release": "076",
+  "date": "2026-10-22",
+  "taskId": "SEO-051",
+  "action": "UPDATE",
+  "route": "/grafik-platezhey-bitrix24/",
+  "status": "local_QA_passed",
+  "deployed": false,
+  "changes": [
+    "Редактируемый XLSX: 20 этапов и 50 строк журнала одной сделки в RUB",
+    "Инструкция, учебный пример, снимок реального файла, два FAQ",
+    "Актуальный подтверждённый статус приложения 0.4.3; финансовая запись не обещается",
+    "Сохранены URL, общий ArticleHero и прежние полезные материалы"
+  ],
+  "verification": {
+    "buildPages": 64,
+    "canonicalUrls": 58,
+    "tests": {
+      "passed": 87,
+      "failed": 0
+    },
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 3
+    },
+    "indexnow": "--check only; no submissions",
+    "workbookChecks": 41,
+    "workbookEngine": "@oai/artifact-tool; native Excel not opened",
+    "viewports": [
+      390,
+      768,
+      1440
+    ],
+    "download": "CUA browser download succeeded; downloaded SHA-256 matches output/public/dist",
+    "metadataAndSchema": "PASS; 1H1, self-canonical,8FAQ,4 distinct figures"
+  },
+  "independentReview": {
+    "reviewer": "/root/review_product_tails_069",
+    "result": "PASS",
+    "scope": "Source, built HTML, official docs, workbook formulas/caches, screenshots and test logs; reviewer did not execute tests/CUA/Excel or product"
+  },
+  "sources": [
+    "https://helpdesk.bitrix24.ru/open/22048980/",
+    "https://helpdesk.bitrix24.ru/open/22804914/",
+    "https://helpdesk.bitrix24.ru/open/23960160/",
+    "https://helpdesk.bitrix24.ru/open/21064046/",
+    "https://helpdesk.bitrix24.ru/open/18942844/",
+    "/Users/ivan/projects/bitrix_payment_schedule/README.md",
+    "/Users/ivan/projects/bitrix_payment_schedule/docs/progress.md"
+  ],
+  "files": {
+    "src/pages/grafik-platezhey-bitrix24/index.astro": "6be0dd9c5d26e26bb8681700c8a87a5cad7e947d7145ca99038ee9f03df510e7",
+    "src/config/articles.ts": "8b216393eaefc1fe01b1064a2ee3590f52bb05690a299b94fcd6aeccbb2704e3",
+    "src/images/articles/payment-schedule-template-076.png": "73531c28b258424e5053b1fbc2683239a0684653fc1ca25adea96ecf0c76ac9f",
+    "public/downloads/TrueTell_Payment_Schedule_Template_076_2026-10-22.xlsx": "0203e9c49b306f63be6d198f3e09f78dec94945fa84c68912f49f247fb5babdc"
+  },
+  "next": "SEO-048: update partial payment article; publication requires separate authorization",
+  "boundaries": [
+    "Website update not deployed",
+    "Application/CRM data not changed",
+    "GSC, ranking and indexing not checked",
+    "Workbook is manual and has no CRM/bank integration"
+  ]
+}

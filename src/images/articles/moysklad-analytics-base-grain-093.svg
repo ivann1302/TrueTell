@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 940">
+  <defs><style>text{font-family:Arial,Helvetica,sans-serif;fill:#101621}.head{font-size:31px;font-weight:700}.cell{font-size:27px}.note{font-size:25px}.num{font-size:39px;font-weight:700;fill:#087ebf}</style></defs>
+  <text x="38" y="54" class="head">Один товар, один день, две точки</text>
+  <rect x="38" y="95" width="724" height="260" rx="22" fill="#fff" stroke="#c5d8e3" stroke-width="3"/>
+  <rect x="38" y="95" width="724" height="68" rx="22" fill="#dceef8"/>
+  <text x="70" y="140" class="head">14 июля · магазин «Центр»</text>
+  <text x="70" y="213" class="cell">Кофе 250 г · продано 6 шт.</text>
+  <text x="70" y="285" class="cell">Остаток на конец дня</text><text x="670" y="294" class="num">0</text>
+  <rect x="38" y="380" width="724" height="260" rx="22" fill="#fff" stroke="#c5d8e3" stroke-width="3"/>
+  <rect x="38" y="380" width="724" height="68" rx="22" fill="#dceef8"/>
+  <text x="70" y="425" class="head">14 июля · магазин «Север»</text>
+  <text x="70" y="498" class="cell">Кофе 250 г · продано 2 шт.</text>
+  <text x="70" y="570" class="cell">Остаток на конец дня</text><text x="644" y="579" class="num">17</text>
+  <rect x="38" y="665" width="724" height="170" rx="22" fill="#e8f3fa"/>
+  <text x="70" y="715" class="head">Условия строки</text>
+  <text x="70" y="760" class="cell">Время среза · единица · возвраты</text>
+  <text x="70" y="803" class="cell">Дата обновления · сверка</text>
+  <text x="38" y="897" class="note">Условные числа, не данные магазина.</text>
+</svg>

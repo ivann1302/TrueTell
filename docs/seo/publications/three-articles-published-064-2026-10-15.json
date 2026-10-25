@@ -1,0 +1,229 @@
+{
+  "release": 64,
+  "date": "2026-10-15",
+  "authorization": "Owner excluded roadmap item2 and selected item3: transfer/review/release three prepared packages. Prior article designs and current common article shell retained.",
+  "status": "live_verified",
+  "releaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792066415-64",
+  "baseReleaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792049803-63",
+  "verifiedAt": "2026-10-15T12:16:17Z",
+  "articles": [
+    {
+      "taskId": "SEO-012",
+      "url": "https://truetell-retail.ru/udalenie-kontaktov-bitrix24/",
+      "title": "Как удалить контакты в Битрикс24 — один, несколько или все",
+      "status": "live_verified",
+      "publishedAt": "2026-10-15T15:02:28+03:00",
+      "http": 200,
+      "htmlSha256": "d02d1d11a70443f1b7f46e09da5f1f2318e64b013d1e03528c19c47093abb06a",
+      "meaningfulImages": 3
+    },
+    {
+      "taskId": "SEO-013",
+      "url": "https://truetell-retail.ru/udalenie-kompaniy-bitrix24/",
+      "title": "Как удалить компании в Битрикс24 — связи и реквизиты",
+      "status": "live_verified",
+      "publishedAt": "2026-10-15T15:02:28+03:00",
+      "http": 200,
+      "htmlSha256": "1b6a51069aa906ab48dfdb1f4b9b315d88879a6ca774727f9e3da77c15a09910",
+      "meaningfulImages": 3
+    },
+    {
+      "taskId": "SEO-058",
+      "url": "https://truetell-retail.ru/pribyl-marketpleysov-moysklad/",
+      "title": "Прибыль Ozon и Wildberries в МойСклад: комиссии и расходы",
+      "status": "live_verified",
+      "publishedAt": "2026-10-15T15:02:28+03:00",
+      "http": 200,
+      "htmlSha256": "829b3348c6a6a4a40320bd1600d8b86e3e416ab3b15de12683e17fda1fd1d036",
+      "meaningfulImages": 3
+    }
+  ],
+  "ownerDecision": {
+    "excludedTasks": [
+      "SEO-053",
+      "SEO-054",
+      "SEO-055",
+      "SEO-056"
+    ],
+    "historyPreserved": true,
+    "excludedNotClaimedFixed": true,
+    "ordinaryResponsiveChecksRetained": true,
+    "recordedIn": [
+      "SEO-workspace AGENTS.md",
+      "TrueTell AGENTS.md",
+      "Backlog064 rows/status/journal"
+    ]
+  },
+  "source": {
+    "preparedPackages": [
+      "051/SEO-012",
+      "052/SEO-013",
+      "053/SEO-058"
+    ],
+    "manifestsVerifiedBeforeTransfer": true,
+    "isolatedStaging": "/private/tmp/truetell-content-064",
+    "transferredFiles": 20,
+    "allBeforeAndAfterHashesGuarded": true,
+    "otherDirtySourcePreserved": true,
+    "sourceMatchesReviewedStaging": true
+  },
+  "publication": {
+    "mechanism": "Static overlay cloned from complete live63; atomic current switch under lock,exact baseline/hash/type/path checks and rollback",
+    "htmlFiles": 8,
+    "assets": 95,
+    "artifactFiles": 104,
+    "newArticles": 3,
+    "existingContextLinkPages": 4,
+    "newIncomingParagraphs": 6,
+    "newCrossLinks": "contacts <-> companies",
+    "catalogsUpdated": [
+      "knowledge-base"
+    ],
+    "sitemapUrls": 55,
+    "articlesPublished": 33,
+    "knowledgePublished": 25,
+    "blogPublished": 8,
+    "checkoutDrafts": 0,
+    "remainingPreparedPackages": 0,
+    "unaffectedOldHtmlByteIdentical": 47,
+    "backendSharedRoutingAndFormsPreserved": true,
+    "noGscOrIndexNowSubmission": true
+  },
+  "checks": {
+    "build": {
+      "pass": true,
+      "routes": 57,
+      "canonicalUrls": 55
+    },
+    "tests": {
+      "pass": 77,
+      "fail": 0
+    },
+    "lint": {
+      "errors": 0,
+      "preExistingWarnings": 3
+    },
+    "validationOnlyUrls": 55,
+    "gitDiffCheck": true,
+    "allTransferredSourceHashes": true,
+    "http": {
+      "releaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792066415-64",
+      "verifiedAt": "2026-10-15T12:16:17Z",
+      "sitemapUrls": 55,
+      "newArticles": 3,
+      "htmlPagesVerified": 55,
+      "assetFilesVerified": 95,
+      "allHashesMatch": true,
+      "unaffectedLivePagesPreserved": 47
+    },
+    "browser": {
+      "localAndProductionHeroWidths": [
+        390,
+        768,
+        769,
+        1440
+      ],
+      "liveChecks": 12,
+      "overflow": false,
+      "darkHeroAtLeastViewport": true,
+      "mobileCategoryH1Centered": true,
+      "desktopTopAligned": true,
+      "allNineImagesObservedLoadedMobile": true,
+      "allNineImagesObservedLoadedDesktop": true,
+      "fullSizeAndCaptions": true,
+      "keyboardFaqAndSourcesLocal": true,
+      "sourcesKeyboardLive": true,
+      "productionConsultationDialogOpenedClosed": true,
+      "formSubmitted": false,
+      "screenshots": [
+        "contact-mobile-complete.png",
+        "company-mobile-complete.png",
+        "profit-mobile-complete.png",
+        "contact-desktop-complete.png",
+        "company-desktop-complete.png",
+        "profit-desktop-complete.png",
+        "profit-mobile-body.png",
+        "live-desktop.png"
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "reviewer": "/root/review_contacts_companies_064",
+      "scope": "Contacts/companies,official sources and six original screenshots,staging/dist,payload/activation,independent liveHTTP/HTML/fullsize6JPG/sitemap/release",
+      "verdict": "LIVE_VERIFIED_APPROVE",
+      "finding": {
+        "priority": "P2",
+        "issue": "Contact Links tab did not disclose limitation to last company",
+        "resolution": "Added complete check in Company field and History with official27912504; source indexes and compiled/live text rechecked",
+        "closed": true
+      },
+      "boundary": "Documentation plus HTTP/assets, no CRM-client destructive actions or indexation check."
+    },
+    {
+      "reviewer": "/root/review_marketplace_profit_064",
+      "scope": "Marketplace profit,currentofficialdocumentation,calculations,threeoriginalscreens,payload,twoincomingHTML,freshHTTP/article/catalog/sitemap/release/WebPs,author-savedmobile/desktopframes",
+      "verdict": "LIVE_VERIFIED_APPROVE",
+      "finding": {
+        "priority": "P3",
+        "issue": "Optional named exceptions to included unit-economics expense categories",
+        "resolution": "Added excluded categories and disabled Include in profit setting,verifiedofficialsourceandlive",
+        "closed": true
+      },
+      "boundary": "No client-account operation; no fresh Wordstat or indexation. SomeofficialWB/P&Lbodyverifiedthroughofficialsearchindex."
+    }
+  ],
+  "deploymentIncident": {
+    "asset": "_astro/moysklad-wb-prices-official.DBZze3aq_ZC9o6Y.webp",
+    "oldBuiltHash": "16ec30c85b12c634f4d0f688f5b4eeeb161964f1630753855634022d5c2eae9f",
+    "productionPreservedHash": "b9da1bccd3e5b4f112416480b0044368fb669ce8733e7706ac5d3aada18664a3",
+    "reason": "An existing, unchanged article references this already published optimized image. A fresh image build generated different bytes under the same transform filename. Preserve published bytes; no new article references this asset.",
+    "baseReleaseStillActive": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792049803-63",
+    "action": "Preserve original production asset; do not overwrite it"
+  },
+  "primarySources": {
+    "bitrix": [
+      "https://helpdesk.bitrix24.ru/open/23238660/",
+      "https://helpdesk.bitrix24.ru/open/25042958/",
+      "https://helpdesk.bitrix24.ru/open/21064250/",
+      "https://helpdesk.bitrix24.ru/open/24668648/",
+      "https://helpdesk.bitrix24.ru/open/25343258/",
+      "https://helpdesk.bitrix24.ru/open/25945936/",
+      "https://helpdesk.bitrix24.ru/open/27912504/",
+      "https://helpdesk.bitrix24.ru/open/29046346/",
+      "https://helpdesk.bitrix24.ru/open/26052774/",
+      "https://helpdesk.bitrix24.ru/open/24341258/"
+    ],
+    "moysklad": [
+      "https://support.moysklad.ru/hc/ru/онлаин%20торговля/маркетплеисы/ozon",
+      "https://support.moysklad.ru/hc/ru/онлаин%20торговля/маркетплеисы/wildberries",
+      "https://support.moysklad.ru/hc/ru/отчеты/юнит_экономика_товаров",
+      "https://support.moysklad.ru/hc/ru/отчеты/отчет_прибыльность",
+      "https://support.moysklad.ru/hc/ru/отчеты/прибыли_и_убытки"
+    ]
+  },
+  "limits": [
+    "Published does not mean indexed; no fresh GSC metrics or ranking data.",
+    "Existing screenshots are authentic official examples, not customer-account tests.",
+    "No actual CRM record deletion, financial-account change or contact form submission performed.",
+    "Separate excluded mobile tasks were not fixed and must not be reopened absent new owner request."
+  ],
+  "backlog": {
+    "file": "TrueTell_SEO_Backlog_064_2026-10-15.xlsx",
+    "tasks": 64,
+    "sheets": 7,
+    "publishedTasks": 3,
+    "excludedTasksPreserved": 4,
+    "formulaErrors": 0,
+    "historicalGscPreserved": true
+  },
+  "evidence": {
+    "manifest": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/publish-064/manifest.json",
+    "sourceTransfer": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/publish-064/source-transfer.json",
+    "liveHttp": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/publish-064/live-verified.json",
+    "liveGeometry": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/publish-064/live-responsive.json",
+    "sourceProof": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/publish-064/source-applied.json",
+    "archiveSha256": "0a1f4b39aa5715fca31db6587c81c1a44e26f37821225ad11d8c52a6119f20c1",
+    "backlogSha256": "e9781e5bd9a8ab14a2f0bc085303139a90f359da0d777c1e6d8acd0706394e8b"
+  }
+}

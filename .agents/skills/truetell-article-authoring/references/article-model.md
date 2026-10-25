@@ -13,8 +13,8 @@ Use this document whenever a new article is created from text, Markdown, or anot
 
 Build the page with `src/components/editorial/article-layout.astro`. Keep this order unless the content gives a concrete reason to change it:
 
-1. Category, one H1 with a restrained light-blue accent, and a concise introduction through `article-hero.astro`. Every article uses the same solid `#101621` full-width dotted hero from the top under the header, minimum `100svh` (`100vh` fallback). No light variant, gradients, glows or custom background animation; center mobile H1 and grow the block if content needs more room.
-2. «Быстрый ответ» containing two or three short paragraphs on the same shared hero surface. On desktop above 768px, start the category/H1 column and introduction column at the same top level; place the quick answer below the introduction in the right column. Use the shared grid for all existing and future articles, with no page-local offsets. Mobile remains category/H1 → introduction → quick answer in one column (owner rule, 13.10.2026).
+1. Category, one H1 with a restrained light-blue accent, and a concise introduction through `article-hero.astro`. Every article uses the same solid `#101621` full-width dotted hero from the top under the header, minimum `100svh` (`100vh` fallback). No light variant, gradients, glows or custom background animation; center both the category (`ArticleHero .meta`) and H1 at widths up to 768px and grow the block if content needs more room. Desktop category and body text remain left aligned.
+2. «Быстрый ответ» containing two or three short paragraphs on the same shared hero surface. On desktop above 768px, start the category/H1 column and introduction column at the same top level; place the quick answer below the introduction in the right column. Use the shared grid for all existing and future articles, with no page-local offsets. Mobile remains category/H1 → introduction → quick answer in one column (owner rule, 13.10.2026); the category and H1 are centered (owner rule, 14.10.2026).
 3. An opening lead that explains the problem in plain language.
 4. Optional contextual note for one important distinction; do not stack multiple notice cards.
 5. Main sections written primarily as connected prose. Use one H2 per search-intent subtopic and H3 only for genuine subsections.
@@ -63,7 +63,7 @@ The article page should contain its content and data, not a private copy of the 
 
 ## Compact article spacing
 
-Use the “Компактный ритм статьи” contract in `DESIGN_SYSTEM.md`. Its implementation lives in `article-layout.module.scss` (`--article-space-*`) and the shared component styles, so new articles inherit the same spacing automatically.
+Use the “Компактный ритм статьи” contract in `DESIGN_SYSTEM.md`. Its implementation lives in `article-layout.module.scss` (`--article-space-*`) and the shared component styles, so current and new articles inherit the same spacing automatically. The owner increased block/section/shell spacing on 14.10.2026: block `32px`, section `40px` desktop / `32px` mobile, shell `56px` desktop / `40px` mobile. Paragraph spacing stays `16px`.
 
 - Compose the lead, optional note, and main `section[aria-labelledby]` elements as direct children of `ArticleLayout`'s default slot. Each main section starts with its H2; put subsections and shared components inside it.
 - Keep chapter spacing on top-level sections only. Nested checklists and FAQ internals retain their own component spacing.
@@ -108,6 +108,22 @@ Use authoritative source links where the topic depends on external product behav
 - Product and consultation CTAs are contextual and working.
 - Published card appears in the blog registry; related cards have stable root-level links.
 - Sitemap includes only real public pages.
-- Spacing follows the shared compact rhythm; adjacent-element checks from the spacing section pass at mobile, tablet and desktop widths.
+- The category and H1 are centered at widths up to 768px; above 768px the category stays left aligned and both hero columns start on the same top line. Test the semantic `.meta` element, not a generated CSS Modules hash.
+- Spacing follows the updated shared rhythm; adjacent-element checks from the spacing section pass at mobile, tablet and desktop widths.
 - Production build succeeds.
 - Desktop and mobile visual review covers the hero, both images, table, FAQ, CTAs, related carousel, and overflow/focus behavior.
+
+## Воронка статей AI/MCP к нашему приложению
+
+Правило владельца от 23.10.2026: статьи о подключении ИИ к Битрикс24 ведут
+к разрабатываемому MCP TrueTell. Основной сценарий, изображения и CTA относятся
+к нашему продукту; официальная документация остаётся источником фактов в
+закрытом ArticleSources. Не подменять путь к TrueTell полной инструкцией чужой
+интеграции. До реальной страницы продукта CTA «Обсудить MCP TrueTell» ведёт
+к нашей форме через `mcpProduct` в `src/config/products.ts`. Не выдумывать
+endpoint, Market URL, установку или поддержку клиента. До его приёмки честно
+описывать подготовку, а не обещать рабочую пошаговую установку. Приёмка Codex
+не подтверждает ChatGPT/Claude. Подробности: `docs/seo/product-content-funnel.md`.
+Для Claude следующая статья требует самостоятельной пользы и проверенной
+связки, а не дублирования материала ожидания ChatGPT. Пустую страницу продукта
+ради перехода не создавать.

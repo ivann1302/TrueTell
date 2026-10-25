@@ -1,0 +1,784 @@
+{
+  "date": "2026-10-15",
+  "task": "SEO-034 UPDATE",
+  "status": "live_verified",
+  "url": "https://truetell-retail.ru/bitrix24-product-rating/",
+  "releaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792083268-67",
+  "baseReleaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792081782-field-directory",
+  "scope": "Existing product URL updated; 1 HTML and 22 assets. No new article or canonical URL.",
+  "changes": [
+    "Goods and customer ranking explicit in H1/title",
+    "Three real product workflows",
+    "Four fresh screenshots with synthetic-data labels and full-size links",
+    "Ten FAQ consistent with JSON-LD",
+    "RC status and individual connection conditions below hero",
+    "Existing legal documents linked",
+    "Concurrent shortened feature descriptions preserved"
+  ],
+  "appVerification": {
+    "date": "2026-10-15",
+    "productSource": "/Users/ivan/projects/bitrix_product_rating",
+    "sourceVersion": "1.0.0-rc.1",
+    "productionFiles": "app-public-files.json: five public files match the latest published header-alignment build",
+    "unitTests": {
+      "passed": 424,
+      "scope": "Fresh run in isolated source copy; existing test suite, no source changes"
+    },
+    "browserScope": "Actual ReportWorkspace and real Worker in existing QA entry, supplied existing six-deal synthetic salesAnalysisDataset; no CRM, tokens or customer data",
+    "checks": [
+      {
+        "feature": "Ranking, ABC and comparison columns",
+        "result": "PASS",
+        "example": "January2026: product sum14500 RUB; product Насос4500; prior-year total4500, total change+222.2%"
+      },
+      {
+        "feature": "Report totals before search",
+        "result": "PASS",
+        "example": "4 deals,3 with products,1 without products; complete deal total15000 RUB and product total14500 RUB. Searching Насос leaves totals unchanged."
+      },
+      {
+        "feature": "Product to buyers",
+        "result": "PASS",
+        "example": "Насос: Альфа3500, Контакт Один1000; total4500."
+      },
+      {
+        "feature": "Product contribution in deals",
+        "result": "PASS",
+        "example": "Альфа/Насос: deal101 product2000 vs full deal10000; deal103 product1500 vs full deal1500."
+      },
+      {
+        "feature": "Client to products",
+        "result": "PASS",
+        "example": "Альфа: Фильтр8000 + Насос3500 =11500 in January."
+      },
+      {
+        "feature": "Customer history",
+        "result": "PASS",
+        "example": "Альфа4 purchases, last05.02.2026,54days on31.03.2026; main ranking stillJanuary. More than60days returns Контакт Один70 and Бета63."
+      },
+      {
+        "feature": "Comparison choices",
+        "result": "PASS",
+        "example": "Comparison dialog shows prior-year January2025 for currentJanuary2026. Other modes and quarters confirmed by source/unit tests, not exercised in this UI run."
+      },
+      {
+        "feature": "Fresh Excel browser download",
+        "result": "NOT_CONFIRMED",
+        "example": "Click completed; main-tab download event timed out. Export uses a new tab. No claim of fresh Excel download success. Existing published live file acceptance is documented on14.10; current source tests pass."
+      },
+      {
+        "feature": "CRM card navigation and rights",
+        "result": "NOT_RETESTED_LIVE",
+        "example": "Source and prior acceptance only; local QA does not have a portal connection."
+      }
+    ],
+    "boundaries": [
+      "No CRM writes",
+      "No roles, subscriptions or app hosting changed",
+      "No stable-release declaration",
+      "Original app source left unchanged"
+    ]
+  },
+  "appPublicFiles": {
+    "version": "1.0.0-rc.1",
+    "files": [
+      {
+        "file": "assets/index-Bu0TzgLB.css",
+        "http": 200,
+        "sha256": "70f51f674e97bfe83ac66d8d5086c900f06272da47c6780ee158c730064d2f7e",
+        "matchesPublishedBuild": true
+      },
+      {
+        "file": "assets/index-DMkffkAB.js",
+        "http": 200,
+        "sha256": "1b9f7e8444e0e7d7e8328a49ebde7baa9bf81992e92cf77c25d0e0aa9c143a7c",
+        "matchesPublishedBuild": true
+      },
+      {
+        "file": "assets/Manrope-DIRNzeTG.ttf",
+        "http": 200,
+        "sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
+        "matchesPublishedBuild": true
+      },
+      {
+        "file": "assets/report.worker-CLd_5EVn.js",
+        "http": 200,
+        "sha256": "44def09cd6522d52a3b1199db5413838c4fbe3c1c1e749768df251d4b5fb1144",
+        "matchesPublishedBuild": true
+      },
+      {
+        "file": "index.html",
+        "http": 200,
+        "sha256": "9ed3352dd05a1dfee929939f9298a8759ce1c6325396ac7ceaf4bf4d0f8c2282",
+        "matchesPublishedBuild": true
+      }
+    ],
+    "sdkOrLivePortalTested": false
+  },
+  "screenshotProvenance": {
+    "entry": "Existing QA harness, ReportWorkspace and real Worker",
+    "data": "Existing synthetic six-deal salesAnalysisDataset; no customer data",
+    "capture": "Native browser screenshots; secondary dialogs clipped to actual DOM bounding rectangles",
+    "aiGenerated": false,
+    "files": [
+      "rating-products.png",
+      "rating-product-buyers.png",
+      "rating-deal-contribution.png",
+      "rating-customer-history.png"
+    ]
+  },
+  "quality": {
+    "siteBuild": "PASS",
+    "siteTests": {
+      "pass": 77,
+      "fail": 0
+    },
+    "lint": {
+      "errors": 0,
+      "preExistingWarnings": 3
+    },
+    "localUrlCheck": 57,
+    "productionUrlCount": 58,
+    "localCountDifference": "Parallel field-directory page published after isolated source snapshot; intentionally preserved, not overlaid.",
+    "responsive": {
+      "width390": {
+        "width": 390,
+        "scrollWidth": 390,
+        "heroHeight": 844,
+        "h1Align": "center"
+      },
+      "otherWidths": [
+        {
+          "h1Align": "center",
+          "images": [
+            {
+              "loaded": true,
+              "width": 734
+            },
+            {
+              "loaded": true,
+              "width": 734
+            },
+            {
+              "loaded": true,
+              "width": 734
+            },
+            {
+              "loaded": true,
+              "width": 734
+            }
+          ],
+          "scrollWidth": 768,
+          "width": 768
+        },
+        {
+          "h1Align": "center",
+          "images": [
+            {
+              "loaded": true,
+              "width": 390.578125
+            },
+            {
+              "loaded": true,
+              "width": 390.578125
+            },
+            {
+              "loaded": true,
+              "width": 390.578125
+            },
+            {
+              "loaded": true,
+              "width": 390.578125
+            }
+          ],
+          "scrollWidth": 769,
+          "width": 769
+        },
+        {
+          "h1Align": "center",
+          "images": [
+            {
+              "loaded": true,
+              "width": 684
+            },
+            {
+              "loaded": true,
+              "width": 684
+            },
+            {
+              "loaded": true,
+              "width": 684
+            },
+            {
+              "loaded": true,
+              "width": 684
+            }
+          ],
+          "scrollWidth": 1440,
+          "width": 1440
+        }
+      ],
+      "contactDialogOpenClose": true,
+      "faqMouseAndKeyboard": true
+    },
+    "liveBrowser": {
+      "desktopWidth": 1280,
+      "mobileWidth": 390,
+      "mobileHeroHeight": 844,
+      "mobileHorizontalOverflow": false,
+      "figures": 4,
+      "faq": 10,
+      "allImagesLoaded": true,
+      "contactDialogOpenClose": true,
+      "formSubmitted": false
+    },
+    "screenshots": [
+      "live-desktop.png",
+      "live-mobile.png"
+    ]
+  },
+  "independentReview": {
+    "agent": "/root/review_rating_page_067",
+    "status": "LIVE_VERIFIED APPROVE",
+    "checks": [
+      "Read-only comparison of permitted app sources/export acceptance",
+      "Copy, screenshots, numbers, alt and readiness",
+      "Metadata and FAQ visible/schema equivalence",
+      "Saved desktop/mobile browser evidence",
+      "All payload/tar hashes",
+      "Independent fresh HTTP of page/four PNG/sitemap"
+    ],
+    "openSignificantFindings": 0,
+    "limits": "Reviewer did not run app or own CUA session; inspected primary browser evidence."
+  },
+  "publication": {
+    "releaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792083268-67",
+    "verifiedAt": "2026-10-15T16:56:15Z",
+    "sitemapUrls": 58,
+    "sitemapPreserved": true,
+    "newArticles": 0,
+    "updatedProductPages": 1,
+    "htmlPagesVerified": 58,
+    "assetFilesVerified": 22,
+    "allHashesMatch": true,
+    "unaffectedLivePagesPreserved": 57,
+    "files": [
+      {
+        "path": "_astro/Manrope-VariableFont_wght.B5-idWc8.woff2",
+        "http": 200,
+        "sha256": "3e16073fb7ba266736bdeda86a02f65bf3a12884aa81904f14a967de94058c41",
+        "bytes": 42032
+      },
+      {
+        "path": "_astro/contact-request.astro_astro_type_script_index_0_lang.DqtxP574.js",
+        "http": 200,
+        "sha256": "f9bb70d8026782bb290c0a32edfe90c98b647bd64b2ab8edab4d2f6f2f5d38dc",
+        "bytes": 9764
+      },
+      {
+        "path": "_astro/logo.BECii3z1.svg",
+        "http": 200,
+        "sha256": "65abc1230820688ac45baa707414c27c2be8f34e168f402d41a24a70bc5842d2",
+        "bytes": 3724
+      },
+      {
+        "path": "_astro/privacy-controls.astro_astro_type_script_index_0_lang.BLu9MYJB.js",
+        "http": 200,
+        "sha256": "def3103aba12001c86168ad6bf112a22c5d140fcb35a7914413b37d6663465c0",
+        "bytes": 4570
+      },
+      {
+        "path": "_astro/rating-customer-history-2026-10.qNhKXgau.png",
+        "http": 200,
+        "sha256": "07d59d3e8971b6c2826e1992686858c50a9d460a470ffb44aa0d3f1998c74367",
+        "bytes": 30472
+      },
+      {
+        "path": "_astro/rating-customer-history-2026-10.qNhKXgau_1WMKze.webp",
+        "http": 200,
+        "sha256": "3c58ff536063316e874c65ae72a22f501e7104fc2696f1ce1646b181b8faec56",
+        "bytes": 12868
+      },
+      {
+        "path": "_astro/rating-customer-history-2026-10.qNhKXgau_Z26W3pq.webp",
+        "http": 200,
+        "sha256": "749c859a04603d6a25b791985810192c22ddfa15160db0aeec0033fc2dcaca16",
+        "bytes": 5710
+      },
+      {
+        "path": "_astro/rating-customer-history-2026-10.qNhKXgau_ZD39eX.webp",
+        "http": 200,
+        "sha256": "f6e4227ba988452e4135117d827d53c472ea9d51eb9d6e50efdc4b75547f88bf",
+        "bytes": 16816
+      },
+      {
+        "path": "_astro/rating-deal-contribution-2026-10.BZBN0C5l.png",
+        "http": 200,
+        "sha256": "4bc9dcc2643f49576d0fa2c39751cbf54506c27645639ff2255b8bbc48ab855a",
+        "bytes": 27855
+      },
+      {
+        "path": "_astro/rating-deal-contribution-2026-10.BZBN0C5l_1WpBHv.webp",
+        "http": 200,
+        "sha256": "e626b3c2904c1ed9c37b1bcf0473ac02a8010709c2fae0933ed220a9a0b086a1",
+        "bytes": 15332
+      },
+      {
+        "path": "_astro/rating-deal-contribution-2026-10.BZBN0C5l_Z1wve9f.webp",
+        "http": 200,
+        "sha256": "c5f6576a5ddb8b006fcc98b829d95afaf8922cfff06bee952d2faf09ef0e71ee",
+        "bytes": 5240
+      },
+      {
+        "path": "_astro/rating-deal-contribution-2026-10.BZBN0C5l_Z2pSlWy.webp",
+        "http": 200,
+        "sha256": "73d33c20803924f826126cbe02bcf631f7883ae99428f59d09897ea31e96dedf",
+        "bytes": 11820
+      },
+      {
+        "path": "_astro/rating-product-buyers-2026-10.Bf67IOPU.png",
+        "http": 200,
+        "sha256": "3aeafec5324d83558854de6805986ff480fa7c89ccf3177e241d7550e8c84283",
+        "bytes": 27015
+      },
+      {
+        "path": "_astro/rating-product-buyers-2026-10.Bf67IOPU_2djcE6.webp",
+        "http": 200,
+        "sha256": "e464c22fde1bc63f649b9a121ac934128527e9d383dfaba539f14599d22b8711",
+        "bytes": 14436
+      },
+      {
+        "path": "_astro/rating-product-buyers-2026-10.Bf67IOPU_Z1aQ3g7.webp",
+        "http": 200,
+        "sha256": "b8b14647fcd365267e494d2877f5785da83b29c86c204e07061ede47daba7ea5",
+        "bytes": 10570
+      },
+      {
+        "path": "_astro/rating-product-buyers-2026-10.Bf67IOPU_Z2rL9z5.webp",
+        "http": 200,
+        "sha256": "75652ba516fa0a0e407d283e7c8587fb9128156359f122f2dd75267550cfca37",
+        "bytes": 5004
+      },
+      {
+        "path": "_astro/rating-products-2026-10.Dok6RcAr.png",
+        "http": 200,
+        "sha256": "f2cc297926701f8e857693f6d436e14accea7b87f2d88391a1f67ba89754921f",
+        "bytes": 77303
+      },
+      {
+        "path": "_astro/rating-products-2026-10.Dok6RcAr_1oK9Y4.webp",
+        "http": 200,
+        "sha256": "472e73163d66958166434cf888fc147f9516114e1f56e2b5a1859e2c8bc803f9",
+        "bytes": 16222
+      },
+      {
+        "path": "_astro/rating-products-2026-10.Dok6RcAr_LrY6P.webp",
+        "http": 200,
+        "sha256": "1b7b5e592689cda31d89e8e02fbe46efa07b3160c05b51e52a8acdaef0f7a2aa",
+        "bytes": 6802
+      },
+      {
+        "path": "_astro/rating-products-2026-10.Dok6RcAr_TpAyA.webp",
+        "http": 200,
+        "sha256": "94017d6d23bddbe4e5abf229c47ec02352df78f861b06073715646799465fff1",
+        "bytes": 32352
+      },
+      {
+        "path": "_astro/rating-products-2026-10.Dok6RcAr_Z1jLfCK.webp",
+        "http": 200,
+        "sha256": "ad0feb07e9552dce78b4f7d78d51d6793ec00f4ee0c934d6d395a1fd7531992f",
+        "bytes": 41896
+      },
+      {
+        "path": "_astro/short-white-logo.C5gaHnd_.svg",
+        "http": 200,
+        "sha256": "80f22ab26ac4de1dd80bc2d725f4c761ebe210a879055b46e8a5e6d8f905d6c8",
+        "bytes": 483
+      },
+      {
+        "path": "analytics-consent/index.html",
+        "http": 200,
+        "sha256": "1ca5d66e08c8ed02ed503c001b0ce3e01772c65f749aa34e690527e8d0291b91",
+        "bytes": 40503
+      },
+      {
+        "path": "audit-poley-crm-bitrix24/index.html",
+        "http": 200,
+        "sha256": "25d8c3915720e2e79c76229e84b26de69d546803cf4175a052cebb2a2ca0ce09",
+        "bytes": 114044
+      },
+      {
+        "path": "backup-moysklad/index.html",
+        "http": 200,
+        "sha256": "040699309e44e6b8f4354774f2ed758c476814b7774bab94ac2e081870241eca",
+        "bytes": 47464
+      },
+      {
+        "path": "bi-analitika-bitrix24-pervyy-otchet/index.html",
+        "http": 200,
+        "sha256": "95e5937c7976464034f8774fdc090814db1860d1d2323fce4a7089e0c491ec0a",
+        "bytes": 118339
+      },
+      {
+        "path": "bi-analitika-chto-eto-prostymi-slovami/index.html",
+        "http": 200,
+        "sha256": "a9caaa2e18b3bbbafa621e7f3d4687c59ac9b725775017082da251f5fa96f137",
+        "bytes": 119409
+      },
+      {
+        "path": "bi-analitika/index.html",
+        "http": 200,
+        "sha256": "bfaee0e7cd8c2bd5603f72ff58f82f2bcaa3123474d96484bab65c727cf29b87",
+        "bytes": 93904
+      },
+      {
+        "path": "bitrix24-cleaner-license/index.html",
+        "http": 200,
+        "sha256": "c43193ae656a8c3d02cf185b04eb589924e2d3298b023b4630efceccafad3fa7",
+        "bytes": 52341
+      },
+      {
+        "path": "bitrix24-cleaner-privacy/index.html",
+        "http": 200,
+        "sha256": "4d47c160d8405a453b068fe97abcb75a729ac98399b509a92362d567263b49d2",
+        "bytes": 52598
+      },
+      {
+        "path": "bitrix24-cleaner/index.html",
+        "http": 200,
+        "sha256": "ef6b046deb617943d76b3213ffe3350c2d846de7b552947d18483e6f4b421f10",
+        "bytes": 95629
+      },
+      {
+        "path": "bitrix24-field-directory/index.html",
+        "http": 200,
+        "sha256": "75ac5988dd31df90cd8315c3b63fc58b8ac8fb048c812931249cc57bb2c36a8b",
+        "bytes": 89834
+      },
+      {
+        "path": "bitrix24-moysklad-integraciya/index.html",
+        "http": 200,
+        "sha256": "20fff69d441ef245a6022f813390071116f2a391e77527b99916d25405808734",
+        "bytes": 118652
+      },
+      {
+        "path": "bitrix24-product-rating/index.html",
+        "http": 200,
+        "sha256": "4d6885b11e0f2cab35560110861e0aa87a00e437733d1bf5e6ff03c70985bf92",
+        "bytes": 97115
+      },
+      {
+        "path": "bitrix24-udalenie-lidov-za-period/index.html",
+        "http": 200,
+        "sha256": "0e8b055be1e56fbe66084eaf91067043bc23659a51356ed94766414f3de1f84b",
+        "bytes": 124680
+      },
+      {
+        "path": "blog/index.html",
+        "http": 200,
+        "sha256": "9fe7f4b4eddac83956be4d9e3f213a34518801e5323de4f02ca61f2951d083fc",
+        "bytes": 50340
+      },
+      {
+        "path": "chastichnaya-oplata-bitrix24/index.html",
+        "http": 200,
+        "sha256": "9c417258413e5dbb2270496b64d3f42ead02cf16bc33d4c7d15f57f0f4283be6",
+        "bytes": 117249
+      },
+      {
+        "path": "cookies/index.html",
+        "http": 200,
+        "sha256": "f8a0b77e1b8e6d6e48fc8c16e55945def5e4db7c18e697874228ed8cbf31e11f",
+        "bytes": 40589
+      },
+      {
+        "path": "dashbord-rukovoditelya-bitrix24/index.html",
+        "http": 200,
+        "sha256": "f79e4fd5c8ba3399b71a530afd606b8913dd701591eecdac2e2fc3679ed5d435",
+        "bytes": 121631
+      },
+      {
+        "path": "debitorskaya-zadolzhennost-bitrix24/index.html",
+        "http": 200,
+        "sha256": "4b9939f13ff4e151495b7432f57abe847d5c714d6636eff442392279730fda61",
+        "bytes": 116171
+      },
+      {
+        "path": "eksport-lidov-sdelok-bitrix24-pered-udaleniem/index.html",
+        "http": 200,
+        "sha256": "93d5edf39372647873f2b9bfcb132d51fda2ec6f6652207c09ea88e6d13962b4",
+        "bytes": 117680
+      },
+      {
+        "path": "grafik-platezhey-bitrix24/index.html",
+        "http": 200,
+        "sha256": "4960186c57921dbbcdf54dd502f576c6896f140b4f98e17981d677fa5bce0685",
+        "bytes": 115169
+      },
+      {
+        "path": "index.html",
+        "http": 200,
+        "sha256": "0d7a7f9c6cefb7a58b1cebfb8d906b92ece12264b2c6666237276dbf63225e65",
+        "bytes": 112311
+      },
+      {
+        "path": "kak-snyat-rezervy-moysklad/index.html",
+        "http": 200,
+        "sha256": "13d0e8219635f847df2768c2c8ce93fcd43ab14af3aec2643867a119bb5504ed",
+        "bytes": 109903
+      },
+      {
+        "path": "kak-vosstanovit-udalennye-zakazy-tovary-moysklad/index.html",
+        "http": 200,
+        "sha256": "0c0530e8ea2d641e7058238d7f68a5c59ed95e2b8e5da9aef30d59298e6cf046",
+        "bytes": 124009
+      },
+      {
+        "path": "karta-sootvetstviya-poley-bitrix24/index.html",
+        "http": 200,
+        "sha256": "0cd2e9faf838d46874ddae7a088f2c1b9b141aacabadd46ee9080f0805c2f063",
+        "bytes": 110777
+      },
+      {
+        "path": "knowledge-base/index.html",
+        "http": 200,
+        "sha256": "1ffd00db3267ee29102753ddf2812c72234ac12aed75df60a902695c4bab2c38",
+        "bytes": 60134
+      },
+      {
+        "path": "kod-polya-bitrix24/index.html",
+        "http": 200,
+        "sha256": "f345bf4a941f7388874a32915f97c1a48eb81abacc82b5ba8c948d4db050c060",
+        "bytes": 115407
+      },
+      {
+        "path": "massovoe-udalenie-lidov-bitrix24/index.html",
+        "http": 200,
+        "sha256": "27a7ce289156eba45970e765588f26a380d6383335017f3689170792c9bd02ef",
+        "bytes": 117493
+      },
+      {
+        "path": "massovoe-udalenie-sdelok-bitrix24/index.html",
+        "http": 200,
+        "sha256": "6cdec6f1370adf35d9f0b31066717f26b22f49f284cddabfd22d311098b77685",
+        "bytes": 113499
+      },
+      {
+        "path": "moysklad-arhivirovanie/index.html",
+        "http": 200,
+        "sha256": "cd931a3a6007c6b37f5be7274ea4e39831780f582ec6705d9147db9df80ce8ce",
+        "bytes": 84780
+      },
+      {
+        "path": "moysklad-dlya-marketpleysov/index.html",
+        "http": 200,
+        "sha256": "4e307b6d21b55618cf8c9c0a0ce0c579dac3fbe2615d39129c6f13a6fe7f6495",
+        "bytes": 115103
+      },
+      {
+        "path": "moysklad-import/index.html",
+        "http": 200,
+        "sha256": "dd1db83a4f09647d968c7178b0206946f0f6d3f8e189aa7992d79d3cf74af42a",
+        "bytes": 89701
+      },
+      {
+        "path": "moysklad-izmenenie-cen/index.html",
+        "http": 200,
+        "sha256": "22af238094dfc170393307e8f33461312c4030272cfab991a1a1b885daf60992",
+        "bytes": 86044
+      },
+      {
+        "path": "moysklad-izmenenie-dokumentov/index.html",
+        "http": 200,
+        "sha256": "542cee95ba2f1e72ec099d87bf4bc9d7b9687e8b57ef165b82a0209f8c35ae1c",
+        "bytes": 85406
+      },
+      {
+        "path": "moysklad-izmenenie-tovarov/index.html",
+        "http": 200,
+        "sha256": "7863765efdc29fa894cf0c3b0a7ebee619634cb853c2a0168b1622206c2d9b4f",
+        "bytes": 85122
+      },
+      {
+        "path": "moysklad-mass-operations/index.html",
+        "http": 200,
+        "sha256": "fd6e55468782e80f7675041bb1e21b62af48d70e54800b9f4fe42011a50f79ad",
+        "bytes": 102940
+      },
+      {
+        "path": "moysklad-udalenie/index.html",
+        "http": 200,
+        "sha256": "5c4414c5d63d1f6f6130c24f364cc4571ab1a98e38449cc47040e0535517b4f6",
+        "bytes": 87245
+      },
+      {
+        "path": "nazvanie-polya-uf-crm-bitrix24/index.html",
+        "http": 200,
+        "sha256": "40e1f07644d3306928a403b3a05a6061d1f9f35bdcac698bdbb1223ff8bba77a",
+        "bytes": 107263
+      },
+      {
+        "path": "ne-udalyaetsya-lid-bitrix24/index.html",
+        "http": 200,
+        "sha256": "63a39495b829f219a97d4f01c81006754299d0e9fbc7e431341d16b5e8197341",
+        "bytes": 115928
+      },
+      {
+        "path": "ochistka-crm-bitrix24/index.html",
+        "http": 200,
+        "sha256": "043bcd8584949d71fbb4c1b98111b13dcdf5aa4c9a7a0e808c552c6d4edd9eda",
+        "bytes": 115960
+      },
+      {
+        "path": "ostatki-moysklad/index.html",
+        "http": 200,
+        "sha256": "9ba35942f804d0075f4b4869597f46908fd250e3750ad3be8846fe3257b769d7",
+        "bytes": 122684
+      },
+      {
+        "path": "otchety-moysklad/index.html",
+        "http": 200,
+        "sha256": "b9382f0f6e1b8feccd6927d19cae2ed84a6a9e1b004423932176d83828c22017",
+        "bytes": 112530
+      },
+      {
+        "path": "otchety-po-prodazham-bitrix24/index.html",
+        "http": 200,
+        "sha256": "49ae00af0cca1df8bae1307129806679e798a4778f4f3afff43a9ea9f3913c3c",
+        "bytes": 114753
+      },
+      {
+        "path": "platezhnyy-kalendar-bitrix24/index.html",
+        "http": 200,
+        "sha256": "7eb1b60fa75ccaf6c6b627cd82328eae5b3308dfcde3527ff510a27c1f2717e8",
+        "bytes": 114166
+      },
+      {
+        "path": "pribyl-marketpleysov-moysklad/index.html",
+        "http": 200,
+        "sha256": "829b3348c6a6a4a40320bd1600d8b86e3e416ab3b15de12683e17fda1fd1d036",
+        "bytes": 111608
+      },
+      {
+        "path": "privacy/index.html",
+        "http": 200,
+        "sha256": "7bdcb4fe12aeece09216d82986e48ab691fe97aa79c6d4ce8d4dde51780fa528",
+        "bytes": 41094
+      },
+      {
+        "path": "products/index.html",
+        "http": 200,
+        "sha256": "d0381965a6693ba6552c67320577c40d74bd2a7686694dd1ba22d887d6f3604d",
+        "bytes": 45792
+      },
+      {
+        "path": "prognoz-prodazh-moysklad/index.html",
+        "http": 200,
+        "sha256": "276ea96997da31f29794b98239babeb3fa78b0f36ff2d14294e95fcbde29f83f",
+        "bytes": 106602
+      },
+      {
+        "path": "request-consent/index.html",
+        "http": 200,
+        "sha256": "0bc23b491a4eeb0ffc1ac6af1c618f63e612223bf9e009942e30fcb8310e063f",
+        "bytes": 40908
+      },
+      {
+        "path": "skvoznaya-analitika-bitrix24/index.html",
+        "http": 200,
+        "sha256": "692ba69bb1aab351fff53e096fe4a67b1228021fb379c4ce1ef67f6f87eb699d",
+        "bytes": 119651
+      },
+      {
+        "path": "spisok-poley-bitrix24/index.html",
+        "http": 200,
+        "sha256": "7f319bb9437f0fe339a9b15831abc62e51b559b96bae94cf40bf9cb876706295",
+        "bytes": 110651
+      },
+      {
+        "path": "tipy-poley-crm-bitrix24/index.html",
+        "http": 200,
+        "sha256": "1fb9772d55dc16f4e405bc66ca3a288d2a5f80cdaff8777f959c6977b2e39126",
+        "bytes": 108873
+      },
+      {
+        "path": "udalenie-kompaniy-bitrix24/index.html",
+        "http": 200,
+        "sha256": "1b6a51069aa906ab48dfdb1f4b9b315d88879a6ca774727f9e3da77c15a09910",
+        "bytes": 112736
+      },
+      {
+        "path": "udalenie-kontaktov-bitrix24/index.html",
+        "http": 200,
+        "sha256": "18363f33722f6e5584f603260e9a6973401dc5a77125a8a943259264c05a242a",
+        "bytes": 115902
+      },
+      {
+        "path": "udalenie-proigrannyh-sdelok-bitrix24/index.html",
+        "http": 200,
+        "sha256": "47f6aea251233e03896e07354b8bd2656270aef247d8964fc4d8bff11a0b9803",
+        "bytes": 121936
+      },
+      {
+        "path": "udalennye-lidy-bitrix24/index.html",
+        "http": 200,
+        "sha256": "0daac39f621b82bf2e3c137dd85665ae59c376695530f8afb684be04f743978c",
+        "bytes": 122922
+      },
+      {
+        "path": "uf-crm-ufcrm-bitrix24-api/index.html",
+        "http": 200,
+        "sha256": "2b7c1cbd73ba4045b8b6687d318fd63148ca52cf5d6d5f4aad368f28d83ec116",
+        "bytes": 104587
+      },
+      {
+        "path": "upravlenie-rezervami-moysklad/index.html",
+        "http": 200,
+        "sha256": "f8ecf39948c9e1263087d2f2124bce35b372e747b69934b8969abced09aea987",
+        "bytes": 47390
+      },
+      {
+        "path": "voronka-prodazh-bitrix24/index.html",
+        "http": 200,
+        "sha256": "8703321739bbbdcf4382431d9cfb281cfd41579a763493d6e74399c43e010cec",
+        "bytes": 113120
+      }
+    ]
+  },
+  "legalLinks": [
+    {
+      "url": "https://truetell-retail.ru/bitrix24-product-rating-license/",
+      "http": 200,
+      "noindex": true,
+      "sha256": "cb6000fb309b6fa4878c1464e075af3a15e55bad88a7f60c4010b8cb6f248d7c"
+    },
+    {
+      "url": "https://truetell-retail.ru/bitrix24-product-rating-privacy/",
+      "http": 200,
+      "noindex": true,
+      "sha256": "bf89cc9c2a3f5b8e5f1aa9bf0b0ed04b336562c4dbb324e1ac1ae637723b87fa"
+    }
+  ],
+  "sourceFiles": {
+    "src/pages/bitrix24-product-rating/index.astro": "0cfac369691e70a1cd598bad42728c826624330deac304e1a64af700e85a0200",
+    "src/pages/bitrix24-product-rating/page.module.scss": "0a9dc36cb526ba99c376c6ada80c98432e64ac4875d66f1a65822f82569a0674",
+    "src/images/products/product-rating/rating-products-2026-10.png": "f2cc297926701f8e857693f6d436e14accea7b87f2d88391a1f67ba89754921f",
+    "src/images/products/product-rating/rating-product-buyers-2026-10.png": "3aeafec5324d83558854de6805986ff480fa7c89ccf3177e241d7550e8c84283",
+    "src/images/products/product-rating/rating-deal-contribution-2026-10.png": "4bc9dcc2643f49576d0fa2c39751cbf54506c27645639ff2255b8bbc48ab855a",
+    "src/images/products/product-rating/rating-customer-history-2026-10.png": "07d59d3e8971b6c2826e1992686858c50a9d460a470ffb44aa0d3f1998c74367"
+  },
+  "preservation": {
+    "unaffectedHtml": 57,
+    "sitemapByteIdentical": true,
+    "backendAndRoutingByteIdentical": true,
+    "parallelFieldDirectoryPreserved": true,
+    "appSourceUnchanged": true,
+    "indexNowOrGscSubmission": false
+  },
+  "limits": [
+    "Fresh Excel download not confirmed by browser event; prior 14.10 live file acceptance retained.",
+    "CRM rights/navigation not freshly accepted in a live customer portal.",
+    "Product remains1.0.0-rc.1; no stable release or Marketplace self-install claim.",
+    "Search indexing/rankings not measured."
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "release": "065",
+  "date": "2026-10-15",
+  "task": "SEO-008",
+  "action": "CREATE and publish",
+  "status": "live_verified",
+  "article": "https://truetell-retail.ru/massovoe-udalenie-sdelok-bitrix24/",
+  "intent": "Удаление выбранных сделок или всех страниц текущей выборки; проверка воронок, прав, экспорта и результата по ID. Решения о сохранении отказов оставлены специализированной статье.",
+  "liveReleaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792068050-65",
+  "baseReleaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792066991-65",
+  "scope": {
+    "newArticles": 1,
+    "contextualIncomingArticles": 3,
+    "catalogOrProductCards": 2,
+    "htmlChanged": 6,
+    "sitemapUrls": 56,
+    "publishedArticles": 34,
+    "knowledgeArticles": 26,
+    "blogArticles": 8,
+    "drafts": 0,
+    "sourceFilesApplied": 7,
+    "assets": 49,
+    "unaffectedPublicHtmlBytesPreserved": 50,
+    "backendAndRoutingPreserved": true,
+    "parallelRatingLegalDocumentsPreserved": true
+  },
+  "verification": {
+    "build": "PASS: 60 routes, 56 canonical sitemap URLs",
+    "tests": "77/77 PASS",
+    "lint": "0 errors; 3 pre-existing React hook warnings",
+    "seoCheck": "PASS: 56 URLs; no IndexNow submission",
+    "content": {
+      "passed": true,
+      "faqEntries": 6,
+      "faqVisibleMatchesSchema": true,
+      "distinctFigures": 3,
+      "fullSizeLinks": 3,
+      "internalLinksChecked": 24,
+      "incomingPages": 5,
+      "canonical": "https://truetell-retail.ru/massovoe-udalenie-sdelok-bitrix24/",
+      "visibleBreadcrumbs": false,
+      "scope": "Published static payload; no installation or CRM deletion performed"
+    },
+    "responsive": [
+      {
+        "columnTopDelta": 287.7109375,
+        "figures": 3,
+        "h1Align": "center",
+        "heroColor": "rgb(16, 22, 33)",
+        "heroHeight": 900,
+        "metaAlign": "center",
+        "overflow": 0,
+        "sourcesClosed": true,
+        "width": 390
+      },
+      {
+        "columnTopDelta": 230.3515625,
+        "figures": 3,
+        "h1Align": "center",
+        "heroColor": "rgb(16, 22, 33)",
+        "heroHeight": 900,
+        "metaAlign": "center",
+        "overflow": 0,
+        "sourcesClosed": true,
+        "width": 768
+      },
+      {
+        "columnTopDelta": 0,
+        "figures": 3,
+        "h1Align": "left",
+        "heroColor": "rgb(16, 22, 33)",
+        "heroHeight": 900,
+        "metaAlign": "left",
+        "overflow": 0,
+        "sourcesClosed": true,
+        "width": 769
+      },
+      {
+        "columnTopDelta": 0,
+        "figures": 3,
+        "h1Align": "left",
+        "heroColor": "rgb(16, 22, 33)",
+        "heroHeight": 900,
+        "metaAlign": "left",
+        "overflow": 0,
+        "sourcesClosed": true,
+        "width": 1440
+      }
+    ],
+    "browserInteractions": {
+      "sourcesInitiallyClosed": true,
+      "keyboardSourcesToggle": true,
+      "keyboardFaqToggle": true,
+      "visibleFocus": true,
+      "consultationDialogOpenClose": true,
+      "formsSubmitted": false,
+      "allThreeImagesLoaded": true,
+      "viewportOverrideReset": true
+    },
+    "live": {
+      "releaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792068050-65",
+      "verifiedAt": "2026-10-15T12:43:20Z",
+      "sitemapUrls": 56,
+      "newArticles": 1,
+      "htmlPagesVerified": 56,
+      "assetFilesVerified": 49,
+      "allHashesMatch": true,
+      "unaffectedLivePagesPreserved": 50
+    }
+  },
+  "independentReview": {
+    "agent": "/root/review_mass_deals_065",
+    "result": "APPROVE / LIVE_VERIFIED",
+    "openP1P2": 0,
+    "correction": "Уточнён ручной выбор строк без «Для всех», чтобы не обещать штатный фильтр по произвольному списку ID.",
+    "checked": "Официальные первоисточники, текущие README/STATUS/код Cleaner, исходник, реестр, входящие абзацы, изображения, архив, live HTTP и SHA256, sitemap и сохранение параллельных юридических документов.",
+    "limits": "Responsive evidence проверен по записи основного агента; отдельная UI-сессия ревьюера и живое удаление через SDK не выполнялись."
+  },
+  "sourcesCheckedOn": "2026-10-15",
+  "sources": [
+    "https://helpdesk.bitrix24.ru/open/23238660/",
+    "https://helpdesk.bitrix24.ru/open/21064250/",
+    "https://helpdesk.bitrix24.ru/open/24206616/",
+    "https://helpdesk.bitrix24.ru/open/23240636/",
+    "https://helpdesk.bitrix24.ru/open/20966844/",
+    "https://helpdesk.bitrix24.ru/open/24668648/"
+  ],
+  "images": [
+    {
+      "source": "src/images/articles/bitrix24-multiple-delete-official.jpg",
+      "kind": "Официальный скриншот списка сделок Поддержки24; пример не предлагает удалять действующие сделки."
+    },
+    {
+      "source": "src/images/products/cleaner-selection.png",
+      "kind": "Существующий демонстрационный read-only экран; 120 найдено, 1 исключено, 119 выбрано; не доказательство удаления клиентских данных."
+    },
+    {
+      "source": "src/images/articles/bitrix24-recycle-entry-official.jpg",
+      "kind": "Официальный скриншот перехода в корзину Поддержки24."
+    }
+  ],
+  "limitations": {
+    "indexationOrRankingsMeasured": false,
+    "freshGscAdded": false,
+    "liveClientPortalDeletionTested": false,
+    "externalUrlSubmission": false,
+    "existingMobileBacklog053to056": "excluded_by_owner; preserved unchanged"
+  },
+  "nextContentTask": "SEO-007 «Очистка CRM в Битрикс24» после проверки самостоятельного интента; не выполнена этим выпуском.",
+  "backlog": {
+    "path": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/deliverables/TrueTell_SEO_Backlog_065_2026-10-15.xlsx",
+    "verification": {
+      "passed": true,
+      "tasks": 64,
+      "sheets": 7,
+      "publishedTasks": 1,
+      "excludedTasksPreserved": 4,
+      "historicalGscAndJournalPreserved": true,
+      "nativeAndPanesPreserved": true,
+      "unrelatedCellsAndFormatsPreserved": true,
+      "allFormulasPreserved": true,
+      "sourceUnchanged": true,
+      "freshGscMeasurementsAdded": false,
+      "formulaErrors": 0,
+      "sha256": "678061f06481b9dd2a8cc99cc0df0800fa0999bac3d12b68e408398e7dbe1747"
+    }
+  },
+  "evidenceDirectory": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/work/publish-065",
+  "completedAt": "2026-10-15T12:45:36.818006+00:00"
+}

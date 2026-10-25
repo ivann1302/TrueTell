@@ -13,6 +13,7 @@
 - Treat SEO, performance, and accessibility as first-class requirements.
 - Follow `DESIGN_SYSTEM.md` as the visual source of truth.
 - Center hero H1 headings on mobile screens (up to 768px) across all current and future pages. Preserve body-text and desktop alignment.
+- Article mobile category (`ArticleHero .meta`) is centered alongside H1 up to 768px on all current and future articles. Desktop remains left aligned. Article spacing uses the shared tokens: block32px; section40px desktop/32px mobile; shell56px desktop/40px mobile; paragraph16px. Owner rule recorded on14.10.2026.
 - Large dark-blue sections with dot patterns use edge-to-edge backgrounds on mobile and desktop, with content kept in a readable container. Keep product/article/case cards in grids separate.
 - All light page backgrounds, full-width light sections, and the spaces between them use `var(--bg)` (`#F6F7F9`). White is reserved for cards, tables, forms, controls, and authentic image content. Use the shared tokens from `src/styles/site-surfaces.scss` instead of duplicating page background colors.
 - Vertical spacing belonging to a dark dotted section uses the same `var(--surface-dark)` (`#101621`) background. Put that spacing inside the section as padding, including its full-bleed background and dot layer; do not use external margins that expose a light parent. Use the shared full-bleed/product surface spacing mixins. Preserve the content rhythm on desktop and mobile.
@@ -34,6 +35,7 @@
 
 - The owner requested on 11.10.2026 that a second agent run in parallel to review our articles and factual accuracy. Apply `docs/seo/editorial-review-protocol.md` to new articles, substantive updates and retrospective content checks.
 - The primary agent authors and fixes; an independent read-only reviewer checks official sources, reproducibility, actual product capabilities, intent, SEO, images and the final version. Complete review before publication and recheck substantive fixes. Record the evidence and limits; do not confuse documentation review with a live product test or deployment with indexing.
+- Before publishing a new or updated article, run the `humanizer` skill on the final prose, FAQ, captions, CTA, headings and SEO metadata. Preserve verified facts and links. Record the outcome in `docs/seo/publications/`, then update `docs/seo/humanizer-reviews.json` with the current fingerprint. `npm run check:article-humanizer`, the build and CI must pass before release; a new hash without an actual review is not approval.
 
 ## Verification after work
 
@@ -62,3 +64,31 @@
 - Classify `knowledge` articles in «База знаний» and `blog` articles in «Блог» through the registry and catalogs. No visible breadcrumb navigation is rendered; any BreadcrumbList schema follows the same actual hierarchy.
 - Follow `docs/seo/content-publishing.md` when adding articles. Use the registry for titles, descriptions, recorded dates, related articles and products; do not maintain another catalog or sitemap URL list.
 - `astro:build:done` generates the only sitemap and `docs/seo/site-map.md` from built HTML. Drafts, noindex pages, aliases, redirects and 404 are excluded; do not infer search indexing from the generated XML.
+
+## Cleaner marketplace reference
+
+- The official Bitrix24 Market listing for TrueTell «Массовое удаление лидов и сделок» is https://www.bitrix24.ru/apps/app/truetell.massovoe_udalenie_lidov_i_sdelok/. Supplied by the owner and verified as a public HTTP 200 listing on 13.10.2026.
+- Read its URL from `cleanerProduct.marketplaceUrl` in `src/config/products.ts` for product links; the site landing remains `/bitrix24-cleaner/`. Keep consultation links for setup questions. A listing URL does not by itself verify installation or app behavior in a customer portal.
+
+## Исключённые задачи бэклога
+
+По поручению владельца от 15.10.2026 задачи SEO-053–SEO-056 (cookie-баннер,
+холодный CLS статьи, края/карточки главной на 320 px и контраст) исключены
+из текущей SEO-очереди. Сохранять историю находок, не возвращать задачи
+в план без нового поручения. Это решение не отменяет обычную проверку
+адаптивности и работоспособности новых и изменяемых страниц.
+
+## Воронка статей AI/MCP к нашему приложению
+
+Правило владельца от 23.10.2026: статьи о подключении ИИ к Битрикс24 ведут
+к разрабатываемому MCP TrueTell. Основной сценарий, изображения и CTA относятся
+к нашему продукту; официальная документация остаётся источником фактов в
+закрытом ArticleSources. Не подменять путь к TrueTell полной инструкцией чужой
+интеграции. До реальной страницы продукта CTA «Обсудить MCP TrueTell» ведёт
+к нашей форме через `mcpProduct` в `src/config/products.ts`. Не выдумывать
+endpoint, Market URL, установку или поддержку клиента. До его приёмки честно
+описывать подготовку, а не обещать рабочую пошаговую установку. Приёмка Codex
+не подтверждает ChatGPT/Claude. Подробности: `docs/seo/product-content-funnel.md`.
+Для Claude следующая статья требует самостоятельной пользы и проверенной
+связки, а не дублирования материала ожидания ChatGPT. Пустую страницу продукта
+ради перехода не создавать.

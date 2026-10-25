@@ -1,0 +1,247 @@
+{
+  "release": "084",
+  "date": "2026-10-23",
+  "taskId": "SEO-075",
+  "action": "CREATE",
+  "type": "knowledge",
+  "status": "local_QA_passed",
+  "route": "/chatgpt-bitrix24-mcp/",
+  "title": "Как подключить ChatGPT к Битрикс24 и проверить доступ к CRM",
+  "articleSource": "/Users/ivan/projects/TrueTell/src/pages/chatgpt-bitrix24-mcp/index.astro",
+  "articleSha256": "3e7a12b2901ccc69f4ccc8fe43644a219e11b6f339a4c54115495720a1941988",
+  "localPreview": "http://127.0.0.1:4329/chatgpt-bitrix24-mcp/",
+  "deployed": false,
+  "indexingChecked": false,
+  "registryStatus": "draft",
+  "datePublished": null,
+  "contentReady": true,
+  "publicProductClaim": false,
+  "applicationChanged": false,
+  "clientPortalUsed": false,
+  "strategy": "План082:инструкция конкретного клиента,официальный сервер. Обзор074не дублируется;ссылка на него включается только после его публикации.",
+  "sources": [
+    {
+      "url": "https://developers.openai.com/plugins/deploy/connect-chatgpt",
+      "checked": "2026-10-23",
+      "method": "Official OpenAI docs MCP fetch; saved openai-source.txt"
+    },
+    {
+      "url": "https://helpdesk.bitrix24.ru/open/26952788/",
+      "checked": "2026-10-23",
+      "updated": "2026-10-16"
+    },
+    {
+      "url": "https://apidocs.bitrix24.ru/ai-tools/mcp.html",
+      "checked": "2026-10-23"
+    }
+  ],
+  "sourceConflict": {
+    "observation": "OpenAI:Plugins;Поддержка24:Apps/Connectors/Developer mode",
+    "resolution": "Актуальный путь атрибутирован OpenAI;прежний интерфейс и Plus/Pro отнесены к версии документа Битрикс24.",
+    "liveChatGPTUI": "ChatGPT Plugins redirected to login page;no sign-in or permissions granted"
+  },
+  "productEvidence": {
+    "source": "/Users/ivan/projects/bitrix_mcp/docs/AUTONOMOUS_RELEASE_STATUS_2026-10-23.md",
+    "method": "Read-only development report;no tools called",
+    "current": "Персональный Codex login,список13tools и4reads приняты;ChatGPT/Claude и остальная приёмка не подтверждены.",
+    "limits": "Нельзя переносить Codex на ChatGPT или объявлять публичный продукт готовым."
+  },
+  "updatedOverview": {
+    "taskId": "SEO-074",
+    "scope": "Только2формулировки ограничены до ChatGPT/Claude;статусdraft и даты сохранены.",
+    "before": "work/chatgpt-article-084/overview-before.astro",
+    "after": "work/chatgpt-article-084/overview-after.astro",
+    "independentlyReviewed": true
+  },
+  "images": [
+    {
+      "asset": "bitrix24-chatgpt-connector-legacy-official.jpg",
+      "type": "authentic_official_screenshot",
+      "source": "https://helpdesk.bitrix24.ru/images/helpdesk/screenshots/ru/am/MCP-server/6.jpg",
+      "section": "interface-version",
+      "fullSize": true,
+      "limits": "Прежний интерфейс ChatGPT явно обозначен;не текущий Plugins и не собственная настройка."
+    },
+    {
+      "asset": "bitrix24-mcp-revoke-official.jpg",
+      "type": "authentic_official_screenshot",
+      "source": "https://helpdesk.bitrix24.ru/images/helpdesk/screenshots/ru/am/MCP-server/27.jpg",
+      "section": "revoke-access",
+      "fullSize": true,
+      "limits": "Публичный пример документации,не личный аккаунт читателя."
+    }
+  ],
+  "verification": {
+    "build": "PASS66routes",
+    "lint": "PASS0errors;3existingReactwarnings",
+    "tests": "87/87PASS",
+    "indexnow": "--check58URLs;not submitted",
+    "html": {
+      "result": "PASS",
+      "canonical": "https://truetell-retail.ru/chatgpt-bitrix24-mcp/",
+      "publicationStatus": "draft",
+      "robots": "noindex, nofollow",
+      "publishedDatesOmitted": true,
+      "blogAndSitemapExcludeDraft": true,
+      "primaryHeadings": 1,
+      "faqItems": 7,
+      "faqMatchesSchema": true,
+      "sourcesClosed": true,
+      "sourceLinks": 3,
+      "internalPathsChecked": 7,
+      "authenticScreenshots": true,
+      "images": [
+        {
+          "src": "/_astro/bitrix24-chatgpt-connector-legacy-official.CIgRt_QA_yeSQN.webp",
+          "width": 1920,
+          "height": 1086,
+          "hasAlpha": false
+        },
+        {
+          "src": "/_astro/bitrix24-mcp-revoke-official.J1JXkIrG_Z1qeheP.webp",
+          "width": 1926,
+          "height": 1086,
+          "hasAlpha": false
+        }
+      ],
+      "registryBeforePreserved": true
+    },
+    "browserLayout": [
+      {
+        "width": 390,
+        "height": 640,
+        "scrollWidth": 390,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 136,
+        "introTop": 423.7109375,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 356,
+            "src": "http://127.0.0.1:4363/_astro/bitrix24-chatgpt-connector-legacy-official.CIgRt_QA_Z1NhXQ.webp"
+          },
+          {
+            "loaded": true,
+            "width": 356,
+            "src": "http://127.0.0.1:4363/_astro/bitrix24-mcp-revoke-official.J1JXkIrG_Zyf9dR.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "width": 768,
+        "height": 640,
+        "scrollWidth": 768,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 136,
+        "introTop": 366.3515625,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 734,
+            "src": "http://127.0.0.1:4363/_astro/bitrix24-chatgpt-connector-legacy-official.CIgRt_QA_SzvMu.webp"
+          },
+          {
+            "loaded": true,
+            "width": 734,
+            "src": "http://127.0.0.1:4363/_astro/bitrix24-mcp-revoke-official.J1JXkIrG_1txcHG.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "width": 769,
+        "height": 640,
+        "scrollWidth": 769,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 184,
+        "introTop": 184,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 703,
+            "src": "http://127.0.0.1:4363/_astro/bitrix24-chatgpt-connector-legacy-official.CIgRt_QA_SzvMu.webp"
+          },
+          {
+            "loaded": true,
+            "width": 703,
+            "src": "http://127.0.0.1:4363/_astro/bitrix24-mcp-revoke-official.J1JXkIrG_1txcHG.webp"
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "width": 1440,
+        "height": 640,
+        "scrollWidth": 1440,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 184,
+        "introTop": 184,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 878,
+            "src": "http://127.0.0.1:4363/_astro/bitrix24-chatgpt-connector-legacy-official.CIgRt_QA_SzvMu.webp"
+          },
+          {
+            "loaded": true,
+            "width": 878,
+            "src": "http://127.0.0.1:4363/_astro/bitrix24-mcp-revoke-official.J1JXkIrG_1txcHG.webp"
+          }
+        ],
+        "sourcesClosed": true
+      }
+    ],
+    "interactions": {
+      "faqOpen": true,
+      "faqKeyboardClosed": true,
+      "sourcesOpen": true,
+      "sourcesKeyboardClosed": true
+    },
+    "browserMethod": "CUA,same-origin iframe390/768/769/1440x640;1440отображён воwrapper0.85 без изменения внутренней ширины.",
+    "backlog": {
+      "result": "PASS",
+      "tasks": 75,
+      "unchangedTasks": 73,
+      "updatedTasks": [
+        "SEO-075",
+        "SEO-074 note only"
+      ],
+      "sheets": 7,
+      "changedCells": 23,
+      "priorJournalRowsPreserved": 112,
+      "newJournalRows": 2,
+      "allPublicationDatesPreserved": true,
+      "unrelatedValuesFormulasStylesPreserved": true,
+      "nativeFeaturesPreserved": true,
+      "nativeExcelOpened": false,
+      "sha256": "7262ed2af9836f8efa04d6c316e4c9c6406567cc30f6d2550906b98680a563f5"
+    }
+  },
+  "independentReview": {
+    "reviewer": "/root/review_chatgpt_article_084",
+    "result": "READY / local_QA_passed",
+    "openFindings": [],
+    "closedFindings": [
+      "P3: добавлен точный путь администратора для официального MCP"
+    ],
+    "checks": [
+      "OpenAI/Битрикс24:разные версииUI,установка плагина и новый чат/@",
+      "Официальный endpoint/OAuth/условия/отзыв доступа",
+      "Промпт не заменяет технические права;не выдан синтетический read за реальный",
+      "Исходник,dist,FAQ/JSONLD,метаданные,draft/noindex,2официальных изображения",
+      "Сохранённые desktop/mobile снимки и авторские HTML/browserQA",
+      "Новый статус Codex отдельно от ChatGPT/Claude;2замены в074 перепроверены"
+    ],
+    "limits": "Самостоятельный runtime браузера,OAuth,CRM,публикация и индексация не выполнялись. Скриншоты просмотрены самостоятельно;результаты взаимодействий взяты из отчёта автора."
+  },
+  "next": "Выпуск подготовленных074/075 отдельно по разрешению владельца с фактическими датами/liveQA. Следующая статьяSEO-076:конкретный Claude-клиент после проверки требований и самостоятельности шагов."
+}

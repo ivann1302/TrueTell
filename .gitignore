@@ -33,6 +33,7 @@ backend/.env.*
 backend/database/*.sqlite*
 backend/public/workspace.css
 backend/config/company.json
+backend/config/support-applications.json
 backend/storage/framework/phpstan/
 
 .deploy-artifact/

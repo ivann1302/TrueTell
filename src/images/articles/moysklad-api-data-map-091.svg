@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1010" viewBox="0 0 800 1010">
+  <g font-family="Arial, Helvetica, sans-serif" fill="#101621">
+    <text x="34" y="72" font-size="40" font-weight="700">Какой раздел API нужен</text>
+    <text x="34" y="119" font-size="25" fill="#536173">Сначала выберите вопрос к данным</text>
+    <path d="M34 151H766" stroke="#B8C7D9" stroke-width="2"/>
+    <text x="34" y="207" font-size="25" fill="#337CDC" font-weight="700">01  Товары и модификации</text>
+    <text x="34" y="255" font-size="30" font-weight="600">Что есть в ассортименте?</text>
+    <text x="34" y="300" font-size="25" fill="#3A4655">Карточки товаров, артикулы, группы.</text>
+    <text x="34" y="339" font-size="23" fill="#536173">Пример: /entity/product</text>
+    <path d="M34 380H766" stroke="#D4DDE7" stroke-width="2"/>
+    <text x="34" y="436" font-size="25" fill="#337CDC" font-weight="700">02  Розничные документы</text>
+    <text x="34" y="484" font-size="30" font-weight="600">Что продали и вернули?</text>
+    <text x="34" y="529" font-size="25" fill="#3A4655">Продажи, возвраты и смены.</text>
+    <text x="34" y="568" font-size="23" fill="#536173">Пример: /entity/retaildemand</text>
+    <path d="M34 609H766" stroke="#D4DDE7" stroke-width="2"/>
+    <text x="34" y="665" font-size="25" fill="#337CDC" font-weight="700">03  Платежи</text>
+    <text x="34" y="713" font-size="30" font-weight="600">Когда пришли деньги?</text>
+    <text x="34" y="758" font-size="25" fill="#3A4655">Входящие и исходящие платежи.</text>
+    <text x="34" y="797" font-size="23" fill="#536173">Пример: /entity/paymentin</text>
+    <path d="M34 838H766" stroke="#D4DDE7" stroke-width="2"/>
+    <text x="34" y="894" font-size="25" fill="#337CDC" font-weight="700">04  Отчёты</text>
+    <text x="34" y="942" font-size="30" font-weight="600">Сколько осталось на складе?</text>
+    <text x="34" y="984" font-size="23" fill="#536173">Пример: /report/stock/all</text>
+  </g>
+</svg>

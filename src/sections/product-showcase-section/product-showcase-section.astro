@@ -10,7 +10,7 @@ const internalHref = (path: string) => `${base}${path.replace(/^\//, '')}`;
 
 <section class={styles.section} aria-labelledby="product-showcase-title">
   <div class={styles.container}>
-    <header class={styles.header}>
+    <header class={styles.header} data-reveal>
       <h2 id="product-showcase-title" class={styles.title}>
         Продукты TrueTell
       </h2>
@@ -23,33 +23,33 @@ const internalHref = (path: string) => `${base}${path.replace(/^\//, '')}`;
     </header>
 
     <div class={styles.appProducts} aria-label="Приложения TrueTell для бизнес-систем">
-      <a class={styles.appProduct} href={internalHref(cleanerProductPath)}>
+      <a class={styles.appProduct} href={internalHref(cleanerProductPath)} data-reveal>
         <div class={styles.appHeading}>
           <h3 class={styles.appTitle}>Очистка Битрикс24</h3>
           <img class={styles.appIcon} src={bitrix24Icon.src} alt="" width="512" height="512" loading="lazy" decoding="async" />
         </div>
-        <p class={styles.appDescription}>Лиды и сделки — по фильтрам, с проверкой и отчётом.</p>
+        <p class={styles.appDescription}>Лиды и сделки: отбор, проверка списка и отчёт.</p>
         <span class={styles.productButton}>
-          Посмотреть приложение<span aria-hidden="true">›</span>
+          Подробнее<span aria-hidden="true">›</span>
         </span>
       </a>
 
-      <a class={styles.appProduct} href={internalHref(moyskladOperationsProductPath)}>
+      <a class={styles.appProduct} href={internalHref(moyskladOperationsProductPath)} data-reveal="1">
         <div class={styles.appHeading}>
           <h3 class={styles.appTitle}>Массовые операции в МойСклад</h3>
           <img class={styles.appIcon} src={moyskladIcon.src} alt="" width="120" height="120" loading="lazy" decoding="async" />
         </div>
-        <p class={styles.appDescription}>Товары, цены и документы — массовые операции с проверкой.</p>
+        <p class={styles.appDescription}>Товары, цены и документы: загрузка, изменения и очистка.</p>
         <span class={styles.productButton}>
-          Посмотреть приложение<span aria-hidden="true">›</span>
+          Подробнее<span aria-hidden="true">›</span>
         </span>
       </a>
 
-      <a class:list={[styles.appProduct, styles.biProduct]} href={internalHref('/bi-analitika/')}>
+      <a class:list={[styles.appProduct, styles.biProduct]} href={internalHref('/bi-analitika/')} data-reveal="2">
         <h3 class={styles.appTitle}>BI-аналитика для торговли</h3>
-        <p class={styles.appDescription}>Продажи, остатки и маржинальность в одном управленческом контуре.</p>
+        <p class={styles.appDescription}>Продажи, остатки и маржинальность.</p>
         <span class={styles.productButton}>
-          Посмотреть BI-решение<span aria-hidden="true">›</span>
+          Подробнее<span aria-hidden="true">›</span>
         </span>
       </a>
     </div>

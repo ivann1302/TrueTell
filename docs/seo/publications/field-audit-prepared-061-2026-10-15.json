@@ -1,0 +1,379 @@
+{
+  "release": 61,
+  "date": "2026-10-15",
+  "taskId": "SEO-066",
+  "route": "/audit-poley-crm-bitrix24/",
+  "preview": "http://127.0.0.1:4361/audit-poley-crm-bitrix24/",
+  "status": "local_QA_passed — draft, not published",
+  "type": "blog",
+  "decision": "CREATE — independent editorial methodology for deciding which fields to retain, arrange in card views, clarify or replace under a separate plan. Does not repeat CSV, field types, REST codes or integration mapping instructions.",
+  "intent": "Inventory scope, field ownership and meaning, current/historical values, process dependencies, evidence-based decisions and separate change acceptance.",
+  "demandBoundary": "Editorial extension of field-directory cluster048 requested by owner; no new Wordstat/GSC frequency measured or traffic forecast made.",
+  "primarySources": [
+    "https://helpdesk.bitrix24.ru/open/22048980/",
+    "https://helpdesk.bitrix24.ru/open/22804914/",
+    "https://helpdesk.bitrix24.ru/open/27744544/",
+    "https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-fields.html",
+    "https://helpdesk.bitrix24.ru/open/22381314/"
+  ],
+  "images": [
+    {
+      "file": "/Users/ivan/projects/TrueTell/src/images/articles/bitrix24-field-audit-evidence.png",
+      "kind": "Editorial infographic; SVG rasterized with alpha",
+      "source": "Three evidence sources for audit, explicitly distinguished from app capabilities",
+      "sha256": "c99353169d58935233d8ea38ec5a23a0094bbf702aa04e57fa77fa2f49521c9b",
+      "fullSize": true
+    },
+    {
+      "file": "/Users/ivan/projects/TrueTell/src/images/articles/truetell-field-directory-list-live.jpg",
+      "kind": "Authentic screenshot reused",
+      "source": "Release056, app1.0.2 test portal,14.10.2026",
+      "sha256": "16af31f03c262e889c33e8b50a7ac72795cb80b47e85a4d87a5163ff3ac9363b",
+      "fullSize": true
+    }
+  ],
+  "incoming": [
+    "/spisok-poley-bitrix24/",
+    "/karta-sootvetstviya-poley-bitrix24/",
+    "/tipy-poley-crm-bitrix24/"
+  ],
+  "limits": [
+    "Screenshot reused from release056 observed14.10.2026; no new portal test in061. Counter1–20of61 belongs to test portal; cropped screenshot shows only visible top rows.",
+    "Four examples fictional; audit plan editorial, not official Bitrix standard or client case.",
+    "Application unchanged: metadata only, no record values, fill-rate/dependency detection, automatic decisions or deletion.",
+    "No fields/records changed, customer audit, integration or data migration performed. No promise of recovery by metadata CSV.",
+    "No push, deployment, URL submission, production QA or fresh GSC audit.",
+    "Responsive screenshots and keyboard/UI checks are local; not a field CWV or cold-load CLS assessment."
+  ],
+  "editorialReview": {
+    "reviewer": "/root/review_field_directory_readiness_061",
+    "verdict": "APPROVE_LOCAL_DRAFT",
+    "openFindings": 0,
+    "scope": "Independent five-primary-source and app-code review; installed article/registry/links and final HTML checked; five hero widths and mobile figure/table/sources screenshots inspected; PNG+three optimized WebP alpha independently verified. Actual browser interactions and77tests/build/lint by primary author."
+  },
+  "backlog": "TrueTell_SEO_Backlog_061_2026-10-15.xlsx",
+  "sourceSha256": "ae32e584e9f679b8fc185d521994adb1b2faae0b77ab4aed5d1ecb89a4e791d7",
+  "checks": {
+    "build": {
+      "passed": true,
+      "pages": 54,
+      "sitemapUrls": 44
+    },
+    "lint": {
+      "errors": 0,
+      "preExistingWarnings": 3
+    },
+    "tests": {
+      "passed": 77,
+      "failed": 0
+    },
+    "gitDiffCheck": true,
+    "indexNow": {
+      "validationOnly": true,
+      "urlsValidated": 44,
+      "submitted": false
+    },
+    "html": {
+      "passed": true,
+      "h1": 1,
+      "robots": "noindex, nofollow",
+      "canonical": "https://truetell-retail.ru/audit-poley-crm-bitrix24/",
+      "faq": 7,
+      "meaningfulImages": 2,
+      "internalLinkAndFileChecks": 37,
+      "errors": [],
+      "sitemapContainsDraft": false,
+      "catalogContainsDraft": false,
+      "htmlSha256": "7c66fbed5548673400e254b1353ae04b826e5cab5dd02d0ebe76e183814c1268"
+    },
+    "browser": {
+      "hero": [
+        {
+          "h1Align": "center",
+          "h1Rects": [
+            {
+              "bottom": 216.5,
+              "left": 55.0390625,
+              "right": 264.953125,
+              "top": 164
+            },
+            {
+              "bottom": 255.6640625,
+              "left": 21.7109375,
+              "right": 298.2890625,
+              "top": 203.1640625
+            },
+            {
+              "bottom": 294.828125,
+              "left": 36.453125,
+              "right": 283.5390625,
+              "top": 242.328125
+            },
+            {
+              "bottom": 333.9921875,
+              "left": 40.6875,
+              "right": 279.3125,
+              "top": 281.4921875
+            },
+            {
+              "bottom": 294.828125,
+              "left": 36.453125,
+              "right": 283.5390625,
+              "top": 242.328125
+            },
+            {
+              "bottom": 333.9921875,
+              "left": 40.6875,
+              "right": 279.3125,
+              "top": 281.4921875
+            }
+          ],
+          "introTop": 351.65625,
+          "metaAlign": "center",
+          "metaTop": 136,
+          "pageWidth": 320,
+          "width": 320
+        },
+        {
+          "h1Align": "center",
+          "h1Rects": [
+            {
+              "bottom": 228.1328125,
+              "left": 72.40625,
+              "right": 317.5859375,
+              "top": 166.6328125
+            },
+            {
+              "bottom": 273.875,
+              "left": 33.4765625,
+              "right": 356.515625,
+              "top": 212.375
+            },
+            {
+              "bottom": 319.6171875,
+              "left": 50.703125,
+              "right": 339.296875,
+              "top": 258.1171875
+            },
+            {
+              "bottom": 365.359375,
+              "left": 55.6484375,
+              "right": 334.3515625,
+              "top": 303.859375
+            },
+            {
+              "bottom": 319.6171875,
+              "left": 50.703125,
+              "right": 339.296875,
+              "top": 258.1171875
+            },
+            {
+              "bottom": 365.359375,
+              "left": 55.6484375,
+              "right": 334.3515625,
+              "top": 303.859375
+            }
+          ],
+          "introTop": 381.6015625,
+          "metaAlign": "center",
+          "metaTop": 139.6328125,
+          "pageWidth": 390,
+          "width": 390
+        },
+        {
+          "h1Align": "center",
+          "h1Rects": [
+            {
+              "bottom": 367.4921875,
+              "left": 24.921875,
+              "right": 743.0703125,
+              "top": 290.9921875
+            },
+            {
+              "bottom": 424.609375,
+              "left": 25.5,
+              "right": 742.5,
+              "top": 348.109375
+            },
+            {
+              "bottom": 424.609375,
+              "left": 25.5,
+              "right": 742.5,
+              "top": 348.109375
+            }
+          ],
+          "introTop": 439.2265625,
+          "metaAlign": "center",
+          "metaTop": 265.9921875,
+          "pageWidth": 768,
+          "width": 768
+        },
+        {
+          "h1Align": "left",
+          "h1Rects": [
+            {
+              "bottom": 291.734375,
+              "left": 32,
+              "right": 272.53125,
+              "top": 231.734375
+            },
+            {
+              "bottom": 336.609375,
+              "left": 32,
+              "right": 348.9140625,
+              "top": 276.609375
+            },
+            {
+              "bottom": 381.484375,
+              "left": 32,
+              "right": 315.125,
+              "top": 321.484375
+            },
+            {
+              "bottom": 426.359375,
+              "left": 32,
+              "right": 305.421875,
+              "top": 366.359375
+            },
+            {
+              "bottom": 381.484375,
+              "left": 32,
+              "right": 315.125,
+              "top": 321.484375
+            },
+            {
+              "bottom": 426.359375,
+              "left": 32,
+              "right": 305.421875,
+              "top": 366.359375
+            }
+          ],
+          "introTop": 200.734375,
+          "metaAlign": "left",
+          "metaTop": 200.734375,
+          "pageWidth": 769,
+          "width": 769
+        },
+        {
+          "h1Align": "left",
+          "h1Rects": [
+            {
+              "bottom": 399.828125,
+              "left": 100,
+              "right": 493.59375,
+              "top": 301.328125
+            },
+            {
+              "bottom": 473.265625,
+              "left": 100,
+              "right": 618.5859375,
+              "top": 374.765625
+            },
+            {
+              "bottom": 546.703125,
+              "left": 100,
+              "right": 563.2890625,
+              "top": 448.203125
+            },
+            {
+              "bottom": 620.140625,
+              "left": 100,
+              "right": 547.4140625,
+              "top": 521.640625
+            },
+            {
+              "bottom": 546.703125,
+              "left": 100,
+              "right": 563.2890625,
+              "top": 448.203125
+            },
+            {
+              "bottom": 620.140625,
+              "left": 100,
+              "right": 547.4140625,
+              "top": 521.640625
+            }
+          ],
+          "introTop": 275.328125,
+          "metaAlign": "left",
+          "metaTop": 275.328125,
+          "pageWidth": 1440,
+          "width": 1440
+        }
+      ],
+      "table": {
+        "clientWidth": 354,
+        "scrollLeft": 10.5,
+        "scrollWidth": 640
+      },
+      "sourcesInitiallyClosed": true,
+      "faqOpened": true,
+      "sourcesKeyboardOpened": true,
+      "fullSize": {
+        "background": "rgb(230, 230, 230)",
+        "complete": true,
+        "height": 920,
+        "width": 1000
+      },
+      "consoleErrors": 0
+    },
+    "viewportReset": {
+      "overrideRemoved": true,
+      "actualWidth": 319,
+      "actualHeight": 827
+    },
+    "optimizedAlpha": [
+      {
+        "file": "bitrix24-field-audit-evidence.Op8ZSlrE_1Txgtf.webp",
+        "width": 1000,
+        "height": 920,
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "bitrix24-field-audit-evidence.Op8ZSlrE_Z1raPq2.webp",
+        "width": 800,
+        "height": 736,
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "bitrix24-field-audit-evidence.Op8ZSlrE_Z1z09VT.webp",
+        "width": 480,
+        "height": 442,
+        "alpha": [
+          0,
+          255
+        ]
+      }
+    ],
+    "backlog": {
+      "passed": true,
+      "tasks": 64,
+      "sheets": 7,
+      "oldCellsAndHistoryPreserved": true,
+      "nativeAndPanesPreserved": true,
+      "unrelatedFormatsPreserved": true,
+      "countFormulaExtended": true,
+      "formulaErrors": 0,
+      "sha256": "744272b3ec479a10a1c833ef4a6c0f446c0ba02ad57baba432385d457065793b"
+    }
+  },
+  "editableInfographic": {
+    "file": "/Users/ivan/projects/TrueTell/src/images/articles/bitrix24-field-audit-evidence.svg",
+    "sha256": "defce7cd10192c122f3f2bb13d8bf41840586f563a3a74595766bef5295ffce3",
+    "sourceAlpha": {
+      "width": 1000,
+      "height": 920,
+      "alpha": [
+        0,
+        255
+      ],
+      "type": "Editorial audit methodology, not app capabilities or portal screenshot"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "release": 61,
+  "date": "2026-10-15",
+  "taskId": "SEO-066",
+  "editorialReview": {
+    "reviewer": "/root/review_field_directory_readiness_061",
+    "verdict": "APPROVE_LOCAL_DRAFT",
+    "openFindings": 0,
+    "scope": "Independent five-primary-source and app-code review; installed article/registry/links and final HTML checked; five hero widths and mobile figure/table/sources screenshots inspected; PNG+three optimized WebP alpha independently verified. Actual browser interactions and77tests/build/lint by primary author."
+  },
+  "limits": [
+    "Screenshot reused from release056 observed14.10.2026; no new portal test in061. Counter1–20of61 belongs to test portal; cropped screenshot shows only visible top rows.",
+    "Four examples fictional; audit plan editorial, not official Bitrix standard or client case.",
+    "Application unchanged: metadata only, no record values, fill-rate/dependency detection, automatic decisions or deletion.",
+    "No fields/records changed, customer audit, integration or data migration performed. No promise of recovery by metadata CSV.",
+    "No push, deployment, URL submission, production QA or fresh GSC audit.",
+    "Responsive screenshots and keyboard/UI checks are local; not a field CWV or cold-load CLS assessment."
+  ],
+  "sourceSha256": "ae32e584e9f679b8fc185d521994adb1b2faae0b77ab4aed5d1ecb89a4e791d7",
+  "htmlSha256": "7c66fbed5548673400e254b1353ae04b826e5cab5dd02d0ebe76e183814c1268"
+}

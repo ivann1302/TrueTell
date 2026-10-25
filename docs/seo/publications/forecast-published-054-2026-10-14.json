@@ -1,0 +1,314 @@
+{
+  "release": 54,
+  "date": "2026-10-14",
+  "taskId": "SEO-060",
+  "action": "CREATE",
+  "type": "knowledge",
+  "status": "live_verified",
+  "url": "https://truetell-retail.ru/prognoz-prodazh-moysklad/",
+  "request": "Найти у Роима задание на статью и добавить на сайт TrueTell",
+  "sources": {
+    "suppliedHtml": "website-article.html, передан владельцем после чтения переписки",
+    "suppliedScreenshots": 3,
+    "screenshotMeaning": "Подлинные файлы разработчика с вымышленными демонстрационными значениями, не клиентские результаты",
+    "platformReferences": [
+      "https://support.moysklad.ru/hc/ru/интеграции/каталог_решений",
+      "https://support.moysklad.ru/hc/ru/отчеты/управление_закупками"
+    ]
+  },
+  "deferredFacts": [
+    "Публичная доступность и установка приложения",
+    "ML и алгоритм",
+    "60дней истории и пороги20единиц/15дней",
+    "Ежедневное обновление",
+    "Возвраты и источник расчётной цены",
+    "Состав и охват листов XLSX",
+    "Read-only доступ и запрашиваемые права"
+  ],
+  "ownerSteering": "Владелец уточняет технические источники; вернуться к деталям позже. В публикации эти обещания удалены, доступность не заявлена.",
+  "editorialReview": {
+    "reviewer": "/root/article_review",
+    "initialFindings": [
+      "P2: безусловная публичная установка",
+      "P2: неподтверждённое обещание read-only",
+      "P2: свойства версии без доказательства",
+      "P3: разграничить штатный отчёт"
+    ],
+    "resolution": "Неподтверждённые свойства отложены; установка условная; добавлены демонстрационные границы и ссылки на остатки/отчёты",
+    "final": "READY; новых P1/P2 нет",
+    "liveReview": "live review passed, сохранённый HTTPответ и desktop/mobile проверены"
+  },
+  "checks": {
+    "nodeTests": {
+      "command": "node --test scripts/*.test.mjs",
+      "passed": 77,
+      "failed": 0
+    },
+    "lint": {
+      "command": "npm run lint",
+      "errors": 0,
+      "existingWarnings": 3
+    },
+    "build": {
+      "command": "npm run build",
+      "pages": 48,
+      "sitemapUrls": 44
+    },
+    "indexnowCheck": {
+      "command": "node scripts/indexnow.mjs --check",
+      "passed": true,
+      "submission": false
+    },
+    "localBrowser": {
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "images": 3,
+      "faq": 6,
+      "overflow": false,
+      "pageErrors": 0,
+      "keyboardFaqSourcesAndTable": true
+    },
+    "live": {
+      "passed": true,
+      "release": {
+        "id": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792002866-54",
+        "revision": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99",
+        "baseReleaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1791982841-50",
+        "task": "forecast-article-054",
+        "publishedDate": "2026-10-14",
+        "scope": [
+          "prognoz-prodazh-moysklad/",
+          "knowledge-base/",
+          "sitemap.xml"
+        ],
+        "pageSha256": "230621698ee3010e299f94a6065766d8cef0f49002d6b6a282a1dce519ecb244"
+      },
+      "http": [
+        {
+          "path": "prognoz-prodazh-moysklad/index.html",
+          "status": 200,
+          "sha256": "230621698ee3010e299f94a6065766d8cef0f49002d6b6a282a1dce519ecb244"
+        },
+        {
+          "path": "knowledge-base/index.html",
+          "status": 200,
+          "sha256": "bdba29a30507beaae71932d715233f535e034756c0cb882e9fc369ba8ab302cc"
+        },
+        {
+          "path": "sitemap.xml",
+          "status": 200,
+          "sha256": "53560d35c82ec6374232cee6bc575e5472838b9402ee50c84d323750873f3ca1"
+        },
+        {
+          "path": "_astro/Manrope-VariableFont_wght.B5-idWc8.woff2",
+          "status": 200,
+          "sha256": "3e16073fb7ba266736bdeda86a02f65bf3a12884aa81904f14a967de94058c41"
+        },
+        {
+          "path": "_astro/bitrix24-app-icon.BwY8HQNL.svg",
+          "status": 200,
+          "sha256": "db15e2c09a41dec0b5b95320ccad9b00e4dcc743bceaaeb46e5dcc334b21b9f4"
+        },
+        {
+          "path": "_astro/logo.BECii3z1.svg",
+          "status": 200,
+          "sha256": "65abc1230820688ac45baa707414c27c2be8f34e168f402d41a24a70bc5842d2"
+        },
+        {
+          "path": "_astro/moysklad-app-icon.MtZLtV0w.svg",
+          "status": 200,
+          "sha256": "ce39d1f05617f5409a1c3094cf62ee3aecd00cfcfdc34d101f26353bf27b8d9b"
+        },
+        {
+          "path": "_astro/moysklad-forecast-products-demo.CbmeiaaO.png",
+          "status": 200,
+          "sha256": "bdd3ca812af6b7f3ca4080d4b328786e98527d94d014335a0c729b6ec2ace995"
+        },
+        {
+          "path": "_astro/moysklad-forecast-products-demo.CbmeiaaO_1gB5Ui.webp",
+          "status": 200,
+          "sha256": "1ae5d24911346713d3b917d7bb94df78354d351184474c4d25a1187fff8888bc"
+        },
+        {
+          "path": "_astro/moysklad-forecast-products-demo.CbmeiaaO_Z2oArRd.webp",
+          "status": 200,
+          "sha256": "a8e3176da4a17fe06fd4bf0facf87f0df59c3c9e4a995d81be2853244f71f6eb"
+        },
+        {
+          "path": "_astro/moysklad-forecast-products-demo.CbmeiaaO_ZdnLFN.webp",
+          "status": 200,
+          "sha256": "4636bb0677f5e365ac15e1bb942ed30f400c076076981a4251b6f486ce61cb24"
+        },
+        {
+          "path": "_astro/moysklad-forecast-revenue-demo.d9DILPfR.png",
+          "status": 200,
+          "sha256": "a1a5bb2b8a3672cfe16fc806a161cfa1f9625b12e22197b30053e4bc48b7fbca"
+        },
+        {
+          "path": "_astro/moysklad-forecast-revenue-demo.d9DILPfR_Z1q5zmS.webp",
+          "status": 200,
+          "sha256": "1f4ba2df4a0438fb3076e4563ab1e25c6426457c719855573a083963b8022393"
+        },
+        {
+          "path": "_astro/moysklad-forecast-revenue-demo.d9DILPfR_Z296uTi.webp",
+          "status": 200,
+          "sha256": "1e86fe025d781d707819647fe78aa385e92d68a6e77971b24315687a6727e3c5"
+        },
+        {
+          "path": "_astro/moysklad-forecast-revenue-demo.d9DILPfR_Z29ADs7.webp",
+          "status": 200,
+          "sha256": "747ecbb7828bd6f3b4733e5cb32c17c702d48e0bc6b787944489fc26dcdb5ecd"
+        },
+        {
+          "path": "_astro/moysklad-forecast-table-demo.DaqktLB2.png",
+          "status": 200,
+          "sha256": "aa3890f46a9b3fd7290f7e94d980881c2542536d58b130060c5c0826fc820826"
+        },
+        {
+          "path": "_astro/moysklad-forecast-table-demo.DaqktLB2_2a4uuk.webp",
+          "status": 200,
+          "sha256": "9bb82d512b515570664f5424d952eb50da55789872e8c7efe99f2b8ca98e0d79"
+        },
+        {
+          "path": "_astro/moysklad-forecast-table-demo.DaqktLB2_ZC77Ej.webp",
+          "status": 200,
+          "sha256": "af4d259d1056a74795fc755a98ae950b041adb1ce0369da78278744addda4016"
+        },
+        {
+          "path": "_astro/moysklad-forecast-table-demo.DaqktLB2_ut8o1.webp",
+          "status": 200,
+          "sha256": "0a06a59e5fcbcf99e738805d98ae60eb0103199646af557f9ca138e946f7b316"
+        },
+        {
+          "path": "_astro/organization-logo.DHE3J1nh.svg",
+          "status": 200,
+          "sha256": "5344019be5f19249c40004b895ef89b790b41730e9f62c35eb6d5c7d065acf8c"
+        },
+        {
+          "path": "_astro/privacy-controls.astro_astro_type_script_index_0_lang.BLu9MYJB.js",
+          "status": 200,
+          "sha256": "def3103aba12001c86168ad6bf112a22c5d140fcb35a7914413b37d6663465c0"
+        },
+        {
+          "path": "_astro/short-white-logo.C5gaHnd_.svg",
+          "status": 200,
+          "sha256": "80f22ab26ac4de1dd80bc2d725f4c761ebe210a879055b46e8a5e6d8f905d6c8"
+        }
+      ],
+      "reports": [
+        {
+          "width": 390,
+          "canonical": "https://truetell-retail.ru/prognoz-prodazh-moysklad/",
+          "robots": "index, follow",
+          "h1": 1,
+          "images": 3,
+          "overflow": 0,
+          "alignment": "center",
+          "pageErrors": [],
+          "catalogLink": true,
+          "faqKeyboard": true
+        },
+        {
+          "width": 1440,
+          "canonical": "https://truetell-retail.ru/prognoz-prodazh-moysklad/",
+          "robots": "index, follow",
+          "h1": 1,
+          "images": 3,
+          "overflow": 0,
+          "alignment": "left",
+          "pageErrors": [],
+          "catalogLink": true,
+          "faqKeyboard": true
+        }
+      ],
+      "crawled": false,
+      "indexed": false
+    }
+  },
+  "deployment": {
+    "release": {
+      "id": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1792002866-54",
+      "revision": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99",
+      "baseReleaseId": "e6921c304ceefaa09ba0ae72c7af75c1cc67dc99-1791982841-50",
+      "task": "forecast-article-054",
+      "publishedDate": "2026-10-14",
+      "scope": [
+        "prognoz-prodazh-moysklad/",
+        "knowledge-base/",
+        "sitemap.xml"
+      ],
+      "pageSha256": "230621698ee3010e299f94a6065766d8cef0f49002d6b6a282a1dce519ecb244"
+    },
+    "scope": [
+      "Новая статья",
+      "3скриншота и необходимые assets",
+      "Каталог базы знаний",
+      "sitemap:1новыйURL"
+    ],
+    "changedPublicFiles": 22,
+    "baseFilesPreserved": true,
+    "contactModulePreserved": true,
+    "backendUnchanged": true,
+    "automaticRollbackOnFailedPublicHashes": true
+  },
+  "stages": {
+    "content_ready": true,
+    "local_QA_passed": true,
+    "deployed": true,
+    "live_verified": true,
+    "crawled": false,
+    "indexed": false
+  },
+  "limits": [
+    "Приложение и выгрузка в клиентском аккаунте не тестировались",
+    "Live browser: реальныеHTTPответы передавались через Node transport из-за ERR_SOCKET_NOT_CONNECTED headlessChrome",
+    "Ни IndexNow, ни отправка sitemap не выполнялись",
+    "Проверка пользователя/поисковой индексации не выполнялась"
+  ],
+  "sourceChanges": {
+    "files": [
+      "src/pages/prognoz-prodazh-moysklad/index.astro",
+      "src/images/articles/moysklad-forecast-products-demo.png",
+      "src/images/articles/moysklad-forecast-table-demo.png",
+      "src/images/articles/moysklad-forecast-revenue-demo.png",
+      "src/config/articles.ts",
+      "scripts/article-catalog.test.mjs",
+      "docs/seo/site-map.md"
+    ],
+    "before": {
+      "src/pages/prognoz-prodazh-moysklad/index.astro": null,
+      "src/images/articles/moysklad-forecast-products-demo.png": null,
+      "src/images/articles/moysklad-forecast-table-demo.png": null,
+      "src/images/articles/moysklad-forecast-revenue-demo.png": null,
+      "src/config/articles.ts": "fc34a441d519b6b0dfc0255644b3bcffb58d7e6dfc4a832fb0ca7a217622bb20",
+      "scripts/article-catalog.test.mjs": "72381be827ec597d90739d0d28443cbafb9290e689272fea5064e8a3f101e78c",
+      "docs/seo/site-map.md": "4b704f5b7768a60c49fbd2c1a85224af28a752bd11809468cbd42cf08542794e"
+    },
+    "after": {
+      "src/pages/prognoz-prodazh-moysklad/index.astro": "f179a6f22b1868d2162c241761af188842774bd790565b1dbbe998999bf6cff4",
+      "src/images/articles/moysklad-forecast-products-demo.png": "bdd3ca812af6b7f3ca4080d4b328786e98527d94d014335a0c729b6ec2ace995",
+      "src/images/articles/moysklad-forecast-table-demo.png": "aa3890f46a9b3fd7290f7e94d980881c2542536d58b130060c5c0826fc820826",
+      "src/images/articles/moysklad-forecast-revenue-demo.png": "a1a5bb2b8a3672cfe16fc806a161cfa1f9625b12e22197b30053e4bc48b7fbca",
+      "src/config/articles.ts": "c75b7836ad7e028f81686e9802f3650287db9b3c536d2396c5c93e5ebaa131af",
+      "scripts/article-catalog.test.mjs": "36a631c6787a0c53312fa287837adf37c06dbddecf509c55e1d33719af90abcd",
+      "docs/seo/site-map.md": "363c7f71f2d3ebc1c03796e865b882185d66bdc4ea37eb3e20ff7bd30b8d7438"
+    }
+  },
+  "backlog": {
+    "file": "deliverables/TrueTell_SEO_Backlog_054_2026-10-14.xlsx",
+    "newTask": "SEO-060",
+    "published": "live_verified",
+    "technicalFacts": "deferred",
+    "exportVerification": {
+      "exportVerified": true,
+      "sheets": 7,
+      "originalCellsAndFormulasPreserved": true,
+      "panesColumnsMergesAndValidationPreserved": true,
+      "newTask": "SEO-060"
+    }
+  }
+}
