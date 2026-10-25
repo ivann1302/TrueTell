@@ -1,0 +1,112 @@
+{
+  "task": "SEO-071",
+  "releasePrepared": "098",
+  "date": "2026-10-26",
+  "action": "CREATE",
+  "type": "blog",
+  "status": "draft",
+  "indexable": false,
+  "url": "/marzhinalnost-tovara/",
+  "title": "Маржа, наценка и маржинальность товара: расчёт на одном примере",
+  "decision": "Create independently: one-product calculation of gross profit, margin and markup is distinct from marketplace economics and MySklad report selection.",
+  "demand": {
+    "source": "TrueTell_Wordstat_079_2026-10-22.xlsx, sheet Темы статей; SEO-071 row in current backlog",
+    "checkedAt": "2026-10-22",
+    "region": "Russia, Wordstat region 225",
+    "devices": "all",
+    "period": "2026-09-08 through 2026-10-07",
+    "query": "маржинальность товара",
+    "broadRequests": 1404,
+    "quotedRequests": 44,
+    "caveat": "These are request counts, not people or a traffic forecast. Broad and quoted counts are separate matching modes and are not additive. Wordstat warned some data might be temporarily unavailable."
+  },
+  "intent": {
+    "primary": "Understand why margin percentage and markup percentage differ and calculate both on the same product.",
+    "distinction": "The existing marketplace-profit article covers commissions, returns and channel expenses; the MySklad reports article covers reports and cost-of-sales. SEO-071 focuses on definitions, denominators and discount impact for one illustrative product.",
+    "internalLinks": ["/otchety-moysklad/", "/pribyl-marketpleysov-moysklad/"],
+    "product": "No direct TrueTell product is relevant."
+  },
+  "example": {
+    "basis": "Illustrative sale price/revenue 1,500 ₽ excluding VAT; cost of goods sold included in this simplified calculation 1,000 ₽; costs outside that basis are named.",
+    "grossProfit": "1,500 - 1,000 = 500 ₽",
+    "margin": "500 / 1,500 × 100% = 33.3%",
+    "markup": "500 / 1,000 × 100% = 50%",
+    "targetMarginPrice": "1,000 / (1 - 0.35) = 1,538.46 ₽",
+    "discount10Percent": {
+      "revenue": "1,350 ₽",
+      "grossProfit": "350 ₽",
+      "margin": "25.9%",
+      "marginChange": "-7.4 percentage points",
+      "grossProfitChange": "-30%"
+    }
+  },
+  "sources": [
+    {
+      "label": "ФСБУ 4/2023, п. 27",
+      "url": "https://www.consultant.ru/document/cons_doc_LAW_472684/",
+      "checkedAt": "2026-10-26",
+      "supports": "Gross profit as revenue less cost of sales, distinct from later expenses."
+    },
+    {
+      "label": "AQA accounting ratios",
+      "url": "https://www.aqa.org.uk/subjects/accounting/a-level/accounting-7127/specification/appendix-accounting-ratios",
+      "checkedAt": "2026-10-26",
+      "supports": "Gross profit margin uses revenue as denominator; markup uses cost of sales."
+    },
+    {
+      "label": "OpenStax, Principles of Financial Accounting, Key Terms",
+      "url": "https://openstax.org/books/principles-financial-accounting/pages/6-key-terms",
+      "checkedAt": "2026-10-26",
+      "supports": "Gross margin and the boundary between gross profit and operating expenses."
+    }
+  ],
+  "visuals": [
+    {
+      "source": "src/images/articles/margin-markup-denominator-071.svg",
+      "raster": "src/images/articles/margin-markup-denominator-071.png",
+      "purpose": "Compare the same 500 ₽ gross profit divided by revenue and cost of sales.",
+      "alpha": true
+    },
+    {
+      "source": "src/images/articles/margin-discount-effect-071.svg",
+      "raster": "src/images/articles/margin-discount-effect-071.png",
+      "purpose": "Show the illustrative effect of a 10% discount on revenue, gross profit and margin.",
+      "alpha": true
+    }
+  ],
+  "independentReview": {
+    "reviewer": "second agent",
+    "result": "PASS",
+    "findings": [
+      "No P1/P2 issues. Formula calculations, terminology, qualifications, intent, FAQ/schema, HTML metadata, images and internal links were checked.",
+      "The reviewer requested one P3 clarity improvement: explicitly label the formulas as gross profit; the SVG/PNG were updated and the reviewer confirmed final labels fit and remain readable.",
+      "Reviewer independently checked the accounting and educational sources."
+    ],
+    "boundaries": ["Wordstat was not remeasured by the reviewer.", "Main agent performed local browser inspection."]
+  },
+  "verification": {
+    "build": "PASS; 74 routes built",
+    "humanizer": "Not run on this draft; required on final text before publication.",
+    "lint": "PASS, zero errors; three existing warnings in chart-section.tsx and slider-section.tsx.",
+    "tests": "PASS, 88/88",
+    "indexNowCheck": "PASS; local validation only, no URL submitted.",
+    "html": {
+      "h1Count": 1,
+      "canonical": "https://truetell-retail.ru/marzhinalnost-tovara/",
+      "robots": "noindex, nofollow",
+      "figures": 2,
+      "faqSchemaMatchesVisibleFaq": true,
+      "visibleBreadcrumbs": false,
+      "includedInSitemap": false
+    },
+    "images": "Both source PNGs and optimized WebP variants preserve alpha.",
+    "browser": "Local preview inspected at 390×844 and 1440×1000. Shared dotted dark hero is used. At 390px the existing first-visit consent banner overlaps lower content until dismissed."
+  },
+  "beforePublication": [
+    "Run humanizer on final copy, FAQ, captions, CTA and metadata and record the current fingerprint.",
+    "Add a contextual inbound link from an existing published page.",
+    "Rebuild and verify after edits.",
+    "Publish only under a separate explicit instruction and check deployment/indexing independently."
+  ],
+  "publication": "Not published or deployed; no indexing submission made."
+}

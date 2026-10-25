@@ -776,6 +776,20 @@ export const allArticles: CatalogArticle[] = [
     relatedArticles: ['ostatki-moysklad/', 'analiticheskaya-baza-moysklad/', 'analiz-chekov-moysklad/'],
     publishedAt: '2026-10-25',
   },
+  {
+    title: 'Маржа, наценка и маржинальность товара: расчёт на одном примере',
+    seoTitle: 'Маржинальность товара: формула, маржа и наценка',
+    description: 'Разбираем на одном товаре, чем маржа в рублях отличается от маржинальности и наценки, как посчитать каждый показатель и учесть скидку.',
+    summaryDescription: 'Один расчёт с одинаковыми исходными данными: валовая прибыль, маржинальность от выручки и наценка от себестоимости.',
+    hrefPath: 'marzhinalnost-tovara/',
+    type: 'blog',
+    category: 'МойСклад',
+    topic: 'Аналитика товаров',
+    status: 'draft',
+    indexable: false,
+    relatedProduct: null,
+    relatedArticles: ['pribyl-marketpleysov-moysklad/', 'otchety-moysklad/', 'moysklad-dlya-marketpleysov/'],
+  },
 ];
 
 export function getArticle(path: string): CatalogArticle {
