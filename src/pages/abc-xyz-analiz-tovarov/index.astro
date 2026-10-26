@@ -15,7 +15,7 @@ import { productRating, productRatingPath } from '../../config/products';
 import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
 import paretoImage from '../../images/articles/abc-pareto-example-087.png';
 import matrixImage from '../../images/articles/abc-xyz-matrix-example-087.png';
-import productImage from '../../images/products/product-rating/rating-products-2026-10.png';
+import productImage from '../../images/products/product-rating/rating-products-2026-10-renamed.jpg';
 import example from '../../data/articles/abc-xyz-example-087.json';
 
 const article = getArticle('abc-xyz-analiz-tovarov/');
@@ -51,7 +51,7 @@ const faqItems = [
   { question: 'Сколько месяцев нужно для XYZ?', answer: 'Единого срока для всех товаров нет. Интервалы и длина истории должны соответствовать циклу продаж. Шесть месяцев в статье нужны для учебного расчёта; они не позволяют сами по себе оценить годовую сезонность. Новинки и товары с неполной историей разбирают отдельно.' },
   { question: 'Товар CZ нужно убрать из ассортимента?', answer: 'Класс CZ — повод для проверки. Малый вклад и сильный разброс могут объясняться редкими заказами, дефицитом, недавним запуском или ролью сопутствующего товара. До решения нужны данные о наличии, марже, поставках и назначении позиции.' },
   { question: 'Можно ли считать ABC по количеству, а XYZ по деньгам?', answer: 'Это возможно как отдельно заданная методика, но смысл матрицы изменится. В статье ABC считается по условной сумме продаж, XYZ — по количеству в штуках. Нельзя незаметно менять показатель или складывать разные валюты и единицы измерения.' },
-  { question: 'Рейтинг продаж TrueTell строит XYZ-матрицу?', answer: 'В приложении есть ABC-анализ товаров и клиентов по данным CRM, динамика и экспорт. XYZ, складские остатки, закупки, маржа и прогнозирование в подтверждённый набор не входят. Расчёт XYZ в статье — самостоятельная методика на учебных данных.' },
+  { question: 'Рейтинг товаров и клиентов TrueTell строит XYZ-матрицу?', answer: 'В приложении есть ABC-анализ товаров и клиентов по данным CRM, динамика и экспорт. XYZ, складские остатки, закупки, маржа и прогнозирование в подтверждённый набор не входят. Расчёт XYZ в статье — самостоятельная методика на учебных данных.' },
 ];
 const sourceLinks = [
   { label: 'ABC/XYZ: вклад и динамика потребления — SAP Help', href: 'https://help.sap.com/docs/SAP_SUPPLY_CHAIN_MANAGEMENT/5632d7cbffa04b21be22106e9a212038/4d33d92edb9e00d3e10000000a42189b.html' },
@@ -122,11 +122,11 @@ const structuredData = createArticleStructuredData({ articleType: 'BlogPosting',
     <p>Вклад в сумму также не равен доходности. Для МойСклад правила анализа продаж и прибыльности разбираем в <a href={`${base}otchety-moysklad/`}>статье об отчётах</a>. Сначала согласуйте исходный показатель, затем сравнивайте классы между периодами на тех же условиях.</p>
   </section>
   <section aria-labelledby="rating-product">
-    <h2 id="rating-product">Что можно сделать <span data-heading-accent>в «Рейтинге продаж»</span></h2>
+    <h2 id="rating-product">Что можно сделать <span data-heading-accent>в «Рейтинге товаров и клиентов»</span></h2>
     <p>Если продажи ведутся в Битрикс24, приложение TrueTell «{productRating.name}» помогает получить рейтинги товаров и клиентов, ABC-классы, динамику и экспорт с детализацией до сделок. Для ABC товаров используется сумма допустимых товарных строк. Успешная CRM-сделка при этом не подтверждает оплату и не становится бухгалтерской выручкой.</p>
-    <ArticleFigure src={productImage} fullSize alt="Настоящий интерфейс Рейтинга продаж TrueTell на тестовых данных: суммы товаров, доли, ABC-классы и месячная динамика" caption="Скриншот приложения на тестовых данных из продуктовых материалов TrueTell. Это отдельная выборка, не восемь SKU учебного примера. Показаны ABC и динамика; XYZ-матрицу этот экран не рассчитывает." />
+    <ArticleFigure src={productImage} fullSize alt="Настоящий интерфейс приложения «Рейтинг товаров и клиентов» TrueTell на тестовых данных: суммы товаров, доли, ABC-классы и месячная динамика" caption="Скриншот приложения на тестовых данных из продуктовых материалов TrueTell. Это отдельная выборка, не восемь SKU учебного примера. Показаны ABC и динамика; XYZ-матрицу этот экран не рассчитывает." />
     <p>В подтверждённом наборе приложения нет XYZ, складских остатков, закупок, маржи и прогнозирования. Готовую помесячную XYZ-матрицу из него здесь не обещаем. Для отдельного расчёта нужна проверенная таблица количества по одинаковым интервалам, как в учебном файле.</p>
-    <InlineConsultation variant="product" title="Нужен ABC-анализ продаж из Битрикс24?" description="Посмотрите, как «Рейтинг продаж» считает вклад товаров и клиентов и позволяет проверить исходные сделки. Возможности и установка — на странице приложения." href={productRatingPath} actionLabel="Посмотреть Рейтинг продаж" />
+    <InlineConsultation variant="product" title="Нужен ABC-анализ продаж из Битрикс24?" description="Посмотрите, как «Рейтинг товаров и клиентов» считает вклад товаров и клиентов и позволяет проверить исходные сделки. Возможности и установка — на странице приложения." href={productRatingPath} actionLabel="Посмотреть Рейтинг товаров и клиентов" />
   </section>
   <section aria-labelledby="next-check">
     <h2 id="next-check">Как превратить анализ <span data-heading-accent>в рабочее решение</span></h2>
@@ -142,9 +142,9 @@ const structuredData = createArticleStructuredData({ articleType: 'BlogPosting',
   <p>Методика и продуктовые ограничения проверены 23 октября 2026 года. Расчёт выполнен на вымышленных данных; клиентская CRM при подготовке статьи не использовалась.</p>
   <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
   <Fragment slot="article-end">
-    <ArticleProductCta titleParts={[{ text: 'Разберите вклад товаров ' }, { text: 'в «Рейтинге продаж»', accent: true }]}
+    <ArticleProductCta titleParts={[{ text: 'Разберите вклад товаров ' }, { text: 'в «Рейтинге товаров и клиентов»', accent: true }]}
       description="ABC-анализ товаров и клиентов по данным Битрикс24, динамика, экспорт и проверка исходных сделок. На странице приложения — возможности и ссылка на установку."
-      href={productRatingPath} actionLabel="Посмотреть Рейтинг продаж" />
+      href={productRatingPath} actionLabel="Посмотреть Рейтинг товаров и клиентов" />
     <RelatedArticles items={relatedArticles} />
   </Fragment>
   <ConsultationCtaSection slot="after-article" />

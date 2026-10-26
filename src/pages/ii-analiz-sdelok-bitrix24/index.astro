@@ -1,0 +1,151 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import Checklist from '../../components/editorial/checklist.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { mcpProduct } from '../../config/products';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import activityImage from '../../images/articles/ai-deals-activity-example-094.png';
+import screenshotPlaceholder from '../../images/articles/ai-deals-mcp-screenshot-placeholder-094.png';
+
+const article = getArticle('ii-analiz-sdelok-bitrix24/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const canonicalPath = `/${article.hrefPath}`;
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const titleParts = [{ text: 'ИИ-анализ сделок в Битрикс24: ' }, { text: 'что проверить в CRM', accent: true }];
+const imageAlt = 'Учебные сделки: дата активности и дата изменения карточки отличаются; три открытые сделки попадают в отбор';
+const ogImage = new URL(activityImage.src, siteRoot).toString();
+const sourceLinks = [
+  { label: 'Системные поля CRM и события последней активности: Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/18478840/' },
+  { label: 'Поля объектов CRM: lastActivityTime и updatedTime, REST API Битрикс24', href: 'https://apidocs.bitrix24.ru/api-reference/crm/universal/object-fields.html' },
+  { label: 'Список элементов crm.item.list: фильтры и права чтения, REST API Битрикс24', href: 'https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-list.html' },
+];
+const exampleRows = [
+  ['101', 'В работе', '10.10, 12:00', '24.10, 12:00', 'Да: активность раньше границы'],
+  ['102', 'В работе', '18.10, 00:00', '20.10, 12:00', 'Да: ровно на границе'],
+  ['103', 'В работе', '19.10, 12:00', '24.10, 12:00', 'Нет: активность позже границы'],
+  ['104', 'В работе', 'Нет значения', '22.10, 12:00', 'Да: дата активности отсутствует'],
+  ['105', 'Успешная', 'Нет значения', '23.10, 12:00', 'Нет: сделка закрыта'],
+  ['106', 'Проигранная', '12.10, 12:00', '23.10, 12:00', 'Нет: сделка закрыта'],
+];
+const reviewItems = [
+  'Сверить воронку, ответственных и границу времени с условиями запроса.',
+  'Посмотреть число возвращённых записей, общее доступное число и признак неполной выборки.',
+  'Открыть указанные ID в CRM под тем же пользователем и сравнить поля.',
+  'Прочитать историю нужной сделки и проверить договорённости с клиентом.',
+  'Зафиксировать следующий шаг вручную после проверки; этот сценарий ограничен чтением.',
+];
+const faqItems = [
+  { question: 'Что даёт ИИ-анализ сделок в Битрикс24?', answer: 'В описанном сценарии ИИ помогает объяснить отбор сделок со старой или отсутствующей датой активности и подготовить список для проверки. В ответе нужны ID, условия отбора и ограничения данных. Причины задержки руководитель уточняет по истории карточек.' },
+  { question: 'Сделка без активности означает, что менеджер не звонил клиенту?', answer: 'Нет. Поле последней активности обновляется по определённым событиям Битрикс24 и не описывает все контакты с клиентом. Для вывода о звонках или договорённостях нужно отдельно проверить историю сделки.' },
+  { question: 'Можно ли оценить вероятность продажи по этому списку?', answer: 'Такой список не содержит модели вероятности продажи. Старая дата или отсутствие значения помогают выбрать карточку для проверки, но не обосновывают процент успеха или причину отказа.' },
+  { question: 'Как учитывать неполный ответ MCP?', answer: 'Если truncated=true, результат ограничен возвращённой частью. Нельзя выдавать её за все сделки компании. Уточните воронку или ответственных в пределах поддерживаемых фильтров; полную выборку нужно подтвердить отдельно.' },
+  { question: 'Можно уже подключить MCP TrueTell к ChatGPT или Claude?', answer: 'Подключение нашего приложения в ChatGPT и Claude ещё не принято. В Codex подтверждены персональный вход и ограниченные вызовы 13 инструментов чтения на контролируемом стенде. Открытая установка пока не заявлена; с TrueTell можно обсудить подходящий сценарий и его проверку.' },
+  { question: 'Где страница продукта MCP TrueTell?', answer: 'Страница продукта готовится. Пока кнопка «Обсудить MCP TrueTell» ведёт к форме на этой странице. Это временный переход: он позволяет описать задачу и не запускает установку приложения.' },
+];
+const structuredData = createArticleStructuredData({
+  articleType: 'BlogPosting', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  articleSection: article.topic,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'Блог', item: new URL('blog/', siteRoot).toString() }, { name: title, item: articleUrl }],
+  faqItems,
+});
+---
+<ArticleLayout {title} {titleParts} {description} {canonicalPath} {structuredData}
+  ogTitle={article.seoTitle} ogDescription={description} {ogImage} ogImageAlt={imageAlt}
+  category={article.category} author={authorName}
+  intro="Как задать вопрос о сделках, получить проверяемый список и разобраться, что действительно следует из данных. Сценарий для разрабатываемого MCP TrueTell."
+>
+  <Fragment slot="quick-answer">
+    <p><strong>Начните с узкой задачи: выберите открытые сделки одной воронки со старой или отсутствующей датой последней активности. Попросите ИИ показать ID и основание отбора каждой записи.</strong></p>
+    <p>Сверьте результат с CRM и проверьте полноту списка. Дата активности сама по себе не объясняет задержку и не доказывает, что менеджер перестал работать с клиентом.</p>
+  </Fragment>
+
+  <p data-article-lead>Перед разбором продаж руководителю нужен список карточек, которые стоит открыть первыми. ИИ может помочь сформулировать такой список и пояснить его условия. Для работы с данными Битрикс24 мы разрабатываем MCP TrueTell: приложение передаёт внешнему AI-клиенту результаты доступных инструментов. Для первого разбора достаточно выбрать сделки по дате активности и проверить найденные ID в CRM.</p>
+
+  <section aria-labelledby="task">
+    <h2 id="task">Какую задачу поставить <span data-heading-accent>ИИ</span></h2>
+    <p>Вопрос «почему упали продажи?» требует данных о периодах, составе воронки и причинах отказа. Для первой проверки проще выбрать конкретный признак: дата последней активности не позже согласованной границы либо отсутствует. Результат даст очередь карточек для ручного разбора.</p>
+    <p>Укажите воронку, ответственных и точное время с часовым поясом. В нашем примере граница равна 18 октября 2026 года, 00:00 по Москве. Дата на самой границе тоже входит в отбор. Это условие учебной задачи; подходящий интервал для вашей команды зависит от обычного цикла продажи.</p>
+    <p>Отдельно договоритесь, что значит полезный ответ: перечислить найденные ID, показать дату активности и причину попадания в список, сообщить, все ли доступные записи вернулись. Общие советы о продажах без этих данных проверить по CRM не получится.</p>
+  </section>
+
+  <section aria-labelledby="activity">
+    <h2 id="activity">Последняя активность и изменение карточки: <span data-heading-accent>разные даты</span></h2>
+    <p>Битрикс24 обновляет последнюю активность по определённым событиям, в том числе при входящем письме или звонке. Этот показатель не охватывает все действия с клиентом. Дата изменения карточки хранится отдельно: свежее изменение полей не доказывает недавний контакт.</p>
+    <p>Поэтому используйте формулировку «сделки для проверки по дате активности». Утверждение «менеджер не работал с клиентом семь дней» потребует дополнительных сведений. Если дата отсутствует, по ней нельзя посчитать, сколько дней длится пауза.</p>
+    <ArticleFigure src={activityImage} fullSize
+      alt={imageAlt}
+      caption="Учебные данные TrueTell, октябрь 2026 года, московское время. Круг показывает активность, ромб показывает изменение карточки. Отсутствующая дата отмечена отдельно. Это инфографика условий отбора, а не скриншот приложения." />
+  </section>
+
+  <section aria-labelledby="mcp">
+    <h2 id="mcp">Как этот сценарий устроен <span data-heading-accent>в MCP TrueTell</span></h2>
+    <p>В коде приложения есть инструмент <code>bitrix_get_deals_without_activity</code>. Он отбирает сделки в работе с датой <code>lastActivityTime</code> не позже заданного <code>inactiveBefore</code> или без этой даты. Доступны фильтры по воронкам и ответственным. Произвольный фильтр по сумме или выбранной стадии в этот инструмент не входит.</p>
+    <p>Результат содержит ID и название сделки, коды стадии и воронки, ID ответственного, даты изменения и активности. Имена сотрудников и названия стадий нужно сверять по соответствующим справочникам, а не угадывать по кодам. Суммы сделок и содержимое переписки этот результат не возвращает.</p>
+    <p>Один вызов возвращает по умолчанию до 20 записей; допустимый предел составляет 100. Вместе со списком приходят <code>returned</code>, <code>totalAvailable</code> и <code>truncated</code>. При <code>truncated=true</code> ответ охватывает только часть подходящих доступных записей. Уточните поддерживаемые фильтры; сам запрос «продолжи» не гарантирует выгрузку остатка.</p>
+    <p>В Codex на контролируемом стенде подтверждены персональный вход и ограниченные вызовы всех 13 инструментов чтения. Это не означает приёмку всех сценариев и клиентских порталов. Подключение MCP TrueTell в ChatGPT и Claude ещё не принято, открытая установка пока не заявлена.</p>
+    <InlineConsultation title="Разбор сделок через MCP TrueTell"
+      description="Опишите задачу и AI-клиент без передачи клиентских данных. Обсудим сценарий для вашей воронки и способ проверки ответа."
+      href={mcpProduct.articleHref} actionLabel={mcpProduct.articleActionLabel} />
+  </section>
+
+  <section aria-labelledby="prompt">
+    <h2 id="prompt">Пример запроса <span data-heading-accent>для проверки сценария</span></h2>
+    <p>После подтверждения подключения и доступа к нужному инструменту задачу можно сформулировать так. ID воронки и ответственных сначала сверяют с CRM:</p>
+    <blockquote><p>Найди до 20 сделок в работе в согласованной воронке у выбранных ответственных. Дата последней активности не позже 18 октября 2026 года, 00:00, часовой пояс +03:00, либо отсутствует. Покажи ID, название, стадию, ответственного, даты активности и изменения. Для каждой строки укажи основание отбора. Сообщи returned, totalAvailable и truncated. Не делай вывод о причинах задержки без истории карточки. Ничего не изменяй.</p></blockquote>
+    <p>Это пример задания для будущей проверки в выбранном клиенте. Он не подтверждает, что ChatGPT уже подключён к нашему приложению. Если инструмент не вызван или вернул ошибку, ответ должен сообщать об этом, сохраняя задачу незавершённой.</p>
+  </section>
+
+  <section aria-labelledby="example">
+    <h2 id="example">Учебный пример: <span data-heading-accent>какие сделки попадут в список</span></h2>
+    <p>Возьмём шесть условных сделок одной воронки с согласованными ответственными. Все даты ниже относятся к октябрю 2026 года и московскому времени. Из четырёх открытых сделок условиям соответствуют 101, 102 и 104. Две закрытые сделки исключаются независимо от даты активности.</p>
+    <DataTable label="Учебные сделки и результат отбора по активности"
+      columns={['ID', 'Состояние', 'Активность', 'Изменение', 'В отборе']}
+      rows={exampleRows} rowHeaders />
+    <p>У сделки 101 поля менялись 24 октября, но дата активности осталась 10 октября. Сделка 102 попадает в отбор по включённой границе. У сделки 104 нет даты активности: основание включения нужно назвать именно так, без выдуманного срока бездействия.</p>
+    <p>Если учебный ответ вернул все три подходящие записи, его показатели равны <code>returned=3</code>, <code>totalAvailable=3</code>, <code>truncated=false</code>. Это ожидаемый результат нашего примера, а не замер живого портала. В реальной проверке сначала смотрят фактические значения ответа.</p>
+  </section>
+
+  <section aria-labelledby="verify">
+    <h2 id="verify">Как проверить ответ <span data-heading-accent>перед разбором продаж</span></h2>
+    <p>Откройте сделки из ответа под тем же пользователем Битрикс24. Сравните ID, даты и текущую стадию. Видимость записей зависит от прав чтения: список сотрудника не равен всей базе компании. Если данные успели измениться после запроса, зафиксируйте время сверки и повторите чтение при необходимости.</p>
+    <!-- MCP-SCREEN-094: replace only with a verified, anonymized TrueTell client result and matching CRM card. -->
+    <ArticleFigure src={screenshotPlaceholder} fullSize
+      alt="Временное место для проверенного скриншота ответа MCP TrueTell и сверки с карточкой CRM"
+      caption="Временная заглушка. Здесь появится настоящий обезличенный скриншот ответа MCP TrueTell с найденными ID и признаками полноты, рядом с соответствующей карточкой CRM. Интерфейс и результат приложения на этом изображении не показаны." />
+    <Checklist label="Проверка списка сделок" items={reviewItems.map(title => ({ title }))} />
+    <p>После сверки можно обсуждать конкретную карточку: ждём ли ответ клиента, назначено ли следующее действие, есть ли в истории договорённость о более длинной паузе. Такой контекст помогает решить, кому и когда связаться с клиентом. Одна дата активности этого решения не даёт.</p>
+    <p>Для регулярных показателей по периодам и менеджерам пригодится отдельный <a href={`${base}otchety-po-prodazham-bitrix24/`}>разбор отчётов по продажам Битрикс24</a>. Переходы между стадиями и конверсию рассматриваем в материале о <a href={`${base}voronka-prodazh-bitrix24/`}>воронке продаж</a>. Эти задачи требуют собственных правил расчёта.</p>
+  </section>
+
+  <section aria-labelledby="product">
+    <h2 id="product">Обсудить анализ сделок <span data-heading-accent>через MCP TrueTell</span></h2>
+    <p>Для обсуждения достаточно назвать воронку, желаемый AI-клиент, вопрос к сделкам и способ проверки результата. Передавать содержимое CRM в первоначальной заявке не требуется. Доступ к данным и состав пилота согласовываются отдельно.</p>
+    <p>Страница продукта MCP TrueTell готовится. Пока переход ниже ведёт к нашей форме на этой странице. После появления проверенной страницы продукта заменим временную ссылку и добавим настоящий скриншот сценария.</p>
+  </section>
+
+  <FaqSection title="Вопросы об ИИ-анализе сделок" items={faqItems} variant="article" />
+  <p>Факты проверены 25 октября 2026 года по официальной документации и коду MCP TrueTell. Статус клиентского подключения сверён с отчётом приёмки от 23 октября. Данные примера условные; живой клиентский портал при подготовке материала не подключали.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Разобрать сделки с ' }, { text: 'MCP TrueTell', accent: true }]}
+      description="Разрабатываем подключение внешнего ИИ к Битрикс24. Опишите сценарий анализа сделок. Пока страница продукта готовится, кнопка открывает нашу форму для обсуждения."
+      href={mcpProduct.productPageHref ?? mcpProduct.articleHref} actionLabel={mcpProduct.articleActionLabel} />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

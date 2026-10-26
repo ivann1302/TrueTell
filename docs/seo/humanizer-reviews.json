@@ -158,21 +158,21 @@
     },
     "otchety-po-prodazham-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/humanizer-articles-reviewed-2026-10-25.md",
-      "fingerprint": "1ab9fa1a87d3a53f7bc64e6dea8655560a240aaa58ffb867827c1c9cc6892690"
+      "reviewedAt": "2026-10-26",
+      "report": "docs/seo/publications/humanizer-product-rename-2026-10-26.json",
+      "fingerprint": "d446537d62374d51390bd685aaaadd47ee6fc74fa77628114a9816c8648b80c0"
     },
     "ostatki-moysklad/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/moysklad-stock-days-local-093-2026-10-25.md",
-      "fingerprint": "d66ba43aff9df08eecd9f7710e400840b87a321d73d08c8d60fb0eb76b9c8362"
+      "reviewedAt": "2026-10-26",
+      "report": "docs/seo/publications/moysklad-content-links-humanizer-068-2026-10-26.md",
+      "fingerprint": "27dc5a4574155e25f2b728acf9f49d2b68982f148e751e04d12d95dd3fd3e6e3"
     },
     "dashbord-rukovoditelya-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/humanizer-articles-reviewed-2026-10-25.md",
-      "fingerprint": "cbd87b475280f6102bbc6c9522877e2222f1cec73e43a6f2d0240a11723735a0"
+      "reviewedAt": "2026-10-26",
+      "report": "docs/seo/publications/humanizer-product-rename-2026-10-26.json",
+      "fingerprint": "4caeeb1c36e78830fd6aae79e21c99d6cb8d6110a497cad4be0cbdaedbfafff0"
     },
     "skvoznaya-analitika-bitrix24/": {
       "skill": "humanizer",
@@ -189,8 +189,8 @@
     "otchety-moysklad/": {
       "skill": "humanizer",
       "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/moysklad-reports-local-093-2026-10-25.md",
-      "fingerprint": "55dfbcc5d485eae7742df82ab758461cfaa3ac0d7db2041e2ce907dbc4604d1e"
+      "report": "docs/seo/publications/moysklad-content-links-reviewed-091-2026-10-25.md",
+      "fingerprint": "9204a78aba09c778b4e9dca61a1ab859cea3c79f306b5f905139cd988297b4d4"
     },
     "voronka-prodazh-bitrix24/": {
       "skill": "humanizer",
@@ -216,47 +216,71 @@
       "report": "docs/seo/publications/api-moysklad-humanizer-091-2026-10-25.md",
       "fingerprint": "82f87472296e49c091e80f2b0e23084beb20074866084948060e887ed19d536e"
     },
-    "analiticheskaya-baza-moysklad/": {
-      "skill": "humanizer",
-      "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/moysklad-analytics-base-local-093-2026-10-25.md",
-      "fingerprint": "847b55a4a24446aa1da49a63e953ad66ae7defdaf736c0eb5416ab29dc646c20"
-    },
-    "dds-roznicy-moysklad/": {
-      "skill": "humanizer",
-      "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/moysklad-dds-local-093-2026-10-25.md",
-      "fingerprint": "ad4212effbed5a1bc4723a28074f6c3daad0859261670ea2c0189e2c538eb0f9"
-    },
-    "proverka-dannyh-moysklad-posle-vygruzki/": {
-      "skill": "humanizer",
-      "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/moysklad-data-check-local-093-2026-10-25.md",
-      "fingerprint": "ff19af4d68176866da1e4eb998c9ec62d1b3ba33f24104ad2f631f815214bbf2"
-    },
-    "analiz-chekov-moysklad/": {
-      "skill": "humanizer",
-      "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/moysklad-receipts-local-093-2026-10-25.md",
-      "fingerprint": "ab2fd14e6ae1b728df42c996e5d36ff8a812f5dd1dfd9da2eb44b889161038e0"
-    },
-    "vyruchka-sotrudnikov-po-smenam-moysklad/": {
-      "skill": "humanizer",
-      "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/moysklad-staff-local-093-2026-10-25.md",
-      "fingerprint": "5fc9d729fb14c8532f91335388ae9d81f75c897b6d5dba80c5255a7ee34baef9"
-    },
-    "dashbord-roznichnoy-seti-moysklad/": {
-      "skill": "humanizer",
-      "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/moysklad-network-local-093-2026-10-25.md",
-      "fingerprint": "9f30c5c4040753f03f360dff505af2652e4cf77211bd5d2ccdd8414f9654fa1f"
-    },
     "vygruzka-dannyh-moysklad-dlya-analitiki/": {
       "skill": "humanizer",
       "reviewedAt": "2026-10-25",
       "report": "docs/seo/publications/moysklad-content-links-reviewed-091-2026-10-25.md",
       "fingerprint": "c3cbf4bbfc794452b8185982777bb619753908087f2cd0e183db1c5ab310dddb"
+    },
+    "ii-analiz-sdelok-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-25",
+      "report": "docs/seo/publications/ai-deals-humanizer-094-2026-10-25.md",
+      "fingerprint": "ee109d1a8d176d7fd4717e9a32451f2edf23e97692a8cef2b9f6e3c446f1b4f4"
+    },
+    "inventarizaciya-moysklad/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-26",
+      "report": "docs/seo/publications/inventory-069-humanizer-2026-10-26.md",
+      "fingerprint": "91f7fa63fe534c60f5baae90720f4f06fb1790f0b60ccd4afd2ee3e612147ba5"
+    },
+    "oborachivaemost-zapasov-formula/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-26",
+      "report": "docs/seo/publications/inventory-turnover-humanizer-068-2026-10-26.md",
+      "fingerprint": "a2cd2a8446c41fadb3ecbb70f8b553665e5c4e951b7976a6429515cdd4ec4c16"
+    },
+    "abc-xyz-analiz-tovarov/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-26",
+      "report": "docs/seo/publications/humanizer-product-rename-2026-10-26.json",
+      "fingerprint": "7aba18a2492ed631c8c9abd3121ca9b44bbe261d4a0dfd882a4a7c9a316dc573"
+    },
+    "analiticheskaya-baza-moysklad/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-26",
+      "report": "docs/seo/publications/humanizer-restored-moysklad-2026-10-26.md",
+      "fingerprint": "847b55a4a24446aa1da49a63e953ad66ae7defdaf736c0eb5416ab29dc646c20"
+    },
+    "dds-roznicy-moysklad/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-26",
+      "report": "docs/seo/publications/humanizer-restored-moysklad-2026-10-26.md",
+      "fingerprint": "ad4212effbed5a1bc4723a28074f6c3daad0859261670ea2c0189e2c538eb0f9"
+    },
+    "proverka-dannyh-moysklad-posle-vygruzki/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-26",
+      "report": "docs/seo/publications/humanizer-restored-moysklad-2026-10-26.md",
+      "fingerprint": "ff19af4d68176866da1e4eb998c9ec62d1b3ba33f24104ad2f631f815214bbf2"
+    },
+    "analiz-chekov-moysklad/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-26",
+      "report": "docs/seo/publications/humanizer-restored-moysklad-2026-10-26.md",
+      "fingerprint": "ab2fd14e6ae1b728df42c996e5d36ff8a812f5dd1dfd9da2eb44b889161038e0"
+    },
+    "vyruchka-sotrudnikov-po-smenam-moysklad/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-26",
+      "report": "docs/seo/publications/humanizer-restored-moysklad-2026-10-26.md",
+      "fingerprint": "5fc9d729fb14c8532f91335388ae9d81f75c897b6d5dba80c5255a7ee34baef9"
+    },
+    "dashbord-roznichnoy-seti-moysklad/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-26",
+      "report": "docs/seo/publications/humanizer-restored-moysklad-2026-10-26.md",
+      "fingerprint": "9f30c5c4040753f03f360dff505af2652e4cf77211bd5d2ccdd8414f9654fa1f"
     }
   }
 }

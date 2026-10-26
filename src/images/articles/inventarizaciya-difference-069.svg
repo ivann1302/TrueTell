@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="920" viewBox="0 0 1600 920" fill="none">
+  <rect width="1600" height="920" rx="28" fill="#F6F7F9"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#101621">
+    <text x="88" y="100" font-size="25" font-weight="700" letter-spacing="1.4" fill="#616875">КАК ПРОЧИТАТЬ РЕЗУЛЬТАТ ПЕРЕСЧЁТА</text>
+    <text x="88" y="174" font-size="48" font-weight="700">Сравните учётное количество с фактическим</text>
+    <text x="88" y="226" font-size="25" fill="#616875">Примеры условные: перед созданием документа проверьте состав и причину расхождения</text>
+  </g>
+  <rect x="88" y="286" width="680" height="420" rx="24" fill="#FFFFFF" stroke="#DCE1E8" stroke-width="2"/>
+  <rect x="832" y="286" width="680" height="420" rx="24" fill="#FFFFFF" stroke="#DCE1E8" stroke-width="2"/>
+  <rect x="88" y="286" width="680" height="14" rx="7" fill="#D15252"/>
+  <rect x="832" y="286" width="680" height="14" rx="7" fill="#2B8C62"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#101621">
+    <text x="132" y="366" font-size="24" font-weight="700" fill="#B33D3D">НЕДОСТАЧА</text>
+    <text x="132" y="430" font-size="31" font-weight="700">Расчётный остаток — 12 шт.</text>
+    <text x="132" y="478" font-size="31" font-weight="700">Фактический остаток — 10 шт.</text>
+    <path d="M132 516h560" stroke="#DCE1E8" stroke-width="2"/>
+    <text x="132" y="574" font-size="28" fill="#616875">Не хватает 2 шт.</text>
+    <text x="132" y="646" font-size="32" font-weight="700" fill="#B33D3D">Проверьте и оформите списание</text>
+    <text x="876" y="366" font-size="24" font-weight="700" fill="#24734F">ИЗЛИШЕК</text>
+    <text x="876" y="430" font-size="31" font-weight="700">Расчётный остаток — 8 шт.</text>
+    <text x="876" y="478" font-size="31" font-weight="700">Фактический остаток — 10 шт.</text>
+    <path d="M876 516h560" stroke="#DCE1E8" stroke-width="2"/>
+    <text x="876" y="574" font-size="28" fill="#616875">Найдено 2 шт. сверх учёта</text>
+    <text x="876" y="646" font-size="32" font-weight="700" fill="#24734F">Проверьте и оформите оприходование</text>
+  </g>
+  <rect x="88" y="756" width="1424" height="94" rx="18" fill="#E9EEF8"/>
+  <text x="124" y="814" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#101621">Документ инвентаризации показывает расхождение; остаток изменяет отдельное списание или оприходование.</text>
+</svg>

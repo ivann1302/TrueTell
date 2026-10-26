@@ -1,0 +1,87 @@
+{
+  "release": "096",
+  "date": "2026-10-26",
+  "taskId": "SEO-069",
+  "action": "CREATE",
+  "articleType": "knowledge",
+  "route": "/inventarizaciya-moysklad/",
+  "title": "Инвентаризация в МойСклад: от пересчёта до исправления расхождений",
+  "status": "draft_prepared_local",
+  "registryStatus": "draft",
+  "indexable": false,
+  "deployed": false,
+  "indexingChecked": false,
+  "datePublished": null,
+  "articleSource": "/Users/ivan/projects/TrueTell/src/pages/inventarizaciya-moysklad/index.astro",
+  "articleSha256": "48a2f96303a036793b95b44ce8aa3ff2d476d210bfc7f2c499466e3af9649629",
+  "intent": {
+    "primary": "Провести инвентаризацию товаров в МойСклад: определить охват, внести фактические остатки, разобрать количественные расхождения и оформить корректирующий документ.",
+    "existingCoverageChecked": [
+      "/ostatki-moysklad/ — обзор остатков, резервов и кандидатов в неликвид; новая статья подробно раскрывает процесс инвентаризации и корректирующие документы."
+    ],
+    "supportingQuestions": [
+      "Как провести инвентаризацию в МойСклад?",
+      "Как добавить нулевые остатки в инвентаризацию?",
+      "Как учесть продажи во время пересчёта?",
+      "Что делать с недостачей и излишком?",
+      "Почему инвентаризация не меняет остаток сама?"
+    ],
+    "internalLinks": [
+      "/ostatki-moysklad/",
+      "/otchety-moysklad/",
+      "/moysklad-dlya-marketpleysov/",
+      "/bi-analitika/"
+    ],
+    "futureIncoming": "Контекстная входящая ссылка из /ostatki-moysklad/ уже добавлена локально. Изменения этой страницы и новой статьи должны попасть на сайт совместно; перед выпуском проверить, что ссылка ведёт на доступный маршрут."
+  },
+  "keywordEvidence": {
+    "sourceRelease": "080",
+    "sourceNote": "Wordstat измерен 22.10.2026, Россия (регион 225), все устройства: «инвентаризация мой склад» — 266 широкая частотность и 21 в кавычках за 08.09.2026–07.10.2026. Это частота запросов, не людей и не прогноз трафика. Новое измерение не выполнялось.",
+    "newWordstatMeasurement": false
+  },
+  "sources": [
+    "https://support.moysklad.ru/hc/ru/articles/203309933-%D0%98%D0%BD%D0%B2%D0%B5%D0%BD%D1%82%D0%B0%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D1%82%D0%BE%D0%B2%D0%B0%D1%80%D0%BE%D0%B2",
+    "https://support.moysklad.ru/hc/ru/%D1%82%D0%BE%D0%B2%D0%B0%D1%80%D1%8B%20%D0%B8%20%D1%81%D0%BA%D0%BB%D0%B0%D0%B4%D1%8B/%D0%BE%D1%81%D1%82%D0%B0%D1%82%D0%BA%D0%B8%20%D0%B8%20%D1%81%D0%B5%D0%B1%D0%B5%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C/%D0%B5%D1%81%D0%BB%D0%B8_%D0%BE%D1%81%D1%82%D0%B0%D1%82%D0%BA%D0%B8_%D1%81%D1%87%D0%B8%D1%82%D0%B0%D1%8E%D1%82%D1%81%D1%8F_%D0%BD%D0%B5%D0%B2%D0%B5%D1%80%D0%BD%D0%BE",
+    "https://support.moysklad.ru/hc/ru/%D1%82%D0%BE%D0%B2%D0%B0%D1%80%D1%8B%20%D0%B8%20%D1%81%D0%BA%D0%BB%D0%B0%D0%B4%D1%8B/%D0%BE%D1%81%D1%82%D0%B0%D1%82%D0%BA%D0%B8%20%D0%B8%20%D1%81%D0%B5%D0%B1%D0%B5%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C/%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D1%82%D1%8B"
+  ],
+  "independentFactReview": {
+    "status": "PASS",
+    "reviewer": "Independent subagent",
+    "date": "2026-10-26",
+    "notes": "Проверены ограничения импорта/сканирования, выбор охвата и нулевые остатки, 10 000 позиций, корректировка документа при продажах, смысл колонок, направление списания/оприходования и лимит 500 позиций отдельно. В финальном ревью добавлен официальный шаг «Расчётный остаток → Пересчитать» после дополнения номенклатуры, если флажок установки фактических остатков не выбран. Перепроверено по официальной справке 26.10.2026; замечаний P1/P2 нет."
+  },
+  "images": [
+    "src/images/articles/inventarizaciya-process-069.png",
+    "src/images/articles/inventarizaciya-process-069.svg",
+    "src/images/articles/inventarizaciya-difference-069.png",
+    "src/images/articles/inventarizaciya-difference-069.svg"
+  ],
+  "checks": {
+    "build": "PASS — npm run build, 74 pages built; humanizer check confirmed 37 published articles",
+    "lint": "PASS — npm run lint, 0 errors and 3 pre-existing React hook warnings in chart-section.tsx and slider-section.tsx",
+    "renderedHtml": "PASS — canonical route, noindex/nofollow, one H1, two figures, Article/FAQ/BreadcrumbList schema; draft excluded from sitemap",
+    "browser": "PASS — local preview; accessibility tree confirmed one H1, article sections, images with full-size links, FAQ, sources, CTA and related links. No visible breadcrumbs.",
+    "responsiveScreenshot": "PASS — визуально проверены 1440×900 и 390×844: hero, обе иллюстрации и таблицы; таблицы прокручиваются по горизонтали, текст не ломается на отдельные символы. Навигация и доступность фигур проверены в браузере.",
+    "publication": "NOT PUBLISHED; no production deploy, live URL, index request or index status asserted"
+  },
+  "humanizer": {
+    "status": "PASS",
+    "fingerprintWritten": true,
+    "report": "docs/seo/publications/inventory-069-humanizer-2026-10-26.md",
+    "fingerprint": "91f7fa63fe534c60f5baae90720f4f06fb1790f0b60ccd4afd2ee3e612147ba5",
+    "reason": "Финальный текст reviewed; после проверки менялась только разметка двух таблиц для горизонтальной прокрутки на мобильном, текст не менялся."
+  },
+  "openBeforePublication": [
+    "Deploy the incoming link from /ostatki-moysklad/ and this route together; verify that the target resolves.",
+    "Run publication checks, then publish only under separate owner instruction."
+  ],
+  "fileSha256": {
+    "src/pages/inventarizaciya-moysklad/index.astro": "48a2f96303a036793b95b44ce8aa3ff2d476d210bfc7f2c499466e3af9649629",
+    "src/config/articles.ts": "84263330a86ae257f5a6964534ae56ede8d90307fdda3876335058a83c8842a3",
+    "src/pages/ostatki-moysklad/index.astro": "517aa42e75d4dbf7e59d297cfbe5674537ff13417e8b781af0eb71d3cf2f1162",
+    "src/images/articles/inventarizaciya-process-069.svg": "94286f857301598c649160b89a5d04315df3d03485554965123c6e2a8b8a0ec8",
+    "src/images/articles/inventarizaciya-process-069.png": "a6339cd4befd40c46291e8cfb330613643d35ea0720c1a387a2b43f2a7ea15a6",
+    "src/images/articles/inventarizaciya-difference-069.svg": "976c7230f70eee2cbbbe9a0cc14767b1954f3ad3550df81f19de6c664b0b39e1",
+    "src/images/articles/inventarizaciya-difference-069.png": "03ded9f22b2391339df6c79517e2fd59441971bb247ccb957abb75debb66170f"
+  }
+}

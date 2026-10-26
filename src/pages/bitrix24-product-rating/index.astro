@@ -11,7 +11,7 @@ import LineWave from '../../components/ui/line-wave.astro';
 import ActionIcon from '../../components/product-scenario/action-icon.astro';
 import { companyInfo } from '../../config/company';
 import { productRating as product, productRatingPath } from '../../config/products';
-import screenshot from '../../images/products/product-rating/rating-products-2026-10.png';
+import screenshot from '../../images/products/product-rating/rating-products-2026-10-renamed.jpg';
 import buyersScreenshot from '../../images/products/product-rating/rating-product-buyers-2026-10.png';
 import dealsScreenshot from '../../images/products/product-rating/rating-deal-contribution-2026-10.png';
 import historyScreenshot from '../../images/products/product-rating/rating-customer-history-2026-10.png';
@@ -22,7 +22,7 @@ import styles from './page.module.scss';
 
 const heading = 'Рейтинг товаров и клиентов в Битрикс24';
 const title = `${heading} — ${companyInfo.brandName}`;
-const description = 'Рейтинг продаж TrueTell для Битрикс24: товары, клиенты, ABC-анализ и сравнение периодов. Покупатели товара, история покупок, детализация сделок и Excel.';
+const description = 'Рейтинг товаров и клиентов TrueTell для Битрикс24: товары, клиенты, ABC-анализ и сравнение периодов. Покупатели товара, история покупок, детализация сделок и Excel.';
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const siteRoot = new URL(base, Astro.site ?? 'https://truetell-retail.ru');
 const pageUrl = new URL(productRatingPath.slice(1), siteRoot).href;
@@ -46,7 +46,7 @@ const features = [
   ['Excel и CSV', 'Весь найденный результат, сделки и параметры отчёта.', 'report'],
 ] as const;
 const faqItems = [
-  { question: 'Как подключить «Рейтинг продаж»?', answer: 'Нажмите «Открыть в Маркете» и установите «Рейтинг продаж» в облачный Битрикс24. Приложение доступно по подписке Битрикс24 Маркетплейс. Для установки нужны права администратора.' },
+  { question: 'Как подключить «Рейтинг товаров и клиентов»?', answer: 'Нажмите «Открыть в Маркете» и установите «Рейтинг товаров и клиентов» в облачный Битрикс24. Приложение доступно по подписке Битрикс24 Маркетплейс. Для установки нужны права администратора.' },
   { question: 'Это рейтинг менеджеров по продажам?', answer: 'Приложение строит рейтинги товаров и клиентов. Фильтр по менеджерам помогает ограничить выборку, но отдельный рейтинг сотрудников здесь не рассчитывается.' },
   { question: 'Какие продажи учитываются?', answer: 'Отчёт строится по сделкам облачного Битрикс24. По умолчанию учитываются успешные сделки за выбранный период по дате завершения. Можно выбрать дату создания, нужных менеджеров и другие условия отчёта.' },
   { question: 'Можно ли узнать, кто давно не покупал?', answer: 'Да. В клиентской базе видны последняя покупка и число дней без покупок. Укажите нужный срок, чтобы найти клиентов для повторного обращения. История включает покупки и за пределами периода основного рейтинга.' },
@@ -125,7 +125,7 @@ const structuredData = {
       </ProductScenario>
 
       <section class:list={[styles.useCases, layout.textPanel]} aria-labelledby="use-cases-title">
-        <h2 id="use-cases-title">Когда нужен рейтинг продаж</h2>
+        <h2 id="use-cases-title">Когда нужен рейтинг товаров и клиентов</h2>
         <dl class={styles.descriptionList}>
           {useCases.map(([heading, text]) => <div data-reveal><dt>{heading}</dt><dd>{text}</dd></div>)}
         </dl>
@@ -157,7 +157,7 @@ const structuredData = {
     <LineWave />
     <div class={styles.container}>
       <section class:list={[styles.connection, closingStyles.connectionDark]} aria-labelledby="connection-title">
-        <h2 id="connection-title" data-reveal>Откройте рейтинг продаж в Битрикс24</h2>
+        <h2 id="connection-title" data-reveal>Откройте рейтинг товаров и клиентов в Битрикс24</h2>
         <div data-reveal="1">
           <p>Установите «{product.name}» из Маркета Битрикс24 и начните анализ товаров и клиентов по доступным сделкам. Если нужна помощь с настройкой отчёта, <a href={companyInfo.contacts.consultationUrl}>обсудите задачу с нами</a>.</p>
           <p class={styles.legalLinks}><a href={`${base}bitrix24-product-rating-license/`}>Лицензионное соглашение</a> · <a href={`${base}bitrix24-product-rating-privacy/`}>Политика конфиденциальности приложения</a></p>

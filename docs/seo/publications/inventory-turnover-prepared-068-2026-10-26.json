@@ -1,0 +1,89 @@
+{
+  "release": "095",
+  "date": "2026-10-26",
+  "taskId": "SEO-068",
+  "action": "CREATE",
+  "articleType": "blog",
+  "route": "/oborachivaemost-zapasov-formula/",
+  "title": "Оборачиваемость запасов: формула и расчёт в днях",
+  "status": "draft_ready_pending_publication_instruction",
+  "registryStatus": "draft",
+  "indexable": false,
+  "deployed": false,
+  "indexingChecked": false,
+  "datePublished": null,
+  "articleSource": "/Users/ivan/projects/TrueTell/src/pages/oborachivaemost-zapasov-formula/index.astro",
+  "articleSha256": "9607e7944760809d76b3e11792dc1c815708bf1f9f857de7ac31ad0a446b6dae",
+  "humanizer": {
+    "status": "PASS",
+    "fingerprintWritten": true,
+    "fingerprint": "a2cd2a8446c41fadb3ecbb70f8b553665e5c4e951b7976a6429515cdd4ec4c16",
+    "report": "docs/seo/publications/inventory-turnover-humanizer-068-2026-10-26.md",
+    "reviewedAt": "2026-10-26"
+  },
+  "intent": {
+    "primary": "Рассчитать коэффициент оборачиваемости запасов по себестоимости за один период, перевести его в дни и отличить от возраста текущего остатка в МойСклад.",
+    "existingCoverageChecked": [
+      "/ostatki-moysklad/ — остатки, резервы и поиск кандидатов в неликвид; новая статья объясняет расчёт коэффициента по периоду",
+      "/otchety-moysklad/ — обзор отчётов; новая статья даёт формулу и числовой пример"
+    ],
+    "supportingQuestions": [
+      "Как посчитать оборачиваемость запасов по себестоимости?",
+      "Как перевести коэффициент оборачиваемости в дни?",
+      "Как выбрать средний запас при сезонных колебаниях?",
+      "Чем оборачиваемость отличается от дней на складе в МойСклад?",
+      "Как интерпретировать высокий или низкий коэффициент без универсального порога?"
+    ],
+    "internalLinks": [
+      "/ostatki-moysklad/",
+      "/otchety-moysklad/",
+      "/pribyl-marketpleysov-moysklad/",
+      "/bi-analitika/"
+    ],
+    "futureIncoming": "Контекстная ссылка на статью добавлена в локальную версию /ostatki-moysklad/; вместе со страницей SEO-068 попадёт на сайт при выпуске."
+  },
+  "keywordEvidence": {
+    "sourceRelease": "080",
+    "sourceNote": "Wordstat проверен 22.10.2026, Россия (регион 225), все устройства. «оборачиваемость запасов формула»: 1110 широкая / 397 в кавычках за 08.09–07.10.2026. Частоты не складываются, не равны числу людей и не являются прогнозом трафика.",
+    "newWordstatMeasurement": false
+  },
+  "numericalVerification": {
+    "result": "PASS",
+    "items": [
+      "I квартал 2026: 90 календарных дней",
+      "Средний запас по трём месячным срезам: (280000 + 300000 + 320000) / 3 = 300000 RUB",
+      "Коэффициент за период: 900000 / 300000 = 3",
+      "Дни оборачиваемости: 90 / 3 = 30 дней",
+      "Пример возраста текущего остатка в справке МойСклад: (18 × 6 + 9 × 9) / 15 = 12.6 дня"
+    ],
+    "independentFactReview": "PASS — независимый reviewer перепроверил исправленные URL справки МойСклад, календарную длину квартала и вычисления 26.10.2026.",
+    "examplesAreIllustrative": true
+  },
+  "sources": [
+    "https://www.lean.org/lexicon-terms/inventory-turns/",
+    "https://www.apqc.org/How-Do-You-Calculate-Inventory-Turns",
+    "https://support.moysklad.ru/hc/ru/%D1%82%D0%BE%D0%B2%D0%B0%D1%80%D1%8B%20%D0%B8%20%D1%81%D0%BA%D0%BB%D0%B0%D0%B4%D1%8B/%D0%BE%D1%81%D1%82%D0%B0%D1%82%D0%BA%D0%B8%20%D0%B8%20%D1%81%D0%B5%D0%B1%D0%B5%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C/%D0%BE%D1%82%D1%87%D0%B5%D1%82_%D0%BE%D1%81%D1%82%D0%B0%D1%82%D0%BA%D0%B8",
+    "https://support.moysklad.ru/hc/ru/%D1%82%D0%BE%D0%B2%D0%B0%D1%80%D1%8B%20%D0%B8%20%D1%81%D0%BA%D0%BB%D0%B0%D0%B4%D1%8B/%D0%BE%D1%81%D1%82%D0%B0%D1%82%D0%BA%D0%B8%20%D0%B8%20%D1%81%D0%B5%D0%B1%D0%B5%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C/%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D1%82%D1%8B"
+  ],
+  "images": [
+    "src/images/articles/inventory-turnover-example-068.svg",
+    "src/images/articles/inventory-turnover-example-068.png",
+    "src/images/articles/inventory-turnover-vs-stock-age-068.svg",
+    "src/images/articles/inventory-turnover-vs-stock-age-068.png"
+  ],
+  "checks": {
+    "build": "PASS — final build after responsive ArticleHero adjustment; draft/noindex kept out of sitemap.",
+    "lint": "PASS — 0 errors; 3 pre-existing React-hook warnings in unrelated components.",
+    "tests": "PASS — 88/88.",
+    "indexNowCheck": "PASS — deployment check validated 60 production URLs, SEO files and key; no IndexNow submission was made.",
+    "renderedHtml": "PASS — self canonical, noindex/nofollow, one H1, Article/FAQ/BreadcrumbList schema, excluded from sitemap",
+    "browser": "PASS — rendered in IAB; checked at CSS viewport widths 320, 390, 768, 1024 and 1440 px. documentElement.scrollWidth equalled viewport at all widths; H1 fit on mobile, layout was single-column through 768 px and desktop columns remained intact. Quick answer, both full-size infographic links and incoming /ostatki-moysklad/ link verified.",
+    "publication": "NOT PUBLISHED; no production deploy, live URL, index request or index status asserted",
+    "independentReview": "PASS — independent content/fact review and follow-up after final quick-answer edits; reviewer inspected the mobile H1 CSS change; no P1/P2 remain. UI review evidence supplied by primary agent."
+  },
+  "openBeforePublication": [
+    "SEO-068 остаётся draft/noindex. Перед отдельной публикацией выполнить выпуск и production QA, затем обновить в бэклоге 099 только подтверждённые production-статус, дату и результаты проверки индексации."
+  ],
+  "backlogRelease": "099",
+  "backlogFile": "/Users/ivan/Documents/ChatGPT/ТруТелл СЕО/outputs/seo-068-099/TrueTell_SEO_Backlog_099_2026-10-26.xlsx"
+}

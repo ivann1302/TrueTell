@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<defs><style>.title{font:600 40px Arial,sans-serif;fill:#202a3a}.head{font:600 23px Arial,sans-serif;letter-spacing:1.2px;fill:#4675b6}.label{font:600 28px Arial,sans-serif;fill:#26364a}.body{font:400 25px Arial,sans-serif;fill:#5d6b7c}.em{font:600 25px Arial,sans-serif;fill:#a45b38}.line{stroke:#d5dce5;stroke-width:2}.mark{stroke:#7b9a73;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}</style></defs>
+<text x="24" y="58" class="head">ПОСТРОЧНОЕ СРАВНЕНИЕ</text><text x="24" y="115" class="title">Итог складывается из трёх частей</text>
+<text x="30" y="182" class="head">НАЧАЛО</text><text x="342" y="182" class="head">ДОКУМЕНТЫ В ПЕРИОДЕ</text><text x="906" y="182" class="head">ИТОГ</text>
+<line x1="30" y1="204" x2="250" y2="204" class="line"/><line x1="342" y1="204" x2="814" y2="204" class="line"/><line x1="906" y1="204" x2="1170" y2="204" class="line"/>
+<text x="30" y="266" class="label">Входящее</text><text x="30" y="306" class="body">сальдо</text>
+<text x="342" y="266" class="label">Документ</text><text x="342" y="306" class="body">дата · номер · сумма</text>
+<text x="342" y="376" class="label">Платёж</text><text x="342" y="416" class="em">проверьте строку</text>
+<text x="342" y="486" class="label">Операция</text><text x="342" y="526" class="body">дата · номер · сумма</text>
+<text x="906" y="266" class="label">Конечное</text><text x="906" y="306" class="body">сальдо</text>
+<path d="M275 295h40m505 0h64" class="mark"/><path d="M275 405h40m505 0h64" class="mark"/><path d="M275 515h40m505 0h64" class="mark"/>
+<line x1="24" y1="584" x2="1176" y2="584" class="line"/>
+<text x="24" y="630" class="head">ЕСЛИ ИТОГИ РАЗНЫЕ</text>
+<text x="24" y="680" class="body">Найдите несовпавшую операцию и откройте её первичный документ.</text>
+<text x="24" y="724" class="body">Сверьте период, контрагента, организацию и договор.</text>
+</svg>

@@ -1,0 +1,251 @@
+{
+  "release": "094",
+  "date": "2026-10-25",
+  "task": "SEO-086",
+  "article": "/ii-analiz-sdelok-bitrix24/",
+  "type": "blog",
+  "status": "local_QA_passed_with_owner_authorized_placeholders",
+  "title": "ИИ-анализ сделок в Битрикс24: что проверить в CRM",
+  "localPreview": "http://127.0.0.1:4329/ii-analiz-sdelok-bitrix24/",
+  "intent": "Проверяемый отбор сделок по последней активности, включительная граница и null, сверка выводов ИИ с CRM. Самостоятельный практический сценарий; не повтор инструкции подключения074/075.",
+  "semanticEvidence": {
+    "research": "outputs/ai-connection-082/TrueTell_AI_Connection_Semantics_082_2026-10-23.xlsx",
+    "sheet": "Wordstat",
+    "recordId": "AI013",
+    "query": "ии анализ сделок",
+    "count": 40,
+    "period": [
+      "2026-09-22",
+      "2026-10-22"
+    ],
+    "region": "Россия225",
+    "devices": "все",
+    "observed": "2026-10-23",
+    "limit": "Исторический UI summary, широкая фраза без Битрикс24. Не новое измерение и не прогноз трафика; старый NO_PAGE пересмотрен по прямому поручению владельца25.10."
+  },
+  "facts": {
+    "cutoff": "2026-10-18T00:00:00+03:00",
+    "syntheticDeals": 6,
+    "selectedIds": [
+      101,
+      102,
+      104
+    ],
+    "closedExcluded": [
+      105,
+      106
+    ],
+    "expectedExampleOnly": {
+      "returned": 3,
+      "totalAvailable": 3,
+      "truncated": false
+    },
+    "tool": "bitrix_get_deals_without_activity",
+    "filters": [
+      "categoryIds",
+      "assignedByIds"
+    ],
+    "defaultLimit": 20,
+    "maxLimit": 100,
+    "limits": [
+      "lastActivityTime не равна последнему контакту или updatedTime",
+      "null не доказывает число дней без работы",
+      "результат не содержит суммы или переписку",
+      "неполная выборка не равна всей CRM",
+      "ChatGPT/Claude и открытая установка не приняты"
+    ]
+  },
+  "sources": [
+    "https://helpdesk.bitrix24.ru/open/18478840/",
+    "https://apidocs.bitrix24.ru/api-reference/crm/universal/object-fields.html",
+    "https://apidocs.bitrix24.ru/api-reference/crm/universal/crm-item-list.html",
+    "/Users/ivan/projects/bitrix_mcp/packages/bitrix-client/src/bitrix-deal-analytics-repository.ts",
+    "/Users/ivan/projects/bitrix_mcp/packages/contracts/src/deal-analytics.contract.ts",
+    "/Users/ivan/projects/bitrix_mcp/docs/MCP_PUBLIC_CLIENT_ACCEPTANCE.md"
+  ],
+  "assets": [
+    {
+      "file": "src/images/articles/ai-deals-activity-example-094.png",
+      "type": "permanent educational infographic",
+      "data": "условные открытые сделки; реальные значения клиента не используются"
+    },
+    {
+      "file": "src/images/articles/ai-deals-mcp-screenshot-placeholder-094.png",
+      "type": "explicit temporary placeholder",
+      "replaceBy": "проверенный обезличенный ответ нашего MCP и соответствующая карточка CRM",
+      "fakeInterface": false
+    }
+  ],
+  "productLink": {
+    "config": "mcpProduct.productPageHref=null; articleHrefIsTemporary=true",
+    "fallback": "#contact-request",
+    "behavior": "собственная форма TrueTell, проверено открытие и закрытие; submit не выполнялся",
+    "replaceTask": "SEO-087"
+  },
+  "reminder": {
+    "task": "SEO-087",
+    "status": "open",
+    "when": "После завершения всей серии и перед публикацией",
+    "scope": "074/075/086 и будущие AI/MCPстатьи",
+    "instruction": "Явно напомнить владельцу заменить временные изображения/скриншоты и ссылку на страницу продукта; проверить подписи, FAQ, статус, humanizer и факты.",
+    "registry": "docs/seo/mcp-editorial-placeholders-094.md",
+    "automationCreated": false
+  },
+  "independentReview": {
+    "agent": "/root/review_ai_deals_094",
+    "result": "Существенных P1/P2 нет; финальный текст после humanizer перепроверен.",
+    "p3": "Ссылка на общий обзор необязательна; обзор074 пока draft, поэтому не добавлена как публичный переход.",
+    "scope": "исходник, PNG, первоисточники, код и документы приёмки; отдельно проверены протокол и Excel",
+    "limits": "CRM и живое подключение не запускались; browser/build выполнены основным агентом"
+  },
+  "humanizer": {
+    "skill": "humanizer",
+    "reviewedAt": "2026-10-25",
+    "report": "docs/seo/publications/ai-deals-humanizer-094-2026-10-25.md",
+    "fingerprint": "ee109d1a8d176d7fd4717e9a32451f2edf23e97692a8cef2b9f6e3c446f1b4f4"
+  },
+  "verification": {
+    "build": "passed;70 страниц;60canonicalURLs в локальной сборке",
+    "lint": "passed;0errors,3existingReactHookwarnings",
+    "tests": "88passed,0failed",
+    "humanizerCheck": "passed;37publishedarticles; дополнительно сверён отпечаток нового draft",
+    "indexnowCheck": "passed;60URL,только--check; отправка не выполнялась",
+    "html": {
+      "oneH1": true,
+      "canonical": true,
+      "draftNoindex": true,
+      "notInSitemap": true,
+      "syntheticRows": 6,
+      "faqSchemaMatches": 6,
+      "localLinksChecked": 7,
+      "ownCta": "#contact-request",
+      "images": [
+        {
+          "url": "/_astro/ai-deals-activity-example-094.DCVnJbUt_lgeCT.webp",
+          "width": 1584,
+          "alphaMin": 0
+        },
+        {
+          "url": "/_astro/ai-deals-mcp-screenshot-placeholder-094.BAtHWF36_vHuKY.webp",
+          "width": 1584,
+          "alphaMin": 0
+        }
+      ]
+    },
+    "browser": [
+      {
+        "width": 768,
+        "height": 700,
+        "scrollWidth": 768,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 150.6328125,
+        "introTop": 380.984375,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 734
+          },
+          {
+            "loaded": true,
+            "width": 734
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "width": 769,
+        "height": 700,
+        "scrollWidth": 769,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 184,
+        "introTop": 184,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 703
+          },
+          {
+            "loaded": true,
+            "width": 703
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "width": 390,
+        "height": 700,
+        "scrollWidth": 390,
+        "h1align": "center",
+        "metaAlign": "center",
+        "heroTitleTop": 136,
+        "introTop": 377.96875,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 356
+          },
+          {
+            "loaded": true,
+            "width": 356
+          }
+        ],
+        "sourcesClosed": true
+      },
+      {
+        "width": 1440,
+        "height": 700,
+        "scrollWidth": 1440,
+        "h1align": "left",
+        "metaAlign": "left",
+        "heroTitleTop": 189.8203125,
+        "introTop": 189.8203125,
+        "mainH1": 1,
+        "images": [
+          {
+            "loaded": true,
+            "width": 878
+          },
+          {
+            "loaded": true,
+            "width": 878
+          }
+        ],
+        "sourcesClosed": true
+      }
+    ],
+    "browserInteractions": [
+      "FAQ и источники открываются с Enter",
+      "источники закрыты по умолчанию",
+      "оба fullSizeадреса проверены на наличие файла",
+      "CTA открывает собственную форму без отправки",
+      "mobileтаблица прокручивается внутри блока354px/640px",
+      "два изображения загружаются на всех проверенныхширинах",
+      "console ошибок/предупреждений в просмотренном native tab не показала"
+    ],
+    "workbook": {
+      "oldTasksPreserved": 83,
+      "newTaskCount": 85,
+      "newIds": [
+        "SEO-086",
+        "SEO-087"
+      ],
+      "summaryCount": 85,
+      "formula": "=COUNTA('SEO-бэклог'!A2:A86)",
+      "nativeFeatureDifferences": [],
+      "scope": "All previous cell values/formulas preserved except four authorized summary cells; merges/freeze/validations/CF/chart/image counts preserved."
+    }
+  },
+  "publication": {
+    "deployed": false,
+    "gitPush": false,
+    "crmWrites": false,
+    "sitemapIncludesArticle": false,
+    "indexingChecked": false,
+    "note": "draft/noindex/nofollow; дат публикации нет. Локальная сборка даёт60URL, исторический отчёт093 фиксирует66наprod; перед общим релизом нужна сверка текущего checkout с опубликованным составом093. Эти множества не отождествлялись; публичный сайт в этой задаче не изменялся."
+  }
+}

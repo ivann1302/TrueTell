@@ -5,10 +5,10 @@ export const cleanerProductPath = '/bitrix24-cleaner/';
 export const productRatingPath = '/bitrix24-product-rating/';
 
 export const productRating = {
-  name: 'Рейтинг продаж',
-  heading: 'Рейтинг продаж в Битрикс24',
+  name: 'Рейтинг товаров и клиентов',
+  heading: 'Рейтинг товаров и клиентов в Битрикс24',
   description:
-    'Рейтинг продаж — приложение для анализа товаров и клиентов по сделкам Битрикс24. Рейтинги, динамика продаж, ABC-анализ, детализация и Excel. Приложение доступно в Маркете Битрикс24.',
+    'Рейтинг товаров и клиентов — приложение для анализа товаров и клиентов по сделкам Битрикс24. Рейтинги, динамика продаж, ABC-анализ, детализация и Excel. Приложение доступно в Маркете Битрикс24.',
   catalogDescription:
     'Рейтинги товаров и клиентов, динамика и Excel.',
   marketplaceUrl: 'https://www.bitrix24.ru/apps/app/truetell.reyting_prodazh/',
@@ -57,6 +57,9 @@ export const fieldDirectoryProduct = {
 // Owner decision 23.10.2026: use our contact flow until the actual product page exists.
 export const mcpProduct = {
   name: 'MCP TrueTell для Битрикс24',
+  // Owner 25.10.2026: replace this temporary contact destination when the real product page is ready.
+  productPageHref: null,
+  articleHrefIsTemporary: true,
   articleDescription:
     'Разрабатываем подключение внешнего ИИ к Битрикс24. Опишите вашу задачу, AI-клиент и нужные данные — обсудим сценарий и оставшиеся проверки. Открытая установка пока не заявлена.',
   articleActionLabel: 'Обсудить MCP TrueTell',

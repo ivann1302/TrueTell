@@ -12,7 +12,7 @@
 |---|---|
 | Массовое удаление лидов и сделок | https://truetell-retail.ru/complaints/?app=cleaner |
 | Очистка полей | https://truetell-retail.ru/complaints/?app=field-cleaner |
-| Рейтинг продаж | https://truetell-retail.ru/complaints/?app=product-rating |
+| Рейтинг товаров и клиентов | https://truetell-retail.ru/complaints/?app=product-rating |
 | График платежей | https://truetell-retail.ru/complaints/?app=payment-schedule |
 | Справочник полей CRM | https://truetell-retail.ru/complaints/?app=crm-fields |
 
