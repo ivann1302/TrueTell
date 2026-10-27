@@ -1,0 +1,138 @@
+---
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import choiceImage from '../../images/articles/bitrix24-product-removal-choice-109.png';
+import checkImage from '../../images/articles/bitrix24-product-removal-check-109.png';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+
+const article = getArticle('udalit-tovar-bitrix24/');
+const title = article.title;
+const seoTitle = article.seoTitle ?? title;
+const description = article.description;
+const canonicalPath = '/' + article.hrefPath;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const ogImage = new URL(choiceImage.src, siteRoot).toString();
+const ogImageAlt = 'Как выбрать действие с товаром Битрикс24: сделка, активность или каталог';
+const titleParts = [
+  { text: 'Как удалить товар из каталога Битрикс24 ' },
+  { text: 'и проверить сделки', accent: true },
+];
+const sourceLinks = [
+  { label: 'Как создать и настроить каталог товаров — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/20922462/' },
+  { label: 'Как настроить права доступа к каталогу товаров — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/25376682' },
+  { label: 'Как добавить товары в карточку CRM — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/27964692/' },
+  { label: 'Частые вопросы о складском учёте и каталоге товаров — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/27222962/' },
+  { label: 'Системные поля в CRM — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/18478840' },
+  { label: 'Как работают режимы расчёта суммы сделки — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/27634104/' },
+  { label: 'Как узнать, в каких сделках зарезервирован товар — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/27911992/' },
+  { label: 'Как работать с вариациями товара — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/28030688/' },
+];
+const actionRows = [
+  ['Ошибка только в одной сделке', 'Убрать строку во вкладке «Товары» этой сделки', 'Каталожная карточка остаётся; после сохранения сверить сумму сделки'],
+  ['Товар временно не продаётся', 'Сделать товар неактивным', 'Новая сделка не найдёт его при выборе из каталога; карточку можно сохранить'],
+  ['Карточка ошибочна или больше не нужна', 'Проверить связи и права, затем удалить из каталога', 'Поведение старых сделок и отчётов проверить на своей выборке до массовой очистки'],
+];
+const faqItems = [
+  {
+    question: 'Как удалить товар только из одной сделки Битрикс24?',
+    answer: 'Откройте сделку и вкладку «Товары». В веб-версии нажмите меню слева от нужной строки, выберите «Удалить» и сохраните изменения. Это удаление строки сделки, а не карточки товара из каталога.',
+  },
+  {
+    question: 'Как временно убрать товар из выбора в новых сделках?',
+    answer: 'Сделайте товар неактивным в его карточке каталога. По справке Битрикс24 неактивную позицию нельзя выбрать в сделке. Если цель — скрыть её только в интернет-магазине, отдельно проверьте поле «Видимость товара».',
+  },
+  {
+    question: 'Почему я не вижу удаление товара из каталога?',
+    answer: 'Проверьте роль пользователя в настройках прав каталога. Для удаления карточки требуется отдельное право «Удаление товара»; набор прав зависит от тарифа и настроек портала.',
+  },
+  {
+    question: 'Что будет со старыми сделками после удаления товара из каталога?',
+    answer: 'Не рассчитывайте на универсальный результат без проверки в своём портале. До удаления откройте несколько сделок с этой позицией, запишите их ID и суммы; после пробного действия проверьте те же карточки и отчёт.',
+  },
+  {
+    question: 'Можно ли скрыть товар в магазине, но оставить его в CRM?',
+    answer: 'В карточке товара есть отдельное поле «Видимость товара» для интернет-магазина. Настройка видимости и активность решают разные задачи: после изменения проверьте и страницу магазина, и выбор товара в сделке.',
+  },
+];
+const relatedArticles = getRelatedArticles(article.hrefPath)
+  .map((item) => ({ ...item, description: item.summaryDescription ?? item.description, href: base + item.hrefPath }));
+const structuredData = createArticleStructuredData({
+  articleType: 'Article',
+  title,
+  description,
+  articleUrl,
+  publishedDate: article.publishedAt,
+  modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(),
+  author: authorName,
+  image: ogImage,
+  articleSection: 'Каталог товаров Битрикс24',
+  breadcrumbs: [
+    { name: 'Главная', item: siteRoot.toString() },
+    { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() },
+    { name: title, item: articleUrl },
+  ],
+  faqItems,
+});
+---
+
+<ArticleLayout
+  title={seoTitle} {titleParts} {description} {canonicalPath} {structuredData}
+  ogTitle={seoTitle} ogDescription={description} {ogImage} {ogImageAlt}
+  category={article.category} author={authorName}
+  publishedTime={article.publishedAt} modifiedTime={article.updatedAt}
+  intro="Товар может мешать в одной сделке, исчезнуть из ассортимента на время или быть ошибочной карточкой каталога. Для каждого случая в Битрикс24 своё действие. Перед удалением из каталога проверьте сделки, складские данные и отчёты на небольшой выборке."
+>
+  <Fragment slot="quick-answer">
+    <p>Откройте <strong>CRM → Товары и склады → Каталог товаров</strong>, найдите нужную карточку и сначала решите, требуется ли её удалять. Если товар временно недоступен, сделайте его неактивным. Если ошибка только в сделке, удалите товарную строку на вкладке «Товары» этой сделки.</p>
+    <p>Для удаления самой карточки нужно право <strong>«Удаление товара»</strong>. Перед действием сохраните ID и данные позиции, найдите сделки с ней и проверьте последствия на одной пробной записи в своём портале.</p>
+  </Fragment>
+
+  <p data-article-lead>Менеджер видит устаревшую позицию в подборе товара и просит «удалить её из Битрикс24». Если у позиции уже есть продажи, такое слово скрывает несколько разных задач. Начните с того, где именно товар мешает работе: в строке сделки, в поиске каталога или на странице магазина.</p>
+
+  <section aria-labelledby="choose">
+    <h2 id="choose">Что убрать: <span data-heading-accent>строку, доступность или карточку</span></h2>
+    <p>Каталог Битрикс24 общий для CRM и интернет-магазина. Товарная строка в сделке и карточка в каталоге — разные объекты. Удаление строки не очищает каталог; изменение каталожной карточки требует отдельной проверки связанных продаж.</p>
+    <ArticleFigure src={choiceImage} fullSize alt="Три сценария: убрать товарную строку сделки, отключить активность позиции или удалить карточку каталога" caption="Редакционная схема TrueTell по официальной справке Битрикс24. Она показывает выбор действия, а не экран портала; точное меню удаления карточки сверяйте в своём интерфейсе." />
+    <DataTable label="Какое действие выбрать для товара Битрикс24" columns={['Ситуация', 'Действие', 'Контроль']} rows={actionRows} rowHeaders compact />
+    <p>Если позиция должна исчезнуть только из витрины, проверьте поле «Видимость товара» и права на публикацию в магазине. Оно не равнозначно удалению из общего каталога. <a href={sourceLinks[4].href} target="_blank" rel="noopener noreferrer">Справка по системным полям</a> отдельно описывает видимость и активность.</p>
+  </section>
+
+  <section aria-labelledby="before">
+    <h2 id="before">Что проверить <span data-heading-accent>до удаления из каталога</span></h2>
+    <p>Откройте карточку в CRM → Товары и склады → Каталог товаров. Сверьте название, ID, внешний код и вариацию: похожие названия могут относиться к разным позициям. Если ошибка только в одной вариации, выберите её в карточке и удалите отдельно по <a href={sourceLinks[7].href} target="_blank" rel="noopener noreferrer">инструкции Битрикс24</a>; перед этим тоже проверьте связанные продажи. Запишите цену, свойства и остаток, если они важны для учёта, и сохраните доступную вам выгрузку каталога. Экспорт удобен для сверки, но возможность вернуть карточку вместе со всеми связями он сам по себе не доказывает.</p>
+    <p>Чтобы найти связанные продажи, откройте CRM → Сделки → фильтр → «Добавить поле» и включите поле «Товар». Выберите позицию. Если используете поле «Товар зарезервирован», оставьте значение «Не указан»: тогда фильтр покажет сделки с товаром независимо от резерва. Клик по числу «В резерве» в карточке товара показывает только зарезервированные сделки и для полной проверки не подходит. Этот порядок описан в <a href={sourceLinks[6].href} target="_blank" rel="noopener noreferrer">справке Битрикс24</a>.</p>
+    <p>Откройте несколько найденных сделок: действующую, завершённую и, если есть, сделку с ручной правкой цены. Зафиксируйте ID сделки, товарную строку и итоговую сумму. Если товар участвует в отчётах или обмене с внешней системой, запишите их текущий результат и внешний код. Такой контроль нужен потому, что <a href={sourceLinks[4].href} target="_blank" rel="noopener noreferrer">внешний код используется интеграциями</a>, а сумма сделки может <a href={sourceLinks[5].href} target="_blank" rel="noopener noreferrer">рассчитываться по товарам</a>.</p>
+    <ArticleFigure src={checkImage} fullSize alt="Проверка перед удалением товара: ID позиции, связанные сделки, сумма, остаток, интеграция и отчёт" caption="Контрольная схема TrueTell. Поля перечислены для проверки в вашем портале; изображение не утверждает, что Битрикс24 автоматически сохраняет или удаляет их вместе с товаром." />
+  </section>
+
+  <section aria-labelledby="action">
+    <h2 id="action">Как выполнить <span data-heading-accent>нужное действие</span></h2>
+    <p><strong>Убрать товар из сделки.</strong> Откройте CRM → Сделки → нужная сделка → вкладка «Товары». В веб-версии слева от товарной строки нажмите Меню (≡) → «Удалить» и сохраните изменения. В мобильной версии у строки есть меню «Три точки» → «Удалить из списка». После сохранения проверьте сумму: при автоматическом расчёте она зависит от товаров, количества, скидок и налогов. <a href={sourceLinks[2].href} target="_blank" rel="noopener noreferrer">Поддержка24 описывает оба интерфейса</a>.</p>
+    <p><strong>Временно убрать из новых продаж.</strong> Откройте карточку товара в каталоге и измените активность. Неактивная позиция не появляется при выборе товара в сделке. Если нужно вернуть её в подбор, проверьте поля дат начала и окончания активности и сохраните карточку. <a href={sourceLinks[3].href} target="_blank" rel="noopener noreferrer">Официальная инструкция</a> приводит этот порядок.</p>
+    <p><strong>Удалить карточку каталога.</strong> Убедитесь, что выбрали именно каталожный товар и у вашей роли есть право «Удаление товара». Найдите действие удаления в меню выбранной карточки или строки списка и прочитайте подтверждение в своём портале. Название и место команды могут отличаться по виду каталога и правам. После пробного удаления откройте записанные сделки, проверьте товарные строки, суммы, складские данные и отчёт. Если результаты отличаются от ожидаемых, остановите очистку остальных позиций и разберите причину.</p>
+    <InlineConsultation title="Нужно очистить каталог без потери контроля?" description="Поможем составить выборку товаров и связанных сделок, проверить последствия на пробной позиции и подготовить порядок действий для команды." actionLabel="Обсудить каталог" />
+  </section>
+
+  <section aria-labelledby="after">
+    <h2 id="after">Как проверить <span data-heading-accent>результат</span></h2>
+    <p>Повторите поиск по названию и ID в каталоге. Для деактивированной позиции отдельно проверьте, что она не выбирается в новой сделке. Для удалённой карточки сравните заранее записанные сделки и отчёт с текущим состоянием. Не делайте вывод по одному экрану каталога: он показывает наличие карточки, но не состояние старых продаж.</p>
+    <p>Если цель — разобраться, какие товары приносят продажи, прежде чем убирать позиции из ассортимента, используйте <a href={base + 'bitrix24-product-rating/'}>рейтинг товаров TrueTell</a> как отдельный аналитический инструмент. Он не заменяет проверку связей перед удалением. Для порядка в остальных данных CRM есть <a href={base + 'ochistka-crm-bitrix24/'}>план очистки CRM</a>.</p>
+  </section>
+
+  <FaqSection items={faqItems} id="faq" variant="article" />
+  <ArticleSources publishedIso={article.publishedAt} sources={sourceLinks} />
+  <Fragment slot="article-end"><RelatedArticles items={relatedArticles} /></Fragment>
+  <Fragment slot="after-article"><ConsultationCtaSection title="Проверяете каталог Битрикс24 перед очисткой?" description="Составим выборку товаров и сделок, сверим активность, права и данные отчётов до изменений." actionLabel="Обсудить задачу" /></Fragment>
+</ArticleLayout>

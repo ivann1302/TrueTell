@@ -1,0 +1,144 @@
+---
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import duplicateImage from '../../images/articles/bitrix24-lead-duplicate-or-repeat-103.png';
+import mergeImage from '../../images/articles/bitrix24-merge-preview-official.jpg';
+import controlImage from '../../images/articles/bitrix24-lead-merge-control-103.png';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+
+const article = getArticle('dubli-lidov-bitrix24/');
+const title = article.title;
+const seoTitle = article.seoTitle ?? title;
+const description = article.description;
+const canonicalPath = '/' + article.hrefPath;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const ogImage = new URL(duplicateImage.src, siteRoot).toString();
+const ogImageAlt = 'Схема проверки двух лидов с одинаковым телефоном: дубль заявки или новое обращение';
+const titleParts = [
+  { text: 'Дубли лидов Битрикс24: ' },
+  { text: 'как найти и объединить', accent: true },
+];
+const sourceLinks = [
+  { label: 'Как объединить дубликаты в CRM — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/25343258/' },
+  { label: 'Автоматическое объединение дубликатов — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/25368844/' },
+  { label: 'Повторные лиды и сделки — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/27844250/' },
+  { label: 'Ролевая модель прав в CRM — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/23240636/' },
+  { label: 'Как экспортировать данные из CRM — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/20966844/' },
+  { label: 'Что такое Корзина в CRM — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/24668648/' },
+];
+const faqItems = [
+  {
+    question: 'Как найти дубли лидов в Битрикс24?',
+    answer: 'Откройте CRM → Лиды → Настройки (⚙️) → Контроль дубликатов. До запуска сканирования проверьте настройки: полностью совпавшие карточки могут объединиться автоматически. Мастер доступен не на всех тарифах.',
+  },
+  {
+    question: 'Можно ли объединить два лида вручную?',
+    answer: 'Да. В списке лидов отметьте нужные карточки, выберите «Выберите действие» → «Объединить» → «Применить». Затем выберите основную карточку и значения полей перед подтверждением.',
+  },
+  {
+    question: 'Совпадающий телефон означает, что один лид лишний?',
+    answer: 'Нет. Один клиент может обратиться снова с новой задачей. Проверьте дату, содержание обращения, стадию и записи менеджеров; повторный лид не обязательно является ошибочным дублем.',
+  },
+  {
+    question: 'Что происходит с ID при объединении лидов?',
+    answer: 'Остаётся выбранная основная карточка, остальные удаляются. Если внешняя интеграция хранит ID удалённого лида, проверьте её привязку после объединения.',
+  },
+  {
+    question: 'Сохраняются ли все дела, файлы и история после объединения?',
+    answer: 'Официальная инструкция описывает выбор значений полей и предварительный результат, но не даёт универсальной гарантии для каждой связи и записи истории. Перед объединением зафиксируйте важные данные, а после проверьте их в основной карточке.',
+  },
+];
+const relatedArticles = getRelatedArticles(article.hrefPath)
+  .map((item) => ({ ...item, description: item.summaryDescription ?? item.description, href: base + item.hrefPath }));
+const structuredData = createArticleStructuredData({
+  articleType: 'Article',
+  title,
+  description,
+  articleUrl,
+  publishedDate: article.publishedAt,
+  modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(),
+  author: authorName,
+  image: ogImage,
+  articleSection: 'Лиды и качество данных CRM Битрикс24',
+  breadcrumbs: [
+    { name: 'Главная', item: siteRoot.toString() },
+    { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() },
+    { name: title, item: articleUrl },
+  ],
+  faqItems,
+});
+---
+
+<ArticleLayout
+  title={seoTitle} {titleParts} {description} {canonicalPath} {structuredData}
+  ogTitle={seoTitle} ogDescription={description} {ogImage} {ogImageAlt}
+  category={article.category} author={authorName}
+  publishedTime={article.publishedAt} modifiedTime={article.updatedAt}
+  intro="Известную пару лидов можно объединить вручную. Для поиска по всей базе есть контроль дубликатов, но его сканирование может сразу объединить полностью совпавшие карточки."
+>
+  <Fragment slot="quick-answer">
+    <p>Если два лида уже известны, сначала убедитесь, что это одна заявка. В списке <strong>CRM → Лиды</strong> отметьте карточки и выберите «Объединить». Сохранится выбранная основная карточка; значения полей нужно проверить до подтверждения.</p>
+    <p>Для поиска по всей базе есть «Контроль дубликатов». <strong>Сканирование может автоматически объединить точные совпадения</strong>, поэтому перед запуском проверьте настройки, исходные данные и права. Мастер доступен не на всех тарифах.</p>
+  </Fragment>
+
+  <p data-article-lead>Одинаковый номер телефона помогает найти подозрительные записи, но не решает за менеджера, какие из них объединять. Вторая карточка может содержать новое обращение того же клиента. Ошибка здесь затрагивает и работу с заявкой, и данные для отчётов.</p>
+
+  <section aria-labelledby="duplicate-or-repeat">
+    <h2 id="duplicate-or-repeat">Дубль или <span data-heading-accent>повторный лид</span></h2>
+    <p>Сверьте контакт и сам запрос: когда клиент обратился, о чём спросил, откуда пришла заявка и что уже сделал менеджер. Две записи об одной заявке можно рассматривать как кандидатов на объединение. Новое обращение существующего клиента — отдельный рабочий случай: Битрикс24 может пометить такой лид как повторный. Этот признак сам по себе не означает ошибку в базе. <a href={sourceLinks[2].href} target="_blank" rel="noopener noreferrer">Как Битрикс24 определяет повторные лиды</a>.</p>
+    <ArticleFigure src={duplicateImage} fullSize alt="Проверка лидов с одинаковым телефоном: одна заявка или новое обращение клиента" caption="Учебная схема TrueTell. Совпадение телефона требует проверки содержания заявок; рисунок не воспроизводит интерфейс Битрикс24." />
+    <p>Если есть сомнение, откройте обе карточки. Сверьте стадию, ответственного, переписку и запланированные дела. Лучше оставить спорную пару на разбор, чем объединить два разных обращения.</p>
+  </section>
+
+  <section aria-labelledby="manual-merge">
+    <h2 id="manual-merge">Как объединить <span data-heading-accent>выбранные лиды вручную</span></h2>
+    <p>Перед операцией запишите ID обоих лидов, сравните важные поля, открытые дела и связи с клиентом. Если нужны табличные данные, экспортируйте выборку и откройте файл для проверки. Excel или CSV не являются полной копией таймлайна, файлов и связей CRM. <a href={base + 'eksport-lidov-sdelok-bitrix24-pered-udaleniem/'}>Порядок экспорта лидов</a>.</p>
+    <ol>
+      <li>Откройте CRM → Лиды и отметьте карточки, которые уже признали дублями одной заявки.</li>
+      <li>Нажмите «Выберите действие» → «Объединить» → «Применить».</li>
+      <li>Выберите основную карточку. Она останется в CRM; остальные будут удалены.</li>
+      <li>Сравните значения полей. Для разных значений выберите нужное; в множественных полях можно сохранить несколько телефонов или адресов.</li>
+      <li>Посмотрите предварительный результат и только затем нажмите «Объединить» либо «Объединить и отредактировать».</li>
+    </ol>
+    <ArticleFigure src={mergeImage} fullSize alt="Официальный пример Битрикс24: выбор основной карточки и значений полей при объединении" caption="Скриншот Поддержки24 показывает объединение контактов. Для лидов официальная инструкция описывает тот же порядок выбора основной карточки и конфликтующих полей; значения на снимке демонстрационные." />
+  </section>
+
+  <section aria-labelledby="find-duplicates">
+    <h2 id="find-duplicates">Как найти <span data-heading-accent>похожие лиды</span></h2>
+    <p>В разделе «Лиды» откройте «Настройки» (значок шестерёнки) → «Контроль дубликатов». Битрикс24 ищет совпадения по ФИО, названию компании, телефону и e-mail. До команды «Начать сканирование» сохраните нужные исходные сведения и проверьте правила: полностью совпавшие карточки с одним ответственным и стадией могут объединиться сразу. Карточки с различиями мастер предложит разобрать вручную. <a href={sourceLinks[1].href} target="_blank" rel="noopener noreferrer">Порядок работы мастера в справке Битрикс24</a>.</p>
+    <p>Мастер контроля доступен не на каждом тарифе. Запустить объединение может администратор либо сотрудник с правами на изменение и удаление элементов CRM. Если нужной команды нет, попросите администратора проверить тариф и права на лиды. <a href={sourceLinks[3].href} target="_blank" rel="noopener noreferrer">Как устроены права в CRM</a>.</p>
+    <p>После проверки настроек и сохранения важных исходных данных нажмите «Изменить», выберите поля проверки, сохраните настройку и запустите сканирование. Автоматическая проверка может работать и по расписанию. Если значения различаются, потребуется ручной выбор; при разных ответственных или стадиях лиды автоматически не объединятся. <a href={sourceLinks[1].href} target="_blank" rel="noopener noreferrer">Условия автоматического объединения</a>.</p>
+  </section>
+
+  <section aria-labelledby="after-merge">
+    <h2 id="after-merge">Что проверить <span data-heading-accent>после объединения</span></h2>
+    <p>Откройте основную карточку и сравните её с записями, которые сохранили до операции. В первую очередь проверьте телефон, e-mail, ответственного, стадию и выбранные значения пользовательских полей. Затем просмотрите дела, переписку, документы и связи, если они были важны для работы. Официальная инструкция объясняет выбор полей, но не обещает одинаковый результат переноса для каждого типа содержимого.</p>
+    <ArticleFigure src={controlImage} fullSize alt="Контрольный список до и после объединения лидов: основная карточка, поля, дела, связи и ID" caption="Контрольный список TrueTell. Пункты «дела», «связи» и «интеграции» обозначают проверку в вашем портале, а не обещание автоматического переноса." />
+    <p>Битрикс24 показывает удалённые при объединении элементы в истории CRM; при доступной корзине их можно найти там. Условия восстановления зависят от настроек и тарифа, поэтому корзина не заменяет предварительную проверку. Если интеграция или сохранённая ссылка обращалась к ID удалённого лида, проверьте её после объединения. <a href={sourceLinks[0].href} target="_blank" rel="noopener noreferrer">Последствия объединения в справке Битрикс24</a>.</p>
+    <InlineConsultation title="Много спорных дублей или связанных систем?" description="Разберём правила поиска и контроль результата на небольшой группе лидов, прежде чем менять всю базу." actionLabel="Обсудить задачу" />
+  </section>
+
+  <section aria-labelledby="when-not-merge">
+    <h2 id="when-not-merge">Когда объединение <span data-heading-accent>лучше отложить</span></h2>
+    <p>Не объединяйте лиды, пока неясно, одна это заявка или две, и пока не проверены важные различия в полях. Если карточки ведут разные менеджеры или они находятся на разных стадиях, автоматическое объединение их не выполнит: разберите пару вручную. Если дубли создаются снова после очистки, найдите источник новых записей — форму, импорт или интеграцию — и проверьте его правила. Иначе та же проблема вернётся.</p>
+    <p>Для общей стратегии наведения порядка есть <a href={base + 'ochistka-crm-bitrix24/'}>разбор очистки CRM</a>. Если задача именно удалить проверенные ненужные записи, используйте отдельную <a href={base + 'massovoe-udalenie-lidov-bitrix24/'}>инструкцию по удалению лидов</a>. Cleaner TrueTell предназначен для такого удаления; поиск и объединение дублей он не выполняет.</p>
+  </section>
+
+  <FaqSection items={faqItems} id="faq" variant="article" />
+  <ArticleSources publishedIso={article.publishedAt} sources={sourceLinks} />
+  <Fragment slot="article-end">
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <Fragment slot="after-article"><ConsultationCtaSection title="Нужна помощь с дублями лидов?" description="Поможем определить правила поиска, проверить спорные пары и оценить последствия для интеграций." actionLabel="Обсудить задачу" /></Fragment>
+</ArticleLayout>

@@ -2,15 +2,15 @@
   "articles": {
     "ochistka-crm-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/humanizer-articles-reviewed-2026-10-25.md",
-      "fingerprint": "39e7158e39dbacadbad24ad19452b27d9163a50cced3e02cd292512938ef2bbe"
+      "reviewedAt": "2026-10-27",
+      "report": "docs/seo/publications/seo088-prepared-103-2026-10-27.md",
+      "fingerprint": "09151fcc61010f29c783293f19f04ce9faa19666c8ea80057e196f401e7c969c"
     },
     "massovoe-udalenie-sdelok-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/humanizer-articles-reviewed-2026-10-25.md",
-      "fingerprint": "c7e00c65ccb384d0cf689482126629ee918c51ddec1c5bc21ca230e7dda52be2"
+      "reviewedAt": "2026-10-27",
+      "report": "docs/seo/publications/seo089-prepared-104-2026-10-27.md",
+      "fingerprint": "2ed2bebadfad4e7d2a41a760a113f35bfb62f770170844bb6759174791c94ba3"
     },
     "udalenie-kontaktov-bitrix24/": {
       "skill": "humanizer",
@@ -20,9 +20,9 @@
     },
     "udalenie-kompaniy-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/humanizer-articles-reviewed-2026-10-25.md",
-      "fingerprint": "15166c65b5b31f3369f739b6a4e2a9f08ddfdc0fd1f934e2c6084ef3882d9046"
+      "reviewedAt": "2026-10-27",
+      "report": "docs/seo/publications/seo091-prepared-106-2026-10-27.md",
+      "fingerprint": "526d23145c0cb190d99aa89af08f46b85c3aea65fd49662c149ed38041e7a0ee"
     },
     "pribyl-marketpleysov-moysklad/": {
       "skill": "humanizer",
@@ -104,9 +104,9 @@
     },
     "eksport-lidov-sdelok-bitrix24-pered-udaleniem/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/humanizer-articles-reviewed-2026-10-25.md",
-      "fingerprint": "a37c737e7691fcd4664f8b1b6285ab633312d77d59a4b9fc1497983d8937a934"
+      "reviewedAt": "2026-10-27",
+      "report": "docs/seo/publications/seo090-prepared-105-2026-10-27.md",
+      "fingerprint": "ff76e11c70cb2f80d28224a02ec88de46186563c6d0bd8bb35e59eb4ee1d3443"
     },
     "massovoe-udalenie-lidov-bitrix24/": {
       "skill": "humanizer",
@@ -281,6 +281,42 @@
       "reviewedAt": "2026-10-26",
       "report": "docs/seo/publications/humanizer-restored-moysklad-2026-10-26.md",
       "fingerprint": "9f30c5c4040753f03f360dff505af2652e4cf77211bd5d2ccdd8414f9654fa1f"
+    },
+    "dubli-lidov-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-27",
+      "report": "docs/seo/publications/seo088-prepared-103-2026-10-27.md",
+      "fingerprint": "a3f08345144da6fa455c29dfff59a513c6192d7a994d1a09da201d0fc1988c53"
+    },
+    "udalennye-sdelki-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-27",
+      "report": "docs/seo/publications/seo089-prepared-104-2026-10-27.md",
+      "fingerprint": "848e718eb0e8e8a19f21b131e3077235ca6be051d93d00a2b7a4048a0e49d4aa"
+    },
+    "rezervnaya-kopiya-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-27",
+      "report": "docs/seo/publications/seo090-prepared-105-2026-10-27.md",
+      "fingerprint": "05a321badd5471b74670b2881378cb519a3d9afaecb458f0053125e8dcadb9d7"
+    },
+    "import-kontaktov-kompaniy-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-27",
+      "report": "docs/seo/publications/seo092-prepared-107-2026-10-27.md",
+      "fingerprint": "35d80fcc7bf36dbe79438ac1ab6af5307096b1187b395a5c7e5be666b10a2e4b"
+    },
+    "import-sdelok-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-27",
+      "report": "docs/seo/publications/seo092-prepared-107-2026-10-27.md",
+      "fingerprint": "1040ad0ba81b9e8eb09c4253d6caab0376d92b9ed76b06d728dccd1227a012bf"
+    },
+    "udalit-tovar-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-27",
+      "report": "docs/seo/publications/seo093-prepared-109-2026-10-27.md",
+      "fingerprint": "f91cac6b37a41a346cb0ed7d7a9f74c75e41f997777dc732baff93ff9c37f9bd"
     }
   }
 }

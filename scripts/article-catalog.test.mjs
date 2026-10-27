@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { allArticles, getCatalogArticles, groupKnowledgeArticles, getRelatedArticles, getProductArticles } from '../src/config/articles.ts';
 
 test('instructions and analytical articles have distinct catalog ownership', () => {
-  assert.equal(getCatalogArticles('knowledge').length, 29);
+  assert.equal(getCatalogArticles('knowledge').length, 35);
   assert.equal(getCatalogArticles('blog').length, 14);
   assert.equal(new Set(allArticles.map(article => article.hrefPath)).size, allArticles.length);
 });

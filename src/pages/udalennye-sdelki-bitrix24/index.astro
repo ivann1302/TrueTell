@@ -1,0 +1,144 @@
+---
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import menuImage from '../../images/articles/bitrix24-recycle-entry-official.jpg';
+import filterImage from '../../images/articles/bitrix24-recycle-filter-native.png';
+import controlImage from '../../images/articles/bitrix24-deal-restore-check-104.png';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+
+const article = getArticle('udalennye-sdelki-bitrix24/');
+const title = article.title;
+const seoTitle = article.seoTitle ?? title;
+const description = article.description;
+const canonicalPath = '/' + article.hrefPath;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const ogImage = new URL(menuImage.src, siteRoot).toString();
+const ogImageAlt = 'Официальный снимок Битрикс24: путь в корзину CRM через меню «Ещё»';
+const titleParts = [
+  { text: 'Удалённые сделки Битрикс24: ' },
+  { text: 'где найти и как восстановить', accent: true },
+];
+const sourceLinks = [
+  { label: 'Что такое Корзина в CRM — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/24668648/' },
+  { label: 'Как восстановить данные в Битрикс24 — Поддержка24', href: 'https://helpdesk.bitrix24.ru/open/24955644/' },
+];
+const faqItems = [
+  {
+    question: 'Где находятся удалённые сделки в Битрикс24?',
+    answer: 'Откройте CRM → Ещё → Корзина. В фильтре выберите тип «Сделка», затем проверьте время удаления и, если известен, прежний ID.',
+  },
+  {
+    question: 'Почему сделка не видна в корзине CRM?',
+    answer: 'Сотрудник видит только элементы, удалённые им самим. Попросите администратора проверить корзину, расширить период и убедиться, что для сделок она была включена. Запись могла быть удалена окончательно.',
+  },
+  {
+    question: 'Сколько хранится удалённая сделка?',
+    answer: 'По справке Битрикс24, элементы CRM хранятся в корзине до 30 дней, после чего система удаляет по 100 элементов в день. Если удалений было больше, отдельная запись может задержаться, но рассчитывать на это нельзя.',
+  },
+  {
+    question: 'Как восстановить сделку из корзины?',
+    answer: 'Найдите нужную строку и выберите Меню (≡) → «Восстановить». Дождитесь уведомления, затем найдите сделку в CRM. Восстановление доступно не на всех тарифах.',
+  },
+  {
+    question: 'Сохранится ли старый ID сделки?',
+    answer: 'Нет. У восстановленной сделки будет новый ID, поэтому старая ссылка не откроет её. Обновите закладки и проверьте внешние системы, если они хранят ID сделки.',
+  },
+  {
+    question: 'Вернутся ли дела и товары вместе со сделкой?',
+    answer: 'Если связанные дела тоже были удалены, сначала восстановите сделку, затем эти дела отдельно. Для товаров, полей и остальных связей универсальной гарантии в справке нет: проверьте их в восстановленной карточке.',
+  },
+  {
+    question: 'Можно ли вернуть одну сделку из резервной копии?',
+    answer: 'Официальная процедура бэкапа возвращает весь портал на выбранную дату через поддержку. Копии хранятся семь дней; изменения после даты отката будут потеряны. Сначала проверьте корзину.',
+  },
+];
+const relatedArticles = getRelatedArticles(article.hrefPath)
+  .map((item) => ({ ...item, description: item.summaryDescription ?? item.description, href: base + item.hrefPath }));
+const recoverySteps = [
+  { name: 'Откройте корзину CRM', text: 'Перейдите в CRM → Ещё → Корзина и выберите тип «Сделка».', anchor: 'restore-deal' },
+  { name: 'Найдите запись', text: 'Уточните период удаления и прежний ID, если он сохранился; проверьте, кто удалил сделку.', anchor: 'restore-deal' },
+  { name: 'Восстановите сделку', text: 'В меню строки выберите «Восстановить» и дождитесь уведомления.', anchor: 'restore-deal' },
+  { name: 'Проверьте результат', text: 'Найдите сделку с новым ID и сверьте рабочие данные и связи.', anchor: 'after-restore' },
+];
+const structuredData = createArticleStructuredData({
+  articleType: 'Article',
+  howTos: [{ id: 'howto-restore-deal', name: 'Как восстановить удалённую сделку Битрикс24', steps: recoverySteps }],
+  title,
+  description,
+  articleUrl,
+  publishedDate: article.publishedAt,
+  modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(),
+  author: authorName,
+  image: ogImage,
+  articleSection: 'Сделки CRM Битрикс24',
+  breadcrumbs: [
+    { name: 'Главная', item: siteRoot.toString() },
+    { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() },
+    { name: title, item: articleUrl },
+  ],
+  faqItems,
+});
+---
+
+<ArticleLayout
+  title={seoTitle} {titleParts} {description} {canonicalPath} {structuredData}
+  ogTitle={seoTitle} ogDescription={description} {ogImage} {ogImageAlt}
+  category={article.category} author={authorName}
+  publishedTime={article.publishedAt} modifiedTime={article.updatedAt}
+  intro="Пропавшую сделку сначала ищите в корзине CRM. Там можно вернуть запись, пока она доступна и восстановление предусмотрено вашим тарифом. После возврата проверьте новый ID и данные, от которых зависит работа команды."
+>
+  <Fragment slot="quick-answer">
+    <p>Откройте <strong>CRM → Ещё → Корзина</strong>, выберите в фильтре тип «Сделка» и найдите запись по времени удаления или прежнему ID. В меню строки нажмите «Восстановить».</p>
+    <p>Администратор видит все удалённые элементы CRM, сотрудник — только удалённые им самим. Сделки хранятся в корзине до 30 дней, затем начинается автоматическая очистка. У возвращённой сделки будет новый ID.</p>
+  </Fragment>
+
+  <p>Когда из воронки исчезла сделка, сначала определите, что произошло. Запись могли переместить на другую стадию или удалить. Попросите коллег не создавать её заново до проверки поиска по CRM и корзины. Если исходная сделка найдётся, новая карточка окажется дублем.</p>
+
+  <section aria-labelledby="find-deal">
+    <h2 id="find-deal">Где найти <span data-heading-accent>удалённую сделку</span></h2>
+    <p>Корзина CRM открывается из меню «Ещё» в разделе CRM. Это отдельное место для удалённых элементов CRM; корзина Диска предназначена для файлов. На официальном снимке показан переход из списка сделок.</p>
+    <ArticleFigure src={menuImage} fullSize alt="В интерфейсе Битрикс24 открыт раздел CRM и пункт «Корзина» в меню «Ещё»" caption="Скриншот Поддержки24: путь CRM → Ещё → Корзина. Цифры и карточки на снимке — демонстрационные данные Битрикс24, не данные TrueTell." />
+    <p>В корзине настройте фильтр: в поле «Тип» оставьте «Сделка». Для поиска пригодятся примерное время удаления и старый ID из ссылки или рабочего документа. Фильтр «Пользователь» показывает, кто удалил элемент; он доступен в числе параметров поиска. Если результатов нет, сбросьте лишние условия и расширьте период.</p>
+    <ArticleFigure src={filterImage} fullSize portrait alt="Подлинный фильтр корзины CRM: поле типа содержит сделки наряду с другими элементами" caption="Реальный фильтр корзины CRM. На снимке выбрано несколько типов; при поиске одной сделки оставьте тип «Сделка». Видимые значения — пример интерфейса, не результат поиска вашей записи." />
+    <p>Сотрудник видит лишь удалённые им элементы. Если сделку удалил коллега, попросите администратора проверить корзину: ему доступны все удалённые записи CRM. Администратор также может проверить, была ли корзина включена для сделок в настройках CRM. При отключённой корзине искать запись в ней бессмысленно.</p>
+  </section>
+
+  <section aria-labelledby="restore-deal">
+    <h2 id="restore-deal">Как <span data-heading-accent>восстановить сделку</span> из корзины</h2>
+    <p>Убедитесь, что найденная строка относится к нужной продаже: сравните название и время удаления, а при наличии старого ID — и его. Затем откройте меню строки (≡), выберите «Восстановить» и дождитесь уведомления Битрикс24.</p>
+    <p>У восстановленной сделки меняется ID. Старая ссылка на карточку больше не работает: найдите запись через список или поиск CRM и сохраните её новый адрес. Если в рабочем документе, отчёте или интеграции используется прежний ID, проверьте эту связь отдельно.</p>
+    <p>Связанные дела, которые тоже оказались в корзине, возвращайте после самой сделки. Такой порядок указан в <a href={sourceLinks[0].href} target="_blank" rel="noopener noreferrer">инструкции Битрикс24 по корзине CRM</a>. Восстановление доступно не на каждом тарифе. Если команда восстановления недоступна, попросите администратора проверить условия вашего тарифа.</p>
+  </section>
+
+  <section aria-labelledby="after-restore">
+    <h2 id="after-restore">Что проверить <span data-heading-accent>после возврата сделки</span></h2>
+    <p>Откройте найденную карточку с новым ID и сравните её с тем, что известно о продаже. Для менеджера важны воронка и стадия, ответственный, сумма и товарные позиции, контакт или компания, ближайшие дела и договорённости. Список нужен для сверки: официальная справка не гарантирует автоматический возврат каждого поля и связи.</p>
+    <ArticleFigure src={controlImage} fullSize portrait alt="Памятка проверки восстановленной сделки: стадия, ответственный, сумма, товары, клиент и новый ID" caption="Памятка TrueTell для проверки результата. Пункты отражают рабочую сверку в вашем портале; иллюстрация не воспроизводит экран Битрикс24 и не гарантирует автоматический возврат всех данных." />
+    <p>Если вместе со сделкой удалялись дела, верните нужные из корзины после восстановления самой карточки. Затем откройте ближайшую задачу или звонок из сделки и убедитесь, что команда видит следующую работу. Для внешних систем передайте новый ID ответственному за интеграцию и проверьте, что данные больше не привязаны к старому адресу.</p>
+    <InlineConsultation title="После очистки пропало много сделок?" description="Поможем установить границы удаления и составить список проверок для возвращённых карточек и интеграций." actionLabel="Обсудить восстановление" />
+  </section>
+
+  <section aria-labelledby="not-found">
+    <h2 id="not-found">Если сделки <span data-heading-accent>нет в корзине</span></h2>
+    <p>Проверьте обычный поиск по CRM и фильтры воронки: сделка может существовать, но не входить в текущий список. Затем попросите администратора повторить поиск в корзине по типу «Сделка», периоду и старому ID. Уточните, кто удалял запись и была ли включена корзина для этого типа элементов.</p>
+    <p>Битрикс24 хранит элементы в корзине до 30 дней, после чего удаляет автоматически по 100 записей в день. При большом объёме удалений отдельная сделка может оставаться дольше, но это не надёжный срок для планирования восстановления. Администратор может удалить элемент из корзины окончательно раньше.</p>
+    <p>Если записи уже нет, соберите её прежний ID, дату удаления и доступные выгрузки. Вариант полного восстановления портала через поддержку оценивайте отдельно: ежедневные резервные копии хранятся семь дней, откат затрагивает весь Битрикс24 и удалит изменения после выбранной даты. Вернуть через эту процедуру одну сделку без остальных изменений нельзя. Условия зависят от тарифа.</p>
+    <p>Если причина исчезновения — плановая очистка, изучите <a href={base + 'massovoe-udalenie-sdelok-bitrix24/'}>как отбирать сделки перед массовым удалением</a>. Для другого типа записи есть отдельная инструкция по <a href={base + 'udalennye-lidy-bitrix24/'}>удалённым лидам</a>. Эти сценарии используют ту же корзину, но проверки после возврата различаются.</p>
+  </section>
+
+  <FaqSection items={faqItems} id="faq" variant="article" />
+  <ArticleSources publishedIso={article.publishedAt} sources={sourceLinks} />
+  <Fragment slot="article-end"><RelatedArticles items={relatedArticles} /></Fragment>
+  <Fragment slot="after-article"><ConsultationCtaSection title="Нужно восстановить порядок в CRM?" description="Поможем проверить пропавшие сделки, последствия очистки и связи с другими системами." actionLabel="Обсудить задачу" /></Fragment>
+</ArticleLayout>
