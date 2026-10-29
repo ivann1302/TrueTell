@@ -28,14 +28,17 @@ export function validateNotFoundHtml(html) {
 }
 
 export function validatePublicHtml(html, url) {
+  // MCP articles may appear in blog cards. The retired positioning concerns the homepage promise.
+  if (new URL(url).pathname !== '/') return;
   const document = new JSDOM(html).window.document;
-  const publicText = [
+  const homepagePositioning = [
     document.title,
-    document.body?.textContent ?? '',
-    ...[...document.querySelectorAll('meta[content], [aria-label], [title], [alt]')]
-      .flatMap((element) => ['content', 'aria-label', 'title', 'alt'].map((attribute) => element.getAttribute(attribute) ?? '')),
+    document.querySelector('meta[name="description"]')?.content ?? '',
+    document.querySelector('meta[property="og:title"]')?.content ?? '',
+    document.querySelector('meta[property="og:description"]')?.content ?? '',
+    document.querySelector('main h1')?.textContent ?? '',
   ].join(' ');
-  if (/\bMCP\b/i.test(publicText)) throw new Error(`Retired MCP positioning found on ${url}`);
+  if (/\bMCP\b/i.test(homepagePositioning)) throw new Error(`Retired MCP positioning found on ${url}`);
 }
 
 export function validateRobots(robots, site) {

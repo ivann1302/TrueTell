@@ -5,7 +5,7 @@ import { productRating } from '../../config/products';
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const productName = productRating.name;
 ---
-<LegalLayout title="Лицензионное соглашение — Рейтинг товаров и клиентов" description="Условия использования приложения «Рейтинг товаров и клиентов» для Битрикс24: лицензия, подписка Маркета, аналитика, данные и поддержка." path="/bitrix24-product-rating-license/" noindex>
+<LegalLayout title={`Лицензионное соглашение — ${productName}`} description={`Условия использования приложения «${productName}» для Битрикс24: лицензия, подписка Маркета, аналитика, данные и поддержка.`} path="/bitrix24-product-rating-license/" noindex>
   <p>На использование приложения «{productName}» для Битрикс24.</p>
   <p>Редакция от <time datetime="2026-10-16">16 октября 2026 года</time>.</p>
 

@@ -158,9 +158,9 @@
     },
     "otchety-po-prodazham-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-26",
-      "report": "docs/seo/publications/humanizer-product-rename-2026-10-26.json",
-      "fingerprint": "d446537d62374d51390bd685aaaadd47ee6fc74fa77628114a9816c8648b80c0"
+      "reviewedAt": "2026-10-29",
+      "report": "docs/seo/publications/humanizer-abc-product-rename-2026-10-29.md",
+      "fingerprint": "a022d47882e1d59d67fde19b8c59abf98bbc021174cba483bcb22f0cdeb3b1aa"
     },
     "ostatki-moysklad/": {
       "skill": "humanizer",
@@ -170,9 +170,9 @@
     },
     "dashbord-rukovoditelya-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-26",
-      "report": "docs/seo/publications/humanizer-product-rename-2026-10-26.json",
-      "fingerprint": "4caeeb1c36e78830fd6aae79e21c99d6cb8d6110a497cad4be0cbdaedbfafff0"
+      "reviewedAt": "2026-10-29",
+      "report": "docs/seo/publications/humanizer-abc-product-rename-2026-10-29.md",
+      "fingerprint": "1a638ed2d6a2dd4aa9c0469f379bd16acf872165233f2614264b2326c45029e0"
     },
     "skvoznaya-analitika-bitrix24/": {
       "skill": "humanizer",
@@ -242,9 +242,9 @@
     },
     "abc-xyz-analiz-tovarov/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-26",
-      "report": "docs/seo/publications/humanizer-product-rename-2026-10-26.json",
-      "fingerprint": "7aba18a2492ed631c8c9abd3121ca9b44bbe261d4a0dfd882a4a7c9a316dc573"
+      "reviewedAt": "2026-10-29",
+      "report": "docs/seo/publications/humanizer-abc-product-rename-2026-10-29.md",
+      "fingerprint": "482d5656e7a9557034ffb809c9ac52a333c9ae65c168c91200afae43c3a6cbac"
     },
     "analiticheskaya-baza-moysklad/": {
       "skill": "humanizer",
@@ -314,9 +314,21 @@
     },
     "udalit-tovar-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-27",
-      "report": "docs/seo/publications/seo093-prepared-109-2026-10-27.md",
-      "fingerprint": "f91cac6b37a41a346cb0ed7d7a9f74c75e41f997777dc732baff93ff9c37f9bd"
+      "reviewedAt": "2026-10-29",
+      "report": "docs/seo/publications/humanizer-abc-product-rename-2026-10-29.md",
+      "fingerprint": "09e792a045689239b7058524c59792ae07c4a772123c9f7faa5308c94b77eab8"
+    },
+    "chto-takoe-mcp/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-29",
+      "report": "docs/seo/publications/mcp-article-review-111-2026-10-29.md",
+      "fingerprint": "7083e8c0c6f3d8ce26f79d98ddcc4a0de9779cf38cc5692efae7b0288a0e7c37"
+    },
+    "bezopasnyy-dostup-ii-k-crm/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-29",
+      "report": "docs/seo/publications/crm-ai-access-review-112-2026-10-29.md",
+      "fingerprint": "c5b0ce03dcfc48bb702aa7ae40c7ebfaf09579506edf703ad743cf572663c00d"
     }
   }
 }

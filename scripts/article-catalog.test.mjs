@@ -4,7 +4,7 @@ import { allArticles, getCatalogArticles, groupKnowledgeArticles, getRelatedArti
 
 test('instructions and analytical articles have distinct catalog ownership', () => {
   assert.equal(getCatalogArticles('knowledge').length, 35);
-  assert.equal(getCatalogArticles('blog').length, 14);
+  assert.equal(getCatalogArticles('blog').length, 16);
   assert.equal(new Set(allArticles.map(article => article.hrefPath)).size, allArticles.length);
 });
 

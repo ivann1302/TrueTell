@@ -1,0 +1,96 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { mcpProduct } from '../../config/products';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import workflowImage from '../../images/articles/mcp-agent-systems-flow.png';
+import rolesImage from '../../images/articles/mcp-two-workflows.png';
+const article = getArticle('chto-takoe-mcp/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const canonicalPath = `/${article.hrefPath}`;
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const ogImage = new URL(workflowImage.src, siteRoot).toString();
+const imageAlt = 'Схема: человек задаёт вопрос ИИ-агенту; тот обращается через MCP-сервер к разрешённым инструментам системы и возвращает результат';
+const faqItems = [
+  { question: 'Что означает MCP простыми словами?', answer: 'MCP, Model Context Protocol, — стандарт обмена между приложением с ИИ и сервером, который предоставляет ему инструменты или данные. Какие именно действия доступны, решают конкретный сервер, подключение и права пользователя.' },
+  { question: 'MCP сам автоматизирует работу?', answer: 'Нет. MCP предоставляет способ вызвать инструмент. Сценарий работы задают агент, правила процесса и человек: что запрашивать, когда запускать действие и как проверять результат.' },
+  { question: 'Можно ли через MCP спросить ИИ о сделках Битрикс24?', answer: 'Для ответа по реальным сделкам нужен сервер с доступом к данным конкретного портала, авторизация и соответствующие права. Официальный Developer MCP Битрикс24 предоставляет документацию REST API и не читает сделки портала.' },
+  { question: 'Можно ли таким же способом подключить МойСклад?', answer: 'В принципе сервер MCP может предоставлять инструменты поверх API МоегоСклада. Но одного названия протокола недостаточно: нужно выбрать или создать сервер, настроить доступ и проверить конкретные операции. Мы не заявляем готовое подключение МоегоСклада через MCP TrueTell.' },
+  { question: 'Нужно ли давать ИИ право менять данные?', answer: 'Для первого сценария обычно достаточно чтения одной известной записи. Изменения, удаление и массовые действия требуют отдельных инструментов, прав, проверки результата и контроля человека.' },
+  { question: 'Поможет ли MCP разработчику приложения Битрикс24?', answer: 'Да, если подключён сервер с нужными инструментами. Например, официальный Developer MCP Битрикс24 даёт агенту актуальную документацию REST API. Для создания и проверки приложения дополнительно нужны постановка задачи, доступ к проекту и тесты.' },
+];
+const sourceLinks = [
+  { label: 'Архитектура MCP: приложение, клиент, сервер и инструменты — документация протокола', href: 'https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture' },
+  { label: 'Безопасность и авторизация MCP — документация протокола', href: 'https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices' },
+  { label: 'Developer MCP Битрикс24: доступ к документации REST API без данных портала', href: 'https://apidocs.bitrix24.ru/ai-tools/mcp.html' },
+  { label: 'JSON API МоегоСклада: документы, товары и операции', href: 'https://dev.moysklad.ru/doc/api/remap/1.2/' },
+];
+const structuredData = createArticleStructuredData({
+  articleType: 'BlogPosting', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  articleSection: 'ИИ и интеграции',
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'Блог', item: new URL('blog/', siteRoot).toString() }, { name: title, item: articleUrl }],
+  faqItems,
+});
+---
+<ArticleLayout {title} titleParts={[{ text: 'Что такое MCP: ' }, { text: 'как ИИ подключается к рабочим системам', accent: true }]} {description} {canonicalPath} {structuredData}
+  ogTitle={article.seoTitle} ogDescription={description} {ogImage} ogImageAlt={imageAlt}
+  category={article.category} author={authorName}
+  intro="Объясняем MCP на знакомых задачах: получить ответ по сделке, сверить остаток и помочь разработчику создать интеграцию. Без настроек и программного жаргона."
+>
+  <Fragment slot="quick-answer">
+    <p><strong>MCP — это способ подключить ИИ-агента к инструментам других систем. Агент может запросить разрешённые данные или выполнить доступное действие, а затем использовать результат в ответе.</strong></p>
+    <p>Для бизнеса это путь от общего разговора с ИИ к ответам по рабочим данным. Для разработчика — доступ агента к документации и инструментам проекта. Конкретные возможности зависят от сервера и выданных прав.</p>
+  </Fragment>
+  <p data-article-lead>Представьте, что руководитель спрашивает ИИ: «На какой стадии сделка с клиентом?» Без подключения агент может только рассуждать на основе текста переписки. С доступом к нужному инструменту он запрашивает запись в CRM и отвечает по полученным полям. Протокол, по которому приложение с ИИ находит и вызывает такие инструменты, называется MCP — Model Context Protocol.</p>
+  <section aria-labelledby="how-works">
+    <h2 id="how-works">Как это <span data-heading-accent>работает</span></h2>
+    <p>В простой схеме есть человек, приложение с ИИ и MCP-сервер. Человек задаёт вопрос. Приложение видит доступные инструменты сервера и выбирает подходящий. Сервер обращается к системе, для которой он создан, и возвращает результат. После этого агент формулирует ответ.</p>
+    <ArticleFigure src={workflowImage} fullSize portrait alt={imageAlt} caption="Упрощённая схема обмена, составленная по документации MCP. Доступ к Битрикс24 и МоемуСкладу показан как возможная архитектура, а не как готовая интеграция TrueTell с обеими системами." />
+    <p>Сервер здесь похож на переводчика между запросом агента и конкретными операциями системы. Он может предлагать только чтение, а может иметь и действия записи. Одно слово «MCP» не говорит, какие данные доступны, насколько полон ответ и можно ли что-то изменить.</p>
+  </section>
+  <section aria-labelledby="business">
+    <h2 id="business">Что это даёт <span data-heading-accent>владельцу бизнеса</span></h2>
+    <p>Допустим, менеджер хочет узнать стадию конкретной сделки в Битрикс24. Подключённый агент может запросить её по номеру записи (ID), показать возвращённое название и стадию. Менеджер сравнивает ответ с карточкой. Если запись недоступна или поле отсутствует, корректный ответ сообщает об этом.</p>
+    <p>Другая задача — проверить остаток определённого товара в системе МойСклад. У сервиса есть документированный API, поэтому для него можно разработать MCP-сервер с инструментом чтения нужных данных. Но пригодность такого ответа зависит от выбранного показателя: остаток на складе, доступное количество с учётом резерва и данные на конкретный момент — разные вопросы. Это пример проекта подключения, а не описание готовой функции MCP TrueTell.</p>
+    <p>Начинать разумно с одного проверяемого вопроса. Укажите систему, известную запись, нужное поле и человека, который сверит ответ. Общую сводку по всем продажам обсуждают позже: там важны период, правила отбора и полнота выборки. Принцип обычной интеграции систем подробнее разобран в статье <a href={`${base}bitrix24-moysklad-integraciya/`}>о связке Битрикс24 и МоегоСклада</a>.</p>
+  </section>
+  <section aria-labelledby="development">
+    <h2 id="development">Как MCP помогает <span data-heading-accent>разработке</span></h2>
+    <p>Разработчик может поручить агенту подготовить интеграцию: изучить нужный метод API, написать код, запустить проверки и показать изменения. Подключение к источникам знаний и инструментам сокращает ручное переключение между вкладками. Например, официальный Developer MCP Битрикс24 даёт агенту доступ к актуальной документации REST API. Этот сервер не читает сделки и не вызывает методы клиентского портала.</p>
+    <ArticleFigure src={rolesImage} fullSize portrait alt="Два сценария MCP: разработчик получает документацию API для кода; сотрудник получает данные CRM через отдельный сервер с правами" caption="Два разных типа инструментов. Сверху — официальная документация для разработки Битрикс24; ниже — возможное чтение CRM через отдельный сервер. Схема редакционная, не экран продукта." />
+    <p>Автоматизация разработки появляется, когда агенту заданы задача, доступ к файлам проекта, доступные инструменты и способ проверки. MCP передаёт инструменты и контекст; он не принимает за команду архитектурные решения и не подтверждает качество кода. Результат всё равно проверяют тестами и ревью.</p>
+  </section>
+  <section aria-labelledby="difference">
+    <h2 id="difference">Чем MCP отличается <span data-heading-accent>от обычной интеграции</span></h2>
+    <p>Обычная интеграция часто запускается по заранее заданному правилу: новая сделка появилась — создать запись в другой системе. ИИ-агент работает с вопросом на естественном языке и может выбирать из разрешённых инструментов по ходу задачи. Оба подхода могут обращаться к одному API, но отвечают на разные потребности.</p>
+    <p>MCP не заменяет права доступа, настройку API и правила безопасности. Если нужны действия без участия человека по расписанию или событию, их проектируют отдельно. Если агенту разрешена запись, заранее определяют, кто подтверждает изменение и как проверить его последствия.</p>
+    <InlineConsultation variant="product" title="Хотите проверить один сценарий на вашей CRM?" description="Опишите вопрос, который сегодня решаете вручную, и как сверяете ответ. Мы оценим, подходит ли он для разрабатываемого MCP TrueTell для Битрикс24." href={mcpProduct.articleHref} actionLabel={mcpProduct.articleActionLabel} />
+  </section>
+  <section aria-labelledby="start">
+    <h2 id="start">С чего начать <span data-heading-accent>без технической подготовки</span></h2>
+    <p>Запишите одну задачу в виде вопроса: «Какая стадия у сделки с номером (ID) …?» Затем решите, где лежит правильный ответ и кто может открыть эту запись. Для первого теста достаточно чтения. Передавать агенту права на изменение данных ради ответа на вопрос не требуется.</p>
+    <p>Следующий шаг — выбрать конкретный AI-клиент и сервер для нужной системы. Проверьте, что сервер действительно предоставляет требуемую операцию, пользователь имеет доступ к данным, а ответ можно сверить в исходной системе. У нашего MCP TrueTell для Битрикс24 пока стадия разработки: публичную установку и поддержку конкретных клиентов мы здесь не обещаем.</p>
+  </section>
+  <FaqSection title="Частые вопросы о MCP" items={faqItems} variant="article" />
+  <p>Материал проверен 29 октября 2026 года по официальной документации протокола, Битрикс24 и МоегоСклада. Примеры рабочих задач иллюстрируют принцип; подключение к клиентскому порталу или аккаунту МоегоСклада для этой статьи не проводилось.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Обсудим ' }, { text: 'MCP TrueTell для Битрикс24', accent: true }]} description={mcpProduct.articleDescription} href={mcpProduct.articleHref} actionLabel={mcpProduct.articleActionLabel} />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

@@ -20,9 +20,9 @@ import closingStyles from '../../styles/product-closing.module.scss';
 import layout from '../../styles/product-panels.module.scss';
 import styles from './page.module.scss';
 
-const heading = 'Рейтинг товаров и клиентов в Битрикс24';
+const heading = product.heading;
 const title = `${heading} — ${companyInfo.brandName}`;
-const description = 'Рейтинг товаров и клиентов TrueTell для Битрикс24: товары, клиенты, ABC-анализ и сравнение периодов. Покупатели товара, история покупок, детализация сделок и Excel.';
+const description = product.description;
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
 const siteRoot = new URL(base, Astro.site ?? 'https://truetell-retail.ru');
 const pageUrl = new URL(productRatingPath.slice(1), siteRoot).href;
@@ -46,7 +46,7 @@ const features = [
   ['Excel и CSV', 'Весь найденный результат, сделки и параметры отчёта.', 'report'],
 ] as const;
 const faqItems = [
-  { question: 'Как подключить «Рейтинг товаров и клиентов»?', answer: 'Нажмите «Открыть в Маркете» и установите «Рейтинг товаров и клиентов» в облачный Битрикс24. Приложение доступно по подписке Битрикс24 Маркетплейс. Для установки нужны права администратора.' },
+  { question: 'Как подключить «ABC анализ товаров и клиентов»?', answer: 'Нажмите «Открыть в Маркете» и установите приложение TrueTell в облачный Битрикс24. Пока карточка в Маркете называется «Рейтинг товаров и клиентов». Доступ входит в подписку Битрикс24 Маркетплейс. Для установки нужны права администратора.' },
   { question: 'Это рейтинг менеджеров по продажам?', answer: 'Приложение строит рейтинги товаров и клиентов. Фильтр по менеджерам помогает ограничить выборку, но отдельный рейтинг сотрудников здесь не рассчитывается.' },
   { question: 'Какие продажи учитываются?', answer: 'Отчёт строится по сделкам облачного Битрикс24. По умолчанию учитываются успешные сделки за выбранный период по дате завершения. Можно выбрать дату создания, нужных менеджеров и другие условия отчёта.' },
   { question: 'Можно ли узнать, кто давно не покупал?', answer: 'Да. В клиентской базе видны последняя покупка и число дней без покупок. Укажите нужный срок, чтобы найти клиентов для повторного обращения. История включает покупки и за пределами периода основного рейтинга.' },
@@ -56,6 +56,8 @@ const faqItems = [
   { question: 'Можно ли объединить разные валюты?', answer: 'Денежные показатели рассчитываются в выбранной валюте. Автоматического пересчёта валют нет. Количество товаров суммируется в одинаковых единицах измерения.' },
   { question: 'Изменяет ли приложение данные CRM?', answer: 'Нет. Приложение читает данные для анализа и не изменяет сделки, товары или клиентов. Для отчёта используются сделки, доступные пользователю в Битрикс24.' },
   { question: 'Подходит ли приложение для анализа остатков и маржи?', answer: 'Приложение предназначено для анализа товаров и клиентов по CRM-сделкам. Складские остатки, закупки, маржа и прогнозирование в него не входят.' },
+  { question: 'Можно ли открыть отчёт в мобильном Битрикс24?', answer: 'Да. Текущая версия поддерживает мобильный Битрикс24: фильтры, рейтинги, карточки сделок и диалоги адаптированы для телефона.' },
+  { question: 'Какой объём данных доступен для отчёта?', answer: 'Приложение загружает до 10 000 доступных сделок и 50 000 товарных строк. Если предел превышен, отчёт не строится. Короткий период не уменьшает объём первоначальной загрузки.' },
 ];
 const structuredData = {
   '@context': 'https://schema.org',
@@ -79,7 +81,7 @@ const structuredData = {
         <LineWave centerOnMobile />
         <div class={heroStyles.heroCopy}>
           <h1>{heading}</h1>
-          <p class={heroStyles.heroDescription} data-intro="description">Узнайте, какие товары продаются лучше, кто покупает больше и как меняются продажи. Проверьте любой результат по исходным сделкам.</p>
+          <p class={heroStyles.heroDescription} data-intro="description">Узнайте, какие товары и клиенты дают основную долю продаж. Сравните группы A, B и C, проследите динамику и проверьте цифры по исходным сделкам.</p>
         </div>
         <div class={heroStyles.heroActions} data-intro="actions">
           <a class={styles.button} href={product.marketplaceUrl} target="_blank" rel="noopener noreferrer">{product.connectionActionLabel}</a>
@@ -125,7 +127,7 @@ const structuredData = {
       </ProductScenario>
 
       <section class:list={[styles.useCases, layout.textPanel]} aria-labelledby="use-cases-title">
-        <h2 id="use-cases-title">Когда нужен рейтинг товаров и клиентов</h2>
+        <h2 id="use-cases-title">Когда нужен ABC-анализ товаров и клиентов</h2>
         <dl class={styles.descriptionList}>
           {useCases.map(([heading, text]) => <div data-reveal><dt>{heading}</dt><dd>{text}</dd></div>)}
         </dl>
@@ -157,7 +159,7 @@ const structuredData = {
     <LineWave />
     <div class={styles.container}>
       <section class:list={[styles.connection, closingStyles.connectionDark]} aria-labelledby="connection-title">
-        <h2 id="connection-title" data-reveal>Откройте рейтинг товаров и клиентов в Битрикс24</h2>
+        <h2 id="connection-title" data-reveal>Откройте ABC-анализ товаров и клиентов в Битрикс24</h2>
         <div data-reveal="1">
           <p>Установите «{product.name}» из Маркета Битрикс24 и начните анализ товаров и клиентов по доступным сделкам. Если нужна помощь с настройкой отчёта, <a href={companyInfo.contacts.consultationUrl}>обсудите задачу с нами</a>.</p>
           <p class={styles.legalLinks}><a href={`${base}bitrix24-product-rating-license/`}>Лицензионное соглашение</a> · <a href={`${base}bitrix24-product-rating-privacy/`}>Политика конфиденциальности приложения</a></p>

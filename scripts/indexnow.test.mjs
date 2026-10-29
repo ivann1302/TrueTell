@@ -87,6 +87,8 @@ test('rejects retired MCP positioning in public page output', () => {
   const valid = '<title>Приложения для CRM</title><main><h1>Приложения для CRM и автоматизации бизнеса</h1></main>';
 
   assert.doesNotThrow(() => deployment.validatePublicHtml(valid, 'https://truetell-retail.ru/'));
+  assert.doesNotThrow(() => deployment.validatePublicHtml('<title>TrueTell</title><main><h1>Приложения</h1><a>Что такое MCP</a></main>', 'https://truetell-retail.ru/'));
+  assert.doesNotThrow(() => deployment.validatePublicHtml('<title>Что такое MCP</title><main><h1>Что такое MCP</h1></main>', 'https://truetell-retail.ru/chto-takoe-mcp/'));
   assert.throws(
     () => deployment.validatePublicHtml('<meta name="description" content="MCP-серверы для CRM"><main>Приложения</main>', 'https://truetell-retail.ru/'),
     /MCP.*https:\/\/truetell-retail\.ru\//i,
