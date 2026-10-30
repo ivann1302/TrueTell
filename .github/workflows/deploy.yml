@@ -32,12 +32,20 @@ jobs:
       - name: Require current humanizer reviews for published articles
         run: npm run check:article-humanizer
       - run: npm run lint
-      - run: npm run build
+      - name: Build site and mandatory Dzen article package
+        run: npm run build
         env:
           GITHUB_PAGES: 'false'
       # HTML/schema tests read the generated dist files.
-      - run: node --test scripts/*.test.mjs
+      - name: Test site, Dzen RSS, product links and images
+        run: node --test scripts/*.test.mjs
       - run: node scripts/indexnow.mjs --check
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dzen-editor-package
+          path: .generated/dzen-editor-html/
+          if-no-files-found: error
+          retention-days: 7
       - uses: actions/upload-artifact@v4
         with:
           name: site

@@ -1,0 +1,10 @@
+{
+  "cutoff": "2026-10-30",
+  "reason": "Эти статьи были опубликованы до обязательного шага Дзена и ещё не получили авторскую адаптацию.",
+  "paths": [
+    "platezhnyy-kalendar-bitrix24/",
+    "bi-analitika-chto-eto-prostymi-slovami/",
+    "dashbord-rukovoditelya-bitrix24/",
+    "bitrix24-moysklad-integraciya/"
+  ]
+}

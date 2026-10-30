@@ -63,6 +63,7 @@
 - Article metadata lives in `src/config/articles.ts`: `knowledge` instructions belong only to the knowledge base; `blog` analytical articles belong only to the blog. Keep existing root-level URLs.
 - Classify `knowledge` articles in «База знаний» and `blog` articles in «Блог» through the registry and catalogs. No visible breadcrumb navigation is rendered; any BreadcrumbList schema follows the same actual hierarchy.
 - Follow `docs/seo/content-publishing.md` when adding articles. Use the registry for titles, descriptions, recorded dates, related articles and products; do not maintain another catalog or sitemap URL list.
+- For every newly published blog article, prepare its authorial Dzen version and images in the same editorial cycle. The build and CI must fail when that package is missing or an image is unsuitable. Keep the product CTA aligned with the real site article, and mark a manually published Dzen article so RSS cannot send it again. Follow `docs/seo/dzen/README.md`.
 - `astro:build:done` generates the only sitemap and `docs/seo/site-map.md` from built HTML. Drafts, noindex pages, aliases, redirects and 404 are excluded; do not infer search indexing from the generated XML.
 
 ## Cleaner marketplace reference
