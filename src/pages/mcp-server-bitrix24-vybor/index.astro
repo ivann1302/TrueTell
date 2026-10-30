@@ -1,0 +1,84 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { mcpProduct } from '../../config/products';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import choiceImage from '../../images/articles/mcp-bitrix24-server-choice-115.png';
+import boundaryImage from '../../images/articles/mcp-bitrix24-data-boundary-115.png';
+
+const article = getArticle('mcp-server-bitrix24-vybor/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const ogImage = new URL(choiceImage.src, siteRoot).toString();
+const imageAlt = 'Две задачи MCP для Битрикс24: поиск в документации REST API и чтение данных CRM через отдельное подключение';
+const faqItems = [
+  { question: 'Официальный MCP-сервер Битрикс24 покажет мои сделки?', answer: 'Нет. Официальный Developer MCP предназначен для работы ИИ-агента с документацией REST API. Он не читает лиды, сделки, задачи и файлы клиентского портала.' },
+  { question: 'Для Developer MCP нужен вебхук?', answer: 'Для подключения к официальному серверу документации вебхук и токен портала не нужны. Доступ к реальным данным проверяется отдельно при вызове REST-методов созданным кодом или другим сервером.' },
+  { question: 'Можно ли уже подключить MCP TrueTell к любому ИИ-клиенту?', answer: 'Пока нет подтверждения для любого клиента. MCP TrueTell для Битрикс24 находится в разработке; открытая установка и проверка конкретного клиентского сценария ещё не заявлены.' },
+];
+const sourceLinks = [
+  { label: 'Developer MCP Битрикс24: назначение, доступ и ограничения — официальный REST-портал', href: 'https://apidocs.bitrix24.ru/ai-tools/mcp.html' },
+  { label: 'Как устроены MCP-клиент, сервер и инструменты — документация протокола', href: 'https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture' },
+  { label: 'Доступ к REST API Битрикс24 и способы авторизации — официальный REST-портал', href: 'https://apidocs.bitrix24.ru/settings/' },
+];
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const structuredData = createArticleStructuredData({
+  articleType: 'Article', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() }, { name: title, item: articleUrl }],
+  faqItems,
+});
+---
+<ArticleLayout {title} titleParts={[{ text: 'Какой MCP-сервер нужен ' }, { text: 'для Битрикс24', accent: true }]} {description}
+  canonicalPath={`/${article.hrefPath}`} {structuredData} ogTitle={article.seoTitle} ogDescription={description}
+  {ogImage} ogImageAlt={imageAlt} category={article.category} author={authorName}
+  intro="У слова «MCP» в задачах Битрикс24 два разных смысла: помочь агенту писать интеграцию или дать ему доступ к данным CRM. Показываем, как выбрать нужный путь.">
+  <Fragment slot="quick-answer">
+    <p><strong>Если агенту нужна документация REST API для разработки, подходит официальный Developer MCP Битрикс24. Если вы хотите спросить ИИ о своей сделке, нужен другой сервер с разрешённым доступом к вашему порталу.</strong></p>
+    <p>Официальный сервер документации не получает лиды и сделки. MCP TrueTell для работы с CRM ещё разрабатывается; конкретное подключение и права проверяются отдельно.</p>
+  </Fragment>
+
+  <p data-article-lead>Название «MCP-сервер Битрикс24» встречается и в разговоре разработчика, и в запросе руководителя. Разработчик хочет узнать параметры метода REST. Руководитель хочет открыть данные конкретной сделки. Для этих задач нужны разные инструменты и разные права. Одна ссылка на сервер не превращает документацию в доступ к CRM.</p>
+
+  <section aria-labelledby="choose">
+    <h2 id="choose">Сначала определите, <span data-heading-accent>какой ответ нужен</span></h2>
+    <p>Для разработки сформулируйте вопрос о методе API: какие параметры передать, что придёт в ответ и какие ограничения учесть. Официальный Developer MCP предоставляет агенту актуальные сведения из REST-документации. Он не получает авторизацию клиентского портала и не выполняет запросы к вашим сделкам.</p>
+    <p>Для рабочих данных назовите известную запись и поле: «Покажи стадию сделки с ID 123». Сервер, который отвечает на такой вопрос, должен быть отдельно связан с порталом, иметь подходящий инструмент чтения и действовать в пределах прав пользователя. Ответ нужно проверить в самой CRM. О том, как устроена такая связь, рассказываем в <a href={`${base}chto-takoe-mcp/`}>простом объяснении MCP</a>.</p>
+    <ArticleFigure src={choiceImage} fullSize alt={imageAlt} caption="Редакционная схема двух задач. Левая ветка относится к официальной документации REST, правая показывает требования к отдельному подключению данных CRM. Это не экран MCP TrueTell." />
+  </section>
+
+  <section aria-labelledby="official">
+    <h2 id="official">Что умеет <span data-heading-accent>официальный Developer MCP</span></h2>
+    <p>По документации Битрикс24 сервер доступен без ключа, токена и вебхука для самого подключения. Он помогает ИИ-инструменту находить документацию методов. При этом сервер не читает и не изменяет лиды, сделки, задачи и файлы портала. Если агент затем пишет код интеграции, авторизацию и права этого кода нужно настраивать и проверять отдельно.</p>
+    <p>Поэтому не передавайте вебхук или пароль в вопросы к серверу документации. Ему эти секреты не нужны. Когда задача дошла до реального вызова REST, используйте способ доступа, соответствующий проекту и правам.</p>
+  </section>
+
+  <section aria-labelledby="crm">
+    <h2 id="crm">Что требуется для <span data-heading-accent>ответа по CRM</span></h2>
+    <p>Проверка начинается с одной разрешённой операции чтения. Укажите, кто задаёт вопрос, какую запись он вправе видеть, какие поля нужны и где человек сверит ответ. Если агент вернул только часть списка, он должен сообщить об этом до вывода. Для записи, удаления и массовых действий потребуются отдельные полномочия и контроль последствий.</p>
+    <ArticleFigure src={boundaryImage} fullSize alt="Проверка доступа MCP к CRM: права пользователя, разрешённый инструмент, одна сделка и сверка ответа" caption="Четыре контрольные точки перед расширением доступа к CRM. Схема не подтверждает подключение к реальному порталу." />
+    <p>Мы разрабатываем MCP TrueTell для Битрикс24. В контролируемой среде проверены отдельные операции чтения, но это не доказательство готовности любого AI-клиента или открытой установки. Пока продуктовая страница готовится, можно обсудить конкретную задачу и способ её проверки. Подробный разбор прав есть в статье <a href={`${base}bezopasnyy-dostup-ii-k-crm/`}>о безопасном доступе ИИ к CRM</a>.</p>
+    <InlineConsultation variant="product" title="Нужен ответ по данным вашего портала?" description="Опишите одну запись и вопрос к ней без передачи данных клиента. Поможем определить, что нужно проверить в MCP TrueTell." href={mcpProduct.articleHref} actionLabel={mcpProduct.articleActionLabel} />
+  </section>
+
+  <FaqSection title="Вопросы о MCP-серверах Битрикс24" items={faqItems} variant="article" />
+  <p>Документация проверена 30 октября 2026 года. Работа официального сервера с конкретным AI-клиентом и подключение к клиентскому порталу для этой статьи не тестировались.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Обсудить ' }, { text: 'MCP TrueTell для Битрикс24', accent: true }]} description={mcpProduct.articleDescription} href={mcpProduct.productPageHref ?? mcpProduct.articleHref} actionLabel={mcpProduct.articleActionLabel} />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

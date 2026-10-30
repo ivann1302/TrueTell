@@ -74,6 +74,8 @@ const structuredData = createArticleStructuredData({
   title,
   description,
   articleUrl,
+  publishedDate: article.publishedAt,
+  modifiedDate: article.updatedAt,
   publisherUrl: siteRoot.toString(),
   image: ogImage,
   author: authorName,
@@ -144,7 +146,7 @@ const structuredData = createArticleStructuredData({
   </section>
 
   <FaqSection items={faqItems} id="faq" variant="article" />
-  <ArticleSources sources={sourceLinks} />
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
   <Fragment slot="article-end">
     <ArticleProductCta titleParts={[{ text: 'Продажи и запасы в ' }, { text: 'одном анализе', accent: true }]} description="Посмотрите, как BI-аналитика TrueTell объединяет данные о продажах, остатках и торговых точках. Набор метрик и правила расчёта согласуются под задачу компании." href={base + 'bi-analitika/'} actionLabel="Посмотреть BI-аналитику" />
     <RelatedArticles items={relatedArticles} />

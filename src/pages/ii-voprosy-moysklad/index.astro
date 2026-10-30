@@ -1,0 +1,54 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import firstImage from '../../images/articles/moysklad-ai-question-115.png';
+import secondImage from '../../images/articles/moysklad-ai-answer-check-115.png';
+const article = getArticle('ii-voprosy-moysklad/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const ogImage = new URL(firstImage.src, siteRoot).toString();
+const firstAlt = 'Шаблон вопроса к ИИ: объект, период, склад, поля и формат ответа';
+const secondAlt = 'Проверка ответа ИИ: источник, фильтры, полнота и выборочная сверка';
+const faqItems = [["Можно спросить ИИ о продажах за месяц?", "Можно, если доступный инструмент отдаёт нужные данные. Укажите точные даты, склад и метрику; затем проверьте итог в отчёте МоегоСклада."], ["Почему ответ может быть неполным?", "Инструмент может вернуть только часть полей или ограниченное число объектов. В официальной справке MCP МоегоСклада указано ограничение до 1000 объектов за вызов без настроенной пагинации."], ["Достаточно ли попросить агента скрыть персональные данные?", "Нет. Инструкция агенту не гарантирует, что данные не попадут в контекст AI-платформы. Ограничьте доступ и выбирайте способ обработки данных до подключения."]].map(([question, answer]) => ({ question, answer }));
+const sourceLinks = [["Официальный MCP-сервер МоегоСклада: примеры вопросов и ограничения", "https://support.moysklad.ru/hc/ru/знакомство%20с%20сервисом/инструменты/mcp_сервер_для_работы_с_моимскладом"], ["Отчёт «Остатки» в МоемСкладе", "https://support.moysklad.ru/hc/ru/товары%20и%20склады/остатки%20и%20себестоимость/отчет_остатки"]].map(([label, href]) => ({ label, href }));
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const structuredData = createArticleStructuredData({
+  articleType: 'Article', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() }, { name: title, item: articleUrl }], faqItems,
+});
+---
+<ArticleLayout {title} titleParts={[{ text: 'Какие вопросы задавать ИИ ' }, { text: 'по данным МоегоСклада', accent: true }]} {description}
+  canonicalPath={`/${article.hrefPath}`} {structuredData} ogTitle={article.seoTitle} ogDescription={description}
+  {ogImage} ogImageAlt={firstAlt} category={article.category} author={authorName} intro='Примеры небольших проверяемых вопросов о товарах, заказах и остатках. Показываем, как не принять неполную выборку за полный отчёт.'>
+  <Fragment slot="quick-answer"><p><strong>Начните с одного объекта, периода и набора полей. Попросите ИИ назвать источник, фильтры и количество полученных записей, затем сверьте результат с МойСкладом. Для больших выборок и денежных итогов нужен отдельный контроль полноты.</strong></p></Fragment>
+
+<p data-article-lead>«Что у нас заканчивается на складе?» — полезный вопрос, но в нём нет склада, даты и определения «заканчивается». ИИ может дать правдоподобный ответ и при этом пропустить часть товаров. Поэтому вопрос нужно сформулировать так, чтобы результат можно было сверить с учётной системой.</p>
+<section aria-labelledby="formula"><h2 id="formula">Как составить <span data-heading-accent>проверяемый вопрос</span></h2>
+<p>Укажите объект, период или дату, склад, нужные поля и формат ответа. Например: «Покажи неархивные товары на складе А с остатком ниже пяти штук на конец 29 октября. Верни ID, артикул, название и остаток; сообщи число найденных и число возвращённых записей». Название склада и порог здесь условные. Сверьте, поддерживает ли подключённый инструмент именно такой фильтр.</p>
+<ArticleFigure src={firstImage} fullSize alt={firstAlt} caption="Редакционный шаблон вопроса. Склад А и порог пять штук — условный пример, не данные клиента." />
+<p>Для заказов спросите: «Какие заказы покупателей созданы с 1 по 7 октября? Верни ID, дату и статус». Для сравнений продаж заранее уточните, что считается продажей, какая дата берётся за основу и включаются ли возвраты. Без этого два корректно рассчитанных числа могут относиться к разным показателям.</p></section>
+<section aria-labelledby="verify"><h2 id="verify">Как проверить <span data-heading-accent>ответ агента</span></h2>
+<p>Попросите показать источник данных, применённые фильтры, количество строк и ограничения инструмента. Затем откройте несколько ID в МоемСкладе и сопоставьте поля. Для числового итога сравните тот же период и те же настройки с исходным отчётом. Если агент не может показать полноту выборки, не используйте сумму для решения о закупке.</p>
+<ArticleFigure src={secondImage} fullSize alt={secondAlt} caption="Четыре проверки ответа: источник, фильтр, полнота, сверка в учётной системе. Это методика, а не результат теста аккаунта." />
+<p>Официальный MCP МоегоСклада сейчас возвращает до 1000 объектов за вызов без встроенной пагинации. Это особенно важно для вопросов «по всему каталогу» и «за весь год»: ответ может опираться на часть данных. Для регулярной аналитики с большими объёмами выбирайте воспроизводимую выгрузку через API и проверку загрузки.</p></section>
+<section aria-labelledby="rights"><h2 id="rights">До вопроса проверьте <span data-heading-accent>доступ к данным</span></h2>
+<p>Токен открывает агенту доступ в рамках своих прав. Определите, нужны ли конкретному вопросу закупочные цены, контакты покупателей и финансовые документы. Просьба «не показывать» в чате не заменяет ограничения доступа: данные могут попасть в контекст модели. Начните с не чувствительного набора полей и проверьте политику хранения выбранной AI-платформы.</p>
+<p>Если задача повторяется каждое утро, запишите проверенный вопрос и источник контрольного числа. Так вы заметите, когда сменится набор инструментов MCP или формат ответа.</p></section>
+  <FaqSection title="Частые вопросы" items={faqItems} variant="article" />
+  <p>Официальная документация проверена 30 октября 2026 года. Доступ к клиентскому аккаунту и работу конкретного подключения для этой статьи не тестировали.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end"><RelatedArticles items={relatedArticles} /></Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

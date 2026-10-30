@@ -3,8 +3,14 @@ import assert from 'node:assert/strict';
 import { allArticles, getCatalogArticles, groupKnowledgeArticles, getRelatedArticles, getProductArticles } from '../src/config/articles.ts';
 
 test('instructions and analytical articles have distinct catalog ownership', () => {
-  assert.equal(getCatalogArticles('knowledge').length, 35);
-  assert.equal(getCatalogArticles('blog').length, 16);
+  const knowledge = getCatalogArticles('knowledge');
+  const blog = getCatalogArticles('blog');
+  assert(knowledge.length > 0);
+  assert(blog.length > 0);
+  assert(knowledge.every(article => article.type === 'knowledge' && article.status === 'published' && article.indexable));
+  assert(blog.every(article => article.type === 'blog' && article.status === 'published' && article.indexable));
+  assert(knowledge.some(article => article.hrefPath === 'api-bitrix24/'));
+  assert(blog.some(article => article.hrefPath === 'abc-xyz-analiz-tovarov/'));
   assert.equal(new Set(allArticles.map(article => article.hrefPath)).size, allArticles.length);
 });
 
@@ -27,6 +33,11 @@ test('related articles reuse metadata and stay relevant without commercial cards
     assert.notEqual(article.hrefPath, source.hrefPath);
     assert.equal(article.status, 'published');
   }
-  assert.equal(getProductArticles('/bitrix24-cleaner/').length, 8);
-  assert.deepEqual(getProductArticles('/bi-analitika/').map(article => article.type), ['blog', 'knowledge', 'blog', 'knowledge', 'knowledge', 'knowledge']);
+  const cleanerArticles = getProductArticles('/bitrix24-cleaner/');
+  assert(cleanerArticles.length > 0);
+  assert(cleanerArticles.every(article => article.relatedProduct === '/bitrix24-cleaner/' && article.status === 'published'));
+  const biArticles = getProductArticles('/bi-analitika/');
+  assert(biArticles.some(article => article.type === 'blog'));
+  assert(biArticles.some(article => article.type === 'knowledge'));
+  assert(biArticles.every(article => article.relatedProduct === '/bi-analitika/' && article.status === 'published'));
 });

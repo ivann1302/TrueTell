@@ -1,0 +1,98 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { mcpProduct } from '../../config/products';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import choiceImage from '../../images/articles/bitrix24-agent-robot-choice-115.png';
+import controlImage from '../../images/articles/bitrix24-automation-control-115.png';
+
+const article = getArticle('ii-agent-ili-roboty-bitrix24/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const ogImage = new URL(choiceImage.src, siteRoot).toString();
+const imageAlt = 'Выбор инструмента Битрикс24 по задаче: робот по событию, бизнес-процесс для согласования, ИИ-агент для вопроса к данным';
+const choiceRows = [
+  ['После перехода сделки на стадию создать задачу', 'Робот CRM', 'Проверить условие и историю срабатывания'],
+  ['Согласовать исключение с руководителем', 'Бизнес-процесс', 'Проверить маршрут и решение участника'],
+  ['Найти сделки по заданным признакам и объяснить выборку', 'ИИ-агент с разрешённым чтением', 'Сверить ID, фильтры и полноту списка'],
+];
+const faqItems = [
+  { question: 'Можно ли заменить роботов ИИ-агентом?', answer: 'Если действие должно выполняться при известном событии по постоянному правилу, обычно удобнее робот. Агент полезен для вопроса, где нужно выбрать разрешённые инструменты и объяснить результат. Запись в CRM через агента требует отдельного контроля.' },
+  { question: 'Когда нужен бизнес-процесс?', answer: 'Когда действие проходит через согласование, участники принимают решение и важен маршрут выполнения. Для простого действия при переходе стадии проверьте возможности робота.' },
+  { question: 'Работает ли этот сценарий уже в MCP TrueTell?', answer: 'MCP TrueTell для Битрикс24 находится в разработке. Отдельные операции чтения проверены в контролируемой среде; готовность любого AI-клиента и автоматическая запись в портал здесь не заявлены.' },
+];
+const sourceLinks = [
+  { label: 'Роботы в CRM: сценарии и ограничения — справка Битрикс24', href: 'https://helpdesk.bitrix24.ru/open/24367166/' },
+  { label: 'Условия и очередь запуска роботов — справка Битрикс24', href: 'https://helpdesk.bitrix24.ru/open/21491832/' },
+  { label: 'Бизнес-процессы в CRM: согласование и ограничения — справка Битрикс24', href: 'https://helpdesk.bitrix24.ru/open/23509402/' },
+  { label: 'Конструктор бизнес-процессов с AI — справка Битрикс24', href: 'https://helpdesk.bitrix24.ru/open/27455366/' },
+  { label: 'Архитектура MCP и инструменты агента — документация протокола', href: 'https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture' },
+];
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const structuredData = createArticleStructuredData({
+  articleType: 'BlogPosting', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'Блог', item: new URL('blog/', siteRoot).toString() }, { name: title, item: articleUrl }],
+  faqItems,
+});
+---
+<ArticleLayout {title} titleParts={[{ text: 'ИИ-агент или роботы Битрикс24: ' }, { text: 'что выбрать для задачи', accent: true }]} {description}
+  canonicalPath={`/${article.hrefPath}`} {structuredData} ogTitle={article.seoTitle} ogDescription={description}
+  {ogImage} ogImageAlt={imageAlt} category={article.category} author={authorName}
+  intro="Сравниваем три рабочих ситуации: действие по стадии сделки, согласование и разовый вопрос к данным CRM. Выбор начинается с того, кто запускает процесс и как проверяется результат.">
+  <Fragment slot="quick-answer">
+    <p><strong>Робот подходит для повторяемого действия по известному событию. Бизнес-процесс помогает провести согласование. ИИ-агент с разрешёнными инструментами полезен, когда человек задаёт вопрос к данным и проверяет полученный ответ.</strong></p>
+    <p>Для автоматического изменения CRM через агента нужны отдельные права и контроль. MCP сам по себе не запускает робота и не задаёт правила процесса.</p>
+  </Fragment>
+
+  <p data-article-lead>Фраза «автоматизировать Битрикс24 с ИИ» скрывает разные задачи. Менеджер хочет, чтобы после смены стадии появилась задача. Руководитель хочет согласовать нестандартную скидку. Аналитик хочет получить список сделок по условиям, которые меняются от вопроса к вопросу. Если выбрать один инструмент для всех трёх случаев, процесс станет сложнее и его труднее будет проверить.</p>
+
+  <section aria-labelledby="event">
+    <h2 id="event">Известное событие и действие: <span data-heading-accent>робот CRM</span></h2>
+    <p>Роботы Битрикс24 выполняют действия при попадании элемента CRM на определённую стадию. Для них задают очередь, время и условия выполнения. Например, после перехода сделки на стадию «Подготовка» можно создать задачу ответственному. Порядок настройки и доступность зависят от сценария и тарифа; перед запуском проверьте это в своём портале.</p>
+    <p>У робота есть понятная точка проверки: сработало ли условие и появилось ли ожидаемое действие. Если правило остаётся одинаковым для каждой сделки, дополнительные вызовы ИИ не нужны.</p>
+    <ArticleFigure src={choiceImage} fullSize alt={imageAlt} caption="Три типовые задачи и соответствующий инструмент. Это редакционная схема выбора, а не интерфейс Битрикс24 или MCP TrueTell." />
+  </section>
+
+  <section aria-labelledby="approval">
+    <h2 id="approval">Решение нескольких людей: <span data-heading-accent>бизнес-процесс</span></h2>
+    <p>В согласовании важны участники, шаги и решение каждого. Например, исключение по условиям сделки проходит руководителя, затем возвращается менеджеру с результатом. Штатные бизнес-процессы Битрикс24 поддерживают задания на утверждение и ветки выполнения. Такая задача отличается от разового ответа агента: требуется маршрут, который работает одинаково и оставляет след решения.</p>
+    <p>Если процесс сложный, сначала опишите его на бумаге: кто инициирует, какие данные обязательны, кто утверждает, что происходит при отказе. Затем проверьте сценарий на тестовой записи. В Битрикс24 есть инструменты AI для помощи при построении бизнес-процесса; это не отменяет проверку маршрута человеком. Робот, процесс и агент могут работать в одной цепочке, если у каждого своя проверяемая роль.</p>
+  </section>
+
+  <section aria-labelledby="question">
+    <h2 id="question">Разовый вопрос к CRM: <span data-heading-accent>ИИ-агент</span></h2>
+    <p>Агент полезен, когда человек формулирует запрос на естественном языке, а разрешённые инструменты получают данные для ответа. Пример: «Найди открытые сделки без недавней активности в этой воронке и покажи их ID». Чтобы ответу можно было доверять, нужно назвать границу даты, фильтры и источник каждой строки. При неполной выборке агент должен сообщить об ограничении.</p>
+    <DataTable label="Выбор инструмента Битрикс24 по результату задачи" columns={['Задача', 'Инструмент', 'Проверка']} rows={choiceRows} rowHeaders />
+    <p>О том, как ограничить права и проверить ответ по одной записи, читайте в нашей статье <a href={`${base}bezopasnyy-dostup-ii-k-crm/`}>о безопасном доступе ИИ к CRM</a>. MCP TrueTell для Битрикс24 пока разрабатывается. Подтверждённые операции чтения в контролируемой среде не означают готовности любого клиентского подключения, поэтому начинать стоит с одной записи и проверки прав.</p>
+  </section>
+
+  <section aria-labelledby="control">
+    <h2 id="control">Что проверить <span data-heading-accent>перед внедрением</span></h2>
+    <p>Запишите событие запуска, ожидаемый результат и способ сверки. Для робота это стадия, условие и история выполнения. Для процесса согласования это маршрут и решение участников. Для агента это список доступных инструментов, права чтения, полнота ответа и человек, который сверит записи. Такие проверки позволяют заметить ошибку до расширения сценария на весь отдел.</p>
+    <ArticleFigure src={controlImage} fullSize alt="Контроль результата: у робота проверяется срабатывание, у бизнес-процесса маршрут, у ИИ-агента исходные записи и полнота ответа" caption="Контрольные точки различаются по инструменту. Схема описывает проверку, а не подтверждает работу конкретного портала." />
+    <InlineConsultation variant="product" title="Разбираете задачу для ИИ в CRM?" description="Опишите один вопрос, источник правильного ответа и желаемый AI-клиент. Проверим, подходит ли сценарий для MCP TrueTell." href={mcpProduct.articleHref} actionLabel={mcpProduct.articleActionLabel} />
+  </section>
+
+  <FaqSection title="Вопросы о выборе автоматизации" items={faqItems} variant="article" />
+  <p>Официальные справки проверены 30 октября 2026 года. Тариф, настройки и результат на клиентском портале для этой статьи не проверялись.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Обсудить задачу для ' }, { text: 'MCP TrueTell', accent: true }]} description={mcpProduct.articleDescription} href={mcpProduct.productPageHref ?? mcpProduct.articleHref} actionLabel={mcpProduct.articleActionLabel} />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

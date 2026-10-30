@@ -1,0 +1,153 @@
+---
+import LineWave from '../../components/ui/line-wave.astro';
+import AppHeader from '../../components/header/header.astro';
+import SiteFooter from '../../components/footer/site-footer.astro';
+import ProductSummary from '../../components/product-summary/product-summary.astro';
+import ProductScenario from '../../components/product-scenario/product-scenario.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { companyInfo } from '../../config/company';
+import { crmMcpProduct, crmMcpProductPath } from '../../config/products';
+import connectionScreenshot from '../../images/products/crm-mcp-app-connection-2026-10-30.png';
+import scenariosScreenshot from '../../images/products/crm-mcp-app-questions-2026-10-30.png';
+import heroStyles from '../../styles/product-hero.module.scss';
+import layout from '../../styles/product-panels.module.scss';
+import closingStyles from '../../styles/product-closing.module.scss';
+import styles from './page.module.scss';
+
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, Astro.site ?? 'https://truetell-retail.ru');
+const pageUrl = new URL(crmMcpProductPath.slice(1), siteRoot).href;
+const title = `${crmMcpProduct.heading} — ${companyInfo.brandName}`;
+const description = crmMcpProduct.description;
+const imageAlt = 'Панель приложения TrueTell для CRM Битрикс24: список AI-клиентов с инструкциями по подключению';
+const setupSteps = [
+  { icon: 'review', title: 'Выбрать AI-клиент', text: 'Откройте инструкцию в панели приложения.' },
+  { icon: 'filter', title: 'Подключить MCP', text: 'Добавьте адрес сервера и войдите через Битрикс24.' },
+  { icon: 'report', title: 'Проверить доступ', text: 'Убедитесь, что сотрудник видит нужные данные CRM.' },
+] as const;
+const diagnosisSteps = [
+  { icon: 'filter', title: 'Задать вопрос', text: 'Например, найти сделки без следующего дела.' },
+  { icon: 'review', title: 'Открыть находки', text: 'Сверить ответ с карточками и настройками CRM.' },
+  { icon: 'report', title: 'Согласовать действие', text: 'Перед изменением просмотреть план и подтвердить запись.' },
+] as const;
+const faqItems = [
+  { question: 'Что делает MCP TrueTell для CRM Битрикс24?', answer: 'Сервис связывает ваш AI-клиент с доступными данными CRM. ИИ задаёт вопросы через MCP, а ответы и разрешённые действия ограничены правами сотрудника и настройками портала. Диалог ведётся в выбранном AI-клиенте.' },
+  { question: 'С какими вопросами можно обратиться к CRM?', answer: 'В панели приведены примеры: сделки без следующего дела, открытые сделки по стадиям, структура воронок и возможные дубли контактов. Доступный набор действий зависит от прав сотрудника и условий подключения.' },
+  { question: 'Может ли ИИ менять настройки CRM без согласования?', answer: 'Для изменения структуры сервис сначала показывает точный план. Запись требует отдельного подтверждения администратора; после неё результат перечитывается. Доступные операции согласуем для вашего портала.' },
+  { question: 'Какие AI-клиенты можно использовать?', answer: 'В панели есть инструкции для Codex, ChatGPT, Claude Code, Cursor и других MCP-клиентов. Совместимость выбранного клиента и нужного сценария проверяем при подключении.' },
+  { question: 'Подойдёт ли мой тариф Битрикс24?', answer: 'Это зависит от функций портала, REST API и прав сотрудника. Перед подключением проверим ваш тариф и роль, а затем уточним доступные действия.' },
+  { question: 'Как узнать стоимость и получить доступ?', answer: 'Оставьте заявку с одной задачей для CRM. Мы уточним доступность сценария и условия подключения. Публичная установка и фиксированная цена пока не опубликованы.' },
+];
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'WebPage', '@id': `${pageUrl}#webpage`, url: pageUrl, name: title, description, inLanguage: 'ru-RU', breadcrumb: { '@id': `${pageUrl}#breadcrumbs` } },
+    { '@type': 'BreadcrumbList', '@id': `${pageUrl}#breadcrumbs`, itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Главная', item: siteRoot.href },
+      { '@type': 'ListItem', position: 2, name: 'Продукты', item: new URL('products/', siteRoot).href },
+      { '@type': 'ListItem', position: 3, name: crmMcpProduct.heading, item: pageUrl },
+    ] },
+    { '@type': 'FAQPage', '@id': `${pageUrl}#faq`, mainEntity: faqItems.map(item => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
+  ],
+};
+---
+
+<BaseLayout {title} {description} canonicalPath={crmMcpProductPath} {structuredData}
+  ogTitle={crmMcpProduct.heading} ogDescription={description}
+  ogImage={new URL(connectionScreenshot.src, siteRoot).href} ogImageAlt={imageAlt}
+  robots="noindex, nofollow" contentType="commercial" contentCategory="MCP для Битрикс24" contentStatus="draft">
+  <AppHeader />
+  <main class:list={[styles.page, heroStyles.productPage]}>
+    <div class={styles.container}>
+      <header class:list={[heroStyles.hero, heroStyles.heroWave]}>
+        <LineWave centerOnMobile />
+        <div class={heroStyles.heroCopy}>
+          <h1>{crmMcpProduct.heading}</h1>
+          <p class={heroStyles.heroDescription}>Задавайте ИИ вопросы по сделкам и настройкам CRM. Изменения структуры проходят через предварительный просмотр и подтверждение.</p>
+        </div>
+        <div class={heroStyles.heroActions}>
+          <a class={styles.button} href={companyInfo.contacts.consultationUrl}>Обсудить подключение</a>
+        </div>
+      </header>
+
+      <ProductSummary description="MCP передаёт AI-клиенту доступные сотруднику данные Битрикс24. Можно спросить о сделках и структуре CRM, а изменение настроек согласовать до записи.">
+        <span slot="title">Вопросы к CRM <strong>прямо в AI-клиенте</strong></span>
+      </ProductSummary>
+      <p class={styles.releaseNote}>Начните с одной задачи. Мы проверим права, тариф и выбранный AI-клиент, затем предложим способ подключения.</p>
+
+      <ProductScenario id="mcp-setup-title" title="Подключить ИИ к Битрикс24"
+        description="Панель TrueTell показывает инструкции для AI-клиентов и адрес MCP-сервера. Вход проходит через Битрикс24; доступные данные определяются правами сотрудника."
+        steps={setupSteps}>
+        <div class={styles.scenarioMedia}>
+          <ArticleFigure src={connectionScreenshot} fullSize alt={imageAlt}
+            caption="Панель приложения TrueTell в Битрикс24: выбор AI-клиента. Снимок от 30.10.2026." />
+          <p class={styles.flowLabel}>Схема процесса</p>
+          <ol class={styles.processFlow} aria-label="Этапы подключения AI-клиента">
+            <li>Выбор клиента</li><li>Авторизация</li><li>Проверка прав</li><li>Первый вопрос</li>
+          </ol>
+        </div>
+      </ProductScenario>
+
+      <ProductScenario id="mcp-diagnosis-title" title="Спросить о конкретной проблеме"
+        description="В приложении есть готовые формулировки для разных ролей: найти сделки без следующего дела, посмотреть открытые сделки по стадиям или проверить структуру воронок. Ответ сверяйте с карточками CRM."
+        steps={diagnosisSteps}>
+        <div class={styles.scenarioMedia}>
+          <ArticleFigure src={scenariosScreenshot} fullSize
+            alt="Панель TrueTell: четыре примера вопросов о сделках, воронках и возможных дублях контактов"
+            caption="Панель приложения TrueTell: полная карточка с примерами запросов для четырёх ролей. Доступные ответы зависят от прав сотрудника." />
+          <p class={styles.flowLabel}>Схема проверки</p>
+          <ol class={styles.processFlow} aria-label="Этапы проверки CRM">
+            <li>Вопрос</li><li>Ответ</li><li>Сверка в CRM</li><li>Действие</li>
+          </ol>
+        </div>
+      </ProductScenario>
+
+      <section class:list={[styles.resultPanel, layout.textPanel]} aria-labelledby="mcp-result-title">
+        <h2 id="mcp-result-title">Что можно сделать с CRM</h2>
+        <dl class={styles.resultList}>
+          <div><dt>Посмотреть структуру</dt><dd>Узнать, какие воронки, стадии и поля доступны подключённому сотруднику.</dd></div>
+          <div><dt>Найти точечную проблему</dt><dd>Получить список сделок без следующего дела или проверить возможные дубли контактов.</dd></div>
+          <div><dt>Подготовить изменение</dt><dd>Согласовать план одной воронки, её стадий и поля сделки; после подтверждения перечитать созданные значения.</dd></div>
+        </dl>
+      </section>
+
+      <section class={styles.boundaries} aria-labelledby="mcp-boundaries-title">
+        <h2 id="mcp-boundaries-title">Права и подтверждение</h2>
+        <div>
+          <p>Сервис работает в пределах прав подключённого сотрудника. Если доступа к настройкам нет, сотрудник сможет обсудить план с администратором без повышения своих прав.</p>
+          <p>Перед изменением структуры CRM показывается точный план. Каждая запись требует отдельного подтверждения, после неё сервис перечитывает результат. Доступный набор действий зависит от портала и условий подключения.</p>
+        </div>
+      </section>
+
+      <section class:list={[styles.reading, layout.textPanel]} aria-labelledby="mcp-reading-title">
+        <h2 id="mcp-reading-title">Перед подключением</h2>
+        <p>Выберите одну задачу: проверить сделки без следующего дела или подготовить новый процесс продаж. Напишите, какой у вас тариф Битрикс24, роль сотрудника и AI-клиент. Клиентские данные в форму отправлять не нужно.</p>
+        <p>Если вы только знакомитесь с подходом, прочитайте <a href={`${base}chto-takoe-mcp/`}>объяснение MCP простыми словами</a> и <a href={`${base}bezopasnyy-dostup-ii-k-crm/`}>материал о доступе ИИ к CRM</a>.</p>
+      </section>
+
+      <div class={styles.faq}>
+        <FaqSection items={faqItems} title="Вопросы о MCP для CRM" id="mcp-crm-faq" variant="article" />
+      </div>
+    </div>
+  </main>
+  <div class={closingStyles.closingSurface}>
+    <LineWave />
+    <div class={styles.container}>
+      <section class:list={[styles.connection, closingStyles.connectionDark]} aria-labelledby="mcp-connection-title">
+        <h2 id="mcp-connection-title" data-reveal>Обсудим подключение к вашей CRM</h2>
+        <div data-reveal="1">
+          <p>Опишите вопрос к CRM и желаемый результат. Мы уточним доступные действия, права и условия подключения.</p>
+          <a class={styles.button} href={companyInfo.contacts.consultationUrl}>Обсудить подключение</a>
+          {crmMcpProduct.marketplaceUrl ? (
+            <a class={styles.marketplaceLink} href={crmMcpProduct.marketplaceUrl} target="_blank" rel="noopener noreferrer">Открыть в Маркете Битрикс24</a>
+          ) : (
+            <p class={styles.marketplacePending}>Карточка в Маркете Битрикс24 — ссылка появится после публикации приложения.</p>
+          )}
+        </div>
+      </section>
+    </div>
+    <SiteFooter transparent hideDivider />
+  </div>
+</BaseLayout>

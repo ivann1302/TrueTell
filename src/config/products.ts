@@ -54,6 +54,16 @@ export const fieldDirectoryProduct = {
   connectionActionLabel: 'Открыть в Маркете',
 } as const;
 
+export const crmMcpProductPath = '/mcp-crm-bitrix24/';
+
+export const crmMcpProduct = {
+  name: 'MCP TrueTell для настройки и диагностики CRM',
+  heading: 'MCP для настройки и диагностики CRM Битрикс24',
+  description:
+    'MCP TrueTell соединяет AI-клиент с CRM Битрикс24: вопросы по сделкам и настройкам, поиск проблем, подготовка изменений с отдельным подтверждением. Узнайте об условиях подключения.',
+  marketplaceUrl: null as string | null,
+} as const;
+
 // Owner decision 23.10.2026: use our contact flow until the actual product page exists.
 export const mcpProduct = {
   name: 'MCP TrueTell для Битрикс24',

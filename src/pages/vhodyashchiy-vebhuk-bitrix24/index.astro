@@ -1,0 +1,110 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import Checklist from '../../components/editorial/checklist.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import setupImage from '../../images/articles/bitrix24-incoming-webhook-setup-116.png';
+import errorsImage from '../../images/articles/bitrix24-incoming-webhook-errors-116.png';
+
+const article = getArticle('vhodyashchiy-vebhuk-bitrix24/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const ogImage = new URL(setupImage.src, siteRoot).toString();
+const firstAlt = 'Маршрут создания входящего вебхука: Разработчикам, Готовые сценарии, Другое, Входящий вебхук, настройка прав и создание';
+const faqItems = [
+  { question: 'Чем входящий вебхук отличается от исходящего?', answer: 'Входящий вебхук позволяет внешней системе вызвать метод REST API Битрикс24 по секретному адресу. Исходящий отправляет событие из Битрикс24 на URL обработчика. Для реакции на событие и последующего чтения данных могут понадобиться оба механизма.' },
+  { question: 'Нужно ли выбрать scope для метода profile?', answer: 'Нет. В официальной инструкции profile используется для первой проверки без параметров и отдельного scope. Для метода CRM выберите scope crm и проверьте права владельца вебхука на нужный объект.' },
+  { question: 'Почему profile работает, а метод CRM возвращает отказ?', answer: 'profile проверяет саму авторизацию. Метод CRM дополнительно зависит от выбранного scope, прав сотрудника на запись, доступности REST API и условий метода. Читайте error_description вместе с кодом ошибки.' },
+  { question: 'Можно ли вставить адрес вебхука в код сайта или отправить подрядчику в чат?', answer: 'Полный URL содержит секрет. Храните его в защищённом серверном хранилище и выдавайте доступ только исполнителям, которым он нужен. Если код оказался публичным, перегенерируйте его и замените URL в интеграции.' },
+  { question: 'Подойдёт ли входящий вебхук для тиражного приложения?', answer: 'Для решения, которое устанавливают на разные порталы Битрикс24, используется приложение с OAuth 2.0. Часть методов требует контекста приложения и не вызывается через вебхук.' },
+];
+const sourceLinks = [
+  { label: 'Первый вызов API: создание вебхука, profile и коды ошибок — документация Битрикс24', href: 'https://apidocs.bitrix24.ru/first-steps/first-rest-api-call.html' },
+  { label: 'Входящие и исходящие вебхуки: права, URL и рабочие запросы — документация Битрикс24', href: 'https://apidocs.bitrix24.ru/local-integrations/local-webhooks.html' },
+  { label: 'Доступ к REST API: тариф, scope и права пользователя — документация Битрикс24', href: 'https://apidocs.bitrix24.ru/first-steps/access-to-rest-api.html' },
+  { label: 'Авторизация REST: вебхуки и приложения OAuth 2.0 — документация Битрикс24', href: 'https://apidocs.bitrix24.ru/settings/how-to-call-rest-api/authorization.html' },
+  { label: 'Рекомендации по безопасности REST-приложений — документация Битрикс24', href: 'https://apidocs.bitrix24.ru/settings/cloud-and-on-premise/security-recommendations.html' },
+];
+const steps = [
+  { title: 'Откройте «Разработчикам»', description: 'В Битрикс24 перейдите в «Готовые сценарии → Другое → Входящий вебхук». Если пункта нет, попросите администратора проверить право на создание.' },
+  { title: 'Выберите права для будущего метода', description: 'В «Настройке прав» отметьте только нужные scope. Для первой проверки методом profile отдельный scope не нужен.' },
+  { title: 'Проверьте profile в генераторе', description: 'Выберите метод без параметров и нажмите «Выполнить». Успешный ответ содержит result с данными пользователя.' },
+  { title: 'Сохраните и создайте вебхук', description: 'Скопируйте URL в защищённое место и нажмите «Создать». Не размещайте адрес в репозитории, браузерном коде и публичных инструкциях.' },
+  { title: 'Повторите вызов из внешней системы', description: 'С серверной стороны отправьте HTTPS POST на сохранённый адрес с методом profile.json и пустым JSON-объектом. Сверьте result с пользователем вебхука.' },
+  { title: 'Проверьте целевой метод на тестовой записи', description: 'Сверьте scope на странице метода, права создателя вебхука и ответ API. Для рабочих вызовов используйте HTTPS и POST.' },
+];
+const errorRows = [
+  ['INVALID_CREDENTIALS', 'Вебхук не найден по ID и коду: ошибка адреса, удаление, истечение срока или смена кода', 'Скопировать актуальный URL из настроек; при замене кода обновить интеграцию'],
+  ['insufficient_scope', 'Методу не выдан нужный scope', 'Сверить scope метода и «Настройку прав» вебхука'],
+  ['ACCESS_DENIED', 'Недостаточно прав на объект; при сообщении о подписке REST недоступен по тарифу', 'Прочитать error_description, проверить права сотрудника и доступ к REST'],
+  ['ERROR_METHOD_NOT_FOUND', 'Неверное имя или отсутствующий метод', 'Сверить название с официальным справочником'],
+];
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const structuredData = createArticleStructuredData({
+  articleType: 'Article', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() }, { name: title, item: articleUrl }],
+  faqItems,
+});
+---
+<ArticleLayout {title} titleParts={[{ text: 'Входящий вебхук Битрикс24: ' }, { text: 'создать и безопасно проверить', accent: true }]} {description}
+  canonicalPath={`/${article.hrefPath}`} {structuredData} ogTitle={article.seoTitle} ogDescription={description}
+  {ogImage} ogImageAlt={firstAlt} category={article.category} author={authorName}
+  intro="Показываем путь в интерфейсе Битрикс24, первую безопасную проверку и разбор отказов. Полный адрес вебхука содержит секрет — храните его как пароль.">
+  <Fragment slot="quick-answer"><p><strong>Откройте «Разработчикам → Готовые сценарии → Другое → Входящий вебхук». Выберите права для будущего метода и проверьте profile в генераторе: ему отдельный scope не нужен. Сохраните секретный URL и повторите вызов из внешней системы по HTTPS. Перед рабочим запросом проверьте права пользователя на объект.</strong></p></Fragment>
+
+  <p data-article-lead>Входящий вебхук нужен, когда внешний скрипт или сервис должен вызвать метод REST API в одном Битрикс24. Например, прочитать данные сделки для внутреннего отчёта. Вебхук действует от имени сотрудника, который его создал. Поэтому до копирования URL стоит решить, какой метод будет вызван и что этот сотрудник действительно вправе видеть.</p>
+
+  <section aria-labelledby="webhook-setup">
+    <h2 id="webhook-setup">Где создать <span data-heading-accent>входящий вебхук</span></h2>
+    <p>Путь в актуальной справке Битрикс24: «Разработчикам → Готовые сценарии → Другое → Входящий вебхук». В настройках выбирают scope, проверяют метод в генераторе и нажимают «Создать». Если пункт не показывается, право на создание вебхуков может быть закрыто администратором. Окно с предложением сменить тариф означает, что нужно проверить доступ к REST API.</p>
+    <Checklist label="Создание и проверка входящего вебхука" items={steps} />
+    <ArticleFigure src={setupImage} fullSize portrait alt={firstAlt} caption="Редакционная карта разделов и действий по официальной инструкции Битрикс24. Изображение не воспроизводит интерфейс портала и не содержит действующий вебхук." />
+    <p>Для метода <code>profile</code> параметры не нужны. В успешном ответе поле <code>result</code> содержит данные сотрудника, от имени которого прошёл вызов. Это проверка авторизации, а не подтверждение доступа ко всем объектам CRM. Выбор между вебхуком и приложением зависит от того, работает ли решение на одном портале или будет устанавливаться на разных.</p>
+    <p>Чтобы проверить вызов извне, возьмите полный URL вебхука из настроек и на стороне своего сервера отправьте <code>POST</code> по HTTPS на путь <code>/rest/{'{user_id}'}/{'{webhook_code}'}/profile.json</code> с пустым JSON-объектом <code>{'{}'}</code>. Домен берите из собственного Битрикс24, а секретный код — из сохранённого URL. Ожидаемый признак успеха — <code>result</code> с ID создателя вебхука. Не копируйте полный адрес в публичный онлайн-клиент запросов: он содержит ключ доступа.</p>
+  </section>
+
+  <section aria-labelledby="webhook-rights">
+    <h2 id="webhook-rights">Какие права нужны <span data-heading-accent>для рабочего метода</span></h2>
+    <p>На выполнение влияют три условия: доступ к REST API на портале, выбранный scope вебхука и права сотрудника на нужный объект. Например, запрос к CRM требует scope <code>crm</code>, но один scope не откроет сделку, которую создатель вебхука не вправе читать. Описание конкретного метода покажет нужный scope и параметры.</p>
+    <p>Выдавайте вебхуку только нужные scope. Если для интеграции требуется множество действий с разными правами, разделите сценарии и подумайте, подходит ли постоянный секрет одного сотрудника. Часть методов, например встраивание виджетов, требует контекста приложения и через вебхук недоступна.</p>
+  </section>
+
+  <section aria-labelledby="webhook-secret">
+    <h2 id="webhook-secret">Как обращаться с <span data-heading-accent>секретным URL</span></h2>
+    <p>В URL вебхука находятся ID сотрудника и секретный код. Любой, кто получил полный адрес, может вызывать разрешённые методы в пределах прав вебхука. Не вставляйте его в JavaScript публичной страницы, репозиторий, скриншот или журнал запросов. Храните адрес на стороне сервера в защищённом хранилище и отправляйте рабочие запросы по HTTPS.</p>
+    <p>Для рабочего вызова документация рекомендует POST. Простой GET-тест в адресной строке возможен, но оставляет секрет в истории браузера и может попасть в логи. Если код оказался доступен посторонним, перегенерируйте его в настройках и замените URL во всех вызывающих системах. После смены владельца вебхука проверьте права заново: запросы будут идти от другого сотрудника.</p>
+  </section>
+
+  <section aria-labelledby="webhook-errors">
+    <h2 id="webhook-errors">Почему вызов <span data-heading-accent>не работает</span></h2>
+    <p>При ошибке методов прежней версии API посмотрите и <code>error</code>, и <code>error_description</code>. Отказ по правам и отказ из-за подписки требуют разных действий. Если <code>profile</code> работает, а метод CRM нет, сначала проверьте scope и доступ пользователя к конкретной записи.</p>
+    <DataTable label="Частые ошибки входящего вебхука Битрикс24" columns={['Код', 'Что означает', 'Проверка']} rows={errorRows} rowHeaders />
+    <ArticleFigure src={errorsImage} fullSize portrait alt="Диагностика вебхука: INVALID_CREDENTIALS проверяет адрес и срок, insufficient_scope проверяет scope, ACCESS_DENIED проверяет права или подписку" caption="Редакционная схема диагностики. Общий ACCESS_DENIED разбирайте по полному описанию ответа; значения здесь не являются результатом теста клиентского портала." />
+  </section>
+
+  <section aria-labelledby="webhook-limits">
+    <h2 id="webhook-limits">Когда вебхука <span data-heading-accent>уже недостаточно</span></h2>
+    <p>Входящий вебхук привязан к одному порталу и сотруднику. Если решение должны устанавливать разные компании, нужен сценарий приложения с OAuth 2.0. Для реакции на события Битрикс24 используют исходящий вебхук или события приложения; входящий вебхук сам не отправляет уведомлений наружу. Подходящий способ зависит от архитектуры интеграции и доступности нужных методов.</p>
+    <p>Если вы только планируете обмен с другой системой, начните с одного события и одного проверяемого действия. Для полей CRM полезны <a href={`${base}karta-sootvetstviya-poley-bitrix24/`}>карта соответствия данных</a> и <a href={`${base}uf-crm-ufcrm-bitrix24-api/`}>разбор кодов API</a>.</p>
+    <InlineConsultation title="Проверяете интеграцию через вебхук?" description="Пришлите название метода, задачу и код ошибки без полного URL и токена. Поможем определить, где заканчиваются права и начинается настройка интеграции." />
+  </section>
+
+  <FaqSection title="Частые вопросы о входящих вебхуках" items={faqItems} variant="article" />
+  <p>Официальная документация проверена 30 октября 2026 года. Снимки интерфейса и вызовы на клиентском портале для статьи не выполнялись; доступность REST и прав проверяйте в своём Битрикс24.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end"><RelatedArticles items={relatedArticles} /></Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

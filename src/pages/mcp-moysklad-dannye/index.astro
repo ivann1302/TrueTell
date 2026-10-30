@@ -1,0 +1,54 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import firstImage from '../../images/articles/moysklad-mcp-flow-115.png';
+import secondImage from '../../images/articles/moysklad-mcp-vs-api-115.png';
+const article = getArticle('mcp-moysklad-dannye/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const ogImage = new URL(firstImage.src, siteRoot).toString();
+const firstAlt = 'Путь вопроса к данным: запрос, ИИ-агент, MCP МойСклад, ответ и сверка';
+const secondAlt = 'Сравнение MCP для вопросов к данным и JSON API для предсказуемой интеграции';
+const faqItems = [["MCP МойСклад уже существует?", "Да. Официальная справка МоегоСклада описывает собственный MCP-сервер для чтения данных аккаунта. Набор инструментов находится в активной разработке и может меняться."], ["Можно через MCP создавать товары и заказы?", "По текущей официальной справке создание, изменение и удаление сущностей через этот MCP-сервер пока не реализованы. Для этого используют JSON API."], ["Это продукт TrueTell?", "Нет. Описанный сервер принадлежит МоемуСкладу. Мы не заявляем собственный готовый MCP-коннектор TrueTell для МоегоСклада."]].map(([question, answer]) => ({ question, answer }));
+const sourceLinks = [["Официальный MCP-сервер МоегоСклада: возможности, безопасность и подключение", "https://support.moysklad.ru/hc/ru/знакомство%20с%20сервисом/инструменты/mcp_сервер_для_работы_с_моимскладом"], ["JSON API МойСклад: возможности интеграции", "https://dev.moysklad.ru/workbook/"]].map(([label, href]) => ({ label, href }));
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const structuredData = createArticleStructuredData({
+  articleType: 'BlogPosting', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'Блог', item: new URL('blog/', siteRoot).toString() }, { name: title, item: articleUrl }], faqItems,
+});
+---
+<ArticleLayout {title} titleParts={[{ text: 'MCP МоегоСклада: ' }, { text: 'данные и ограничения', accent: true }]} {description}
+  canonicalPath={`/${article.hrefPath}`} {structuredData} ogTitle={article.seoTitle} ogDescription={description}
+  {ogImage} ogImageAlt={firstAlt} category={article.category} author={authorName} intro='У МоегоСклада есть официальный MCP-сервер. Разбираем, какие вопросы можно начать с него, где потребуется JSON API и как проверить ответ агента.'>
+  <Fragment slot="quick-answer"><p><strong>Официальный MCP-сервер МоегоСклада даёт ИИ-агенту инструменты чтения товаров, складов, документов, контрагентов и части отчётов. Создание и изменение записей, массовую обработку и вебхуки нужно строить через JSON API.</strong></p></Fragment>
+
+<p data-article-lead>Предприниматель спрашивает: «Какие заказы покупателей пришли за неделю?» Разработчик спрашивает: «Как раз в час синхронизировать весь каталог?» На первый вопрос удобно отвечать через агента с MCP. Для второго нужна интеграция с заранее заданной логикой и JSON API. Оба пути работают с одним аккаунтом, но обещают разную предсказуемость.</p>
+<section aria-labelledby="what"><h2 id="what">Что даёт <span data-heading-accent>официальный MCP</span></h2>
+<p>МойСклад описывает свой MCP-сервер как набор инструментов для чтения каталога, объектов, дочерних ресурсов и части отчётов. Агент выбирает инструмент по вашему вопросу, сервер получает данные из аккаунта, а агент формулирует ответ. В официальной справке приведены вопросы о товарах, заказах, остатках и сравнении продаж. Это примеры возможных запросов, а не гарантия, что любая формулировка даст полный и точный результат.</p>
+<ArticleFigure src={firstImage} fullSize alt={firstAlt} caption="Редакционная схема по официальному описанию МоегоСклада. Она не показывает интерфейс аккаунта или проверенное подключение TrueTell." />
+<p>Для доступа нужен токен МоегоСклада. Не вставляйте его в текст вопроса и сначала определите, какие данные пользователь вправе передать выбранной AI-платформе. Данные, которые агент получил через MCP, могут попасть в контекст модели и историю чата согласно настройкам этой платформы.</p></section>
+<section aria-labelledby="choice"><h2 id="choice">Где проходит граница <span data-heading-accent>с JSON API</span></h2>
+<p>Официальная документация прямо разделяет сценарии. MCP сейчас ориентирован на чтение и диалог. Создание, обновление и удаление сущностей, вебхуки, массовые операции и стабильный обмен между системами выполняют через JSON API. В этом случае разработчик сам задаёт фильтры, постраничную загрузку, повторы и состав передаваемых данных.</p>
+<ArticleFigure src={secondImage} fullSize alt={secondAlt} caption="Схема выбора по задаче. Возможности MCP приведены по справке МоегоСклада на 30 октября 2026 года и могут меняться." />
+<p>Не путайте официальный сервер МоегоСклада с отдельными решениями в каталоге интеграций. Для любого другого сервера нужно отдельно проверить владельца, разрешения и то, куда передаются данные.</p></section>
+<section aria-labelledby="trial"><h2 id="trial">С чего начать <span data-heading-accent>проверку ответа</span></h2>
+<p>Возьмите небольшой проверяемый вопрос: «Найди неархивные товары, верни ID, название и артикул». Попросите агента назвать использованный инструмент, фильтр и число полученных записей. Сверьте несколько ID в МоемСкладе. Только после этого переходите к денежным итогам и сравнениям периодов. У официального MCP пока нет встроенной пагинации: большой список нельзя объявлять полным без отдельной проверки.</p>
+<p>Если нужен производственный процесс с повторяемым результатом, начните с описания источника, поля, фильтра и способа сверки. TrueTell может помочь разобрать такую задачу по данным МоегоСклада; готовый MCP-продукт TrueTell для этой системы здесь не заявлен.</p></section>
+  <FaqSection title="Частые вопросы" items={faqItems} variant="article" />
+  <p>Официальная документация проверена 30 октября 2026 года. Доступ к клиентскому аккаунту и работу конкретного подключения для этой статьи не тестировали.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end"><RelatedArticles items={relatedArticles} /></Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

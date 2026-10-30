@@ -1,0 +1,53 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import firstImage from '../../images/articles/moysklad-webhook-flow-115.png';
+import secondImage from '../../images/articles/moysklad-webhook-check-115.png';
+const article = getArticle('vebhuki-moysklad/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const ogImage = new URL(firstImage.src, siteRoot).toString();
+const firstAlt = 'Схема сценария: изменение заказа, вебхук, получатель, запрос в API и действие';
+const secondAlt = 'Контроль вебхука: получение, проверка ID, повторная обработка и сверка';
+const faqItems = [["Вебхук содержит все данные заказа?", "В примере вебхука в Сценариях МоегоСклада передаются ID и тип документа, а подробности получатель запрашивает через API. Не переносите этот формат на вебхуки JSON API без проверки документации."], ["Может ли MCP заменить вебхуки?", "Официальный MCP МоегоСклада ориентирован на чтение данных в диалоге с агентом. Событийную интеграцию проектируют отдельно, используя Сценарии или вебхуки JSON API."], ["Что проверить перед запуском?", "Уточнить вид вебхука, формат уведомления, получение события, права на чтение объекта, поведение при повторной обработке и сверку итогового действия."]].map(([question, answer]) => ({ question, answer }));
+const sourceLinks = [["Вебхуки в Сценариях МоегоСклада — официальная справка", "https://support.moysklad.ru/hc/ru/знакомство%20с%20сервисом/инструменты/вебхуки"], ["JSON API МойСклад: вебхуки и обработка событий", "https://dev.moysklad.ru/workbook/tag_webhook.html"], ["Официальный MCP МойСклад: различие с JSON API", "https://support.moysklad.ru/hc/ru/знакомство%20с%20сервисом/инструменты/mcp_сервер_для_работы_с_моимскладом"]].map(([label, href]) => ({ label, href }));
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const structuredData = createArticleStructuredData({
+  articleType: 'Article', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() }, { name: title, item: articleUrl }], faqItems,
+});
+---
+<ArticleLayout {title} titleParts={[{ text: 'Вебхуки МойСклад: ' }, { text: 'как получать изменения', accent: true }]} {description}
+  canonicalPath={`/${article.hrefPath}`} {structuredData} ogTitle={article.seoTitle} ogDescription={description}
+  {ogImage} ogImageAlt={firstAlt} category={article.category} author={authorName} intro='Вебхук сообщает внешней системе о событии. Разбираем пример вебхука в Сценариях МоегоСклада и отличаем его от вебхуков JSON API.'>
+  <Fragment slot="quick-answer"><p><strong>В примере вебхука в Сценариях МоегоСклада внешняя система получает ID и тип документа, затем может запросить актуальные данные через API. У вебхуков JSON API свои настройки и формат уведомления: проверяйте их отдельно.</strong></p></Fragment>
+
+<p data-article-lead>Представьте, что заказ в МоемСкладе изменился и клиенту нужно отправить уведомление. В примере вебхука, настроенного через Сценарии, внешняя система получает ID и тип документа. Затем она сама запрашивает подробности заказа и решает, что делать. Вебхуки JSON API — отдельный механизм со своим форматом.</p>
+<section aria-labelledby="chain"><h2 id="chain">Что происходит <span data-heading-accent>после изменения</span></h2>
+<p>В официальном примере вебхука в Сценариях МоегоСклада внешней системе передаются идентификатор и тип документа. Для заказа покупателя тип обозначен как CustomerOrder. Получатель по ID запрашивает актуальное состояние через API, проверяет условие и только затем выполняет действие, например обновляет запись во внешней CRM.</p>
+<ArticleFigure src={firstImage} fullSize alt={firstAlt} caption="Редакционная схема по официальному примеру МоегоСклада. Это логика интеграции, а не скриншот работающей настройки." />
+<p>Этот пример не описывает формат всех вебхуков МоегоСклада. Если вы создаёте подписку через JSON API, сверяйте структуру её уведомления в документации API. Само получение события не заменяет обработчик, проверку и последующее действие.</p></section>
+<section aria-labelledby="build"><h2 id="build">Как подготовить <span data-heading-accent>обработчик</span></h2>
+<p>Сначала выберите механизм: вебхук в Сценариях или подписку через JSON API. Для первого настройте событие и адрес получателя в Сценарии; для второго проверьте настройки и формат по документации API. Затем определите способ получить объект, правило действия и устойчивый ключ обработки, чтобы повторный сигнал не создал второй результат. Гарантии доставки и конкретные поля сверяйте с документацией выбранного механизма перед кодом.</p>
+<ArticleFigure src={secondImage} fullSize alt={secondAlt} caption="Контрольные точки для разработки обработчика. Схема не приписывает МоемуСкладу неописанные гарантии доставки." />
+<p>Для проверки измените один тестовый заказ, убедитесь, что сигнал получен, затем сравните идентификатор, статус и итоговое действие в обеих системах. Повторите тот же запрос к обработчику и проверьте, что дубль действия не возник. Если обработчик временно недоступен, понадобится отдельный план восстановления и сверки пропущенных изменений.</p></section>
+<section aria-labelledby="mcp"><h2 id="mcp">Когда здесь нужен <span data-heading-accent>MCP</span></h2>
+<p>Официальный MCP МоегоСклада помогает агенту отвечать на вопросы по данным аккаунта. Для событийной синхронизации он сейчас не заменяет Сценарии или вебхуки JSON API. Если нужна интеграция «изменился заказ → обновилась другая система», проектируйте её как программный процесс с журналом и контрольной сверкой.</p></section>
+  <FaqSection title="Частые вопросы" items={faqItems} variant="article" />
+  <p>Официальная документация проверена 30 октября 2026 года. Доступ к клиентскому аккаунту и работу конкретного подключения для этой статьи не тестировали.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end"><RelatedArticles items={relatedArticles} /></Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

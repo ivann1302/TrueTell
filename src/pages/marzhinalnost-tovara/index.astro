@@ -46,7 +46,7 @@ const comparisonRows = [
 const relatedArticles = getRelatedArticles(article.hrefPath)
   .map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
 const structuredData = createArticleStructuredData({
-  articleType: 'BlogPosting', title, description, articleUrl, publisherUrl: siteRoot.toString(),
+  articleType: 'BlogPosting', title, description, articleUrl, publishedDate: article.publishedAt, modifiedDate: article.updatedAt, publisherUrl: siteRoot.toString(),
   image: ogImage, author: authorName, articleSection: article.topic,
   breadcrumbs: [
     { name: 'Главная', item: siteRoot.toString() },
@@ -112,7 +112,7 @@ const structuredData = createArticleStructuredData({
   </section>
 
   <FaqSection items={faqItems} id="faq" variant="article" />
-  <ArticleSources sources={sources} />
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sources} />
   <Fragment slot="article-end">
     <ArticleProductCta titleParts={[{ text: 'Нужен отчёт по ' }, { text: 'продажам в МойСклад?', accent: true }]} description="Посмотрите, какие отчёты помогают анализировать продажи и себестоимость, и проверьте, какой отвечает на вашу задачу. Состав расходов в показателе всё равно нужно уточнить отдельно." href={`${base}otchety-moysklad/`} actionLabel="Смотреть обзор отчётов" />
     <RelatedArticles items={relatedArticles} />

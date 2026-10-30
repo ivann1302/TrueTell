@@ -224,26 +224,26 @@
     },
     "ii-analiz-sdelok-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/ai-deals-humanizer-094-2026-10-25.md",
-      "fingerprint": "ee109d1a8d176d7fd4717e9a32451f2edf23e97692a8cef2b9f6e3c446f1b4f4"
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "58fe55a36c3a5562d7b8ae542620f34228816b5eb0d2ef3d5ae152e871d5a58a"
     },
     "inventarizaciya-moysklad/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-26",
-      "report": "docs/seo/publications/inventory-069-humanizer-2026-10-26.md",
-      "fingerprint": "91f7fa63fe534c60f5baae90720f4f06fb1790f0b60ccd4afd2ee3e612147ba5"
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "3b2cb7d4069fad6e1d6bba4d6a41c9f1b6245cda93e0a5429880ffc98431744b"
     },
     "oborachivaemost-zapasov-formula/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-26",
-      "report": "docs/seo/publications/inventory-turnover-humanizer-068-2026-10-26.md",
-      "fingerprint": "a2cd2a8446c41fadb3ecbb70f8b553665e5c4e951b7976a6429515cdd4ec4c16"
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "7a74d7b3f0b9bfdc038496d55079f5486541584dba1b0839f7e079d469a750da"
     },
     "abc-xyz-analiz-tovarov/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-29",
-      "report": "docs/seo/publications/humanizer-abc-product-rename-2026-10-29.md",
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
       "fingerprint": "482d5656e7a9557034ffb809c9ac52a333c9ae65c168c91200afae43c3a6cbac"
     },
     "analiticheskaya-baza-moysklad/": {
@@ -329,6 +329,84 @@
       "reviewedAt": "2026-10-29",
       "report": "docs/seo/publications/crm-ai-access-review-112-2026-10-29.md",
       "fingerprint": "c5b0ce03dcfc48bb702aa7ae40c7ebfaf09579506edf703ad743cf572663c00d"
+    },
+    "akt-sverki-moysklad/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "c4cba7a7fe2caea7d8d670126088e41f1dad9975f8a95fa07a018e20f3c3f506"
+    },
+    "marzhinalnost-tovara/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "edac6d39d9dd372b8955f6bf7502a81ba8b5c66c75b2634b239bd15f400c2b57"
+    },
+    "podklyuchit-ii-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "00b9f176441ea0c65b5c4cb6a8d2218800c01d8e3d41b02e341abfb8a4932fb6"
+    },
+    "chatgpt-bitrix24-mcp/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "1a0becc39e2969e2519f3326ddd2cc8a9ce7a2e1dbf1ff7f9e447b805ea30ea8"
+    },
+    "api-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "5972b49d1f3ac39f9b7d48bf7f8b9f905a9f46dfa51acca2b95a2ee17e103567"
+    },
+    "vhodyashchiy-vebhuk-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "1cca87d38394a08010414e58bca3672a6100d8fbaa6341ff15fd0faf5f9698f3"
+    },
+    "mcp-server-bitrix24-vybor/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "0abbb333d61553a18d3f31d0a61dd72a2b1a74e53cc5c80f22dcdfd2429f4503"
+    },
+    "mcp-moysklad-dannye/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "e27e7fbc769c743cc2035d4890673dd950c767d8e3ad97a25e5d671247056b36"
+    },
+    "vebhuki-moysklad/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "028f787ba1eb2d31d0c67c9ca45bfe35b3501f68eac5376ded688e8eb0376225"
+    },
+    "ii-agent-ili-roboty-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "4a422666201947ea796282b57d98c5a93cf68db8d1ecc7f7ef3823f94164380e"
+    },
+    "ii-voprosy-moysklad/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "e90ab2029738b746ace71d3cfb76829dceba90cbb9458801246d703d6b0236b5"
+    },
+    "poteryannye-zayavki-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "1d041c4aab6cc92ce88d912ea7c146c0c7f10fa0ac603a7a82c710453c41cab7"
+    },
+    "crm-forma-ne-sozdaet-zayavku-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-30",
+      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
+      "fingerprint": "677e5c9bca427eed70075a11b981e0486ecca0c92c9f594fe9cac3dcf0c48880"
     }
   }
 }

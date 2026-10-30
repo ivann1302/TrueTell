@@ -1,0 +1,111 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import Checklist from '../../components/editorial/checklist.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import accessImage from '../../images/articles/bitrix24-api-access-choice-116.png';
+import checkImage from '../../images/articles/bitrix24-api-first-check-116.png';
+
+const article = getArticle('api-bitrix24/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const ogImage = new URL(accessImage.src, siteRoot).toString();
+const firstAlt = 'Выбор доступа к API Битрикс24: входящий вебхук для одного портала и приложение OAuth для установки на разные порталы';
+const faqItems = [
+  { question: 'Можно ли сделать первый запрос к API Битрикс24 без программы?', answer: 'Да. В разделе создания входящего вебхука есть генератор запросов. Метод profile проверяет авторизацию без параметров и без отдельного scope. Для рабочей интеграции всё равно нужно выбрать способ доступа и проверить права.' },
+  { question: 'Успешный profile означает, что интеграция прочитает сделки?', answer: 'Нет. profile подтверждает работу вебхука и показывает пользователя, от имени которого прошёл запрос. Доступ к сделкам зависит также от тарифа, scope crm, прав этого пользователя и условий выбранного метода.' },
+  { question: 'Когда вместо вебхука нужно приложение?', answer: 'Если решение устанавливается на разные порталы или должно работать от имени разных пользователей, изучите приложение с OAuth 2.0. Отдельные методы требуют контекста приложения и через входящий вебхук недоступны.' },
+  { question: 'Почему метод вернул ошибку при верном адресе?', answer: 'Проверьте точное имя метода, доступность REST API на тарифе, выбранный scope и права пользователя на объект. У методов прежней версии API код и пояснение ошибки обычно приходят в error и error_description.' },
+];
+const sourceLinks = [
+  { label: 'Первый запрос к REST API: вебхук, profile и ошибки — документация Битрикс24', href: 'https://apidocs.bitrix24.ru/first-steps/first-rest-api-call.html' },
+  { label: 'Входящие и исходящие вебхуки: назначение и права — документация Битрикс24', href: 'https://apidocs.bitrix24.ru/local-integrations/local-webhooks.html' },
+  { label: 'Авторизация REST: вебхук и OAuth 2.0 — документация Битрикс24', href: 'https://apidocs.bitrix24.ru/settings/how-to-call-rest-api/authorization.html' },
+  { label: 'Доступ к REST API: тариф, пользователь и scope — документация Битрикс24', href: 'https://apidocs.bitrix24.ru/first-steps/access-to-rest-api.html' },
+  { label: 'Справочник методов REST API Битрикс24', href: 'https://apidocs.bitrix24.ru/api-reference/' },
+];
+const accessRows = [
+  ['Проверить метод или связать одну внутреннюю систему с одним порталом', 'Входящий вебхук', 'Постоянный секрет в URL; запрос идёт от имени создателя'],
+  ['Установить решение на разные порталы или работать от имени разных пользователей', 'Приложение с OAuth 2.0', 'Токены, установка и нужные scope приложения'],
+];
+const errorRows = [
+  ['insufficient_scope', 'У вебхука нет scope для метода', 'Сверить scope на странице метода и настройки вебхука'],
+  ['ACCESS_DENIED', 'Проверить права пользователя; при сообщении о подписке — доступ к REST API', 'Прочитать error_description и проверить соответствующее условие'],
+  ['ERROR_METHOD_NOT_FOUND', 'Метод не найден', 'Сверить имя со справочником методов'],
+];
+const firstSteps = [
+  { title: 'Назовите задачу', description: 'Например, прочитать поля одной сделки. Выберите метод по результату, который нужен, а не по похожему названию.' },
+  { title: 'Проверьте доступ к REST API', description: 'Тариф и подписка определяют доступность REST. Затем проверьте право пользователя создать вебхук.' },
+  { title: 'Сделайте безопасную первую проверку', description: 'В генераторе входящего вебхука вызовите profile. Метод не изменяет данные и не требует отдельного scope.' },
+  { title: 'Перейдите к нужному методу', description: 'На его странице уточните параметры и scope. Проверьте права пользователя на объект и результат на тестовых данных.' },
+];
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const structuredData = createArticleStructuredData({
+  articleType: 'Article', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() }, { name: title, item: articleUrl }],
+  faqItems,
+});
+---
+<ArticleLayout {title} titleParts={[{ text: 'API Битрикс24: ' }, { text: 'с чего начать', accent: true }, { text: ' и как проверить первый запрос' }]} {description}
+  canonicalPath={`/${article.hrefPath}`} {structuredData} ogTitle={article.seoTitle} ogDescription={description}
+  {ogImage} ogImageAlt={firstAlt} category={article.category} author={authorName}
+  intro="Сначала проверьте, доступен ли REST API на вашем портале и от чьего имени пойдёт запрос. Для первой проверки подойдёт метод profile, который не меняет данные.">
+  <Fragment slot="quick-answer"><p><strong>Для первого вызова REST API Битрикс24 создайте входящий вебхук и выполните в его генераторе метод profile. Он покажет пользователя, от имени которого проходит запрос. Для рабочей интеграции отдельно выберите вебхук или приложение OAuth 2.0 и проверьте тариф, scope и права пользователя.</strong></p></Fragment>
+
+  <p data-article-lead>«Подключиться к API» часто означает две разные задачи. Администратор хочет один раз выгрузить данные своего портала. Разработчик готовит приложение, которое будут устанавливать другие компании. Оба отправляют запросы к REST API Битрикс24, но получают доступ разными способами. Начать удобнее с простого запроса чтения, чтобы увидеть, где именно возникает отказ.</p>
+
+  <section aria-labelledby="api-result">
+    <h2 id="api-result">Что даёт REST API <span data-heading-accent>Битрикс24</span></h2>
+    <p>Программа отправляет HTTP-запрос к методу Битрикс24 и получает ответ. Конкретный метод определяет действие: прочитать карточку, получить список или изменить запись. Для выполнения нужны авторизация и параметры метода. Доступность результата зависит от тарифа, полномочий пользователя, выданных scope и правил самого метода.</p>
+    <p>Перед выбором авторизации запишите один ожидаемый результат. Например: «Получить названия полей сделки, чтобы составить карту импорта». Для такой задачи полезно открыть <a href={`${base}uf-crm-ufcrm-bitrix24-api/`}>разбор кодов полей CRM</a> и страницу выбранного метода в официальном справочнике. Не начинайте проверку с удаления или массовой записи данных.</p>
+  </section>
+
+  <section aria-labelledby="api-access">
+    <h2 id="api-access">Вебхук или приложение: <span data-heading-accent>как выбрать</span></h2>
+    <p>Входящий вебхук подходит для быстрой проверки и внутренней интеграции с одним порталом. Запрос выполняется с правами сотрудника, который создал вебхук, и в пределах выбранных scope. У приложения с OAuth 2.0 другая модель установки и временные токены; этот путь используют для решений, работающих на разных порталах или от имени разных пользователей.</p>
+    <DataTable label="Сравнение способов доступа к REST API Битрикс24" columns={['Ситуация', 'Способ', 'Что учесть']} rows={accessRows} rowHeaders />
+    <ArticleFigure src={accessImage} fullSize portrait alt={firstAlt} caption="Редакционная схема выбора авторизации по масштабу интеграции. Условия конкретного метода и тарифа проверяются отдельно; это не экран Битрикс24." />
+    <p>Входящий вебхук вызывает метод API. Исходящий вебхук решает другую задачу: Битрикс24 отправляет событие внешнему обработчику. Смешение направлений часто приводит к неверному выбору инструмента.</p>
+  </section>
+
+  <section aria-labelledby="api-first">
+    <h2 id="api-first">Как проверить <span data-heading-accent>первый запрос</span></h2>
+    <p>Официальная инструкция предлагает метод <code>profile</code>: он работает без параметров и отдельного scope. В разделе «Разработчикам» откройте «Готовые сценарии → Другое → Входящий вебхук», затем используйте генератор запросов. При успешном вызове в <code>result</code> придут данные пользователя, создавшего вебхук. Секретный URL не вставляйте в публичный документ или чат.</p>
+    <Checklist label="Порядок первого вызова REST API" items={firstSteps} />
+    <p>Успешный <code>profile</code> подтверждает авторизацию этого вебхука. Чтобы прочитать CRM, потребуется отдельный метод со scope <code>crm</code> и правами пользователя на нужную запись. Если запрос вернул лишь часть списка, проверьте пагинацию и фильтр до вывода о полноте данных. Для сопоставления полей разных систем пригодится <a href={`${base}karta-sootvetstviya-poley-bitrix24/`}>карта соответствия</a>.</p>
+    <ArticleFigure src={checkImage} fullSize portrait alt="Проверка первого запроса: метод profile, поле result или код ошибки, затем проверка прав и scope для рабочего метода" caption="Учебная схема проверки ответа. В ней нет действующего адреса портала, токена или клиентских данных." />
+  </section>
+
+  <section aria-labelledby="api-errors">
+    <h2 id="api-errors">Если запрос <span data-heading-accent>не прошёл</span></h2>
+    <p>У методов прежней версии REST API отказ обычно описан полями <code>error</code> и <code>error_description</code>. Читайте оба: один и тот же общий код доступа может относиться к правам пользователя или к недоступной подписке. В новых версиях API формат ошибок может отличаться; ориентируйтесь на страницу конкретного метода.</p>
+    <DataTable label="Проверка частых ошибок первого вызова REST API" columns={['Ответ', 'Вероятная причина', 'Что проверить']} rows={errorRows} rowHeaders />
+    <p>Если пункт создания вебхука отсутствует, администратор может проверить право сотрудника на его создание. Если вместо формы появилось сообщение о тарифе, проверьте доступ к REST API. Для ошибки уже выбранного метода сначала уточните его scope и права пользователя, а затем параметры запроса.</p>
+  </section>
+
+  <section aria-labelledby="api-next">
+    <h2 id="api-next">После первого ответа: <span data-heading-accent>одна рабочая операция</span></h2>
+    <p>Проверьте один метод чтения на тестовой записи. Сохраните имя метода, нужные поля, права исполнителя и ожидаемый ответ без секрета вебхука. Если интеграция будет работать постоянно, определите способ хранения ключа на сервере и порядок его замены. Для приложения добавятся установка, выдача scope и обновление OAuth-токенов.</p>
+    <p>Мы используем API Битрикс24 и в разработке MCP TrueTell для разрешённых сценариев работы ИИ с CRM. Готовность конкретного клиента и открытая установка здесь не заявлены. Если задача связана с ИИ, заранее определите, какие записи агент вправе читать и как человек проверит ответ. Подробности — в статье <a href={`${base}bezopasnyy-dostup-ii-k-crm/`}>о доступе ИИ к CRM</a>.</p>
+    <InlineConsultation title="Нужна интеграция с Битрикс24?" description="Опишите один метод или действие, данные и ожидаемый результат. Поможем выбрать способ доступа и проверить границы прав." />
+  </section>
+
+  <FaqSection title="Частые вопросы об API Битрикс24" items={faqItems} variant="article" />
+  <p>Документация проверена 30 октября 2026 года. Вызовы на клиентском портале для этой статьи не выполнялись; доступность методов и тарифа проверяйте в своём Битрикс24.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end"><RelatedArticles items={relatedArticles} /></Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

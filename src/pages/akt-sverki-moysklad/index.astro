@@ -23,7 +23,7 @@ const articleUrl = new URL(article.hrefPath, siteRoot).toString();
 const authorName = companyInfo.editorial.defaultAuthor;
 const imageAlt = 'Два пути печати акта сверки в МойСклад: из детализации отчёта «Взаиморасчёты» или из карточки контрагента с опцией CRM';
 const ogImage = new URL(workflowImage.src, siteRoot).toString();
-const titleParts = [{ text: 'Акт сверки в МойСклад: ' }, { text: 'сформировать и найти расхождения', accent: true }];
+const titleParts = [{ text: 'Акт сверки в МойСклад: ' }, { text: 'как сформировать и найти расхождения', accent: true }];
 
 const actUrl = 'https://support.moysklad.ru/hc/ru/%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%B0%D1%82%D0%B5%D0%BB%D0%B8%20%D0%B8%20%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D1%89%D0%B8%D0%BA%D0%B8/%D0%B0%D0%BA%D1%82_%D1%81%D0%B2%D0%B5%D1%80%D0%BA%D0%B8_%D0%B2%D0%B7%D0%B0%D0%B8%D0%BC%D0%BE%D1%80%D0%B0%D1%81%D1%87%D0%B5%D1%82%D0%BE%D0%B2';
 const settlementsUrl = 'https://support.moysklad.ru/hc/ru/%D0%BE%D1%82%D1%87%D0%B5%D1%82%D1%8B/%D0%B2%D0%B7%D0%B0%D0%B8%D0%BC%D0%BE%D1%80%D0%B0%D1%81%D1%87%D0%B5%D1%82%D1%8B';
@@ -109,7 +109,7 @@ const structuredData = createArticleStructuredData({
   </section>
 
   <FaqSection items={faqItems} id="faq" variant="article" />
-  <ArticleSources sources={sources} />
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sources} />
   <Fragment slot="article-end">
     <ArticleProductCta titleParts={[{ text: 'Другие отчёты ' }, { text: 'МойСклад', accent: true }]} description="Если кроме сверки нужно оценить продажи, остатки и показатели за период, посмотрите обзор отчётов и проверьте, какой из них отвечает на вашу задачу." href={`${base}otchety-moysklad/`} actionLabel="Смотреть отчёты" />
     <RelatedArticles items={relatedArticles} />

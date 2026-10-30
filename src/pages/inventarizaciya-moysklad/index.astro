@@ -136,7 +136,7 @@ const structuredData = createArticleStructuredData({
   </section>
 
   <FaqSection items={faqItems} id="faq" variant="article" />
-  <ArticleSources sources={sources} />
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sources} />
   <Fragment slot="article-end">
     <ArticleProductCta titleParts={[{ text: 'Сверяйте продажи и ' }, { text: 'запасы по точкам', accent: true }]} description="BI-аналитика TrueTell помогает обсуждать общую отчётность по торговым данным. Она не заменяет пересчёт и складские документы в МойСклад." href={`${base}bi-analitika/`} actionLabel="Посмотреть BI-аналитику" />
     <RelatedArticles items={relatedArticles} />
