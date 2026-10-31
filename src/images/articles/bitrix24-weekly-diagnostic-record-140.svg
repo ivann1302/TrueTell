@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1030" viewBox="0 0 760 1030" role="img" aria-labelledby="title desc">
+  <title id="title">Учебная запись об отклонении CRM</title>
+  <desc id="desc">Запись включает срез, объект CRM, ожидание, факт, следующий шаг и повторную проверку</desc>
+  <defs><style>text{font-family:Arial,sans-serif;fill:#101621}.head{font-size:36px;font-weight:700}.label{font-size:28px;font-weight:700;fill:#526174}.body{font-size:29px}.rule{stroke:#CBD5DF;stroke-width:2}</style></defs>
+  <text x="30" y="55" class="head">Карточка отклонения</text>
+  <text x="30" y="118" class="label">Срез</text><text x="30" y="161" class="body">Пятница, 16:00 · «Продажи»</text><text x="30" y="201" class="body">Проверка под ролью РОПа</text>
+  <path class="rule" d="M30 231H730"/>
+  <text x="30" y="286" class="label">Объект</text><text x="30" y="329" class="body">Заявка № 1042 · «Запрос цены»</text>
+  <path class="rule" d="M30 360H730"/>
+  <text x="30" y="415" class="label">Ожидали</text><text x="30" y="458" class="body">Карточка и ответственный</text>
+  <path class="rule" d="M30 489H730"/>
+  <text x="30" y="544" class="label">Увидели</text><text x="30" y="587" class="body">Карточка не найдена в срезе</text>
+  <path class="rule" d="M30 618H730"/>
+  <text x="30" y="673" class="label">Следующий шаг</text><text x="30" y="716" class="body">Проверить отправку и фильтр</text><text x="30" y="756" class="body">Владелец: администратор</text>
+  <path class="rule" d="M30 788H730"/>
+  <text x="30" y="843" class="label">Контроль</text><text x="30" y="886" class="body">Повторить после исправления</text>
+  <text x="30" y="979" class="body" fill="#526174">Учебный пример</text>
+</svg>

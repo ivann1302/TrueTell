@@ -1,0 +1,106 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { mcpProduct } from '../../config/products';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import checkpointsImage from '../../images/articles/bitrix24-first-month-checkpoints-138.png';
+import ownersImage from '../../images/articles/bitrix24-first-month-owners-138.png';
+
+const article = getArticle('pervye-30-dney-crm-bitrix24/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const ogImage = new URL(checkpointsImage.src, siteRoot).toString();
+const imageAlt = 'Редакционный план первого месяца после запуска CRM: день запуска, первая неделя, недели две-три и передача на регулярный контроль';
+const faqItems = [
+  { question: 'Что проверить в Битрикс24 сразу после запуска CRM?', answer: 'Проверьте один реальный маршрут обращения по каждому важному подключённому каналу: появление карточки, назначение ответственного, доступ менеджера и следующий шаг. Зафиксируйте ID, время, ожидаемый и фактический результат. Клиентские обращения при этом обрабатывают в обычном рабочем порядке.' },
+  { question: 'Можно ли ждать конца недели, чтобы проверить новые заявки?', answer: 'Нет. Новые обращения разбирают в течение рабочего дня по принятому в компании времени ответа. Недельный разбор нужен для повторяющихся причин сбоев, а не для первого контакта с клиентом.' },
+  { question: 'Почему именно 30 дней?', answer: 'Это редакционный горизонт для первого цикла контроля после запуска, а не встроенный срок или правило Битрикс24. Компании с разным потоком заявок и сложностью процессов могут выбрать другой период. Важно назначить владельца ежедневных проверок и дату передачи открытых задач.' },
+  { question: 'Кто отвечает за ошибки после внедрения CRM?', answer: 'Назначьте владельца каждого типа проверки и конкретного отклонения. Менеджер может заметить проблему в своей карточке, руководитель — собрать повторения, администратор или интегратор — проверить настройку, а владелец процесса — принять результат. Это пример распределения, который компания адаптирует к своим ролям и договору.' },
+  { question: 'Как понять, что отчёту CRM можно доверять?', answer: 'Выберите один показатель и сравните его с карточками в одинаковых границах периода, воронки, фильтра и роли. В Битрикс24 «Отчётный период» может включать сделки, с которыми работали в периоде, даже если они созданы раньше. Расхождение сначала разбирают по определению метрики и доступу.' },
+  { question: 'Делает ли MCP TrueTell проверки первого месяца автоматически?', answer: 'MCP TrueTell для настройки и диагностики CRM находится в разработке. Автоматический мониторинг первого месяца, подписка и конкретный набор проверок пока не заявлены. Можно обсудить будущий сценарий и необходимые права без передачи клиентских данных.' },
+];
+const sourceLinks = [
+  { label: 'Битрикс24: как начать работать с CRM', href: 'https://helpdesk.bitrix24.ru/open/26035204/' },
+  { label: 'Битрикс24: как разбирать входящие обращения', href: 'https://helpdesk.bitrix24.ru/open/25552578/' },
+  { label: 'Битрикс24: как контролировать сделки в работе', href: 'https://helpdesk.bitrix24.ru/open/25552664/' },
+  { label: 'Битрикс24: счётчики дел и разные ответственные', href: 'https://helpdesk.bitrix24.ru/open/17944572/' },
+  { label: 'Битрикс24: отладчик роботов в CRM', href: 'https://helpdesk.bitrix24.ru/open/19361194/' },
+  { label: 'Битрикс24: вопросы CRM-аналитики', href: 'https://helpdesk.bitrix24.ru/open/27273254/' },
+  { label: 'Битрикс24: отчётный период в CRM-аналитике', href: 'https://helpdesk.bitrix24.ru/open/25817644/' },
+];
+const controlRows = [
+  ['Ежедневно', 'Менеджер и РОП', 'Новые обращения, назначение и следующее дело', 'ID задержанной карточки и время проверки'],
+  ['Раз в неделю', 'РОП и администратор', 'Повторяющиеся отклонения, права, критичный робот, один показатель отчёта', 'Причина, исправление, результат повторного теста'],
+  ['К концу месяца', 'Владелец процесса', 'Кто ведёт контроль дальше и какие вопросы остаются открытыми', 'Регламент, список открытых задач и ответственные'],
+];
+const structuredData = createArticleStructuredData({
+  articleType: 'BlogPosting', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'Блог', item: new URL('blog/', siteRoot).toString() }, { name: title, item: articleUrl }],
+  faqItems,
+});
+---
+<ArticleLayout {title} titleParts={[{ text: 'Первые 30 дней после внедрения Битрикс24: ' }, { text: 'что проверять', accent: true }]} {description}
+  canonicalPath={`/${article.hrefPath}`} {structuredData} ogTitle={article.seoTitle} ogDescription={description}
+  {ogImage} ogImageAlt={imageAlt} category={article.category} author={authorName}
+  intro="CRM уже настроена и сотрудники начали в ней работать. Первые недели покажут то, что трудно заметить на демонстрации: заявки из разных каналов, привычки команды, повторяющиеся ошибки и цифры, которым руководитель пока не доверяет.">
+  <Fragment slot="quick-answer">
+    <p><strong>Назначьте владельца контроля и ведите короткий журнал отклонений с первого рабочего дня.</strong> Ежедневно проверяйте входящие и следующие действия по сделкам. Раз в неделю группируйте повторяющиеся случаи, исправляйте причину и повторяйте тест. К концу месяца передайте открытые вопросы в регулярный контроль.</p>
+    <p>30 дней — удобный редакционный горизонт для первого цикла, а не срок, установленный Битрикс24. Подстройте его под поток обращений и договорённости команды.</p>
+  </Fragment>
+
+  <p data-article-lead>Представим: в день запуска тестовая заявка дошла до нужного менеджера. Через неделю клиент пишет в другой канал, и обращение попадает не тому сотруднику. Один приёмочный тест не выявит такую настройку. После старта нужен человек, который замечает ежедневные исключения и доводит исправления до повторной проверки.</p>
+
+  <section aria-labelledby="start">
+    <h2 id="start">В день запуска <span data-heading-accent>зафиксируйте исходный маршрут</span></h2>
+    <p>Запишите, какие каналы уже подключены, в какой тип элемента они приводят обращение, кто получает карточку и какое действие следует после первого ответа. Достаточно одного контрольного примера на важный канал. Сохраните ID карточки, время и роль проверяющего. Если процесс зависит от робота, отдельно запишите ожидаемое действие и условие его запуска.</p>
+    <p>В справке Битрикс24 режим CRM может быть с лидами или без них, поэтому не называйте всякое новое обращение «лидом» в своей карте проверки. Если видите сбой на форме, двигайтесь по маршруту из статьи <a href={`${base}poteryannye-zayavki-bitrix24/`}>о потерянных заявках</a>. Исходный маршрут нужен как точка сравнения для следующих недель, а не как доказательство, что все будущие обращения попадут в CRM.</p>
+    <ArticleFigure src={checkpointsImage} fullSize alt={imageAlt} caption="Редакционный план после запуска, а не штатный регламент Битрикс24. Длительность этапов примерная: при другом потоке заявок и составе команды она меняется." />
+  </section>
+
+  <section aria-labelledby="daily">
+    <h2 id="daily">Каждый день <span data-heading-accent>смотрите на живые обращения</span></h2>
+    <p>Менеджер разбирает свои новые обращения, руководитель проверяет необработанные и зависшие случаи. Официальная справка Битрикс24 рекомендует разбирать новые заявки в течение дня и начинать работу со сделками с просмотра дел. Согласуйте внутри компании время ответа и не переносите первый контакт на недельное совещание.</p>
+    <p>Помимо входящих проверяйте, у каких сделок нет запланированного следующего дела и какие дела просрочены. Ответственный за дело может отличаться от ответственного за сделку; при разборе задержки запишите обоих, если это важно для случая. Порядок проверки есть в статье <a href={`${base}sdelki-bez-del-bitrix24/`}>о сделках без дел</a>.</p>
+    <p>В журнале отклонений достаточно идентификатора карточки, канала, момента проверки, ожидания и факта. Не копируйте в общий список телефоны клиентов или переписку. Если карточка не видна одному сотруднику, попросите менеджера и руководителя открыть одну и ту же карточку — каждый в своей учётной записи, прежде чем считать заявку потерянной.</p>
+  </section>
+
+  <section aria-labelledby="weekly">
+    <h2 id="weekly">Раз в неделю <span data-heading-accent>исправляйте повторяющиеся причины</span></h2>
+    <p>Разберите журнал вместе с руководителем и администратором. Сгруппируйте случаи по каналу, стадии, роли или автоматизации. Для каждого повторения выберите контрольный ID и сформулируйте одну проверяемую гипотезу. После изменения настройки повторите тот же путь и запишите результат. Повторный тест покажет, устранила ли правка причину жалобы.</p>
+    <DataTable label="Пример ритма контроля после внедрения CRM" columns={['Когда', 'Владелец', 'Проверка', 'Результат']} rows={controlRows} rowHeaders />
+    <p>Если не сработал робот, проверьте его условие и время запуска на конкретной сделке. Отладчик Битрикс24 создаёт отдельную тестовую сделку и журнал её действий; он не даёт общий список всех ошибок месяца. Порядок разбора описан в статье <a href={`${base}robot-ne-srabatyvaet-bitrix24/`}>о роботе, который не сработал</a>.</p>
+    <p>Для отчёта выберите один показатель и зафиксируйте период, фильтр, воронку и роль. «Отчётный период» в аналитике может включать сделки, с которыми работали в выбранное время, хотя они созданы раньше. Если цифры не совпали со списком, используйте <a href={`${base}otchet-crm-ne-sovpadaet-bitrix24/`}>порядок сверки отчёта</a>. Подробный постоянный недельный регламент собран в статье <a href={`${base}ezhenedelnaya-diagnostika-crm-bitrix24/`}>о регулярной диагностике CRM</a>.</p>
+  </section>
+
+  <section aria-labelledby="handoff">
+    <h2 id="handoff">К концу месяца <span data-heading-accent>передайте контроль владельцу процесса</span></h2>
+    <p>Назовите человека, который после первого месяца продолжит ежедневный разбор обращений и недельный обзор отклонений. Передайте ему рабочий маршрут, список уже изменённых настроек, открытые случаи, владельцев исправлений и результаты повторных тестов. Если часть вопросов остаётся без решения, запишите дату следующей проверки. Закрытие первого месяца не должно зависеть от устной памяти интегратора.</p>
+    <ArticleFigure src={ownersImage} fullSize alt="Учебное распределение контроля CRM: менеджер, РОП, администратор и владелец процесса с их задачами после запуска" caption="Учебная карта ответственности. Названия ролей и частоту согласует компания; рисунок не показывает настройки прав или экран Битрикс24." />
+    <p>MCP TrueTell для настройки и диагностики CRM находится в разработке. Мы можем обсудить, какие сигналы стоит проверять в вашем процессе и какие доступы потребуются будущему сценарию. Автоматический мониторинг первого месяца и условия подписки пока не заявлены.</p>
+    <InlineConsultation variant="product" title="Нужен план контроля после запуска CRM?" description="Опишите каналы, воронки и повторяющиеся случаи без данных клиентов. Обсудим регламент первого месяца и возможную роль MCP TrueTell в дальнейшей диагностике." href={mcpProduct.articleHref} actionLabel={mcpProduct.articleActionLabel} />
+  </section>
+
+  <FaqSection title="Частые вопросы о первом месяце работы CRM" items={faqItems} variant="article" />
+  <p>Официальная справка Битрикс24 проверена 31 октября 2026 года. Конкретный клиентский портал, тариф, договор внедрения и работа MCP TrueTell в этой статье не проверялись.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Обсудим ' }, { text: 'диагностику CRM с MCP TrueTell', accent: true }]} description={mcpProduct.articleDescription} href={mcpProduct.articleHref} actionLabel={mcpProduct.articleActionLabel} />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

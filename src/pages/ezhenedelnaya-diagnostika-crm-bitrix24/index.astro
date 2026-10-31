@@ -1,0 +1,103 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { mcpProduct } from '../../config/products';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import rhythmImage from '../../images/articles/bitrix24-weekly-diagnostic-rhythm-140.png';
+import recordImage from '../../images/articles/bitrix24-weekly-diagnostic-record-140.png';
+
+const article = getArticle('ezhenedelnaya-diagnostika-crm-bitrix24/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const ogImage = new URL(rhythmImage.src, siteRoot).toString();
+const imageAlt = 'Схема редакции: ежедневная обработка обращений и дел в рабочие дни, затем еженедельный разбор повторяющихся отклонений';
+const faqItems = [
+  { question: 'Что проверять в CRM Битрикс24 каждую неделю?', answer: 'Соберите результаты ежедневного разбора входящих, проверьте сделки без следующего дела и просроченные дела, один или несколько критичных сценариев автоматизации, видимость контрольных карточек под нужными ролями и выбранный показатель отчёта. Для каждого расхождения сохраните срез, ID объекта, ожидаемое и фактическое состояние, владельца исправления.' },
+  { question: 'Можно ли проверять новые заявки только раз в неделю?', answer: 'Нет. Новые обращения команда разбирает в течение рабочего дня по принятому в компании времени ответа. Еженедельный обзор нужен, чтобы увидеть повторяющиеся сбои каналов и распределения, которые остались после ежедневной работы.' },
+  { question: 'Есть ли в Битрикс24 единый готовый отчёт для этих пяти проверок?', answer: 'В статье предложен редакционный регламент, а не название штатного отчёта Битрикс24. Сигналы берут из разных представлений CRM, карточек, отладчика и аналитики. У разных ролей состав видимых данных может отличаться.' },
+  { question: 'Как сравнить два недельных отчёта без ложной тревоги?', answer: 'Запишите одинаковые границы периода, воронку, фильтр, роль и определение показателя. В аналитике Битрикс24 отчётный период может отличаться от даты создания или закрытия сделки; сравнивать числа из разных срезов без уточнения нельзя.' },
+  { question: 'Как проверить сбой робота за неделю?', answer: 'Выберите критичный сценарий и контрольную карточку, сравните ожидаемый результат с фактическим. Если действие не выполнено, изучите карточку, условия и время запуска, затем воспроизведите случай в отладчике, если он доступен. Отладчик создаёт тестовую сделку; его лог не является общим списком ошибок всех реальных сделок.' },
+  { question: 'Выполняет ли MCP TrueTell такую диагностику автоматически?', answer: 'MCP TrueTell для настройки и диагностики CRM находится в разработке. Автоматический еженедельный отчёт, подписка и конкретный состав проверок пока не заявлены. Можно обсудить, какие отклонения в вашей CRM имеют смысл для будущего сценария.' },
+];
+const sourceLinks = [
+  { label: 'Битрикс24: как разбирать входящие обращения клиентов', href: 'https://helpdesk.bitrix24.ru/open/25552578/' },
+  { label: 'Битрикс24: счётчики и фильтры дел в CRM', href: 'https://helpdesk.bitrix24.ru/open/18388076/' },
+  { label: 'Битрикс24: фильтры в CRM', href: 'https://helpdesk.bitrix24.ru/open/24206616/' },
+  { label: 'Битрикс24: отладчик роботов в CRM', href: 'https://helpdesk.bitrix24.ru/open/19361194/' },
+  { label: 'Битрикс24: ответы на вопросы по CRM-аналитике', href: 'https://helpdesk.bitrix24.ru/open/27273254/' },
+  { label: 'Битрикс24: отчётный период в CRM', href: 'https://helpdesk.bitrix24.ru/open/11162430/' },
+];
+const checks = [
+  ['Новые обращения', 'Сверить ежедневный разбор с входящими по подключённым каналам', 'Канал, время, ID заявки, ответственный'],
+  ['Сделки без дел', 'Открыть фильтр «Нет дел» и отдельно просроченные дела', 'Воронка, стадия, ID сделки, ближайшее действие'],
+  ['Автоматизация', 'Пройти критичный сценарий на контрольной карточке', 'ID, условие и ожидаемый результат, фактическое действие'],
+  ['Права', 'Попросить менеджера и РОПа открыть один ID каждый в своей учётной записи', 'Роль, ID, ожидаемая и фактическая видимость'],
+  ['Цифры отчёта', 'Сверить один показатель с выборкой карточек при одинаковом срезе', 'Период, фильтр, роль, определение показателя'],
+];
+const structuredData = createArticleStructuredData({
+  articleType: 'BlogPosting', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'Блог', item: new URL('blog/', siteRoot).toString() }, { name: title, item: articleUrl }],
+  faqItems,
+});
+---
+<ArticleLayout {title} titleParts={[{ text: 'Еженедельная диагностика CRM Битрикс24: ' }, { text: 'что проверять', accent: true }]} {description}
+  canonicalPath={`/${article.hrefPath}`} {structuredData} ogTitle={article.seoTitle} ogDescription={description}
+  {ogImage} ogImageAlt={imageAlt} category={article.category} author={authorName}
+  intro="Отдельные сбои в CRM можно исправлять по мере появления. Раз в неделю полезно собрать их в один срез: какие заявки задержались, где сделки остались без следующего шага и какие настройки снова дали сбой.">
+  <Fragment slot="quick-answer">
+    <p><strong>Выберите одну воронку, роль и момент среза; пройдите пять проверок: обращения, дела, автоматизация, права и цифры отчёта.</strong> Каждое отклонение запишите с ID карточки, ожидаемым и фактическим результатом, ответственным и датой повторной проверки.</p>
+    <p>Заявки продолжают разбирать ежедневно. Недельный обзор выявляет повторяющиеся причины потерь и даёт руководителю список исправлений.</p>
+  </Fragment>
+
+  <p data-article-lead>Например, менеджеры отвечают на обращения каждый день, но по пятницам руководитель замечает, что заявки из одной формы чаще остальных остаются без ответственного. Разовый поиск карточки решает случай клиента. Еженедельный срез помогает выяснить, повторяется ли проблема и кому проверять настройку канала.</p>
+
+  <section aria-labelledby="rhythm">
+    <h2 id="rhythm">Сначала зафиксируйте <span data-heading-accent>ритм проверки</span></h2>
+    <p>Ежедневная работа с входящими не ждёт пятницы. В справке Битрикс24 новые обращения рекомендуют разбирать в течение дня. В конце недели собирают результаты этой работы: сколько раз обращение не попало в ожидаемую очередь, где не назначили ответственного и какие случаи пришлось исправлять вручную. Время первого ответа задаёт ваша компания; эта статья не устанавливает универсальный норматив.</p>
+    <ArticleFigure src={rhythmImage} fullSize alt={imageAlt} caption="Редакционная схема регламента. Каждый день команда отвечает клиентам; раз в неделю руководитель ищет повторяющиеся причины сбоев. Это не экран Битрикс24." />
+    <p>До подсчётов запишите портал, воронку, период, роль и набор каналов. Сделка, созданная за неделю, и сделка, находившаяся в работе за неделю, могут попасть в разные выборки. Фильтры CRM и «Отчётный период» в аналитике отвечают на разные вопросы. Сохраните определение каждого показателя рядом с числом.</p>
+  </section>
+
+  <section aria-labelledby="five-checks">
+    <h2 id="five-checks">Пять проверок <span data-heading-accent>для недельного среза</span></h2>
+    <p>Пройдите конкретные маршруты и сохраните несколько проверяемых примеров. Таблица задаёт редакционный шаблон: в Битрикс24 эти данные находятся в разных разделах, а доступ к ним зависит от роли.</p>
+    <DataTable label="Проверки для еженедельной диагностики CRM" columns={['Сигнал', 'Что проверить', 'Что сохранить']} rows={checks} rowHeaders />
+    <p>Для обращений начните с источника, который важен бизнесу: форма, звонок, почта или открытая линия. Если заявка не появилась, сверяйте отправку, подключение канала и фильтр списка. Отдельный маршрут есть в статье <a href={`${base}poteryannye-zayavki-bitrix24/`}>о потерянных заявках</a>. Если новая карточка есть, но назначен не тот человек, проверьте правила распределения по каналу.</p>
+    <p>Для сделок используйте «Дела → Нет дел» и отдельно просроченные дела. Отсутствие дела и просроченное дело — разные состояния. Разбор причины и следующего шага описан в материале <a href={`${base}sdelki-bez-del-bitrix24/`}>о сделках без дел</a>. Проверьте выборку по своей воронке и роли, чтобы не принять ограниченную видимость за отсутствие карточек.</p>
+    <p>Автоматизацию проверяйте на выбранном критичном сценарии: какое условие должно выполниться, когда запускается робот и что должно измениться в контрольной сделке. Если результат отличается, откройте <a href={`${base}robot-ne-srabatyvaet-bitrix24/`}>порядок диагностики робота</a>. Отладчик Битрикс24 создаёт тестовую сделку и показывает действия на ней. Он не даёт готовую историю всех ошибок роботов за неделю.</p>
+    <p>Для прав возьмите конкретный ID: попросите менеджера и руководителя открыть его каждый в своей учётной записи. Отдельно проверяйте поля и дела, если они важны для сценария. При расхождении используйте <a href={`${base}ne-vidno-sdelku-bitrix24-prava/`}>проверку прав доступа</a>. Для цифр отчёта выберите один показатель и согласуйте период, фильтр и определение метрики с <a href={`${base}otchet-crm-ne-sovpadaet-bitrix24/`}>разбором расхождений</a>.</p>
+  </section>
+
+  <section aria-labelledby="record">
+    <h2 id="record">Запишите отклонение так, <span data-heading-accent>чтобы его можно было повторить</span></h2>
+    <p>Фраза «форма опять не работает» не помогает исправить настройку. Укажите время среза, канал, воронку, роль, ID контрольного объекта и ожидаемый результат. Затем запишите, что увидели на самом деле. Если карточка не найдена, проверьте фильтр и права до вывода о потере заявки. Владелец исправления получает один конкретный следующий шаг и срок повторной проверки.</p>
+    <ArticleFigure src={recordImage} fullSize alt="Учебная запись диагностики: срез, контрольная заявка, ожидаемая карточка, фактический результат, владелец и повторная проверка" caption="Учебные данные, не клиентская CRM. Номер заявки и название формы придуманы для показа структуры записи; вывод о сбое требует проверки отправки, фильтра и прав." />
+    <p>В сводку руководителя включайте повторяющиеся случаи и проблемы с прямым влиянием на клиентов. У уже исправленного случая сохраняйте причину и результат повторной проверки. Для открытого укажите владельца и дату следующего шага. Такая сводка полезнее перечня всех карточек без контекста.</p>
+    <p>MCP TrueTell для настройки и диагностики CRM находится в разработке. Мы можем обсудить перечень сигналов и доступы для будущего сценария; автоматический еженедельный отчёт и подписку пока не обещаем.</p>
+    <InlineConsultation variant="product" title="Хотите собрать свой регламент диагностики CRM?" description="Опишите воронки, каналы и повторяющиеся сбои без данных клиентов. Обсудим, какие проверки нужны команде и как их можно связать с MCP TrueTell." href={mcpProduct.articleHref} actionLabel={mcpProduct.articleActionLabel} />
+  </section>
+
+  <FaqSection title="Частые вопросы о регулярной диагностике CRM" items={faqItems} variant="article" />
+  <p>Официальная справка Битрикс24 проверена 31 октября 2026 года. Конкретный портал, его тариф, права и работа MCP TrueTell в этом материале не проверялись.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Обсудим ' }, { text: 'регулярную диагностику с MCP TrueTell', accent: true }]} description={mcpProduct.articleDescription} href={mcpProduct.articleHref} actionLabel={mcpProduct.articleActionLabel} />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

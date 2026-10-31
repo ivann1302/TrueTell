@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="920" viewBox="0 0 760 920" role="img" aria-labelledby="title desc">
+  <title id="title">Ритм контроля CRM: ежедневно и раз в неделю</title>
+  <desc id="desc">Ежедневная обработка новых обращений с понедельника по пятницу и еженедельный разбор повторяющихся отклонений</desc>
+  <defs><style>text{font-family:Arial,sans-serif;fill:#101621}.head{font-size:36px;font-weight:700}.day{font-size:32px;font-weight:700}.body{font-size:28px}.muted{fill:#526174}</style></defs>
+  <text x="32" y="60" class="head">Каждый рабочий день</text>
+  <text x="32" y="105" class="body muted">Разбирать новые обращения и дела</text>
+  <path d="M70 165V680" stroke="#B9C9D7" stroke-width="5"/>
+  <g fill="#18769B"><circle cx="70" cy="190" r="14"/><circle cx="70" cy="310" r="14"/><circle cx="70" cy="430" r="14"/><circle cx="70" cy="550" r="14"/><circle cx="70" cy="670" r="14"/></g>
+  <text x="116" y="200" class="day">Пн</text><text x="225" y="200" class="body">Обращения и дела</text>
+  <text x="116" y="320" class="day">Вт</text><text x="225" y="320" class="body">Обращения и дела</text>
+  <text x="116" y="440" class="day">Ср</text><text x="225" y="440" class="body">Обращения и дела</text>
+  <text x="116" y="560" class="day">Чт</text><text x="225" y="560" class="body">Обращения и дела</text>
+  <text x="116" y="680" class="day">Пт</text><text x="225" y="680" class="body">Обращения и дела</text>
+  <path d="M33 742H720" stroke="#18769B" stroke-width="4"/>
+  <text x="32" y="805" class="head">Раз в неделю</text>
+  <text x="32" y="855" class="body">Собрать повторяющиеся сбои</text>
+  <text x="32" y="895" class="body">и назначить исправления</text>
+</svg>

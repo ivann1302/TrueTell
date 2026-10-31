@@ -407,6 +407,102 @@
       "reviewedAt": "2026-10-30",
       "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
       "fingerprint": "677e5c9bca427eed70075a11b981e0486ecca0c92c9f594fe9cac3dcf0c48880"
+    },
+    "ne-tot-otvetstvennyy-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "0272f599e3a263630fd146f2a1d94c11c9c3a88e5e327096f057994960bce166"
+    },
+    "sdelki-bez-del-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "b05d123d91e5c02d5acfc8e644acd3219759564d6dcb879c2ca3c9522b3c74fb"
+    },
+    "robot-ne-srabatyvaet-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "af8e5c7bddfb5e111c4a2c96fa2dccd2bfbcba3825a8e7b2f06adbc6c7651e1f"
+    },
+    "ne-vidno-sdelku-bitrix24-prava/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "7c4c41d4d5d3dda8af7d95c7de8bcdb33a22544736e3939338103a436a63098e"
+    },
+    "otchet-crm-ne-sovpadaet-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "0175d927c7a431ffed629fc19586d394c409ec289186a8c2d83ab4858e3bd2f0"
+    },
+    "sdelka-ne-perehodit-stadiyu-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "57f73647bba95271b77ca78aebd210480cc3b5eb545f0163fd63380ffe139acc"
+    },
+    "dve-voronki-bitrix24-nastroyka/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "3192ebed720aac0efa03181780d0d77be7ece6f2dec36ceb06108bb4d30a5533"
+    },
+    "obyazatelnye-polya-crm-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "87e11aaa1319623b256ca2d23a4914d1e9be68cd73845fecbea35a10881f069a"
+    },
+    "ezhenedelnaya-diagnostika-crm-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "cfa620e7a6335706927a282ad8ee739115fb9102c0c35391a376a01944fcd8e1"
+    },
+    "pervye-30-dney-crm-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "4a567d091260ef68974132fea8decf19f6cace65743685f92857b382e8d9ed6f"
+    },
+    "priemka-vnedreniya-crm-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "4f6393928090130238f6af6d24e9d1a94b84741e966e93a135f6f92d8fd9ba7b"
+    },
+    "matrica-prav-crm-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "0f842098d7afca0a914014fddceb76e8af512ed7551f60595575c2fa436e9928"
+    },
+    "peredacha-crm-bitrix24-posle-vnedreniya/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "1fe0f6ba367bbe60a24478a8f8e6f35c6921ae617e0d47c9e9859091f8c67d7c"
+    },
+    "uvolilsya-menedzher-bitrix24-crm/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "badee993a95197ba567491d082e4ccd093a6165f3020eabce706a17d5b48a9fd"
+    },
+    "audit-avtomatizacii-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "8476bdd60de28b9a0031013164a312d20670f1b18c03c69d51daf28a29be5bc7"
+    },
+    "ostanovit-biznes-process-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-10-31",
+      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
+      "fingerprint": "2858bff42d03e061359b1a9021600449c6c767160b4132da03ea67a6a6639425"
     }
   }
 }

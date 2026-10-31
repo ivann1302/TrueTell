@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="960" viewBox="0 0 760 960" role="img" aria-labelledby="title desc">
+  <title id="title">Кто проверяет CRM после запуска</title>
+  <desc id="desc">Учебная карта ответственности: менеджер видит обращение, руководитель собирает отклонения, администратор проверяет настройку, владелец процесса принимает результат</desc>
+  <defs><style>text{font-family:Arial,sans-serif;fill:#101621}.head{font-size:36px;font-weight:700}.role{font-size:31px;font-weight:700;fill:#18769B}.body{font-size:28px}.rule{stroke:#CBD5DF;stroke-width:2}</style></defs>
+  <text x="32" y="58" class="head">Кто за что отвечает</text>
+  <text x="32" y="130" class="role">Менеджер · каждый день</text>
+  <text x="32" y="176" class="body">Проверяет свои обращения</text>
+  <text x="32" y="215" class="body">и следующий шаг по сделке</text>
+  <path class="rule" d="M32 255H728"/>
+  <text x="32" y="324" class="role">РОП · каждый день и неделю</text>
+  <text x="32" y="370" class="body">Находит зависшие случаи,</text>
+  <text x="32" y="409" class="body">собирает повторения и ID</text>
+  <path class="rule" d="M32 449H728"/>
+  <text x="32" y="518" class="role">Администратор · по случаю</text>
+  <text x="32" y="564" class="body">Проверяет настройки,</text>
+  <text x="32" y="603" class="body">вносит и тестирует правку</text>
+  <path class="rule" d="M32 643H728"/>
+  <text x="32" y="712" class="role">Владелец процесса · на выходе</text>
+  <text x="32" y="758" class="body">Принимает регламент</text>
+  <text x="32" y="797" class="body">и открытые задачи</text>
+  <path class="rule" d="M32 837H728"/>
+  <text x="32" y="907" class="body">Роли в примере назначает компания</text>
+</svg>

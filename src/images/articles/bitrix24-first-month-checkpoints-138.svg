@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="940" viewBox="0 0 760 940" role="img" aria-labelledby="title desc">
+  <title id="title">Редакционный план контроля CRM в первый месяц</title>
+  <desc id="desc">Четыре контрольные точки: запуск, первая неделя, недели две-три и передача на регулярный контроль</desc>
+  <defs><style>text{font-family:Arial,sans-serif;fill:#101621}.head{font-size:36px;font-weight:700}.period{font-size:31px;font-weight:700;fill:#18769B}.body{font-size:28px}.rule{stroke:#B9C9D7;stroke-width:4}</style></defs>
+  <text x="32" y="60" class="head">Первый месяц после запуска</text>
+  <path class="rule" d="M67 136V815"/>
+  <g fill="#18769B"><circle cx="67" cy="158" r="14"/><circle cx="67" cy="362" r="14"/><circle cx="67" cy="566" r="14"/><circle cx="67" cy="797" r="14"/></g>
+  <text x="112" y="165" class="period">День запуска</text>
+  <text x="112" y="209" class="body">Записать рабочий маршрут</text>
+  <text x="112" y="248" class="body">заявки и владельцев контроля</text>
+  <text x="112" y="369" class="period">Первая неделя</text>
+  <text x="112" y="413" class="body">Ежедневно разбирать входящие</text>
+  <text x="112" y="452" class="body">и фиксировать отклонения</text>
+  <text x="112" y="573" class="period">Недели 2–3</text>
+  <text x="112" y="617" class="body">Группировать повторения</text>
+  <text x="112" y="656" class="body">и повторно проверять правки</text>
+  <text x="112" y="804" class="period">К концу месяца</text>
+  <text x="112" y="848" class="body">Передать открытые вопросы</text>
+  <text x="112" y="887" class="body">в регулярный контроль</text>
+</svg>
