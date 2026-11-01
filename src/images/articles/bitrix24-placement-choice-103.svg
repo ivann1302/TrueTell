@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="900" viewBox="0 0 720 900">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #101621; }
+      .title { font-size: 32px; font-weight: 700; }
+      .sub { font-size: 22px; fill: #516071; }
+      .num { font-size: 42px; font-weight: 700; fill: #0878b7; }
+      .head { font-size: 30px; font-weight: 700; }
+      .code { font-size: 22px; font-weight: 700; fill: #0878b7; }
+      .body { font-size: 22px; fill: #394b5f; }
+      .foot { font-size: 21px; fill: #516071; }
+    </style>
+  </defs>
+  <text x="34" y="54" class="title">Где открыть интерфейс приложения</text>
+  <text x="34" y="90" class="sub">Выбор точки зависит от задачи пользователя</text>
+
+  <text x="34" y="172" class="num">01</text>
+  <text x="135" y="164" class="head">Вкладка сделки</text>
+  <text x="135" y="207" class="code">CRM_DEAL_DETAIL_TAB</text>
+  <text x="135" y="251" class="body">Экран для текущей сделки: приложение</text>
+  <text x="135" y="282" class="body">получает её ID при открытии вкладки.</text>
+  <line x1="34" y1="327" x2="687" y2="327" stroke="#d7e3ed" stroke-width="2"/>
+
+  <text x="34" y="403" class="num">02</text>
+  <text x="135" y="395" class="head">Меню карточки</text>
+  <text x="135" y="438" class="code">CRM_DEAL_DETAIL_TOOLBAR</text>
+  <text x="135" y="482" class="body">Действие, которое сотрудник запускает</text>
+  <text x="135" y="513" class="body">по необходимости из открытой карточки.</text>
+  <line x1="34" y1="558" x2="687" y2="558" stroke="#d7e3ed" stroke-width="2"/>
+
+  <text x="34" y="634" class="num">03</text>
+  <text x="135" y="626" class="head">Раздел приложения</text>
+  <text x="135" y="669" class="code">LEFT_MENU</text>
+  <text x="135" y="713" class="body">Общий экран: настройки, справочник</text>
+  <text x="135" y="744" class="body">или отчёт по нескольким объектам.</text>
+
+  <text x="34" y="836" class="foot">Точка встраивания определяет место показа.</text>
+  <text x="34" y="866" class="foot">Доступ к данным проверяется отдельно.</text>
+</svg>

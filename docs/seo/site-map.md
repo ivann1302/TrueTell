@@ -2,7 +2,7 @@
 
 Автоматически создаётся при production build из HTML страниц и существующего реестра статей. Не редактировать таблицу вручную. Документ не публикуется в dist.
 
-Индексируемых канонических URL: **107**. Даты — только записанные изменения содержания; время сборки не используется. Статус означает наличие в локальной сборке, а не индексацию в поиске.
+Индексируемых канонических URL: **117**. Даты — только записанные изменения содержания; время сборки не используется. Статус означает наличие в локальной сборке, а не индексацию в поиске.
 
 | URL | Название | Тип | Категория | Связанный продукт | Статус | Sitemap | Последнее изменение |
 |---|---|---|---|---|---|---|---|
@@ -13,10 +13,10 @@
 | https://truetell-retail.ru/analiticheskaya-baza-moysklad/ | Аналитическая база МойСклад: данные, история, доступы и сверка | blog | МойСклад / Аналитика | — | published | Включена | — |
 | https://truetell-retail.ru/analiz-chekov-moysklad/ | Анализ чеков МойСклад: средний чек, глубина и оплаты | blog | МойСклад / Аналитика | — | published | Включена | — |
 | https://truetell-retail.ru/analytics-consent/ | Согласие на статистику посещений — TrueTell | legal | Правовые документы | — | published | Включена | — |
-| https://truetell-retail.ru/api-bitrix24/ | API Битрикс24: первый запрос, вебхук или приложение | knowledge | Битрикс24 / API и интеграции | — | published | Включена | — |
+| https://truetell-retail.ru/api-bitrix24/ | API Битрикс24: первый запрос, вебхук или приложение | knowledge | Битрикс24 / API и интеграции | — | published | Включена | 2026-11-01T17:32:20+03:00 |
 | https://truetell-retail.ru/api-moysklad/ | API МойСклад: данные, токен, лимиты и варианты без программиста | knowledge | МойСклад / API и интеграции | — | published | Включена | — |
-| https://truetell-retail.ru/audit-avtomatizacii-bitrix24/ | Аудит автоматизации Битрикс24: роботы и бизнес-процессы | blog | Битрикс24 / Автоматизация CRM | — | published | Включена | — |
-| https://truetell-retail.ru/audit-poley-crm-bitrix24/ | Аудит полей CRM Битрикс24: назначение и зависимости | blog | Битрикс24 / Порядок в CRM | — | published | Включена | — |
+| https://truetell-retail.ru/audit-avtomatizacii-bitrix24/ | Аудит автоматизации Битрикс24: роботы и бизнес-процессы | blog | Битрикс24 / Автоматизация CRM | — | published | Включена | 2026-11-01T17:32:20+03:00 |
+| https://truetell-retail.ru/audit-poley-crm-bitrix24/ | Аудит полей CRM Битрикс24: назначение и зависимости | blog | Битрикс24 / Порядок в CRM | — | published | Включена | 2026-11-01T17:32:20+03:00 |
 | https://truetell-retail.ru/backup-moysklad/ | Резервное копирование для МоегоСклада — продукт в разработке | commercial | МойСклад | — | published | Включена | — |
 | https://truetell-retail.ru/bezopasnyy-dostup-ii-k-crm/ | Как безопасно дать ИИ доступ к CRM: пример Битрикс24 | blog | Битрикс24 / ИИ и интеграции | — | published | Включена | — |
 | https://truetell-retail.ru/bi-analitika-bitrix24-pervyy-otchet/ | BI-аналитика Битрикс24: как создать первый отчёт из CRM | knowledge | Битрикс24 / BI Конструктор | /bi-analitika/ | published | Включена | 2026-10-15T10:30:03+03:00 |
@@ -33,6 +33,7 @@
 | https://truetell-retail.ru/bitrix24-product-rating-privacy/ | Политика конфиденциальности — ABC анализ товаров и клиентов — TrueTell | legal | Правовые документы | — | published | Исключена: noindex | — |
 | https://truetell-retail.ru/bitrix24-product-rating/ | ABC анализ товаров и клиентов в Битрикс24 — TrueTell | commercial | Битрикс24 | — | published | Включена | — |
 | https://truetell-retail.ru/bitrix24-udalenie-lidov-za-period/ | Как удалить старые лиды в Битрикс24 за выбранный период | knowledge | Битрикс24 / Лиды | /bitrix24-cleaner/ | published | Включена | 2026-10-12T12:34:46+03:00 |
+| https://truetell-retail.ru/biznes-processy-bitrix24/ | Бизнес-процессы Битрикс24: как настроить согласование сделки | knowledge | Битрикс24 / Автоматизация CRM | — | published | Включена | — |
 | https://truetell-retail.ru/blog/ | Блог TrueTell — данные, интеграции и автоматизация | system | Блог | — | published | Включена | — |
 | https://truetell-retail.ru/chastichnaya-oplata-bitrix24/ | Частичная оплата в Битрикс24: учёт, этапы и остаток | knowledge | Битрикс24 / Оплаты | — | published | Включена | 2026-10-22 |
 | https://truetell-retail.ru/chatgpt-bitrix24-mcp/ | ChatGPT и Битрикс24 через MCP TrueTell: подготовка | knowledge | Битрикс24 / Подключение ИИ к CRM | — | published | Включена | — |
@@ -45,7 +46,7 @@
 | https://truetell-retail.ru/dds-roznicy-moysklad/ | ДДС в МойСклад: эквайринг, закрытие смены и двойной счёт | blog | МойСклад / Аналитика | — | published | Включена | — |
 | https://truetell-retail.ru/debitorskaya-zadolzhennost-bitrix24/ | Дебиторская задолженность в Битрикс24 — контроль оплат | blog | Битрикс24 / Оплаты | — | published | Включена | 2026-10-22 |
 | https://truetell-retail.ru/dubli-lidov-bitrix24/ | Дубли лидов в Битрикс24 — поиск и объединение | knowledge | Битрикс24 / Лиды | — | published | Включена | — |
-| https://truetell-retail.ru/dve-voronki-bitrix24-nastroyka/ | Две воронки Битрикс24: настройка стадий и передача сделок | knowledge | Битрикс24 / Настройка CRM | — | published | Включена | — |
+| https://truetell-retail.ru/dve-voronki-bitrix24-nastroyka/ | Две воронки Битрикс24: настройка стадий и передача сделок | knowledge | Битрикс24 / Настройка CRM | — | published | Включена | 2026-11-01T17:32:20+03:00 |
 | https://truetell-retail.ru/eksport-lidov-sdelok-bitrix24-pered-udaleniem/ | Экспорт лидов и сделок из Битрикс24 перед удалением — Excel и CSV | knowledge | Битрикс24 / Экспорт и сохранение данных | /bitrix24-cleaner/ | published | Включена | 2026-10-15T15:37:41+03:00 |
 | https://truetell-retail.ru/ezhenedelnaya-diagnostika-crm-bitrix24/ | Еженедельная диагностика CRM Битрикс24: 5 проверок | blog | Битрикс24 / Диагностика CRM | — | published | Включена | — |
 | https://truetell-retail.ru/grafik-platezhey-bitrix24/ | График платежей в Битрикс24: этапы и шаблон Excel | knowledge | Битрикс24 / Планирование оплат | — | published | Включена | 2026-10-22 |
@@ -55,6 +56,8 @@
 | https://truetell-retail.ru/import-kontaktov-kompaniy-bitrix24/ | Импорт контактов и компаний в Битрикс24 из Excel через CSV | knowledge | Битрикс24 / Импорт CRM | — | published | Включена | — |
 | https://truetell-retail.ru/import-sdelok-bitrix24/ | Импорт сделок в Битрикс24 из Excel через CSV: стадии и суммы | knowledge | Битрикс24 / Импорт CRM | — | published | Включена | — |
 | https://truetell-retail.ru/inventarizaciya-moysklad/ | Инвентаризация в МойСклад: инструкция и расхождения | knowledge | МойСклад / Складские операции | /bi-analitika/ | published | Включена | — |
+| https://truetell-retail.ru/ishodyashchiy-vebhuk-bitrix24/ | Исходящий вебхук Битрикс24: настройка и проверка события | knowledge | Битрикс24 / API и интеграции | — | published | Включена | — |
+| https://truetell-retail.ru/istoriya-izmeneniy-crm-bitrix24/ | История изменений CRM Битрикс24: как узнать, кто поменял сделку | knowledge | Битрикс24 / Диагностика CRM | /mcp-crm-bitrix24/ | published | Включена | — |
 | https://truetell-retail.ru/kak-snyat-rezervy-moysklad/ | Как снять все резервы в МоемСкладе и почему они зависают | knowledge | МойСклад / Операции | /upravlenie-rezervami-moysklad/ | published | Включена | 2026-10-10T00:00:00+03:00 |
 | https://truetell-retail.ru/kak-vosstanovit-udalennye-zakazy-tovary-moysklad/ | Как восстановить удаленные заказы и товары в МоемСкладе | knowledge | МойСклад / Восстановление данных | /backup-moysklad/ | published | Включена | 2026-09-22T00:00:00+03:00 |
 | https://truetell-retail.ru/karta-sootvetstviya-poley-bitrix24/ | Карта соответствия полей Битрикс24: пример для интеграции | blog | Битрикс24 / Подготовка интеграции | — | published | Включена | — |
@@ -82,7 +85,7 @@
 | https://truetell-retail.ru/moysklad-mass-operations/udalenie/ | Redirecting to: /moysklad-udalenie/ | system | — | — | published | Исключена: redirect | — |
 | https://truetell-retail.ru/moysklad-udalenie/ | Массовое удаление данных в МойСклад — приложение TrueTell | commercial | МойСклад | /moysklad-mass-operations/ | published | Включена | — |
 | https://truetell-retail.ru/nazvanie-polya-uf-crm-bitrix24/ | Название поля UF_CRM в BI-отчёте Битрикс24: как найти | knowledge | Битрикс24 / Поля CRM и BI | — | published | Включена | — |
-| https://truetell-retail.ru/ne-tot-otvetstvennyy-bitrix24/ | Заявка попала не тому менеджеру в Битрикс24: проверка очереди | knowledge | Битрикс24 / Диагностика CRM | — | published | Включена | — |
+| https://truetell-retail.ru/ne-tot-otvetstvennyy-bitrix24/ | Заявка попала не тому менеджеру в Битрикс24: проверка очереди | knowledge | Битрикс24 / Диагностика CRM | — | published | Включена | 2026-11-01T17:32:20+03:00 |
 | https://truetell-retail.ru/ne-udalyaetsya-lid-bitrix24/ | Не удаляется лид в Битрикс24: причины и что проверить | knowledge | Битрикс24 / Решение ошибок | /bitrix24-cleaner/ | published | Включена | — |
 | https://truetell-retail.ru/ne-vidno-sdelku-bitrix24-prava/ | Не видно сделку или письмо в Битрикс24: проверка прав CRM | knowledge | Битрикс24 / Диагностика CRM | — | published | Включена | — |
 | https://truetell-retail.ru/oborachivaemost-zapasov-formula/ | Оборачиваемость запасов: формула, пример и расчёт в днях | blog | МойСклад / Аналитика запасов | /bi-analitika/ | published | Включена | — |
@@ -91,8 +94,9 @@
 | https://truetell-retail.ru/ostanovit-biznes-process-bitrix24/ | Как остановить бизнес-процесс Битрикс24 и отключить автозапуск | knowledge | Битрикс24 / Автоматизация CRM | — | published | Включена | — |
 | https://truetell-retail.ru/ostatki-moysklad/ | Остатки в МойСклад: как контролировать запас и найти неликвид | knowledge | МойСклад / Остатки и запасы | /bi-analitika/ | published | Включена | 2026-10-12T13:18:00+03:00 |
 | https://truetell-retail.ru/otchet-crm-ne-sovpadaet-bitrix24/ | Отчёт CRM и список сделок Битрикс24: почему цифры разные | knowledge | Битрикс24 / Диагностика CRM | — | published | Включена | — |
+| https://truetell-retail.ru/otchet-po-tovaram-v-sdelkah-bitrix24/ | Отчёт по товарам в сделках Битрикс24: количество и сумма | knowledge | Битрикс24 / Товары и аналитика | /bitrix24-product-rating/ | published | Включена | — |
 | https://truetell-retail.ru/otchety-moysklad/ | Отчёты в МойСклад: продажи, прибыль, сравнение магазинов | knowledge | МойСклад / Аналитика | /bi-analitika/ | published | Включена | 2026-10-15T15:02:28+03:00 |
-| https://truetell-retail.ru/otchety-po-prodazham-bitrix24/ | Отчёты по продажам в Битрикс24 — менеджеры, план и проверка | knowledge | Битрикс24 / Аналитика продаж | /bitrix24-product-rating/ | published | Включена | 2026-10-13T11:32:56+03:00 |
+| https://truetell-retail.ru/otchety-po-prodazham-bitrix24/ | Отчёты по продажам в Битрикс24 — менеджеры, план и проверка | knowledge | Битрикс24 / Аналитика продаж | /bitrix24-product-rating/ | published | Включена | 2026-11-01T17:32:20+03:00 |
 | https://truetell-retail.ru/peredacha-crm-bitrix24-posle-vnedreniya/ | Передача Битрикс24 на поддержку: документы, доступы, тесты | blog | Битрикс24 / Внедрение CRM | — | published | Включена | — |
 | https://truetell-retail.ru/pervye-30-dney-crm-bitrix24/ | Первые 30 дней после внедрения Битрикс24: контроль CRM | blog | Битрикс24 / Внедрение CRM | — | published | Включена | — |
 | https://truetell-retail.ru/platezhnyy-kalendar-bitrix24/ | Платёжный календарь в Битрикс24: CRM и финансы компании | blog | Битрикс24 / Планирование оплат | — | published | Включена | 2026-10-22 |
@@ -110,23 +114,29 @@
 | https://truetell-retail.ru/request-consent/ | Согласие на обработку заявки — TrueTell | legal | Правовые документы | — | published | Включена | — |
 | https://truetell-retail.ru/rezervnaya-kopiya-bitrix24/ | Резервная копия Битрикс24 перед очисткой — облако, коробка и экспорт | knowledge | Битрикс24 / Сохранение данных CRM | — | published | Включена | — |
 | https://truetell-retail.ru/robot-ne-srabatyvaet-bitrix24/ | Робот Битрикс24 не срабатывает: условия, пауза и отладчик | knowledge | Битрикс24 / Диагностика CRM | — | published | Включена | — |
+| https://truetell-retail.ru/roboty-bitrix24/ | Роботы Битрикс24: как настроить задачу при смене стадии | knowledge | Битрикс24 / Автоматизация CRM | — | published | Включена | — |
 | https://truetell-retail.ru/sdelka-ne-perehodit-stadiyu-bitrix24/ | Сделка не переходит на стадию Битрикс24: поля и права | knowledge | Битрикс24 / Диагностика CRM | — | published | Включена | — |
 | https://truetell-retail.ru/sdelki-bez-del-bitrix24/ | Сделки без дел в Битрикс24: поиск и проверка просроченных дел | knowledge | Битрикс24 / Диагностика CRM | — | published | Включена | — |
 | https://truetell-retail.ru/skvoznaya-analitika-bitrix24/ | Сквозная аналитика в Битрикс24: настройка и проверка | knowledge | Битрикс24 / Аналитика продаж | /bi-analitika/ | published | Включена | 2026-10-11T22:29:57+03:00 |
 | https://truetell-retail.ru/spisok-poley-bitrix24/ | Список полей Битрикс24: где посмотреть и выгрузить CSV | knowledge | Битрикс24 / Поля CRM | — | published | Включена | — |
 | https://truetell-retail.ru/tipy-poley-crm-bitrix24/ | Типы полей Битрикс24: множественность и обязательность | knowledge | Битрикс24 / Поля CRM | — | published | Включена | — |
+| https://truetell-retail.ru/tovary-v-sdelke-bitrix24/ | Товары в сделке Битрикс24: цены, количество и сумма | knowledge | Битрикс24 / Товары и аналитика | /bitrix24-product-rating/ | published | Включена | — |
 | https://truetell-retail.ru/udalenie-kompaniy-bitrix24/ | Как удалить компании в Битрикс24 — связи и реквизиты | knowledge | Битрикс24 / Компании и клиентская база | — | published | Включена | — |
 | https://truetell-retail.ru/udalenie-kontaktov-bitrix24/ | Как удалить контакты в Битрикс24 — один, несколько или все | knowledge | Битрикс24 / Контакты и клиентская база | — | published | Включена | 2026-10-15T15:58:12+03:00 |
 | https://truetell-retail.ru/udalenie-proigrannyh-sdelok-bitrix24/ | Как удалить проигранные сделки в Битрикс24 и сохранить нужные | knowledge | Битрикс24 / Сделки | /bitrix24-cleaner/ | published | Включена | 2026-10-15T15:37:41+03:00 |
 | https://truetell-retail.ru/udalennye-lidy-bitrix24/ | Удалённые лиды в Битрикс24: где корзина и как восстановить | knowledge | Битрикс24 / Лиды | /bitrix24-cleaner/ | published | Включена | 2026-10-15T15:02:28+03:00 |
-| https://truetell-retail.ru/udalennye-sdelki-bitrix24/ | Удалённые сделки в Битрикс24 — корзина и восстановление | knowledge | Битрикс24 / Сделки | — | published | Включена | — |
-| https://truetell-retail.ru/udalit-tovar-bitrix24/ | Как удалить товар из каталога Битрикс24: сделки и проверка | knowledge | Битрикс24 / Каталог товаров | /bitrix24-product-rating/ | published | Включена | — |
+| https://truetell-retail.ru/udalennye-sdelki-bitrix24/ | Удалённые сделки в Битрикс24 — корзина и восстановление | knowledge | Битрикс24 / Сделки | — | published | Включена | 2026-11-01T17:32:20+03:00 |
+| https://truetell-retail.ru/udalit-pole-crm-bitrix24/ | Как удалить поле CRM Битрикс24 и сохранить нужные значения | knowledge | Битрикс24 / Поля CRM | /bitrix24-field-directory/ | published | Включена | — |
+| https://truetell-retail.ru/udalit-tovar-bitrix24/ | Как удалить товар из каталога Битрикс24: сделки и проверка | knowledge | Битрикс24 / Каталог товаров | /bitrix24-product-rating/ | published | Включена | 2026-11-01T17:32:20+03:00 |
+| https://truetell-retail.ru/udalit-voronku-bitrix24/ | Как удалить воронку Битрикс24: сделки, корзина и шаблоны | knowledge | Битрикс24 / Сделки и воронки | /bitrix24-cleaner/ | published | Включена | — |
+| https://truetell-retail.ru/udalit-zakaz-bitrix24/ | Как удалить заказ в Битрикс24: сделка, оплата и доставка | knowledge | Битрикс24 / Заказы и сделки | /bitrix24-cleaner/ | published | Включена | — |
 | https://truetell-retail.ru/uf-crm-ufcrm-bitrix24-api/ | UF_CRM и ufCrm, TITLE и title в API Битрикс24 | knowledge | Битрикс24 / Поля CRM и REST API | — | published | Включена | — |
 | https://truetell-retail.ru/upravlenie-rezervami-moysklad/ | Управление резервами в МоемСкладе — продукт в разработке | commercial | МойСклад | — | published | Включена | — |
 | https://truetell-retail.ru/uvolilsya-menedzher-bitrix24-crm/ | Уволился менеджер Битрикс24: передача сделок, дел и вебхуков | knowledge | Битрикс24 / Диагностика CRM | — | published | Включена | — |
 | https://truetell-retail.ru/vebhuki-moysklad/ | Вебхуки МойСклад: события, API и проверка обработки | knowledge | МойСклад / API и интеграции | — | published | Включена | — |
-| https://truetell-retail.ru/vhodyashchiy-vebhuk-bitrix24/ | Входящий вебхук Битрикс24: создание, права и ошибки | knowledge | Битрикс24 / API и интеграции | — | published | Включена | — |
+| https://truetell-retail.ru/vhodyashchiy-vebhuk-bitrix24/ | Входящий вебхук Битрикс24: создание, права и ошибки | knowledge | Битрикс24 / API и интеграции | — | published | Включена | 2026-11-01T17:32:20+03:00 |
 | https://truetell-retail.ru/voronka-prodazh-bitrix24/ | Воронка продаж в Битрикс24: потери, этапы и зависшие сделки | knowledge | Битрикс24 / Аналитика продаж | — | published | Включена | — |
+| https://truetell-retail.ru/vstroit-prilozhenie-v-crm-bitrix24/ | Как встроить приложение в CRM Битрикс24: вкладка и меню | knowledge | Битрикс24 / API и интеграции | /bitrix24-field-directory/ | published | Включена | — |
 | https://truetell-retail.ru/vygruzka-dannyh-moysklad-dlya-analitiki/ | Выгрузка данных из МойСклад для аналитики: Excel, API или база | blog | МойСклад / Аналитика | — | published | Включена | — |
 | https://truetell-retail.ru/vyruchka-sotrudnikov-po-smenam-moysklad/ | Выручка сотрудников по сменам МойСклад: продажи и возвраты | blog | МойСклад / Аналитика | — | published | Включена | — |
 | https://truetell-retail.ru/zen_n3pffjf1FOugHCN0FHjBPIKMGOIzZrGH6wK8cVKJJlJ1elVtlu1GlhErifyqYnwi.html | Подтверждение сайта TrueTell | system | — | — | published | Исключена: noindex | — |

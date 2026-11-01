@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="940" viewBox="0 0 700 940" role="img" aria-labelledby="title desc">
+<title id="title">Приём события исходящего вебхука Битрикс24</title>
+<desc id="desc">Изменение сделки вызывает POST с кодом события и ID. Обработчик сверяет application_token, надежно сохраняет событие, отвечает успехом и затем читает полную сделку по REST при необходимости.</desc>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="24" y="48" font-size="30" font-weight="700" fill="#101621">После изменения сделки</text>
+<text x="24" y="82" font-size="20" fill="#606a79">Редакционная схема · без настоящих токенов</text>
+<rect x="24" y="112" width="652" height="701" rx="18" fill="#fff" stroke="#d8dfe9" stroke-width="2"/>
+<rect x="48" y="139" width="604" height="106" rx="12" fill="#eef5ff"/>
+<text x="68" y="176" font-size="25" font-weight="700" fill="#1765da">Битрикс24 отправляет POST</text>
+<text x="68" y="211" font-size="21" fill="#34445a">event + data[FIELDS][ID]</text>
+<path d="M350 246V272" stroke="#1765da" stroke-width="4"/><path d="m341 263 9 13 9-13" fill="none" stroke="#1765da" stroke-width="4"/>
+<rect x="48" y="280" width="604" height="106" rx="12" fill="#f4f6f9"/>
+<text x="68" y="318" font-size="25" font-weight="700" fill="#101621">1. Проверить источник</text>
+<text x="68" y="353" font-size="20" fill="#34445a">Сверить auth.application_token</text>
+<path d="M350 388V414" stroke="#1765da" stroke-width="4"/><path d="m341 405 9 13 9-13" fill="none" stroke="#1765da" stroke-width="4"/>
+<rect x="48" y="422" width="604" height="106" rx="12" fill="#f4f6f9"/>
+<text x="68" y="460" font-size="25" font-weight="700" fill="#101621">2. Сохранить запрос</text>
+<text x="68" y="495" font-size="20" fill="#34445a">В журнале или надёжной очереди</text>
+<path d="M350 530V556" stroke="#1765da" stroke-width="4"/><path d="m341 547 9 13 9-13" fill="none" stroke="#1765da" stroke-width="4"/>
+<rect x="48" y="564" width="604" height="106" rx="12" fill="#eaf7f1"/>
+<text x="68" y="602" font-size="25" font-weight="700" fill="#16634d">3. Ответить успехом</text>
+<text x="68" y="637" font-size="20" fill="#34445a">Только после сохранения</text>
+<path d="M48 699H652" stroke="#e3e8ef" stroke-width="2"/>
+<text x="48" y="742" font-size="21" fill="#34445a">Позже: получить полную сделку по REST</text>
+<text x="48" y="771" font-size="21" fill="#34445a">и выполнить нужное действие.</text>
+<text x="24" y="853" font-size="22" font-weight="700" fill="#9b3b25">Если приём не состоялся,</text>
+<text x="24" y="883" font-size="22" font-weight="700" fill="#9b3b25">повторной доставки от Битрикс24 нет.</text>
+</g></svg>

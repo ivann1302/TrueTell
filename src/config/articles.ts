@@ -37,6 +37,7 @@ export const allArticles: CatalogArticle[] = [
     topic: 'Каталог товаров',
     status: 'published',
     publishedAt: '2026-10-27T17:06:14+03:00',
+    updatedAt: '2026-11-01T17:32:20+03:00',
     indexable: true,
     relatedProduct: '/bitrix24-product-rating/',
     relatedArticles: ['bitrix24-product-rating/', 'ochistka-crm-bitrix24/', 'import-sdelok-bitrix24/'],
@@ -97,6 +98,7 @@ export const allArticles: CatalogArticle[] = [
     topic: 'Сделки',
     status: 'published',
     publishedAt: '2026-10-27T17:06:14+03:00',
+    updatedAt: '2026-11-01T17:32:20+03:00',
     indexable: true,
     relatedProduct: null,
     relatedArticles: ['massovoe-udalenie-sdelok-bitrix24/', 'udalennye-lidy-bitrix24/', 'eksport-lidov-sdelok-bitrix24-pered-udaleniem/'],
@@ -204,6 +206,7 @@ export const allArticles: CatalogArticle[] = [
     topic: 'Порядок в CRM',
     status: 'published',
     publishedAt: '2026-10-15T10:30:03+03:00',
+    updatedAt: '2026-11-01T17:32:20+03:00',
     indexable: true,
     relatedProduct: null,
     relatedArticles: ['dashbord-rukovoditelya-bitrix24/', 'bi-analitika-bitrix24-pervyy-otchet/', 'debitorskaya-zadolzhennost-bitrix24/'],
@@ -543,7 +546,7 @@ export const allArticles: CatalogArticle[] = [
         "bi-analitika-chto-eto-prostymi-slovami/"
     ],
     "publishedAt": "2026-10-09T00:00:00+03:00",
-    "updatedAt": "2026-10-13T11:32:56+03:00"
+    "updatedAt": "2026-11-01T17:32:20+03:00",
 },
   {
     "title": "Остатки в МойСклад: контроль запасов и поиск неликвида",
@@ -1033,6 +1036,7 @@ export const allArticles: CatalogArticle[] = [
     status: 'published', indexable: true, relatedProduct: null,
     relatedArticles: ['vhodyashchiy-vebhuk-bitrix24/', 'uf-crm-ufcrm-bitrix24-api/', 'karta-sootvetstviya-poley-bitrix24/', 'bezopasnyy-dostup-ii-k-crm/'],
     publishedAt: '2026-10-30T18:59:30+03:00',
+    updatedAt: '2026-11-01T17:32:20+03:00',
   },
   {
     title: 'Входящий вебхук Битрикс24: создать и безопасно проверить',
@@ -1043,6 +1047,7 @@ export const allArticles: CatalogArticle[] = [
     status: 'published', indexable: true, relatedProduct: null,
     relatedArticles: ['api-bitrix24/', 'uf-crm-ufcrm-bitrix24-api/', 'karta-sootvetstviya-poley-bitrix24/', 'bitrix24-moysklad-integraciya/'],
     publishedAt: '2026-10-30T18:59:30+03:00',
+    updatedAt: '2026-11-01T17:32:20+03:00',
   },
   {
     title: 'Где теряются заявки в Битрикс24: от формы до ответственного',
@@ -1071,6 +1076,7 @@ export const allArticles: CatalogArticle[] = [
     summaryDescription: 'Разбор одной заявки: правило входящего канала, история переназначения и повторный тест после исправления.',
     hrefPath: 'ne-tot-otvetstvennyy-bitrix24/', type: 'knowledge', category: 'Битрикс24', topic: 'Диагностика CRM',
     status: 'published', publishedAt: '2026-10-31T14:44:24+03:00', indexable: true, relatedProduct: null,
+    updatedAt: '2026-11-01T17:32:20+03:00',
     relatedArticles: ['poteryannye-zayavki-bitrix24/', 'crm-forma-ne-sozdaet-zayavku-bitrix24/', 'bezopasnyy-dostup-ii-k-crm/'],
   },
   {
@@ -1125,6 +1131,7 @@ export const allArticles: CatalogArticle[] = [
     summaryDescription: 'Пример для продаж и исполнения: стадии, ответственные, туннель и проверка одной сделки.',
     hrefPath: 'dve-voronki-bitrix24-nastroyka/', type: 'knowledge', category: 'Битрикс24', topic: 'Настройка CRM',
     status: 'published', publishedAt: '2026-10-31T14:44:24+03:00', indexable: true, relatedProduct: null,
+    updatedAt: '2026-11-01T17:32:20+03:00',
     relatedArticles: ['voronka-prodazh-bitrix24/', 'sdelka-ne-perehodit-stadiyu-bitrix24/', 'ne-vidno-sdelku-bitrix24-prava/'],
   },
   {
@@ -1197,6 +1204,7 @@ export const allArticles: CatalogArticle[] = [
     summaryDescription: 'Проверка всей цепочки автоматизации CRM: стадии, условия, повторяющиеся действия, логи и безопасное исправление.',
     hrefPath: 'audit-avtomatizacii-bitrix24/', type: 'blog', category: 'Битрикс24', topic: 'Автоматизация CRM',
     status: 'published', publishedAt: '2026-10-31T14:44:24+03:00', indexable: true, relatedProduct: null,
+    updatedAt: '2026-11-01T17:32:20+03:00',
     relatedArticles: ['robot-ne-srabatyvaet-bitrix24/', 'ezhenedelnaya-diagnostika-crm-bitrix24/', 'peredacha-crm-bitrix24-posle-vnedreniya/'],
   },
   {
@@ -1208,6 +1216,102 @@ export const allArticles: CatalogArticle[] = [
     status: 'published', publishedAt: '2026-10-31T14:44:24+03:00', indexable: true, relatedProduct: null,
     relatedArticles: ['audit-avtomatizacii-bitrix24/', 'robot-ne-srabatyvaet-bitrix24/', 'ezhenedelnaya-diagnostika-crm-bitrix24/'],
   },
+  {
+    title: 'Роботы Битрикс24: задача при смене стадии сделки',
+    seoTitle: 'Роботы Битрикс24: как настроить задачу при смене стадии',
+    description: 'Как настроить робота Битрикс24 «Поставить задачу» при переходе сделки на стадию: исполнитель, срок, время запуска и проверка на тестовой сделке.',
+    summaryDescription: 'Один сценарий автоматизации: задача на нужной стадии, сохранение робота и проверка результата в таймлайне.',
+    hrefPath: 'roboty-bitrix24/', type: 'knowledge', category: 'Битрикс24', topic: 'Автоматизация CRM',
+    status: 'published', publishedAt: '2026-11-01T17:32:20+03:00', indexable: true, relatedProduct: null,
+    relatedArticles: ['robot-ne-srabatyvaet-bitrix24/', 'sdelka-ne-perehodit-stadiyu-bitrix24/', 'audit-avtomatizacii-bitrix24/'],
+  },
+  {
+    title: 'Бизнес-процессы Битрикс24: согласование сделки в CRM',
+    seoTitle: 'Бизнес-процессы Битрикс24: как настроить согласование сделки',
+    description: 'Как собрать простое согласование сделки в бизнес-процессе Битрикс24: ручной запуск, один утверждающий, две ветки решения и проверка результата в Протоколе.',
+    summaryDescription: 'Один маршрут согласования сделки: шаблон, утверждающий, решение и проверка обеих веток.',
+    hrefPath: 'biznes-processy-bitrix24/', type: 'knowledge', category: 'Битрикс24', topic: 'Автоматизация CRM',
+    status: 'published', publishedAt: '2026-11-01T17:32:20+03:00', indexable: true, relatedProduct: null,
+    relatedArticles: ['roboty-bitrix24/', 'audit-avtomatizacii-bitrix24/', 'ostanovit-biznes-process-bitrix24/'],
+  },
+  {
+    title: 'Как удалить заказ в Битрикс24 и проверить связанные данные',
+    seoTitle: 'Как удалить заказ в Битрикс24: сделка, оплата и доставка',
+    description: 'Где находится заказ интернет-магазина в Битрикс24, когда закрыть сделку, а когда удалить её; что проверить по оплате, доставке, интеграции и корзине CRM.',
+    summaryDescription: 'Сначала определите, представлен ли заказ сделкой или отдельной записью старого режима; затем проверьте платежи и доставку.',
+    hrefPath: 'udalit-zakaz-bitrix24/', type: 'knowledge', category: 'Битрикс24', topic: 'Заказы и сделки',
+    status: 'published', publishedAt: '2026-11-01T17:32:20+03:00', indexable: true, relatedProduct: '/bitrix24-cleaner/',
+    relatedArticles: ['udalennye-sdelki-bitrix24/', 'massovoe-udalenie-sdelok-bitrix24/', 'chastichnaya-oplata-bitrix24/'],
+  },
+  {
+    title: 'Как удалить пользовательское поле CRM Битрикс24',
+    seoTitle: 'Как удалить поле CRM Битрикс24 и сохранить нужные значения',
+    description: 'Где удалить пользовательское поле Битрикс24, чем удаление отличается от скрытия, как проверить код, значения и зависимости и подготовить экспорт перед действием.',
+    summaryDescription: 'Проверка типа поля, кода, значений и интеграций перед удалением через настройки CRM.',
+    hrefPath: 'udalit-pole-crm-bitrix24/', type: 'knowledge', category: 'Битрикс24', topic: 'Поля CRM',
+    status: 'published', publishedAt: '2026-11-01T17:32:20+03:00', indexable: true, relatedProduct: '/bitrix24-field-directory/',
+    relatedArticles: ['audit-poley-crm-bitrix24/', 'kod-polya-bitrix24/', 'tipy-poley-crm-bitrix24/'],
+  },
+
+  {
+    title: 'Как удалить воронку продаж Битрикс24 и сохранить сделки',
+    seoTitle: 'Как удалить воронку Битрикс24: сделки, корзина и шаблоны',
+    description: 'Как удалить ненужную воронку сделок Битрикс24: найти все сделки, перенести рабочие записи, проверить корзину, шаблоны регулярных сделок, права и результат.',
+    summaryDescription: 'Порядок проверки сделок, корзины и шаблонов перед удалением направления продаж.',
+    hrefPath: 'udalit-voronku-bitrix24/', type: 'knowledge', category: 'Битрикс24', topic: 'Сделки и воронки',
+    status: 'published', publishedAt: '2026-11-01T17:32:20+03:00', indexable: true, relatedProduct: '/bitrix24-cleaner/',
+    relatedArticles: ['dve-voronki-bitrix24-nastroyka/', 'voronka-prodazh-bitrix24/', 'massovoe-udalenie-sdelok-bitrix24/'],
+  },
+  {
+    title: 'История изменений в CRM Битрикс24: кто и что поменял',
+    seoTitle: 'История изменений CRM Битрикс24: как узнать, кто поменял сделку',
+    description: 'Где найти историю изменений CRM Битрикс24, как проверить автора, время и описание события по ID сделки, почему запись может отсутствовать и как отличить робота от ручного действия.',
+    summaryDescription: 'Проверка истории конкретной карточки и общего журнала CRM по ID, времени, автору и типу события.',
+    hrefPath: 'istoriya-izmeneniy-crm-bitrix24/', type: 'knowledge', category: 'Битрикс24', topic: 'Диагностика CRM',
+    status: 'published', publishedAt: '2026-11-01T17:32:20+03:00', indexable: true, relatedProduct: '/mcp-crm-bitrix24/',
+    relatedArticles: ['ne-tot-otvetstvennyy-bitrix24/', 'sdelka-ne-perehodit-stadiyu-bitrix24/', 'audit-avtomatizacii-bitrix24/'],
+  },
+
+  {
+    title: 'Товары в сделке Битрикс24: где посмотреть позиции и цены',
+    seoTitle: 'Товары в сделке Битрикс24: цены, количество и сумма',
+    description: 'Где найти товарные позиции в сделке Битрикс24, как посмотреть цену, количество, скидку и итог, настроить столбцы и понять расхождение с суммой сделки.',
+    summaryDescription: 'Вкладка «Товары» одной сделки: строки, цены, скидки, скрытые столбцы и режим расчёта суммы.',
+    hrefPath: 'tovary-v-sdelke-bitrix24/', type: 'knowledge', category: 'Битрикс24', topic: 'Товары и аналитика',
+    status: 'published', publishedAt: '2026-11-01T17:32:20+03:00', indexable: true, relatedProduct: '/bitrix24-product-rating/',
+    relatedArticles: ['udalit-tovar-bitrix24/', 'istoriya-izmeneniy-crm-bitrix24/', 'bi-analitika-bitrix24-pervyy-otchet/'],
+  },
+
+  {
+    title: 'Отчёт по товарам в сделках Битрикс24: количество и продажи',
+    seoTitle: 'Отчёт по товарам в сделках Битрикс24: количество и сумма',
+    description: 'Как собрать отчёт по товарам из сделок Битрикс24: выбрать успешные сделки и дату, посчитать количество и сумму строк, сверить результат по карточкам CRM.',
+    summaryDescription: 'Выборка успешных сделок, количество, число карточек и сумма товарных строк с проверкой по источникам.',
+    hrefPath: 'otchet-po-tovaram-v-sdelkah-bitrix24/', type: 'knowledge', category: 'Битрикс24', topic: 'Товары и аналитика',
+    status: 'published', publishedAt: '2026-11-01T17:32:20+03:00', indexable: true, relatedProduct: '/bitrix24-product-rating/',
+    relatedArticles: ['otchety-po-prodazham-bitrix24/', 'bi-analitika-bitrix24-pervyy-otchet/', 'udalit-tovar-bitrix24/'],
+  },
+
+  {
+    title: 'Исходящий вебхук Битрикс24: получить событие во внешней системе',
+    seoTitle: 'Исходящий вебхук Битрикс24: настройка и проверка события',
+    description: 'Как создать исходящий вебхук Битрикс24, принять событие изменения сделки, проверить токен, записать запрос и найти причину сбоя доставки.',
+    summaryDescription: 'От выбора события и HTTPS-адреса до проверки токена, сохранения запроса и контрольной сделки.',
+    hrefPath: 'ishodyashchiy-vebhuk-bitrix24/', type: 'knowledge', category: 'Битрикс24', topic: 'API и интеграции',
+    status: 'published', publishedAt: '2026-11-01T17:32:20+03:00', indexable: true, relatedProduct: null,
+    relatedArticles: ['vhodyashchiy-vebhuk-bitrix24/', 'api-bitrix24/', 'bitrix24-moysklad-integraciya/'],
+  },
+
+  {
+    title: 'Как встроить приложение в карточку CRM Битрикс24',
+    seoTitle: 'Как встроить приложение в CRM Битрикс24: вкладка и меню',
+    description: 'Как выбрать место для приложения в CRM Битрикс24, добавить вкладку сделки через placement.bind, получить ID карточки и проверить права и установку.',
+    summaryDescription: 'Вкладка сделки, меню карточки и раздел приложения: регистрация, контекст, права и проверка на тестовом портале.',
+    hrefPath: 'vstroit-prilozhenie-v-crm-bitrix24/', type: 'knowledge', category: 'Битрикс24', topic: 'API и интеграции',
+    status: 'published', publishedAt: '2026-11-01T17:32:20+03:00', indexable: true, relatedProduct: '/bitrix24-field-directory/',
+    relatedArticles: ['api-bitrix24/', 'vhodyashchiy-vebhuk-bitrix24/', 'kod-polya-bitrix24/'],
+  },
+
 ];
 
 export function getArticle(path: string): CatalogArticle {

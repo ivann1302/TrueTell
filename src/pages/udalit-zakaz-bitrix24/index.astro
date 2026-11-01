@@ -1,0 +1,104 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { cleanerProduct, cleanerProductPath } from '../../config/products';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import paymentImage from '../../images/articles/bitrix24-payment-link-official.jpg';
+import recycleImage from '../../images/articles/bitrix24-recycle-entry-official.jpg';
+
+const article = getArticle('udalit-zakaz-bitrix24/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const imageAlt = 'Демонстрационная сделка из официальной справки Битрикс24: заказ №607, стадия и блок «Оплата и доставка»';
+const ogImage = new URL(paymentImage.src, siteRoot).toString();
+const sourceLinks = [
+  { label: 'Битрикс24: как покупатель оформляет заказ и где он виден в CRM', href: 'https://helpdesk.bitrix24.ru/open/28841930/' },
+  { label: 'Битрикс24: режим работы без отдельных заказов', href: 'https://helpdesk.bitrix24.ru/open/13632830/' },
+  { label: 'Битрикс24: удалить элемент CRM из списка или карточки', href: 'https://helpdesk.bitrix24.ru/open/23238660/' },
+  { label: 'Битрикс24: корзина CRM, восстановление и ограничения', href: 'https://helpdesk.bitrix24.ru/open/24668648/' },
+  { label: 'Битрикс24: оплата и доставка в карточке сделки', href: 'https://helpdesk.bitrix24.ru/open/28102982/' },
+  { label: 'Битрикс24: интеграция с магазином 1С-Битрикс', href: 'https://helpdesk.bitrix24.ru/open/6727273/' },
+];
+const faqItems = [
+  { question: 'Где найти заказ интернет-магазина в Битрикс24?', answer: 'В текущем сценарии интернет-магазина покупка создаёт сделку. Откройте CRM → Сделки, найдите её по номеру или клиенту и проверьте товары, оплату и доставку. На старом портале с режимом «Сделки + Заказы» может быть отдельный раздел заказов.' },
+  { question: 'Если клиент передумал, обязательно удалять сделку?', answer: 'Нет. Если заказ был настоящим, обычно полезнее зафиксировать отказ или завершить сделку в подходящей стадии: история и причина останутся для команды. Удаление уместнее для ошибочной или дублирующей записи после проверки связей.' },
+  { question: 'Удаление сделки отменит оплату и доставку?', answer: 'Не считайте это автоматическим следствием удаления. До действия проверьте статус платежа, чек, отгрузку и внешние сервисы; отмену или возврат оформляйте в той системе, где операция реально проводится.' },
+  { question: 'Как удалить сделку, которая представляет заказ?', answer: 'При наличии права на удаление откройте карточку сделки и выберите Настройки (⚙️) → «Удалить». Альтернатива — меню строки в списке CRM. Сначала сохраните номер и проверьте, что выбрана именно ошибочная запись.' },
+  { question: 'Можно ли восстановить удалённый заказ из корзины CRM?', answer: 'Если удалена сделка, проверьте CRM → Ещё → Корзина и фильтр типа «Сделка». Восстановление доступно не на всех тарифах, а у восстановленной сделки будет новый ID. Для отдельного заказа старого режима не переносите этот порядок автоматически: сначала уточните его хранение на своём портале.' },
+  { question: 'Может ли Cleaner TrueTell удалить заказы?', answer: 'Cleaner TrueTell работает с лидами и сделками. Если заказ представлен сделкой, приложение может помочь отобрать такие сделки для очистки, но оно не отменяет платежи, отгрузки и записи во внешнем магазине и не заявлено для отдельной сущности заказа старого режима.' },
+];
+const decisionRows = [
+  ['Покупатель отказался от реального заказа', 'Сохранить историю продажи', 'Проверить оплату и доставку, закрыть сделку в подходящей стадии'],
+  ['Тестовая или дублирующая сделка', 'Убрать ошибочную запись', 'Сверить ID и связи, затем удалить сделку с нужными правами'],
+  ['Портал со старым режимом «Сделки + Заказы»', 'Определить отдельный заказ', 'Открыть раздел заказов и проверить порядок для этой сущности на портале'],
+];
+const structuredData = createArticleStructuredData({
+  articleType: 'Article', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() }, { name: title, item: articleUrl }],
+  faqItems,
+});
+---
+<ArticleLayout {title} titleParts={[{ text: 'Как удалить заказ в Битрикс24 ' }, { text: 'и не потерять связанные данные', accent: true }]} {description}
+  canonicalPath={`/${article.hrefPath}`} {structuredData} ogTitle={article.seoTitle} ogDescription={description}
+  {ogImage} ogImageAlt={imageAlt} category={article.category} author={authorName}
+  intro="Сначала выясните, что именно названо заказом в вашем Битрикс24. В новом сценарии магазина это сделка CRM; на порталах со старым режимом может оставаться отдельная сущность заказа. От этого зависит, где искать запись и что проверять перед удалением.">
+  <Fragment slot="quick-answer">
+    <p><strong>Если заказ интернет-магазина представлен сделкой, откройте CRM → Сделки и найдите нужную карточку.</strong> Сверьте товары, платежи, доставку, клиента и источник заказа. Реальный отказ покупателя лучше зафиксировать стадией, а ошибочную или дублирующую сделку можно удалить через настройки карточки или меню строки при наличии прав.</p>
+    <p>На порталах со старым режимом «Сделки + Заказы» отдельный заказ и сделка — разные записи. Не применяйте инструкцию удаления сделки к заказу без проверки его карточки и связанных операций.</p>
+  </Fragment>
+
+  <p data-article-lead>Менеджер видит «Заказ №607» и хочет убрать его из CRM. Но слово «заказ» в названии карточки ещё не говорит, какой объект будет удалён. У интернет-магазина Битрикс24 оформленная покупка отображается как сделка; старый режим отдельных заказов поддерживается только у порталов, где он уже использовался. Начните с определения объекта, затем решайте судьбу записи.</p>
+
+  <section aria-labelledby="find">
+    <h2 id="find">Найдите заказ и <span data-heading-accent>определите тип записи</span></h2>
+    <p>В текущем сценарии откройте <strong>CRM → Сделки</strong> и найдите карточку по номеру, клиенту или дате. Сверьте воронку, название, товарные позиции и поле «Оплата и доставка». По справке Битрикс24, покупки из его интернет-магазина создают сделки в CRM. В примере ниже «Заказ №607» — именно название сделки.</p>
+    <ArticleFigure src={paymentImage} fullSize alt={imageAlt} caption="Подлинный демонстрационный экран из справки Битрикс24: карточка сделки названа «Заказ №607», в ней есть блок «Оплата и доставка». Данные клиента, сумма и стадия принадлежат примеру документации, не порталу TrueTell." />
+    <p>Если на вашем портале есть отдельный список <strong>Магазин → Заказы</strong>, проверьте режим «Сделки + Заказы». Битрикс24 больше не поддерживает его для нового перехода, но уже работающие порталы могут продолжать его использовать. Не переключайте режим ради удаления одной записи: официальный материал предупреждает, что после перехода в «Сделки» вернуться к «Сделки + Заказы» нельзя.</p>
+  </section>
+
+  <section aria-labelledby="choose">
+    <h2 id="choose">Отмена продажи или <span data-heading-accent>удаление ошибки?</span></h2>
+    <p>Отказ клиента — событие продажи, а не мусор в базе. Если заказ был настоящим, переведите связанную сделку в подходящую финальную стадию и оставьте понятную причину. История поможет ответить клиенту и разобраться в отчётах. Удаление оставьте для тестовой, случайной или дублирующей записи, которую действительно нужно убрать.</p>
+    <DataTable label="Что делать с заказом в Битрикс24" columns={['Ситуация', 'Цель', 'Следующий шаг']} rows={decisionRows} rowHeaders />
+    <p>Перед удалением проверьте, была ли оплата, отправлена ли платежная ссылка, создан ли чек, началась ли доставка или отгрузка. В карточке сделки Битрикс24 хранит сведения об оплате и доставке, но удаление самой сделки не следует считать операцией возврата денег или отмены доставки. Если заказ пришёл из внешнего магазина, проверьте его там отдельно: например, стандартная интеграция с «1С-Битрикс: Управление сайтом» передаёт заказы в CRM как сделки, а изменения сделки обратно в магазин не отправляет.</p>
+  </section>
+
+  <section aria-labelledby="delete">
+    <h2 id="delete">Удалите ошибочную сделку <span data-heading-accent>после сверки</span></h2>
+    <p>Запишите ID сделки и проверьте клиента, товары, сумму и источник. Если у сотрудника есть право удаления, откройте карточку и выберите <strong>Настройки (⚙️) → Удалить</strong>. В списке CRM тот же результат даёт <strong>Меню (≡) → Удалить</strong> у нужной строки. Не выделяйте сразу весь список: фильтр и галочка «Для всех» могут расширить операцию на другие страницы выдачи.</p>
+    <p>Удалённая сделка не учитывается в аналитических отчётах. Сведения о её удалении обычно появляются в корзине CRM; восстановление зависит от тарифа и настроек корзины. Если удаление было ошибкой, откройте <strong>CRM → Ещё → Корзина</strong> и ищите тип «Сделка». Администратор видит все удалённые элементы, сотрудник — только удалённые им самим. После восстановления ID сделки меняется, поэтому сохранённые ссылки и интеграции нужно проверить заново.</p>
+    <ArticleFigure src={recycleImage} fullSize alt="Официальный экран Битрикс24: из раздела CRM через меню «Ещё» открывается Корзина" caption="Подлинный экран Поддержки24 показывает путь в корзину CRM. Он помогает проверить удалённую сделку; отдельный заказ старого режима не следует автоматически искать там как сделку." />
+    <p>Подробный порядок поиска и восстановления — в статье <a href={`${base}udalennye-sdelki-bitrix24/`}>«Удалённые сделки Битрикс24»</a>. Если нужно очистить много ошибочных сделок, сначала проверьте выборку и исключения: <a href={`${base}massovoe-udalenie-sdelok-bitrix24/`}>разбор массового удаления</a> показывает, как не захватить рабочие карточки.</p>
+  </section>
+
+  <section aria-labelledby="legacy">
+    <h2 id="legacy">Если перед вами <span data-heading-accent>отдельный заказ старого режима</span></h2>
+    <p>В «Сделки + Заказы» откройте сам заказ и проверьте его статус, оплату, отгрузку и связанные сделки. Интерфейс и права такого портала могут отличаться от текущего сценария. Официальная инструкция удаления элементов CRM описывает сделки и другие элементы CRM, но не даёт нам основания обещать, что отдельный заказ удаляется через корзину сделок. Для такого объекта проверьте доступные действия в карточке и порядок отмены в вашем магазине до удаления.</p>
+    <p>Cleaner TrueTell удаляет <strong>лиды и сделки</strong>, но не заявлен как инструмент для отдельной сущности заказа. Он не отменяет платёж или отгрузку. Если после проверки выяснилось, что нужно очистить именно сделки, <a href={cleanerProductPath}>посмотрите возможности приложения</a>; по отдельным заказам сначала согласуйте процесс в исходной системе.</p>
+    <InlineConsultation variant="product" title="Нужно разобрать цепочку заказа?" description="Опишите без персональных данных, где создан заказ, есть ли связанная сделка, оплата и доставка. Поможем определить, что сохранить и какой объект можно удалять." href={companyInfo.contacts.consultationUrl} actionLabel="Обсудить задачу" />
+  </section>
+
+  <FaqSection title="Частые вопросы об удалении заказа в Битрикс24" items={faqItems} variant="article" />
+  <p>Официальная справка Битрикс24 проверена 31 октября 2026 года. Сценарий отдельного заказа старого режима и возврат денег не проверялись на клиентском портале. Перед рабочим удалением сверьте права, настройки корзины и интеграции вашего Битрикс24.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Очистка ошибочных сделок ' }, { text: 'с проверкой списка', accent: true }]} description={cleanerProduct.articleDescription} href={cleanerProductPath} actionLabel={cleanerProduct.articleActionLabel} />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

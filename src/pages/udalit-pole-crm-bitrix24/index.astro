@@ -1,0 +1,103 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { fieldDirectoryProduct, fieldDirectoryProductPath } from '../../config/products';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import settingsImage from '../../images/articles/bitrix24-userfield-code-address-official.jpg';
+import directoryImage from '../../images/articles/truetell-field-directory-custom-live.png';
+
+const article = getArticle('udalit-pole-crm-bitrix24/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const imageAlt = 'Официальный экран настроек пользовательского поля сделки Битрикс24: видны его название, код в адресе и действие «Удалить поле»';
+const ogImage = new URL(settingsImage.src, siteRoot).toString();
+const sourceLinks = [
+  { label: 'Битрикс24: пользовательские поля CRM и порядок удаления', href: 'https://helpdesk.bitrix24.ru/open/22048980/' },
+  { label: 'Битрикс24: код поля и пример экрана настройки', href: 'https://helpdesk.bitrix24.ru/open/24352300/' },
+  { label: 'Битрикс24: настройка карточки и скрытие поля', href: 'https://helpdesk.bitrix24.ru/open/22804914/' },
+  { label: 'Битрикс24: системные поля CRM', href: 'https://helpdesk.bitrix24.ru/open/18478840/' },
+  { label: 'Битрикс24: экспорт данных CRM', href: 'https://helpdesk.bitrix24.ru/open/20966844/' },
+  { label: 'Битрикс24 REST API: событие удаления пользовательского поля сделки', href: 'https://apidocs.bitrix24.ru/api-reference/crm/deals/user-defined-fields/events/on-crm-deal-user-field-delete.html' },
+];
+const choiceRows = [
+  ['Поле мешает в карточке, но данные ещё нужны', 'Скрыть поле в виде карточки', 'Значения сохраняются; поле можно снова показать'],
+  ['Нужно ограничить, кто видит значение', 'Проверить ограничение видимости', 'Опция для пользовательских полей; доступность зависит от тарифа'],
+  ['Поле больше не используется и данные сохранены отдельно', 'Удалить через настройки CRM', 'Поле и его значения будут удалены'],
+];
+const faqItems = [
+  { question: 'Можно ли удалить системное поле CRM?', answer: 'Нет. Системные поля Битрикс24 удалить нельзя. Если поле не нужно в карточке, его можно скрыть в настройках вида.' },
+  { question: 'Удалятся ли значения во всех сделках вместе с пользовательским полем?', answer: 'Да. Официальная справка Битрикс24 прямо предупреждает: при удалении пользовательского поля удаляются и данные, которые в нём были. Поэтому сначала проверьте значения и сохраните нужные отдельно.' },
+  { question: 'Можно ли удалить поле из карточки сделки?', answer: 'В карточке можно изменить настройки или скрыть поле. Для удаления откройте настройки CRM, список пользовательских полей нужного типа элементов и меню нужного поля → «Удалить».' },
+  { question: 'Чем скрытие отличается от удаления поля?', answer: 'Скрытие меняет вид карточки и сохраняет значения. Удаление убирает само пользовательское поле и его значения. Если проблема только в перегруженной карточке, начните со скрытия.' },
+  { question: 'Достаточно ли выгрузить список полей перед удалением?', answer: 'Нет. Список полей сохраняет описание и технические коды, но не значения в сделках или других записях. Если данные нужны, отдельно выгрузите сами элементы CRM с нужным полем и ID, затем проверьте файл.' },
+  { question: 'Может ли справочник TrueTell проверить, что поле нигде не используется?', answer: 'Нет. Справочник показывает описания полей, коды и свойства API и выгружает список в CSV. Он не читает значения в карточках и не доказывает отсутствие зависимостей в роботах, формах, отчётах и интеграциях.' },
+  { question: 'Можно ли после удаления создать поле с тем же названием и вернуть значения?', answer: 'Создание нового поля с тем же названием само по себе не восстанавливает старые значения и связи. До удаления сохраните технический код, данные и список потребителей поля; способ восстановления проверяйте отдельно для вашего портала.' },
+];
+const structuredData = createArticleStructuredData({
+  articleType: 'Article', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() }, { name: title, item: articleUrl }],
+  faqItems,
+});
+---
+<ArticleLayout {title} titleParts={[{ text: 'Как удалить пользовательское поле ' }, { text: 'CRM Битрикс24', accent: true }]} {description}
+  canonicalPath={`/${article.hrefPath}`} {structuredData} ogTitle={article.seoTitle} ogDescription={description}
+  {ogImage} ogImageAlt={imageAlt} category={article.category} author={authorName}
+  intro="Удалить пользовательское поле можно в настройках CRM. Но вместе с ним Битрикс24 удалит значения, которые сотрудники внесли в карточки. Перед действием определите тип поля, сохраните нужные данные и проверьте, кто использует его технический код.">
+  <Fragment slot="quick-answer">
+    <p><strong>Откройте CRM → Настройки → Настройки CRM → Настройки форм и отчётов → Пользовательские поля.</strong> Выберите нужный тип элементов, найдите поле и нажмите Меню (≡) → «Удалить». Для этого нужны права на изменение настроек CRM.</p>
+    <p>Если поле лишь мешает в карточке, скройте его: данные останутся. При удалении пользовательского поля исчезнут и его значения. Системное поле удалить нельзя.</p>
+  </Fragment>
+
+  <p data-article-lead>Например, в сделках осталось поле «Готовность к отправке», которое команда больше не заполняет. Название может совпадать с полем контакта или другого объекта, а интеграция может обращаться к нему по коду UF_CRM. Прежде чем нажать «Удалить», нужно установить, какое это поле и нужны ли его старые значения.</p>
+
+  <section aria-labelledby="choice">
+    <h2 id="choice">Сначала решите: <span data-heading-accent>скрыть или удалить</span></h2>
+    <p>Скрытие меняет вид карточки и сохраняет информацию. Оно подходит, если поле временно не нужно менеджерам или перегружает экран. Удаление убирает пользовательское поле из настроек и удаляет записанные в нём данные. Системные поля можно скрыть, но не удалить. Если дело в доступе к чувствительным сведениям, проверьте настройку видимости пользовательского поля и тариф, а не удаляйте данные ради ограничения экрана.</p>
+    <DataTable label="Выбор действия с полем CRM" columns={['Ситуация', 'Действие', 'Что получится']} rows={choiceRows} rowHeaders />
+  </section>
+
+  <section aria-labelledby="identify">
+    <h2 id="identify">Найдите точное поле <span data-heading-accent>и его код</span></h2>
+    <p>В настройках пользовательских полей выберите сущность: сделки, лиды, контакты, компании или предложения. Найдите поле по названию и откройте его параметры. Запишите тип объекта и технический код, например <code>UF_CRM_1645431691305</code>. Одинаковая подпись не делает два поля одним и тем же. Для команды интеграции или BI важен именно код и объект.</p>
+    <ArticleFigure src={settingsImage} fullSize alt={imageAlt} caption="Подлинный пример из справки Битрикс24: в настройках поля сделки видны его название, код в адресной строке и команда «Удалить поле». Это демонстрационный экран; по нему не нужно удалять поле «Готовность к отправке» на своём портале без проверки значений." />
+    <p>Если полей много, установленный <a href={fieldDirectoryProductPath}>«Справочник полей CRM» TrueTell</a> поможет найти описание по названию или коду, посмотреть тип и выгрузить список полей в CSV. Справочник читает <strong>описания</strong>, а не значения в сделках; это не доказывает, что поле пустое или не используется. Подробнее о кодах — в <a href={`${base}kod-polya-bitrix24/`}>отдельной инструкции</a>.</p>
+  </section>
+
+  <section aria-labelledby="backup">
+    <h2 id="backup">Сохраните значения и <span data-heading-accent>проверьте зависимости</span></h2>
+    <p>В списке соответствующих элементов CRM добавьте нужное поле в таблицу и определите охват выгрузки. Битрикс24 экспортирует только элементы, попавшие в текущий список после фильтра: проверьте воронки, стадии и период, снимите лишние ограничения либо выгрузите все нужные сегменты отдельно. Затем экспортируйте в CSV или Excel. В файл попадут поля, показанные в таблице; есть и опция «Экспортировать все поля». ID элементов выгружается всегда. Нужны права на экспорт для выбранной сущности. После скачивания сверьте число записей, ID и несколько значений нужной колонки. Если полноту не удалось подтвердить, поле пока не удаляйте.</p>
+    <p>Поиск зависимостей — отдельный шаг. Проверьте CRM-формы, роботов и бизнес-процессы, шаблоны документов, отчёты и внешние интеграции, где может использоваться код поля. Справка Битрикс24 подтверждает удаление поля и его данных, но не даёт универсальной автоматической проверки всех этих мест. Согласуйте удаление с владельцами процессов; подробная методика есть в <a href={`${base}audit-poley-crm-bitrix24/`}>аудите полей CRM</a>.</p>
+    <ArticleFigure src={directoryImage} fullSize alt="Реальный экран приложения TrueTell «Справочник полей CRM»: поиск пользовательского поля сделки, его код, тип и кнопка экспорта CSV" caption="Подлинный экран приложения TrueTell с демонстрационного портала. Он показывает поиск описания и кода поля; не показывает значения в сделках и не подтверждает безопасность удаления. Для значений используйте экспорт CRM и проверку файла." />
+    <InlineConsultation variant="product" title="Нужно сверить список полей?" description="Справочник TrueTell помогает найти технический код и свойства поля. Решение об удалении принимайте после проверки значений и зависимостей в своём портале." href={fieldDirectoryProductPath} actionLabel="Посмотреть справочник" />
+  </section>
+
+  <section aria-labelledby="delete">
+    <h2 id="delete">Удалите поле <span data-heading-accent>в настройках CRM</span></h2>
+    <p>Когда код, объект, сохранённые значения и зависимости сверены, откройте <strong>CRM → Настройки → Настройки CRM → Настройки форм и отчётов → Пользовательские поля</strong>. Перейдите к полям нужного типа элементов, найдите запись по названию и коду, затем выберите <strong>Меню (≡) → Удалить</strong>. Не используйте групповое удаление, если проверяли только одно поле: в списке Битрикс24 можно удалить сразу несколько выделенных полей.</p>
+    <p>После действия убедитесь, что поле исчезло из списка и карточки, проверьте связанные формы и автоматизацию, а также тестовую запись в интеграции. Не рассчитывайте, что создание нового поля с прежним названием восстановит удалённые значения или прежний код. Если команда пока не готова к такой проверке, оставьте поле и скройте его в карточке.</p>
+  </section>
+
+  <FaqSection title="Частые вопросы об удалении поля CRM" items={faqItems} variant="article" />
+  <p>Официальная справка Битрикс24 проверена 1 ноября 2026 года. Удаление поля и восстановление его значений не выполнялись на клиентском портале. Доступность настроек и экспорта зависит от прав и тарифа вашего Битрикс24.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Найдите код и свойства поля ' }, { text: 'в справочнике TrueTell', accent: true }]} description={fieldDirectoryProduct.description} href={fieldDirectoryProductPath} actionLabel="Посмотреть справочник" />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

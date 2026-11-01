@@ -1,0 +1,100 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { companyInfo } from '../../config/company';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import setupImage from '../../images/articles/bitrix24-outgoing-webhook-setup-102.png';
+import deliveryImage from '../../images/articles/bitrix24-outgoing-webhook-delivery-102.png';
+
+const article = getArticle('ishodyashchiy-vebhuk-bitrix24/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const firstAlt = 'Редакционная карта настройки исходящего вебхука: адрес обработчика, событие, токен и контрольная сделка';
+const ogImage = new URL(setupImage.src, siteRoot).toString();
+const sourceLinks = [
+  { label: 'Битрикс24: входящие и исходящие вебхуки, настройка и состав события', href: 'https://apidocs.bitrix24.ru/local-integrations/local-webhooks.html' },
+  { label: 'Битрикс24: событие onCrmDealUpdate и поле data.FIELDS.ID', href: 'https://apidocs.bitrix24.ru/api-reference/crm/deals/events/on-crm-deal-update.html' },
+  { label: 'Битрикс24: безопасность в обработчиках и проверка application_token', href: 'https://apidocs.bitrix24.ru/api-reference/events/safe-event-handlers.html' },
+  { label: 'Битрикс24: входящая очередь событий и отсутствие повторной доставки', href: 'https://apidocs.bitrix24.ru/settings/performance/queue.html' },
+  { label: 'Битрикс24: раздел «Разработчикам», интеграции и статистика', href: 'https://helpdesk.bitrix24.ru/open/20886106/' },
+];
+const signalRows = [
+  ['event', 'Код события, например ONCRMDEALUPDATE', 'Проверить, на то ли действие подписан вебхук'],
+  ['data[FIELDS][ID]', 'ID изменённой сделки', 'Найти ту же карточку в CRM; полные поля читать отдельно'],
+  ['auth[member_id]', 'Идентификатор портала', 'Соотнести событие с сохранённым токеном этого портала'],
+  ['auth[application_token]', 'Токен проверки отправителя', 'Сравнить на сервере, не выводить в журнал'],
+];
+const faqItems = [
+  { question: 'Чем исходящий вебхук отличается от входящего?', answer: 'Исходящий вебхук уведомляет ваш обработчик о событии в Битрикс24. Входящий вебхук даёт внешней системе вызвать метод REST API Битрикс24. Если после сигнала нужны полные данные сделки, обработчику потребуется отдельный авторизованный запрос.' },
+  { question: 'Что приходит при изменении сделки?', answer: 'Для ONCRMDEALUPDATE документация показывает POST с кодом события, временем отправки, служебными данными auth и ID сделки в data.FIELDS.ID. Полную карточку из этого уведомления получить нельзя; запросите её через подходящий метод REST при необходимости.' },
+  { question: 'Как проверить, что запрос действительно от Битрикс24?', answer: 'После создания исходящего вебхука сохраните «Токен приложения» на сервере. При получении события сопоставьте auth.member_id с нужным порталом и сравните auth.application_token с сохранённым значением. При несовпадении отклоните запрос. Это проверка токена, а не подписи тела запроса.' },
+  { question: 'Битрикс24 повторит событие, если наш сервер был недоступен?', answer: 'По документации Битрикс24 не отправляет событие повторно, если обработчик не ответил или вернул аварийный HTTP-статус. Поэтому сначала надёжно сохраните принятое событие на своём сервере, а только потом ответьте успехом. Повторную обработку после сбоя своего рабочего процесса организуйте в собственной очереди.' },
+  { question: 'Где посмотреть, дошло ли событие?', answer: 'Начните с журнала приёма на своём сервере: время, код события, ID объекта, итог проверки токена и статус сохранения без секретов. Если записи нет, проверьте публичность HTTPS-адреса, выбранное событие и отклик обработчика на контрольное изменение сделки. Статистика REST в Битрикс24 не заменяет журнал доставки вашего обработчика.' },
+  { question: 'Можно ли указать localhost или адрес внутри сети?', answer: 'Нет. Битрикс24 должен достучаться до обработчика из внешней сети. Укажите публичный HTTPS-адрес с доверенным сертификатом и принимающий POST сервер. Для закрытого контура также проверьте сетевые правила.' },
+];
+const structuredData = createArticleStructuredData({
+  articleType: 'Article', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() }, { name: title, item: articleUrl }],
+  faqItems,
+});
+---
+<ArticleLayout {title} titleParts={[{ text: 'Исходящий вебхук Битрикс24: ' }, { text: 'как получить событие во внешней системе', accent: true }]} {description}
+  canonicalPath={`/${article.hrefPath}`} {structuredData} ogTitle={article.seoTitle} ogDescription={description}
+  {ogImage} ogImageAlt={firstAlt} category={article.category} author={authorName}
+  intro="Исходящий вебхук нужен, когда внешняя система должна узнать об изменении в Битрикс24. Вы выбираете событие и публичный адрес обработчика; Битрикс24 отправляет туда POST. Дальше ваша система проверяет отправителя и решает, нужны ли ей полные данные объекта.">
+  <Fragment slot="quick-answer">
+    <p><strong>Разработчикам → Готовые сценарии → Другое → Исходящий вебхук.</strong> Укажите публичный HTTPS-адрес обработчика, выберите событие и создайте вебхук. Сохраните выданный «Токен приложения» на сервере.</p>
+    <p>Измените тестовую сделку и найдите её ID в журнале приёма вашего сервера. Перед обработкой сравните <code>auth.application_token</code> с сохранённым токеном. Ответ об успешном приёме отправляйте после надёжного сохранения события: автоматической повторной доставки при сбое обработчика Битрикс24 не обещает.</p>
+  </Fragment>
+
+  <p data-article-lead>Например, менеджер обновил сделку, а складская система должна начать проверку заказа. Исходящий вебхук передаст ей сигнал об изменении. Сам по себе сигнал не создаёт заказ в МойСклад и не переносит все поля сделки: дальнейшее действие задаёт ваша интеграция.</p>
+
+  <section aria-labelledby="prepare">
+    <h2 id="prepare">Что подготовить <span data-heading-accent>до создания вебхука</span></h2>
+    <p>Нужен обработчик по публичному HTTPS-адресу, доступный Битрикс24 из интернета и принимающий POST-запросы. Локальный адрес, внутренний IP и самоподписанный сертификат для этого сценария не подходят. Заранее определите, какое изменение должно запускать интеграцию и где ваш сервер запишет факт получения.</p>
+    <ArticleFigure src={setupImage} fullSize portrait alt={firstAlt} caption="Редакционная карта по официальной документации Битрикс24. Она показывает подготовку и путь в разделе «Разработчикам», но не воспроизводит экран портала. Данные для теста — отдельная контрольная сделка без клиентских сведений." />
+    <p>В разделе <strong>«Разработчикам → Готовые сценарии → Другое → Исходящий вебхук»</strong> укажите адрес обработчика и выберите событие. Для проверки изменения сделки подойдёт <code>ONCRMDEALUPDATE</code>. После создания Битрикс24 покажет «Токен приложения»: сохраните его в защищённом серверном хранилище. В форму сайта, клиентский JavaScript и скриншоты токен не переносите.</p>
+    <p>Если пункт создания недоступен, проверьте право пользователя и условия доступа к вебхукам в вашем Битрикс24. Справка Битрикс24 указывает на подписку BitrixGPT + Маркетплейс для создания вебхуков; на деморежиме исходящий вебхук недоступен, а коробочной версии нужна активная лицензия. Вкладка «Интеграции» показывает созданные вебхуки, выбранные события и владельца.</p>
+  </section>
+
+  <section aria-labelledby="payload">
+    <h2 id="payload">Что получает <span data-heading-accent>внешняя система</span></h2>
+    <p>Битрикс24 отправляет параметры события POST-запросом с типом <code>application/x-www-form-urlencoded</code>. В примере <code>ONCRMDEALUPDATE</code> сырой ключ формы <code>data[FIELDS][ID]</code> содержит ID обновлённой сделки; после разбора формы его обычно читают как <code>data.FIELDS.ID</code>. Аналогично передаются ключи <code>auth[member_id]</code> и <code>auth[application_token]</code>. Дату отправки передаёт <code>ts</code>. Полной карточки и списка изменённых полей в событии нет: если они нужны, обработчик после проверки запроса получает сделку отдельным авторизованным вызовом REST.</p>
+    <DataTable label="Поля события при обновлении сделки" columns={['Поле', 'Смысл', 'Проверка']} rows={signalRows} rowHeaders />
+    <p>После разбора формы <code>auth.application_token</code> — общий секрет для проверки источника, а не криптографическая подпись тела запроса. Сопоставляйте токен с нужным порталом по <code>auth.member_id</code>. Не записывайте секрет в обычный журнал. Если токен не совпал, не выполняйте бизнес-действие и верните отказ.</p>
+  </section>
+
+  <section aria-labelledby="verify">
+    <h2 id="verify">Как проверить доставку <span data-heading-accent>на одной сделке</span></h2>
+    <p>Создайте или выберите безопасную тестовую карточку. Запишите её ID и время проверки, измените одно несекретное поле и сохраните. На своём сервере найдите запрос с событием <code>ONCRMDEALUPDATE</code> и тем же <code>data.FIELDS.ID</code>. Сравните токен, убедитесь, что запрос надёжно сохранён, и проверьте итог действия во внешней системе. Если действие должно выполняться только при определённой стадии или значении поля, после чтения полной карточки проверьте это условие: одно уведомление <code>ONCRMDEALUPDATE</code> не сообщает, какое поле изменилось.</p>
+    <ArticleFigure src={deliveryImage} fullSize portrait alt="Редакционная схема: событие с ID сделки, проверка токена, сохранение запроса и успешный ответ обработчика" caption="Редакционная схема приёма по документации Битрикс24. Она не изображает интерфейс CRM или готовую интеграцию TrueTell. Секрет в журналах не сохраняют; повторную обработку после сбоя собственного процесса организуют на своей стороне." />
+    <p>Тяжёлую обработку лучше выполнять после приёма: сначала поместить проверенное событие в надёжный журнал или очередь, затем ответить Битрикс24 успехом. Документация прямо предупреждает, что при отсутствии ответа или аварийном HTTP-статусе Битрикс24 не отправляет событие повторно. Внутренний рабочий процесс может повторно взять сохранённый запрос после сбоя, поэтому его действие должно выдерживать повторную обработку без дублирования заказа.</p>
+  </section>
+
+  <section aria-labelledby="troubleshoot">
+    <h2 id="troubleshoot">Если событие <span data-heading-accent>не дошло</span></h2>
+    <p>Если в журнале приёма нет запроса, начните с адреса: он должен открываться из внешней сети по HTTPS, принимать POST и отвечать сервером обработчика. Затем проверьте, тот ли вебхук сохранён, выбран ли нужный код события и произошло ли контрольное изменение. Для коробочного Битрикс24 дополнительно проверьте необходимые сетевые доступы.</p>
+    <p>Если запрос есть, но внешняя система не изменилась, смотрите результат проверки токена, сохранение события, состояние своей очереди и ошибку последующего вызова REST. Статистика раздела «Разработчикам» помогает оценить REST-запросы и нагрузку, но не заменяет ваш журнал приёма событий. Список интеграций подтверждает настройку вебхука, но не приём события вашим сервером.</p>
+    <p>Для двустороннего обмена может понадобиться <a href="/vhodyashchiy-vebhuk-bitrix24/">входящий вебхук</a> или приложение с OAuth 2.0. Если ваша цель — перенести данные из CRM в МойСклад, сначала зафиксируйте событие, поля и правило сопоставления записей; общий разбор есть в статье <a href="/bitrix24-moysklad-integraciya/">об интеграции Битрикс24 и МоегоСклада</a>.</p>
+    <InlineConsultation title="Нужно связать событие CRM с внешней системой?" description="Опишите, какое событие должно что запускать, и покажите обезличенную запись журнала без токена. Поможем определить проверку приёма и восстановление после сбоя." />
+  </section>
+
+  <FaqSection title="Частые вопросы об исходящем вебхуке Битрикс24" items={faqItems} variant="article" />
+  <p>Официальная документация Битрикс24 проверена 1 ноября 2026 года. Схемы составлены редакцией по документации; создание вебхука и доставка на клиентском портале для этой статьи не тестировались.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end"><RelatedArticles items={relatedArticles} /></Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

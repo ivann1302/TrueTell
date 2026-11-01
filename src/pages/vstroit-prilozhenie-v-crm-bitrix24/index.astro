@@ -1,0 +1,107 @@
+---
+import ArticleLayout from '../../components/editorial/article-layout.astro';
+import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ArticleSources from '../../components/editorial/article-sources.astro';
+import ArticleProductCta from '../../components/editorial/article-product-cta.astro';
+import DataTable from '../../components/editorial/data-table.astro';
+import InlineConsultation from '../../components/editorial/inline-consultation.astro';
+import RelatedArticles from '../../components/editorial/related-articles.astro';
+import FaqSection from '../../sections/faq-section/faq-section.astro';
+import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
+import { getArticle, getRelatedArticles } from '../../config/articles';
+import { fieldDirectoryProductPath } from '../../config/products';
+import { companyInfo } from '../../config/company';
+import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
+import placementImage from '../../images/articles/bitrix24-placement-choice-103.png';
+import fieldDirectoryImage from '../../images/articles/truetell-field-directory-code-search-live.jpg';
+
+const article = getArticle('vstroit-prilozhenie-v-crm-bitrix24/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).toString();
+const authorName = companyInfo.editorial.defaultAuthor;
+const relatedArticles = getRelatedArticles(article.hrefPath).map(item => ({ ...item, description: item.summaryDescription ?? item.description, href: `${base}${item.hrefPath}` }));
+const firstAlt = 'Три точки встраивания приложения Битрикс24: вкладка сделки, меню карточки и раздел приложения';
+const ogImage = new URL(placementImage.src, siteRoot).toString();
+const sourceLinks = [
+  { label: 'Битрикс24: механизм встраивания виджетов, права и работа во фрейме', href: 'https://apidocs.bitrix24.ru/api-reference/widgets/' },
+  { label: 'Битрикс24: вкладка в карточке CRM, коды и контекст открытия', href: 'https://apidocs.bitrix24.ru/api-reference/widgets/crm/detail-tab.html' },
+  { label: 'Битрикс24: пункт меню верхней кнопки карточки сделки', href: 'https://apidocs.bitrix24.ru/api-reference/widgets/crm/detail-toolbar.html' },
+  { label: 'Битрикс24: пример регистрации и проверки вкладки сделки', href: 'https://apidocs.bitrix24.ru/tutorials/crm/crm-widgets/widget-as-detail-tab.html' },
+  { label: 'Битрикс24: placement.bind и требование контекста приложения', href: 'https://apidocs.bitrix24.ru/api-reference/widgets/placement-bind.html' },
+  { label: 'Битрикс24: placement.get для проверки регистрации', href: 'https://apidocs.bitrix24.ru/api-reference/widgets/placement-get.html' },
+  { label: 'Битрикс24: пункт приложения в главном меню LEFT_MENU', href: 'https://apidocs.bitrix24.ru/api-reference/widgets/left-menu.html' },
+];
+const registrationRows = [
+  ['PLACEMENT', 'CRM_DEAL_DETAIL_TAB', 'Вкладка в карточке сделки'],
+  ['HANDLER', 'Публичный HTTPS-адрес страницы приложения', 'Битрикс24 откроет эту страницу во фрейме'],
+  ['TITLE', 'Короткое понятное название вкладки', 'Сотрудник увидит его в ряду вкладок или под «Ещё»'],
+];
+const faqItems = [
+  { question: 'Можно ли добавить вкладку сделки одним входящим вебхуком?', answer: 'Нет. placement.bind работает в контексте приложения; вызов через входящий вебхук возвращает WRONG_AUTH_TYPE. Сначала нужно приложение с правами на размещение виджета.' },
+  { question: 'Какая точка встраивания нужна для вкладки сделки?', answer: 'Для вкладки карточки сделки используйте CRM_DEAL_DETAIL_TAB. При регистрации приложение передаёт этот код как PLACEMENT, адрес своей страницы как HANDLER и название вкладки как TITLE.' },
+  { question: 'Получит ли вкладка все поля сделки автоматически?', answer: 'Нет. При открытии Битрикс24 передаёт контекст, в том числе ID сделки в PLACEMENT_OPTIONS. Если приложению нужны поля, оно отдельно вызывает crm.item.get с entityTypeId=2 и правами пользователя, открывшего вкладку.' },
+  { question: 'Почему вкладка зарегистрирована, но её не видно?', answer: 'Проверьте, завершена ли установка приложения и открыт ли к нему доступ сотруднику. Затем ищите вкладку под «Ещё», если ряд вкладок переполнен. Регистрацию и адрес обработчика проверьте методом placement.get.' },
+  { question: 'Чем вкладка отличается от пункта в левом меню?', answer: 'Вкладка открывается внутри конкретной карточки и получает её ID. LEFT_MENU открывает общий экран приложения в главном меню; его выбирают для справочника, панели или отчёта, который не начинается с одной сделки.' },
+  { question: 'Что делать, если вместо приложения пустая область?', answer: 'Проверьте доступность HTTPS-адреса обработчика, его ответ на POST и заголовки X-Frame-Options и Content-Security-Policy. Если они запрещают показ страницы во фрейме Битрикс24, виджет не появится, даже когда регистрация успешна.' },
+];
+const structuredData = createArticleStructuredData({
+  articleType: 'Article', title, description, articleUrl,
+  publishedDate: article.publishedAt, modifiedDate: article.updatedAt,
+  publisherUrl: siteRoot.toString(), author: authorName, image: ogImage,
+  breadcrumbs: [{ name: 'Главная', item: siteRoot.toString() }, { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).toString() }, { name: title, item: articleUrl }],
+  faqItems,
+});
+---
+<ArticleLayout {title} titleParts={[{ text: 'Как встроить приложение ' }, { text: 'в карточку CRM Битрикс24', accent: true }]} {description}
+  canonicalPath={`/${article.hrefPath}`} {structuredData} ogTitle={article.seoTitle} ogDescription={description}
+  {ogImage} ogImageAlt={firstAlt} category={article.category} author={authorName}
+  intro="Приложение можно открыть прямо в карточке сделки: добавить вкладку с данными или действие в меню карточки. Для общего справочника и настроек удобнее отдельный пункт приложения. Место показа выбирают до разработки экрана, поскольку от него зависит контекст, который получит приложение.">
+  <Fragment slot="quick-answer">
+    <p>Для вкладки сделки нужен код <code>CRM_DEAL_DETAIL_TAB</code>. Приложение с правами <code>placement</code> и <code>crm</code> регистрирует публичный HTTPS-обработчик методом <code>placement.bind</code>. После завершения установки откройте сделку и проверьте вкладку, при необходимости — под «Ещё».</p>
+    <p>При открытии вкладки Битрикс24 передаёт ID сделки в <code>PLACEMENT_OPTIONS</code>. Поля сделки приложение запрашивает отдельно через REST с правами текущего пользователя. Входящий вебхук не может зарегистрировать эту точку встраивания.</p>
+  </Fragment>
+
+  <p data-article-lead>Менеджеру нужно видеть в сделке результат проверки поставки. Если вынести его в отдельный отчёт, придётся снова искать заказ. Вкладка позволяет показать связанный экран рядом с данными сделки: приложение получает ID текущей карточки и загружает нужную информацию. Связь со складом для такого сценария разрабатывают отдельно.</p>
+
+  <section aria-labelledby="choose-place">
+    <h2 id="choose-place">Выберите место <span data-heading-accent>по задаче сотрудника</span></h2>
+    <p>Вкладка <code>CRM_DEAL_DETAIL_TAB</code> подходит, когда экран нужен во время работы с одной сделкой. Пункт <code>CRM_DEAL_DETAIL_TOOLBAR</code> добавляет действие в меню верхней кнопки карточки сделки. Для общего раздела с настройками, справочником или отчётом есть <code>LEFT_MENU</code>. Это разные точки встраивания: пункт в левом меню не превращает экран в вкладку сделки.</p>
+    <ArticleFigure src={placementImage} fullSize portrait alt={firstAlt} caption="Редакционное сравнение точек встраивания по документации Битрикс24. Схема показывает назначение мест, а не экран портала или готовые возможности одного приложения." />
+    <p>Если требуется лишь узнать код поля или просмотреть данные CRM, сначала проверьте, достаточно ли штатного экрана или <a href="/api-bitrix24/">обычного запроса к API Битрикс24</a>. Встраивание имеет смысл, когда сотрудник должен выполнять действие в привычном месте и без повторного поиска карточки.</p>
+  </section>
+
+  <section aria-labelledby="register-tab">
+    <h2 id="register-tab">Как приложение <span data-heading-accent>добавляет вкладку сделки</span></h2>
+    <p>Разработчик готовит страницу обработчика, доступную Битрикс24 по публичному HTTPS-адресу и разрешённую для открытия во фрейме. Для регистрации вкладки CRM приложению нужны права <code>placement</code> и <code>crm</code>; право <code>crm</code> также понадобится для чтения сделки. <code>placement.bind</code> вызывает администратор или сотрудник с разрешением создавать приложения для всех в рамках локального приложения. Вызов идёт из контекста приложения: <a href="/vhodyashchiy-vebhuk-bitrix24/">входящий вебхук</a> вернёт <code>WRONG_AUTH_TYPE</code>.</p>
+    <DataTable label="Параметры регистрации вкладки сделки" columns={['Параметр', 'Что указать', 'Результат']} rows={registrationRows} rowHeaders />
+    <p>Официальный пример регистрирует вкладку при установке приложения и завершает установку после настройки. Успешный ответ <code>placement.bind</code> сам по себе ещё не означает, что вкладка уже видна сотрудникам. Сначала подтвердите завершение установки и доступ пользователя к приложению.</p>
+  </section>
+
+  <section aria-labelledby="read-context">
+    <h2 id="read-context">Что происходит <span data-heading-accent>при открытии вкладки</span></h2>
+    <p>Битрикс24 отправляет обработчику POST-запрос и открывает полученную страницу во фрейме. Сначала обработчик сверяет <code>APPLICATION_TOKEN</code> с сохранённым при установке значением для этого портала; токен нельзя записывать в общий журнал. Для вкладки сделки в <code>PLACEMENT_OPTIONS</code> приходит JSON-строка с <code>ID</code> текущей сделки. После проверки запроса обработчик разбирает её и проверяет ID, затем приложение может вызвать <code>crm.item.get</code> с <code>entityTypeId=2</code>. Одного ID недостаточно, чтобы обойти права CRM: метод возвращает данные в рамках доступа пользователя.</p>
+    <p>Приложение TrueTell <a href={fieldDirectoryProductPath}>«Поля CRM — поиск кодов и экспорт»</a> служит реальным примером. В его коде предусмотрены вкладки сделок, лидов, контактов и компаний: при открытии выбирается соответствующий тип полей. Снимок ниже показывает рабочий экран приложения с поиском технического кода поля. Он не показывает всю карточку Битрикс24 и не подтверждает работу вкладки на каждом клиентском портале.</p>
+    <ArticleFigure src={fieldDirectoryImage} fullSize alt="Реальный экран приложения TrueTell «Поля CRM»: поиск поля по техническому коду и найденная строка" caption="Снимок установленного приложения TrueTell на тестовом портале: результат поиска поля по коду. Рамка карточки сделки и её вкладки в кадр не вошли. Название и код поля показаны с тестового портала; данных клиентов в кадре нет." />
+    <p>Страница виджета должна разрешать показ во фрейме Битрикс24. Если сервер отдаёт запрещающие <code>X-Frame-Options</code> или <code>Content-Security-Policy</code>, сотрудник увидит пустую область даже при верной регистрации.</p>
+  </section>
+
+  <section aria-labelledby="test-tab">
+    <h2 id="test-tab">Как проверить вкладку <span data-heading-accent>на тестовом портале</span></h2>
+    <p>Сначала проверьте через <code>placement.get</code>, что приложение зарегистрировало нужный код точки и правильный адрес обработчика. Убедитесь, что установка завершена. Затем войдите под сотрудником, которому доступно приложение и разрешено читать контрольную сделку, откройте карточку и найдите вкладку. Если её не видно в ряду, загляните под «Ещё».</p>
+    <p>Откройте две разные контрольные сделки и убедитесь, что виджет показывает данные именно той карточки, из которой запущен. Повторите проверку под пользователем с более узкими правами. Если он видит вкладку, но не данные, разделите проблему доступа к приложению и отказ REST в чтении сделки. Токены авторизации и данные клиентов в диагностические снимки и общий журнал не переносите.</p>
+    <InlineConsultation title="Нужен экран прямо в карточке CRM?" description="Опишите, что должен видеть сотрудник, в какой карточке и какое действие выполнять. Поможем выбрать точку встраивания и проверить права на тестовом портале." />
+  </section>
+
+  <FaqSection title="Частые вопросы о встраивании приложения в CRM" items={faqItems} variant="article" />
+  <p>Документация Битрикс24 проверена 1 ноября 2026 года. Порядок регистрации и набор точек сверены с официальными материалами; новую вкладку в клиентском портале для этой статьи не устанавливали. Возможности примера TrueTell проверены по коду приложения и существующему снимку тестового портала.</p>
+  <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />
+  <Fragment slot="article-end">
+    <ArticleProductCta titleParts={[{ text: 'Найдите коды и свойства ' }, { text: 'полей CRM', accent: true }]}
+      description="Справочник полей TrueTell открывается в Битрикс24 и помогает найти технический код, тип и свойства поля. На странице продукта — возможности приложения и условия подключения."
+      href={fieldDirectoryProductPath} actionLabel="Посмотреть приложение" />
+    <RelatedArticles items={relatedArticles} />
+  </Fragment>
+  <ConsultationCtaSection slot="after-article" />
+</ArticleLayout>

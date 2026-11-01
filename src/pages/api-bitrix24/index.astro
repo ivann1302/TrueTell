@@ -79,6 +79,7 @@ const structuredData = createArticleStructuredData({
     <DataTable label="Сравнение способов доступа к REST API Битрикс24" columns={['Ситуация', 'Способ', 'Что учесть']} rows={accessRows} rowHeaders />
     <ArticleFigure src={accessImage} fullSize portrait alt={firstAlt} caption="Редакционная схема выбора авторизации по масштабу интеграции. Условия конкретного метода и тарифа проверяются отдельно; это не экран Битрикс24." />
     <p>Входящий вебхук вызывает метод API. Исходящий вебхук решает другую задачу: Битрикс24 отправляет событие внешнему обработчику. Смешение направлений часто приводит к неверному выбору инструмента.</p>
+    <p>Когда сотруднику нужен экран приложения прямо в карточке сделки, проверьте <a href={`${base}vstroit-prilozhenie-v-crm-bitrix24/`}>точки встраивания в CRM</a> и права для вкладки.</p>
   </section>
 
   <section aria-labelledby="api-first">

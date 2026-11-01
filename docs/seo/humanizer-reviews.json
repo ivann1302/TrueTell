@@ -32,9 +32,9 @@
     },
     "audit-poley-crm-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-25",
-      "report": "docs/seo/publications/humanizer-articles-reviewed-2026-10-25.md",
-      "fingerprint": "598778581a614e9425648f63aa11ec871d3b65c875d3109f706f01d8dcf15eb2"
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "cee6d05f960b6b4c90cd0c93d263b013777b2ffe7efbf053487022831eb5c6c4"
     },
     "karta-sootvetstviya-poley-bitrix24/": {
       "skill": "humanizer",
@@ -158,9 +158,9 @@
     },
     "otchety-po-prodazham-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-29",
-      "report": "docs/seo/publications/humanizer-abc-product-rename-2026-10-29.md",
-      "fingerprint": "a022d47882e1d59d67fde19b8c59abf98bbc021174cba483bcb22f0cdeb3b1aa"
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "2cbadb6295482491041996847df00cc4c8a8ce32dce8597c4f71483e15ac7c3f"
     },
     "ostatki-moysklad/": {
       "skill": "humanizer",
@@ -290,9 +290,9 @@
     },
     "udalennye-sdelki-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-27",
-      "report": "docs/seo/publications/seo089-prepared-104-2026-10-27.md",
-      "fingerprint": "848e718eb0e8e8a19f21b131e3077235ca6be051d93d00a2b7a4048a0e49d4aa"
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "663f2f9a3e1b4162b10800901b2bfbb34761e8ddd94a10ec853d7929aabde43d"
     },
     "rezervnaya-kopiya-bitrix24/": {
       "skill": "humanizer",
@@ -314,9 +314,9 @@
     },
     "udalit-tovar-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-29",
-      "report": "docs/seo/publications/humanizer-abc-product-rename-2026-10-29.md",
-      "fingerprint": "09e792a045689239b7058524c59792ae07c4a772123c9f7faa5308c94b77eab8"
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "d3618891269eca767ae669cbc90c16766f0fec1e4bfdaa691774ddd5d739b2ff"
     },
     "chto-takoe-mcp/": {
       "skill": "humanizer",
@@ -356,15 +356,15 @@
     },
     "api-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-30",
-      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
-      "fingerprint": "5972b49d1f3ac39f9b7d48bf7f8b9f905a9f46dfa51acca2b95a2ee17e103567"
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "5df8b2c32422d330e6ef8674a0140a73f7eed40d0f21d7314581460a1f0ff989"
     },
     "vhodyashchiy-vebhuk-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-30",
-      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
-      "fingerprint": "1cca87d38394a08010414e58bca3672a6100d8fbaa6341ff15fd0faf5f9698f3"
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "382f5743d7d1d570a23d87c374c46a08144b42c40f5c0de3861583ae0cd469fe"
     },
     "mcp-server-bitrix24-vybor/": {
       "skill": "humanizer",
@@ -410,9 +410,9 @@
     },
     "ne-tot-otvetstvennyy-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-31",
-      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
-      "fingerprint": "0272f599e3a263630fd146f2a1d94c11c9c3a88e5e327096f057994960bce166"
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "70e393777fbeba2c4c00be7f76a1cd8724eacfb1e80d2785e41b9117d490c5ea"
     },
     "sdelki-bez-del-bitrix24/": {
       "skill": "humanizer",
@@ -446,9 +446,9 @@
     },
     "dve-voronki-bitrix24-nastroyka/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-31",
-      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
-      "fingerprint": "3192ebed720aac0efa03181780d0d77be7ece6f2dec36ceb06108bb4d30a5533"
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "58e778af9da2af0c1b70a6ca9fcad43084e028d524287105c5155b7cba7c4dd5"
     },
     "obyazatelnye-polya-crm-bitrix24/": {
       "skill": "humanizer",
@@ -494,15 +494,75 @@
     },
     "audit-avtomatizacii-bitrix24/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-31",
-      "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
-      "fingerprint": "8476bdd60de28b9a0031013164a312d20670f1b18c03c69d51daf28a29be5bc7"
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "c2536aca651e3274651fca751f8fc9b3ada2f6318270895f1c9577627660e4cd"
     },
     "ostanovit-biznes-process-bitrix24/": {
       "skill": "humanizer",
       "reviewedAt": "2026-10-31",
       "report": "docs/seo/publications/articles-release-141-2026-10-31.md",
       "fingerprint": "2858bff42d03e061359b1a9021600449c6c767160b4132da03ea67a6a6639425"
+    },
+    "roboty-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "3bb4c77a8031e485e26a8fa52d5ad6c70ac60859c39c532b78c60433ab06c0d0"
+    },
+    "biznes-processy-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "8b08b99cbede8928e95cc42ed6204bf7e74de5e72d63bb6cf784e8bd4301b8e9"
+    },
+    "udalit-zakaz-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "c4331d9d44540e3069eb2f8e6b5998a25ee757358a773425b0cf39a8038da005"
+    },
+    "udalit-pole-crm-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "74634e3031459a42974da5678d83f32957798a6e0d8c51940ebf41bf3ee2d700"
+    },
+    "udalit-voronku-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "7ffbe843a559344bad8b627a2464355de09c0208205757b9dbb11ef9957b3d25"
+    },
+    "istoriya-izmeneniy-crm-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "02ecc3d64d1281b4ec67a48ef8cc157747d13771284f5a58df5d3c903bf998de"
+    },
+    "tovary-v-sdelke-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "5a180d8cddf693db0f6c6e69c7b98700e6d02fac07a5be09142b47a893cd62b3"
+    },
+    "otchet-po-tovaram-v-sdelkah-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "61ecc19e71d7de0dc804b3205580dbb4b0bb6cbaad2416102ad05b14078cb286"
+    },
+    "ishodyashchiy-vebhuk-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "233321d7c7b85e6d0e98e1a73c472c922899004ccf0e0fd05073d8bd686d4b48"
+    },
+    "vstroit-prilozhenie-v-crm-bitrix24/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-11-01",
+      "report": "docs/seo/publications/articles-release-155-prepared-2026-11-01.md",
+      "fingerprint": "589c81d38d7af436ae13239655c1859515a64bd53fa527c10f301a25f330c79d"
     }
   }
 }

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="620" viewBox="0 0 920 620" role="img" aria-labelledby="title desc">
+  <title id="title">Что проверить после запуска робота</title>
+  <desc id="desc">Таблица проверки учебного сценария: переход сделки на стадию, запись робота в логе, задача в таймлайне, исполнитель и крайний срок в открытой задаче.</desc>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="24" y="48" font-size="27" font-weight="700" fill="#101621">Проверка после перехода сделки</text>
+    <text x="24" y="82" font-size="18" fill="#616875">Запишите фактический результат рядом с ожидаемым</text>
+    <rect x="24" y="113" width="872" height="474" rx="16" fill="#fff" stroke="#d3d7de" stroke-width="2"/>
+    <rect x="24" y="113" width="872" height="70" rx="16" fill="#eef5ff"/>
+    <path d="M24 166 H896" stroke="#d3d7de" stroke-width="2"/>
+    <text x="51" y="155" font-size="19" font-weight="700" fill="#1765da">ПРОВЕРКА</text>
+    <text x="405" y="155" font-size="19" font-weight="700" fill="#1765da">ОЖИДАЕМЫЙ РЕЗУЛЬТАТ</text>
+    <path d="M376 183 V587 M24 264 H896 M24 345 H896 M24 426 H896 M24 507 H896" stroke="#e3e6eb" stroke-width="2"/>
+    <text x="51" y="229" font-size="21" font-weight="700" fill="#101621">Сделка</text>
+    <text x="405" y="229" font-size="21" fill="#263447">Перешла на «КП готово»</text>
+    <text x="51" y="310" font-size="21" font-weight="700" fill="#101621">Лог отладчика</text>
+    <text x="405" y="310" font-size="21" fill="#263447">Робот выполнил действие</text>
+    <text x="51" y="391" font-size="21" font-weight="700" fill="#101621">Таймлайн сделки</text>
+    <text x="405" y="391" font-size="21" fill="#263447">Появилась связанная задача</text>
+    <text x="51" y="472" font-size="21" font-weight="700" fill="#101621">Исполнитель</text>
+    <text x="405" y="472" font-size="21" fill="#263447">Выбранный руководитель</text>
+    <text x="51" y="553" font-size="21" font-weight="700" fill="#101621">Крайний срок</text>
+    <text x="405" y="553" font-size="21" fill="#263447">Дата в созданной задаче</text>
+  </g>
+</svg>
