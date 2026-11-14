@@ -9,12 +9,13 @@ interface Props {
   caption?: string;
   eager?: boolean;
   fullSize?: boolean;
+  hideExpandHint?: boolean;
   dark?: boolean;
   compact?: boolean;
   portrait?: boolean;
 }
 
-const { src, alt, caption, eager = false, fullSize = false, dark = false, compact = false, portrait = false } = Astro.props;
+const { src, alt, caption, eager = false, fullSize = false, hideExpandHint = false, dark = false, compact = false, portrait = false } = Astro.props;
 const widths = compact ? [320, 640] : [480, 800, 1280];
 const sizes = compact ? '(max-width: 352px) calc(100vw - 32px), 320px' : portrait ? '(max-width: 512px) calc(100vw - 32px), 480px' : '(max-width: 768px) calc(100vw - 32px), (max-width: 944px) calc(100vw - 64px), 880px';
 ---
@@ -23,7 +24,7 @@ const sizes = compact ? '(max-width: 352px) calc(100vw - 32px), 320px' : portrai
   {fullSize ? (
     <a class={styles.preview} href={src.src} target="_blank" rel="noopener noreferrer" aria-label={`${alt}: открыть в полном размере — новая вкладка`}>
       <Image src={src} alt={alt} {widths} {sizes} format="webp" loading={eager ? 'eager' : 'lazy'} />
-      <span class={styles.expandHint} aria-hidden="true">Открыть в полном размере ↗</span>
+      {!hideExpandHint && <span class={styles.expandHint} aria-hidden="true">Открыть в полном размере ↗</span>}
     </a>
   ) : <Image src={src} alt={alt} {widths} {sizes} format="webp" loading={eager ? 'eager' : 'lazy'} />}
   {caption && <figcaption>{caption}</figcaption>}

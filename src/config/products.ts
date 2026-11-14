@@ -26,6 +26,21 @@ export const moyskladOperationsProduct = {
   connectionActionLabel: 'Узнать о подключении',
 } as const;
 
+export const moyskladMcpProductPath = '/moysklad-mcp/';
+
+export const moyskladMcpProduct = {
+  name: 'МойСклад MCP от TrueTell',
+  heading: 'Задавайте ИИ вопросы о вашем МоемСкладе',
+  description:
+    'Подключите ИИ к МоемуСкладу через MCP TrueTell. Ищите товары, проверяйте остатки и сравнивайте продажи в ChatGPT, Claude, Cursor или другом MCP-клиенте.',
+  catalogDescription:
+    'Товары, остатки, заказы и отчёты по данным МоегоСклада в ИИ-ассистенте.',
+  marketplaceUrl: null as string | null,
+  published: false as boolean,
+  trialDays: 14,
+  monthlyPrice: 800,
+} as const;
+
 export const cleanerProduct = {
   name: 'Массовое удаление лидов и сделок в Битрикс24',
   description:

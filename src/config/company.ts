@@ -16,6 +16,10 @@ export const companyInfo = {
   },
   contacts: {
     email: 'truetell@bk.ru',
+    moyskladMcpSupport: {
+      email: 'truetell1@yandex.ru',
+      telegramUrl: 'https://t.me/truetell1',
+    },
     productRatingSupportEmail: 'ivann97n@gmail.com',
     phone: {
       display: '+7 (993) 280-64-41',

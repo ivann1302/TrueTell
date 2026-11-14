@@ -1,5 +1,5 @@
 ---
-import { fieldDirectoryProduct, fieldDirectoryProductPath, cleanerProduct, cleanerProductPath, moyskladOperationsProduct, moyskladOperationsProductPath, productRating, productRatingPath } from '../../config/products';
+import { fieldDirectoryProduct, fieldDirectoryProductPath, cleanerProduct, cleanerProductPath, moyskladOperationsProduct, moyskladOperationsProductPath, moyskladMcpProduct, moyskladMcpProductPath, productRating, productRatingPath } from '../../config/products';
 import styles from './product-catalog-section.module.scss';
 
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
@@ -20,6 +20,12 @@ const products = [
     action: 'Посмотреть приложение',
     href: moyskladOperationsProductPath,
   },
+  ...(moyskladMcpProduct.published ? [{
+    title: moyskladMcpProduct.name,
+    description: moyskladMcpProduct.catalogDescription,
+    action: 'Посмотреть приложение',
+    href: moyskladMcpProductPath,
+  }] : []),
   {
     title: cleanerProduct.name,
     description: cleanerProduct.catalogDescription,

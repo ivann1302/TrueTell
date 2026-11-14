@@ -1,0 +1,188 @@
+/* Hallmark v2.0.0 | shape: product walkthrough | theme: TrueTell design system | nav: shared | footer: shared | signature: product in use */
+/* Product screenshots carry the examples, and shared site components set the visual hierarchy. */
+.page.page {
+  background: var(--bg);
+  text-align: left;
+}
+
+.container {
+  width: min(calc(100% - 64px), 1240px);
+  margin-inline: auto;
+}
+
+.page h1,
+.page h2,
+.contact h2 {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.page h2 {
+  margin: 0;
+  font-size: clamp(1.75rem, 2.8vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: var(--secondary-blue);
+  color: var(--white);
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover,
+  &:active { background: var(--primary-blue); }
+
+  &:disabled {
+    background: var(--surface-subtle);
+    color: var(--text-secondary);
+    font: inherit;
+    font-weight: 500;
+    border: 0;
+  }
+}
+
+.page a:focus-visible,
+.contact a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.section {
+  margin-top: var(--section-gap);
+}
+
+.section p,
+.setup li {
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.section p a {
+  color: var(--primary-blue);
+  text-underline-offset: 3px;
+}
+
+.setupLink {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.clientNote {
+  max-width: 74ch;
+  margin: 16px 0 24px;
+}
+
+.clientDiagram {
+  margin: 0;
+
+  picture,
+  img {
+    display: block;
+    width: 100%;
+  }
+
+  img { height: auto; }
+}
+
+.clientDocs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--primary-blue);
+    text-underline-offset: 3px;
+  }
+}
+
+.questions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 64px;
+  margin: 32px 0 0;
+
+  > div {
+    padding-block: 20px 0;
+    border-top: 1px solid var(--surface-subtle);
+  }
+
+  dt { font-size: 1.125rem; font-weight: 500; }
+  dd { margin: 8px 0 0; line-height: 1.65; }
+}
+
+.note {
+  max-width: 65ch;
+  margin: 32px 0 0;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 24px 64px;
+  align-items: start;
+}
+
+.setup {
+  margin: 24px 0;
+  padding-inline-start: 1.35em;
+
+  li + li { margin-top: 16px; }
+  strong { color: var(--black); font-weight: 600; }
+}
+
+.pricePanel p { margin: 16px 0 0; }
+.pricePanel .price { margin-top: 0; }
+.price strong {
+  color: var(--black);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.connection,
+.marketplace {
+  scroll-margin-top: 112px;
+}
+
+.marketplace {
+  align-items: center;
+
+  p { margin: 0 0 16px; }
+}
+
+.contact {
+  display: grid;
+
+  img { justify-self: center; border-radius: 10px; }
+  .button { margin: 24px 0; }
+  .support + .support { margin-top: 8px; }
+}
+
+@media (max-width: 1000px) {
+  .split,
+  .questions { column-gap: 32px; }
+}
+
+@media (max-width: 768px) {
+  .container { width: calc(100% - 32px); }
+  .clientDiagram { width: min(100%, 480px); margin-inline: auto; }
+  .split,
+  .questions { grid-template-columns: minmax(0, 1fr); }
+}
