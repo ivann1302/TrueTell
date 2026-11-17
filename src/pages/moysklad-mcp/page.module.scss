@@ -146,15 +146,8 @@
   strong { color: var(--black); font-weight: 600; }
 }
 
-.pricePanel p { margin: 16px 0 0; }
-.pricePanel .price { margin-top: 0; }
-.price strong {
-  color: var(--black);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 500;
-  line-height: 1.1;
-  white-space: nowrap;
-}
+.trialPanel p { margin: 16px 0 0; }
+.trialPanel p:first-child { margin-top: 0; }
 
 .connection,
 .marketplace {

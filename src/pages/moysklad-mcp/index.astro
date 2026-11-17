@@ -145,13 +145,12 @@ const structuredData = {
           caption="Экран приложения TrueTell в МоемСкладе. Персональная ссылка скрыта." />
       </section>
 
-      <section class:list={[styles.section, styles.split, panels.textPanel, styles.pricePanel]} aria-labelledby="moysklad-mcp-price">
+      <section class:list={[styles.section, styles.split, panels.textPanel, styles.trialPanel]} aria-labelledby="moysklad-mcp-trial">
         <div>
-          <h2 id="moysklad-mcp-price">Сколько стоит подключение</h2>
-          <p class={styles.trial}>{trial}.</p>
+          <h2 id="moysklad-mcp-trial">Пробный период</h2>
+          <p>{trial}.</p>
         </div>
         <div>
-          <p class={styles.price}><strong>{product.monthlyPrice} ₽</strong> в месяц после пробного периода</p>
           <p>Подписку на коннектор оформляют и оплачивают в МоемСкладе. Подписка на ИИ-сервис может оплачиваться отдельно.</p>
           <p><a href="https://support.moysklad.ru/hc/ru/интеграции/каталог_решений">Как оплатить решение в МоемСкладе</a></p>
         </div>

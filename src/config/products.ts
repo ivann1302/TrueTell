@@ -38,7 +38,6 @@ export const moyskladMcpProduct = {
   marketplaceUrl: null as string | null,
   published: false as boolean,
   trialDays: 14,
-  monthlyPrice: 800,
 } as const;
 
 export const cleanerProduct = {
