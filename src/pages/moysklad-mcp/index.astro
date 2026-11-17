@@ -26,9 +26,7 @@ const pageUrl = new URL(`${base}${moyskladMcpProductPath}`, site).href;
 const ogImage = new URL(chatDemo.src, site).href;
 const title = 'МойСклад MCP от TrueTell — подключение ИИ к МоемуСкладу';
 const { email } = companyInfo.contacts.moyskladMcpSupport;
-const trial = `${product.trialDays} дней бесплатно с первой установки`;
 const primaryHref = product.marketplaceUrl ?? '#marketplace';
-const primaryLabel = `Попробовать ${product.trialDays} дней бесплатно`;
 const marketplaceLabel = 'Открыть в каталоге МоегоСклада';
 const diagramAlt = 'Схема подключения ИИ к МоемуСкладу через MCP TrueTell. Слева ChatGPT, Claude, Cursor, Qwen Code и DeepSeek, в центре коннектор, справа МойСклад.';
 const chatAlt = 'Демонстрационный ответ на вопрос об остатках термокружек: 24 штуки на основном складе и 8 на розничном';
@@ -51,7 +49,6 @@ const faqItems = [
   { question: 'Может ли ИИ изменить данные в МоемСкладе?', answer: 'Профиль «Чтение и аналитика» позволяет получать данные и строить отчёты. В этом профиле ассистент не может менять товары, заказы и остатки.' },
   { question: 'Кто получает данные и как отозвать доступ?', answer: 'Запрошенные сведения получает выбранный ИИ-сервис и обрабатывает по своим условиям. Сервер коннектора обрабатывает служебные сведения об установке, подключениях и правах. Храните персональную ссылку как пароль и вставляйте её только в настройки доверенного ассистента. Администратор может отключить или перевыпустить ссылку в разделе «Доступ».' },
   { question: 'Почему в отчёте могут отсутствовать отдельные данные?', answer: 'Ответ зависит от прав ссылки, возможностей аккаунта и заполненности документов. Например, чтобы определить просрочку по неоплаченному счёту, нужен срок оплаты. Попросите ассистента указать, каких данных не хватает, и сверьте итог с отчётом в МоемСкладе.' },
-  { question: 'Что произойдёт после окончания пробного или оплаченного периода?', answer: 'Новые запросы по персональной ссылке будут недоступны. Если подписка была приостановлена, после возобновления администратор перевыпускает ссылку и обновляет её в настройках ассистента.' },
 ];
 
 const structuredData = {
@@ -87,7 +84,7 @@ const structuredData = {
           <p class={hero.heroDescription}>Найдите товар по артикулу, проверьте остатки по складам или сравните продажи за два периода. Задавайте вопросы в ChatGPT, Claude, Cursor или другом клиенте с поддержкой удалённого MCP.</p>
         </div>
         <div class={hero.heroActions}>
-          <a class={styles.button} href={primaryHref}>{primaryLabel}</a>
+          <a class={styles.button} href={primaryHref}>{marketplaceLabel}</a>
         </div>
       </header>
 
@@ -145,17 +142,6 @@ const structuredData = {
           caption="Экран приложения TrueTell в МоемСкладе. Персональная ссылка скрыта." />
       </section>
 
-      <section class:list={[styles.section, styles.split, panels.textPanel, styles.trialPanel]} aria-labelledby="moysklad-mcp-trial">
-        <div>
-          <h2 id="moysklad-mcp-trial">Пробный период</h2>
-          <p>{trial}.</p>
-        </div>
-        <div>
-          <p>Подписку на коннектор оформляют и оплачивают в МоемСкладе. Подписка на ИИ-сервис может оплачиваться отдельно.</p>
-          <p><a href="https://support.moysklad.ru/hc/ru/интеграции/каталог_решений">Как оплатить решение в МоемСкладе</a></p>
-        </div>
-      </section>
-
       <section id="marketplace" class:list={[styles.section, styles.split, panels.textPanel, styles.marketplace]}
         aria-labelledby="moysklad-mcp-marketplace">
         <h2 id="moysklad-mcp-marketplace">Решение в МоемСкладе</h2>
@@ -183,7 +169,7 @@ const structuredData = {
         <h2 id="moysklad-mcp-contact">Подключите МойСклад к своему ИИ</h2>
         <div>
           <p>Начните с одного вопроса. Найдите товар по артикулу и сверьте ответ с карточкой в МоемСкладе.</p>
-          <a class={styles.button} href={primaryHref}>{primaryLabel}</a>
+          <a class={styles.button} href={primaryHref}>{marketplaceLabel}</a>
           <p class={styles.support}>Поддержка <a href={`mailto:${email}`}>{email}</a></p>
           <p class={styles.support}>{companyInfo.brandName}, {companyInfo.legal.name}</p>
         </div>

@@ -37,7 +37,6 @@ export const moyskladMcpProduct = {
     'Товары, остатки, заказы и отчёты по данным МоегоСклада в ИИ-ассистенте.',
   marketplaceUrl: null as string | null,
   published: false as boolean,
-  trialDays: 14,
 } as const;
 
 export const cleanerProduct = {
