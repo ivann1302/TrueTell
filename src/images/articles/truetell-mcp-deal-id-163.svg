@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330" fill="none">
+  <g font-family="Arial, sans-serif">
+    <text x="50" y="45" fill="#616875" font-size="27">Название сделки</text>
+    <text x="489" y="45" fill="#616875" font-size="27">ID в CRM</text>
+    <rect x="28" y="68" width="664" height="80" rx="12" fill="#FFFFFF" stroke="#D3D7DE" stroke-width="2"/>
+    <rect x="28" y="167" width="664" height="80" rx="12" fill="#EEF5FF" stroke="#1765DA" stroke-width="2"/>
+    <g fill="#10131A" font-size="32">
+      <text x="50" y="119">Тестовая поставка</text>
+      <text x="50" y="218">Тестовая поставка</text>
+    </g>
+    <g font-family="Menlo, monospace" font-size="33" font-weight="bold">
+      <text x="489" y="119" fill="#10131A">583</text>
+      <text x="489" y="218" fill="#104BA8">518</text>
+    </g>
+    <path d="M520 257V286" stroke="#1765DA" stroke-width="2"/>
+    <text x="520" y="316" text-anchor="middle" fill="#104BA8" font-size="29" font-weight="bold">ID для запроса</text>
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="430" viewBox="0 0 720 430" fill="none">
+  <path d="M30 70H690" stroke="#E3E6EB" stroke-width="2"/>
+  <rect x="33" y="19" width="201" height="39" rx="8" fill="#F0F2F5"/>
+  <text x="48" y="46" fill="#10131A" font-family="Menlo, monospace" font-size="24" font-weight="bold">HTTP 200</text>
+  <text x="265" y="46" fill="#616875" font-family="Menlo, monospace" font-size="24">limit=1</text>
+
+  <rect x="27" y="119" width="666" height="53" rx="6" fill="#EEF5FF"/>
+  <rect x="27" y="198" width="666" height="145" rx="6" fill="#F0F2F5"/>
+  <g fill="#10131A" font-family="Menlo, monospace" font-size="28" xml:space="preserve">
+    <text x="41" y="108">{</text>
+    <text x="63" y="153">"meta": { "size": <tspan fill="#104BA8" font-weight="bold">2</tspan> },</text>
+    <text x="63" y="228">"rows": [</text>
+    <text x="88" y="274">{ "name": "Кружка 300 мл" }</text>
+    <text x="63" y="321">]</text>
+    <text x="41" y="375">}</text>
+  </g>
+  <text x="439" y="154" fill="#104BA8" font-family="Arial, sans-serif" font-size="27" font-weight="bold">Всего 2 товара</text>
+  <text x="439" y="229" fill="#303641" font-family="Arial, sans-serif" font-size="27" font-weight="bold">1 карточка</text>
+</svg>

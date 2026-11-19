@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="335" viewBox="0 0 720 335" fill="none">
+  <defs>
+    <clipPath id="payment-bar"><rect x="32" y="60" width="656" height="46" rx="9"/></clipPath>
+  </defs>
+  <g font-family="Arial, sans-serif">
+    <text x="32" y="39" fill="#616875" font-size="28">План по сделке</text>
+    <text x="688" y="39" fill="#10131A" font-size="33" font-weight="bold" text-anchor="end">120 000 ₽</text>
+    <g clip-path="url(#payment-bar)">
+      <path d="M32 60H294.4V106H32Z" fill="#1765DA"/>
+      <path d="M294.4 60H491.2V106H294.4Z" fill="#C74242"/>
+      <path d="M491.2 60H688V106H491.2Z" fill="#D3D7DE"/>
+    </g>
+    <rect x="32" y="135" width="26" height="26" rx="4" fill="#1765DA"/>
+    <rect x="32" y="205" width="26" height="26" rx="4" fill="#C74242"/>
+    <rect x="32" y="275" width="26" height="26" rx="4" fill="#D3D7DE"/>
+    <path d="M32 180H688M32 250H688" stroke="#E3E6EB" stroke-width="2"/>
+    <g fill="#10131A" font-size="31">
+      <text x="76" y="159">Распределено</text>
+      <text x="76" y="229">Просрочено</text>
+      <text x="76" y="299">Срок не наступил</text>
+    </g>
+    <g fill="#10131A" font-size="33" font-weight="bold" text-anchor="end">
+      <text x="688" y="159">48 000 ₽</text>
+      <text x="688" y="229">36 000 ₽</text>
+      <text x="688" y="299">36 000 ₽</text>
+    </g>
+  </g>
+</svg>

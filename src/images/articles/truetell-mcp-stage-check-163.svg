@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="352" viewBox="0 0 720 352" fill="none">
+  <g font-family="Arial, sans-serif">
+    <g fill="#616875" font-size="26">
+      <text x="40" y="45">Поле</text>
+      <text x="364" y="45">В CRM</text>
+      <text x="536" y="45">В ответе</text>
+    </g>
+    <rect x="24" y="65" width="672" height="67" rx="9" fill="#FFFFFF" stroke="#D3D7DE" stroke-width="2"/>
+    <rect x="24" y="145" width="672" height="67" rx="9" fill="#F0F2F5"/>
+    <rect x="515" y="145" width="181" height="67" rx="9" fill="#EEF5FF" stroke="#1765DA" stroke-width="2"/>
+    <rect x="24" y="225" width="672" height="67" rx="9" fill="#FFFFFF" stroke="#D3D7DE" stroke-width="2"/>
+    <g fill="#10131A" font-size="28">
+      <text x="40" y="109">ID сделки</text>
+      <text x="40" y="189">Код стадии</text>
+      <text x="40" y="269">ID ответственного</text>
+    </g>
+    <g fill="#10131A" font-family="Menlo, monospace" font-size="28">
+      <text x="364" y="109">518</text>
+      <text x="536" y="109">518</text>
+      <text x="364" y="189">C1:NEW</text>
+      <text x="536" y="189" fill="#104BA8" font-weight="bold">C1:WON</text>
+      <text x="364" y="269">38</text>
+      <text x="536" y="269">38</text>
+    </g>
+    <text x="360" y="338" fill="#104BA8" font-size="28" font-weight="bold" text-anchor="middle">Стадия требует сверки</text>
+  </g>
+</svg>
