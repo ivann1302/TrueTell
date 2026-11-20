@@ -12,29 +12,29 @@ test('publication requires a current humanizer review for every published articl
   const root = await mkdtemp(join(tmpdir(), 'truetell-humanizer-'));
   try {
     await mkdir(join(root, 'src/config'), { recursive: true });
-    await mkdir(join(root, 'src/pages/guide'), { recursive: true });
+    await mkdir(join(root, 'src/pages/product/guide'), { recursive: true });
     await mkdir(join(root, 'docs/seo/publications'), { recursive: true });
     await writeFile(join(root, 'src/config/articles.ts'),
-      "export const allArticles = [{hrefPath:'guide/',status:'published',title:'Статья',description:'Описание'},{hrefPath:'draft/',status:'draft',title:'Черновик',description:'Описание'}];\n");
-    await writeFile(join(root, 'src/pages/guide/index.astro'), '---\n---\n<p>Текст статьи.</p>\n');
+      "export const allArticles = [{hrefPath:'product/guide/',status:'published',title:'Статья',description:'Описание'},{hrefPath:'draft/',status:'draft',title:'Черновик',description:'Описание'}];\n");
+    await writeFile(join(root, 'src/pages/product/guide/index.astro'), '---\n---\n<p>Текст статьи.</p>\n');
     await writeFile(join(root, 'docs/seo/publications/review.md'), '# Проверка\n');
     const manifest = join(root, 'docs/seo/humanizer-reviews.json');
     const review = { skill: 'humanizer', reviewedAt: '2026-10-25', report: 'docs/seo/publications/review.md', fingerprint };
-    await writeFile(manifest, JSON.stringify({ articles: { 'guide/': review } }));
+    await writeFile(manifest, JSON.stringify({ articles: { 'product/guide/': review } }));
 
     const run = () => spawnSync(process.execPath, [checker, '--root', root], { encoding: 'utf8' });
     assert.equal(run().status, 0, 'A reviewed published article must pass; drafts need no review');
 
-    await writeFile(join(root, 'src/pages/guide/index.astro'), '---\n---\n<p>Новый текст статьи.</p>\n');
+    await writeFile(join(root, 'src/pages/product/guide/index.astro'), '---\n---\n<p>Новый текст статьи.</p>\n');
     const stale = run();
     assert.notEqual(stale.status, 0);
-    assert.match(stale.stderr, /guide\/.*устарел/i);
+    assert.match(stale.stderr, /product\/guide\/.*устарел/i);
 
-    await writeFile(join(root, 'src/pages/guide/index.astro'), '---\n---\n<p>Текст статьи.</p>\n');
+    await writeFile(join(root, 'src/pages/product/guide/index.astro'), '---\n---\n<p>Текст статьи.</p>\n');
     await writeFile(manifest, JSON.stringify({ articles: {} }));
     const missing = run();
     assert.notEqual(missing.status, 0);
-    assert.match(missing.stderr, /guide\/.*нет проверки/i);
+    assert.match(missing.stderr, /product\/guide\/.*нет проверки/i);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

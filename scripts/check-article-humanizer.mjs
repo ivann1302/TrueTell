@@ -16,7 +16,7 @@ const root = resolve(rootIndex === -1 ? process.cwd() : args[rootIndex + 1]);
 const { allArticles } = await import(pathToFileURL(join(root, 'src/config/articles.ts')).href);
 
 async function fingerprint(article) {
-  if (!/^[a-z0-9-]+\/$/.test(article.hrefPath)) throw new Error(`Invalid article path: ${article.hrefPath}`);
+  if (!/^(?:[a-z0-9-]+\/)+$/.test(article.hrefPath)) throw new Error(`Invalid article path: ${article.hrefPath}`);
   const source = await readFile(join(root, 'src/pages', article.hrefPath, 'index.astro'), 'utf8');
   const payload = JSON.stringify({
     source,

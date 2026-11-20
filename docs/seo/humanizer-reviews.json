@@ -1,5 +1,11 @@
 {
   "articles": {
+    "moysklad-mcp/instruktsiya/": {
+      "skill": "humanizer",
+      "reviewedAt": "2026-11-20",
+      "report": "docs/seo/publications/moysklad-mcp-instruktsiya-2026-11-20.md",
+      "fingerprint": "c736145d52f1e7a5573151b0d21b36a100b8f96281115cfb899c3f96e3e9e07f"
+    },
     "ochistka-crm-bitrix24/": {
       "skill": "humanizer",
       "reviewedAt": "2026-10-27",

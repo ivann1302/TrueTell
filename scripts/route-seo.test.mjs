@@ -3,8 +3,11 @@ import assert from 'node:assert/strict';
 import { validateRouteHtml } from './route-seo.mjs';
 const origin = 'https://example.com';
 const page = (path, robots = 'index, follow', extra = '') => `<link rel="canonical" href="${origin}${path}"><meta name="robots" content="${robots}">${extra}`;
-test('requires one self-canonical and root-level content URL', () => {
-  assert.doesNotThrow(() => validateRouteHtml(page('/cleaner/'), `${origin}/cleaner/`, [`${origin}/cleaner/`]));
+test('requires one self-canonical and a supported content URL', () => {
+  for (const path of ['/cleaner/', '/moysklad-mcp/instruktsiya/']) {
+    const url = origin + path;
+    assert.doesNotThrow(() => validateRouteHtml(page(path), url, [url]));
+  }
   for (const html of ['', page('/other/'), page('/products/cleaner/'), page('/cleaner/') + page('/cleaner/')]) {
     assert.throws(() => validateRouteHtml(html, `${origin}/cleaner/`, [`${origin}/cleaner/`]));
   }

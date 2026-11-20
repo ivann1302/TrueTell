@@ -134,10 +134,11 @@ const structuredData = {
           <h2 id="moysklad-mcp-setup">Как подключить ИИ к МоемуСкладу</h2>
           {!product.marketplaceUrl && <p>Эти шаги подходят для аккаунта, где коннектор уже установлен.</p>}
           <ol class={styles.setup}>
-            <li><strong>Откройте приложение TrueTell в МоемСкладе.</strong> Администратор открывает вкладку «Подключение» и копирует персональную ссылку.</li>
+            <li><strong>Откройте приложение TrueTell в МоемСкладе.</strong> Администратор копирует персональную ссылку с главного экрана.</li>
             <li><strong>Добавьте удалённый MCP-сервер.</strong> Вставьте персональную ссылку в настройки MCP выбранного клиента. Если клиент запрашивает способ входа, выберите подключение без OAuth.</li>
             <li><strong>Задайте первый вопрос.</strong> Включите подключение в чате или агенте, попросите найти товар по артикулу и сверьте ответ с карточкой в МоемСкладе.</li>
           </ol>
+          <p><a href={`${base}${moyskladMcpProductPath}instruktsiya/`}>Пошаговая инструкция для ChatGPT, Claude и других ИИ-ассистентов</a></p>
           <ul class={styles.clientDocs} aria-label="Справка по установке MCP">
             <li><a href="https://developers.openai.com/api/docs/guides/custom-mcp-server">ChatGPT</a></li>
             <li><a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">Claude</a></li>

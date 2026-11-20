@@ -2,7 +2,7 @@
 
 Автоматически создаётся при production build из HTML страниц и существующего реестра статей. Не редактировать таблицу вручную. Документ не публикуется в dist.
 
-Индексируемых канонических URL: **118**. Даты — только записанные изменения содержания; время сборки не используется. Статус означает наличие в локальной сборке, а не индексацию в поиске.
+Индексируемых канонических URL: **119**. Даты — только записанные изменения содержания; время сборки не используется. Статус означает наличие в локальной сборке, а не индексацию в поиске.
 
 | URL | Название | Тип | Категория | Связанный продукт | Статус | Sitemap | Последнее изменение |
 |---|---|---|---|---|---|---|---|
@@ -84,6 +84,7 @@
 | https://truetell-retail.ru/moysklad-mass-operations/izmenenie-tovarov/ | Redirecting to: /moysklad-izmenenie-tovarov/ | system | — | — | published | Исключена: redirect | — |
 | https://truetell-retail.ru/moysklad-mass-operations/udalenie/ | Redirecting to: /moysklad-udalenie/ | system | — | — | published | Исключена: redirect | — |
 | https://truetell-retail.ru/moysklad-mcp/ | МойСклад MCP от TrueTell — подключение ИИ к МоемуСкладу | commercial | Приложения для МоегоСклада | — | published | Включена | — |
+| https://truetell-retail.ru/moysklad-mcp/instruktsiya/ | Как подключить МойСклад к ChatGPT, Claude и другим ИИ &#124; TrueTell | knowledge | МойСклад / ИИ и MCP | /moysklad-mcp/ | published | Включена | — |
 | https://truetell-retail.ru/moysklad-udalenie/ | Массовое удаление данных в МойСклад — приложение TrueTell | commercial | МойСклад | /moysklad-mass-operations/ | published | Включена | — |
 | https://truetell-retail.ru/nazvanie-polya-uf-crm-bitrix24/ | Название поля UF_CRM в BI-отчёте Битрикс24: как найти | knowledge | Битрикс24 / Поля CRM и BI | — | published | Включена | — |
 | https://truetell-retail.ru/ne-tot-otvetstvennyy-bitrix24/ | Заявка попала не тому менеджеру в Битрикс24: проверка очереди | knowledge | Битрикс24 / Диагностика CRM | — | published | Включена | 2026-11-01T17:32:20+03:00 |

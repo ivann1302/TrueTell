@@ -11,7 +11,8 @@ export function validateRouteHtml(html, url, sitemapUrls) {
   const refresh = document.querySelector('meta[http-equiv="refresh" i]');
   if (canonical.length !== 1) throw new Error(`Expected one canonical: ${url}`);
   const target = new URL(canonical[0].href);
-  const contentPath = /^\/(?:[^/]+\/)?$/.test(target.pathname);
+  const isMoyskladMcpGuide = target.pathname === '/moysklad-mcp/instruktsiya/';
+  const contentPath = isMoyskladMcpGuide || /^\/(?:[^/]+\/)?$/.test(target.pathname);
   if (target.protocol !== 'https:' || target.search || target.hash || !contentPath) {
     throw new Error(`Invalid canonical or nested URL: ${url}`);
   }

@@ -1,0 +1,130 @@
+---
+import ArticleFigure from '../../../components/editorial/article-figure.astro';
+import ArticleLayout from '../../../components/editorial/article-layout.astro';
+import RelatedArticles from '../../../components/editorial/related-articles.astro';
+import { getArticle, getRelatedArticles } from '../../../config/articles';
+import { companyInfo } from '../../../config/company';
+import { moyskladMcpProductPath } from '../../../config/products';
+import chatgptFirstQuestion from '../../../images/articles/moysklad-mcp-instruktsiya/chatgpt-first-question.png';
+import chatgptSetup from '../../../images/articles/moysklad-mcp-instruktsiya/chatgpt-setup.png';
+import moyskladApp from '../../../images/articles/moysklad-mcp-instruktsiya/moysklad-app.png';
+import moyskladCopyLink from '../../../images/articles/moysklad-mcp-instruktsiya/moysklad-copy-link.png';
+import { createArticleStructuredData } from '../../../utils/functions/createArticleStructuredData';
+
+const article = getArticle('moysklad-mcp/instruktsiya/');
+const { title, description } = article;
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+const siteRoot = new URL(base, import.meta.env.SITE);
+const articleUrl = new URL(article.hrefPath, siteRoot).href;
+const author = companyInfo.editorial.defaultAuthor;
+const appAlt = 'Главное окно TrueTell в МоёмСкладе с вкладкой «Подключение», выбором ассистента и первыми запросами';
+const ogImage = new URL(moyskladApp.src, siteRoot).href;
+const relatedArticles = getRelatedArticles(article.hrefPath).map((item) => ({
+  ...item,
+  description: item.summaryDescription ?? item.description,
+  href: `${base}${item.hrefPath}`,
+}));
+const structuredData = createArticleStructuredData({
+  articleType: 'Article',
+  title,
+  description,
+  articleUrl,
+  publisherUrl: siteRoot.href,
+  author,
+  image: ogImage,
+  breadcrumbs: [
+    { name: 'Главная', item: siteRoot.href },
+    { name: 'База знаний', item: new URL('knowledge-base/', siteRoot).href },
+    { name: title, item: articleUrl },
+  ],
+});
+---
+
+<ArticleLayout
+  {title}
+  titleParts={[{ text: 'Как подключить МойСклад ' }, { text: 'к ChatGPT, Claude или другим ИИ-ассистентам', accent: true }]}
+  {description}
+  canonicalPath={`/${article.hrefPath}`}
+  category={article.category}
+  intro="Установите приложение TrueTell, скопируйте персональную ссылку и добавьте её в настройки ассистента."
+  {structuredData}
+  ogTitle={title}
+  {ogImage}
+  ogImageAlt={appAlt}
+  {author}
+>
+  <p slot="quick-answer">После подключения вы сможете искать товары, проверять остатки и смотреть заказы прямо в чате.</p>
+
+  <section aria-labelledby="install">
+    <h2 id="install">1. Установите и откройте приложение</h2>
+    <ol>
+      <li>Войдите в МойСклад под учётной записью администратора.</li>
+      <li>Если решение доступно вашему аккаунту, откройте <a href="https://online.moysklad.ru/app/#apps?id=b1390bd7-01c4-4841-86ee-539b0518e954">карточку TrueTell в каталоге</a> и установите его.</li>
+      <li>Когда приложение установлено, откройте его из раздела <strong>«Решения»</strong>.</li>
+    </ol>
+    <p>На скриншотах показан прежний интерфейс TrueTell. В текущей версии шаги подключения находятся на главном экране приложения.</p>
+    <ArticleFigure
+      src={moyskladApp}
+      alt={appAlt}
+      caption="Главное окно приложения TrueTell в МоёмСкладе."
+      fullSize
+    />
+  </section>
+
+  <section aria-labelledby="copy-link">
+    <h2 id="copy-link">2. Скопируйте персональную ссылку</h2>
+    <p>На главном экране нажмите <strong>«Скопировать ссылку»</strong> рядом с персональной ссылкой. В прежнем интерфейсе эта кнопка называлась <strong>«Скопировать»</strong> и была на вкладке <strong>«Подключение»</strong>. Персональная ссылка даёт ассистенту доступ к данным в пределах настроенных прав. Вставляйте её в поле адреса при настройке ассистента.</p>
+    <ArticleFigure
+      src={moyskladCopyLink}
+      alt="На вкладке «Подключение» выделена кнопка «Скопировать» рядом со скрытой персональной ссылкой"
+      caption="Кнопка «Скопировать» на вкладке «Подключение». Персональная ссылка скрыта."
+      fullSize
+    />
+  </section>
+
+  <section aria-labelledby="add-connector">
+    <h2 id="add-connector">3. Добавьте приложение в настройки ассистента</h2>
+    <h3>ChatGPT</h3>
+    <ol>
+      <li>В веб-версии ChatGPT откройте <strong>«Плагины»</strong>, нажмите <strong>«+»</strong> и выберите <strong>«Добавить пользовательский сервер MCP»</strong>.</li>
+      <li>Укажите название <strong>«МойСклад»</strong> и вставьте персональную ссылку в поле <strong>«URL-адрес сервера»</strong>.</li>
+      <li>Выберите <strong>«Без аутентификации»</strong>, прочитайте предупреждение ChatGPT, отметьте <strong>«Я понимаю и хочу продолжить»</strong> и нажмите <strong>«Создать в виде плагина»</strong>.</li>
+      <li>Установите созданный плагин. В новом чате введите <code>@</code> и выберите <strong>«МойСклад»</strong>.</li>
+    </ol>
+    <ArticleFigure
+      src={chatgptSetup}
+      alt="Схема формы ChatGPT с полем URL-адреса, вариантом «Без аутентификации» и кнопкой создания плагина"
+      caption="Схема настройки ChatGPT. В поле URL вставьте ссылку из приложения."
+      fullSize
+    />
+    <p>Если пункта добавления сервера нет, проверьте, поддерживает ли ваш тариф пользовательские MCP-серверы и разрешено ли вам добавлять их в рабочей области. <a href="https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt">Справка ChatGPT</a></p>
+
+    <h3>Claude</h3>
+    <ol>
+      <li>В личном аккаунте Claude откройте <strong lang="en">Customize → Connectors</strong> и выберите <strong lang="en">+ Add → Add custom connector</strong>. В Team или Enterprise коннектор добавляет уполномоченный администратор через <strong lang="en">Organization settings → Connectors → Add → Custom → Web</strong>.</li>
+      <li>Укажите название <strong>«МойСклад»</strong>, вставьте персональную ссылку и нажмите <strong lang="en">Continue</strong>.</li>
+      <li>Если Claude предлагает выбрать способ входа, укажите <strong lang="en">No sign in</strong>. Завершите добавление коннектора.</li>
+      <li>В Team или Enterprise откройте <strong lang="en">Customize → Connectors</strong> и нажмите <strong lang="en">Connect</strong> рядом с «МойСклад». В новом чате откройте <strong lang="en">+ → Connectors</strong> и включите <strong>«МойСклад»</strong>.</li>
+    </ol>
+    <p>Если добавление коннекторов управляется вашей организацией, обратитесь к администратору рабочей области. <a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">Справка Claude</a></p>
+    <h3>Другие ИИ-ассистенты</h3>
+    <p>Проверьте, можно ли в вашем клиенте добавить удалённый MCP-сервер по URL с транспортом <strong lang="en">Streamable HTTP</strong> и без отдельного входа через OAuth. Если эти условия выполнены, укажите персональную ссылку TrueTell как адрес сервера.</p>
+    <p><a href="https://code.claude.com/docs/en/mcp">Настройка Claude Code</a> · <a href="https://cursor.com/docs/mcp">Настройка Cursor</a></p>
+  </section>
+
+  <section aria-labelledby="first-question">
+    <h2 id="first-question">4. Задайте первый вопрос</h2>
+    <p>Включите подключение «МойСклад» в чате или сессии ассистента. Возьмите артикул из своего каталога и подставьте его в запрос.</p>
+    <blockquote><p>Найди термокружки по артикулу ТК‑042 и покажи, сколько единиц доступно на каждом складе.</p></blockquote>
+    <ArticleFigure
+      src={chatgptFirstQuestion}
+      alt="В демонстрационном диалоге ChatGPT показывает доступное количество термокружек по двум складам"
+      caption="Пример ответа об остатках по складам на демонстрационных данных."
+      fullSize
+    />
+    <p>Сверьте название товара с карточкой. В МоёмСкладе откройте <strong>«Склад → Остатки»</strong> и сравните показатель «Доступно» для каждого склада с ответом ассистента. Если ассистент не видит данные, проверьте, активно ли подключение. Управлять ссылками и правами можно в разделе <strong>«Настройки → Доступ»</strong> приложения TrueTell.</p>
+    <p><a href={`${base}${moyskladMcpProductPath.slice(1)}`}>Возможности и условия доступа МойСклад MCP</a></p>
+  </section>
+
+  <RelatedArticles slot="article-end" items={relatedArticles} />
+</ArticleLayout>
