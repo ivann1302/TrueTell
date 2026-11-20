@@ -48,6 +48,14 @@ test('home shows MoySklad MCP first and the catalog follows the approved product
     assert.equal(card.getAttribute('target'), '_blank');
     assert(card.relList.contains('noopener'));
   }
+  for (const [index, card] of catalogCards.slice(0, 6).entries()) {
+    const icon = card.querySelector('img');
+    const iconAsset = index < 3 ? 'moysklad-app-icon' : 'bitrix24-app-icon';
+    assert(icon, 'Platform icon missing: ' + card.href);
+    assert.match(icon.getAttribute('src'), new RegExp('/' + iconAsset + '(?:\\.[^/]+)?\\.svg$'));
+    assert.equal(icon.alt, '');
+  }
+  assert(!catalogCards[6].querySelector('img'), 'BI card has no associated platform');
   assert(!doc.querySelector('#cases'), 'Old generic cases block remains on home');
   assert(doc.querySelector('footer a[href="/knowledge-base/"]'), 'Footer knowledge-base link missing');
 });

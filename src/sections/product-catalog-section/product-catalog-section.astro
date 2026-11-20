@@ -6,6 +6,8 @@ import {
   moyskladOperationsProduct, moyskladSalesForecastProduct,
   productRating, productRatingPath,
 } from '../../config/products';
+import bitrix24Icon from '../../images/logo/bitrix24-app-icon.svg';
+import moyskladIcon from '../../images/logo/moysklad-app-icon.svg';
 import styles from './product-catalog-section.module.scss';
 
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
@@ -19,36 +21,42 @@ const products = [
     description: moyskladMcpProduct.catalogDescription,
     action: 'Посмотреть приложение',
     href: moyskladMcpProductPath,
+    platformIcon: moyskladIcon,
   }] : []),
   {
     title: moyskladOperationsProduct.catalogName,
     description: moyskladOperationsProduct.catalogDescription,
     action: 'Открыть в МоемСкладе',
     href: moyskladOperationsProduct.marketplaceUrl,
+    platformIcon: moyskladIcon,
   },
   {
     title: moyskladSalesForecastProduct.name,
     description: moyskladSalesForecastProduct.catalogDescription,
     action: 'Открыть в МоемСкладе',
     href: moyskladSalesForecastProduct.marketplaceUrl,
+    platformIcon: moyskladIcon,
   },
   {
     title: cleanerProduct.name,
     description: cleanerProduct.catalogDescription,
     action: cleanerProduct.articleActionLabel,
     href: cleanerProductPath,
+    platformIcon: bitrix24Icon,
   },
   {
     title: fieldDirectoryProduct.heading,
     description: fieldDirectoryProduct.catalogDescription,
     action: 'Посмотреть приложение',
     href: fieldDirectoryProductPath,
+    platformIcon: bitrix24Icon,
   },
   {
     title: productRating.heading,
     description: productRating.catalogDescription,
     action: 'Посмотреть приложение',
     href: productRatingPath,
+    platformIcon: bitrix24Icon,
   },
   {
     title: 'BI-аналитика для торговли',
@@ -78,6 +86,17 @@ const products = [
               rel={external ? 'noopener noreferrer' : undefined}
               aria-label={`${product.action}: ${product.title}${external ? ' — откроется в новой вкладке' : ''}`}
             >
+              {product.platformIcon && (
+                <img
+                  class={styles.platformIcon}
+                  src={product.platformIcon.src}
+                  alt=""
+                  width={product.platformIcon.width}
+                  height={product.platformIcon.height}
+                  loading={index < 2 ? 'eager' : 'lazy'}
+                  decoding="async"
+                />
+              )}
               <h2 class={styles.productTitle}>{product.title}</h2>
               <p class={styles.description}>{product.description}</p>
               <span class={styles.action}>
