@@ -1,0 +1,35 @@
+---
+import { biProductPath, type CatalogProduct } from '../../config/product-catalog';
+import styles from './product-showcase-section.module.scss';
+
+interface Props {
+  product: CatalogProduct;
+  index: number;
+}
+
+const { product, index } = Astro.props;
+const icon = product.platformIcon;
+const href = product.showcaseHref ?? product.href;
+const external = href.startsWith('http');
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+---
+
+<a
+  class:list={[styles.appProduct, { [styles.biProduct]: product.href === biProductPath }]}
+  href={external ? href : `${base}${href.replace(/^\//, '')}`}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+  aria-label={external ? `${product.title} — откроется в новой вкладке` : undefined}
+  data-reveal={String(index % 3)}
+>
+  <div class={icon ? styles.appHeading : undefined}>
+    <h3 class={styles.appTitle}>{product.title}</h3>
+    {icon && (
+      <img class={styles.appIcon} src={icon.src} alt="" width={icon.width} height={icon.height} loading="lazy" decoding="async" />
+    )}
+  </div>
+  <p class={styles.appDescription}>{product.description}</p>
+  <span class={styles.productButton}>
+    Подробнее<span aria-hidden="true">›</span>
+  </span>
+</a>

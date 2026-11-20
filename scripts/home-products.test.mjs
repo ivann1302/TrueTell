@@ -10,7 +10,15 @@ test('home and catalog show the same approved product order', () => {
   const section = doc.querySelector('#product-showcase-title')?.closest('section');
   assert(section, 'Product showcase missing');
 
-  const homeCards = [...section.querySelectorAll('[aria-label="Приложения TrueTell для бизнес-систем"] > a')];
+  const featuredCards = [...section.querySelectorAll('[aria-label="Приложения TrueTell для бизнес-систем"] > a')];
+  const disclosure = section.querySelector('details[data-product-disclosure]');
+  assert.equal(featuredCards.length, 3);
+  assert(disclosure && !disclosure.open, 'Additional products must start collapsed');
+  const summary = disclosure.querySelector('summary');
+  assert.match(summary.textContent, /Посмотреть все продукты/);
+  assert(disclosure.querySelector('button[data-hide-product-list]'), 'Close control missing');
+  const additionalCards = [...disclosure.querySelectorAll('[data-additional-product-grid] > a')];
+  const homeCards = [...featuredCards, ...additionalCards];
   assert.equal(homeCards.length, 7);
   for (const card of homeCards.slice(0, 6)) {
     assert(card.querySelector('h3'), 'App title missing');
@@ -63,10 +71,9 @@ test('home and catalog show the same approved product order', () => {
 
 test('each home product card is one link to its product page', () => {
   const doc = new JSDOM(readFileSync('dist/index.html', 'utf8')).window.document;
-  const grid = doc.querySelector('#product-showcase-title')?.closest('section')?.querySelector('[aria-label="Приложения TrueTell для бизнес-систем"]');
-  assert(grid, 'Product card grid missing');
-
-  const cards = [...grid.children];
+  const section = doc.querySelector('#product-showcase-title')?.closest('section');
+  assert(section, 'Product showcase missing');
+  const cards = [...section.querySelectorAll('[aria-label="Приложения TrueTell для бизнес-систем"] > a, [data-additional-product-grid] > a')];
   assert.deepEqual(cards.map((card) => card.getAttribute('href')), [
     mcpPath,
     '/moysklad-mass-operations/',

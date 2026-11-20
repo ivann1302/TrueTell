@@ -1,9 +1,10 @@
 ---
-import { biProductPath, productCatalog } from '../../config/product-catalog';
+import { productCatalog } from '../../config/product-catalog';
+import ShowcaseProductCard from './showcase-product-card.astro';
 import styles from './product-showcase-section.module.scss';
 
-const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
-const internalHref = (path: string) => `${base}${path.replace(/^\//, '')}`;
+const featuredProducts = productCatalog.slice(0, 3);
+const additionalProducts = productCatalog.slice(featuredProducts.length);
 ---
 
 <section class={styles.section} aria-labelledby="product-showcase-title">
@@ -12,49 +13,45 @@ const internalHref = (path: string) => `${base}${path.replace(/^\//, '')}`;
       <h2 id="product-showcase-title" class={styles.title}>
         Продукты TrueTell
       </h2>
-      <a class:list={[styles.allProductsLink, styles.desktopAllProductsLink]} href={internalHref('/products/')}>
-        <span>Посмотреть все продукты</span>
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-          <path d="m9 6 6 6-6 6"></path>
-        </svg>
-      </a>
     </header>
 
     <div class={styles.appProducts} aria-label="Приложения TrueTell для бизнес-систем">
-      {productCatalog.map((product, index) => {
-        const icon = product.platformIcon;
-        const href = product.showcaseHref ?? product.href;
-        const external = href.startsWith('http');
-
-        return (
-          <a
-            class:list={[styles.appProduct, { [styles.biProduct]: product.href === biProductPath }]}
-            href={external ? href : internalHref(href)}
-            target={external ? '_blank' : undefined}
-            rel={external ? 'noopener noreferrer' : undefined}
-            aria-label={external ? `${product.title} — откроется в новой вкладке` : undefined}
-            data-reveal={String(index % 3)}
-          >
-            <div class={icon ? styles.appHeading : undefined}>
-              <h3 class={styles.appTitle}>{product.title}</h3>
-              {icon && (
-                <img class={styles.appIcon} src={icon.src} alt="" width={icon.width} height={icon.height} loading="lazy" decoding="async" />
-              )}
-            </div>
-            <p class={styles.appDescription}>{product.description}</p>
-            <span class={styles.productButton}>
-              Подробнее<span aria-hidden="true">›</span>
-            </span>
-          </a>
-        );
-      })}
+      {featuredProducts.map((product, index) => <ShowcaseProductCard {product} {index} />)}
     </div>
 
-    <a class:list={[styles.allProductsLink, styles.mobileAllProductsLink]} href={internalHref('/products/')}>
-      <span>Посмотреть все продукты</span>
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-        <path d="m9 6 6 6-6 6"></path>
-      </svg>
-    </a>
+    {additionalProducts.length > 0 && (
+      <details class={styles.additionalProducts} data-product-disclosure>
+        <summary class={styles.listToggle}>
+          <span class={styles.showProductsLabel}>Посмотреть все продукты</span>
+          <span class={styles.hideProductsLabel}>Скрыть список</span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+        </summary>
+        <div class={styles.appProducts} data-additional-product-grid>
+          {additionalProducts.map((product, index) => <ShowcaseProductCard {product} {index} />)}
+        </div>
+        <button class:list={[styles.listToggle, styles.bottomToggle]} data-hide-product-list type="button" hidden>
+          Скрыть список
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="m6 15 6-6 6 6"></path>
+          </svg>
+        </button>
+      </details>
+    )}
   </div>
 </section>
+
+<script>
+  for (const disclosure of document.querySelectorAll<HTMLDetailsElement>('[data-product-disclosure]')) {
+    const summary = disclosure.querySelector('summary');
+    const hideButton = disclosure.querySelector<HTMLButtonElement>('[data-hide-product-list]');
+    if (!summary || !hideButton) continue;
+
+    hideButton.addEventListener('click', () => {
+      disclosure.open = false;
+      summary.focus();
+    });
+    hideButton.hidden = false;
+  }
+</script>

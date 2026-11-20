@@ -12,10 +12,6 @@
 }
 
 .header {
-  align-items: center;
-  display: flex;
-  gap: 32px;
-  justify-content: space-between;
   margin-bottom: 56px;
 }
 
@@ -27,17 +23,28 @@
   margin: 0;
 }
 
-.allProductsLink {
+.listToggle {
   align-items: center;
+  background: transparent;
+  border: 0;
   color: #182131;
-  display: inline-flex;
-  flex: 0 0 auto;
+  cursor: pointer;
+  display: flex;
+  font: inherit;
   font-size: 1rem;
   font-weight: 500;
   gap: 16px;
+  list-style: none;
+  margin: 32px auto 0;
   min-height: 44px;
-  text-decoration: none;
-  transition: color 180ms ease, transform 180ms ease;
+  padding: 0;
+  scroll-margin-top: 100px;
+  transition: color 180ms ease;
+  width: fit-content;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
 
   svg {
     flex: 0 0 24px;
@@ -46,12 +53,12 @@
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 1.8;
+    transition: transform 180ms ease;
     width: 24px;
   }
 
   &:hover {
     color: #1765da;
-    transform: translateX(2px);
   }
 
   &:focus-visible {
@@ -61,14 +68,33 @@
   }
 }
 
-.mobileAllProductsLink {
+.hideProductsLabel,
+.bottomToggle[hidden] {
   display: none;
+}
+
+.additionalProducts[open] > summary {
+  .showProductsLabel {
+    display: none;
+  }
+
+  .hideProductsLabel {
+    display: inline;
+  }
+
+  svg {
+    transform: rotate(180deg);
+  }
+}
+
+.additionalProducts > .appProducts {
+  margin-top: 32px;
 }
 
 .appProducts {
   display: grid;
   gap: 24px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, max(280px, calc((100% - 48px) / 3))), 1fr));
   margin-inline: auto;
   width: min(100%, 1200px);
 }
@@ -272,12 +298,6 @@
   color: #182131;
 }
 
-@media (max-width: 1050px) {
-  .appProducts {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 768px) {
   .section {
     padding-bottom: 64px;
@@ -288,23 +308,12 @@
   }
 
   .header {
-    justify-content: center;
     margin-bottom: 32px;
   }
 
   .title {
     font-size: clamp(2rem, 9vw, 2.375rem);
     text-align: center;
-  }
-
-  .desktopAllProductsLink {
-    display: none;
-  }
-
-  .mobileAllProductsLink {
-    display: flex;
-    justify-content: center;
-    margin: 32px auto 0;
   }
 
   .appProducts {
@@ -347,7 +356,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .allProductsLink,
+  .listToggle,
+  .listToggle svg,
   .appProduct,
   .productButton,
   .biProduct::before,

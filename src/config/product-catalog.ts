@@ -11,7 +11,7 @@ import {
 
 export const biProductPath = '/bi-analitika/';
 
-type CatalogProduct = {
+export type CatalogProduct = {
   title: string;
   description: string;
   action: string;
