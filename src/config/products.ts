@@ -19,11 +19,20 @@ export const moyskladOperationsProductPath = '/moysklad-mass-operations/';
 
 export const moyskladOperationsProduct = {
   name: 'Массовые операции и удаление в МойСклад',
+  catalogName: 'Массовые операции и удаление',
   description:
     'Массовое изменение товаров, цен и документов в МойСклад. Загрузка из файлов, удаление и очистка с проверкой плана и отчётом по каждому объекту.',
   catalogDescription:
     'Массовые изменения товаров, цен и документов. Загрузка и очистка.',
+  marketplaceUrl: 'https://online.moysklad.ru/app/#apps?id=9f7dc391-cce2-4c10-8129-8e41c82b48e5',
   connectionActionLabel: 'Узнать о подключении',
+} as const;
+
+export const moyskladSalesForecastProduct = {
+  name: 'Прогнозирование продаж',
+  catalogDescription:
+    'Прогноз продаж и выручки. Сравнение спроса со свободными остатками перед закупкой.',
+  marketplaceUrl: 'https://online.moysklad.ru/app/#apps?id=4a76f099-5c24-439c-a924-8e674da0c215',
 } as const;
 
 export const moyskladMcpProductPath = '/moysklad-mcp/';

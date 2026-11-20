@@ -1,5 +1,11 @@
 ---
-import { fieldDirectoryProduct, fieldDirectoryProductPath, cleanerProduct, cleanerProductPath, moyskladOperationsProduct, moyskladOperationsProductPath, moyskladMcpProduct, moyskladMcpProductPath, productRating, productRatingPath } from '../../config/products';
+import {
+  cleanerProduct, cleanerProductPath,
+  fieldDirectoryProduct, fieldDirectoryProductPath,
+  moyskladMcpProduct, moyskladMcpProductPath,
+  moyskladOperationsProduct, moyskladSalesForecastProduct,
+  productRating, productRatingPath,
+} from '../../config/products';
 import styles from './product-catalog-section.module.scss';
 
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
@@ -15,16 +21,16 @@ const products = [
     href: moyskladMcpProductPath,
   }] : []),
   {
-    title: 'BI-аналитика для торговли',
-    description: 'Продажи, остатки и маржинальность.',
-    action: 'Посмотреть BI-решение',
-    href: '/bi-analitika/',
+    title: moyskladOperationsProduct.catalogName,
+    description: moyskladOperationsProduct.catalogDescription,
+    action: 'Открыть в МоемСкладе',
+    href: moyskladOperationsProduct.marketplaceUrl,
   },
   {
-    title: moyskladOperationsProduct.name,
-    description: moyskladOperationsProduct.catalogDescription,
-    action: 'Посмотреть приложение',
-    href: moyskladOperationsProductPath,
+    title: moyskladSalesForecastProduct.name,
+    description: moyskladSalesForecastProduct.catalogDescription,
+    action: 'Открыть в МоемСкладе',
+    href: moyskladSalesForecastProduct.marketplaceUrl,
   },
   {
     title: cleanerProduct.name,
@@ -33,16 +39,22 @@ const products = [
     href: cleanerProductPath,
   },
   {
+    title: fieldDirectoryProduct.heading,
+    description: fieldDirectoryProduct.catalogDescription,
+    action: 'Посмотреть приложение',
+    href: fieldDirectoryProductPath,
+  },
+  {
     title: productRating.heading,
     description: productRating.catalogDescription,
     action: 'Посмотреть приложение',
     href: productRatingPath,
   },
   {
-    title: fieldDirectoryProduct.heading,
-    description: fieldDirectoryProduct.catalogDescription,
-    action: 'Посмотреть приложение',
-    href: fieldDirectoryProductPath,
+    title: 'BI-аналитика для торговли',
+    description: 'Продажи, остатки и маржинальность.',
+    action: 'Посмотреть BI-решение',
+    href: '/bi-analitika/',
   },
 ];
 ---

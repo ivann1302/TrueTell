@@ -5,7 +5,7 @@ import { JSDOM } from 'jsdom';
 
 const mcpPath = '/moysklad-mcp/';
 
-test('home and the product catalog show MoySklad MCP first', () => {
+test('home shows MoySklad MCP first and the catalog follows the approved product order', () => {
   const doc = new JSDOM(readFileSync('dist/index.html', 'utf8')).window.document;
   const section = doc.querySelector('#product-showcase-title')?.closest('section');
   assert(section, 'Product showcase missing');
@@ -32,9 +32,22 @@ test('home and the product catalog show MoySklad MCP first', () => {
   assert.equal(mobileOptions.length, 4);
   assert(mobileOptions[0].querySelector(`a[href="${mcpPath}"]`));
   const catalog = new JSDOM(readFileSync('dist/products/index.html', 'utf8')).window.document;
-  assert.equal(catalog.querySelectorAll('main h2').length, 6);
-  assert.equal(catalog.querySelector('main ul li:first-child a')?.getAttribute('href'), mcpPath);
-  assert(catalog.querySelector('a[href="/bitrix24-field-directory/"] h2'), 'Field directory product missing from catalog');
+  const catalogCards = [...catalog.querySelectorAll('main ul > li > a')];
+  assert.deepEqual(catalogCards.map(card => card.getAttribute('href')), [
+    mcpPath,
+    'https://online.moysklad.ru/app/#apps?id=9f7dc391-cce2-4c10-8129-8e41c82b48e5',
+    'https://online.moysklad.ru/app/#apps?id=4a76f099-5c24-439c-a924-8e674da0c215',
+    '/bitrix24-cleaner/',
+    '/bitrix24-field-directory/',
+    '/bitrix24-product-rating/',
+    '/bi-analitika/',
+  ]);
+  assert.equal(catalogCards[1].querySelector('h2')?.textContent.trim(), 'Массовые операции и удаление');
+  assert.equal(catalogCards[2].querySelector('h2')?.textContent.trim(), 'Прогнозирование продаж');
+  for (const card of catalogCards.slice(1, 3)) {
+    assert.equal(card.getAttribute('target'), '_blank');
+    assert(card.relList.contains('noopener'));
+  }
   assert(!doc.querySelector('#cases'), 'Old generic cases block remains on home');
   assert(doc.querySelector('footer a[href="/knowledge-base/"]'), 'Footer knowledge-base link missing');
 });
