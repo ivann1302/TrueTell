@@ -1,13 +1,5 @@
 ---
-import {
-  cleanerProduct, cleanerProductPath,
-  fieldDirectoryProduct, fieldDirectoryProductPath,
-  moyskladMcpProduct, moyskladMcpProductPath,
-  moyskladOperationsProduct, moyskladSalesForecastProduct,
-  productRating, productRatingPath,
-} from '../../config/products';
-import bitrix24Icon from '../../images/logo/bitrix24-app-icon.svg';
-import moyskladIcon from '../../images/logo/moysklad-app-icon.svg';
+import { productCatalog } from '../../config/product-catalog';
 import styles from './product-catalog-section.module.scss';
 
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
@@ -15,56 +7,6 @@ const resolveHref = (href: string) => href.startsWith('/')
   ? `${base}${href.replace(/^\//, '')}`
   : href;
 
-const products = [
-  ...(moyskladMcpProduct.published ? [{
-    title: moyskladMcpProduct.name,
-    description: moyskladMcpProduct.catalogDescription,
-    action: 'Посмотреть приложение',
-    href: moyskladMcpProductPath,
-    platformIcon: moyskladIcon,
-  }] : []),
-  {
-    title: moyskladOperationsProduct.catalogName,
-    description: moyskladOperationsProduct.catalogDescription,
-    action: 'Открыть в МоемСкладе',
-    href: moyskladOperationsProduct.marketplaceUrl,
-    platformIcon: moyskladIcon,
-  },
-  {
-    title: moyskladSalesForecastProduct.name,
-    description: moyskladSalesForecastProduct.catalogDescription,
-    action: 'Открыть в МоемСкладе',
-    href: moyskladSalesForecastProduct.marketplaceUrl,
-    platformIcon: moyskladIcon,
-  },
-  {
-    title: cleanerProduct.name,
-    description: cleanerProduct.catalogDescription,
-    action: cleanerProduct.articleActionLabel,
-    href: cleanerProductPath,
-    platformIcon: bitrix24Icon,
-  },
-  {
-    title: fieldDirectoryProduct.heading,
-    description: fieldDirectoryProduct.catalogDescription,
-    action: 'Посмотреть приложение',
-    href: fieldDirectoryProductPath,
-    platformIcon: bitrix24Icon,
-  },
-  {
-    title: productRating.heading,
-    description: productRating.catalogDescription,
-    action: 'Посмотреть приложение',
-    href: productRatingPath,
-    platformIcon: bitrix24Icon,
-  },
-  {
-    title: 'BI-аналитика для торговли',
-    description: 'Продажи, остатки и маржинальность.',
-    action: 'Посмотреть BI-решение',
-    href: '/bi-analitika/',
-  },
-];
 ---
 
 <section class={styles.section} aria-labelledby="products-page-title">
@@ -74,7 +16,7 @@ const products = [
     </header>
 
     <ul class={styles.grid}>
-      {products.map((product, index) => {
+      {productCatalog.map((product, index) => {
         const external = product.href.startsWith('http');
 
         return (

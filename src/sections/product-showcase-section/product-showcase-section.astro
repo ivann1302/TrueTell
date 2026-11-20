@@ -1,8 +1,5 @@
 ---
-import bitrix24Icon from '../../images/logo/bitrix24-app-icon.svg';
-import moyskladIcon from '../../images/logo/moysklad-app-icon.svg';
-import moyskladMcpIcon from '../../images/products/moysklad-mcp-icon.webp';
-import { cleanerProductPath, moyskladMcpProduct, moyskladMcpProductPath, moyskladOperationsProductPath } from '../../config/products';
+import { biProductPath, productCatalog } from '../../config/product-catalog';
 import styles from './product-showcase-section.module.scss';
 
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
@@ -23,49 +20,34 @@ const internalHref = (path: string) => `${base}${path.replace(/^\//, '')}`;
       </a>
     </header>
 
-    <div class:list={[styles.appProducts, { [styles.appProductsWithMcp]: moyskladMcpProduct.published }]} aria-label="Приложения TrueTell для бизнес-систем">
-      {moyskladMcpProduct.published && (
-        <a class={styles.appProduct} href={internalHref(moyskladMcpProductPath)} data-reveal>
-          <div class={styles.appHeading}>
-            <h3 class={styles.appTitle}>{moyskladMcpProduct.name}</h3>
-            <img class={styles.appIcon} src={moyskladMcpIcon.src} alt="" width={moyskladMcpIcon.width} height={moyskladMcpIcon.height} loading="lazy" decoding="async" />
-          </div>
-          <p class={styles.appDescription}>{moyskladMcpProduct.catalogDescription}</p>
-          <span class={styles.productButton}>
-            Подробнее<span aria-hidden="true">›</span>
-          </span>
-        </a>
-      )}
+    <div class={styles.appProducts} aria-label="Приложения TrueTell для бизнес-систем">
+      {productCatalog.map((product, index) => {
+        const icon = product.platformIcon;
+        const href = product.showcaseHref ?? product.href;
+        const external = href.startsWith('http');
 
-      <a class={styles.appProduct} href={internalHref(cleanerProductPath)} data-reveal={moyskladMcpProduct.published ? '1' : ''}>
-        <div class={styles.appHeading}>
-          <h3 class={styles.appTitle}>Очистка Битрикс24</h3>
-          <img class={styles.appIcon} src={bitrix24Icon.src} alt="" width="512" height="512" loading="lazy" decoding="async" />
-        </div>
-        <p class={styles.appDescription}>Лиды и сделки: отбор, проверка списка и отчёт.</p>
-        <span class={styles.productButton}>
-          Подробнее<span aria-hidden="true">›</span>
-        </span>
-      </a>
-
-      <a class={styles.appProduct} href={internalHref(moyskladOperationsProductPath)} data-reveal={moyskladMcpProduct.published ? '2' : '1'}>
-        <div class={styles.appHeading}>
-          <h3 class={styles.appTitle}>Массовые операции в МойСклад</h3>
-          <img class={styles.appIcon} src={moyskladIcon.src} alt="" width="120" height="120" loading="lazy" decoding="async" />
-        </div>
-        <p class={styles.appDescription}>Товары, цены и документы: загрузка, изменения и очистка.</p>
-        <span class={styles.productButton}>
-          Подробнее<span aria-hidden="true">›</span>
-        </span>
-      </a>
-
-      <a class:list={[styles.appProduct, styles.biProduct]} href={internalHref('/bi-analitika/')} data-reveal="2">
-        <h3 class={styles.appTitle}>BI-аналитика для торговли</h3>
-        <p class={styles.appDescription}>Продажи, остатки и маржинальность.</p>
-        <span class={styles.productButton}>
-          Подробнее<span aria-hidden="true">›</span>
-        </span>
-      </a>
+        return (
+          <a
+            class:list={[styles.appProduct, { [styles.biProduct]: product.href === biProductPath }]}
+            href={external ? href : internalHref(href)}
+            target={external ? '_blank' : undefined}
+            rel={external ? 'noopener noreferrer' : undefined}
+            aria-label={external ? `${product.title} — откроется в новой вкладке` : undefined}
+            data-reveal={String(index % 3)}
+          >
+            <div class={icon ? styles.appHeading : undefined}>
+              <h3 class={styles.appTitle}>{product.title}</h3>
+              {icon && (
+                <img class={styles.appIcon} src={icon.src} alt="" width={icon.width} height={icon.height} loading="lazy" decoding="async" />
+              )}
+            </div>
+            <p class={styles.appDescription}>{product.description}</p>
+            <span class={styles.productButton}>
+              Подробнее<span aria-hidden="true">›</span>
+            </span>
+          </a>
+        );
+      })}
     </div>
 
     <a class:list={[styles.allProductsLink, styles.mobileAllProductsLink]} href={internalHref('/products/')}>

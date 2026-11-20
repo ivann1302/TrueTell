@@ -74,7 +74,6 @@
 }
 
 .appProduct {
-  aspect-ratio: 1;
   background: #fff;
   border: 1px solid #182131;
   border-radius: 24px;
@@ -82,7 +81,7 @@
   color: #10131a;
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  min-height: 320px;
   min-width: 0;
   padding: 32px;
   text-align: left;
@@ -113,10 +112,9 @@
 }
 
 .appHeading {
-  align-items: start;
   display: grid;
   gap: 20px;
-  grid-template-columns: minmax(0, 1fr) 64px;
+  justify-items: start;
 }
 
 .appTitle {
@@ -126,12 +124,14 @@
   line-height: 1.13;
   margin: 0;
   max-width: 18ch;
+  overflow-wrap: anywhere;
 }
 
 .appIcon {
   aspect-ratio: 1;
   border-radius: 14px;
   display: block;
+  grid-row: 1;
   height: 64px;
   object-fit: contain;
   width: 64px;
@@ -179,7 +179,9 @@
 .biProduct {
   background: #182131;
   color: #f7f8fa;
+  grid-column: 1 / -1;
   isolation: isolate;
+  min-height: 240px;
   overflow: hidden;
   position: relative;
 
@@ -274,51 +276,6 @@
   .appProducts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .biProduct {
-    aspect-ratio: auto;
-    grid-column: 1 / -1;
-    min-height: 300px;
-  }
-}
-
-@media (min-width: 769px) {
-  .appProductsWithMcp {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    .appProduct {
-      aspect-ratio: auto;
-      min-height: 280px;
-    }
-
-    .biProduct {
-      grid-column: auto;
-    }
-  }
-}
-
-@media (min-width: 1200px) {
-  .appProductsWithMcp {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-
-    .appProduct {
-      padding: 24px;
-    }
-
-    .appHeading {
-      gap: 12px;
-      grid-template-columns: minmax(0, 1fr) 48px;
-    }
-
-    .appIcon {
-      height: 48px;
-      width: 48px;
-    }
-
-    .appTitle {
-      font-size: clamp(1.5rem, 1.9vw, 1.75rem);
-    }
-  }
 }
 
 @media (max-width: 768px) {
@@ -356,14 +313,9 @@
   }
 
   .appProduct {
-    aspect-ratio: auto;
     border-radius: 20px;
-    min-height: 320px;
+    min-height: 280px;
     padding: 28px 24px;
-  }
-
-  .appHeading {
-    gap: 20px;
   }
 
   .appTitle {
@@ -372,8 +324,8 @@
 
   .appIcon {
     border-radius: 12px;
-    height: 64px;
-    width: 64px;
+    height: 56px;
+    width: 56px;
   }
 
   .appDescription {
@@ -388,10 +340,6 @@
   }
 
   .biProduct {
-    aspect-ratio: auto;
-    grid-column: auto;
-    min-height: 320px;
-
     &::before {
       mask-image: linear-gradient(to bottom, transparent 4%, #000 100%);
     }
