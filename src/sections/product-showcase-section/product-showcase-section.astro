@@ -1,10 +1,11 @@
 ---
-import { productCatalog } from '../../config/product-catalog';
+import { biProduct, productCatalog } from '../../config/product-catalog';
 import ShowcaseProductCard from './showcase-product-card.astro';
 import styles from './product-showcase-section.module.scss';
 
-const featuredProducts = productCatalog.slice(0, 3);
-const additionalProducts = productCatalog.slice(featuredProducts.length);
+const appProducts = productCatalog.filter(product => product !== biProduct);
+const featuredProducts = [...appProducts.slice(0, 2), biProduct];
+const additionalProducts = appProducts.slice(2);
 ---
 
 <section class={styles.section} aria-labelledby="product-showcase-title">

@@ -20,6 +20,13 @@ export type CatalogProduct = {
   showcaseHref?: string;
 };
 
+export const biProduct: CatalogProduct = {
+  title: 'BI-аналитика для торговли',
+  description: 'Продажи, остатки и маржинальность.',
+  action: 'Посмотреть BI-решение',
+  href: biProductPath,
+};
+
 export const productCatalog: CatalogProduct[] = [
   ...(moyskladMcpProduct.published ? [{
     title: moyskladMcpProduct.catalogName,
@@ -64,10 +71,5 @@ export const productCatalog: CatalogProduct[] = [
     href: productRatingPath,
     platformIcon: bitrix24Icon,
   },
-  {
-    title: 'BI-аналитика для торговли',
-    description: 'Продажи, остатки и маржинальность.',
-    action: 'Посмотреть BI-решение',
-    href: biProductPath,
-  },
+  biProduct,
 ];

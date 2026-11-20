@@ -205,7 +205,6 @@
 .biProduct {
   background: #182131;
   color: #f7f8fa;
-  grid-column: 1 / -1;
   isolation: isolate;
   min-height: 240px;
   overflow: hidden;
@@ -296,6 +295,12 @@
 .biProduct:focus-visible .productButton {
   background: #f7f8fa;
   color: #182131;
+}
+
+@media (min-width: 769px) and (max-width: 951px) {
+  .biProduct {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 768px) {

@@ -5,8 +5,9 @@ import { JSDOM } from 'jsdom';
 
 const mcpPath = '/moysklad-mcp/';
 const mcpCardTitle = 'MCP-сервер для МоегоСклада';
+const biPath = '/bi-analitika/';
 
-test('home and catalog show the same approved product order', () => {
+test('home features MoySklad MCP and BI in their assigned slots', () => {
   const doc = new JSDOM(readFileSync('dist/index.html', 'utf8')).window.document;
   const section = doc.querySelector('#product-showcase-title')?.closest('section');
   assert(section, 'Product showcase missing');
@@ -15,6 +16,7 @@ test('home and catalog show the same approved product order', () => {
   const disclosure = section.querySelector('details[data-product-disclosure]');
   assert.equal(featuredCards.length, 3);
   assert.equal(featuredCards[0].querySelector('h3')?.textContent.trim(), mcpCardTitle);
+  assert.equal(featuredCards[2].getAttribute('href'), biPath);
   assert(disclosure && !disclosure.open, 'Additional products must start collapsed');
   const summary = disclosure.querySelector('summary');
   assert.match(summary.textContent, /Посмотреть все продукты/);
@@ -22,12 +24,11 @@ test('home and catalog show the same approved product order', () => {
   const additionalCards = [...disclosure.querySelectorAll('[data-additional-product-grid] > a')];
   const homeCards = [...featuredCards, ...additionalCards];
   assert.equal(homeCards.length, 7);
-  for (const card of homeCards.slice(0, 6)) {
+  for (const card of homeCards.filter(card => card.getAttribute('href') !== biPath)) {
     assert(card.querySelector('h3'), 'App title missing');
     assert(card.querySelector('img[src]'), 'App icon missing');
   }
 
-  assert.equal(homeCards.at(-1).getAttribute('href'), '/bi-analitika/');
   assert(!/бизнес[ -]?иде|проверить идею|проверки идеи/i.test(doc.body.textContent));
   const choice = doc.querySelector('[data-product-choice]');
   assert.deepEqual([...choice.querySelectorAll('[data-product-option]')].map(option => option.dataset.productOption), ['moysklad-mcp', 'bi', 'crm', 'marketplaces']);
@@ -48,11 +49,12 @@ test('home and catalog show the same approved product order', () => {
     '/bitrix24-cleaner/',
     '/bitrix24-field-directory/',
     '/bitrix24-product-rating/',
-    '/bi-analitika/',
+    biPath,
   ]);
   assert.deepEqual(
     homeCards.map(card => card.querySelector('h3').textContent.trim()),
-    catalogCards.map(card => card.querySelector('h2').textContent.trim()),
+    [catalogCards[0], catalogCards[1], catalogCards.at(-1), ...catalogCards.slice(2, -1)]
+      .map(card => card.querySelector('h2').textContent.trim()),
   );
   assert.equal(catalogCards[1].querySelector('h2')?.textContent.trim(), 'Массовые операции и удаление');
   assert.equal(catalogCards[2].querySelector('h2')?.textContent.trim(), 'Прогнозирование продаж');
@@ -66,7 +68,8 @@ test('home and catalog show the same approved product order', () => {
     assert(icon, 'Platform icon missing: ' + card.href);
     assert.match(icon.getAttribute('src'), new RegExp('/' + iconAsset + '(?:\\.[^/]+)?\\.svg$'));
     assert.equal(icon.alt, '');
-    assert.equal(homeCards[index].querySelector('img').getAttribute('src'), icon.getAttribute('src'));
+    const homeCard = homeCards.find(item => item.querySelector('h3').textContent.trim() === card.querySelector('h2').textContent.trim());
+    assert.equal(homeCard?.querySelector('img')?.getAttribute('src'), icon.getAttribute('src'));
   }
   assert(!catalogCards[6].querySelector('img'), 'BI card has no associated platform');
   assert(!doc.querySelector('#cases'), 'Old generic cases block remains on home');
@@ -81,14 +84,14 @@ test('each home product card is one link to its product page', () => {
   assert.deepEqual(cards.map((card) => card.getAttribute('href')), [
     mcpPath,
     '/moysklad-mass-operations/',
+    biPath,
     'https://online.moysklad.ru/app/#apps?id=4a76f099-5c24-439c-a924-8e674da0c215',
     '/bitrix24-cleaner/',
     '/bitrix24-field-directory/',
     '/bitrix24-product-rating/',
-    '/bi-analitika/',
   ]);
-  assert.equal(cards[2].target, '_blank');
-  assert(cards[2].relList.contains('noopener'));
+  assert.equal(cards[3].target, '_blank');
+  assert(cards[3].relList.contains('noopener'));
 
   for (const card of cards) {
     assert.equal(card.tagName, 'A', 'Entire card must be the link');
