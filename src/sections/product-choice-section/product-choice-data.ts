@@ -14,7 +14,7 @@ export const products: Product[] = [
   ...(moyskladMcpProduct.published ? [{
     id: 'moysklad-mcp',
     problem: 'Задавать ИИ вопросы о товарах и продажах',
-    title: moyskladMcpProduct.name,
+    title: moyskladMcpProduct.catalogName,
     description: moyskladMcpProduct.catalogDescription,
     action: 'Посмотреть МойСклад MCP',
     href: moyskladMcpProductPath,

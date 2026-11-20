@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { JSDOM } from 'jsdom';
 
 const mcpPath = '/moysklad-mcp/';
+const mcpCardTitle = 'MCP-сервер для МоегоСклада';
 
 test('home and catalog show the same approved product order', () => {
   const doc = new JSDOM(readFileSync('dist/index.html', 'utf8')).window.document;
@@ -13,6 +14,7 @@ test('home and catalog show the same approved product order', () => {
   const featuredCards = [...section.querySelectorAll('[aria-label="Приложения TrueTell для бизнес-систем"] > a')];
   const disclosure = section.querySelector('details[data-product-disclosure]');
   assert.equal(featuredCards.length, 3);
+  assert.equal(featuredCards[0].querySelector('h3')?.textContent.trim(), mcpCardTitle);
   assert(disclosure && !disclosure.open, 'Additional products must start collapsed');
   const summary = disclosure.querySelector('summary');
   assert.match(summary.textContent, /Посмотреть все продукты/);
@@ -31,7 +33,9 @@ test('home and catalog show the same approved product order', () => {
   assert.deepEqual([...choice.querySelectorAll('[data-product-option]')].map(option => option.dataset.productOption), ['moysklad-mcp', 'bi', 'crm', 'marketplaces']);
   assert.equal(choice.querySelector('[data-product-option][aria-pressed="true"]')?.dataset.productOption, 'moysklad-mcp');
   assert.equal(choice.querySelectorAll('[data-product-panel]').length, 4);
-  assert(choice.querySelector(`[data-product-panel]:not([hidden]) a[href="${mcpPath}"]`));
+  const activeProduct = choice.querySelector('[data-product-panel]:not([hidden])');
+  assert(activeProduct?.querySelector(`a[href="${mcpPath}"]`));
+  assert.equal(activeProduct.querySelector('h3')?.textContent.trim(), mcpCardTitle);
   const mobileOptions = doc.querySelectorAll('details[name="product-solutions"]');
   assert.equal(mobileOptions.length, 4);
   assert(mobileOptions[0].querySelector(`a[href="${mcpPath}"]`));

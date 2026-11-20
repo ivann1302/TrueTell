@@ -39,6 +39,7 @@ export const moyskladMcpProductPath = '/moysklad-mcp/';
 
 export const moyskladMcpProduct = {
   name: 'МойСклад MCP от TrueTell',
+  catalogName: 'MCP-сервер для МоегоСклада',
   heading: 'Задавайте ИИ вопросы о вашем МоемСкладе',
   description:
     'МойСклад MCP от TrueTell связывает ИИ-ассистента с данными аккаунта. Примеры запросов о товарах, остатках, заказах и продажах, порядок подключения и ограничения доступа.',

@@ -22,7 +22,7 @@ export type CatalogProduct = {
 
 export const productCatalog: CatalogProduct[] = [
   ...(moyskladMcpProduct.published ? [{
-    title: moyskladMcpProduct.name,
+    title: moyskladMcpProduct.catalogName,
     description: moyskladMcpProduct.catalogDescription,
     action: 'Посмотреть приложение',
     href: moyskladMcpProductPath,
