@@ -1,5 +1,6 @@
 ---
 import logoImage from '../../images/logo/logo.svg';
+import { moyskladMcpProduct, moyskladMcpProductPath } from '../../config/products';
 import styles from './header.module.scss';
 import mobileStyles from './mobile-menu/mobile-menu.module.scss';
 
@@ -13,6 +14,7 @@ const internalHref = (path: string) => `${base}${path.replace(/^\//, '')}`;
 
 const navigationItems = [
   { href: '/products/', label: 'Решения' },
+  ...(moyskladMcpProduct.published ? [{ href: moyskladMcpProductPath, label: 'МойСклад MCP' }] : []),
   { href: '/bi-analitika/#pricing', label: 'Цены' },
   { href: '/knowledge-base/', label: 'База знаний' },
   { href: '/blog/', label: 'Блог' },

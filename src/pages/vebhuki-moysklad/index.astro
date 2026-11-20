@@ -8,6 +8,7 @@ import FaqSection from '../../sections/faq-section/faq-section.astro';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import { getArticle, getRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
+import { moyskladMcpProduct, moyskladMcpProductPath } from '../../config/products';
 import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
 import scenarioImage from '../../images/articles/moysklad-webhook-scenario-official-168.png';
 import stockCheckImage from '../../images/articles/moysklad-webhook-stock-check-168.png';
@@ -98,6 +99,7 @@ const structuredData = createArticleStructuredData({
   <section aria-labelledby="mcp">
     <h2 id="mcp">Когда использовать <span data-heading-accent>MCP</span></h2>
     <p>Если сотрудник хочет задать вопрос об остатках в чате, подходит <a href={`${base}mcp-moysklad-dannye/`}>запрос данных через MCP МойСклад</a>. Для регулярного обновления витрины по событиям нужен обработчик вебхуков и сверка итоговой записи.</p>
+    {moyskladMcpProduct.published && <p>На странице <a href={`${base}${moyskladMcpProductPath.slice(1)}`}>{moyskladMcpProduct.name}</a> есть пример такого вопроса об остатках и способ сверить ответ по складам.</p>}
   </section>
 
   <FaqSection title="Вопросы о вебхуках МойСклад" items={faqItems} variant="article" />

@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import ArticleFigure from '../../components/editorial/article-figure.astro';
+import ProductArticles from '../../components/editorial/product-articles.astro';
 import SiteFooter from '../../components/footer/site-footer.astro';
 import AppHeader from '../../components/header/header.astro';
 import ProductScenario from '../../components/product-scenario/product-scenario.astro';
@@ -18,6 +19,7 @@ import FaqSection from '../../sections/faq-section/faq-section.astro';
 import closing from '../../styles/product-closing.module.scss';
 import hero from '../../styles/product-hero.module.scss';
 import panels from '../../styles/product-panels.module.scss';
+import { createOrganizationLogo } from '../../utils/functions/createOrganizationLogo';
 import styles from './page.module.scss';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -26,8 +28,9 @@ const pageUrl = new URL(`${base}${moyskladMcpProductPath}`, site).href;
 const ogImage = new URL(chatDemo.src, site).href;
 const title = 'МойСклад MCP от TrueTell — подключение ИИ к МоемуСкладу';
 const { email } = companyInfo.contacts.moyskladMcpSupport;
-const primaryHref = product.marketplaceUrl ?? '#marketplace';
 const marketplaceLabel = 'Открыть в каталоге МоегоСклада';
+const primaryHref = product.marketplaceUrl ?? companyInfo.contacts.consultationUrl;
+const primaryLabel = product.marketplaceUrl ? marketplaceLabel : 'Обсудить подключение';
 const diagramAlt = 'Схема подключения ИИ к МоемуСкладу через MCP TrueTell. Слева ChatGPT, Claude, Cursor, Qwen Code и DeepSeek, в центре коннектор, справа МойСклад.';
 const chatAlt = 'Демонстрационный ответ на вопрос об остатках термокружек: 24 штуки на основном складе и 8 на розничном';
 
@@ -63,7 +66,10 @@ const structuredData = {
       '@type': 'SoftwareApplication', '@id': `${pageUrl}#software`, url: pageUrl,
       name: product.name, description: product.description, applicationCategory: 'BusinessApplication',
       image: new URL(productIcon.src, site).href, screenshot: new URL(connectionScreenshot.src, site).href,
-      provider: { '@type': 'Organization', name: companyInfo.brandName, url: new URL(`${base}/`, site).href },
+      provider: {
+        '@type': 'Organization', name: companyInfo.brandName, url: new URL(`${base}/`, site).href,
+        logo: createOrganizationLogo(site.href),
+      },
     },
   ],
 };
@@ -81,10 +87,10 @@ const structuredData = {
         <LineWave centerOnMobile />
         <div class={hero.heroCopy}>
           <h1>{product.heading}</h1>
-          <p class={hero.heroDescription}>Найдите товар по артикулу, проверьте остатки по складам или сравните продажи за два периода. Задавайте вопросы в ChatGPT, Claude, Cursor или другом клиенте с поддержкой удалённого MCP.</p>
+          <p class={hero.heroDescription}>Найдите товар по артикулу, проверьте остатки по складам или сравните продажи за два периода в ИИ-ассистенте с поддержкой удалённого MCP.</p>
         </div>
         <div class={hero.heroActions}>
-          <a class={styles.button} href={primaryHref}>{marketplaceLabel}</a>
+          <a class={styles.button} href={primaryHref}>{primaryLabel}</a>
         </div>
       </header>
 
@@ -94,7 +100,7 @@ const structuredData = {
 
       <section class={styles.section} aria-labelledby="moysklad-mcp-clients">
         <h2 id="moysklad-mcp-clients">Какой ИИ можно подключить</h2>
-        <p class={styles.clientNote}>ChatGPT, Claude, Cursor и Qwen Code поддерживают удалённый MCP. Для DeepSeek и других моделей выберите клиент с поддержкой нужной модели и удалённого MCP по ссылке. Поиск товара через коннектор проверен в ChatGPT.</p>
+        <p class={styles.clientNote}>Поиск товара через коннектор проверили в ChatGPT на тестовом аккаунте. Claude, Cursor и Qwen Code тоже поддерживают удалённый MCP. Возможность подключения к выбранному клиенту уточним для вашего сценария.</p>
         <figure class={styles.clientDiagram}>
           <picture>
             <source media="(max-width: 768px)" srcset={clientDiagramMobile.src}
@@ -102,6 +108,7 @@ const structuredData = {
             <img src={clientDiagramWide.src} alt={diagramAlt} width={clientDiagramWide.width}
               height={clientDiagramWide.height} loading="lazy" decoding="async" />
           </picture>
+          <figcaption class={styles.note}>Для DeepSeek нужен клиент, который поддерживает эту модель и удалённый MCP.</figcaption>
         </figure>
       </section>
 
@@ -109,7 +116,7 @@ const structuredData = {
         description="Начните с товара, который уже знаете. Так проще проверить первый ответ и понять, какие данные видит ассистент."
         steps={[...scenarioSteps]}>
         <ArticleFigure src={chatDemo} fullSize hideExpandHint alt={chatAlt} caption="Пример диалога в ChatGPT на демонстрационных данных." />
-        <a class:list={[styles.button, styles.setupLink]} href="#connection">Посмотреть инструкцию по подключению</a>
+        <a class:list={[styles.button, styles.setupLink]} href="#connection">Посмотреть шаги подключения</a>
       </ProductScenario>
 
       <section class={styles.section} aria-labelledby="moysklad-mcp-questions">
@@ -125,8 +132,9 @@ const structuredData = {
       <section id="connection" class:list={[styles.section, styles.split, styles.connection]} aria-labelledby="moysklad-mcp-setup">
         <div>
           <h2 id="moysklad-mcp-setup">Как подключить ИИ к МоемуСкладу</h2>
+          {!product.marketplaceUrl && <p>Эти шаги подходят для аккаунта, где коннектор уже установлен.</p>}
           <ol class={styles.setup}>
-            <li><strong>Установите решение в МоемСкладе.</strong> Администратор открывает вкладку «Подключение» и копирует персональную ссылку.</li>
+            <li><strong>Откройте приложение TrueTell в МоемСкладе.</strong> Администратор открывает вкладку «Подключение» и копирует персональную ссылку.</li>
             <li><strong>Добавьте удалённый MCP-сервер.</strong> Вставьте персональную ссылку в настройки MCP выбранного клиента. Если клиент запрашивает способ входа, выберите подключение без OAuth.</li>
             <li><strong>Задайте первый вопрос.</strong> Включите подключение в чате или агенте, попросите найти товар по артикулу и сверьте ответ с карточкой в МоемСкладе.</li>
           </ol>
@@ -146,11 +154,16 @@ const structuredData = {
         aria-labelledby="moysklad-mcp-marketplace">
         <h2 id="moysklad-mcp-marketplace">Решение в МоемСкладе</h2>
         <div>
-          <p>Откройте карточку «МойСклад MCP от TrueTell», чтобы установить коннектор.</p>
           {product.marketplaceUrl ? (
-            <a class={styles.button} href={product.marketplaceUrl}>{marketplaceLabel}</a>
+            <>
+              <p>Откройте карточку в каталоге МоегоСклада, чтобы установить коннектор.</p>
+              <a class={styles.button} href={product.marketplaceUrl}>{marketplaceLabel}</a>
+            </>
           ) : (
-            <button class={styles.button} type="button" disabled>{marketplaceLabel}</button>
+            <>
+              <p>Публичная установка пока недоступна. Расскажите, какие данные вам нужны и в каком ИИ-клиенте вы хотите с ними работать.</p>
+              <a class={styles.button} href={primaryHref}>{primaryLabel}</a>
+            </>
           )}
         </div>
       </section>
@@ -158,6 +171,8 @@ const structuredData = {
       <div class={styles.section}>
         <FaqSection items={faqItems} title="Вопросы о доступе и данных" id="moysklad-mcp-faq" variant="article" />
       </div>
+
+      <ProductArticles productPath={moyskladMcpProductPath} />
     </div>
   </main>
 
@@ -169,7 +184,7 @@ const structuredData = {
         <h2 id="moysklad-mcp-contact">Подключите МойСклад к своему ИИ</h2>
         <div>
           <p>Начните с одного вопроса. Найдите товар по артикулу и сверьте ответ с карточкой в МоемСкладе.</p>
-          <a class={styles.button} href={primaryHref}>{marketplaceLabel}</a>
+          <a class={styles.button} href={primaryHref}>{primaryLabel}</a>
           <p class={styles.support}>Поддержка <a href={`mailto:${email}`}>{email}</a></p>
           <p class={styles.support}>{companyInfo.brandName}, {companyInfo.legal.name}</p>
         </div>

@@ -8,6 +8,12 @@ const resolveHref = (href: string) => href.startsWith('/')
   : href;
 
 const products = [
+  ...(moyskladMcpProduct.published ? [{
+    title: moyskladMcpProduct.name,
+    description: moyskladMcpProduct.catalogDescription,
+    action: 'Посмотреть приложение',
+    href: moyskladMcpProductPath,
+  }] : []),
   {
     title: 'BI-аналитика для торговли',
     description: 'Продажи, остатки и маржинальность.',
@@ -20,12 +26,6 @@ const products = [
     action: 'Посмотреть приложение',
     href: moyskladOperationsProductPath,
   },
-  ...(moyskladMcpProduct.published ? [{
-    title: moyskladMcpProduct.name,
-    description: moyskladMcpProduct.catalogDescription,
-    action: 'Посмотреть приложение',
-    href: moyskladMcpProductPath,
-  }] : []),
   {
     title: cleanerProduct.name,
     description: cleanerProduct.catalogDescription,

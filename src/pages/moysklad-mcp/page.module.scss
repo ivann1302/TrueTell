@@ -41,14 +41,6 @@
 
   &:hover,
   &:active { background: var(--primary-blue); }
-
-  &:disabled {
-    background: var(--surface-subtle);
-    color: var(--text-secondary);
-    font: inherit;
-    font-weight: 500;
-    border: 0;
-  }
 }
 
 .page a:focus-visible,

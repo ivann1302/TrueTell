@@ -10,6 +10,7 @@ import FaqSection from '../../sections/faq-section/faq-section.astro';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import { getArticle, getRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
+import { moyskladMcpProduct, moyskladMcpProductPath } from '../../config/products';
 import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
 import responseImage from '../../images/articles/moysklad-api-first-response-162.png';
 import authDocsImage from '../../images/articles/moysklad-api-auth-official-091.png';
@@ -146,6 +147,7 @@ const structuredData = createArticleStructuredData({
   <section aria-labelledby="without-code">
     <h2 id="without-code">Когда можно <span data-heading-accent>обойтись без разработчика</span></h2>
     <p>Для одного отчёта за период обычно достаточно файла из МойСклад. Если он нужен регулярно, сравните <a href={`${base}vygruzka-dannyh-moysklad-dlya-analitiki/`}>способы выгрузки данных для аналитики</a>. Перед подключением готового решения попросите показать, какие данные оно выгружает, как часто обновляет отчёт и как сверить цифры с МойСклад.</p>
+    {moyskladMcpProduct.published && <p>Если нужно разово найти товар или спросить об остатках в чате, посмотрите, как работает <a href={`${base}${moyskladMcpProductPath.slice(1)}`}>{moyskladMcpProduct.name}</a>.</p>}
     <InlineConsultation title="Проверяете, хватит ли API для отчёта?" description="Расскажите, какой показатель и по каким магазинам нужен. Поможем определить, из каких документов его собрать и с чем сверить результат." />
   </section>
 

@@ -282,6 +282,45 @@
   }
 }
 
+@media (min-width: 769px) {
+  .appProductsWithMcp {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    .appProduct {
+      aspect-ratio: auto;
+      min-height: 280px;
+    }
+
+    .biProduct {
+      grid-column: auto;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .appProductsWithMcp {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    .appProduct {
+      padding: 24px;
+    }
+
+    .appHeading {
+      gap: 12px;
+      grid-template-columns: minmax(0, 1fr) 48px;
+    }
+
+    .appIcon {
+      height: 48px;
+      width: 48px;
+    }
+
+    .appTitle {
+      font-size: clamp(1.5rem, 1.9vw, 1.75rem);
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .section {
     padding-bottom: 64px;

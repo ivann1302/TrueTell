@@ -32,11 +32,11 @@ export const moyskladMcpProduct = {
   name: 'МойСклад MCP от TrueTell',
   heading: 'Задавайте ИИ вопросы о вашем МоемСкладе',
   description:
-    'Подключите ИИ к МоемуСкладу через MCP TrueTell. Ищите товары, проверяйте остатки и сравнивайте продажи в ChatGPT, Claude, Cursor или другом MCP-клиенте.',
+    'МойСклад MCP от TrueTell связывает ИИ-ассистента с данными аккаунта. Примеры запросов о товарах, остатках, заказах и продажах, порядок подключения и ограничения доступа.',
   catalogDescription:
     'Товары, остатки, заказы и отчёты по данным МоегоСклада в ИИ-ассистенте.',
   marketplaceUrl: null as string | null,
-  published: false as boolean,
+  published: true as boolean,
 } as const;
 
 export const cleanerProduct = {

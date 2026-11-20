@@ -1,4 +1,5 @@
 import { companyInfo } from '../../config/company';
+import { moyskladMcpProduct, moyskladMcpProductPath } from '../../config/products';
 
 export type Product = {
   id: string;
@@ -10,6 +11,14 @@ export type Product = {
 };
 
 export const products: Product[] = [
+  ...(moyskladMcpProduct.published ? [{
+    id: 'moysklad-mcp',
+    problem: 'Задавать ИИ вопросы о товарах и продажах',
+    title: moyskladMcpProduct.name,
+    description: moyskladMcpProduct.catalogDescription,
+    action: 'Посмотреть МойСклад MCP',
+    href: moyskladMcpProductPath,
+  }] : []),
   {
     id: 'bi',
     problem: 'Понять, где бизнес теряет деньги',

@@ -7,6 +7,7 @@ import FaqSection from '../../sections/faq-section/faq-section.astro';
 import ConsultationCtaSection from '../../sections/consultation-cta-section/consultation-cta-section.astro';
 import { getArticle, getRelatedArticles } from '../../config/articles';
 import { companyInfo } from '../../config/company';
+import { moyskladMcpProduct, moyskladMcpProductPath } from '../../config/products';
 import { createArticleStructuredData } from '../../utils/functions/createArticleStructuredData';
 import firstImage from '../../images/articles/moysklad-ai-question-115.png';
 import secondImage from '../../images/articles/moysklad-ai-answer-check-115.png';
@@ -45,7 +46,8 @@ const structuredData = createArticleStructuredData({
 <p>Официальный MCP МоегоСклада сейчас возвращает до 1000 объектов за вызов без встроенной пагинации. Это особенно важно для вопросов «по всему каталогу» и «за весь год»: ответ может опираться на часть данных. Для регулярной аналитики с большими объёмами выбирайте воспроизводимую выгрузку через API и проверку загрузки.</p></section>
 <section aria-labelledby="rights"><h2 id="rights">До вопроса проверьте <span data-heading-accent>доступ к данным</span></h2>
 <p>Токен открывает агенту доступ в рамках своих прав. Определите, нужны ли конкретному вопросу закупочные цены, контакты покупателей и финансовые документы. Просьба «не показывать» в чате не заменяет ограничения доступа: данные могут попасть в контекст модели. Начните с не чувствительного набора полей и проверьте политику хранения выбранной AI-платформы.</p>
-<p>Если задача повторяется каждое утро, запишите проверенный вопрос и источник контрольного числа. Так вы заметите, когда сменится набор инструментов MCP или формат ответа.</p></section>
+<p>Если задача повторяется каждое утро, запишите проверенный вопрос и источник контрольного числа. Так вы заметите, когда сменится набор инструментов MCP или формат ответа.</p>
+{moyskladMcpProduct.published && <p>Для подключения своего аккаунта к ИИ посмотрите <a href={`${base}${moyskladMcpProductPath.slice(1)}`}>{moyskladMcpProduct.name}</a>. На странице есть пример поиска товара по артикулу и шаги сверки с карточкой.</p>}</section>
   <FaqSection title="Частые вопросы" items={faqItems} variant="article" />
   <p>Официальная документация проверена 30 октября 2026 года. Доступ к клиентскому аккаунту и работу конкретного подключения для этой статьи не тестировали.</p>
   <ArticleSources publishedIso={article.publishedAt} modifiedIso={article.updatedAt} sources={sourceLinks} />

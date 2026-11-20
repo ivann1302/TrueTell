@@ -212,9 +212,9 @@
     },
     "api-moysklad/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-11-19",
-      "report": "docs/seo/publications/api-moysklad-editorial-review-162-2026-11-19.md",
-      "fingerprint": "aa94de10f0276063fc1f590b83aa0b234ee5027ba6887335a2326373fe040fb8"
+      "reviewedAt": "2026-11-20",
+      "report": "docs/seo/publications/moysklad-mcp-product-links-170-2026-11-20.md",
+      "fingerprint": "d7fadc65ed0ccad30f4d6d1dc7e5c4b95de3d2170b5701026fc101c56b26fc6d"
     },
     "vygruzka-dannyh-moysklad-dlya-analitiki/": {
       "skill": "humanizer",
@@ -374,15 +374,15 @@
     },
     "mcp-moysklad-dannye/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-30",
-      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
-      "fingerprint": "e27e7fbc769c743cc2035d4890673dd950c767d8e3ad97a25e5d671247056b36"
+      "reviewedAt": "2026-11-20",
+      "report": "docs/seo/publications/moysklad-mcp-product-links-170-2026-11-20.md",
+      "fingerprint": "bdd715d7a824de784c36d584ce9429c2b9fa6461a57faa2da88edb1863004889"
     },
     "vebhuki-moysklad/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-11-19",
-      "report": "docs/seo/publications/moysklad-webhooks-editorial-review-168-2026-11-19.md",
-      "fingerprint": "085d04100e63870a15a43e84c27112386d44a7410bfcea679bb2a747b5a70ad1"
+      "reviewedAt": "2026-11-20",
+      "report": "docs/seo/publications/moysklad-mcp-product-links-170-2026-11-20.md",
+      "fingerprint": "e1e18eaec9d513b7d0877cf60209886022a6be4f7a280d259c6b9ff00bbdb40e"
     },
     "ii-agent-ili-roboty-bitrix24/": {
       "skill": "humanizer",
@@ -392,9 +392,9 @@
     },
     "ii-voprosy-moysklad/": {
       "skill": "humanizer",
-      "reviewedAt": "2026-10-30",
-      "report": "docs/seo/publications/articles-release-124-2026-10-30.md",
-      "fingerprint": "e90ab2029738b746ace71d3cfb76829dceba90cbb9458801246d703d6b0236b5"
+      "reviewedAt": "2026-11-20",
+      "report": "docs/seo/publications/moysklad-mcp-product-links-170-2026-11-20.md",
+      "fingerprint": "7900fe3e659f2c3eac37ee6c70fb608b82c28cb1078a52362bea49144910f470"
     },
     "poteryannye-zayavki-bitrix24/": {
       "skill": "humanizer",
