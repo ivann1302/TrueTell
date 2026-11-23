@@ -1,0 +1,183 @@
+/* Hallmark v2.0.0 | shape: product walkthrough | theme: TrueTell design system | nav: shared | footer: shared | signature: sales comparison in a two-turn dialogue */
+/* The two messages share a single reading surface, and only the answer's figures use an accent. */
+.page {
+  background: var(--bg);
+  text-align: left;
+}
+
+.container {
+  width: min(calc(100% - 64px), 1240px);
+  margin-inline: auto;
+}
+
+.page h1,
+.page h2 {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.page h2 {
+  margin: 0;
+  font-size: clamp(1.75rem, 2.8vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.status {
+  margin: 16px 0 0;
+  color: var(--white);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.demoButton {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 12px 24px;
+  border-radius: 10px;
+  background: var(--secondary-blue);
+  color: var(--white);
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover { background: var(--primary-blue); }
+  &:active { background: var(--primary-blue-dark); }
+}
+
+.example {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  align-items: start;
+  gap: 24px 64px;
+  margin-top: var(--section-gap);
+}
+
+.dialogue {
+  margin: 0;
+  padding: clamp(20px, 3vw, 40px);
+  border: 1px solid var(--border, var(--surface-subtle));
+  border-radius: 14px;
+  background: var(--surface);
+
+  figcaption {
+    margin-top: 24px;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}
+
+.messages,
+.messages dd {
+  margin: 0;
+}
+
+.messages dt {
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.question {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border, var(--surface-subtle));
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.answer {
+  padding-top: 20px;
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+  line-height: 1.45;
+
+  strong {
+    color: var(--primary-blue);
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+  }
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 64px;
+  margin-top: var(--section-gap);
+
+  h2 { scroll-margin-top: 112px; }
+}
+
+.exampleIntro p,
+.details p {
+  max-width: 62ch;
+  margin: 16px 0 0;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.architecture {
+  max-width: 460px;
+  margin: 24px 0 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  figcaption {
+    margin-top: 12px;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 24px;
+  margin-top: 32px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border, var(--surface-subtle));
+
+  p { margin: 0; }
+
+  a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+  }
+}
+
+.details a,
+.contact a {
+  color: var(--primary-blue);
+  text-underline-offset: 3px;
+
+  &:hover { color: var(--primary-blue-dark); }
+  &:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+}
+
+@media (max-width: 1024px) {
+  .actions {
+    align-self: start;
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container { width: calc(100% - 32px); }
+
+  .example,
+  .details {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

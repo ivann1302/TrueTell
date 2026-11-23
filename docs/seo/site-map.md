@@ -2,7 +2,7 @@
 
 Автоматически создаётся при production build из HTML страниц и существующего реестра статей. Не редактировать таблицу вручную. Документ не публикуется в dist.
 
-Индексируемых канонических URL: **119**. Даты — только записанные изменения содержания; время сборки не используется. Статус означает наличие в локальной сборке, а не индексацию в поиске.
+Индексируемых канонических URL: **120**. Даты — только записанные изменения содержания; время сборки не используется. Статус означает наличие в локальной сборке, а не индексацию в поиске.
 
 | URL | Название | Тип | Категория | Связанный продукт | Статус | Sitemap | Последнее изменение |
 |---|---|---|---|---|---|---|---|
@@ -70,6 +70,7 @@
 | https://truetell-retail.ru/mcp-crm-bitrix24/ | MCP для настройки и диагностики CRM Битрикс24 — TrueTell | commercial | MCP для Битрикс24 | — | draft | Исключена: draft | — |
 | https://truetell-retail.ru/mcp-moysklad-dannye/ | MCP МойСклад: данные для ИИ, ограничения и отличие от API | blog | МойСклад / ИИ и MCP | /moysklad-mcp/ | published | Включена | 2026-11-20 |
 | https://truetell-retail.ru/mcp-server-bitrix24-vybor/ | MCP-сервер Битрикс24: документация REST или данные CRM | knowledge | Битрикс24 / ИИ и MCP | — | published | Включена | — |
+| https://truetell-retail.ru/moysklad-alisa/ | МойСклад для Алисы — сводка продаж от TrueTell | commercial | Приложения для МоегоСклада | — | published | Включена | — |
 | https://truetell-retail.ru/moysklad-arhivirovanie/ | Массовое архивирование товаров в МойСклад — TrueTell | commercial | МойСклад | /moysklad-mass-operations/ | published | Включена | — |
 | https://truetell-retail.ru/moysklad-dlya-marketpleysov/ | МойСклад для маркетплейсов: заказы, остатки и цены | blog | МойСклад / Маркетплейсы | /moysklad-mass-operations/ | published | Включена | 2026-10-15T15:02:28+03:00 |
 | https://truetell-retail.ru/moysklad-import/ | Импорт Excel и CSV в МойСклад с проверкой плана — TrueTell | commercial | МойСклад | /moysklad-mass-operations/ | published | Включена | — |

@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+import SiteFooter from '../../components/footer/site-footer.astro';
+import AppHeader from '../../components/header/header.astro';
+import { companyInfo } from '../../config/company';
+import { moyskladMcpProductPath } from '../../config/products';
+import pilotArchitecture from '../../images/products/moysklad-alisa/pilot-architecture.webp';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import hero from '../../styles/product-hero.module.scss';
+import styles from './page.module.scss';
+
+const heading = 'Как идут продажи? Спросите Алису';
+const title = `МойСклад для Алисы — сводка продаж от ${companyInfo.brandName}`;
+const description = 'TrueTell разрабатывает навык Алисы для руководителей складского бизнеса. Он поможет узнать выручку и сравнить продажи за два периода по данным МоегоСклада.';
+const email = companyInfo.contacts.moyskladMcpSupport.email;
+const demoHref = `mailto:${email}`;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout {title} {description} canonicalPath="/moysklad-alisa/" contentType="commercial"
+  contentCategory="Приложения для МоегоСклада" contactDialog={false}>
+  <AppHeader />
+  <main class:list={[hero.productPage, styles.page]}>
+    <div class={styles.container}>
+      <header class={hero.hero}>
+        <div class={hero.heroCopy}>
+          <h1>{heading}</h1>
+          <p class={hero.heroDescription}>Разрабатываем навык Алисы для руководителей складского бизнеса и торговли. Вы сможете задавать вопросы о своём бизнесе своими словами и получать короткие сводки по данным МоегоСклада. Начинаем с выручки и сравнения продаж.</p>
+          <p class={styles.status}>Закрытое демо на тестовых данных</p>
+        </div>
+        <div class:list={[hero.heroActions, styles.actions]}>
+          <a class={styles.demoButton} href={demoHref}>Запросить демо</a>
+        </div>
+      </header>
+
+      <section class={styles.example} aria-labelledby="demo-heading">
+        <div class={styles.exampleIntro}>
+          <h2 id="demo-heading">Как выглядит ответ</h2>
+          <p>Перед планёркой можно будет быстро проверить, как прошёл вчерашний день. Если выручка заметно изменилась, сводка поможет понять, стоит ли посмотреть подробный отчёт.</p>
+        </div>
+        <figure class={styles.dialogue}>
+          <dl class={styles.messages}>
+            <div class={styles.question}>
+              <dt>Пользователь</dt>
+              <dd>Сравни продажи за вчера и позавчера.</dd>
+            </div>
+            <div class={styles.answer}>
+              <dt>Алиса</dt>
+              <dd>За вчера выручка составила <strong>120&nbsp;000&nbsp;₽</strong>, за позавчера &mdash; <strong>100&nbsp;000&nbsp;₽</strong>. Рост на <strong>20&nbsp;000&nbsp;₽</strong>, или <strong>20%</strong>.</dd>
+            </div>
+          </dl>
+          <figcaption>Демонстрационные данные</figcaption>
+        </figure>
+      </section>
+
+      <div class={styles.details}>
+        <section aria-labelledby="workflow-heading">
+          <h2 id="workflow-heading">Как это работает</h2>
+          <p>Навык Алисы будет передавать вопрос на сервер TrueTell. Планируем вызывать <span lang="en">Alice AI LLM Flash</span> через API, чтобы определить показатель, период и нужный инструмент, а затем сформулировать короткую сводку.</p>
+          <figure class={styles.architecture}>
+            <Image src={pilotArchitecture} widths={[360, 460, 920]} sizes="(max-width: 492px) calc(100vw - 32px), 460px"
+              alt="Навык Алисы передаёт вопрос серверу TrueTell. Сервер обращается к Alice AI LLM Flash для анализа запроса и к MCP TrueTell для расчёта показателей. MCP читает данные МоегоСклада. Сводка возвращается в навык Алисы."
+              loading="lazy" />
+            <figcaption>План подключения модели к навыку Алисы</figcaption>
+          </figure>
+          <p>MCP-сервер проверяет права, получает данные из МоегоСклада и рассчитывает показатели. Пилот работает в режиме чтения.</p>
+        </section>
+        <section aria-labelledby="progress-heading">
+          <h2 id="progress-heading">Что готово</h2>
+          <p><a href={`${base}${moyskladMcpProductPath}`}>MCP-сервер TrueTell</a> уже работает и поддерживает аналитику продаж, заказов и остатков. Для первого сценария навыка выбрали сводку по продажам и сравнение периодов. Текстовый запрос «Продажи за вчера» уже проверили в закрытом демонавыке на Android на тестовых данных.</p>
+          <p>На следующем этапе подключим Flash и проверим точность ответов, время отклика и стоимость запроса. Подключение данных клиентов и голосовой сценарий запланированы для следующих проверок.</p>
+        </section>
+      </div>
+
+      <div class={styles.contact}>
+        <p>Разработчик <strong>{companyInfo.brandName}</strong></p>
+        <a href={demoHref}>{email}</a>
+      </div>
+    </div>
+  </main>
+  <SiteFooter hideDivider />
+</BaseLayout>
