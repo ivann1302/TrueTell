@@ -97,16 +97,16 @@ const structuredData = createArticleStructuredData({
       caption="Схема настройки ChatGPT. В поле URL вставьте ссылку из приложения."
       fullSize
     />
-    <p>Если пункта добавления сервера нет, проверьте, поддерживает ли ваш тариф пользовательские MCP-серверы и разрешено ли вам добавлять их в рабочей области. <a href="https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt">Справка ChatGPT</a></p>
+    <p>Если в «Плагинах» нет кнопки добавления MCP-сервера, проверьте тариф и разрешение <span lang="en">Create plugins with MCPs</span> в рабочей области. <a href="https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt">Справка ChatGPT</a></p>
 
     <h3>Claude</h3>
     <ol>
-      <li>В личном аккаунте Claude откройте <strong lang="en">Customize → Connectors</strong> и выберите <strong lang="en">+ Add → Add custom connector</strong>. В Team или Enterprise коннектор добавляет уполномоченный администратор через <strong lang="en">Organization settings → Connectors → Add → Custom → Web</strong>.</li>
+      <li>В личном аккаунте Claude откройте <strong lang="en">Customize → Connectors</strong> и выберите <strong lang="en">+ Add → Add custom connector</strong>. В Team коннектор добавляет владелец, в Enterprise — владелец или сотрудник с разрешением <span lang="en">Manage access to Libraries</span>. Откройте <strong lang="en">Organization settings → Connectors → Add → Custom → Web</strong>.</li>
       <li>Укажите название <strong>«МойСклад»</strong>, вставьте персональную ссылку и нажмите <strong lang="en">Continue</strong>.</li>
       <li>Если Claude предлагает выбрать способ входа, укажите <strong lang="en">No sign in</strong>. Завершите добавление коннектора.</li>
       <li>В Team или Enterprise откройте <strong lang="en">Customize → Connectors</strong> и нажмите <strong lang="en">Connect</strong> рядом с «МойСклад». В новом чате откройте <strong lang="en">+ → Connectors</strong> и включите <strong>«МойСклад»</strong>.</li>
     </ol>
-    <p>Если добавление коннекторов управляется вашей организацией, обратитесь к администратору рабочей области. <a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">Справка Claude</a></p>
+    <p>Участники с доступом к общему коннектору используют права одной ссылки TrueTell. Проверьте эти права перед подключением. <a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">Справка Claude</a></p>
     <h3>Другие ИИ-ассистенты</h3>
     <p>Проверьте, можно ли в вашем клиенте добавить удалённый MCP-сервер по URL с транспортом <strong lang="en">Streamable HTTP</strong> и без отдельного входа через OAuth. Если эти условия выполнены, укажите персональную ссылку TrueTell как адрес сервера.</p>
     <p><a href="https://code.claude.com/docs/en/mcp">Настройка Claude Code</a> · <a href="https://cursor.com/docs/mcp">Настройка Cursor</a></p>
@@ -114,7 +114,8 @@ const structuredData = createArticleStructuredData({
 
   <section aria-labelledby="first-question">
     <h2 id="first-question">4. Задайте первый вопрос</h2>
-    <p>Включите подключение «МойСклад» в чате или сессии ассистента. Возьмите артикул из своего каталога и подставьте его в запрос.</p>
+    <p>Включите «МойСклад» в чате. На главном экране решения нажмите «Скопировать промпт» и отправьте текст ассистенту. Он запросит названия до трёх товаров. Если инструменты недоступны, промпт попросит открыть инструкцию. Если запрос завершится ошибкой, ассистенту предложено показать её текст.</p>
+    <p>Чтобы проверить остатки, подставьте в пример артикул из своего каталога.</p>
     <blockquote><p>Найди термокружки по артикулу ТК‑042 и покажи, сколько единиц доступно на каждом складе.</p></blockquote>
     <ArticleFigure
       src={chatgptFirstQuestion}
@@ -122,8 +123,18 @@ const structuredData = createArticleStructuredData({
       caption="Пример ответа об остатках по складам на демонстрационных данных."
       fullSize
     />
-    <p>Сверьте название товара с карточкой. В МоёмСкладе откройте <strong>«Склад → Остатки»</strong> и сравните показатель «Доступно» для каждого склада с ответом ассистента. Если ассистент не видит данные, проверьте, активно ли подключение. Управлять ссылками и правами можно в разделе <strong>«Настройки → Доступ»</strong> приложения TrueTell.</p>
+    <p>Сверьте название товара с карточкой. В МоёмСкладе откройте <strong>«Склад → Остатки»</strong> и сравните показатель «Доступно» для каждого склада с ответом ассистента. Если ассистент не видит данные, проверьте, активно ли подключение. Управлять ссылками и правами можно в разделе <strong>«Настройки доступа»</strong> приложения TrueTell.</p>
     <p><a href={`${base}${moyskladMcpProductPath.slice(1)}`}>Возможности и условия доступа МойСклад MCP</a></p>
+  </section>
+
+  <section aria-labelledby="install-skill">
+    <h2 id="install-skill">Как установить навык TrueTell</h2>
+    <p>По желанию установите навык TrueTell. Он помогает ассистенту выбирать инструменты МоегоСклада, показывать понятные названия и строить графики.</p>
+    <p><a href="https://moysklad-mcp-server.ru/skills/truetell-moysklad.zip">Скачать навык TrueTell (ZIP)</a></p>
+    <p>В ChatGPT откройте «Плагины» → «Навыки» → «Создать» → «Загрузить с компьютера» и выберите скачанный ZIP-архив.</p>
+    <p>В Claude откройте «Настроить» (Customize) → «Навыки» (Skills), нажмите «+» → «Создать навык» (Create skill) → «Загрузить навык» (Upload a skill) и выберите скачанный ZIP-архив.</p>
+    <p>Если навык недоступен, проверьте тариф и настройки рабочей области. В Claude должны быть разрешены выполнение кода и создание файлов. После загрузки включите навык. Подключением к МоемуСкладу можно пользоваться без навыка.</p>
+    <p>Новые версии архива доступны по той же ссылке. Загрузка и включение навыков описаны в справке <a href="https://help.openai.com/en/articles/20001066-skills-in-chatgpt">ChatGPT</a> и <a href="https://support.claude.com/en/articles/12512180-use-skills-in-claude">Claude</a>.</p>
   </section>
 
   <RelatedArticles slot="article-end" items={relatedArticles} />
