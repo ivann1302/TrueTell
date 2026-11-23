@@ -1,8 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import SiteFooter from '../../components/footer/site-footer.astro';
 import AppHeader from '../../components/header/header.astro';
 import { companyInfo } from '../../config/company';
 import { moyskladMcpProductPath } from '../../config/products';
+import pilotArchitecture from '../../images/products/moysklad-alisa/pilot-architecture.webp';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import hero from '../../styles/product-hero.module.scss';
 import styles from './page.module.scss';
@@ -54,8 +56,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class={styles.details}>
         <section aria-labelledby="workflow-heading">
           <h2 id="workflow-heading">Как это работает</h2>
-          <p>Пользователь задаёт вопрос в навыке Алисы. Планируем использовать <span lang="en">Alice AI LLM Flash</span>, чтобы понимать формулировку, определять показатель и период и выбирать нужный инструмент.</p>
-          <p>Наш MCP-сервер проверяет права доступа, получает данные из МоегоСклада и рассчитывает показатели. Пилот работает в режиме чтения.</p>
+          <p>Навык Алисы будет передавать вопрос на сервер TrueTell. Планируем вызывать <span lang="en">Alice AI LLM Flash</span> через API, чтобы определить показатель, период и нужный инструмент, а затем сформулировать короткую сводку.</p>
+          <figure class={styles.architecture}>
+            <Image src={pilotArchitecture} widths={[360, 460, 920]} sizes="(max-width: 492px) calc(100vw - 32px), 460px"
+              alt="Навык Алисы передаёт вопрос серверу TrueTell. Сервер обращается к Alice AI LLM Flash для анализа запроса и к MCP TrueTell для расчёта показателей. MCP читает данные МоегоСклада. Сводка возвращается в навык Алисы."
+              loading="lazy" />
+            <figcaption>План подключения модели к навыку Алисы</figcaption>
+          </figure>
+          <p>MCP-сервер проверяет права, получает данные из МоегоСклада и рассчитывает показатели. Пилот работает в режиме чтения.</p>
         </section>
         <section aria-labelledby="progress-heading">
           <h2 id="progress-heading">Что готово</h2>
