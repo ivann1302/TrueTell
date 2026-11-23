@@ -7,9 +7,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import hero from '../../styles/product-hero.module.scss';
 import styles from './page.module.scss';
 
-const heading = 'Сводка продаж из МоегоСклада в Алисе';
+const heading = 'Как идут продажи? Спросите Алису';
 const title = `МойСклад для Алисы — сводка продаж от ${companyInfo.brandName}`;
-const description = 'МойСклад для Алисы от TrueTell: сводка выручки и сравнение продаж за два периода. Посмотрите пример ответа и запросите закрытое демо на тестовых данных.';
+const description = 'TrueTell разрабатывает навык Алисы для руководителей складского бизнеса. Он поможет узнать выручку и сравнить продажи за два периода по данным МоегоСклада.';
 const email = companyInfo.contacts.moyskladMcpSupport.email;
 const demoHref = `mailto:${email}`;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -23,7 +23,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <header class={hero.hero}>
         <div class={hero.heroCopy}>
           <h1>{heading}</h1>
-          <p class={hero.heroDescription}>Разрабатываем навык Алисы для владельцев магазинов и руководителей торговли. С ним можно будет спросить о выручке за вчера или сравнить продажи за два периода и получить короткую сводку.</p>
+          <p class={hero.heroDescription}>Разрабатываем навык Алисы для руководителей складского бизнеса и торговли. Вы сможете задавать вопросы о своём бизнесе своими словами и получать короткие сводки по данным МоегоСклада. Начинаем с выручки и сравнения продаж.</p>
           <p class={styles.status}>Закрытое демо на тестовых данных</p>
         </div>
         <div class:list={[hero.heroActions, styles.actions]}>
@@ -32,7 +32,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </header>
 
       <section class={styles.example} aria-labelledby="demo-heading">
-        <h2 id="demo-heading">Как выглядит ответ</h2>
+        <div class={styles.exampleIntro}>
+          <h2 id="demo-heading">Как выглядит ответ</h2>
+          <p>Перед планёркой можно будет быстро проверить, как прошёл вчерашний день. Если выручка заметно изменилась, сводка поможет понять, стоит ли посмотреть подробный отчёт.</p>
+        </div>
         <figure class={styles.dialogue}>
           <dl class={styles.messages}>
             <div class={styles.question}>

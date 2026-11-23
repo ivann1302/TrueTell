@@ -109,13 +109,14 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 32px 64px;
   margin-top: var(--section-gap);
+}
 
-  p {
-    max-width: 62ch;
-    margin: 16px 0 0;
-    color: var(--text-secondary);
-    line-height: 1.65;
-  }
+.exampleIntro p,
+.details p {
+  max-width: 62ch;
+  margin: 16px 0 0;
+  color: var(--text-secondary);
+  line-height: 1.65;
 }
 
 .contact {
